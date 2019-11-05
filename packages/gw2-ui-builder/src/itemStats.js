@@ -1,0 +1,38 @@
+import ITEM_STAT_NAMES from './itemStatNames';
+import ITEM_STAT_TYPES from './itemStatTypes';
+import ATTRIBUTES from './attributes';
+
+export default {
+  [ITEM_STAT_NAMES.BERSERKER]: {
+    type: ITEM_STAT_TYPES.TRIPLE,
+    bonuses: [[ATTRIBUTES.POWER], [ATTRIBUTES.PRECISION, ATTRIBUTES.FEROCITY]],
+  },
+  [ITEM_STAT_NAMES.ZEALOT]: {
+    type: ITEM_STAT_TYPES.TRIPLE,
+    bonuses: [
+      [ATTRIBUTES.POWER],
+      [ATTRIBUTES.PRECISION, ATTRIBUTES.HEALING_POWER],
+    ],
+  },
+  [ITEM_STAT_NAMES.MARSHAL]: {
+    type: ITEM_STAT_TYPES.QUADRUPLE,
+    bonuses: [
+      [ATTRIBUTES.POWER, ATTRIBUTES.HEALING_POWER],
+      [ATTRIBUTES.PRECISION, ATTRIBUTES.CONDITION_DAMAGE],
+    ],
+  },
+  [ITEM_STAT_NAMES.CELESTIAL]: {
+    type: ITEM_STAT_TYPES.ALL,
+    bonuses: [
+      [
+        ATTRIBUTES.POWER,
+        ATTRIBUTES.TOUGHNESS,
+        ATTRIBUTES.VITALITY,
+        ATTRIBUTES.PRECISION,
+        ATTRIBUTES.FEROCITY,
+        ATTRIBUTES.CONDITION_DAMAGE,
+        ATTRIBUTES.HEALING_POWER,
+      ],
+    ],
+  },
+};

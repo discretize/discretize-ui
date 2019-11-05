@@ -1,0 +1,34 @@
+{
+  "name": "gw2-ui-builder",
+  "version": "0.0.0",
+  "description": "Builder functions to create custom Guild Wars 2 items",
+  "keywords": [
+    "guild wars 2",
+    "gw2",
+    "jss",
+    "react"
+  ],
+  "homepage": "https://github.com/ManuelHaag/gw2-ui",
+  "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
+  "repository": "https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-builder",
+  "license": "MIT",
+  "author": "Manuel Haag <manuel@haag.online>",
+  "files": [
+    "lib",
+    "es",
+    "src"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "prebuild": "npm-run-all clean",
+    "build": "npm-run-all -p build:*",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "clean": "rimraf lib es",
+    "rebuild": "cross-env NODE_ENV=production npm-run-all build",
+    "prewatch": "rimraf es",
+    "watch": "npm-run-all \"build:es --watch\""
+  },
+  "sideEffects": false
+}

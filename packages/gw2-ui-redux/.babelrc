@@ -1,0 +1,13 @@
+{
+  "extends": "../../babel.config.js",
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": false,
+        "helpers": true,
+        "regenerator": true
+      }
+    ]
+  ]
+}

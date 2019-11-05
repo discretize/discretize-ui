@@ -1,0 +1,18 @@
+{
+  "command": {
+    "create": {
+      "license": "MIT"
+    },
+    "publish": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "ignoreChanges": ["README.md"],
+      "message": "chore(release): publish"
+    }
+  },
+  "packages": ["packages/*"],
+  "version": "independent",
+  "npmClient": "yarn",
+  "registry": "https://registry.npmjs.org/",
+  "useWorkspaces": true
+}

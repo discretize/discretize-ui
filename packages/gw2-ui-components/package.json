@@ -1,0 +1,57 @@
+{
+  "name": "gw2-ui-components",
+  "version": "0.0.0",
+  "description": "React components for Guild Wars 2",
+  "keywords": [
+    "guild wars 2",
+    "gw2",
+    "jss",
+    "react"
+  ],
+  "homepage": "https://github.com/ManuelHaag/gw2-ui",
+  "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
+  "repository": "https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components",
+  "license": "MIT",
+  "author": "Manuel Haag <manuel@haag.online>",
+  "files": [
+    "lib",
+    "es",
+    "src"
+  ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "prebuild": "npm-run-all clean",
+    "build": "npm-run-all -p build:*",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --copy-files",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --copy-files",
+    "clean": "rimraf lib es",
+    "rebuild": "cross-env NODE_ENV=production npm-run-all build",
+    "prewatch": "rimraf es",
+    "watch": "npm-run-all \"build:es --watch\""
+  },
+  "dependencies": {
+    "classnames": "2.2.6",
+    "jss": "9.8.7",
+    "jss-camel-case": "6.1.0",
+    "jss-default-unit": "8.0.2",
+    "jss-nested": "6.0.1",
+    "jss-props-sort": "6.0.0",
+    "jss-vendor-prefixer": "8.0.1",
+    "popper.js": "1.14.6",
+    "prop-types": "15.6.2",
+    "react-event-listener": "0.6.5",
+    "react-jss": "8.6.1",
+    "react-resize-observer": "1.1.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "react": "16.0.0",
+    "react-dom": "16.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "sideEffects": false
+}

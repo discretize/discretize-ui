@@ -1,0 +1,18 @@
+{
+  "name": "typeface-menomonia",
+  "version": "0.0.0",
+  "description": "Menomonia typeface",
+  "keywords": [
+    "font",
+    "font family",
+    "menomonia",
+    "typeface"
+  ],
+  "homepage": "https://github.com/ManuelHaag/gw2-ui",
+  "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
+  "repository": "https://github.com/ManuelHaag/gw2-ui/tree/master/packages/typeface-menomonia",
+  "license": "MIT",
+  "author": "Manuel Haag <manuel@haag.online>",
+  "main": "index.css",
+  "sideEffects": false
+}
