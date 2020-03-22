@@ -6,14 +6,15 @@ import { Item } from 'gw2-ui';
 
 ## Properties
 
-| Property         | Type      | Default | Required | Description                                                                |
-| ---------------- | --------- | ------- | -------- | -------------------------------------------------------------------------- |
-| `id`             | `number`  | -       | yes      | The item id                                                                |
-| `disableIcon`    | `boolean` | `false` | -        | Disables the icon                                                          |
-| `disableText`    | `boolean` | `false` | -        | Disables the text                                                          |
-| `disableLink`    | `boolean` | `false` | -        | Disables the link                                                          |
-| `disableTooltip` | `boolean` | `false` | -        | Disables the tooltip                                                       |
-| `inline`         | `boolean` | `true`  | -        | Whether the component should be inlined (Always `true` if text is enabled) |
+| Property         | Type                            | Default | Required | Description                                                                                         |
+| ---------------- | ------------------------------- | ------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `id`             | `number`                        | -       | yes      | The item id                                                                                         |
+| `upgrades`       | `number[] | [number, number][]` | -       | -        | The item upgrades. The array elements can be either an id or a tuple with id and count (for runes). |
+| `disableIcon`    | `boolean`                       | `false` | -        | Disables the icon                                                                                   |
+| `disableText`    | `boolean`                       | `false` | -        | Disables the text                                                                                   |
+| `disableLink`    | `boolean`                       | `false` | -        | Disables the link                                                                                   |
+| `disableTooltip` | `boolean`                       | `false` | -        | Disables the tooltip                                                                                |
+| `inline`         | `boolean`                       | `true`  | -        | Whether the component should be inlined (Always `true` if text is enabled)                          |
 
 ## Classes
 

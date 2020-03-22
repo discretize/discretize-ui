@@ -8,4 +8,5 @@ export default {
   ConditionDuration: 'Expertise',
   CritDamage: 'Ferocity',
   Healing: 'Healing Power',
+  AgonyResistance: 'Agony Resistance',
 };

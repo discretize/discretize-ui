@@ -19,6 +19,21 @@ const ReduxItem = withRedux(
     error: getItemError(state, props),
     fetching: isItemFetching(state, props),
     fetched: isItemFetched(state, props),
+    ...(props.upgrades &&
+      props.upgrades.length && {
+        upgrades: props.upgrades.map(upgrade => {
+          const [id, count] = Array.isArray(upgrade) ? upgrade : [upgrade];
+
+          return {
+            id,
+            count,
+            data: getItemData(state, { id }),
+            error: getItemError(state, { id }),
+            fetching: isItemFetching(state, { id }),
+            fetched: isItemFetched(state, { id }),
+          };
+        }),
+      }),
   }),
   {
     fetch: fetchItem,

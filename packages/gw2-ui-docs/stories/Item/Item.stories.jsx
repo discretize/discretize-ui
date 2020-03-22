@@ -1,5 +1,5 @@
 import React from 'react';
-import { text, number, boolean } from '@storybook/addon-knobs';
+import { text, number, boolean, object } from '@storybook/addon-knobs';
 import { Item } from 'gw2-ui';
 import {
   itemTypeNames as ITEM_TYPE_NAMES,
@@ -37,6 +37,7 @@ ${Object.values(ITEM_ARMOR_WEIGHTS)
   story: () => (
     <Item
       id={number('id', 46774)}
+      upgrades={object('upgrades', [[24842, 1]])}
       type={text('type', '')}
       stat={text('stat', '')}
       weight={text('weight', '')}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -8,6 +8,7 @@ import Error from '../Error';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
 import ItemTooltipContent from './ItemTooltipContent';
+import Loader from '../Loader';
 
 const styles = theme => ({
   root: {},
@@ -37,6 +38,7 @@ const Item = ({
   classes,
   className,
   component,
+  upgrades,
   disableIcon,
   disableText,
   disableLink,
@@ -119,6 +121,53 @@ const Item = ({
       render={
         <ItemTooltipContent
           data={data}
+          nestedContent={upgrades.map(
+            (
+              {
+                id,
+                data: upgradeData,
+                fetching: upgradeFetching,
+                error: upgradeError,
+                fetched: upgradeFetched,
+                count,
+              },
+              index,
+            ) => {
+              let content;
+
+              if (upgradeFetching) {
+                content = <Loader />;
+              }
+
+              if (content === undefined && upgradeError) {
+                const { message } = upgradeError;
+
+                content = (
+                  <Error
+                    name={`Invalid upgrade ${id} (${message})`}
+                    disableTooltip
+                  />
+                );
+              }
+
+              if (content === undefined && !upgradeFetched) {
+                content = null;
+              }
+
+              if (content === undefined) {
+                content = (
+                  <ItemTooltipContent
+                    data={upgradeData}
+                    bonusCount={count}
+                    nested
+                  />
+                );
+              }
+
+              // eslint-disable-next-line react/no-array-index-key
+              return <Fragment key={`${id}-${index}`}>{content}</Fragment>;
+            },
+          )}
           {...tooltipProps}
           classes={{
             ...(rarityClass && { title: rarityClass }),
@@ -148,6 +197,15 @@ Item.propTypes = {
   iconProps: PropTypes.object,
   tooltipProps: PropTypes.object,
   errorProps: PropTypes.object,
+  upgrades: PropTypes.arrayOf(
+    PropTypes.shape({
+      data: PropTypes.object,
+      fetched: PropTypes.bool,
+      fetching: PropTypes.bool,
+      error: PropTypes.object,
+      count: PropTypes.number,
+    }),
+  ),
 };
 
 Item.defaultProps = {
@@ -162,6 +220,7 @@ Item.defaultProps = {
   iconProps: {},
   tooltipProps: {},
   errorProps: {},
+  upgrades: [],
 };
 
 export default withStyles(styles)(Item);
