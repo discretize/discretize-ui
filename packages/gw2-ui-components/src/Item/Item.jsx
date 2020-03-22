@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { withStyles } from '../helpers';
-import Tooltip from '../Tooltip';
+import Tooltip, { TooltipContent } from '../Tooltip';
 import Error from '../Error';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
@@ -119,61 +119,63 @@ const Item = ({
     <Tooltip
       className={classes.tooltip}
       render={
-        <ItemTooltipContent
-          data={data}
-          nestedContent={upgrades.map(
-            (
-              {
-                id,
-                data: upgradeData,
-                fetching: upgradeFetching,
-                error: upgradeError,
-                fetched: upgradeFetched,
-                count,
+        <TooltipContent>
+          <ItemTooltipContent
+            data={data}
+            nestedContent={upgrades.map(
+              (
+                {
+                  id,
+                  data: upgradeData,
+                  fetching: upgradeFetching,
+                  error: upgradeError,
+                  fetched: upgradeFetched,
+                  count,
+                },
+                index,
+              ) => {
+                let content;
+
+                if (upgradeFetching) {
+                  content = <Loader />;
+                }
+
+                if (content === undefined && upgradeError) {
+                  const { message } = upgradeError;
+
+                  content = (
+                    <Error
+                      name={`Invalid upgrade ${id} (${message})`}
+                      disableTooltip
+                    />
+                  );
+                }
+
+                if (content === undefined && !upgradeFetched) {
+                  content = null;
+                }
+
+                if (content === undefined) {
+                  content = (
+                    <ItemTooltipContent
+                      data={upgradeData}
+                      bonusCount={count}
+                      nested
+                    />
+                  );
+                }
+
+                // eslint-disable-next-line react/no-array-index-key
+                return <Fragment key={`${id}-${index}`}>{content}</Fragment>;
               },
-              index,
-            ) => {
-              let content;
-
-              if (upgradeFetching) {
-                content = <Loader />;
-              }
-
-              if (content === undefined && upgradeError) {
-                const { message } = upgradeError;
-
-                content = (
-                  <Error
-                    name={`Invalid upgrade ${id} (${message})`}
-                    disableTooltip
-                  />
-                );
-              }
-
-              if (content === undefined && !upgradeFetched) {
-                content = null;
-              }
-
-              if (content === undefined) {
-                content = (
-                  <ItemTooltipContent
-                    data={upgradeData}
-                    bonusCount={count}
-                    nested
-                  />
-                );
-              }
-
-              // eslint-disable-next-line react/no-array-index-key
-              return <Fragment key={`${id}-${index}`}>{content}</Fragment>;
-            },
-          )}
-          {...tooltipProps}
-          classes={{
-            ...(rarityClass && { title: rarityClass }),
-            ...tooltipProps.classes,
-          }}
-        />
+            )}
+            {...tooltipProps}
+            classes={{
+              ...(rarityClass && { title: rarityClass }),
+              ...tooltipProps.classes,
+            }}
+          />
+        </TooltipContent>
       }
     >
       {iconWithText}

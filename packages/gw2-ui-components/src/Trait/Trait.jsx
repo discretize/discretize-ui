@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Tooltip from '../Tooltip';
+import Tooltip, { TooltipContent } from '../Tooltip';
 import Icon from '../Icon';
 import WikiLink from '../WikiLink';
 import SkillTooltipContent from '../Skill/SkillTooltipContent';
@@ -15,6 +15,9 @@ const styles = theme => ({
     ...theme.typography.text,
   },
   link: {},
+  tooltipContentActive: {
+    borderColor: '#537ca5',
+  },
   tooltip: {},
   ...Object.assign(
     ...Object.entries(theme.colors.profession).map(
@@ -46,7 +49,7 @@ const Trait = ({
   inactive,
   ...rest
 }) => {
-  const { name, icon, specialization } = data;
+  const { name, icon, specialization, skills } = data;
 
   const [profession] =
     (specialization &&
@@ -59,7 +62,25 @@ const Trait = ({
   return (
     <Tooltip
       className={classes.tooltip}
-      render={<SkillTooltipContent data={data} {...tooltipProps} />}
+      render={
+        <Fragment>
+          <TooltipContent
+            classes={{
+              ...(skills && {
+                root: classes.tooltipContentActive,
+              }),
+            }}
+          >
+            <SkillTooltipContent data={data} {...tooltipProps} />
+          </TooltipContent>
+          {skills &&
+            skills.map(skillData => (
+              <TooltipContent key={`${skillData.id}`}>
+                <SkillTooltipContent data={skillData} {...tooltipProps} />
+              </TooltipContent>
+            ))}
+        </Fragment>
+      }
       disabled={disableTooltip}
     >
       <span className={classNames(className, classes.root)} {...rest}>

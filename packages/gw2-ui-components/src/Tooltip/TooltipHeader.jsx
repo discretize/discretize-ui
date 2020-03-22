@@ -54,7 +54,7 @@ const TooltipHeader = ({
     {flags && flags.length > 0 && (
       <div className={classes.flags}>
         {flags.map(({ icon: flagIcon, value }) => (
-          <span className={classes.flag}>
+          <span key={`${flagIcon}-${value}`} className={classes.flag}>
             {value}
             {flagIcon && <Icon src={flagIcon} className={classes.flagIcon} />}
           </span>

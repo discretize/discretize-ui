@@ -5,24 +5,12 @@ import EventListener, { withOptions } from 'react-event-listener';
 
 import { withStyles } from '../helpers';
 import Popper from '../Popper';
-import tooltipBackground from '../assets/images/tooltip-background.png';
+import { TooltipContent } from '.';
 
 const styles = theme => ({
   root: {
     maxWidth: 300,
     zIndex: theme.zIndex.tooltip,
-    backgroundColor: '#000',
-    border: `2px solid ${theme.palette.border}`,
-    boxShadow:
-      '0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
-    padding: theme.spacing.unit * 0.5,
-    backgroundPosition: 'top left',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundImage: `url(${tooltipBackground})`,
-    ...theme.typography.tooltip,
-    color: theme.palette.tooltip.primary,
-    borderRadius: theme.shape.borderRadius,
     '& > div:not(:last-child)': {
       marginBottom: '0.35em',
     },
@@ -79,7 +67,14 @@ class Tooltip extends Component {
             {ReactDOM.createPortal(
               <Popper id={this.id}>
                 <div className={classNames(className, classes.root)}>
-                  {typeof render === 'function' ? render() : render}
+                  {// eslint-disable-next-line no-nested-ternary
+                  typeof render === 'function' ? (
+                    render()
+                  ) : typeof render === 'object' ? (
+                    render
+                  ) : (
+                    <TooltipContent>{render}</TooltipContent>
+                  )}
                 </div>
               </Popper>,
               document.body,

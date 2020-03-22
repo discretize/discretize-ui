@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { withStyles } from '../helpers';
-import Tooltip from '../Tooltip';
+import Tooltip, { TooltipContent } from '../Tooltip';
 import IconWithText from '../IconWithText';
 import ErrorTooltipContent from './ErrorTooltipContent';
 
@@ -56,12 +56,14 @@ const Error = ({
     <Tooltip
       className={classes.tooltip}
       render={
-        <ErrorTooltipContent
-          code={code}
-          name={name}
-          message={message}
-          {...tooltipProps}
-        />
+        <TooltipContent>
+          <ErrorTooltipContent
+            code={code}
+            name={name}
+            message={message}
+            {...tooltipProps}
+          />
+        </TooltipContent>
       }
       {...tooltipProps}
     >

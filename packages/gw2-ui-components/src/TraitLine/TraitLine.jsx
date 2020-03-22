@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '../helpers';
-import Tooltip from '../Tooltip';
+import Tooltip, { TooltipContent } from '../Tooltip';
 import TraitLineConnector, { Paths } from './TraitLineConnector';
 
 const ROOT_HEIGHT = 135;
@@ -226,7 +226,7 @@ class Specialization extends Component {
         />
 
         <div className={classes.hexagonWrapper}>
-          <Tooltip render={() => name}>
+          <Tooltip render={<TooltipContent>{name}</TooltipContent>}>
             <span className={classes.hexagon} />
           </Tooltip>
         </div>

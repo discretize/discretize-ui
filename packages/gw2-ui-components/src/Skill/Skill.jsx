@@ -7,6 +7,7 @@ import Tooltip from '../Tooltip/Tooltip';
 import Icon from '../Icon/Icon';
 import WikiLink from '../WikiLink/WikiLink';
 import SkillTooltipContent from './SkillTooltipContent';
+import { TooltipContent } from '../Tooltip';
 
 const styles = theme => ({
   root: {},
@@ -55,7 +56,11 @@ const Skill = ({
   return (
     <Tooltip
       className={classes.tooltip}
-      render={<SkillTooltipContent data={data} {...tooltipProps} />}
+      render={
+        <TooltipContent>
+          <SkillTooltipContent data={data} {...tooltipProps} />
+        </TooltipContent>
+      }
       disabled={disableTooltip}
     >
       <span className={classNames(className, classes.root)} {...rest}>
