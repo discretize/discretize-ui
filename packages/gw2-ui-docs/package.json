@@ -19,7 +19,7 @@
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "redux": "4.0.1",
-    "redux-saga": "0.16.2",
+    "redux-saga": "1.0.0",
     "styled-components": "4.1.3",
     "typeface-menomonia": "^0.1.0"
   },

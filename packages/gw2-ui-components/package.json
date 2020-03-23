@@ -23,8 +23,8 @@
   "scripts": {
     "prebuild": "npm-run-all clean",
     "build": "npm-run-all -p build:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --copy-files",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --copy-files",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --copy-files --source-maps --no-comments",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --copy-files --source-maps --no-comments",
     "clean": "rimraf lib es",
     "rebuild": "cross-env NODE_ENV=production npm-run-all build",
     "prewatch": "rimraf es",
@@ -43,11 +43,6 @@
     "react-event-listener": "0.6.5",
     "react-jss": "8.6.1",
     "react-resize-observer": "1.1.1"
-  },
-  "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "react": "16.0.0",
-    "react-dom": "16.0.0"
   },
   "peerDependencies": {
     "react": "^16.0.0",

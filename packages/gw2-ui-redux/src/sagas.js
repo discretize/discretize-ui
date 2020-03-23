@@ -1,4 +1,3 @@
-import { delay } from 'redux-saga';
 import {
   take,
   fork,
@@ -8,6 +7,7 @@ import {
   cancelled,
   race,
   join,
+  delay,
 } from 'redux-saga/effects';
 import axios from 'axios';
 
@@ -53,7 +53,7 @@ function* sendRequest({ payload: { id, path } }) {
         } = error;
 
         if (i < maxRetries - 1 && retriableStatusCodes.includes(status)) {
-          yield call(delay, 2 ** i * 1000 + getJitter());
+          yield delay(2 ** i * 1000 + getJitter());
         } else {
           throw error;
         }

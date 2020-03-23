@@ -25,8 +25,8 @@
   "scripts": {
     "prebuild": "npm-run-all clean",
     "build": "npm-run-all -p build:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --source-maps --no-comments",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --source-maps --no-comments",
     "clean": "rimraf lib es",
     "rebuild": "cross-env NODE_ENV=production npm-run-all build",
     "prewatch": "rimraf es",
@@ -38,14 +38,9 @@
     "redux-actions": "2.6.1",
     "reselect": "4.0.0"
   },
-  "devDependencies": {
-    "@babel/plugin-transform-runtime": "7.2.0",
-    "redux": "4.0.0",
-    "redux-saga": "0.16.0"
-  },
   "peerDependencies": {
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^1.0.0"
   },
   "sideEffects": false
 }
