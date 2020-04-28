@@ -1,7 +1,7 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import { reducer, saga } from 'gw2-ui-redux';
+import { reducer, saga, ROOT_REDUCER_KEY } from 'gw2-ui';
 
 const middlewares = [];
 
@@ -16,7 +16,9 @@ const enhancer = applyMiddleware(...middlewares);
 
 export default () => {
   const store = createStore(
-    reducer,
+    combineReducers({
+      [ROOT_REDUCER_KEY]: reducer,
+    }),
     (compose && compose(enhancer)) || enhancer,
   );
 

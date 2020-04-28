@@ -1,6 +1,6 @@
 import createCachedSelector from 're-reselect';
 
-import { PATHS, KEYS } from './constants';
+import { ROOT_REDUCER_KEY, PATHS, KEYS } from './constants';
 
 const {
   ITEMS: itemsPath,
@@ -20,16 +20,19 @@ const isFetched = ({ [dataKey]: data }) => !!data;
 
 const idCacheKey = (state, { id }) => id;
 
-const getItem = ({ [itemsPath]: items }, { id }) => items[id] || {};
+const getItem = ({ [ROOT_REDUCER_KEY]: { [itemsPath]: items } }, { id }) =>
+  items[id] || {};
 
-const getSkill = ({ [skillsPath]: skills }, { id }) => skills[id] || {};
+const getSkill = ({ [ROOT_REDUCER_KEY]: { [skillsPath]: skills } }, { id }) =>
+  skills[id] || {};
 
 const getSpecialization = (
-  { [specializationsPath]: specializations },
+  { [ROOT_REDUCER_KEY]: { [specializationsPath]: specializations } },
   { id },
 ) => specializations[id] || {};
 
-const getTrait = ({ [traitsPath]: traits }, { id }) => traits[id] || {};
+const getTrait = ({ [ROOT_REDUCER_KEY]: { [traitsPath]: traits } }, { id }) =>
+  traits[id] || {};
 
 export const getItemData = createCachedSelector(getItem, getData)(idCacheKey);
 export const getItemError = createCachedSelector(getItem, getError)(idCacheKey);

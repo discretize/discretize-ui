@@ -13,4 +13,4 @@ export {
   IconWithText,
   WikiLink,
 } from 'gw2-ui-components';
-export { reducer, saga } from 'gw2-ui-redux';
+export { reducer, saga, ROOT_REDUCER_KEY } from 'gw2-ui-redux';
