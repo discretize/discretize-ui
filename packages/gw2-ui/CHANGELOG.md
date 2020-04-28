@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.1.1...gw2-ui@0.1.2) (2020-04-28)
+
+
+### Bug Fixes
+
+* use ROOT_REDUCER_KEY for redux store ([0c5a4e7](https://github.com/ManuelHaag/gw2-ui/commit/0c5a4e716117b27cf007e9b55f0d3bbc754ab412))
+
+
+
+
+
 ## [0.1.1](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.1.0...gw2-ui@0.1.1) (2020-03-23)
 
 
