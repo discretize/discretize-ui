@@ -25,37 +25,41 @@ const IconWithText = ({
   ...rest
 }) => (
   <Component className={classNames(className, classes.root)} {...rest}>
-    {!disableIcon && iconPosition === 'left' && (
-      <Icon
-        className={classes.icon}
-        src={icon}
-        gutterRight={!disableText}
-        inline={!disableText || inline}
-        {...iconProps}
-      />
-    )}
+    {!disableIcon &&
+      iconPosition === 'left' &&
+      (typeof icon === 'string' ? (
+        <Icon
+          className={classes.icon}
+          src={icon}
+          gutterRight={!disableText}
+          inline={!disableText || inline}
+          {...iconProps}
+        />
+      ) : (
+        icon
+      ))}
 
     {!disableText && <span className={classes.text}>{text}</span>}
 
-    {!disableIcon && iconPosition === 'right' && (
-      <Icon
-        className={classes.icon}
-        src={icon}
-        gutterLeft={!disableText}
-        inline={!disableText || inline}
-        {...iconProps}
-      />
-    )}
+    {!disableIcon &&
+      iconPosition === 'right' &&
+      (typeof icon === 'string' ? (
+        <Icon
+          className={classes.icon}
+          src={icon}
+          gutterLeft={!disableText}
+          inline={!disableText || inline}
+          {...iconProps}
+        />
+      ) : (
+        icon
+      ))}
   </Component>
 );
 
 IconWithText.propTypes = {
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ]),
-  icon: PropTypes.string,
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   iconPosition: PropTypes.oneOf(['left', 'right']),
   text: PropTypes.node,
   disableIcon: PropTypes.bool,

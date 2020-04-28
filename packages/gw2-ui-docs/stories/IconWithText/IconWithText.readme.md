@@ -8,7 +8,7 @@ import { IconWithText } from 'gw2-ui'; // or gw2-ui-components
 
 | Property       | Type                       | Default  | Required | Description                                                                |
 | -------------- | -------------------------- | -------- | -------- | -------------------------------------------------------------------------- |
-| `icon`         | `string`                   | -        | yes      | The icon `src`                                                             |
+| `icon`         | `string|node`              | -        | yes      | The icon `src` or a component                                              |
 | `iconPosition` | `"left"\|"right"`          | `"left"` | -        | The icon position                                                          |
 | `text`         | `node`                     | -        | yes      | The text                                                                   |
 | `disableIcon`  | `boolean`                  | `false`  | -        | Disables the icon                                                          |

@@ -18,5 +18,11 @@ export { default as Skill } from './Skill';
 export { default as Specialization } from './Specialization';
 export { default as Trait } from './Trait';
 export { default as TraitLine } from './TraitLine';
-export { default as Tooltip } from './Tooltip';
+export {
+  default as Tooltip,
+  TooltipContent,
+  TooltipDescription,
+  TooltipFact,
+  TooltipHeader,
+} from './Tooltip';
 export { default as WikiLink } from './WikiLink';
