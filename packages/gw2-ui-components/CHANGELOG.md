@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.1.1...gw2-ui-components@0.2.0) (2020-04-28)
+
+
+### Features
+
+* enable custom icon components, export tooltip helper components ([ab8ec6c](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/ab8ec6ccaec8b6483446e8a58b714bf209edbd86))
+
+
+
+
+
 ## [0.1.1](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.1.0...gw2-ui-components@0.1.1) (2020-03-23)
 
 
