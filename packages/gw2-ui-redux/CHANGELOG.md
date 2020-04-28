@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.1.2...gw2-ui-redux@0.1.3) (2020-04-28)
+
+
+### Bug Fixes
+
+* dont destructure unknown action payload to cancel request ([42053fc](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/commit/42053fc1b128578243c1340dc1356a84a918bdc8))
+
+
+
+
+
 ## [0.1.2](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.1.1...gw2-ui-redux@0.1.2) (2020-04-28)
 
 
