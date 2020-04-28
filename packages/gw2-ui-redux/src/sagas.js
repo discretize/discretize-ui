@@ -80,8 +80,10 @@ function* cancelRequest({ id: fetchId, path: fetchPath }, fetchTask) {
   const { abortingAction } = yield race({
     taskFinished: join(fetchTask),
     abortingAction: take(
-      ({ type, payload: { id, path } }) =>
-        type === cancelType && fetchId === id && fetchPath === path,
+      ({ type, payload }) =>
+        type === cancelType &&
+        fetchId === payload.id &&
+        fetchPath === payload.path,
     ),
     // timeout: call(delay, 90000), // taskFinished doesnt work for aborted tasks
   });
