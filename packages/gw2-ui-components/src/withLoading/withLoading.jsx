@@ -31,11 +31,9 @@ export default ({
             inline={inline}
             sx={{
               ...(rest.style?.fontSize && {
-                style: {
-                  fontSize: `${rest.style.fontSize}${
-                    typeof rest.style.fontSize === 'number' ? 'px' : ''
-                  }`,
-                },
+                fontSize: `${rest.style.fontSize}${
+                  typeof rest.style.fontSize === 'number' ? 'px' : ''
+                }`,
               }),
             }}
             {...iconWithTextProps}
@@ -58,11 +56,9 @@ export default ({
             inline={inline}
             sx={{
               ...(rest.style?.fontSize && {
-                style: {
-                  fontSize: `${rest.style.fontSize}${
-                    typeof rest.style.fontSize === 'number' ? 'px' : ''
-                  }`,
-                },
+                fontSize: `${rest.style.fontSize}${
+                  typeof rest.style.fontSize === 'number' ? 'px' : ''
+                }`,
               }),
             }}
             {...errorProps}
