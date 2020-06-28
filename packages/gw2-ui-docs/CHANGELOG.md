@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.2.0...gw2-ui-docs@0.3.0) (2020-06-28)
+
+
+### Features
+
+* use theme-ui for styling, use tippy.js for tooltip ([623535c](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/commit/623535cb7394845af12f80fa640a2cfd317d21d7))
+
+
+
+
+
 # [0.2.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.1.2...gw2-ui-docs@0.2.0) (2020-04-28)
 
 
