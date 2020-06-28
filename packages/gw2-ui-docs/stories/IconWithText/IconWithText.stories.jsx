@@ -13,6 +13,7 @@ export default {
   docs,
   story: () => (
     <IconWithText
+      loading={boolean('loading', false)}
       icon={text(
         'icon',
         'https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png',
@@ -23,13 +24,21 @@ export default {
       disableText={boolean('disableText', false)}
       inline={boolean('inline', true)}
       component={text('component', 'span')}
-      style={{ fontSize: number('fontSize', 24) }}
+      style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
   related: [
     {
       category: categories.HELPERS,
       name: 'Icon',
+    },
+    {
+      category: categories.HELPERS,
+      name: 'Spinner',
+    },
+    {
+      category: categories.HELPERS,
+      name: 'Progress',
     },
   ],
 };

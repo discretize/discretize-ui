@@ -3,8 +3,7 @@ import {
   cancelSpecialization,
   getSpecializationData,
   getSpecializationError,
-  isSpecializationFetching,
-  isSpecializationFetched,
+  isSpecializationLoading,
 } from 'gw2-ui-redux';
 import { Specialization as SpecializationComponent } from 'gw2-ui-components';
 
@@ -14,8 +13,7 @@ const WrappedSpecialization = withRedux(
   (state, props) => ({
     data: getSpecializationData(state, props),
     error: getSpecializationError(state, props),
-    fetching: isSpecializationFetching(state, props),
-    fetched: isSpecializationFetched(state, props),
+    loading: isSpecializationLoading(state, props),
   }),
   {
     fetch: fetchSpecialization,

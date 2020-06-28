@@ -5,8 +5,7 @@ import {
   cancelSpecialization,
   getSpecializationData,
   getSpecializationError,
-  isSpecializationFetching,
-  isSpecializationFetched,
+  isSpecializationLoading,
 } from 'gw2-ui-redux';
 import { TraitLine as TraitLineComponent } from 'gw2-ui-components';
 
@@ -17,8 +16,7 @@ const WrappedTraitLine = withRedux(
   (state, props) => ({
     data: getSpecializationData(state, props),
     error: getSpecializationError(state, props),
-    fetching: isSpecializationFetching(state, props),
-    fetched: isSpecializationFetched(state, props),
+    loading: isSpecializationLoading(state, props),
   }),
   {
     fetch: fetchSpecialization,

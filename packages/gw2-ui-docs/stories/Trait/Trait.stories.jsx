@@ -20,7 +20,7 @@ export default {
       disableTooltip={boolean('disableTooltip', false)}
       inline={boolean('inline', true)}
       inactive={boolean('inactive', false)}
-      style={{ fontSize: number('fontSize', 24) }}
+      style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
 };

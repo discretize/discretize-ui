@@ -1,228 +1,147 @@
-import React, { Fragment } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import { withStyles } from '../helpers';
-import Tooltip, { TooltipContent } from '../Tooltip';
-import Error from '../Error';
+import withLoading from '../withLoading/index';
+import Tooltip from '../Tooltip';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
-import ItemTooltipContent from './ItemTooltipContent';
-import Loader from '../Loader';
+import ItemDetails from '../ItemDetails';
 
-const styles = theme => ({
-  root: {},
-  icon: {},
-  text: {},
-  link: {},
-  tooltip: {},
-  ...Object.assign(
-    ...Object.entries(theme.colors.rarity).map(
-      ([rarity, { medium: color, [theme.palette.link.type]: hoverColor }]) => ({
-        [rarity]: {
-          color,
-          '& $link': {
-            '&:hover': {
-              color: hoverColor,
-            },
-          },
-        },
-      }),
-    ),
-  ),
-});
-
-const Item = ({
-  data,
-  error,
-  classes,
-  className,
-  component,
-  upgrades,
-  disableIcon,
-  disableText,
-  disableLink,
-  disableTooltip,
-  inline,
-  iconProps,
-  tooltipProps,
-  errorProps,
-  ...rest
-}) => {
-  if (error || !data) {
-    const { code = 500, name, message = !data ? 'No data' : 'Unknown error' } =
-      error || {};
-    const {
-      code: ignoredCode,
-      name: ignoredName,
-      message: ignoredMessage,
-      ...errorRest
-    } = {
-      ...rest,
-    };
+const Item = forwardRef(
+  (
+    {
+      id,
+      data,
+      component,
+      upgrades,
+      disableIcon,
+      disableText,
+      disableLink,
+      disableTooltip,
+      inline,
+      tooltipProps,
+      wikiLinkProps,
+      ...rest
+    },
+    ref,
+  ) => {
+    const { name, icon, rarity, details: { type } = {} } = data;
 
     return (
-      <Error
-        code={code}
-        name={name ? `Item ${name}` : 'Invalid item'}
-        message={message}
-        component={component}
-        disableTooltip={disableTooltip}
-        disableIcon={disableIcon}
-        disableText={disableText}
-        inline={inline}
-        iconProps={iconProps}
-        tooltipProps={tooltipProps}
-        {...errorProps}
-        {...errorRest}
-      />
-    );
-  }
-
-  const { name, icon, rarity, details: { type } = {} } = data;
-  const rarityClass = rarity && classes[rarity.toLowerCase()];
-  const { icon: ignoredIcon, text: ignoredText, ...iconWithTextRest } = {
-    ...rest,
-  };
-
-  const iconWithText = (
-    <IconWithText
-      className={classNames(classes.root, className)}
-      classes={{
-        icon: classes.icon,
-        text: classNames(classes.text, rarityClass),
-      }}
-      component={component}
-      icon={icon}
-      text={
-        disableLink ? (
-          name
-        ) : (
-          <WikiLink
-            className={classes.link}
-            to={name}
-            {...rarityClass && { color: 'inherit' }}
-          />
-        )
-      }
-      disableIcon={disableIcon}
-      disableText={disableText}
-      inline={inline}
-      iconProps={{ placeholder: type, ...iconProps }}
-      {...iconWithTextRest}
-    />
-  );
-
-  return disableTooltip ? (
-    iconWithText
-  ) : (
-    <Tooltip
-      className={classes.tooltip}
-      render={
-        <TooltipContent>
-          <ItemTooltipContent
+      <Tooltip
+        content={
+          <ItemDetails
             data={data}
-            nestedContent={upgrades.map(
-              (
-                {
-                  id,
-                  data: upgradeData,
-                  fetching: upgradeFetching,
-                  error: upgradeError,
-                  fetched: upgradeFetched,
-                  count,
-                },
-                index,
-              ) => {
-                let content;
-
-                if (upgradeFetching) {
-                  content = <Loader />;
-                }
-
-                if (content === undefined && upgradeError) {
-                  const { message } = upgradeError;
-
-                  content = (
-                    <Error
-                      name={`Invalid upgrade ${id} (${message})`}
-                      disableTooltip
-                    />
-                  );
-                }
-
-                if (content === undefined && !upgradeFetched) {
-                  content = null;
-                }
-
-                if (content === undefined) {
-                  content = (
-                    <ItemTooltipContent
+            upgrades={
+              upgrades &&
+              upgrades.map(
+                (
+                  {
+                    id: upgradeId,
+                    data: upgradeData,
+                    loading: upgradeLoading,
+                    error: upgradeError,
+                    count,
+                  },
+                  index,
+                ) => (
+                  <div
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={`${upgradeId}-${index}`}
+                    sx={{
+                      marginTop: 4,
+                      ...(index < upgrades.length && { marginBottom: 4 }),
+                    }}
+                  >
+                    <ItemDetails
+                      upgrade
+                      id={upgradeId}
+                      loading={upgradeLoading}
+                      error={upgradeError}
                       data={upgradeData}
-                      bonusCount={count}
-                      nested
+                      upgradeBonusCount={count}
                     />
-                  );
-                }
-
-                // eslint-disable-next-line react/no-array-index-key
-                return <Fragment key={`${id}-${index}`}>{content}</Fragment>;
-              },
-            )}
-            {...tooltipProps}
-            classes={{
-              ...(rarityClass && { title: rarityClass }),
-              ...tooltipProps.classes,
-            }}
+                  </div>
+                ),
+              )
+            }
           />
-        </TooltipContent>
-      }
-    >
-      {iconWithText}
-    </Tooltip>
-  );
-};
+        }
+        disabled={disableTooltip}
+        {...tooltipProps}
+      >
+        <IconWithText
+          component={component}
+          icon={icon}
+          text={
+            disableLink ? (
+              name
+            ) : (
+              <WikiLink
+                to={name}
+                {...wikiLinkProps}
+                sx={{
+                  color: 'inherit',
+                  '&:hover': { color: `rarity.${rarity.toLowerCase()}.dark` },
+                  ...wikiLinkProps?.sx,
+                }}
+              />
+            )
+          }
+          disableIcon={disableIcon}
+          disableText={disableText}
+          inline={inline}
+          {...rest}
+          iconProps={{ placeholder: type, ...rest.iconProps }}
+          sx={{
+            color: `rarity.${rarity.toLowerCase()}.medium`,
+            ...rest.sx,
+          }}
+          ref={ref}
+        />
+      </Tooltip>
+    );
+  },
+);
 
 Item.propTypes = {
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ]),
-  data: PropTypes.object,
-  error: PropTypes.object,
+  id: PropTypes.number,
+  component: PropTypes.elementType,
+  data: PropTypes.object.isRequired,
   disableIcon: PropTypes.bool,
   disableText: PropTypes.bool,
   disableLink: PropTypes.bool,
   disableTooltip: PropTypes.bool,
   inline: PropTypes.bool,
-  iconProps: PropTypes.object,
   tooltipProps: PropTypes.object,
-  errorProps: PropTypes.object,
+  wikiLinkProps: PropTypes.object,
   upgrades: PropTypes.arrayOf(
     PropTypes.shape({
       data: PropTypes.object,
-      fetched: PropTypes.bool,
-      fetching: PropTypes.bool,
-      error: PropTypes.object,
+      loading: PropTypes.bool,
+      error: PropTypes.shape({
+        code: PropTypes.string,
+        name: PropTypes.string,
+        message: PropTypes.string,
+      }),
       count: PropTypes.number,
     }),
   ),
 };
 
 Item.defaultProps = {
+  id: null,
   component: undefined,
-  data: null,
-  error: null,
   disableIcon: false,
   disableText: false,
   disableLink: false,
   disableTooltip: false,
   inline: true,
-  iconProps: {},
   tooltipProps: {},
-  errorProps: {},
-  upgrades: [],
+  wikiLinkProps: {},
+  upgrades: null,
 };
 
-export default withStyles(styles)(Item);
+Item.displayName = 'Item';
+
+export default withLoading()(Item);

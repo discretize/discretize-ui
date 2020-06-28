@@ -1,98 +1,84 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import { withStyles } from '../helpers';
-import Icon from '../Icon/Icon';
-import WikiLink from '../WikiLink/WikiLink';
+import withLoading from '../withLoading/index';
+import IconWithText from '../IconWithText';
+import WikiLink from '../WikiLink';
 
-const styles = theme => ({
-  root: {},
-  icon: {},
-  text: {
-    ...theme.typography.text,
-  },
-  link: {},
-  ...Object.assign(
-    ...Object.entries(theme.colors.profession).map(
-      ([profession, { medium, [theme.palette.link.type]: type }]) => ({
-        [profession]: {
-          color: medium,
-          '& $link': {
-            '&:hover': {
-              color: type,
-            },
-          },
-        },
-      }),
-    ),
-  ),
-});
+const Specialization = forwardRef(
+  (
+    {
+      id,
+      data,
+      component,
+      disableIcon,
+      disableText,
+      disableLink,
+      inline,
+      wikiLinkProps,
+      ...rest
+    },
+    ref,
+  ) => {
+    const { name, icon, profession } = data;
 
-const Specialization = ({
-  data,
-  classes,
-  className,
-  disableIcon,
-  disableText,
-  disableLink,
-  inline,
-  iconProps,
-  ...rest
-}) => {
-  const { name, icon, profession } = data;
-
-  const professionClass =
-    profession && profession.length > 0 && classes[profession.toLowerCase()];
-
-  return (
-    <span className={classNames(className, classes.root)} {...rest}>
-      {!disableIcon && (
-        <Icon
-          className={classes.icon}
-          src={icon}
-          gutterRight={!disableText}
-          inline={!disableText || inline}
-          iconProps={{ hexagon: true, ...iconProps }}
-        />
-      )}
-
-      {!disableText && (
-        <span className={classNames(classes.text, professionClass)}>
-          {disableLink ? (
+    return (
+      <IconWithText
+        component={component}
+        icon={icon}
+        text={
+          disableLink ? (
             name
           ) : (
             <WikiLink
-              className={classNames(classes.link)}
               to={name}
-              {...(professionClass
-                ? {
-                    color: 'inherit',
-                  }
-                : {})}
+              {...wikiLinkProps}
+              sx={{
+                color: 'inherit',
+                '&:hover': {
+                  color: `profession.${profession.toLowerCase()}.dark`,
+                },
+                ...wikiLinkProps?.sx,
+              }}
             />
-          )}
-        </span>
-      )}
-    </span>
-  );
-};
+          )
+        }
+        disableIcon={disableIcon}
+        disableText={disableText}
+        inline={inline}
+        {...rest}
+        iconProps={{ hexagon: true, ...rest.iconProps }}
+        sx={{
+          color: `profession.${profession.toLowerCase()}.medium`,
+          ...rest.sx,
+        }}
+        ref={ref}
+      />
+    );
+  },
+);
 
 Specialization.propTypes = {
+  id: PropTypes.number,
+  component: PropTypes.elementType,
   data: PropTypes.object.isRequired,
   disableIcon: PropTypes.bool,
   disableText: PropTypes.bool,
   disableLink: PropTypes.bool,
   inline: PropTypes.bool,
-  iconProps: PropTypes.object,
+  wikiLinkProps: PropTypes.object,
 };
 
 Specialization.defaultProps = {
+  id: null,
+  component: undefined,
   disableIcon: false,
   disableText: false,
   disableLink: false,
   inline: true,
-  iconProps: {},
+  wikiLinkProps: {},
 };
 
-export default withStyles(styles)(Specialization);
+Specialization.displayName = 'Specialization';
+
+export default withLoading()(Specialization);

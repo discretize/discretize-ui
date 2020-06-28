@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Loader, getDisplayName } from 'gw2-ui-components';
+import { getDisplayName } from 'gw2-ui-components';
 
 export default (
   mapStateToProps,
@@ -33,15 +33,15 @@ export default (
     };
 
     componentWillUnmount = () => {
-      const { fetching, cancel, id, upgrades } = this.props;
+      const { loading, cancel, id, upgrades } = this.props;
 
-      if (fetching && cancel && id) {
+      if (loading && cancel && id) {
         cancel(id);
       }
 
       if (upgrades && upgrades.length && cancel) {
-        upgrades.forEach(({ id: upgradeId, fetching: upgradeFetching }) => {
-          if (upgradeFetching && upgradeId) {
+        upgrades.forEach(({ id: upgradeId, loading: upgradeLoading }) => {
+          if (upgradeLoading && upgradeId) {
             cancel(upgradeId);
           }
         });
@@ -49,9 +49,9 @@ export default (
     };
 
     fetch = () => {
-      const { fetching, error, fetched, fetch, id, upgrades } = this.props;
+      const { loading, error, fetch, data, id, upgrades } = this.props;
 
-      if (!fetching && !error && !fetched && fetch && id) {
+      if (!loading && !error && !data && fetch && id) {
         fetch(id);
       }
 
@@ -59,16 +59,11 @@ export default (
         upgrades.forEach(
           ({
             id: upgradeId,
+            data: upgradeData,
             error: upgradeError,
-            fetching: upgradeFetching,
-            fetched: upgradeFetched,
+            loading: upgradeLoading,
           }) => {
-            if (
-              !upgradeFetching &&
-              !upgradeError &&
-              !upgradeFetched &&
-              upgradeId
-            ) {
+            if (!upgradeLoading && !upgradeError && !upgradeData && upgradeId) {
               fetch(upgradeId);
             }
           },
@@ -77,41 +72,9 @@ export default (
     };
 
     render = () => {
-      const {
-        fetching,
-        error,
-        fetched,
-        fetch,
-        cancel,
-        id,
-        data,
-        ...rest
-      } = this.props;
+      const { fetch, cancel, ...rest } = this.props;
 
-      if (fetching) {
-        return <Loader />;
-      }
-
-      if (error) {
-        const { message, status } = error;
-
-        return (
-          <Component
-            error={{
-              code: status,
-              name: id,
-              message,
-            }}
-            {...rest}
-          />
-        );
-      }
-
-      if (!fetched) {
-        return null;
-      }
-
-      return <Component data={data} {...rest} />;
+      return <Component {...rest} />;
     };
   };
 

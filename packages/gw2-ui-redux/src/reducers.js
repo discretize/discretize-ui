@@ -13,8 +13,7 @@ export default handleActions(
         ...state[path],
         [id]: {
           [errorKey]: null,
-          [pendingKey]:
-            ((state[path][id] && state[path][id][pendingKey]) || 0) + 1,
+          [pendingKey]: (state[path][id]?.[pendingKey] || 0) + 1,
         },
       },
     }),
@@ -23,8 +22,7 @@ export default handleActions(
       [path]: {
         ...state[path],
         [id]: {
-          [pendingKey]:
-            ((state[path][id] && state[path][id][pendingKey]) || 0) - 1,
+          [pendingKey]: (state[path][id]?.[pendingKey] || 1) - 1,
         },
       },
     }),
@@ -35,8 +33,7 @@ export default handleActions(
         [id]: {
           [dataKey]: data,
           [errorKey]: null,
-          [pendingKey]:
-            ((state[path][id] && state[path][id][pendingKey]) || 0) - 1,
+          [pendingKey]: (state[path][id]?.[pendingKey] || 1) - 1,
         },
       },
     }),
@@ -47,8 +44,7 @@ export default handleActions(
         [id]: {
           [dataKey]: null,
           [errorKey]: error,
-          [pendingKey]:
-            ((state[path][id] && state[path][id][pendingKey]) || 0) - 1,
+          [pendingKey]: (state[path][id]?.[pendingKey] || 1) - 1,
         },
       },
     }),

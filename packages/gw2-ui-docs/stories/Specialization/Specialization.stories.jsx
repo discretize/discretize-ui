@@ -18,7 +18,7 @@ export default {
       disableText={boolean('disableText', false)}
       disableLink={boolean('disableLink', false)}
       inline={boolean('inline', true)}
-      style={{ fontSize: number('fontSize', 24) }}
+      style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
 };

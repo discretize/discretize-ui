@@ -1,5 +1,5 @@
 # Error
 
-Renders Guild Wars 2 error.
+Renders a Guild Wars 2 error.
 
 <!-- STORY -->

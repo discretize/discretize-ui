@@ -1,113 +1,111 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import { withStyles } from '../helpers';
 import withAsyncProp from '../helpers/withAsyncProp';
+import { Spinner } from '..';
 
-const styles = theme => ({
-  root: {
-    display: 'inline-block',
-    position: 'relative',
-    height: '1em',
-    width: '1em',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    borderRadius: theme.shape.borderRadius,
-  },
-  applyCount: {
-    position: 'absolute',
-    bottom: '0.2em',
-    right: '0',
-    fontSize: '0.5em',
-    fontWeight: theme.typography.text.fontWeight,
-    fontFamily: theme.typography.text.fontFamily,
-    lineHeight: 1,
-    color: '#fff',
-    textShadow: '0 0 2px black',
-  },
-  noZoom: {
-    backgroundSize: 'cover',
-  },
-  inline: {
-    verticalAlign: 'text-bottom',
-  },
-  gutterRight: {
-    marginRight: '0.25em',
-  },
-  gutterLeft: {
-    marginLeft: '0.25em',
-  },
-  hexagon: {
-    width: '0.8em',
-    clipPath: 'polygon(50% 4%, 100% 28%, 100% 73%, 50% 99%, 0% 73%, 0% 28%)',
-    borderRadius: 0,
-  },
-  inactive: {
-    opacity: 0.5,
-    willChange: 'opacity',
-    transition: 'opacity 200ms',
-    '&:hover': {
-      opacity: 0.8,
+const Icon = forwardRef(
+  (
+    {
+      component: Component,
+      loading,
+      spinnerProps,
+      src,
+      placeholder,
+      zoom,
+      inline,
+      gutterRight,
+      gutterLeft,
+      hexagon,
+      applyCount,
+      inactive,
+      ...rest
     },
-  },
-});
+    ref,
+  ) => {
+    const sharedSx = {
+      ...(gutterRight && { mr: 3 }),
+      ...(gutterLeft && { ml: 3 }),
+      ...(inline && { verticalAlign: 'text-top' }),
+      ...(inactive && {
+        opacity: 0.5,
+        willChange: 'opacity',
+        transition: 'opacity 200ms',
+        '&:hover': {
+          opacity: 0.8,
+        },
+      }),
+    };
 
-const Icon = ({
-  className,
-  classes,
-  component: Component,
-  src,
-  placeholder,
-  zoom,
-  inline,
-  gutterRight,
-  gutterLeft,
-  hexagon,
-  applyCount,
-  inactive,
-  theme,
-  style,
-  ...rest
-}) =>
-  src && (
-    <Component
-      className={classNames(className, classes.root, {
-        [classes.noZoom]: !zoom || hexagon,
-        [classes.inline]: inline,
-        [classes.gutterRight]: gutterRight,
-        [classes.gutterLeft]: gutterLeft,
-        [classes.hexagon]: hexagon,
-        [classes.inactive]: inactive,
-      })}
-      style={{
-        ...(src
-          ? {
-              backgroundImage: `url("${src}")`,
-            }
-          : {}),
-        ...(zoom && !hexagon
-          ? {
-              backgroundSize: `${100 + zoom}%`,
-            }
-          : {}),
-        ...style,
-      }}
-      {...rest}
-    >
-      {applyCount > 1 && (
-        <span className={classes.applyCount}>{applyCount}</span>
-      )}
-    </Component>
-  );
+    if (loading) {
+      return (
+        <Spinner
+          sx={{
+            ...sharedSx,
+            ...(rest.style?.fontSize && {
+              fontSize: `${rest.style.fontSize}${
+                typeof rest.style.fontSize === 'number' ? 'px' : ''
+              }`,
+            }),
+          }}
+          {...spinnerProps}
+        />
+      );
+    }
+
+    if (!src) {
+      return null;
+    }
+
+    return (
+      <Component
+        sx={{
+          display: 'inline-block',
+          size: '1em',
+          position: 'relative',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          borderRadius: 1,
+          ...(src && { backgroundImage: `url('${src}')` }),
+          ...(zoom && !hexagon && { backgroundSize: `${100 + zoom}%` }),
+          ...((!zoom || hexagon) && { backgroundSize: 'cover' }),
+          ...(hexagon && {
+            width: '0.8em',
+            clipPath:
+              'polygon(50% 4%, 100% 28%, 100% 73%, 50% 99%, 0% 73%, 0% 28%)',
+            borderRadius: 0,
+          }),
+          ...sharedSx,
+        }}
+        {...rest}
+        ref={ref}
+      >
+        {applyCount > 1 && (
+          <span
+            sx={{
+              position: 'absolute',
+              bottom: '0.2em',
+              right: 0,
+              fontSize: '0.5em',
+              fontWeight: 'body',
+              fontFamily: 'body',
+              lineHeight: 1,
+              color: '#fff',
+              textShadow: '0 0 2px black',
+            }}
+          >
+            {applyCount}
+          </span>
+        )}
+      </Component>
+    );
+  },
+);
 
 Icon.propTypes = {
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ]),
+  component: PropTypes.elementType,
   src: PropTypes.string,
+  placeholder: PropTypes.string,
   applyCount: PropTypes.number,
   zoom: PropTypes.number,
   inline: PropTypes.bool,
@@ -115,11 +113,14 @@ Icon.propTypes = {
   gutterLeft: PropTypes.bool,
   hexagon: PropTypes.bool,
   inactive: PropTypes.bool,
+  loading: PropTypes.bool,
+  spinnerProps: PropTypes.object,
 };
 
 Icon.defaultProps = {
   component: 'span',
-  src: '',
+  src: null,
+  placeholder: null,
   applyCount: null,
   zoom: null,
   inline: true,
@@ -127,17 +128,19 @@ Icon.defaultProps = {
   gutterLeft: false,
   hexagon: false,
   inactive: false,
+  loading: false,
+  spinnerProps: {},
 };
 
-export default withStyles(styles)(
-  withAsyncProp(
-    ({ src, placeholder }) =>
-      !src &&
-      placeholder && {
-        src: import(/* webpackMode: "eager" */ `../assets/images/placeholders/${placeholder}.png`).then(
-          ({ default: module }) => module,
-        ),
-      },
-    ['placeholder'],
-  )(Icon),
-);
+Icon.displayName = 'Icon';
+
+export default withAsyncProp(
+  ({ src, placeholder }) =>
+    !src &&
+    placeholder && {
+      src: import(/* webpackMode: "eager" */ `../assets/images/placeholders/${placeholder}.png`).then(
+        ({ default: module }) => module,
+      ),
+    },
+  ['placeholder'],
+)(Icon);

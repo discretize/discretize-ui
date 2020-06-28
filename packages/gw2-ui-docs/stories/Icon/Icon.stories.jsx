@@ -13,10 +13,12 @@ export default {
   docs,
   story: () => (
     <Icon
+      loading={boolean('loading', false)}
       src={text(
         'src',
         'https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png',
       )}
+      placeholder={text('placeholder', null)}
       applyCount={number('applyCount', null)}
       zoom={number('zoom', null)}
       inline={boolean('inline', true)}
@@ -25,7 +27,8 @@ export default {
       hexagon={boolean('hexagon', false)}
       inactive={boolean('inactive', false)}
       component={text('component', 'span')}
-      style={{ fontSize: number('fontSize', 24) }}
+      style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
+  related: [{ category: categories.HELPERS, name: 'Spinner' }],
 };

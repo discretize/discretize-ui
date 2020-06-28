@@ -1,25 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import { withStyles } from '../helpers';
 import Icon from '../Icon';
-
-const styles = theme => ({
-  root: {
-    ...theme.typography.text,
-  },
-  icon: {},
-  gold: {
-    color: '#e5be45',
-  },
-  silver: {
-    color: '#cbcac8',
-  },
-  copper: {
-    color: '#a0673a',
-  },
-});
 
 const goldImg =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAACFlBMVEXAu6XBvqzOyLLQy7Tb1r/x8Oby8Obz8eX19Oz29Oj39u739u/59+z9/fb9/ff+/vj///9SQgRqXCZYTBuIfVR6b0NaTRpxZjpvYi51a0BrYDJkWCd6b0SBdkpfUh5gVCBQRBFcTxpmWiZTRhBSRxJcThZVSBVxZDNnWSVtYCxaTRdbTx1VSBFjVR9SRAxVRw9WRxNOQAlTRA1TRQ1ZSw5WRw1RQgZXSA1TQwldThRgURlaSxFlVyFRQgRSQgVeUBZqXShtYCtuWwxwXAxyWAZzWAhzYRh1WwR3aBR5YAh5aRh8Ygt+aRCAahCCZRCDaRiDbhOFaBKFbBqFbB2HcRKJdhuKdyWMcyCNdRmNeCaObg2PeBSRehWSehySfCOSfy2ThEaUdBOUfhiVgjGXgymagReagjWbgzGdgRSeiCGeijmejDyfiz+gghKhhBuhijqikUukihqkk0umhiOmjBqmlEqohRmolkaskhywoGCxlh2xpGy0kCC0oFu1kRi1mB+3nUS5nR+6lR66niC7nyC8nDG8oCK8pVS/pCy/pS6/pzzBnBvBrE3DqjrDsV7EsXPHuX7ItnXIt3zJrD/Js1DMsTLMuHLMvHrNqSDNuGnNuV7Ptj3Pw5DQsTHRt1zSvXPSxIPUulXUwGbUwnLUyJPWvl3WxXfZvDrZvynZxELawWraxXfay4Xczo3gvTPkxjfnyjjn0EYVvr+2AAAAPXRSTlMAAAAAAAAAAAAAAAAAAAAAAAMHEBMWIiMzN11lbnJ3d32Yr7S7vsHCxsfL0dbe4+nr8fX1+Pr8/P39/f7+hZB6/QAAAOBJREFUCB0FwctOg0AABdA7D4ZXWsCEJkXTsND4A5qu/QP3bv1Yu3ahG9MwqClQUaECA0PGc0gIALB8IYb+b544ALBwfXlmHfPynZIQWF7cXbG+IdPTXnIgSh+iUuquMje6ZU6QPi4+5qE1pmabA7WTe0cuEo/pwWS+y5fbVen5rRqOiia94sFGB7po2vJk4vSlob5QP8KbWegGfM6/ue5i49j1qIh1vSs6FlGxNuXXb3Ub77LDyKtXPqt6Ol9lb5/FSTAo0/oe5PNeSkUZscc4toVSbe4qwiwSAgAAAADwDxrAZ/fRn0ixAAAAAElFTkSuQmCC';
@@ -30,7 +12,7 @@ const silverImg =
 const copperImg =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAACK1BMVEWtopWtpJq0qJu3qp7Btaji2tHi29Pj3NTl3dXo4Njp49zs5t/z7ebz7ufz7uj///9CJgxaQSpHMR16ZlRoUz9JMxxhTjtgSDFlU0BaRjJSPCdrVkNxXElNNiBONyE/KRRLMhxWPihCKxRDLRdJMBhFLhhiSzVVPSddRS9JMRpMNSBFLRZSOSJBKRFFKxRGLhc/JxBDKhJJLhRGLBNBJw1HLBNDKA9NMhpRNx9LMBdXPyhBJgxCJg1PNBxQLg9RLxFZLAlZLgtZNBJaLQtaNRNbOx5dMQ1dOhhdRS5eOhZfRzFgMxBhOhZjOhNkPRllPBVmNBJmOhNnORlnPRZpPh1rPx5rRBxsOhdtPxlwORJwSCVxRCJxSyhyRB12Pxh2RRh4US15UCl6USl7RRV8SBl8TiJ8WDZ9RBV9Shp9TSB/RxZ/SRiASRaAZUqBSh2BVTWCRRWCVTODSxuDTxyEUyOEXTqFSheGYD6IXjyIYkOJTSGKUiqOUxuObk+QVyKQbEqQbU6RcFKSUyOTUR2TWiaaWiKbWiibZTOcbEacfmKeeVufZTegWiOghm6keFaqdEOqelCrYiWtdEWvdDqwbjCxkHaycTmzhl20fEO0knW2l363hFy3jWu3knO5hli6dzK6lHC6mXu7fEG8fj28h1C8kmu8noO8oIa9jGC9lXTAdjjBhkbBkWrBqJPDezjDmHTHlmrIgT3IiUXIr5nKl2PLp4jMq47NpH/PrZBy/iAhAAAAO3RSTlMAAAAAAAAAAAAAAAAAAAAAAwcQExYiIzM3XWVucnd3fZivtLu+wcLGx8vR1t7j6evx9fj6/Pz9/f3+/kfuU3oAAADhSURBVAgdBcG7TsMwGAbQL/afxlXUOIGCKNChEgusSDwEOzMDGy/KKyAkVGhuTajSSrk4dm6cY0kAgO3OZq2qh5EAgPtXjz5Lt3nUEQDv5mVllPY3H9OOgODhbf6XKRWbp7HkQt6/i7DX1dAW023GnNUr+5aXNJmu3U1z8p79xOEHo5PGvq418+60y5JTmRT1ch2X5Mqok1RNzoJ4fDxSfzqvpGhEx2jxlTc8MOtgiOtDs6HPbN9zpkYniosz9vObpg3nQ2f2RpTJNg9DzZll98sLxza6jISxiCwJAAAAAMA/7KBtyaLzlLgAAAAASUVORK5CYII=';
 
-const Coin = ({ className, classes, component: Component, value, ...rest }) => {
+const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
   let copper = value;
 
   const gold = Math.floor(copper / 10000);
@@ -40,53 +22,57 @@ const Coin = ({ className, classes, component: Component, value, ...rest }) => {
   copper %= 100;
 
   return (
-    <Component className={classNames(className, classes.root)} {...rest}>
+    <Component
+      sx={{
+        fontFamily: 'body',
+        fontWeight: 'body',
+        lineHeight: 'body',
+      }}
+      {...rest}
+      ref={ref}
+    >
       {gold > 0 && (
-        <Fragment>
-          <span className={classes.gold}>
+        <>
+          <span
+            sx={{
+              color: 'gold',
+            }}
+          >
             {(gold && gold.toLocaleString()) || 0}
           </span>
-          <Icon
-            className={classes.icon}
-            src={goldImg}
-            gutterLeft
-            gutterRight
-            inline
-          />
-        </Fragment>
+          <Icon src={goldImg} gutterLeft gutterRight />
+        </>
       )}
 
       {(gold > 0 || silver > 0) && (
-        <Fragment>
-          <span className={classes.silver}>
+        <>
+          <span
+            sx={{
+              color: 'silver',
+            }}
+          >
             {(silver && silver.toLocaleString()) || 0}
           </span>
-          <Icon
-            className={classes.icon}
-            src={silverImg}
-            gutterLeft
-            gutterRight
-            inline
-          />
-        </Fragment>
+          <Icon src={silverImg} gutterLeft gutterRight />
+        </>
       )}
 
-      <Fragment>
-        <span className={classes.copper}>
+      <>
+        <span
+          sx={{
+            color: 'copper',
+          }}
+        >
           {(copper && copper.toLocaleString()) || 0}
         </span>
-        <Icon className={classes.icon} src={copperImg} gutterLeft inline />
-      </Fragment>
+        <Icon src={copperImg} gutterLeft />
+      </>
     </Component>
   );
-};
+});
 
 Coin.propTypes = {
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ]),
+  component: PropTypes.elementType,
   value: PropTypes.number.isRequired,
 };
 
@@ -94,4 +80,6 @@ Coin.defaultProps = {
   component: 'span',
 };
 
-export default withStyles(styles)(Coin);
+Coin.displayName = 'Coin';
+
+export default Coin;

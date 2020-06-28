@@ -1,83 +1,62 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import { withStyles } from '../helpers';
-import Tooltip, { TooltipContent } from '../Tooltip';
+import Tooltip from '../Tooltip';
+import DetailsHeader from '../DetailsHeader';
+import DetailsText from '../DetailsText';
 import IconWithText from '../IconWithText';
-import ErrorTooltipContent from './ErrorTooltipContent';
 
-const styles = theme => ({
-  root: {},
-  icon: {},
-  text: { color: theme.palette.text.error },
-  tooltip: {},
-});
-
-const Error = ({
-  classes,
-  className,
-  component,
-  name,
-  message,
-  code,
-  disableTooltip,
-  disableIcon,
-  disableText,
-  inline,
-  iconProps,
-  tooltipProps,
-  ...rest
-}) => {
-  const { icon: ignoredIcon, text: ignoredText, ...iconWithTextRest } = {
-    ...rest,
-  };
-
-  const iconWithText = (
-    <IconWithText
-      className={classNames(classes.root, className)}
-      classes={{
-        icon: classes.icon,
-        text: classes.text,
-      }}
-      component={component}
-      text={name}
-      disableIcon={disableIcon}
-      disableText={disableText}
-      inline={inline}
-      iconProps={{ placeholder: code, ...iconProps }}
-      {...iconWithTextRest}
-    />
-  );
-
-  return disableTooltip ? (
-    iconWithText
-  ) : (
+const Error = forwardRef(
+  (
+    {
+      component,
+      name,
+      message,
+      code,
+      disableTooltip,
+      disableIcon,
+      disableText,
+      inline,
+      tooltipProps,
+      ...rest
+    },
+    ref,
+  ) => (
     <Tooltip
-      className={classes.tooltip}
-      render={
-        <TooltipContent>
-          <ErrorTooltipContent
-            code={code}
-            name={name}
-            message={message}
-            {...tooltipProps}
-          />
-        </TooltipContent>
+      content={
+        <>
+          <DetailsHeader
+            iconProps={{ placeholder: code }}
+            titleProps={{ sx: { color: 'error' } }}
+          >
+            {name}
+          </DetailsHeader>
+          <DetailsText>
+            {message}
+            {code && ` (code ${code})`}
+          </DetailsText>
+        </>
       }
+      disabled={disableTooltip}
       {...tooltipProps}
     >
-      {iconWithText}
+      <IconWithText
+        component={component}
+        text={name}
+        disableIcon={disableIcon}
+        disableText={disableText}
+        inline={inline}
+        {...rest}
+        iconProps={{ placeholder: code, ...rest.iconProps }}
+        sx={{ color: 'error', ...rest.sx }}
+        ref={ref}
+      />
     </Tooltip>
-  );
-};
+  ),
+);
 
 Error.propTypes = {
-  component: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-    PropTypes.object,
-  ]),
+  component: PropTypes.elementType,
   code: PropTypes.string,
   name: PropTypes.string,
   message: PropTypes.string,
@@ -85,7 +64,6 @@ Error.propTypes = {
   disableText: PropTypes.bool,
   disableTooltip: PropTypes.bool,
   inline: PropTypes.bool,
-  iconProps: PropTypes.object,
   tooltipProps: PropTypes.object,
 };
 
@@ -98,8 +76,9 @@ Error.defaultProps = {
   disableText: false,
   disableTooltip: false,
   inline: true,
-  iconProps: {},
   tooltipProps: {},
 };
 
-export default withStyles(styles)(Error);
+Error.displayName = 'Error';
+
+export default Error;

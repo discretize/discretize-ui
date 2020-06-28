@@ -1,6 +1,6 @@
 import React from 'react';
 import { number, text, select } from '@storybook/addon-knobs';
-import { WikiLink } from 'gw2-ui';
+import { WikiLink, wikiLinkLanguages } from 'gw2-ui';
 
 import categories from '../categories';
 import readme from './WikiLink.readme.md';
@@ -14,10 +14,9 @@ export default {
   story: () => (
     <WikiLink
       to={text('to', 'Fireball')}
-      lang={select('lang', ['en'])}
-      color={select('color', [null, 'inherit'])}
+      lang={select('lang', wikiLinkLanguages, 'en')}
       component={text('component', 'a')}
-      style={{ fontSize: number('fontSize', 24) }}
+      style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
 };

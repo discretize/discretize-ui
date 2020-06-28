@@ -15,7 +15,13 @@ export default {
     <Coin
       value={number('value', 123456789)}
       component={text('component', 'span')}
-      style={{ fontSize: number('fontSize', 24) }}
+      style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
+  related: [
+    {
+      category: categories.HELPERS,
+      name: 'Icon',
+    },
+  ],
 };

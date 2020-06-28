@@ -15,6 +15,10 @@ export default {
     <TraitLine
       id={number('id', 41)}
       selected={array('selected', [227, 214, 1672])}
+      onSelect={({ tier, id }) =>
+        // eslint-disable-next-line no-alert
+        alert(`Clicked major trait tier: ${tier}, id: ${id}`)
+      }
     />
   ),
 };

@@ -3,8 +3,7 @@ import {
   cancelSkill,
   getSkillData,
   getSkillError,
-  isSkillFetching,
-  isSkillFetched,
+  isSkillLoading,
 } from 'gw2-ui-redux';
 import { Skill as SkillComponent } from 'gw2-ui-components';
 
@@ -14,8 +13,7 @@ const WrappedSkill = withRedux(
   (state, props) => ({
     data: getSkillData(state, props),
     error: getSkillError(state, props),
-    fetching: isSkillFetching(state, props),
-    fetched: isSkillFetched(state, props),
+    loading: isSkillLoading(state, props),
   }),
   {
     fetch: fetchSkill,

@@ -6,10 +6,9 @@ import { Specialization } from 'gw2-ui';
 
 ## Properties
 
-| Property      | Type      | Default | Required | Description                                                                |
-| ------------- | --------- | ------- | -------- | -------------------------------------------------------------------------- |
-| `id`          | `number`  | -       | yes      | The specialization id                                                      |
-| `disableIcon` | `boolean` | `false` | -        | Disables the icon                                                          |
-| `disableText` | `boolean` | `false` | -        | Disables the text                                                          |
-| `disableLink` | `boolean` | `false` | -        | Disables the link                                                          |
-| `inline`      | `boolean` | `true`  | -        | Whether the component should be inlined (Always `true` if text is enabled) |
+| Property        | Type     | Default | Required | Description                                          |
+| --------------- | -------- | ------- | -------- | ---------------------------------------------------- |
+| `id`            | `number` | -       | yes      | The specialization id                                |
+| `wikiLinkProps` | `object` | -       | -        | The properties passed to the `<WikiLink/>` component |
+
+The remaining props will be spread to the underlying `<IconWithText/>` component.

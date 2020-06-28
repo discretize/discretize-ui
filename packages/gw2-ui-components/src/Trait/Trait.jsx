@@ -1,144 +1,126 @@
-import React, { Fragment } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import Tooltip, { TooltipContent } from '../Tooltip';
-import Icon from '../Icon';
+import withLoading from '../withLoading/index';
+import Tooltip from '../Tooltip';
+import TooltipContainer from '../TooltipContainer';
+import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
-import SkillTooltipContent from '../Skill/SkillTooltipContent';
-import { withStyles, specializations } from '../helpers';
+import AbilityDetails from '../AbilityDetails';
+import { specializations } from '../helpers';
 
-const styles = theme => ({
-  root: {},
-  icon: {},
-  text: {
-    ...theme.typography.text,
-  },
-  link: {},
-  tooltipContentActive: {
-    borderColor: '#537ca5',
-  },
-  tooltip: {},
-  ...Object.assign(
-    ...Object.entries(theme.colors.profession).map(
-      ([profession, { medium, [theme.palette.link.type]: type }]) => ({
-        [profession]: {
-          color: medium,
-          '& $link': {
-            '&:hover': {
-              color: type,
-            },
-          },
-        },
-      }),
-    ),
-  ),
-});
+const Trait = forwardRef(
+  (
+    {
+      id,
+      data,
+      component,
+      disableIcon,
+      disableText,
+      disableLink,
+      disableTooltip,
+      inline,
+      tooltipProps,
+      wikiLinkProps,
+      inactive,
+      ...rest
+    },
+    ref,
+  ) => {
+    const { name, icon, specialization, skills, slot } = data;
 
-const Trait = ({
-  data,
-  classes,
-  className,
-  disableIcon,
-  disableText,
-  disableLink,
-  disableTooltip,
-  inline,
-  iconProps,
-  tooltipProps,
-  inactive,
-  ...rest
-}) => {
-  const { name, icon, specialization, skills } = data;
+    const [profession] =
+      (specialization &&
+        Object.entries(specializations).find(([, specializationIds]) =>
+          specializationIds.includes(specialization),
+        )) ||
+      [];
 
-  const [profession] =
-    (specialization &&
-      Object.entries(specializations).find(([, specializationIds]) =>
-        specializationIds.includes(specialization),
-      )) ||
-    [];
-  const professionClass = profession && classes[profession];
+    return (
+      <Tooltip
+        render={
+          <>
+            <TooltipContainer {...skills && { sx: { borderColor: '#537ca5' } }}>
+              <AbilityDetails data={data} />
+            </TooltipContainer>
 
-  return (
-    <Tooltip
-      className={classes.tooltip}
-      render={
-        <Fragment>
-          <TooltipContent
-            classes={{
-              ...(skills && {
-                root: classes.tooltipContentActive,
-              }),
-            }}
-          >
-            <SkillTooltipContent data={data} {...tooltipProps} />
-          </TooltipContent>
-          {skills &&
-            skills.map(skillData => (
-              <TooltipContent key={`${skillData.id}`}>
-                <SkillTooltipContent data={skillData} {...tooltipProps} />
-              </TooltipContent>
-            ))}
-        </Fragment>
-      }
-      disabled={disableTooltip}
-    >
-      <span className={classNames(className, classes.root)} {...rest}>
-        {!disableIcon && (
-          <Icon
-            className={classes.icon}
-            src={icon}
-            zoom={13}
-            gutterRight={!disableText}
-            inline={!disableText || inline}
-            inactive={inactive}
-            {...iconProps}
-          />
-        )}
-
-        {!disableText && (
-          <span className={classNames(classes.text, professionClass)}>
-            {disableLink ? (
+            {skills &&
+              skills.map(skill => (
+                <TooltipContainer key={`${skill.id}`} sx={{ mt: 3 }}>
+                  <AbilityDetails data={skill} />
+                </TooltipContainer>
+              ))}
+          </>
+        }
+        disabled={disableTooltip}
+        {...tooltipProps}
+      >
+        <IconWithText
+          component={component}
+          icon={icon}
+          text={
+            disableLink ? (
               name
             ) : (
               <WikiLink
-                className={classes.link}
                 to={name}
-                {...(professionClass
-                  ? {
-                      color: 'inherit',
-                    }
-                  : {})}
+                {...wikiLinkProps}
+                sx={{
+                  color: 'inherit',
+                  '&:hover': { color: `profession.${profession}.dark` },
+                  ...wikiLinkProps?.sx,
+                }}
               />
-            )}
-          </span>
-        )}
-      </span>
-    </Tooltip>
-  );
-};
+            )
+          }
+          disableIcon={disableIcon}
+          disableText={disableText}
+          inline={inline}
+          {...rest}
+          iconProps={{
+            zoom: 13,
+            inactive,
+            hexagon: slot === 'Minor',
+            ...rest.iconProps,
+          }}
+          sx={{
+            color: `profession.${profession}.medium`,
+            ...rest.sx,
+          }}
+          ref={ref}
+        />
+      </Tooltip>
+    );
+  },
+);
 
 Trait.propTypes = {
+  id: PropTypes.number,
+  component: PropTypes.elementType,
   data: PropTypes.object.isRequired,
   disableIcon: PropTypes.bool,
   disableText: PropTypes.bool,
   disableLink: PropTypes.bool,
   disableTooltip: PropTypes.bool,
   inline: PropTypes.bool,
-  iconProps: PropTypes.object,
   tooltipProps: PropTypes.object,
+  wikiLinkProps: PropTypes.object,
   inactive: PropTypes.bool,
 };
 
 Trait.defaultProps = {
+  id: null,
+  component: undefined,
   disableIcon: false,
   disableText: false,
   disableLink: false,
   disableTooltip: false,
   inline: true,
-  iconProps: {},
   tooltipProps: {},
+  wikiLinkProps: {},
   inactive: false,
 };
 
-export default withStyles(styles)(Trait);
+Trait.displayName = 'Trait';
+
+export default withLoading()(Trait);

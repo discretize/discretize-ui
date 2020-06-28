@@ -14,9 +14,7 @@ const getData = ({ [dataKey]: data }) => data;
 
 const getError = ({ [errorKey]: error }) => error;
 
-const isFetching = ({ [pendingKey]: pending }) => pending > 0;
-
-const isFetched = ({ [dataKey]: data }) => !!data;
+const isLoading = ({ [pendingKey]: pending }) => pending > 0;
 
 const idCacheKey = (state, { id }) => id;
 
@@ -36,10 +34,7 @@ const getTrait = ({ [ROOT_REDUCER_KEY]: { [traitsPath]: traits } }, { id }) =>
 
 export const getItemData = createCachedSelector(getItem, getData)(idCacheKey);
 export const getItemError = createCachedSelector(getItem, getError)(idCacheKey);
-export const isItemFetching = createCachedSelector(getItem, isFetching)(
-  idCacheKey,
-);
-export const isItemFetched = createCachedSelector(getItem, isFetched)(
+export const isItemLoading = createCachedSelector(getItem, isLoading)(
   idCacheKey,
 );
 
@@ -47,10 +42,7 @@ export const getSkillData = createCachedSelector(getSkill, getData)(idCacheKey);
 export const getSkillError = createCachedSelector(getSkill, getError)(
   idCacheKey,
 );
-export const isSkillFetching = createCachedSelector(getSkill, isFetching)(
-  idCacheKey,
-);
-export const isSkillFetched = createCachedSelector(getSkill, isFetched)(
+export const isSkillLoading = createCachedSelector(getSkill, isLoading)(
   idCacheKey,
 );
 
@@ -62,22 +54,15 @@ export const getSpecializationError = createCachedSelector(
   getSpecialization,
   getError,
 )(idCacheKey);
-export const isSpecializationFetching = createCachedSelector(
+export const isSpecializationLoading = createCachedSelector(
   getSpecialization,
-  isFetching,
-)(idCacheKey);
-export const isSpecializationFetched = createCachedSelector(
-  getSpecialization,
-  isFetched,
+  isLoading,
 )(idCacheKey);
 
 export const getTraitData = createCachedSelector(getTrait, getData)(idCacheKey);
 export const getTraitError = createCachedSelector(getTrait, getError)(
   idCacheKey,
 );
-export const isTraitFetching = createCachedSelector(getTrait, isFetching)(
-  idCacheKey,
-);
-export const isTraitFetched = createCachedSelector(getTrait, isFetched)(
+export const isTraitLoading = createCachedSelector(getTrait, isLoading)(
   idCacheKey,
 );

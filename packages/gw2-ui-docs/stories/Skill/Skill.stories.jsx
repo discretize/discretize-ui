@@ -19,7 +19,7 @@ export default {
       disableLink={boolean('disableLink', false)}
       disableTooltip={boolean('disableTooltip', false)}
       inline={boolean('inline', true)}
-      style={{ fontSize: number('fontSize', 24) }}
+      style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
 };

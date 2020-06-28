@@ -1,97 +1,80 @@
-import React, { Component, Fragment } from 'react';
-import ReactDOM from 'react-dom';
-import classNames from 'classnames';
-import EventListener, { withOptions } from 'react-event-listener';
+import React, { forwardRef, useState } from 'react';
+import PropTypes from 'prop-types';
+import Tippy from '@tippyjs/react/headless';
+import { followCursor } from 'tippy.js/headless';
 
-import { withStyles } from '../helpers';
-import Popper from '../Popper';
-import { TooltipContent } from '.';
+import TooltipContainer from '../TooltipContainer';
 
-const styles = theme => ({
-  root: {
-    maxWidth: 300,
-    zIndex: theme.zIndex.tooltip,
-    '& > div:not(:last-child)': {
-      marginBottom: '0.35em',
-    },
-  },
-});
+const Tooltip = forwardRef(
+  (
+    { content: propsContent, render, containerProps, wrapperProps, ...rest },
+    ref,
+  ) => {
+    const [mounted, setMounted] = useState(false);
 
-class Tooltip extends Component {
-  id = `gw2-tooltip-${Math.round(Math.random() * 1e5)}`;
-
-  state = {
-    open: false,
-  };
-
-  handleOpen = () => {
-    const { open } = this.state;
-
-    if (!open) {
-      this.setState({ open: true });
-    }
-  };
-
-  handleClose = () => {
-    const { open } = this.state;
-
-    if (open) {
-      this.setState({ open: false });
-    }
-  };
-
-  render = () => {
-    const { classes, className, render, children } = this.props;
-    const { open } = this.state;
-
-    if (!render) {
-      return children;
-    }
-
-    const childrenProps = {
-      onMouseMove: this.handleOpen,
-      onMouseLeave: this.handleClose,
-      ...(open
-        ? {
-            'aria-describedby': this.id,
-          }
-        : {}),
+    const lazyPlugin = {
+      fn: () => ({
+        onShow: () => setMounted(true),
+        onHidden: () => setMounted(false),
+      }),
     };
 
     return (
-      <Fragment>
-        {React.cloneElement(children, childrenProps)}
+      <Tippy
+        ignoreAttributes
+        followCursor
+        plugins={[lazyPlugin, followCursor]}
+        render={attrs => {
+          if (!mounted) {
+            return null;
+          }
 
-        {open && (
-          <Fragment>
-            {ReactDOM.createPortal(
-              <Popper id={this.id}>
-                <div className={classNames(className, classes.root)}>
-                  {// eslint-disable-next-line no-nested-ternary
-                  typeof render === 'function' ? (
-                    render()
-                  ) : typeof render === 'object' ? (
-                    render
-                  ) : (
-                    <TooltipContent>{render}</TooltipContent>
-                  )}
-                </div>
-              </Popper>,
-              document.body,
-            )}
+          let content = null;
 
-            <EventListener
-              target="window"
-              onScroll={withOptions(this.handleClose, {
-                passive: true,
-                capture: false,
-              })}
-            />
-          </Fragment>
-        )}
-      </Fragment>
+          if (propsContent) {
+            content = (
+              <TooltipContainer {...containerProps}>
+                {propsContent}
+              </TooltipContainer>
+            );
+          } else if (typeof render === 'function') {
+            content = render();
+          } else if (render != null) {
+            content = render;
+          }
+
+          return (
+            <div
+              sx={{ maxWidth: 300, zIndex: 'tooltip' }}
+              tabIndex="-1"
+              {...wrapperProps}
+              {...attrs}
+            >
+              {content}
+            </div>
+          );
+        }}
+        {...rest}
+        ref={ref}
+      />
     );
-  };
-}
+  },
+);
 
-export default withStyles(styles)(Tooltip);
+Tooltip.propTypes = {
+  content: PropTypes.node,
+  render: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  containerProps: PropTypes.object,
+  wrapperProps: PropTypes.object,
+};
+
+Tooltip.defaultProps = {
+  content: null,
+  render: null,
+  containerProps: {},
+  wrapperProps: {},
+};
+
+Tooltip.displayName = 'Tooltip';
+
+export default Tooltip;

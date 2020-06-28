@@ -24,7 +24,10 @@ export default {
   readme,
   docs,
   story: () => (
-    <Tooltip render={text('render', 'Tooltip content')}>
+    <Tooltip
+      content={text('content', 'Tooltip content')}
+      render={text('render', null)}
+    >
       <Element>Hover me</Element>
     </Tooltip>
   ),

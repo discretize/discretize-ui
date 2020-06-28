@@ -1,64 +1,83 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
-import { withStyles } from '../helpers';
 import Icon from '../Icon';
+import Progress from '../Progress';
 
-const styles = theme => ({
-  root: {},
-  icon: {},
-  text: { ...theme.typography.text },
-});
+const IconWithText = forwardRef(
+  (
+    {
+      component: Component,
+      icon,
+      iconPosition,
+      text,
+      disableIcon,
+      disableText,
+      inline,
+      iconProps,
+      textProps,
+      progressProps,
+      loading,
+      ...rest
+    },
+    ref,
+  ) => (
+    <Component
+      sx={{
+        color: 'text',
+        fontFamily: 'body',
+        fontWeight: 'body',
+        lineHeight: 'body',
+      }}
+      {...rest}
+      ref={ref}
+    >
+      {!disableIcon &&
+        iconPosition === 'left' &&
+        (loading ||
+        typeof icon === 'string' ||
+        iconProps?.src ||
+        iconProps?.placeholder ? (
+          <Icon
+            src={icon}
+            gutterRight={!disableText}
+            inline={!disableText || inline}
+            loading={loading}
+            {...iconProps}
+          />
+        ) : (
+          icon
+        ))}
 
-const IconWithText = ({
-  classes,
-  className,
-  component: Component,
-  icon,
-  iconPosition,
-  text,
-  disableIcon,
-  disableText,
-  inline,
-  iconProps,
-  ...rest
-}) => (
-  <Component className={classNames(className, classes.root)} {...rest}>
-    {!disableIcon &&
-      iconPosition === 'left' &&
-      (typeof icon === 'string' ? (
-        <Icon
-          className={classes.icon}
-          src={icon}
-          gutterRight={!disableText}
-          inline={!disableText || inline}
-          {...iconProps}
-        />
-      ) : (
-        icon
-      ))}
+      {!disableText &&
+        (loading ? (
+          <Progress {...progressProps} />
+        ) : (
+          <span {...textProps}>{text}</span>
+        ))}
 
-    {!disableText && <span className={classes.text}>{text}</span>}
-
-    {!disableIcon &&
-      iconPosition === 'right' &&
-      (typeof icon === 'string' ? (
-        <Icon
-          className={classes.icon}
-          src={icon}
-          gutterLeft={!disableText}
-          inline={!disableText || inline}
-          {...iconProps}
-        />
-      ) : (
-        icon
-      ))}
-  </Component>
+      {!disableIcon &&
+        iconPosition === 'right' &&
+        (loading ||
+        typeof icon === 'string' ||
+        iconProps?.src ||
+        iconProps?.placeholder ? (
+          <Icon
+            src={icon}
+            gutterLeft={!disableText}
+            inline={!disableText || inline}
+            loading={loading}
+            {...iconProps}
+          />
+        ) : (
+          icon
+        ))}
+    </Component>
+  ),
 );
 
 IconWithText.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  component: PropTypes.elementType,
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   iconPosition: PropTypes.oneOf(['left', 'right']),
   text: PropTypes.node,
@@ -66,6 +85,9 @@ IconWithText.propTypes = {
   disableText: PropTypes.bool,
   inline: PropTypes.bool,
   iconProps: PropTypes.object,
+  textProps: PropTypes.object,
+  progressProps: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 IconWithText.defaultProps = {
@@ -77,6 +99,11 @@ IconWithText.defaultProps = {
   disableText: false,
   inline: true,
   iconProps: {},
+  textProps: {},
+  progressProps: {},
+  loading: false,
 };
 
-export default withStyles(styles)(IconWithText);
+IconWithText.displayName = 'IconWithText';
+
+export default IconWithText;

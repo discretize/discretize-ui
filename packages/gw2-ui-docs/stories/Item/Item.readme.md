@@ -6,22 +6,14 @@ import { Item } from 'gw2-ui';
 
 ## Properties
 
-| Property         | Type                            | Default | Required | Description                                                                                         |
-| ---------------- | ------------------------------- | ------- | -------- | --------------------------------------------------------------------------------------------------- |
-| `id`             | `number`                        | -       | yes      | The item id                                                                                         |
-| `upgrades`       | `number[] | [number, number][]` | -       | -        | The item upgrades. The array elements can be either an id or a tuple with id and count (for runes). |
-| `disableIcon`    | `boolean`                       | `false` | -        | Disables the icon                                                                                   |
-| `disableText`    | `boolean`                       | `false` | -        | Disables the text                                                                                   |
-| `disableLink`    | `boolean`                       | `false` | -        | Disables the link                                                                                   |
-| `disableTooltip` | `boolean`                       | `false` | -        | Disables the tooltip                                                                                |
-| `inline`         | `boolean`                       | `true`  | -        | Whether the component should be inlined (Always `true` if text is enabled)                          |
+| Property        | Type                                                           | Default | Required | Description                                                                                        |
+| --------------- | -------------------------------------------------------------- | ------- | -------- | -------------------------------------------------------------------------------------------------- |
+| `id`            | `number`                                                       | -       | -        | The item id                                                                                        |
+| `type`          | `string`                                                       | -       | -        | The custom item type                                                                               |
+| `stat`          | `string`                                                       | -       | -        | The custom item stat                                                                               |
+| `weight`        | `string`                                                       | -       | -        | The custom item armor weight                                                                       |
+| `upgrades`      | `Array([upgradeId: number, count: number]\|upgradeId: number)` | -       | -        | The item upgrades. The array elements can be either an id or a tuple with id and count (for runes) |
+| `tooltipProps`  | `object`                                                       | -       | -        | The properties passed to the `<Tooltip/>` component                                                |
+| `wikiLinkProps` | `object`                                                       | -       | -        | The properties passed to the `<WikiLink/>` component                                               |
 
-## Classes
-
-| Name      | Description                           |
-| --------- | ------------------------------------- |
-| `root`    | Styles applied to the root element    |
-| `icon`    | Styles applied to the icon element    |
-| `text`    | Styles applied to the text element    |
-| `link`    | Styles applied to the link element    |
-| `tooltip` | Styles applied to the tooltip element |
+The remaining props will be spread to the underlying `<IconWithText/>` component.

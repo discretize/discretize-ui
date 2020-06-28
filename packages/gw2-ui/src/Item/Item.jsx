@@ -5,8 +5,7 @@ import {
   cancelItem,
   getItemData,
   getItemError,
-  isItemFetching,
-  isItemFetched,
+  isItemLoading,
 } from 'gw2-ui-redux';
 import { Item as ItemComponent } from 'gw2-ui-components';
 import { createItem } from 'gw2-ui-builder';
@@ -17,8 +16,7 @@ const ReduxItem = withRedux(
   (state, props) => ({
     data: getItemData(state, props),
     error: getItemError(state, props),
-    fetching: isItemFetching(state, props),
-    fetched: isItemFetched(state, props),
+    loading: isItemLoading(state, props),
     ...(props.upgrades &&
       props.upgrades.length && {
         upgrades: props.upgrades.map(upgrade => {
@@ -29,8 +27,7 @@ const ReduxItem = withRedux(
             count,
             data: getItemData(state, { id }),
             error: getItemError(state, { id }),
-            fetching: isItemFetching(state, { id }),
-            fetched: isItemFetched(state, { id }),
+            loading: isItemLoading(state, { id }),
           };
         }),
       }),
@@ -47,11 +44,12 @@ const Item = ({ id, type, stat, weight, ...rest }) => {
   }
 
   try {
+    // TODO add upgrades
     return (
       <ItemComponent {...rest} data={createItem({ type, stat, weight })} />
     );
   } catch (error) {
-    return <ItemComponent {...rest} error={{ message: error.message }} />;
+    return <ItemComponent {...rest} error={error} />;
   }
 };
 

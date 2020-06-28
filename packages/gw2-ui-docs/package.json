@@ -16,8 +16,8 @@
   "dependencies": {
     "gw2-ui": "^0.2.0",
     "moment": "2.23.0",
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
     "redux": "4.0.1",
     "redux-saga": "1.0.0",
     "styled-components": "4.1.3",

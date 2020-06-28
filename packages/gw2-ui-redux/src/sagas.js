@@ -60,13 +60,17 @@ function* sendRequest({ payload: { id, path } }) {
       }
     }
   } catch (error) {
-    const { message, response: { status, data: { text } = {} } = {} } = error;
+    const {
+      name,
+      message,
+      response: { status, data: { text } = {} } = {},
+    } = error;
 
     yield put(
       fetchError({
         id,
         path,
-        [errorKey]: { message: text || message, status },
+        [errorKey]: { code: status, name, message: text || message },
       }),
     );
   } finally {

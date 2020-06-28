@@ -6,12 +6,11 @@ import { Trait } from 'gw2-ui';
 
 ## Properties
 
-| Property         | Type      | Default | Required | Description                                                                |
-| ---------------- | --------- | ------- | -------- | -------------------------------------------------------------------------- |
-| `id`             | `number`  | -       | yes      | The item id                                                                |
-| `disableIcon`    | `boolean` | `false` | -        | Disables the icon                                                          |
-| `disableText`    | `boolean` | `false` | -        | Disables the text                                                          |
-| `disableLink`    | `boolean` | `false` | -        | Disables the link                                                          |
-| `disableTooltip` | `boolean` | `false` | -        | Disables the tooltip                                                       |
-| `inline`         | `boolean` | `true`  | -        | Whether the component should be inlined (Always `true` if text is enabled) |
-| `inactive`       | `boolean` | `false` | -        | Whether the trait is inactive                                              |
+| Property        | Type      | Default | Required | Description                                          |
+| --------------- | --------- | ------- | -------- | ---------------------------------------------------- |
+| `id`            | `number`  | -       | yes      | The trait id                                         |
+| `inactive`      | `boolean` | `false` | -        | Whether the trait is inactive                        |
+| `tooltipProps`  | `object`  | -       | -        | The properties passed to the `<Tooltip/>` component  |
+| `wikiLinkProps` | `object`  | -       | -        | The properties passed to the `<WikiLink/>` component |
+
+The remaining props will be spread to the underlying `<IconWithText/>` component.

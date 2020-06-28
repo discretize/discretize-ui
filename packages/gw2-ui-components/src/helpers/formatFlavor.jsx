@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 
+// "Gain a boon upon casting a <c=@abilitytype>glyph</c> based on your attunement. <c=@abilitytype>Glyphs</c> gain reduced recharge."
+
 const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g');
 
 export default (input, classMap = {}) => {
