@@ -36,9 +36,9 @@
     "react-redux": "6.0.0"
   },
   "peerDependencies": {
-    "gw2-ui-builder": "^0.1.0",
-    "gw2-ui-components": "^0.1.0",
-    "gw2-ui-redux": "^0.1.0"
+    "gw2-ui-builder": "^0.1.1",
+    "gw2-ui-components": "^0.3.0",
+    "gw2-ui-redux": "^0.2.0"
   },
   "sideEffects": false
 }
