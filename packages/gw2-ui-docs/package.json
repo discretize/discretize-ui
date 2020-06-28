@@ -1,6 +1,6 @@
 {
   "name": "gw2-ui-docs",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "homepage": "https://manuelhaag.github.io/gw2-ui/",
   "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
@@ -14,7 +14,7 @@
     "develop": "cross-env NODE_ENV=development start-storybook -p 9001"
   },
   "dependencies": {
-    "gw2-ui": "^0.3.0",
+    "gw2-ui": "^0.3.1",
     "moment": "2.23.0",
     "react": "16.8.0",
     "react-dom": "16.8.0",
