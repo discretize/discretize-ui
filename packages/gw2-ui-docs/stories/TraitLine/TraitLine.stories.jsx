@@ -21,4 +21,14 @@ export default {
       }
     />
   ),
+  related: [
+    { category: categories.CORE, name: 'Trait' },
+    { category: categories.HELPERS, name: 'IconWithText' },
+    { category: categories.HELPERS, name: 'Icon' },
+    { category: categories.HELPERS, name: 'WikiLink' },
+    { category: categories.HELPERS, name: 'Tooltip' },
+    { category: categories.HELPERS, name: 'Spinner' },
+    { category: categories.HELPERS, name: 'Progress' },
+    { category: categories.HELPERS, name: 'Error' },
+  ],
 };

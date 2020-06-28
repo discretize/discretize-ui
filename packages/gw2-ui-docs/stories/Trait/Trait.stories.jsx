@@ -23,23 +23,13 @@ export default {
       style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
+  related: [
+    { category: categories.HELPERS, name: 'IconWithText' },
+    { category: categories.HELPERS, name: 'Icon' },
+    { category: categories.HELPERS, name: 'WikiLink' },
+    { category: categories.HELPERS, name: 'Tooltip' },
+    { category: categories.HELPERS, name: 'Spinner' },
+    { category: categories.HELPERS, name: 'Progress' },
+    { category: categories.HELPERS, name: 'Error' },
+  ],
 };
-
-/* stories.add('performance', () => (
-  <table>
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>output</th>
-      </tr>
-    </thead>
-    {Array.from({ length: 200 }, (value, index) => index + 1000).map(id => (
-      <tr key={id}>
-        <td>{id}</td>
-        <td>
-          <Trait id={id} />
-        </td>
-      </tr>
-    ))}
-  </table>
-)); */
