@@ -14,7 +14,7 @@
     "develop": "cross-env NODE_ENV=development start-storybook -p 9001"
   },
   "dependencies": {
-    "gw2-ui": "^0.4.0",
+    "gw2-ui": "0.4.0",
     "moment": "2.23.0",
     "react": "16.8.0",
     "react-dom": "16.8.0",
