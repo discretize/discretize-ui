@@ -1,11 +1,11 @@
 /* eslint-disable react/no-this-in-sfc */
 
-import React, { Component as ReactComponent } from 'react';
+import React, { Component as ReactComponent, forwardRef } from 'react';
 
 import { getDisplayName } from '.';
 
 export default (transformProps, keys) => Component => {
-  const WithAsyncProp = class extends ReactComponent {
+  class WithAsyncProp extends ReactComponent {
     state = {};
 
     componentDidMount = async () => this.resolveProps();
@@ -44,10 +44,17 @@ export default (transformProps, keys) => Component => {
           }),
       );
 
-    render = () => <Component {...this.props} {...this.state} />;
-  };
+    render = () => {
+      const { forwardedRef, ...rest } = this.props;
+      return <Component ref={forwardedRef} {...rest} {...this.state} />;
+    };
+  }
 
-  WithAsyncProp.displayName = `WithAsyncProp(${getDisplayName(Component)})`;
+  const forwardRefFn = (props, ref) => (
+    <WithAsyncProp {...props} forwardedRef={ref} />
+  );
 
-  return WithAsyncProp;
+  forwardRefFn.displayName = `WithAsyncProp(${getDisplayName(Component)})`;
+
+  return forwardRef(forwardRefFn);
 };

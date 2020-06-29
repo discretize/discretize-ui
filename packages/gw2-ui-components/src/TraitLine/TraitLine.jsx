@@ -1,8 +1,15 @@
-import React, { forwardRef, Fragment } from 'react';
+import React, {
+  forwardRef,
+  Fragment,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 
-import withLoading from '../withLoading/index';
+import withLoading from '../withLoading';
 import Tooltip from '../Tooltip';
+import Icon from '../Icon';
 import TraitLineConnector, { Paths } from '../TraitLineConnector';
 
 const ROOT_HEIGHT = 135;
@@ -63,8 +70,12 @@ const TraitLine = forwardRef(
     {
       id,
       traitComponent: TraitComponent,
+      defaultSelected,
       selected: propsSelected,
       onSelect,
+      selectable,
+      resettable,
+      onReset,
       data: {
         background,
         name,
@@ -83,53 +94,148 @@ const TraitLine = forwardRef(
     },
     ref,
   ) => {
-    const renderMinorTrait = ({ id: minorTraitId }) => (
-      <TraitComponent
-        {...{
-          key: minorTraitId,
-          id: minorTraitId,
-          iconProps: {
-            hexagon: true,
-            sx: { fontSize: '39px' },
-          },
-          iconWithTextProps: {
-            sx: {
-              fontSize: '32px',
-              color: 'tooltip',
-            },
-          },
-          disableText: true,
-        }}
-      />
+    // either defaultSelected & selectable
+    // or selected & onSelect & selectable
+    // or defaultSelect/selected & not selectable
+
+    const [uncontrolledSelected, setUncontrolledSelected] = useState(
+      defaultSelected,
     );
 
-    const renderMajorTrait = ({ tier, id: majorTraitId, selected }) => (
-      <TraitComponent
-        {...{
-          key: majorTraitId,
-          id: majorTraitId,
-          iconProps: {
-            sx: { fontSize: '39px' },
-          },
-          iconWithTextProps: {
-            sx: {
-              fontSize: '32px',
-              color: 'tooltip',
-            },
-          },
-          disableText: true,
-          inactive: !selected,
-          ...(typeof onSelect === 'function' && {
-            onClick: event => {
-              event.preventDefault();
-              onSelect({ tier, id: majorTraitId });
-            },
-          }),
-        }}
-      />
+    useEffect(
+      () => {
+        setUncontrolledSelected(defaultSelected);
+      },
+      [...defaultSelected],
     );
 
-    const selected = propsSelected && propsSelected.map(value => Number(value));
+    const controlled = typeof onSelect === 'function';
+    let selected;
+
+    if (controlled) {
+      selected = propsSelected;
+    } else if (selectable) {
+      selected = uncontrolledSelected;
+    } else {
+      selected = defaultSelected || propsSelected;
+    }
+
+    const renderMinorTrait = useCallback(
+      ({ id: minorTraitId }) => (
+        <TraitComponent
+          {...{
+            key: minorTraitId,
+            id: minorTraitId,
+            iconProps: {
+              hexagon: true,
+              sx: { fontSize: '39px' },
+            },
+            iconWithTextProps: {
+              sx: {
+                fontSize: '32px',
+                color: 'tooltip',
+              },
+            },
+            disableText: true,
+          }}
+        />
+      ),
+      TraitComponent,
+    );
+
+    const renderMajorTrait = useCallback(
+      ({
+        tier,
+        id: majorTraitId,
+        selected: isSelected,
+        index: majorTraitIndex,
+      }) => (
+        <TraitComponent
+          {...{
+            key: majorTraitId,
+            id: majorTraitId,
+            iconProps: {
+              sx: { fontSize: '39px' },
+            },
+            iconWithTextProps: {
+              sx: {
+                fontSize: '32px',
+                color: 'tooltip',
+              },
+            },
+            disableText: true,
+            inactive: !isSelected,
+            ...((controlled || selectable) && {
+              onClick: event => {
+                event.preventDefault();
+
+                if (controlled) {
+                  onSelect({ tier, id: majorTraitId, index: majorTraitIndex });
+                } else {
+                  // find selected major trait from same tier to replace
+                  const selectedIndexToReplace = selected.findIndex(
+                    selectedMajorTraitId =>
+                      majorTraits
+                        .slice(tier * 3, tier * 3 + 3)
+                        .includes(selectedMajorTraitId),
+                  );
+
+                  if (selectedIndexToReplace !== -1) {
+                    setUncontrolledSelected(
+                      selected.map((value, index) =>
+                        index === selectedIndexToReplace ? majorTraitId : value,
+                      ),
+                    );
+                  } else {
+                    // find selected major trait from one tier below
+                    const selectedIndexBelowToAppend =
+                      tier > 0 &&
+                      selected.findIndex(selectedMajorTraitId =>
+                        majorTraits
+                          .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
+                          .includes(selectedMajorTraitId),
+                      );
+
+                    if (selectedIndexBelowToAppend !== -1) {
+                      const newSelected = [...selected];
+                      newSelected.splice(
+                        selectedIndexBelowToAppend + 1,
+                        0,
+                        majorTraitId,
+                      );
+                      setUncontrolledSelected(newSelected);
+                    } else {
+                      // find selected major trait from one tier above
+                      const selectedIndexAboveToPrepend =
+                        tier < 2 &&
+                        selected.findIndex(selectedMajorTraitId =>
+                          majorTraits
+                            .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
+                            .includes(selectedMajorTraitId),
+                        );
+
+                      if (selectedIndexAboveToPrepend !== -1) {
+                        const newSelected = [...selected];
+                        newSelected.splice(
+                          selectedIndexBelowToAppend,
+                          0,
+                          majorTraitId,
+                        );
+                        setUncontrolledSelected(newSelected);
+                      } else {
+                        // well, just append it
+                        setUncontrolledSelected([...selected, majorTraitId]);
+                      }
+                    }
+                  }
+                }
+              },
+            }),
+          }}
+        />
+      ),
+      [TraitComponent, controlled, selectable, ...selected],
+    );
 
     return (
       <div
@@ -265,7 +371,7 @@ const TraitLine = forwardRef(
                     />
                   )}
 
-                  {renderMinorTrait({ id: minorTraits[tier] })}
+                  {renderMinorTrait({ id: minorTraits[tier], tier })}
 
                   <TraitLineConnector
                     sx={{
@@ -291,11 +397,12 @@ const TraitLine = forwardRef(
                       alignItems: 'center',
                     }}
                   >
-                    {majorTraitsChunk.map((majorTraitId, order) =>
+                    {majorTraitsChunk.map((majorTraitId, majorTraitIndex) =>
                       renderMajorTrait({
                         tier,
                         id: majorTraitId,
-                        selected: order === selectedMajorTraitIndex,
+                        selected: majorTraitIndex === selectedMajorTraitIndex,
+                        index: majorTraitIndex,
                       }),
                     )}
                   </div>
@@ -320,6 +427,44 @@ const TraitLine = forwardRef(
               );
             })}
         </div>
+
+        {onReset ||
+          (!controlled &&
+            selectable &&
+            resettable &&
+            JSON.stringify(uncontrolledSelected) !==
+              JSON.stringify(defaultSelected) && (
+              <Tooltip content="Reset">
+                <div
+                  sx={{
+                    position: 'absolute',
+                    boxSizing: 'border-box',
+                    top: 2,
+                    left: 2,
+                  }}
+                >
+                  <Icon
+                    name="Reset"
+                    inactive
+                    sx={{
+                      fontSize: '32px',
+                      border: '1px solid rgba(255,255,255,0.5)',
+                    }}
+                    onClick={event => {
+                      event.preventDefault();
+
+                      if (!controlled) {
+                        setUncontrolledSelected(defaultSelected);
+                      }
+
+                      if (typeof onReset === 'function') {
+                        onReset();
+                      }
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            ))}
       </div>
     );
   },
@@ -328,14 +473,22 @@ const TraitLine = forwardRef(
 TraitLine.propTypes = {
   id: PropTypes.number,
   traitComponent: PropTypes.elementType.isRequired,
+  defaultSelected: PropTypes.arrayOf(PropTypes.number),
   selected: PropTypes.arrayOf(PropTypes.number),
+  selectable: PropTypes.bool,
+  resettable: PropTypes.bool,
+  onReset: PropTypes.func,
   onSelect: PropTypes.func,
   data: PropTypes.object.isRequired,
 };
 
 TraitLine.defaultProps = {
   id: null,
-  selected: new Array(3),
+  defaultSelected: [],
+  selected: [],
+  selectable: true,
+  resettable: true,
+  onReset: null,
   onSelect: null,
 };
 

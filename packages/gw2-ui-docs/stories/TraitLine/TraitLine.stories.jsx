@@ -1,5 +1,5 @@
 import React from 'react';
-import { number, array } from '@storybook/addon-knobs';
+import { number, array, boolean } from '@storybook/addon-knobs';
 import { TraitLine } from 'gw2-ui';
 
 import categories from '../categories';
@@ -14,11 +14,11 @@ export default {
   story: () => (
     <TraitLine
       id={number('id', 41)}
-      selected={array('selected', [227, 214, 1672])}
-      onSelect={({ tier, id }) =>
-        // eslint-disable-next-line no-alert
-        alert(`Clicked major trait tier: ${tier}, id: ${id}`)
-      }
+      defaultSelected={array('defaultSelected', [227, 214, 1672]).map(value =>
+        Number(value),
+      )}
+      selectable={boolean('selectable', true)}
+      resettable={boolean('resettable', true)}
     />
   ),
   related: [
