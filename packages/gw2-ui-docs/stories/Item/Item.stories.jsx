@@ -43,9 +43,13 @@ ${Object.values(ITEM_ARMOR_WEIGHTS)
     <Item
       id={number('id', 46774)}
       upgrades={object('upgrades', [[24842, 1], 37131])}
-      type={select('type', ['', ...Object.values(ITEM_TYPE_NAMES)], '')}
-      stat={select('stat', ['', ...Object.values(ITEM_STAT_NAMES)], '')}
-      weight={select('weight', ['', ...Object.values(ITEM_ARMOR_WEIGHTS)], '')}
+      type={select('type', [null, ...Object.values(ITEM_TYPE_NAMES)], null)}
+      stat={select('stat', [null, ...Object.values(ITEM_STAT_NAMES)], null)}
+      weight={select(
+        'weight',
+        [null, ...Object.values(ITEM_ARMOR_WEIGHTS)],
+        null,
+      )}
       disableIcon={boolean('disableIcon', false)}
       disableText={boolean('disableText', false)}
       disableLink={boolean('disableLink', false)}

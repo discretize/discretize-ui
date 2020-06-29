@@ -18,7 +18,7 @@ export default {
         'src',
         'https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png',
       )}
-      placeholder={text('placeholder', null)}
+      name={text('name', null)}
       applyCount={number('applyCount', null)}
       zoom={number('zoom', null)}
       inline={boolean('inline', true)}

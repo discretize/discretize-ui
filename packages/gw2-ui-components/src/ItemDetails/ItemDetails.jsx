@@ -22,8 +22,9 @@ const ItemDetails = forwardRef(
         level,
         description,
         flags = [],
+        type,
         details: {
-          type,
+          type: detailsType,
           min_power: minPower,
           max_power: maxPower,
           defense,
@@ -57,7 +58,10 @@ const ItemDetails = forwardRef(
         <DetailsHeader
           icon={icon}
           iconProps={{
-            placeholder: type,
+            ...(type &&
+              detailsType && {
+                name: `${type}.${detailsType}`,
+              }),
             ...(upgrade && {
               sx: {
                 border: 'none',
@@ -147,7 +151,7 @@ const ItemDetails = forwardRef(
                 {[
                   rarity,
                   weightClass,
-                  type,
+                  detailsType,
                   level > 0 && `Required Level: ${level}`,
                   formatFlavor(description, {
                     flavor: css({ color: flavor }),

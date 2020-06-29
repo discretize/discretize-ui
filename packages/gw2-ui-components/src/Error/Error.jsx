@@ -26,7 +26,7 @@ const Error = forwardRef(
       content={
         <>
           <DetailsHeader
-            iconProps={{ placeholder: code }}
+            iconProps={{ name: code }}
             titleProps={{ sx: { color: 'error' } }}
           >
             {name}
@@ -47,7 +47,7 @@ const Error = forwardRef(
         disableText={disableText}
         inline={inline}
         {...rest}
-        iconProps={{ placeholder: code, ...rest.iconProps }}
+        iconProps={{ name: code, ...rest.iconProps }}
         sx={{ color: 'error', ...rest.sx }}
         ref={ref}
       />

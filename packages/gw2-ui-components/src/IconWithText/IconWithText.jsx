@@ -37,7 +37,7 @@ const IconWithText = forwardRef(
         (loading ||
         typeof icon === 'string' ||
         iconProps?.src ||
-        iconProps?.placeholder ? (
+        iconProps?.name ? (
           <Icon
             src={icon}
             gutterRight={!disableText}
@@ -61,7 +61,7 @@ const IconWithText = forwardRef(
         (loading ||
         typeof icon === 'string' ||
         iconProps?.src ||
-        iconProps?.placeholder ? (
+        iconProps?.name ? (
           <Icon
             src={icon}
             gutterLeft={!disableText}

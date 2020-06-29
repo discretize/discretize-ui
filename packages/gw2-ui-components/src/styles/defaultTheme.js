@@ -121,6 +121,44 @@ export default {
         dark: '#7a7a7a',
       },
     },
+
+    effect: {
+      aura: {
+        light: '#71cad6',
+        medium: '#329ead',
+        dark: '#1c575f',
+      },
+      boon: {
+        light: '#ffac47',
+        medium: '#d67400',
+        dark: '#7a4300',
+      },
+      condition: {
+        light: '#e5908a',
+        medium: '#d23a30',
+        dark: '#86241d',
+      },
+      control: {
+        light: '#af9e97',
+        medium: '#7e6961',
+        dark: '#453a35',
+      },
+      consumable: {
+        light: '#71cad6',
+        medium: '#329ead',
+        dark: '#1c575f',
+      },
+      effect: {
+        light: '#71cad6',
+        medium: '#329ead',
+        dark: '#1c575f',
+      },
+      mistlockInstability: {
+        light: '#ffd61f',
+        medium: '#b99700',
+        dark: '#524300',
+      },
+    },
   },
 
   fonts: {

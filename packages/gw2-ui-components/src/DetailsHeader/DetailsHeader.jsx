@@ -11,7 +11,7 @@ const DetailsHeader = forwardRef(
       {...rest}
       ref={ref}
     >
-      {typeof icon === 'string' || iconProps?.src || iconProps?.placeholder ? (
+      {typeof icon === 'string' || iconProps?.src || iconProps?.name ? (
         <Icon
           src={icon}
           {...iconProps}

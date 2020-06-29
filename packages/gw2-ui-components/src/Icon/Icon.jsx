@@ -11,7 +11,7 @@ const Icon = forwardRef(
       loading,
       spinnerProps,
       src,
-      placeholder,
+      name,
       zoom,
       inline,
       gutterRight,
@@ -105,7 +105,7 @@ const Icon = forwardRef(
 Icon.propTypes = {
   component: PropTypes.elementType,
   src: PropTypes.string,
-  placeholder: PropTypes.string,
+  name: PropTypes.string,
   applyCount: PropTypes.number,
   zoom: PropTypes.number,
   inline: PropTypes.bool,
@@ -120,7 +120,7 @@ Icon.propTypes = {
 Icon.defaultProps = {
   component: 'span',
   src: null,
-  placeholder: null,
+  name: null,
   applyCount: null,
   zoom: null,
   inline: true,
@@ -135,12 +135,12 @@ Icon.defaultProps = {
 Icon.displayName = 'Icon';
 
 export default withAsyncProp(
-  ({ src, placeholder }) =>
+  ({ src, name }) =>
     !src &&
-    placeholder && {
-      src: import(/* webpackMode: "eager" */ `../assets/images/placeholders/${placeholder}.png`).then(
-        ({ default: module }) => module,
-      ),
+    name && {
+      src: import(/* webpackMode: "eager" */ `../assets/images/icons/${name
+        .replace('.', '/')
+        .replace(/[^\w\\/]/g, '')}.png`).then(({ default: module }) => module),
     },
-  ['placeholder'],
+  ['name'],
 )(Icon);

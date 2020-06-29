@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { ClassNames } from '@emotion/core';
-
 import { useThemeUI } from '@theme-ui/core';
+
 import DetailsHeader from '../DetailsHeader';
 import DetailsFact from '../DetailsFact';
 import DetailsText from '../DetailsText';

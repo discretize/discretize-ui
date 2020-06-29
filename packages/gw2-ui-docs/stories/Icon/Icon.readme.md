@@ -9,7 +9,7 @@ import { Icon } from 'gw2-ui'; // or gw2-ui-components
 | Property       | Type          | Default | Required | Description                                                                                    |
 | -------------- | ------------- | ------- | -------- | ---------------------------------------------------------------------------------------------- |
 | `src`          | `string`      | -       | -        | The icon `src`                                                                                 |
-| `placeholder`  | `string`      | -       | -        | Used to lookup a placeholder icon if `src` is not provided (currently supported: `404`, `500`) |
+| `name`         | `string`      | -       | -        | Used to lookup a placeholder icon if `src` is not provided (currently supported: `404`, `500`) |
 | `applyCount`   | `number`      | -       | -        | The apply count                                                                                |
 | `zoom`         | `number`      | -       | -        | The zoom factor                                                                                |
 | `inline`       | `boolean`     | true    | -        | Whether the icon should be inlined                                                             |

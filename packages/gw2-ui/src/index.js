@@ -10,11 +10,22 @@ export {
   Spinner,
   Progress,
   Tooltip,
+  TooltipContainer,
   Error,
   Icon,
   IconWithText,
+  Effect,
+  effects,
   WikiLink,
   wikiLinkLanguages,
+  DetailsHeader,
+  DetailsHeaderTitle,
+  DetailsText,
+  DetailsFact,
+  ItemDetails,
+  AbilityDetails,
+  getDisplayName,
+  specializations,
 } from 'gw2-ui-components';
 export { reducer, saga, ROOT_REDUCER_KEY } from 'gw2-ui-redux';
 export {

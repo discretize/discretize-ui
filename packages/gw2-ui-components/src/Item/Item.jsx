@@ -25,7 +25,13 @@ const Item = forwardRef(
     },
     ref,
   ) => {
-    const { name, icon, rarity, details: { type } = {} } = data;
+    const {
+      name,
+      icon,
+      rarity,
+      type,
+      details: { type: detailsType } = {},
+    } = data;
 
     return (
       <Tooltip
@@ -92,7 +98,13 @@ const Item = forwardRef(
           disableText={disableText}
           inline={inline}
           {...rest}
-          iconProps={{ placeholder: type, ...rest.iconProps }}
+          iconProps={{
+            ...(type &&
+              detailsType && {
+                name: `${type}.${detailsType}`,
+              }),
+            ...rest.iconProps,
+          }}
           sx={{
             color: `rarity.${rarity.toLowerCase()}.medium`,
             ...rest.sx,

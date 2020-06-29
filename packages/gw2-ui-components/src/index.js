@@ -30,7 +30,9 @@ export {
   default as WikiLink,
   languages as wikiLinkLanguages,
 } from './WikiLink';
-export { default as withLoading } from './withLoading/index';
+export { default as withLoading } from './withLoading';
+export { default as Effect } from './Effect';
+export { default as effects } from './data/effects.json';
 
 export { defaultTheme } from './styles';
 export { ThemeProvider } from '@theme-ui/core';

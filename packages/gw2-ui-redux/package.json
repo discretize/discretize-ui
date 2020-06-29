@@ -33,9 +33,9 @@
     "watch": "npm-run-all \"build:es --watch\""
   },
   "dependencies": {
-    "axios": "0.18.0",
-    "re-reselect": "2.1.0",
-    "redux-actions": "2.6.1",
+    "axios": "0.19.2",
+    "re-reselect": "4.0.0",
+    "redux-actions": "2.6.5",
     "reselect": "4.0.0"
   },
   "peerDependencies": {
