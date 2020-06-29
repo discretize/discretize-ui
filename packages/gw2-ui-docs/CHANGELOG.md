@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.4.2...gw2-ui-docs@0.5.0) (2020-06-29)
+
+
+### Features
+
+* make TraitLine interactive ([7feb692](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/commit/7feb692dcd25dde288a5a41e0ef6ec52fc7fbbd2))
+
+
+
+
+
 ## [0.4.2](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.4.1...gw2-ui-docs@0.4.2) (2020-06-29)
 
 
