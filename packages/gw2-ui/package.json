@@ -35,8 +35,12 @@
   "dependencies": {
     "gw2-ui-builder": "0.1.1",
     "gw2-ui-components": "0.4.0",
-    "gw2-ui-redux": "0.3.0",
-    "react-redux": "7.2.0"
+    "gw2-ui-redux": "0.3.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-redux": "^7.0.0"
   },
   "sideEffects": false
 }
