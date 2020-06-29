@@ -134,8 +134,10 @@ const Effect = forwardRef(
 Effect.propTypes = {
   type: PropTypes.oneOf(Object.keys(effects)),
   name: PropTypes.oneOf(
-    Object.values(effects).flatMap(nameDescriptionPairs =>
-      Object.keys(nameDescriptionPairs),
+    [].concat(
+      ...Object.values(effects).map(nameDescriptionPairs =>
+        Object.keys(nameDescriptionPairs),
+      ),
     ),
   ).isRequired,
   component: PropTypes.elementType,
