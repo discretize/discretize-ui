@@ -26,6 +26,8 @@ export {
   AbilityDetails,
   getDisplayName,
   specializations,
+  Profession,
+  professions,
 } from 'gw2-ui-components';
 export { reducer, saga, ROOT_REDUCER_KEY } from 'gw2-ui-redux';
 export {

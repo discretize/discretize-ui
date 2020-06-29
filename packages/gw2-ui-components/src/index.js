@@ -33,6 +33,8 @@ export {
 export { default as withLoading } from './withLoading';
 export { default as Effect } from './Effect';
 export { default as effects } from './data/effects.json';
+export { default as Profession } from './Profession';
+export { default as professions } from './data/professions.json';
 
 export { defaultTheme } from './styles';
 export { ThemeProvider } from '@theme-ui/core';
