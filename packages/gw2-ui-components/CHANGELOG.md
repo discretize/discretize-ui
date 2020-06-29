@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.5.0...gw2-ui-components@0.6.0) (2020-06-29)
+
+
+### Features
+
+* add Profession component ([e85a7cc](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/e85a7ccd69350d2d85af8406bb220aa681067428))
+
+
+
+
+
 # [0.5.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.4.1...gw2-ui-components@0.5.0) (2020-06-29)
 
 
