@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.2.0...gw2-ui-redux@0.3.0) (2020-06-29)
+
+
+### Features
+
+* add Effect component, update react-redux to v7 ([5735181](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/commit/5735181d61abf0b66b30b6381a63ad1039a9d0d0))
+
+
+
+
+
 # [0.2.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.1.3...gw2-ui-redux@0.2.0) (2020-06-28)
 
 

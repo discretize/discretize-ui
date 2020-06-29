@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.3.1...gw2-ui-docs@0.4.0) (2020-06-29)
+
+
+### Bug Fixes
+
+* add missing related components ([f9ac769](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/commit/f9ac76911892c5cb92bd469c3fea57efce949a60))
+
+
+### Features
+
+* add Effect component, update react-redux to v7 ([5735181](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/commit/5735181d61abf0b66b30b6381a63ad1039a9d0d0))
+
+
+
+
+
 ## [0.3.1](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.3.0...gw2-ui-docs@0.3.1) (2020-06-28)
 
 **Note:** Version bump only for package gw2-ui-docs

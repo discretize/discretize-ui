@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.3.0...gw2-ui-components@0.4.0) (2020-06-29)
+
+
+### Bug Fixes
+
+* fontSize spreading to loader/error components ([591c879](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/591c8792f7b9dd041ac55413d7104b0e4a06f253))
+
+
+### Features
+
+* add Effect component, update react-redux to v7 ([5735181](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/5735181d61abf0b66b30b6381a63ad1039a9d0d0))
+
+
+
+
+
 # [0.3.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.2.0...gw2-ui-components@0.3.0) (2020-06-28)
 
 
