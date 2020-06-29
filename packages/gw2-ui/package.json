@@ -1,6 +1,6 @@
 {
   "name": "gw2-ui",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "React components and API wrapper for Guild Wars 2",
   "keywords": [
     "guild wars 2",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "gw2-ui-builder": "0.1.1",
-    "gw2-ui-components": "0.4.0",
+    "gw2-ui-components": "^0.4.1",
     "gw2-ui-redux": "0.3.0"
   },
   "peerDependencies": {
