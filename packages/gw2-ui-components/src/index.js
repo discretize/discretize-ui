@@ -1,9 +1,10 @@
 export {
   formatFlavor,
-  attributes,
+  apiAttributes,
   specializations,
   factsOrder,
   getDisplayName,
+  getEffectType,
 } from './helpers';
 
 export { default as Coin } from './Coin';
@@ -31,10 +32,31 @@ export {
   languages as wikiLinkLanguages,
 } from './WikiLink';
 export { default as withLoading } from './withLoading';
+
 export { default as Effect } from './Effect';
-export { default as effects } from './data/effects.json';
+export { default as Aura } from './Aura';
+export { default as Boon } from './Boon';
+export { default as CommonEffect } from './CommonEffect';
+export { default as Condition } from './Condition';
+export { default as ConsumableEffect } from './ConsumableEffect';
+export { default as ControlEffect } from './ControlEffect';
+export { default as MistlockInstability } from './MistlockInstability';
 export { default as Profession } from './Profession';
+export { default as Attribute } from './Attribute';
+export { default as Race } from './Race';
+
+export { default as auras } from './data/auras.json';
+export { default as boons } from './data/boons.json';
+export { default as commonEffects } from './data/commonEffects.json';
+export { default as conditions } from './data/conditions.json';
+export { default as consumableEffects } from './data/consumableEffects.json';
+export { default as controlEffects } from './data/controlEffects.json';
+export {
+  default as mistlockInstabilities,
+} from './data/mistlockInstabilities.json';
 export { default as professions } from './data/professions.json';
+export { default as attributes } from './data/attributes.json';
+export { default as races } from './data/races.json';
 
 export { defaultTheme } from './styles';
 export { ThemeProvider } from '@theme-ui/core';

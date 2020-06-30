@@ -27,28 +27,25 @@ const Profession = forwardRef(
   ) => {
     let name;
 
-    if (propsName) {
-      if (
-        professions.findIndex(
-          ([professionName]) => professionName === propsName,
-        ) !== -1
-      ) {
-        name = propsName;
-      }
-    } else {
+    if (eliteSpecialization) {
       // eslint-disable-next-line prefer-destructuring
-      name = professions.find(([, eliteSpecializations]) =>
-        eliteSpecializations.includes(eliteSpecialization),
-      )[0];
+      name = (Object.entries(professions).find(
+        ([, professionEliteSpecializations]) =>
+          professionEliteSpecializations.includes(eliteSpecialization),
+      ) || [])[0];
+    } else if (Object.keys(professions).includes(propsName)) {
+      name = propsName;
     }
 
     if (!name) {
       return (
         <Error
-          name={`Invalid profession${propsName ? ` ${propsName}` : ''}`}
-          message={`Error: No data for${propsName ? ` ${propsName}` : ''}${
+          name={`Invalid Profession${propsName ? ` ${propsName}` : ''}`}
+          message={`Error: No data for Profession${
+            propsName ? ` ${propsName}` : ''
+          }${propsName && eliteSpecialization ? ' and' : ''}${
             eliteSpecialization
-              ? ` and elite specialization ${eliteSpecialization}`
+              ? ` elite specialization ${eliteSpecialization}`
               : ''
           }`}
           disableTooltip={disableTooltip}
@@ -107,11 +104,9 @@ const Profession = forwardRef(
 );
 
 Profession.propTypes = {
-  name: PropTypes.oneOf(professions.map(([name]) => name)),
+  name: PropTypes.oneOf(Object.keys(professions)),
   eliteSpecialization: PropTypes.oneOf(
-    [].concat(
-      ...professions.map(([, eliteSpecializations]) => eliteSpecializations),
-    ),
+    [].concat(...Object.values(professions)),
   ),
   component: PropTypes.elementType,
   disableTooltip: PropTypes.bool,

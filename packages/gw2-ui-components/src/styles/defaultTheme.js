@@ -31,6 +31,12 @@ export default {
     copper: '#a0673a',
     error: '#dd2c00',
 
+    attribute: {
+      light: '#e0e0e0',
+      medium: '#aaa',
+      dark: '#7a7a7a',
+    },
+
     profession: {
       elementalist: {
         light: '#f6bebc',
@@ -148,7 +154,7 @@ export default {
         medium: '#329ead',
         dark: '#1c575f',
       },
-      effect: {
+      common: {
         light: '#71cad6',
         medium: '#329ead',
         dark: '#1c575f',
@@ -157,6 +163,34 @@ export default {
         light: '#ffd61f',
         medium: '#b99700',
         dark: '#524300',
+      },
+    },
+
+    race: {
+      asura: {
+        light: '#c299ff',
+        medium: '#7e2aff',
+        dark: '#5200cc',
+      },
+      charr: {
+        light: '#fa0f0f',
+        medium: '#9b0303',
+        dark: '#3c0101',
+      },
+      human: {
+        light: '#fdea9b',
+        medium: '#fcd12b',
+        dark: '#c9a103',
+      },
+      norn: {
+        light: '#c2daff',
+        medium: '#5f9ffe',
+        dark: '#0162f4',
+      },
+      sylvari: {
+        light: '#63ef06',
+        medium: '#368103',
+        dark: '#112801',
       },
     },
   },

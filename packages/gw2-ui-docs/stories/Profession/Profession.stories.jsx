@@ -15,17 +15,12 @@ export default {
     <Profession
       name={select(
         'name',
-        [null, ...professions.map(([name]) => name)],
-        'Elementalist',
+        [null, ...Object.keys(professions)],
+        Object.keys(professions)[0],
       )}
       eliteSpecialization={select(
         'eliteSpecialization',
-        [
-          null,
-          ...professions.flatMap(
-            ([, eliteSpecializations]) => eliteSpecializations,
-          ),
-        ],
+        [null, ...Object.values(professions).flat()],
         null,
       )}
       disableIcon={boolean('disableIcon', false)}

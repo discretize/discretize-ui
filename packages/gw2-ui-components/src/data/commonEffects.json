@@ -1,0 +1,10 @@
+{
+  "Agony": "Deals damage every second; stacks intensity; reduces incoming healing and barrier application by 70% per stack; damage is reduced by agony resistance.",
+  "Barrier": null,
+  "Exposed": "Takes additional damage.",
+  "Invulnerability": "Immune to conditions and damage.",
+  "Revealed": "You cannot stealth",
+  "Stealth": "Currently invisible. Ends if you deal damage.",
+  "Stun Break": null,
+  "Superspeed": "Movement speed is greatly increased."
+}

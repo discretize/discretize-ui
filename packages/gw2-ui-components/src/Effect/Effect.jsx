@@ -12,13 +12,13 @@ import WikiLink from '../WikiLink';
 import Error from '../Error';
 import { formatFlavor } from '../helpers';
 
-import effects from '../data/effects.json';
-
 const Effect = forwardRef(
   (
     {
-      type: propsType,
-      name: propsName,
+      type,
+      name,
+      displayName,
+      description,
       component,
       disableTooltip,
       disableIcon,
@@ -36,24 +36,13 @@ const Effect = forwardRef(
       theme: { colors: { details: { reminder } = {} } = {} } = {},
     } = useThemeUI();
 
-    const type =
-      propsType ||
-      Object.keys(effects)[
-        Object.entries(effects).findIndex(([, nameDescriptionPairs]) =>
-          Object.keys(nameDescriptionPairs).includes(propsName),
-        )
-      ];
-    const description = effects[type]?.[propsName];
-    const name =
-      type === 'Mistlock Instability'
-        ? `Mistlock Instability: ${propsName}`
-        : propsName;
-
-    if (typeof description === 'undefined') {
+    if (!type || !name || typeof description === 'undefined') {
       return (
         <Error
-          name={`Invalid ${type} ${propsName}`}
-          message={`Error: No data for ${type} ${propsName}`}
+          name={`Invalid ${type || 'Effect'}${name ? ` ${name}` : ''}`}
+          message={`Error: No data for ${type || 'Effect'}${
+            name ? ` ${name}` : ''
+          }`}
           disableTooltip={disableTooltip}
           disableIcon={disableIcon}
           disableText={disableText}
@@ -75,7 +64,7 @@ const Effect = forwardRef(
       <Tooltip
         content={
           <>
-            <DetailsHeader>{name}</DetailsHeader>
+            <DetailsHeader>{displayName || name}</DetailsHeader>
 
             {description && (
               <DetailsText>
@@ -97,10 +86,10 @@ const Effect = forwardRef(
           component={component}
           text={
             disableLink ? (
-              name
+              displayName || name
             ) : (
               <WikiLink
-                to={name}
+                to={displayName || name}
                 {...wikiLinkProps}
                 sx={{
                   color: 'inherit',
@@ -117,7 +106,7 @@ const Effect = forwardRef(
           inline={inline}
           {...rest}
           iconProps={{
-            name: `${type}.${propsName}`,
+            name: `${type}.${name}`,
             ...rest.iconProps,
           }}
           sx={{
@@ -132,14 +121,10 @@ const Effect = forwardRef(
 );
 
 Effect.propTypes = {
-  type: PropTypes.oneOf(Object.keys(effects)),
-  name: PropTypes.oneOf(
-    [].concat(
-      ...Object.values(effects).map(nameDescriptionPairs =>
-        Object.keys(nameDescriptionPairs),
-      ),
-    ),
-  ).isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  displayName: PropTypes.string,
+  description: PropTypes.string,
   component: PropTypes.elementType,
   disableTooltip: PropTypes.bool,
   disableIcon: PropTypes.bool,
@@ -152,7 +137,8 @@ Effect.propTypes = {
 };
 
 Effect.defaultProps = {
-  type: null,
+  displayName: null,
+  description: undefined,
   component: undefined,
   disableTooltip: false,
   disableIcon: false,

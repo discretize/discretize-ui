@@ -6,7 +6,7 @@ import { useThemeUI } from '@theme-ui/core';
 import withLoading from '../withLoading/index';
 import DetailsHeader from '../DetailsHeader';
 import DetailsText from '../DetailsText';
-import { formatFlavor, attributes as attributesMap } from '../helpers';
+import { formatFlavor, apiAttributes } from '../helpers';
 import Coin from '../Coin';
 
 const ItemDetails = forwardRef(
@@ -115,7 +115,7 @@ const ItemDetails = forwardRef(
                     color: upgrade ? 'details.bonus' : 'details.attribute',
                   }}
                 >
-                  {`+${modifier} ${attributesMap[attribute]}`}
+                  {`+${modifier} ${apiAttributes[attribute]}`}
                 </span>
               </div>
             ))}

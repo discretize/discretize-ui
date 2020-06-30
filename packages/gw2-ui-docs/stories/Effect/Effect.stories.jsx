@@ -1,26 +1,24 @@
 import React from 'react';
-import { select, boolean, number } from '@storybook/addon-knobs';
-import { Effect, effects } from 'gw2-ui';
+import { text, boolean, number } from '@storybook/addon-knobs';
+import { Effect } from 'gw2-ui';
 
 import categories from '../categories';
 import readme from './Effect.readme.md';
 import docs from './Effect.docs.md';
 
 export default {
-  category: categories.CORE,
+  category: categories.HELPERS,
   name: 'Effect',
   readme,
   docs,
   story: () => (
     <Effect
-      name={select(
-        'name',
-        Object.values(effects).flatMap(nameDescriptionPairs =>
-          Object.keys(nameDescriptionPairs),
-        ),
-        'Might',
+      type={text('type', 'Boon')}
+      name={text('name', 'Might')}
+      description={text(
+        'description',
+        'Increases outgoing damage; stacks intensity.',
       )}
-      type={select('type', [null, ...Object.keys(effects)], null)}
       disableIcon={boolean('disableIcon', false)}
       disableText={boolean('disableText', false)}
       disableLink={boolean('disableLink', false)}

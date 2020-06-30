@@ -1,11 +1,11 @@
-[
-  ["Guardian", ["Dragonhunter", "Firebrand"]],
-  ["Revenant", ["Herald", "Renegade"]],
-  ["Warrior", ["Berserker", "Spellbreaker"]],
-  ["Engineer", ["Scrapper", "Holosmith"]],
-  ["Ranger", ["Druid", "Soulbeast"]],
-  ["Thief", ["Daredevil", "Deadeye"]],
-  ["Elementalist", ["Tempest", "Weaver"]],
-  ["Mesmer", ["Chronomancer", "Mirage"]],
-  ["Necromancer", ["Reaper", "Scourge"]]
-]
+{
+  "Guardian": ["Dragonhunter", "Firebrand"],
+  "Revenant": ["Herald", "Renegade"],
+  "Warrior": ["Berserker", "Spellbreaker"],
+  "Engineer": ["Scrapper", "Holosmith"],
+  "Ranger": ["Druid", "Soulbeast"],
+  "Thief": ["Daredevil", "Deadeye"],
+  "Elementalist": ["Tempest", "Weaver"],
+  "Mesmer": ["Chronomancer", "Mirage"],
+  "Necromancer": ["Reaper", "Scourge"]
+}

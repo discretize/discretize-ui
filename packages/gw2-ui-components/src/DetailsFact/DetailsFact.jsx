@@ -2,7 +2,7 @@ import React, { Fragment, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
-import { attributes } from '../helpers';
+import { apiAttributes } from '../helpers';
 
 const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
   const { type, icon, prefix } = data;
@@ -15,7 +15,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
     case 'AttributeAdjust': {
       const { text, value: factValue, target } = data;
 
-      const attribute = !text && target && attributes[target];
+      const attribute = !text && target && apiAttributes[target];
       key = attribute ? `${attribute} Increase` : text;
       value = `${!text || text.endsWith('Increase') ? '+' : ''}${Number(
         factValue,
@@ -44,8 +44,8 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
     case 'BuffConversion': {
       const { source, target, percent } = data;
 
-      key = `Gain ${attributes[target]} Based on a Percentage of ${
-        attributes[source]
+      key = `Gain ${apiAttributes[target]} Based on a Percentage of ${
+        apiAttributes[source]
       }`;
       value = `${percent}%`;
 
