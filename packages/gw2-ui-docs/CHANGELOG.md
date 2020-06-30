@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.6.0...gw2-ui-docs@0.7.0) (2020-06-30)
+
+
+### Features
+
+* add Attribute and Race components, split Effect component ([d99440f](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/commit/d99440f5418fe56667ddb9479cfd562193d23456))
+
+
+
+
+
 # [0.6.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.5.0...gw2-ui-docs@0.6.0) (2020-06-29)
 
 
