@@ -24,9 +24,9 @@ const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
   return (
     <Component
       sx={{
-        fontFamily: 'body',
-        fontWeight: 'body',
-        lineHeight: 'body',
+        fontFamily: 'gw2.body',
+        fontWeight: 'gw2.body',
+        lineHeight: 'gw2.body',
       }}
       {...rest}
       ref={ref}
@@ -35,7 +35,7 @@ const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
         <>
           <span
             sx={{
-              color: 'gold',
+              color: 'gw2.gold',
             }}
           >
             {(gold && gold.toLocaleString()) || 0}
@@ -48,7 +48,7 @@ const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
         <>
           <span
             sx={{
-              color: 'silver',
+              color: 'gw2.silver',
             }}
           >
             {(silver && silver.toLocaleString()) || 0}
@@ -60,7 +60,7 @@ const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
       <>
         <span
           sx={{
-            color: 'copper',
+            color: 'gw2.copper',
           }}
         >
           {(copper && copper.toLocaleString()) || 0}

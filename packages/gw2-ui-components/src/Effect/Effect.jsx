@@ -10,7 +10,7 @@ import DetailsText from '../DetailsText';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
 import Error from '../Error';
-import { formatFlavor } from '../helpers';
+import { formatFlavor, useColorModeHighlightSuffix } from '../helpers';
 
 const Effect = forwardRef(
   (
@@ -32,8 +32,10 @@ const Effect = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     const {
-      theme: { colors: { details: { reminder } = {} } = {} } = {},
+      theme: { colors: { gw2: { details: { muted } = {} } = {} } = {} } = {},
     } = useThemeUI();
 
     if (!type || !name || typeof description === 'undefined') {
@@ -71,7 +73,7 @@ const Effect = forwardRef(
                 <ClassNames>
                   {({ css }) =>
                     formatFlavor(description, {
-                      reminder: css({ color: reminder }),
+                      reminder: css({ color: muted }),
                     })
                   }
                 </ClassNames>
@@ -94,7 +96,7 @@ const Effect = forwardRef(
                 sx={{
                   color: 'inherit',
                   '&:hover': {
-                    color: `effect.${camelCase(type)}.dark`,
+                    color: `gw2.effect.${camelCase(type)}${highlightSuffix}`,
                   },
                   ...wikiLinkProps?.sx,
                 }}
@@ -110,7 +112,7 @@ const Effect = forwardRef(
             ...rest.iconProps,
           }}
           sx={{
-            color: `effect.${camelCase(type)}.medium`,
+            color: `gw2.effect.${camelCase(type)}`,
             ...rest.sx,
           }}
           ref={ref}

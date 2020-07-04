@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { useColorModeHighlightSuffix } from '../helpers';
 
 // https://wiki.guildwars2.com/wiki/Template:Language
 export const languages = [
@@ -25,27 +26,31 @@ export const languages = [
 ];
 
 const WikiLink = forwardRef(
-  ({ component: Component, to, lang, ...rest }, ref) => (
-    <Component
-      sx={{
-        color: 'primary',
-        textDecoration: 'none',
-        transition: 'color 200ms ease-in-out',
-        '&:hover': {
-          color: 'highlight',
-        },
-      }}
-      href={`https://wiki-${lang}.guildwars2.com/wiki/Special:Search/${encodeURIComponent(
-        to,
-      )}`}
-      target="_blank"
-      rel="noreferrer noopener nofollow"
-      {...rest}
-      ref={ref}
-    >
-      {to}
-    </Component>
-  ),
+  ({ component: Component, to, lang, ...rest }, ref) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
+    return (
+      <Component
+        sx={{
+          color: 'primary',
+          textDecoration: 'none',
+          transition: 'color 200ms ease-in-out',
+          '&:hover': {
+            color: `primary${highlightSuffix}`,
+          },
+        }}
+        href={`https://wiki-${lang}.guildwars2.com/wiki/Special:Search/${encodeURIComponent(
+          to,
+        )}`}
+        target="_blank"
+        rel="noreferrer noopener nofollow"
+        {...rest}
+        ref={ref}
+      >
+        {to}
+      </Component>
+    );
+  },
 );
 
 WikiLink.propTypes = {

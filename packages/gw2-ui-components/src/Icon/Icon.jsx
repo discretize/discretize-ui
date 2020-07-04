@@ -24,8 +24,8 @@ const Icon = forwardRef(
     ref,
   ) => {
     const sharedSx = {
-      ...(gutterRight && { mr: 3 }),
-      ...(gutterLeft && { ml: 3 }),
+      ...(gutterRight && { mr: '6px' }),
+      ...(gutterLeft && { ml: '6px' }),
       ...(inline && { verticalAlign: 'text-top' }),
       ...(inactive && {
         opacity: 0.5,
@@ -65,7 +65,7 @@ const Icon = forwardRef(
           position: 'relative',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          borderRadius: 1,
+          borderRadius: '0px',
           ...(src && { backgroundImage: `url('${src}')` }),
           ...(zoom && !hexagon && { backgroundSize: `${100 + zoom}%` }),
           ...((!zoom || hexagon) && { backgroundSize: 'cover' }),
@@ -73,7 +73,7 @@ const Icon = forwardRef(
             width: '0.8em',
             clipPath:
               'polygon(50% 4%, 100% 28%, 100% 73%, 50% 99%, 0% 73%, 0% 28%)',
-            borderRadius: 0,
+            borderRadius: '0px',
           }),
           ...sharedSx,
         }}
@@ -87,8 +87,8 @@ const Icon = forwardRef(
               bottom: '0.2em',
               right: 0,
               fontSize: '0.5em',
-              fontWeight: 'body',
-              fontFamily: 'body',
+              fontWeight: 'gw2.body',
+              fontFamily: 'gw2.body',
               lineHeight: 1,
               color: '#fff',
               textShadow: '0 0 2px black',

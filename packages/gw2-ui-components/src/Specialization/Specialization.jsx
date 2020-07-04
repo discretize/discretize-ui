@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withLoading from '../withLoading/index';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
+import { useColorModeHighlightSuffix } from '../helpers';
 
 const Specialization = forwardRef(
   (
@@ -20,6 +21,8 @@ const Specialization = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     const { name, icon, profession } = data;
 
     return (
@@ -36,7 +39,7 @@ const Specialization = forwardRef(
               sx={{
                 color: 'inherit',
                 '&:hover': {
-                  color: `profession.${profession.toLowerCase()}.dark`,
+                  color: `gw2.profession.${profession.toLowerCase()}${highlightSuffix}`,
                 },
                 ...wikiLinkProps?.sx,
               }}
@@ -49,7 +52,7 @@ const Specialization = forwardRef(
         {...rest}
         iconProps={{ hexagon: true, ...rest.iconProps }}
         sx={{
-          color: `profession.${profession.toLowerCase()}.medium`,
+          color: `gw2.profession.${profession.toLowerCase()}`,
           ...rest.sx,
         }}
         ref={ref}

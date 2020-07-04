@@ -6,6 +6,7 @@ import Tooltip from '../Tooltip';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
 import AbilityDetails from '../AbilityDetails';
+import { useColorModeHighlightSuffix } from '../helpers';
 
 const Skill = forwardRef(
   (
@@ -24,6 +25,8 @@ const Skill = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     const { name, icon, professions } = data;
 
     const profession = professions?.length && professions[0].toLowerCase();
@@ -46,7 +49,9 @@ const Skill = forwardRef(
                 {...wikiLinkProps}
                 sx={{
                   color: 'inherit',
-                  '&:hover': { color: `profession.${profession}.dark` },
+                  '&:hover': {
+                    color: `gw2.profession.${profession}${highlightSuffix}`,
+                  },
                   ...wikiLinkProps?.sx,
                 }}
               />
@@ -58,7 +63,7 @@ const Skill = forwardRef(
           {...rest}
           iconProps={{ zoom: 5, ...rest.iconProps }}
           sx={{
-            color: `profession.${profession}.medium`,
+            color: `gw2.profession.${profession}`,
             ...rest.sx,
           }}
           ref={ref}

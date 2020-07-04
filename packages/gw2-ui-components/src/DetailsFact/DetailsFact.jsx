@@ -30,7 +30,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         key = (
           <Fragment>
             {status}
-            <span sx={{ ml: 1 }}>{`(${duration}s)`}</span>
+            <span sx={{ ml: '2px' }}>{`(${duration}s)`}</span>
           </Fragment>
         );
       } else {
@@ -78,7 +78,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         key = (
           <Fragment>
             {text}
-            <span sx={{ ml: 1 }}>{`(${hitCount}x)`}</span>
+            <span sx={{ ml: '2px' }}>{`(${hitCount}x)`}</span>
           </Fragment>
         );
       } else {
@@ -156,7 +156,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         key = (
           <Fragment>
             {status}
-            <span sx={{ ml: 1 }}>{`(${duration}s)`}</span>
+            <span sx={{ ml: '2px' }}>{`(${duration}s)`}</span>
           </Fragment>
         );
       } else {
@@ -237,19 +237,19 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        lineHeight: 'dense',
+        lineHeight: 'gw2.heading',
       }}
       {...rest}
       ref={ref}
     >
-      <div sx={{ display: 'flex', flexDirection: 'row', fontSize: 4 }}>
+      <div sx={{ display: 'flex', flexDirection: 'row', fontSize: '24px' }}>
         {prefix?.icon && (
           <Icon src={prefix.icon} applyCount={prefix.apply_count} />
         )}
         {icon && <Icon src={icon} applyCount={count} />}
       </div>
 
-      <div sx={{ marginLeft: 2, color: 'muted' }}>
+      <div sx={{ ml: '4px', color: 'gw2.details.muted' }}>
         {key}
         {key ? ': ' : ''}
         {value}

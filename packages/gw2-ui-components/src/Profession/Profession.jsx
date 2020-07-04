@@ -6,6 +6,7 @@ import WikiLink from '../WikiLink';
 import Error from '../Error';
 
 import professions from '../data/professions.json';
+import { useColorModeHighlightSuffix } from '../helpers';
 
 const Profession = forwardRef(
   (
@@ -25,6 +26,8 @@ const Profession = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     let name;
 
     if (eliteSpecialization) {
@@ -78,7 +81,7 @@ const Profession = forwardRef(
               sx={{
                 color: 'inherit',
                 '&:hover': {
-                  color: `profession.${name.toLowerCase()}.dark`,
+                  color: `gw2.profession.${name.toLowerCase()}${highlightSuffix}`,
                 },
                 ...wikiLinkProps?.sx,
               }}
@@ -94,7 +97,7 @@ const Profession = forwardRef(
           ...rest.iconProps,
         }}
         sx={{
-          color: `profession.${name.toLowerCase()}.medium`,
+          color: `gw2.profession.${name.toLowerCase()}`,
           ...rest.sx,
         }}
         ref={ref}

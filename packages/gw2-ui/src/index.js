@@ -5,7 +5,7 @@ export { default as Trait } from './Trait';
 export { default as TraitLine } from './TraitLine';
 export {
   ThemeProvider,
-  defaultTheme,
+  baseTheme,
   Coin,
   Spinner,
   Progress,
@@ -25,6 +25,7 @@ export {
   getDisplayName,
   specializations,
   getEffectType,
+  useColorModeHighlightSuffix,
   Effect,
   Aura,
   auras,

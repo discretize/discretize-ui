@@ -5,23 +5,23 @@ import tooltipBackgroundImage from '../assets/images/tooltip-background.png';
 const TooltipContainer = forwardRef(({ children, ...rest }, ref) => (
   <div
     sx={{
-      backgroundColor: '#000',
+      backgroundColor: '#2e3538',
       borderStyle: 'solid',
-      borderWidth: 2,
-      borderColor: 'border',
+      borderWidth: '2px',
+      borderColor: 'rgb(9, 10, 14)',
       boxShadow:
         '0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
-      padding: 2,
+      p: '4px',
       backgroundPosition: 'top left',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundImage: `url(${tooltipBackgroundImage})`,
-      color: 'tooltip',
-      fontFamily: 'body',
-      fontSize: 1,
-      fontWeight: 'body',
-      lineHeight: 'body',
-      borderRadius: 1,
+      color: '#fff',
+      fontFamily: 'gw2.body',
+      fontSize: '14px',
+      fontWeight: 'gw2.body',
+      lineHeight: 'gw2.body',
+      borderRadius: '0px',
     }}
     {...rest}
     ref={ref}

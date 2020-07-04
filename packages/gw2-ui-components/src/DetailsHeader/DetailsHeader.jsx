@@ -7,7 +7,7 @@ import DetailsHeaderTitle from '../DetailsHeaderTitle';
 const DetailsHeader = forwardRef(
   ({ icon, iconProps, titleProps, flags, children, ...rest }, ref) => (
     <div
-      sx={{ display: 'flex', flexDirection: 'row', marginBottom: 2 }}
+      sx={{ display: 'flex', flexDirection: 'row', mb: '4px' }}
       {...rest}
       ref={ref}
     >
@@ -16,10 +16,10 @@ const DetailsHeader = forwardRef(
           src={icon}
           {...iconProps}
           sx={{
-            fontSize: 5,
-            marginRight: 3,
+            fontSize: '32px',
+            mr: '6px',
             border: '1px solid rgba(255,255,255,0.38)',
-            borderRadius: 1,
+            borderRadius: '0px',
             ...iconProps.sx,
           }}
         />
@@ -30,11 +30,11 @@ const DetailsHeader = forwardRef(
       <DetailsHeaderTitle {...titleProps}>{children}</DetailsHeaderTitle>
 
       {flags && (
-        <div sx={{ marginLeft: 3 }}>
+        <div sx={{ ml: '6px' }}>
           {flags.map(({ icon: flagIcon, value }) => (
             <span key={`${flagIcon}-${value}`}>
               {value}
-              {flagIcon && <Icon src={flagIcon} sx={{ marginLeft: 1 }} />}
+              {flagIcon && <Icon src={flagIcon} sx={{ ml: '2px' }} />}
             </span>
           ))}
         </div>

@@ -25,9 +25,9 @@ const IconWithText = forwardRef(
     <Component
       sx={{
         color: 'text',
-        fontFamily: 'body',
-        fontWeight: 'body',
-        lineHeight: 'body',
+        fontFamily: 'gw2.body',
+        fontWeight: 'gw2.body',
+        lineHeight: 'gw2.body',
       }}
       {...rest}
       ref={ref}

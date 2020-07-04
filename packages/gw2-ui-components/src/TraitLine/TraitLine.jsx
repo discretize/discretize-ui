@@ -133,7 +133,7 @@ const TraitLine = forwardRef(
             iconWithTextProps: {
               sx: {
                 fontSize: '32px',
-                color: 'tooltip',
+                color: '#fff',
               },
             },
             disableText: true,
@@ -160,7 +160,7 @@ const TraitLine = forwardRef(
             iconWithTextProps: {
               sx: {
                 fontSize: '32px',
-                color: 'tooltip',
+                color: '#fff',
               },
             },
             disableText: true,
@@ -243,7 +243,7 @@ const TraitLine = forwardRef(
           position: 'relative',
           width: '100%',
           maxWidth: 650,
-          height: ROOT_HEIGHT,
+          height: `${ROOT_HEIGHT}px`,
           border: '1px solid rgb(9, 10, 14)',
           backgroundColor: 'rgb(0,0,0)',
           display: 'flex',
@@ -263,15 +263,15 @@ const TraitLine = forwardRef(
             backgroundPosition: 'left bottom',
             backgroundRepeat: 'no-repeat',
             backgroundImage: `url('${background}')`,
-            right: 0,
-            bottom: 0,
+            right: '0px',
+            bottom: '0px',
             '&:after': {
               content: "''",
               position: 'absolute',
               width: '100%',
               height: '100%',
-              right: 0,
-              bottom: 0,
+              right: '0px',
+              bottom: '0px',
               backgroundColor: 'black',
               opacity: 0.5,
               transition: 'opacity 200ms',
@@ -283,7 +283,7 @@ const TraitLine = forwardRef(
 
         <div
           sx={{
-            width: TRAITS_MARGIN_LEFT,
+            width: `${TRAITS_MARGIN_LEFT}px`,
             filter: 'drop-shadow(2px 2px 5px black)',
             display: 'flex',
             alignItems: 'center',
@@ -293,36 +293,36 @@ const TraitLine = forwardRef(
             <span
               sx={{
                 position: 'absolute',
-                marginLeft: TRAITS_MARGIN_LEFT - HEXAGON_WIDTH,
-                height: HEXAGON_HEIGHT * 0.5,
-                width: HEXAGON_WIDTH,
+                marginLeft: `${TRAITS_MARGIN_LEFT - HEXAGON_WIDTH}px`,
+                height: `${HEXAGON_HEIGHT * 0.5}px`,
+                width: `${HEXAGON_WIDTH}px`,
                 boxSizing: 'border-box',
                 '&, &:before, &:after': {
-                  borderWidth: 0,
+                  borderWidth: '0px',
                   borderStyle: 'solid',
                   borderColor: 'rgba(255,255,255,0.5)',
                 },
                 '&': {
-                  borderLeftWidth: 2,
-                  borderRightWidth: 2,
+                  borderLeftWidth: '2px',
+                  borderRightWidth: '2px',
                 },
                 '&:before, &:after': {
                   content: "''",
                   position: 'absolute',
-                  width: 64,
-                  height: 64,
+                  width: '64px',
+                  height: '64px',
                   transform: 'scaleY(0.5774) rotate(-45deg)',
-                  left: 12,
+                  left: '12px',
                 },
                 '&:before': {
-                  top: -33.5,
-                  borderTopWidth: 3,
-                  borderRightWidth: 3,
+                  top: '-33.5px',
+                  borderTopWidth: '3px',
+                  borderRightWidth: '3px',
                 },
                 '&:after': {
-                  bottom: -33.5,
-                  borderBottomWidth: 3,
-                  borderLeftWidth: 3,
+                  bottom: '-33.5px',
+                  borderBottomWidth: '3px',
+                  borderLeftWidth: '3px',
                 },
               }}
             />
@@ -332,7 +332,7 @@ const TraitLine = forwardRef(
         <div
           sx={{
             display: 'flex',
-            maxWidth: 468,
+            maxWidth: '468px',
             padding: '4px 0',
             flexGrow: 1,
             justifyContent: 'space-between',
@@ -365,7 +365,7 @@ const TraitLine = forwardRef(
                           flexGrow: 1,
                         },
                         '&:first-of-type': {
-                          width: 34,
+                          width: '34px',
                         },
                       }}
                     />
@@ -380,7 +380,7 @@ const TraitLine = forwardRef(
                         flexGrow: 1,
                       },
                       '&:first-of-type': {
-                        width: 34,
+                        width: '34px',
                       },
                     }}
                     {...(path !== undefined
@@ -415,7 +415,7 @@ const TraitLine = forwardRef(
                           flexGrow: 1,
                         },
                         '&:first-of-type': {
-                          width: 34,
+                          width: '34px',
                         },
                       }}
                       {...(path !== undefined
@@ -498,8 +498,8 @@ export default withLoading({
   iconWithTextProps: {
     sx: {
       width: '100%',
-      maxWidth: 650,
-      height: ROOT_HEIGHT,
+      maxWidth: '650px',
+      height: `${ROOT_HEIGHT}px`,
       backgroundColor: 'rgba(0,0,0,0.2)',
       border: '1px solid rgb(9, 10, 14)',
       display: 'flex',
@@ -511,8 +511,8 @@ export default withLoading({
   errorProps: {
     sx: {
       width: '100%',
-      maxWidth: 650,
-      height: ROOT_HEIGHT,
+      maxWidth: '650px',
+      height: `${ROOT_HEIGHT}px`,
       backgroundColor: 'rgba(0,0,0,0.2)',
       border: '1px solid rgb(9, 10, 14)',
       display: 'flex',

@@ -7,6 +7,7 @@ import DetailsText from '../DetailsText';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
 import Error from '../Error';
+import useColorModeHighlightSuffix from '../helpers/useColorModeHighlightSuffix';
 
 import attributes from '../data/attributes.json';
 
@@ -27,6 +28,8 @@ const Attribute = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     const description = (Object.entries(attributes).find(([, values]) =>
       Object.keys(values).includes(name),
     ) || [])[1]?.[name];
@@ -76,7 +79,7 @@ const Attribute = forwardRef(
                 sx={{
                   color: 'inherit',
                   '&:hover': {
-                    color: `attribute.dark`,
+                    color: `gw2.attribute${highlightSuffix}`,
                   },
                   ...wikiLinkProps?.sx,
                 }}
@@ -92,7 +95,7 @@ const Attribute = forwardRef(
             ...rest.iconProps,
           }}
           sx={{
-            color: `attribute.medium`,
+            color: `gw2.attribute`,
             ...rest.sx,
           }}
           ref={ref}

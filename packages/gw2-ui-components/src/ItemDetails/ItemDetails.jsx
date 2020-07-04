@@ -71,11 +71,11 @@ const ItemDetails = forwardRef(
           }}
           titleProps={{
             sx: {
-              color: `rarity.${rarity.toLowerCase()}.medium`,
+              color: `gw2.rarity.${rarity.toLowerCase()}`,
               ...(upgrade && {
-                color: 'details.bonus',
-                fontSize: 1,
-                fontWeight: 'body',
+                color: 'gw2.details.bonus',
+                fontSize: '14px',
+                fontWeight: 'gw2.body',
                 textShadow: 'none',
               }),
             },
@@ -89,12 +89,12 @@ const ItemDetails = forwardRef(
             : ''}
         </DetailsHeader>
 
-        <div sx={{ lineHeight: 'dense' }}>
+        <div sx={{ lineHeight: 'gw2.heading' }}>
           {minPower !== undefined && maxPower !== undefined && (
             <div>
               {`Weapon Strength: `}
               <span
-                sx={{ color: 'details.attribute' }}
+                sx={{ color: 'gw2.details.attribute' }}
               >{`${minPower} - ${maxPower}`}</span>
             </div>
           )}
@@ -102,7 +102,7 @@ const ItemDetails = forwardRef(
           {defense > 0 && (
             <div>
               {`Defense: `}
-              <span sx={{ color: 'details.attribute' }}>{defense}</span>
+              <span sx={{ color: 'gw2.details.attribute' }}>{defense}</span>
             </div>
           )}
 
@@ -112,7 +112,9 @@ const ItemDetails = forwardRef(
               <div key={`${attribute}-${modifier}`}>
                 <span
                   sx={{
-                    color: upgrade ? 'details.bonus' : 'details.attribute',
+                    color: upgrade
+                      ? 'gw2.details.bonus'
+                      : 'gw2.details.attribute',
                   }}
                 >
                   {`+${modifier} ${apiAttributes[attribute]}`}
@@ -132,8 +134,8 @@ const ItemDetails = forwardRef(
                 sx={{
                   color:
                     upgradeBonusCount > index
-                      ? 'details.bonus'
-                      : 'details.bonusInactive',
+                      ? 'gw2.details.bonus'
+                      : 'gw2.details.bonusInactive',
                 }}
               >
                 <span>({index + 1}): </span>
@@ -195,5 +197,5 @@ ItemDetails.displayName = 'ItemDetails';
 
 export default withLoading({
   disableTooltip: true,
-  iconWithTextProps: { sx: { color: 'tooltip' } },
+  iconWithTextProps: { sx: { color: '#fff' } },
 })(ItemDetails);

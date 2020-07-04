@@ -27,7 +27,7 @@ const Progress = forwardRef(({ component: Component, ...rest }, ref) => (
           'linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.2), currentColor, rgba(0,0,0,0.2), rgba(0,0,0,0))',
         backgroundRepeat: 'no-repeat',
         animation: `${progress} 1.5s infinite`,
-        borderRadius: 4,
+        borderRadius: '4px',
       },
     }}
     {...rest}

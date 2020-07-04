@@ -5,6 +5,7 @@ export {
   factsOrder,
   getDisplayName,
   getEffectType,
+  useColorModeHighlightSuffix,
 } from './helpers';
 
 export { default as Coin } from './Coin';
@@ -58,5 +59,5 @@ export { default as professions } from './data/professions.json';
 export { default as attributes } from './data/attributes.json';
 export { default as races } from './data/races.json';
 
-export { defaultTheme } from './styles';
+export { baseTheme } from './styles';
 export { ThemeProvider } from '@theme-ui/core';

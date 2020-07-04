@@ -17,7 +17,9 @@ const AbilityDetails = forwardRef(
     ref,
   ) => {
     const {
-      theme: { colors: { details: { abilityType, reminder } = {} } = {} } = {},
+      theme: {
+        colors: { gw2: { details: { abilityType, muted } = {} } = {} } = {},
+      } = {},
     } = useThemeUI();
 
     const { value: rechargeValue, icon: rechargeIcon } =
@@ -50,9 +52,9 @@ const AbilityDetails = forwardRef(
           {name}
         </DetailsHeader>
 
-        <DetailsText sx={{ marginBottom: 2 }}>
+        <DetailsText sx={{ mb: '4px' }}>
           {categories && (
-            <span sx={{ color: 'details.abilityType' }}>
+            <span sx={{ color: 'gw2.details.abilityType' }}>
               {categories.map(category => `${category}. `)}
             </span>
           )}
@@ -63,7 +65,7 @@ const AbilityDetails = forwardRef(
                 formatFlavor(description, {
                   ability: null,
                   abilitytype: css({ color: abilityType }),
-                  reminder: css({ color: reminder }),
+                  reminder: css({ color: muted }),
                 })
               }
             </ClassNames>

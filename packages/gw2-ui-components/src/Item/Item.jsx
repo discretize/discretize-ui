@@ -6,6 +6,7 @@ import Tooltip from '../Tooltip';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
 import ItemDetails from '../ItemDetails';
+import { useColorModeHighlightSuffix } from '../helpers';
 
 const Item = forwardRef(
   (
@@ -25,6 +26,8 @@ const Item = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     const {
       name,
       icon,
@@ -55,8 +58,8 @@ const Item = forwardRef(
                     // eslint-disable-next-line react/no-array-index-key
                     key={`${upgradeId}-${index}`}
                     sx={{
-                      marginTop: 4,
-                      ...(index < upgrades.length && { marginBottom: 4 }),
+                      mt: '8px',
+                      ...(index < upgrades.length && { mb: '8px' }),
                     }}
                   >
                     <ItemDetails
@@ -88,7 +91,9 @@ const Item = forwardRef(
                 {...wikiLinkProps}
                 sx={{
                   color: 'inherit',
-                  '&:hover': { color: `rarity.${rarity.toLowerCase()}.dark` },
+                  '&:hover': {
+                    color: `gw2.rarity.${rarity.toLowerCase()}${highlightSuffix}`,
+                  },
                   ...wikiLinkProps?.sx,
                 }}
               />
@@ -106,7 +111,7 @@ const Item = forwardRef(
             ...rest.iconProps,
           }}
           sx={{
-            color: `rarity.${rarity.toLowerCase()}.medium`,
+            color: `gw2.rarity.${rarity.toLowerCase()}`,
             ...rest.sx,
           }}
           ref={ref}

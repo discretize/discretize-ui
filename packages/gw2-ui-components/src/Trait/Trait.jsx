@@ -7,7 +7,7 @@ import TooltipContainer from '../TooltipContainer';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
 import AbilityDetails from '../AbilityDetails';
-import { specializations } from '../helpers';
+import { specializations, useColorModeHighlightSuffix } from '../helpers';
 
 const Trait = forwardRef(
   (
@@ -27,6 +27,8 @@ const Trait = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     const { name, icon, specialization, skills, slot } = data;
 
     const [profession] =
@@ -46,7 +48,7 @@ const Trait = forwardRef(
 
             {skills &&
               skills.map(skill => (
-                <TooltipContainer key={`${skill.id}`} sx={{ mt: 3 }}>
+                <TooltipContainer key={`${skill.id}`} sx={{ mt: '6px' }}>
                   <AbilityDetails data={skill} />
                 </TooltipContainer>
               ))}
@@ -67,7 +69,9 @@ const Trait = forwardRef(
                 {...wikiLinkProps}
                 sx={{
                   color: 'inherit',
-                  '&:hover': { color: `profession.${profession}.dark` },
+                  '&:hover': {
+                    color: `gw2.profession.${profession}${highlightSuffix}`,
+                  },
                   ...wikiLinkProps?.sx,
                 }}
               />
@@ -84,7 +88,7 @@ const Trait = forwardRef(
             ...rest.iconProps,
           }}
           sx={{
-            color: `profession.${profession}.medium`,
+            color: `gw2.profession.${profession}`,
             ...rest.sx,
           }}
           ref={ref}

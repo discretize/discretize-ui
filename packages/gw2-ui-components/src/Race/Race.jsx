@@ -6,6 +6,7 @@ import WikiLink from '../WikiLink';
 import Error from '../Error';
 
 import races from '../data/races.json';
+import { useColorModeHighlightSuffix } from '../helpers';
 
 const Race = forwardRef(
   (
@@ -24,6 +25,8 @@ const Race = forwardRef(
     },
     ref,
   ) => {
+    const highlightSuffix = useColorModeHighlightSuffix();
+
     if (!name || !races.includes(name)) {
       return (
         <Error
@@ -59,7 +62,7 @@ const Race = forwardRef(
               sx={{
                 color: 'inherit',
                 '&:hover': {
-                  color: `race.${name.toLowerCase()}.dark`,
+                  color: `gw2.race.${name.toLowerCase()}${highlightSuffix}`,
                 },
                 ...wikiLinkProps?.sx,
               }}
@@ -75,7 +78,7 @@ const Race = forwardRef(
           ...rest.iconProps,
         }}
         sx={{
-          color: `race.${name.toLowerCase()}.medium`,
+          color: `gw2.race.${name.toLowerCase()}`,
           ...rest.sx,
         }}
         ref={ref}
