@@ -9,6 +9,7 @@ const Aura = forwardRef(({ name, ...rest }, ref) => (
   <Effect
     type="Aura"
     name={name}
+    displayName={`${name} Aura`}
     description={auras[name]}
     {...rest}
     ref={ref}

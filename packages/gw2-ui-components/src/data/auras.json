@@ -1,9 +1,9 @@
 {
-  "Chaos Aura": "Give yourself random boons and your foe random conditions whenever you are struck.",
-  "Dark Aura": "Surrounded by a dark aura that reduces incoming condition damage and causes torment each time you are struck (1-second cooldown per attacker).",
-  "Fire Aura": "Enveloped in a fiery shield that burns foes, grants might each time you are struck (1-second cooldown per attacker).",
-  "Frost Aura": "Chill foes that strike you (only once per second for each attacker); incoming damage is reduced by 10%.",
-  "Light Aura": "When struck, you gain retaliation. Incoming condition damage is reduced by 10%.",
-  "Magnetic Aura": "Reflect projectiles with magnetic energy.",
-  "Shocking Aura": "Stun nearby attacking foes with an electric shock (only once per 2 seconds for each attacker)."
+  "Chaos": "Give yourself random boons and your foe random conditions whenever you are struck.",
+  "Dark": "Surrounded by a dark aura that reduces incoming condition damage and causes torment each time you are struck (1-second cooldown per attacker).",
+  "Fire": "Enveloped in a fiery shield that burns foes, grants might each time you are struck (1-second cooldown per attacker).",
+  "Frost": "Chill foes that strike you (only once per second for each attacker); incoming damage is reduced by 10%.",
+  "Light": "When struck, you gain retaliation. Incoming condition damage is reduced by 10%.",
+  "Magnetic": "Reflect projectiles with magnetic energy.",
+  "Shocking": "Stun nearby attacking foes with an electric shock (only once per 2 seconds for each attacker)."
 }
