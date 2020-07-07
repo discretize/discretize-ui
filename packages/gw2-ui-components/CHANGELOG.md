@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.7.2...gw2-ui-components@0.7.3) (2020-07-07)
+
+
+### Bug Fixes
+
+* item details for nourishment, utility, potions ([4ae238e](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/4ae238e3c7896b6431b93de0da9986969d274948))
+* missing ability detail facts ([7487662](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/74876626b1f8d7c495aa91d46acac50dbbaa6a72))
+
+
+
+
+
 ## [0.7.2](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.7.1...gw2-ui-components@0.7.2) (2020-07-07)
 
 **Note:** Version bump only for package gw2-ui-components
