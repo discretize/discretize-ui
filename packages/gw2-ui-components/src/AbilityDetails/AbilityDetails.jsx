@@ -32,7 +32,7 @@ const AbilityDetails = forwardRef(
     return (
       <div {...rest} ref={ref}>
         <DetailsHeader
-          sx={{ mb: '10px' }}
+          sx={{ mb: '8px' }}
           {...rechargeValue && {
             flags: [
               {
@@ -62,7 +62,7 @@ const AbilityDetails = forwardRef(
             {facts
               .filter(
                 (
-                  { text, type, prefix: { status: prefixStatus } = {} },
+                  { text, type, status, prefix: { status: prefixStatus } = {} },
                   index,
                 ) =>
                   type !== 'Recharge' &&
@@ -70,11 +70,13 @@ const AbilityDetails = forwardRef(
                     ({
                       text: otherText,
                       type: otherType,
+                      status: otherStatus,
                       prefix: { status: otherPrefixStatus } = {},
                     }) =>
                       text === otherText &&
                       type === otherType &&
-                      (!prefixStatus || prefixStatus === otherPrefixStatus),
+                      status === otherStatus &&
+                      prefixStatus === otherPrefixStatus,
                   ) === index,
               )
               .sort(
