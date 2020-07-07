@@ -24,8 +24,8 @@ const Icon = forwardRef(
     ref,
   ) => {
     const sharedSx = {
-      ...(gutterRight && { mr: '6px' }),
-      ...(gutterLeft && { ml: '6px' }),
+      ...(gutterRight && { mr: '0.25em' }),
+      ...(gutterLeft && { ml: '0.25em' }),
       ...(inline && { verticalAlign: 'text-top' }),
       ...(inactive && {
         opacity: 0.5,
@@ -35,18 +35,22 @@ const Icon = forwardRef(
           opacity: 0.8,
         },
       }),
+      ...(hexagon && {
+        width: '0.875em',
+      }),
+      ...rest.sx,
     };
 
     if (loading) {
       return (
         <Spinner
+          inline={inline}
+          {...{
+            style: rest.style,
+            className: rest.classname,
+          }}
           sx={{
             ...sharedSx,
-            ...(rest.style?.fontSize && {
-              fontSize: `${rest.style.fontSize}${
-                typeof rest.style.fontSize === 'number' ? 'px' : ''
-              }`,
-            }),
           }}
           {...spinnerProps}
         />
@@ -59,8 +63,9 @@ const Icon = forwardRef(
 
     return (
       <Component
+        {...rest}
         sx={{
-          display: 'inline-block',
+          display: 'inline-flex',
           size: '1em',
           position: 'relative',
           backgroundPosition: 'center',
@@ -70,14 +75,12 @@ const Icon = forwardRef(
           ...(zoom && !hexagon && { backgroundSize: `${100 + zoom}%` }),
           ...((!zoom || hexagon) && { backgroundSize: 'cover' }),
           ...(hexagon && {
-            width: '0.8em',
             clipPath:
               'polygon(50% 4%, 100% 28%, 100% 73%, 50% 99%, 0% 73%, 0% 28%)',
             borderRadius: '0px',
           }),
           ...sharedSx,
         }}
-        {...rest}
         ref={ref}
       >
         {applyCount > 1 && (
@@ -91,7 +94,7 @@ const Icon = forwardRef(
               fontFamily: 'gw2.body',
               lineHeight: 1,
               color: '#fff',
-              textShadow: '0 0 2px black',
+              textShadow: '1px 1px 1px black',
             }}
           >
             {applyCount}

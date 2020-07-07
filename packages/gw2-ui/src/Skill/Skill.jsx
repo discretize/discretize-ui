@@ -10,11 +10,12 @@ import { Skill as SkillComponent } from 'gw2-ui-components';
 import withRedux from '../withRedux';
 
 const WrappedSkill = withRedux(
-  (state, props) => ({
-    data: getSkillData(state, props),
-    error: getSkillError(state, props),
-    loading: isSkillLoading(state, props),
-  }),
+  (state, props) =>
+    props.id && {
+      data: getSkillData(state, props),
+      error: getSkillError(state, props),
+      loading: isSkillLoading(state, props),
+    },
   {
     fetch: fetchSkill,
     cancel: cancelSkill,

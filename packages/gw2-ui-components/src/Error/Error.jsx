@@ -31,10 +31,14 @@ const Error = forwardRef(
           >
             {name}
           </DetailsHeader>
-          <DetailsText>
-            {message}
-            {code && ` (code ${code})`}
-          </DetailsText>
+          <DetailsText
+            lines={[
+              <>
+                {message}
+                {code && ` (code ${code})`}
+              </>,
+            ]}
+          />
         </>
       }
       disabled={disableTooltip}

@@ -237,12 +237,11 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        lineHeight: 'gw2.heading',
       }}
       {...rest}
       ref={ref}
     >
-      <div sx={{ display: 'flex', flexDirection: 'row', fontSize: '24px' }}>
+      <div sx={{ display: 'flex', flexDirection: 'row', fontSize: '30px' }}>
         {prefix?.icon && (
           <Icon src={prefix.icon} applyCount={prefix.apply_count} />
         )}

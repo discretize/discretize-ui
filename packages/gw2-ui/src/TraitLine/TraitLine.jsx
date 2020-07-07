@@ -13,11 +13,12 @@ import withRedux from '../withRedux';
 import Trait from '../Trait';
 
 const WrappedTraitLine = withRedux(
-  (state, props) => ({
-    data: getSpecializationData(state, props),
-    error: getSpecializationError(state, props),
-    loading: isSpecializationLoading(state, props),
-  }),
+  (state, props) =>
+    props.id && {
+      data: getSpecializationData(state, props),
+      error: getSpecializationError(state, props),
+      loading: isSpecializationLoading(state, props),
+    },
   {
     fetch: fetchSpecialization,
     cancel: cancelSpecialization,

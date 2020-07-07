@@ -58,8 +58,8 @@ const Item = forwardRef(
                     // eslint-disable-next-line react/no-array-index-key
                     key={`${upgradeId}-${index}`}
                     sx={{
-                      mt: '8px',
-                      ...(index < upgrades.length && { mb: '8px' }),
+                      mt: '16px',
+                      ...(index < upgrades.length && { mb: '16px' }),
                     }}
                   >
                     <ItemDetails
@@ -78,6 +78,10 @@ const Item = forwardRef(
         }
         disabled={disableTooltip}
         {...tooltipProps}
+        containerProps={{
+          ...tooltipProps.containerProps,
+          sx: { maxWidth: 353, ...tooltipProps.containerProps?.sx },
+        }}
       >
         <IconWithText
           component={component}

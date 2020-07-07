@@ -41,8 +41,8 @@ ${Object.values(ITEM_ARMOR_WEIGHTS)
     .join('')}`,
   story: () => (
     <Item
-      id={number('id', 46774)}
-      upgrades={object('upgrades', [[24842, 1], 37131])}
+      id={number('id', 48073)}
+      upgrades={object('upgrades', [37131, [24836, 4]])}
       type={select('type', [null, ...Object.values(ITEM_TYPE_NAMES)], null)}
       stat={select('stat', [null, ...Object.values(ITEM_STAT_NAMES)], null)}
       weight={select(

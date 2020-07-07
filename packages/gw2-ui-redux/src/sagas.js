@@ -70,7 +70,11 @@ function* sendRequest({ payload: { id, path } }) {
       fetchError({
         id,
         path,
-        [errorKey]: { code: status, name, message: text || message },
+        [errorKey]: {
+          code: status ? `${status}` : undefined,
+          name,
+          message: text || message,
+        },
       }),
     );
   } finally {

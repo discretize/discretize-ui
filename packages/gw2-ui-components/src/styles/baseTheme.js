@@ -33,8 +33,8 @@ export default {
         muted: 'rgba(255,255,255,0.7)',
         bonus: '#5599ff',
         bonusInactive: '#aaa',
-        attribute: '#30ad37',
-        flavor: '#a4c7c9',
+        attribute: '#00ff00',
+        flavor: '#99dddd',
         abilityType: '#efdf80',
       },
 

@@ -51,7 +51,7 @@ const IconWithText = forwardRef(
 
       {!disableText &&
         (loading ? (
-          <Progress {...progressProps} />
+          <Progress inline={!disableText || inline} {...progressProps} />
         ) : (
           <span {...textProps}>{text}</span>
         ))}

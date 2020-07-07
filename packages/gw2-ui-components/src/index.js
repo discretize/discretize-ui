@@ -1,5 +1,4 @@
 export {
-  formatFlavor,
   apiAttributes,
   specializations,
   factsOrder,

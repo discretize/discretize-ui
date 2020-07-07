@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import { getDisplayName } from '../helpers';
 import IconWithText from '../IconWithText';
@@ -18,7 +19,15 @@ export default ({
 
   const WithLoading = forwardRef(
     ({ loading, error, errorProps, iconWithTextProps, ...rest }, ref) => {
-      const { id, data, disableIcon, disableText, disableTooltip, inline } = {
+      const {
+        id,
+        data,
+        disableIcon,
+        disableText,
+        disableTooltip,
+        inline,
+        iconProps,
+      } = {
         ...rest,
       };
 
@@ -29,14 +38,18 @@ export default ({
             disableIcon={disableIcon}
             disableText={disableText}
             inline={inline}
-            sx={{
-              ...(rest.style?.fontSize && {
-                fontSize: `${rest.style.fontSize}${
-                  typeof rest.style.fontSize === 'number' ? 'px' : ''
-                }`,
-              }),
-            }}
             {...iconWithTextProps}
+            iconProps={{ ...iconWithTextProps?.iconProps, ...iconProps }}
+            {...{
+              style: {
+                ...rest.style,
+                ...iconWithTextProps?.style,
+              },
+              className: cx(rest.className, iconWithTextProps.className),
+              sx: {
+                ...iconWithTextProps?.sx,
+              },
+            }}
           />
         );
       }
@@ -54,14 +67,19 @@ export default ({
             disableIcon={disableIcon}
             disableText={disableText}
             inline={inline}
-            sx={{
-              ...(rest.style?.fontSize && {
-                fontSize: `${rest.style.fontSize}${
-                  typeof rest.style.fontSize === 'number' ? 'px' : ''
-                }`,
-              }),
-            }}
             {...errorProps}
+            iconProps={{ ...errorProps?.iconProps, ...iconProps }}
+            {...{
+              style: {
+                ...rest.style,
+                ...errorProps?.style,
+              },
+              className: cx(rest.className, errorProps.className),
+              sx: {
+                ...rest.sx,
+                ...errorProps?.sx,
+              },
+            }}
           />
         );
       }

@@ -1,7 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { ClassNames } from '@emotion/core';
-import { useThemeUI } from '@theme-ui/core';
 import camelCase from 'lodash.camelcase';
 
 import Tooltip from '../Tooltip';
@@ -10,7 +8,7 @@ import DetailsText from '../DetailsText';
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
 import Error from '../Error';
-import { formatFlavor, useColorModeHighlightSuffix } from '../helpers';
+import { useColorModeHighlightSuffix } from '../helpers';
 
 const Effect = forwardRef(
   (
@@ -28,15 +26,12 @@ const Effect = forwardRef(
       wikiLinkProps,
       tooltipProps,
       errorProps,
+      className,
       ...rest
     },
     ref,
   ) => {
     const highlightSuffix = useColorModeHighlightSuffix();
-
-    const {
-      theme: { colors: { gw2: { details: { muted } = {} } = {} } = {} } = {},
-    } = useThemeUI();
 
     if (!type || !name || typeof description === 'undefined') {
       return (
@@ -50,14 +45,16 @@ const Effect = forwardRef(
           disableText={disableText}
           inline={inline}
           iconProps={{ name: '404' }}
-          sx={{
-            ...(rest.style?.fontSize && {
-              fontSize: `${rest.style.fontSize}${
-                typeof rest.style.fontSize === 'number' ? 'px' : ''
-              }`,
-            }),
-          }}
+          className={className}
           {...errorProps}
+          style={{
+            ...errorProps?.style,
+            ...rest.style,
+          }}
+          sx={{
+            ...errorProps?.sx,
+            ...rest.sx,
+          }}
         />
       );
     }
@@ -68,17 +65,7 @@ const Effect = forwardRef(
           <>
             <DetailsHeader>{displayName || name}</DetailsHeader>
 
-            {description && (
-              <DetailsText>
-                <ClassNames>
-                  {({ css }) =>
-                    formatFlavor(description, {
-                      reminder: css({ color: muted }),
-                    })
-                  }
-                </ClassNames>
-              </DetailsText>
-            )}
+            {description && <DetailsText lines={[description]} />}
           </>
         }
         disabled={disableTooltip}
@@ -106,6 +93,7 @@ const Effect = forwardRef(
           disableIcon={disableIcon}
           disableText={disableText}
           inline={inline}
+          className={className}
           {...rest}
           iconProps={{
             name: `${type}.${name}`,

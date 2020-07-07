@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import IconWithText from '../IconWithText';
 import WikiLink from '../WikiLink';
@@ -56,14 +57,18 @@ const Profession = forwardRef(
           disableText={disableText}
           inline={inline}
           iconProps={{ name: '404' }}
-          sx={{
-            ...(rest.style?.fontSize && {
-              fontSize: `${rest.style.fontSize}${
-                typeof rest.style.fontSize === 'number' ? 'px' : ''
-              }`,
-            }),
-          }}
           {...errorProps}
+          {...{
+            style: {
+              ...rest.style,
+              ...errorProps?.style,
+            },
+            className: cx(rest.className, errorProps.className),
+            sx: {
+              ...rest.sx,
+              ...errorProps?.sx,
+            },
+          }}
         />
       );
     }

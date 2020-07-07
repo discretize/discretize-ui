@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getDisplayName } from 'gw2-ui-components';
 
@@ -9,7 +10,7 @@ export default (
   mergeProps,
   options,
 ) => Component => {
-  const WithRedux = class extends React.Component {
+  class WithRedux extends React.Component {
     componentDidMount = () => this.fetch();
 
     componentDidUpdate = ({ id: previousId, upgrades: previousUpgrades }) => {
@@ -76,6 +77,29 @@ export default (
 
       return <Component {...rest} />;
     };
+  }
+
+  WithRedux.propTypes = {
+    id: PropTypes.number.isRequired,
+    data: PropTypes.object,
+    error: PropTypes.shape({
+      code: PropTypes.string,
+      name: PropTypes.string,
+      message: PropTypes.string,
+    }),
+    upgrades: PropTypes.array,
+    loading: PropTypes.bool,
+    fetch: PropTypes.func,
+    cancel: PropTypes.func,
+  };
+
+  WithRedux.defaultProps = {
+    data: null,
+    error: null,
+    upgrades: null,
+    loading: null,
+    fetch: null,
+    cancel: null,
   };
 
   WithRedux.displayName = `WithRedux(${getDisplayName(Component)})`;

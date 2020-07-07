@@ -11,15 +11,17 @@ const spin = keyframes({
   },
 });
 
-const Spinner = forwardRef(({ component: Component, ...rest }, ref) => (
+const Spinner = forwardRef(({ component: Component, inline, ...rest }, ref) => (
   <Component
     sx={{
-      display: 'inline-block',
-      size: `calc(1em - ${2 * 4}px)`,
+      display: 'inline-flex',
+      size: `1em`,
       border: `4px rgba(0,0,0,0.2) solid`,
       borderTopColor: `currentColor`,
       borderRadius: '50%',
       animation: `${spin.toString()} .8s linear infinite`,
+      boxSizing: 'border-box',
+      ...(inline && { verticalAlign: 'text-top' }),
     }}
     {...rest}
     ref={ref}
@@ -28,10 +30,12 @@ const Spinner = forwardRef(({ component: Component, ...rest }, ref) => (
 
 Spinner.propTypes = {
   component: PropTypes.elementType,
+  inline: PropTypes.bool,
 };
 
 Spinner.defaultProps = {
   component: 'span',
+  inline: true,
 };
 
 Spinner.displayName = 'Spinner';

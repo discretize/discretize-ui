@@ -13,25 +13,26 @@ import { createItem } from 'gw2-ui-builder';
 import withRedux from '../withRedux';
 
 const ReduxItem = withRedux(
-  (state, props) => ({
-    data: getItemData(state, props),
-    error: getItemError(state, props),
-    loading: isItemLoading(state, props),
-    ...(props.upgrades &&
-      props.upgrades.length && {
-        upgrades: props.upgrades.map(upgrade => {
-          const [id, count] = Array.isArray(upgrade) ? upgrade : [upgrade];
+  (state, props) =>
+    props.id && {
+      data: getItemData(state, props),
+      error: getItemError(state, props),
+      loading: isItemLoading(state, props),
+      ...(props.upgrades &&
+        props.upgrades.length && {
+          upgrades: props.upgrades.map(upgrade => {
+            const [id, count] = Array.isArray(upgrade) ? upgrade : [upgrade];
 
-          return {
-            id,
-            count,
-            data: getItemData(state, { id }),
-            error: getItemError(state, { id }),
-            loading: isItemLoading(state, { id }),
-          };
+            return {
+              id,
+              count,
+              data: getItemData(state, { id }),
+              error: getItemError(state, { id }),
+              loading: isItemLoading(state, { id }),
+            };
+          }),
         }),
-      }),
-  }),
+    },
   {
     fetch: fetchItem,
     cancel: cancelItem,

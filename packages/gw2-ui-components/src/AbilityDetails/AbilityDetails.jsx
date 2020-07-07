@@ -1,12 +1,10 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { ClassNames } from '@emotion/core';
-import { useThemeUI } from '@theme-ui/core';
 
 import DetailsHeader from '../DetailsHeader';
 import DetailsFact from '../DetailsFact';
 import DetailsText from '../DetailsText';
-import { formatFlavor, factsOrder } from '../helpers';
+import { factsOrder } from '../helpers';
 
 const AbilityDetails = forwardRef(
   (
@@ -16,12 +14,6 @@ const AbilityDetails = forwardRef(
     },
     ref,
   ) => {
-    const {
-      theme: {
-        colors: { gw2: { details: { abilityType, muted } = {} } = {} } = {},
-      } = {},
-    } = useThemeUI();
-
     const { value: rechargeValue, icon: rechargeIcon } =
       (facts && facts.find(({ type }) => type === 'Recharge')) || {};
 
@@ -40,6 +32,7 @@ const AbilityDetails = forwardRef(
     return (
       <div {...rest} ref={ref}>
         <DetailsHeader
+          sx={{ mb: '10px' }}
           {...rechargeValue && {
             flags: [
               {
@@ -52,37 +45,37 @@ const AbilityDetails = forwardRef(
           {name}
         </DetailsHeader>
 
-        <DetailsText sx={{ mb: '4px' }}>
-          {categories && (
-            <span sx={{ color: 'gw2.details.abilityType' }}>
-              {categories.map(category => `${category}. `)}
-            </span>
-          )}
+        <DetailsText
+          lines={[
+            categories && (
+              <span sx={{ color: 'gw2.details.abilityType' }}>
+                {categories.map(category => `${category}. `)}
+              </span>
+            ),
+            description,
+          ]}
+          lineComponent="span"
+        />
 
-          {description && (
-            <ClassNames>
-              {({ css }) =>
-                formatFlavor(description, {
-                  ability: null,
-                  abilitytype: css({ color: abilityType }),
-                  reminder: css({ color: muted }),
-                })
-              }
-            </ClassNames>
-          )}
-        </DetailsText>
-
-        {facts && (
-          <div>
+        {facts && (facts.length > 1 || facts[0].type !== 'Recharge') && (
+          <div sx={{ mt: '12px' }}>
             {facts
               .filter(
-                ({ text, type }, index) =>
+                (
+                  { text, type, prefix: { status: prefixStatus } = {} },
+                  index,
+                ) =>
                   type !== 'Recharge' &&
-                  (type === 'PrefixedBuff' ||
-                    facts.findIndex(
-                      ({ text: otherText, type: otherType }) =>
-                        text === otherText && type === otherType,
-                    ) === index),
+                  facts.findIndex(
+                    ({
+                      text: otherText,
+                      type: otherType,
+                      prefix: { status: otherPrefixStatus } = {},
+                    }) =>
+                      text === otherText &&
+                      type === otherType &&
+                      (!prefixStatus || prefixStatus === otherPrefixStatus),
+                  ) === index,
               )
               .sort(
                 ({ type: a }, { type: b }) =>

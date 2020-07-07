@@ -1,5 +1,5 @@
 import React from 'react';
-import { number, text } from '@storybook/addon-knobs';
+import { number, text, boolean } from '@storybook/addon-knobs';
 import { Spinner } from 'gw2-ui';
 
 import categories from '../categories';
@@ -14,6 +14,7 @@ export default {
   story: () => (
     <Spinner
       component={text('component', 'span')}
+      inline={boolean('inline', true)}
       style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),

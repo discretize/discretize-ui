@@ -17,6 +17,9 @@ const Specialization = forwardRef(
       disableLink,
       inline,
       wikiLinkProps,
+      // remove ignored props from withLoading
+      // eslint-disable-next-line react/prop-types
+      disableTooltip: ignoredDisableTooltip,
       ...rest
     },
     ref,

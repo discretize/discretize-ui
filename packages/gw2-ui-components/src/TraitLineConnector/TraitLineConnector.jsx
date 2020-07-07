@@ -30,7 +30,7 @@ const TraitLineConnector = forwardRef(
         let startY;
         switch (start) {
           case Paths.UP:
-            startY = height - 20;
+            startY = height - 18.5;
             break;
           case Paths.MID:
             startY = height * 0.5;
@@ -43,7 +43,7 @@ const TraitLineConnector = forwardRef(
 
             break;
           case Paths.DOWN:
-            startY = 20;
+            startY = 18.5;
             break;
           default:
             break;
@@ -52,7 +52,7 @@ const TraitLineConnector = forwardRef(
         let endY;
         switch (end) {
           case Paths.UP:
-            endY = height - 20;
+            endY = height - 18.5;
             break;
           case Paths.MID:
             endY = height * 0.5;
@@ -65,7 +65,7 @@ const TraitLineConnector = forwardRef(
 
             break;
           case Paths.DOWN:
-            endY = 20;
+            endY = 18.5;
             break;
           default:
             break;

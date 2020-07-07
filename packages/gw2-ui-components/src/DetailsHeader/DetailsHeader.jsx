@@ -7,7 +7,7 @@ import DetailsHeaderTitle from '../DetailsHeaderTitle';
 const DetailsHeader = forwardRef(
   ({ icon, iconProps, titleProps, flags, children, ...rest }, ref) => (
     <div
-      sx={{ display: 'flex', flexDirection: 'row', mb: '4px' }}
+      sx={{ display: 'flex', flexDirection: 'row', mb: '3px' }}
       {...rest}
       ref={ref}
     >
@@ -18,7 +18,7 @@ const DetailsHeader = forwardRef(
           sx={{
             fontSize: '32px',
             mr: '6px',
-            border: '1px solid rgba(255,255,255,0.38)',
+            border: '1px solid #cfd0d0',
             borderRadius: '0px',
             ...iconProps.sx,
           }}

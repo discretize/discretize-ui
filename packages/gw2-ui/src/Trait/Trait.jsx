@@ -10,11 +10,12 @@ import { Trait as TraitComponent } from 'gw2-ui-components';
 import withRedux from '../withRedux';
 
 const WrappedTrait = withRedux(
-  (state, props) => ({
-    data: getTraitData(state, props),
-    error: getTraitError(state, props),
-    loading: isTraitLoading(state, props),
-  }),
+  (state, props) =>
+    props.id && {
+      data: getTraitData(state, props),
+      error: getTraitError(state, props),
+      loading: isTraitLoading(state, props),
+    },
   {
     fetch: fetchTrait,
     cancel: cancelTrait,

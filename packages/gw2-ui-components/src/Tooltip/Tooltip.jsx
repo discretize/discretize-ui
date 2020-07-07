@@ -21,6 +21,7 @@ const Tooltip = forwardRef(
 
     return (
       <Tippy
+        // visible
         ignoreAttributes
         followCursor
         plugins={[lazyPlugin, followCursor]}
@@ -45,7 +46,13 @@ const Tooltip = forwardRef(
 
           return (
             <div
-              sx={{ maxWidth: 300, zIndex: 'tooltip' }}
+              sx={{
+                maxHeight: 'calc(100vh - 20px)',
+                display: 'flex',
+                flexDirection: 'column',
+                flexWrap: 'wrap',
+                zIndex: 'tooltip',
+              }}
               tabIndex="-1"
               {...wrapperProps}
               {...attrs}

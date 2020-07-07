@@ -10,11 +10,12 @@ import { Specialization as SpecializationComponent } from 'gw2-ui-components';
 import withRedux from '../withRedux';
 
 const WrappedSpecialization = withRedux(
-  (state, props) => ({
-    data: getSpecializationData(state, props),
-    error: getSpecializationError(state, props),
-    loading: isSpecializationLoading(state, props),
-  }),
+  (state, props) =>
+    props.id && {
+      data: getSpecializationData(state, props),
+      error: getSpecializationError(state, props),
+      loading: isSpecializationLoading(state, props),
+    },
   {
     fetch: fetchSpecialization,
     cancel: cancelSpecialization,

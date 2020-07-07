@@ -12,58 +12,19 @@ import Tooltip from '../Tooltip';
 import Icon from '../Icon';
 import TraitLineConnector, { Paths } from '../TraitLineConnector';
 
-const ROOT_HEIGHT = 135;
-
-const HEXAGON_WIDTH = 95;
-
-const HEXAGON_HEIGHT = 110;
-
-const TRAITS_MARGIN_LEFT = 168;
-
-const HEXAGON_POINTS = [
-  [
-    TRAITS_MARGIN_LEFT - HEXAGON_WIDTH * 0.5,
-    (ROOT_HEIGHT - HEXAGON_HEIGHT) * 0.5,
-  ],
-  [
-    TRAITS_MARGIN_LEFT,
-    (ROOT_HEIGHT - HEXAGON_HEIGHT) * 0.5 + HEXAGON_HEIGHT * 0.25,
-  ],
-  [
-    TRAITS_MARGIN_LEFT,
-    (ROOT_HEIGHT - HEXAGON_HEIGHT) * 0.5 + HEXAGON_HEIGHT * 0.75,
-  ],
-  [
-    TRAITS_MARGIN_LEFT - HEXAGON_WIDTH * 0.5,
-    ROOT_HEIGHT - (ROOT_HEIGHT - HEXAGON_HEIGHT) * 0.5,
-  ],
-  [
-    TRAITS_MARGIN_LEFT - HEXAGON_WIDTH,
-    (ROOT_HEIGHT - HEXAGON_HEIGHT) * 0.5 + HEXAGON_HEIGHT * 0.75,
-  ],
-  [
-    TRAITS_MARGIN_LEFT - HEXAGON_WIDTH,
-    (ROOT_HEIGHT - HEXAGON_HEIGHT) * 0.5 + HEXAGON_HEIGHT * 0.25,
-  ],
-];
-
-const INVERSE_HEXAGON_CLIP_PATH = `polygon(${[
-  [0, 0],
-  [0, '100%'],
-  [HEXAGON_POINTS[4][0], '100%'],
-  HEXAGON_POINTS[5],
-  ...HEXAGON_POINTS,
-  [0, '100%'],
-  ['100%', '100%'],
-  ['100%', 0],
-]
-  .map(
-    ([x, y]) =>
-      `${typeof x === 'number' && x !== 0 ? `${x}px` : x} ${
-        typeof y === 'number' && x !== 0 ? `${y}px` : y
-      }`,
-  )
-  .join(', ')})`;
+// eslint-disable-next-line react/prop-types
+const renderTraitLineConnector = ({ css, ...rest } = {}) => (
+  <TraitLineConnector
+    {...rest}
+    css={{
+      alignSelf: 'stretch',
+      flexGrow: 1,
+      minWidth: 13,
+      maxWidth: 36,
+      ...css,
+    }}
+  />
+);
 
 const TraitLine = forwardRef(
   (
@@ -94,10 +55,6 @@ const TraitLine = forwardRef(
     },
     ref,
   ) => {
-    // either defaultSelected & selectable
-    // or selected & onSelect & selectable
-    // or defaultSelect/selected & not selectable
-
     const [uncontrolledSelected, setUncontrolledSelected] = useState(
       defaultSelected,
     );
@@ -126,17 +83,16 @@ const TraitLine = forwardRef(
           {...{
             key: minorTraitId,
             id: minorTraitId,
+            sx: {
+              fontSize: '40px',
+              display: 'inline-flex',
+              color: 'rgba(255,255,255,0.5)',
+            },
             iconProps: {
               hexagon: true,
-              sx: { fontSize: '39px' },
-            },
-            iconWithTextProps: {
-              sx: {
-                fontSize: '32px',
-                color: '#fff',
-              },
             },
             disableText: true,
+            inline: false,
           }}
         />
       ),
@@ -154,16 +110,13 @@ const TraitLine = forwardRef(
           {...{
             key: majorTraitId,
             id: majorTraitId,
-            iconProps: {
-              sx: { fontSize: '39px' },
-            },
-            iconWithTextProps: {
-              sx: {
-                fontSize: '32px',
-                color: '#fff',
-              },
+            sx: {
+              fontSize: '37px',
+              display: 'inline-flex',
+              color: 'rgba(255,255,255,0.5)',
             },
             disableText: true,
+            inline: false,
             inactive: !isSelected,
             ...((controlled || selectable) && {
               onClick: event => {
@@ -239,193 +192,157 @@ const TraitLine = forwardRef(
 
     return (
       <div
-        sx={{
+        css={{
           position: 'relative',
           width: '100%',
           maxWidth: 650,
-          height: `${ROOT_HEIGHT}px`,
-          border: '1px solid rgb(9, 10, 14)',
+          height: 135,
+          border: '1px solid #0b0e14',
           backgroundColor: 'rgb(0,0,0)',
           display: 'flex',
           boxSizing: 'border-box',
-          '&:hover > span:first-of-type:after': {
-            opacity: 0,
+          overflow: 'hidden',
+          '::before': {
+            content: '""',
+            position: 'absolute',
+            minWidth: '100%',
+            width: 460,
+            height: '100%',
+            backgroundPosition: 'left bottom',
+            backgroundRepeat: 'no-repeat',
+            backgroundImage: `url('${background}')`,
+            right: 0,
           },
         }}
         {...rest}
         ref={ref}
       >
-        <span
-          sx={{
+        <div
+          css={{
             position: 'absolute',
-            width: '100%',
+            minWidth: '100%',
             height: '100%',
-            backgroundPosition: 'left bottom',
-            backgroundRepeat: 'no-repeat',
-            backgroundImage: `url('${background}')`,
-            right: '0px',
-            bottom: '0px',
-            '&:after': {
-              content: "''",
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              right: '0px',
-              bottom: '0px',
-              backgroundColor: 'black',
-              opacity: 0.5,
-              transition: 'opacity 200ms',
-              willChange: 'opacity',
-              clipPath: INVERSE_HEXAGON_CLIP_PATH,
-            },
-          }}
-        />
-
-        <div
-          sx={{
-            width: `${TRAITS_MARGIN_LEFT}px`,
-            filter: 'drop-shadow(2px 2px 5px black)',
+            right: 0,
             display: 'flex',
-            alignItems: 'center',
           }}
         >
-          <Tooltip content={name}>
-            <span
-              sx={{
-                position: 'absolute',
-                marginLeft: `${TRAITS_MARGIN_LEFT - HEXAGON_WIDTH}px`,
-                height: `${HEXAGON_HEIGHT * 0.5}px`,
-                width: `${HEXAGON_WIDTH}px`,
-                boxSizing: 'border-box',
-                '&, &:before, &:after': {
-                  borderWidth: '0px',
-                  borderStyle: 'solid',
-                  borderColor: 'rgba(255,255,255,0.5)',
-                },
-                '&': {
-                  borderLeftWidth: '2px',
-                  borderRightWidth: '2px',
-                },
-                '&:before, &:after': {
-                  content: "''",
+          <div
+            css={{
+              width: 168,
+              filter: 'drop-shadow(2px 2px 5px black)',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <Tooltip content={name}>
+              <span
+                css={{
                   position: 'absolute',
-                  width: '64px',
-                  height: '64px',
-                  transform: 'scaleY(0.5774) rotate(-45deg)',
-                  left: '12px',
-                },
-                '&:before': {
-                  top: '-33.5px',
-                  borderTopWidth: '3px',
-                  borderRightWidth: '3px',
-                },
-                '&:after': {
-                  bottom: '-33.5px',
-                  borderBottomWidth: '3px',
-                  borderLeftWidth: '3px',
-                },
-              }}
-            />
-          </Tooltip>
-        </div>
+                  marginLeft: 73,
+                  height: 55,
+                  width: 95,
+                  boxSizing: 'border-box',
+                  '&, ::before, ::after': {
+                    borderWidth: 0,
+                    borderStyle: 'solid',
+                    borderColor: 'rgba(255,255,255,0.5)',
+                  },
+                  '&': {
+                    borderLeftWidth: 2,
+                    borderRightWidth: 2,
+                  },
+                  '::before, ::after': {
+                    content: "''",
+                    position: 'absolute',
+                    width: 64,
+                    height: 64,
+                    transform: 'scaleY(0.5774) rotate(-45deg)',
+                    left: 12,
+                  },
+                  '::before': {
+                    top: -33.5,
+                    borderTopWidth: 3,
+                    borderRightWidth: 3,
+                  },
+                  '::after': {
+                    bottom: -33.5,
+                    borderBottomWidth: 3,
+                    borderLeftWidth: 3,
+                  },
+                }}
+              />
+            </Tooltip>
+          </div>
 
-        <div
-          sx={{
-            display: 'flex',
-            maxWidth: '468px',
-            padding: '4px 0',
-            flexGrow: 1,
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            position: 'relative',
-          }}
-        >
-          {majorTraits
-            .reduce(
-              (array, item, index) =>
-                index % 3 === 0
-                  ? [...array, [item]]
-                  : [...array.slice(0, -1), [...array.slice(-1)[0], item]],
-              [],
-            )
-            .map((majorTraitsChunk, tier) => {
-              const selectedMajorTraitIndex = majorTraitsChunk.findIndex(
-                majorTraitId => selected.includes(majorTraitId),
-              );
-              const path = Object.values(Paths)[selectedMajorTraitIndex];
+          <div
+            sx={{
+              py: '6px',
+            }}
+            css={{
+              display: 'flex',
+              maxWidth: 430,
+              paddingRight: '6px',
+              flexGrow: 1,
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              position: 'relative',
+            }}
+          >
+            {majorTraits
+              .reduce(
+                (array, item, index) =>
+                  index % 3 === 0
+                    ? [...array, [item]]
+                    : [...array.slice(0, -1), [...array.slice(-1)[0], item]],
+                [],
+              )
+              .map((majorTraitsChunk, tier) => {
+                const selectedMajorTraitIndex = majorTraitsChunk.findIndex(
+                  majorTraitId => selected.includes(majorTraitId),
+                );
+                const path = Object.values(Paths)[selectedMajorTraitIndex];
 
-              return (
-                // eslint-disable-next-line react/no-array-index-key
-                <Fragment key={tier}>
-                  {tier === 0 && (
-                    <TraitLineConnector
-                      sx={{
-                        height: '100%',
-                        '&:not(:first-of-type)': {
-                          flexGrow: 1,
-                        },
-                        '&:first-of-type': {
-                          width: '34px',
-                        },
-                      }}
-                    />
-                  )}
+                return (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <Fragment key={tier}>
+                    {tier === 0 &&
+                      renderTraitLineConnector({ css: { maxWidth: 33 } })}
 
-                  {renderMinorTrait({ id: minorTraits[tier], tier })}
+                    {renderMinorTrait({ id: minorTraits[tier], tier })}
 
-                  <TraitLineConnector
-                    sx={{
-                      height: '100%',
-                      '&:not(:first-of-type)': {
-                        flexGrow: 1,
-                      },
-                      '&:first-of-type': {
-                        width: '34px',
-                      },
-                    }}
-                    {...(path !== undefined
-                      ? { end: path }
-                      : { disabled: true })}
-                  />
-
-                  <div
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      height: '100%',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}
-                  >
-                    {majorTraitsChunk.map((majorTraitId, majorTraitIndex) =>
-                      renderMajorTrait({
-                        tier,
-                        id: majorTraitId,
-                        selected: majorTraitIndex === selectedMajorTraitIndex,
-                        index: majorTraitIndex,
-                      }),
+                    {renderTraitLineConnector(
+                      path !== undefined ? { end: path } : { disabled: true },
                     )}
-                  </div>
 
-                  {tier !== 2 && (
-                    <TraitLineConnector
+                    <div
                       sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
                         height: '100%',
-                        '&:not(:first-of-type)': {
-                          flexGrow: 1,
-                        },
-                        '&:first-of-type': {
-                          width: '34px',
-                        },
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
                       }}
-                      {...(path !== undefined
-                        ? { start: path }
-                        : { disabled: true })}
-                    />
-                  )}
-                </Fragment>
-              );
-            })}
+                    >
+                      {majorTraitsChunk.map((majorTraitId, majorTraitIndex) =>
+                        renderMajorTrait({
+                          tier,
+                          id: majorTraitId,
+                          selected: majorTraitIndex === selectedMajorTraitIndex,
+                          index: majorTraitIndex,
+                        }),
+                      )}
+                    </div>
+
+                    {tier !== 2 &&
+                      renderTraitLineConnector(
+                        path !== undefined
+                          ? { start: path }
+                          : { disabled: true },
+                      )}
+                  </Fragment>
+                );
+              })}
+          </div>
         </div>
 
         {onReset ||
@@ -499,7 +416,7 @@ export default withLoading({
     sx: {
       width: '100%',
       maxWidth: '650px',
-      height: `${ROOT_HEIGHT}px`,
+      height: '135px',
       backgroundColor: 'rgba(0,0,0,0.2)',
       border: '1px solid rgb(9, 10, 14)',
       display: 'flex',
@@ -512,7 +429,7 @@ export default withLoading({
     sx: {
       width: '100%',
       maxWidth: '650px',
-      height: `${ROOT_HEIGHT}px`,
+      height: '135px',
       backgroundColor: 'rgba(0,0,0,0.2)',
       border: '1px solid rgb(9, 10, 14)',
       display: 'flex',
