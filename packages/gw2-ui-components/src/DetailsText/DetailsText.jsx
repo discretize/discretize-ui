@@ -68,7 +68,7 @@ const DetailsText = forwardRef(
     },
     ref,
   ) => (
-    <Component {...rest} sx={{ whiteSpace: 'pre-wrap', ...rest.sx }} ref={ref}>
+    <Component {...rest} ref={ref}>
       {lines
         .filter(line => !!line)
         .map((line, index) => (

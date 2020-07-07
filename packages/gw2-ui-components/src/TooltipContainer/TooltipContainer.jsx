@@ -24,6 +24,7 @@ const TooltipContainer = forwardRef(({ children, ...rest }, ref) => (
       borderRadius: '0px',
       textShadow: '1px 1px 1px #010101',
       maxWidth: 300,
+      whiteSpace: 'pre-wrap',
     }}
     {...rest}
     ref={ref}

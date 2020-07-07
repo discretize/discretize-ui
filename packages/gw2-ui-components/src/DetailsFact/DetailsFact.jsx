@@ -2,7 +2,7 @@ import React, { Fragment, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Icon from '../Icon';
-import { apiAttributes } from '../helpers';
+import { apiAttributes, formatDuration } from '../helpers';
 
 const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
   const { type, icon, prefix } = data;
@@ -30,7 +30,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         key = (
           <Fragment>
             {status}
-            <span sx={{ ml: '2px' }}>{`(${duration}s)`}</span>
+            <span sx={{ ml: '2px' }}>{`(${formatDuration(duration)})`}</span>
           </Fragment>
         );
       } else {

@@ -6,6 +6,7 @@ import DetailsHeader from '../DetailsHeader';
 import DetailsText from '../DetailsText';
 import { apiAttributes } from '../helpers';
 import Coin from '../Coin';
+import DetailsFact from '../DetailsFact';
 
 const ItemDetails = forwardRef(
   (
@@ -22,7 +23,11 @@ const ItemDetails = forwardRef(
         flags = [],
         type,
         details: {
+          icon: detailsIcon,
+          name: detailsName,
           type: detailsType,
+          duration_ms: detailsDuration,
+          description: detailsDescription,
           min_power: minPower,
           max_power: maxPower,
           defense,
@@ -66,7 +71,10 @@ const ItemDetails = forwardRef(
         }}
         titleProps={{
           sx: {
-            color: `gw2.rarity.${rarity.toLowerCase()}`,
+            color:
+              rarity === 'Basic'
+                ? '#fff'
+                : `gw2.rarity.${rarity.toLowerCase()}`,
             ...(upgrade && {
               color: 'gw2.details.bonus',
               fontSize: '14px',
@@ -96,6 +104,8 @@ const ItemDetails = forwardRef(
       </DetailsHeader>
 
       <div>
+        {type === 'Consumable' && <div>Double-click to consume.</div>}
+
         {minPower !== undefined && maxPower !== undefined && (
           <div>
             {`Weapon Strength: `}
@@ -161,25 +171,47 @@ const ItemDetails = forwardRef(
 
       {upgrades && <div>{upgrades}</div>}
 
+      {detailsIcon && detailsName && detailsDuration && detailsDescription && (
+        <DetailsFact
+          data={{
+            type: 'Buff',
+            icon: detailsIcon,
+            duration: detailsDuration / 1000,
+            description: detailsDescription,
+            status: detailsName,
+          }}
+          sx={{ mb: '12px' }}
+        />
+      )}
+
       {!upgrade && (
         <DetailsText
           lines={[
             ...(type === 'UpgradeComponent'
               ? [description, level > 0 && `Required Level: ${level}`]
               : [
-                  rarity,
-                  weightClass,
-                  detailsType,
-                  level > 0 && `Required Level: ${level}`,
-                  ((attributes && attributes.length) || buffDescription) &&
-                    description,
-                  flags.includes('Unique') && 'Unique',
-                  flags.includes('AccountBound') && 'Account Bound',
-                  flags.includes('Soulbound') && 'Soulbound',
+                  ...(type === 'Consumable'
+                    ? [type, level > 0 && `Required Level: ${level}`]
+                    : [
+                        rarity,
+                        weightClass,
+                        detailsType,
+                        level > 0 && `Required Level: ${level}`,
+                        ((attributes && attributes.length) ||
+                          buffDescription) &&
+                          description,
+                        flags.includes('Unique') && 'Unique',
+                        flags.includes('AccountBound') && 'Account Bound',
+                        flags.includes('Soulbound') && 'Soulbound',
+                      ]),
                 ]),
             ...(infusionUpgradeFlags.includes('Infusion')
               ? []
-              : [vendorValue > 0 && <Coin value={vendorValue} />]),
+              : [
+                  vendorValue > 0 && !flags.includes('NoSell') && (
+                    <Coin value={vendorValue} />
+                  ),
+                ]),
           ]}
         />
       )}

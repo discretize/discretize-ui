@@ -7,3 +7,4 @@ export { default as getEffectType } from './getEffectType';
 export {
   default as useColorModeHighlightSuffix,
 } from './useColorModeHighlightSuffix';
+export { default as formatDuration } from './formatDuration';

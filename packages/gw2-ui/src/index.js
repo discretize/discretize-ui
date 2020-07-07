@@ -25,6 +25,7 @@ export {
   getDisplayName,
   specializations,
   getEffectType,
+  formatDuration,
   useColorModeHighlightSuffix,
   Effect,
   Aura,

@@ -5,6 +5,7 @@ export {
   getDisplayName,
   getEffectType,
   useColorModeHighlightSuffix,
+  formatDuration,
 } from './helpers';
 
 export { default as Coin } from './Coin';
