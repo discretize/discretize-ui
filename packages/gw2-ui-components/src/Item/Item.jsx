@@ -89,21 +89,24 @@ const Item = forwardRef(
           component={component}
           icon={icon}
           text={
-            disableLink ? (
-              name
-            ) : (
-              <WikiLink
-                to={name}
-                {...wikiLinkProps}
-                sx={{
-                  color: 'inherit',
-                  '&:hover': {
-                    color: `gw2.rarity.${rarity.toLowerCase()}${highlightSuffix}`,
-                  },
-                  ...wikiLinkProps?.sx,
-                }}
-              />
-            )
+            <>
+              {count > 1 && `${count} `}
+              {disableLink ? (
+                name
+              ) : (
+                <WikiLink
+                  to={name}
+                  {...wikiLinkProps}
+                  sx={{
+                    color: 'inherit',
+                    '&:hover': {
+                      color: `gw2.rarity.${rarity.toLowerCase()}${highlightSuffix}`,
+                    },
+                    ...wikiLinkProps?.sx,
+                  }}
+                />
+              )}
+            </>
           }
           disableIcon={disableIcon}
           disableText={disableText}
