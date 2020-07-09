@@ -104,6 +104,9 @@ export default {
       },
 
       effect: {
+        augmentation: '#fecd76',
+        augmentationDark: '#feac20',
+        augmentationLight: '#fff7eb',
         aura: '#329ead',
         auraDark: '#1c575f',
         auraLight: '#71cad6',

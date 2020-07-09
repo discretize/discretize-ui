@@ -8,3 +8,4 @@ export {
   default as useColorModeHighlightSuffix,
 } from './useColorModeHighlightSuffix';
 export { default as formatDuration } from './formatDuration';
+export { default as getBaseAttributes } from './getBaseAttributes';

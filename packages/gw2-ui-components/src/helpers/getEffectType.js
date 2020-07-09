@@ -1,3 +1,4 @@
+import augmentations from '../data/augmentations.json';
 import auras from '../data/auras.json';
 import boons from '../data/boons.json';
 import commonEffects from '../data/commonEffects.json';
@@ -7,6 +8,7 @@ import controlEffects from '../data/controlEffects.json';
 import mistlockInstabilities from '../data/mistlockInstabilities.json';
 
 const effects = {
+  Augmentation: Object.keys(augmentations),
   Aura: Object.keys(auras),
   Boon: Object.keys(boons),
   Common: Object.keys(commonEffects),

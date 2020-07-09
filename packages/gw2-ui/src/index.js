@@ -3,6 +3,7 @@ export { default as Skill } from './Skill';
 export { default as Specialization } from './Specialization';
 export { default as Trait } from './Trait';
 export { default as TraitLine } from './TraitLine';
+export { default as Attributes } from './Attributes';
 export {
   ThemeProvider,
   baseTheme,
@@ -28,6 +29,8 @@ export {
   formatDuration,
   useColorModeHighlightSuffix,
   Effect,
+  Augmentation,
+  augmentations,
   Aura,
   auras,
   Boon,

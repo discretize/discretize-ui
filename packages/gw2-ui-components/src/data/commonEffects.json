@@ -4,6 +4,7 @@
   "Exposed": "Takes additional damage.",
   "Invulnerability": "Immune to conditions and damage.",
   "Revealed": "You cannot stealth",
+  "Rigorous Certainty": "+5 Agony Resistance\nThe next time you would be downed, instead heal 25% of your total health.",
   "Stealth": "Currently invisible. Ends if you deal damage.",
   "Stun Break": null,
   "Superspeed": "Movement speed is greatly increased."

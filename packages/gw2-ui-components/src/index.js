@@ -6,6 +6,7 @@ export {
   getEffectType,
   useColorModeHighlightSuffix,
   formatDuration,
+  getBaseAttributes,
 } from './helpers';
 
 export { default as Coin } from './Coin';
@@ -35,6 +36,7 @@ export {
 export { default as withLoading } from './withLoading';
 
 export { default as Effect } from './Effect';
+export { default as Augmentation } from './Augmentation';
 export { default as Aura } from './Aura';
 export { default as Boon } from './Boon';
 export { default as CommonEffect } from './CommonEffect';
@@ -46,6 +48,7 @@ export { default as Profession } from './Profession';
 export { default as Attribute } from './Attribute';
 export { default as Race } from './Race';
 
+export { default as augmentations } from './data/augmentations.json';
 export { default as auras } from './data/auras.json';
 export { default as boons } from './data/boons.json';
 export { default as commonEffects } from './data/commonEffects.json';
