@@ -9,6 +9,7 @@ import { Item } from 'gw2-ui';
 | Property        | Type                                                           | Default | Required | Description                                                                                        |
 | --------------- | -------------------------------------------------------------- | ------- | -------- | -------------------------------------------------------------------------------------------------- |
 | `id`            | `number`                                                       | -       | -        | The item id                                                                                        |
+| `count`         | `number`                                                       | -       | -        | The item count                                                                                     |
 | `type`          | `string`                                                       | -       | -        | The custom item type                                                                               |
 | `stat`          | `string`                                                       | -       | -        | The custom item stat                                                                               |
 | `weight`        | `string`                                                       | -       | -        | The custom item armor weight                                                                       |

@@ -12,6 +12,7 @@ const Item = forwardRef(
   (
     {
       id,
+      count,
       data,
       component,
       upgrades,
@@ -41,6 +42,7 @@ const Item = forwardRef(
         content={
           <ItemDetails
             data={data}
+            count={count}
             upgrades={
               upgrades &&
               upgrades.map(
@@ -50,7 +52,7 @@ const Item = forwardRef(
                     data: upgradeData,
                     loading: upgradeLoading,
                     error: upgradeError,
-                    count,
+                    count: upgradeBonusCount,
                   },
                   index,
                 ) => (
@@ -68,7 +70,7 @@ const Item = forwardRef(
                       loading={upgradeLoading}
                       error={upgradeError}
                       data={upgradeData}
-                      upgradeBonusCount={count}
+                      upgradeBonusCount={upgradeBonusCount}
                     />
                   </div>
                 ),
@@ -112,6 +114,15 @@ const Item = forwardRef(
               detailsType && {
                 name: `${type}.${detailsType}`,
               }),
+            applyCount: count,
+            applyCountProps: {
+              sx: {
+                top: '0.1em',
+                right: '0.1em',
+                bottom: 'initial',
+                color: `#fee49a`,
+              },
+            },
             ...rest.iconProps,
           }}
           sx={{
@@ -127,6 +138,7 @@ const Item = forwardRef(
 
 Item.propTypes = {
   id: PropTypes.number,
+  count: PropTypes.number,
   component: PropTypes.elementType,
   data: PropTypes.object.isRequired,
   disableIcon: PropTypes.bool,
@@ -152,6 +164,7 @@ Item.propTypes = {
 
 Item.defaultProps = {
   id: null,
+  count: null,
   component: undefined,
   disableIcon: false,
   disableText: false,

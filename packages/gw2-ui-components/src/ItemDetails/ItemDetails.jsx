@@ -11,6 +11,7 @@ import DetailsFact from '../DetailsFact';
 const ItemDetails = forwardRef(
   (
     {
+      count,
       upgrade,
       upgrades,
       upgradeBonusCount,
@@ -95,6 +96,7 @@ const ItemDetails = forwardRef(
               }),
             })}
       >
+        {count > 1 && `${count} `}
         {name}
         {upgrade && upgradeBonusCount >= 0 && bonuses && bonuses.length
           ? ` (${Math.min(upgradeBonusCount, bonuses.length)}/${
@@ -220,6 +222,7 @@ const ItemDetails = forwardRef(
 );
 
 ItemDetails.propTypes = {
+  count: PropTypes.number,
   upgrade: PropTypes.bool,
   upgrades: PropTypes.node,
   upgradeBonusCount: PropTypes.number,
@@ -227,6 +230,7 @@ ItemDetails.propTypes = {
 };
 
 ItemDetails.defaultProps = {
+  count: null,
   upgrade: false,
   upgrades: null,
   upgradeBonusCount: null,

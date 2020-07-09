@@ -19,6 +19,7 @@ const Icon = forwardRef(
       hexagon,
       applyCount,
       inactive,
+      applyCountProps,
       ...rest
     },
     ref,
@@ -85,6 +86,7 @@ const Icon = forwardRef(
       >
         {applyCount > 1 && (
           <span
+            {...applyCountProps}
             sx={{
               position: 'absolute',
               bottom: '0.2em',
@@ -95,6 +97,7 @@ const Icon = forwardRef(
               lineHeight: 1,
               color: '#fff',
               textShadow: '1px 1px 1px black',
+              ...applyCountProps?.sx,
             }}
           >
             {applyCount}
@@ -118,6 +121,7 @@ Icon.propTypes = {
   inactive: PropTypes.bool,
   loading: PropTypes.bool,
   spinnerProps: PropTypes.object,
+  applyCountProps: PropTypes.object,
 };
 
 Icon.defaultProps = {
@@ -133,6 +137,7 @@ Icon.defaultProps = {
   inactive: false,
   loading: false,
   spinnerProps: {},
+  applyCountProps: {},
 };
 
 Icon.displayName = 'Icon';
