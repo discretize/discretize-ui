@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.7.3...gw2-ui-docs@0.8.0) (2020-07-09)
+
+
+### Features
+
+* add attributes and augmentation components ([8cbb5f6](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/commit/8cbb5f6f50a825760382863dca58b9a639f64d36))
+* add item count prop ([a416949](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/commit/a416949a408d2f8530ffa6ce5991acb7b76a4c48))
+
+
+
+
+
 ## [0.7.3](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs/compare/gw2-ui-docs@0.7.2...gw2-ui-docs@0.7.3) (2020-07-07)
 
 **Note:** Version bump only for package gw2-ui-docs

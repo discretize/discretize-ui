@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.7.3...gw2-ui-components@0.8.0) (2020-07-09)
+
+
+### Bug Fixes
+
+* add item count to text ([4951f95](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/4951f954c10d6bf7c9e54b585e4d69d74957dba4))
+
+
+### Features
+
+* add attributes and augmentation components ([8cbb5f6](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/8cbb5f6f50a825760382863dca58b9a639f64d36))
+* add item count prop ([a416949](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/a416949a408d2f8530ffa6ce5991acb7b76a4c48))
+* add rigorous certainty effect ([a672c06](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/a672c063177421d6c4128c1dda05f22961c6fa84))
+
+
+
+
+
 ## [0.7.3](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.7.2...gw2-ui-components@0.7.3) (2020-07-07)
 
 
