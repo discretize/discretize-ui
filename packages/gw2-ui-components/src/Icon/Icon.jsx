@@ -94,7 +94,7 @@ const Icon = forwardRef(
               fontFamily: 'gw2.body',
               lineHeight: 1,
               color: '#fff',
-              textShadow: 'none',
+              textShadow: '1px 1px 1px black',
             }}
           >
             {applyCount}
