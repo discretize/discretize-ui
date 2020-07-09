@@ -15,6 +15,7 @@ export default {
     <Effect
       type={text('type', 'Boon')}
       name={text('name', 'Might')}
+      displayName={text('displayName', null)}
       description={text(
         'description',
         'Increases outgoing damage; stacks intensity.',
