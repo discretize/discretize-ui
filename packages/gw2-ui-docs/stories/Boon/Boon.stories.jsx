@@ -14,6 +14,7 @@ export default {
   story: () => (
     <Boon
       name={select('name', Object.keys(boons), Object.keys(boons)[0])}
+      count={number('count', null)}
       disableIcon={boolean('disableIcon', false)}
       disableText={boolean('disableText', false)}
       disableLink={boolean('disableLink', false)}

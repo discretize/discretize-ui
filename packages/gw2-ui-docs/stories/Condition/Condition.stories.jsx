@@ -14,6 +14,7 @@ export default {
   story: () => (
     <Condition
       name={select('name', Object.keys(conditions), Object.keys(conditions)[0])}
+      count={number('count', null)}
       disableIcon={boolean('disableIcon', false)}
       disableText={boolean('disableText', false)}
       disableLink={boolean('disableLink', false)}
