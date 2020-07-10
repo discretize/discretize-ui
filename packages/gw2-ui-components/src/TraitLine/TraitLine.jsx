@@ -114,6 +114,9 @@ const TraitLine = forwardRef(
               fontSize: '37px',
               display: 'inline-flex',
               color: 'rgba(255,255,255,0.5)',
+              ...((controlled || selectable) && {
+                cursor: 'pointer',
+              }),
             },
             disableText: true,
             inline: false,
@@ -358,6 +361,7 @@ const TraitLine = forwardRef(
                     boxSizing: 'border-box',
                     top: 2,
                     left: 2,
+                    cursor: 'pointer',
                   }}
                 >
                   <Icon
