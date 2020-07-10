@@ -114,79 +114,87 @@ const TraitLine = forwardRef(
               fontSize: '37px',
               display: 'inline-flex',
               color: 'rgba(255,255,255,0.5)',
-              ...((controlled || selectable) && {
-                cursor: 'pointer',
-              }),
+              ...(!isSelected &&
+                (controlled || selectable) && {
+                  cursor: 'pointer',
+                }),
             },
             disableText: true,
             inline: false,
             inactive: !isSelected,
-            ...((controlled || selectable) && {
-              onClick: event => {
-                event.preventDefault();
+            ...(!isSelected &&
+              (controlled || selectable) && {
+                onClick: event => {
+                  event.preventDefault();
 
-                if (controlled) {
-                  onSelect({ tier, id: majorTraitId, index: majorTraitIndex });
-                } else {
-                  // find selected major trait from same tier to replace
-                  const selectedIndexToReplace = selected.findIndex(
-                    selectedMajorTraitId =>
-                      majorTraits
-                        .slice(tier * 3, tier * 3 + 3)
-                        .includes(selectedMajorTraitId),
-                  );
-
-                  if (selectedIndexToReplace !== -1) {
-                    setUncontrolledSelected(
-                      selected.map((value, index) =>
-                        index === selectedIndexToReplace ? majorTraitId : value,
-                      ),
-                    );
+                  if (controlled) {
+                    onSelect({
+                      tier,
+                      id: majorTraitId,
+                      index: majorTraitIndex,
+                    });
                   } else {
-                    // find selected major trait from one tier below
-                    const selectedIndexBelowToAppend =
-                      tier > 0 &&
-                      selected.findIndex(selectedMajorTraitId =>
+                    // find selected major trait from same tier to replace
+                    const selectedIndexToReplace = selected.findIndex(
+                      selectedMajorTraitId =>
                         majorTraits
-                          .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
+                          .slice(tier * 3, tier * 3 + 3)
                           .includes(selectedMajorTraitId),
-                      );
+                    );
 
-                    if (selectedIndexBelowToAppend !== -1) {
-                      const newSelected = [...selected];
-                      newSelected.splice(
-                        selectedIndexBelowToAppend + 1,
-                        0,
-                        majorTraitId,
+                    if (selectedIndexToReplace !== -1) {
+                      setUncontrolledSelected(
+                        selected.map((value, index) =>
+                          index === selectedIndexToReplace
+                            ? majorTraitId
+                            : value,
+                        ),
                       );
-                      setUncontrolledSelected(newSelected);
                     } else {
-                      // find selected major trait from one tier above
-                      const selectedIndexAboveToPrepend =
-                        tier < 2 &&
+                      // find selected major trait from one tier below
+                      const selectedIndexBelowToAppend =
+                        tier > 0 &&
                         selected.findIndex(selectedMajorTraitId =>
                           majorTraits
-                            .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
+                            .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
                             .includes(selectedMajorTraitId),
                         );
 
-                      if (selectedIndexAboveToPrepend !== -1) {
+                      if (selectedIndexBelowToAppend !== -1) {
                         const newSelected = [...selected];
                         newSelected.splice(
-                          selectedIndexBelowToAppend,
+                          selectedIndexBelowToAppend + 1,
                           0,
                           majorTraitId,
                         );
                         setUncontrolledSelected(newSelected);
                       } else {
-                        // well, just append it
-                        setUncontrolledSelected([...selected, majorTraitId]);
+                        // find selected major trait from one tier above
+                        const selectedIndexAboveToPrepend =
+                          tier < 2 &&
+                          selected.findIndex(selectedMajorTraitId =>
+                            majorTraits
+                              .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
+                              .includes(selectedMajorTraitId),
+                          );
+
+                        if (selectedIndexAboveToPrepend !== -1) {
+                          const newSelected = [...selected];
+                          newSelected.splice(
+                            selectedIndexBelowToAppend,
+                            0,
+                            majorTraitId,
+                          );
+                          setUncontrolledSelected(newSelected);
+                        } else {
+                          // well, just append it
+                          setUncontrolledSelected([...selected, majorTraitId]);
+                        }
                       }
                     }
                   }
-                }
-              },
-            }),
+                },
+              }),
           }}
         />
       ),
