@@ -9,6 +9,7 @@
   "Immobile": "Unable to move; stacks duration.",
   "Poisoned": "Deals damage every second; decreases healing effectiveness 33%; damage stacks intensity.",
   "Slow": "Skills and actions are slower.",
+  "Taunt": "Involuntarily attack foes.",
   "Torment": "Deals damage every second. Deals additional damage to moving foes. Stacks intensity.",
   "Vulnerability": "Damage and condition damage taken are increased; stacks intensity.",
   "Weakness": "Endurance regeneration decreased by 50%. 50% of hits are Glancing Blows (50% damage). Stacks duration."
