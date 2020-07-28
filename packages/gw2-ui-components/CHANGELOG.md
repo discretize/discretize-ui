@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.8.0...gw2-ui-components@0.9.0) (2020-07-28)
+
+
+### Bug Fixes
+
+* only enable traitline select for unselected traits ([aef2bbd](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/aef2bbd3e2605d4114c8f52474fde4020c1c0a72))
+
+
+### Features
+
+* add Taunt condition ([6cf6b9b](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/6cf6b9b45522f38ecb0fefacec6b97f2cb684b68))
+
+
+
+
+
 # [0.8.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.7.3...gw2-ui-components@0.8.0) (2020-07-09)
 
 
