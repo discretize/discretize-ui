@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.3.1...gw2-ui-redux@0.4.0) (2020-09-27)
+
+
+### Features
+
+* use redux-requests for network operations ([f3ac2ed](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/commit/f3ac2ed488a5a7791384c2e6f5ef355ed2e0c019))
+
+
+
+
+
 ## [0.3.1](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.3.0...gw2-ui-redux@0.3.1) (2020-07-07)
 
 **Note:** Version bump only for package gw2-ui-redux

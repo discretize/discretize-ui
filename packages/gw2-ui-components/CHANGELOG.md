@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.9.0...gw2-ui-components@0.10.0) (2020-09-27)
+
+
+### Features
+
+* use redux-requests for network operations ([f3ac2ed](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/f3ac2ed488a5a7791384c2e6f5ef355ed2e0c019))
+
+
+
+
+
 # [0.9.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.8.0...gw2-ui-components@0.9.0) (2020-07-28)
 
 
