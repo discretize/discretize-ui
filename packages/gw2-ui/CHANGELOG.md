@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.8.0...gw2-ui@0.8.1) (2020-09-27)
+
+
+### Bug Fixes
+
+* use babel plugin-transform-runtime for main package ([ed283ce](https://github.com/ManuelHaag/gw2-ui/commit/ed283ce02c533d8fb02b0d8e2d27ea0c74ae7bf8))
+
+
+
+
+
 # [0.8.0](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.7.1...gw2-ui@0.8.0) (2020-09-27)
 
 

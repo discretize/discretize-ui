@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.10.0...gw2-ui-components@0.10.1) (2020-09-27)
+
+
+### Bug Fixes
+
+* use babel plugin-transform-runtime for components package ([6781a41](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/6781a41016eb2a29bf9c73f86d2a403b30a97079))
+
+
+
+
+
 # [0.10.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.9.0...gw2-ui-components@0.10.0) (2020-09-27)
 
 
