@@ -1,27 +1,27 @@
+import { createDriver } from '@redux-requests/axios';
+import { handleRequests as reduxRequestsHandleRequests } from '@redux-requests/core';
+import axios from 'axios';
+import { BASE_URL } from './constants';
+
 export {
   fetchItem,
-  cancelItem,
   fetchSkill,
-  cancelSkill,
   fetchSpecialization,
-  cancelSpecialization,
   fetchTrait,
-  cancelTrait,
 } from './actions';
-export { ROOT_REDUCER_KEY } from './constants';
-export { default as reducer } from './reducers';
-export { default as saga } from './sagas';
 export {
-  getItemData,
-  getItemError,
-  isItemLoading,
-  getSkillData,
-  getSkillError,
-  isSkillLoading,
-  getSpecializationData,
-  getSpecializationError,
-  isSpecializationLoading,
-  getTraitData,
-  getTraitError,
-  isTraitLoading,
-} from './selectors';
+  FETCH_ITEM,
+  FETCH_SKILL,
+  FETCH_SPECIALIZATION,
+  FETCH_TRAIT,
+} from './constants';
+
+export const handleRequests = () =>
+  reduxRequestsHandleRequests({
+    driver: createDriver(
+      axios.create({
+        baseURL: BASE_URL,
+      }),
+    ),
+    cache: true,
+  });

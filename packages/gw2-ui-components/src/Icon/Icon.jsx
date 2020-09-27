@@ -1,8 +1,7 @@
-import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-
-import withAsyncProp from '../helpers/withAsyncProp';
+import React, { forwardRef } from 'react';
 import { Spinner } from '..';
+import withAsyncProp from '../helpers/withAsyncProp';
 
 const Icon = forwardRef(
   (
@@ -146,7 +145,7 @@ export default withAsyncProp(
   ({ src, name }) =>
     !src &&
     name && {
-      src: import(/* webpackMode: "eager" */ `../assets/images/icons/${name
+      src: import(/* webpackMode: "eager" */ `../assets/images/icons/${`${name}`
         .replace('.', '/')
         .replace(/[^\w\\/]/g, '')}.png`).then(({ default: module }) => module),
     },

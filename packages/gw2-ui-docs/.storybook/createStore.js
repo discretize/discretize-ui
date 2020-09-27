@@ -1,28 +1,23 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import { handleRequests } from 'gw2-ui';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 
-import { reducer, saga, ROOT_REDUCER_KEY } from 'gw2-ui';
+const { requestsReducer, requestsMiddleware } = handleRequests();
 
-const middlewares = [];
+const reducers = combineReducers({
+  requests: requestsReducer,
+});
 
-const sagaMiddleware = createSagaMiddleware();
-middlewares.push(sagaMiddleware);
-
-const compose =
-  // eslint-disable-next-line no-underscore-dangle
-  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-
-const enhancer = applyMiddleware(...middlewares);
+const composeEnhancers =
+  (typeof window !== 'undefined' &&
+    // eslint-disable-next-line no-underscore-dangle
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 
 export default () => {
   const store = createStore(
-    combineReducers({
-      [ROOT_REDUCER_KEY]: reducer,
-    }),
-    (compose && compose(enhancer)) || enhancer,
+    reducers,
+    composeEnhancers(applyMiddleware(...requestsMiddleware)),
   );
-
-  sagaMiddleware.run(saga);
 
   return store;
 };

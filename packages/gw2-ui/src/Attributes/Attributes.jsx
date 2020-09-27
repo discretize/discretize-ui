@@ -1,116 +1,73 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { abortRequests, getQuery } from '@redux-requests/core';
 import { getBaseAttributes } from 'gw2-ui-components';
-import {
-  fetchItem as fetchItemAction,
-  cancelItem as cancelItemAction,
-  getItemData,
-  getItemError,
-  isItemLoading,
-} from 'gw2-ui-redux';
+import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-class Attributes extends Component {
-  componentDidMount = () => this.fetch();
+const Attributes = ({ level, children, items }) => {
+  if (typeof children !== 'function') {
+    return null;
+  }
 
-  componentDidUpdate = ({ items: previousItems }) => {
-    const { items } = this.props;
+  const base = getBaseAttributes(level);
 
-    if (JSON.stringify(previousItems) !== JSON.stringify(items)) {
-      this.fetch();
-    }
-  };
-
-  componentWillUnmount = () => {
-    const { items, cancelItem } = this.props;
-
-    if (items) {
-      items.forEach(({ id, loading }) => {
-        if (loading && id) {
-          cancelItem(id);
-        }
-      });
-    }
-  };
-
-  fetch = () => {
-    const { items, fetchItem } = this.props;
-
-    if (items) {
-      items.forEach(({ id, data, error, loading }) => {
-        if (!loading && !error && !data && id) {
-          fetchItem(id);
-        }
-      });
-    }
-  };
-
-  render = () => {
-    const { level, children, items } = this.props;
-
-    if (typeof children !== 'function') {
-      return null;
-    }
-
-    const base = getBaseAttributes(level);
-
-    /* eslint-disable no-param-reassign */
-    const {
-      attributes: itemAttributes,
-      errors: itemErrors,
-      item: itemLoading,
-    } = (items || []).reduce(
-      (result, { data, loading: singleItemLoading, error: itemError }) => {
-        if (itemError) {
-          if (!result.errors) {
-            result.errors = [];
-          }
-
-          result.errors.push(itemError);
-
-          return result;
-        }
-        if (singleItemLoading || !data) {
-          if (!result.loading) {
-            result.loading = singleItemLoading;
-          }
-
-          return result;
+  /* eslint-disable no-param-reassign */
+  const {
+    attributes: itemAttributes,
+    errors: itemErrors,
+    item: itemLoading,
+  } = (items || []).reduce(
+    (result, { data, loading: singleItemLoading, error: itemError }) => {
+      if (itemError) {
+        if (!result.errors) {
+          result.errors = [];
         }
 
-        if (data) {
-          const {
-            details: {
-              infix_upgrade: { attributes: singleItemAttributes } = {},
-            } = {},
-          } = data;
+        result.errors.push(itemError);
 
-          if (singleItemAttributes) {
-            singleItemAttributes.forEach(({ attribute, modifier }) => {
-              result.attributes[attribute] =
-                (result.attributes[attribute] || 0) + modifier;
-            });
-          }
+        return result;
+      }
+      if (singleItemLoading || !data) {
+        if (!result.loading) {
+          result.loading = singleItemLoading;
         }
 
         return result;
-      },
-      { attributes: {}, errors: null, loading: false },
-    );
-    /* eslint-enable no-param-reassign */
+      }
 
-    const props = {
-      base,
-      items: {
-        attributes: itemAttributes,
-        errors: itemErrors,
-        loading: itemLoading,
-      },
-    };
+      if (data) {
+        const {
+          details: {
+            infix_upgrade: { attributes: singleItemAttributes } = {},
+          } = {},
+        } = data;
 
-    return children(props);
+        if (singleItemAttributes) {
+          singleItemAttributes.forEach(({ attribute, modifier }) => {
+            result.attributes[attribute] =
+              (result.attributes[attribute] || 0) + modifier;
+          });
+        }
+      }
+
+      return result;
+    },
+    { attributes: {}, errors: null, loading: false },
+  );
+  /* eslint-enable no-param-reassign */
+
+  const props = {
+    base,
+    items: {
+      attributes: itemAttributes,
+      errors: itemErrors,
+      loading: itemLoading,
+    },
   };
-}
+
+  return children(props);
+};
 
 Attributes.propTypes = {
   level: PropTypes.number,
@@ -138,18 +95,45 @@ Attributes.defaultProps = {
 
 Attributes.displayName = 'Attributes';
 
-export default connect(
-  (state, props) =>
-    props.items && {
-      items: props.items.map(id => ({
+const getItemsSelector = items => state =>
+  Array.isArray(items)
+    ? items.map(id => ({
         id,
-        data: getItemData(state, { id }),
-        error: getItemError(state, { id }),
-        loading: isItemLoading(state, { id }),
-      })),
+        ...getQuery(state, {
+          type: FETCH_ITEM,
+          requestKey: id,
+        }),
+      }))
+    : [];
+
+export default ({ items: propsItems, ...rest }) => {
+  const dispatch = useDispatch();
+
+  const items = useSelector(getItemsSelector(propsItems));
+
+  useEffect(
+    () => {
+      if (items) {
+        items.forEach(({ id }) => {
+          dispatch(fetchItem(id));
+        });
+      }
+
+      return () => {
+        if (items) {
+          items.forEach(({ id }) => {
+            dispatch(
+              abortRequests([
+                FETCH_ITEM,
+                { requestType: FETCH_ITEM, requestKey: `${id}` },
+              ]),
+            );
+          });
+        }
+      };
     },
-  {
-    fetchItem: fetchItemAction,
-    cancelItem: cancelItemAction,
-  },
-)(Attributes);
+    [propsItems],
+  );
+
+  return <Attributes items={items} {...rest} />;
+};

@@ -1,10 +1,9 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
-
+import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
+import Error from '../Error';
 import { getDisplayName } from '../helpers';
 import IconWithText from '../IconWithText';
-import Error from '../Error';
 
 export default ({
   component: defaultComponent = undefined,
@@ -57,9 +56,11 @@ export default ({
       if (error || !data) {
         return (
           <Error
-            code={error?.code}
+            code={error?.code || error?.response?.status}
             name={`Invalid ${displayName}${id ? ` ${id}` : ''}`}
-            message={`${error?.name ? `${error.name}: ` : ''}${error?.message ||
+            message={`${error?.name ? `${error.name}: ` : ''}${error?.response
+              ?.data?.text ||
+              error?.message ||
               (!data ? 'No data' : 'Unknown error')}${
               id ? ` for ${displayName} ${id}` : ''
             }`}

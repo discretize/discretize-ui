@@ -1,25 +1,45 @@
-import {
-  fetchTrait,
-  cancelTrait,
-  getTraitData,
-  getTraitError,
-  isTraitLoading,
-} from 'gw2-ui-redux';
+import { abortRequests } from '@redux-requests/core';
+import { Query } from '@redux-requests/react';
 import { Trait as TraitComponent } from 'gw2-ui-components';
+import { fetchTrait, FETCH_TRAIT } from 'gw2-ui-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import withRedux from '../withRedux';
+const Trait = ({ id, ...rest }) => {
+  const requestKey = `${id}`;
 
-const WrappedTrait = withRedux(
-  (state, props) =>
-    props.id && {
-      data: getTraitData(state, props),
-      error: getTraitError(state, props),
-      loading: isTraitLoading(state, props),
+  const dispatch = useDispatch();
+
+  useEffect(
+    () => {
+      dispatch(fetchTrait(id));
+
+      return () => {
+        dispatch(
+          abortRequests([
+            FETCH_TRAIT,
+            { requestType: FETCH_TRAIT, requestKey },
+          ]),
+        );
+      };
     },
-  {
-    fetch: fetchTrait,
-    cancel: cancelTrait,
-  },
-)(TraitComponent);
+    [requestKey],
+  );
 
-export default WrappedTrait;
+  return (
+    <Query
+      type={FETCH_TRAIT}
+      requestKey={requestKey}
+      loadingComponent={TraitComponent}
+      loadingComponentProps={{ id, ...rest, loading: true }}
+      errorComponent={TraitComponent}
+      errorComponentProps={{ id, ...rest }}
+    >
+      {({ data, error, loading }) => (
+        <TraitComponent data={data} error={error} loading={loading} {...rest} />
+      )}
+    </Query>
+  );
+};
+
+export default Trait;
