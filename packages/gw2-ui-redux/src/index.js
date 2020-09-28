@@ -16,7 +16,7 @@ export {
   FETCH_TRAIT,
 } from './constants';
 
-export const handleRequests = () =>
+export const handleRequests = ({ ssr = false } = {}) =>
   reduxRequestsHandleRequests({
     driver: createDriver(
       axios.create({
@@ -24,4 +24,5 @@ export const handleRequests = () =>
       }),
     ),
     cache: true,
+    ssr: ssr ? 'server' : 'client',
   });

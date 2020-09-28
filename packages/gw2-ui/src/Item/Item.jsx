@@ -23,18 +23,17 @@ const getUpgradesSelector = upgrades => state =>
 
 const ReduxItem = ({ id, upgrades: propsUpgrades, ...rest }) => {
   const requestKey = `${id}`;
+  const upgrades = useSelector(getUpgradesSelector(propsUpgrades));
 
   const dispatch = useDispatch();
 
-  const upgrades = useSelector(getUpgradesSelector(propsUpgrades));
-
   useEffect(
     () => {
-      dispatch(fetchItem(id));
+      dispatch(fetchItem(requestKey));
 
       if (upgrades) {
         upgrades.forEach(({ id: upgradeId }) => {
-          dispatch(fetchItem(upgradeId));
+          dispatch(fetchItem(`${upgradeId}`));
         });
       }
 
@@ -55,7 +54,7 @@ const ReduxItem = ({ id, upgrades: propsUpgrades, ...rest }) => {
         }
       };
     },
-    [id, propsUpgrades],
+    [dispatch, requestKey, propsUpgrades],
   );
 
   return (

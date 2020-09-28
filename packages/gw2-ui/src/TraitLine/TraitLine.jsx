@@ -13,7 +13,7 @@ const TraitLine = ({ id, ...rest }) => {
 
   useEffect(
     () => {
-      dispatch(fetchSpecialization(id));
+      dispatch(fetchSpecialization(requestKey));
 
       return () => {
         dispatch(
@@ -24,7 +24,7 @@ const TraitLine = ({ id, ...rest }) => {
         );
       };
     },
-    [requestKey],
+    [dispatch, requestKey],
   );
 
   return (

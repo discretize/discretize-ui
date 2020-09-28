@@ -107,15 +107,15 @@ const getItemsSelector = items => state =>
     : [];
 
 export default ({ items: propsItems, ...rest }) => {
-  const dispatch = useDispatch();
-
   const items = useSelector(getItemsSelector(propsItems));
+
+  const dispatch = useDispatch();
 
   useEffect(
     () => {
       if (items) {
         items.forEach(({ id }) => {
-          dispatch(fetchItem(id));
+          dispatch(fetchItem(`${id}`));
         });
       }
 
@@ -132,7 +132,7 @@ export default ({ items: propsItems, ...rest }) => {
         }
       };
     },
-    [propsItems],
+    [dispatch, propsItems],
   );
 
   return <Attributes items={items} {...rest} />;

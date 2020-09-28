@@ -13,6 +13,7 @@ export const fetchItem = id => ({
   meta: {
     cache: true,
     requestKey: `${id}`,
+    takeLatest: false,
   },
 });
 
@@ -24,6 +25,7 @@ export const fetchSkill = id => ({
   meta: {
     cache: true,
     requestKey: `${id}`,
+    takeLatest: false,
   },
 });
 
@@ -35,6 +37,7 @@ export const fetchSpecialization = id => ({
   meta: {
     cache: true,
     requestKey: `${id}`,
+    takeLatest: false,
   },
 });
 
@@ -46,5 +49,6 @@ export const fetchTrait = id => ({
   meta: {
     cache: true,
     requestKey: `${id}`,
+    takeLatest: false,
   },
 });

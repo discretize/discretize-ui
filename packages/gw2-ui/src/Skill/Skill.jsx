@@ -12,7 +12,7 @@ const Skill = ({ id, ...rest }) => {
 
   useEffect(
     () => {
-      dispatch(fetchSkill(id));
+      dispatch(fetchSkill(requestKey));
 
       return () => {
         dispatch(
@@ -23,7 +23,7 @@ const Skill = ({ id, ...rest }) => {
         );
       };
     },
-    [requestKey],
+    [dispatch, requestKey],
   );
 
   return (

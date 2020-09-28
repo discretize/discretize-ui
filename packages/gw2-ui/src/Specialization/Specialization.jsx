@@ -12,7 +12,7 @@ const Specialization = ({ id, ...rest }) => {
 
   useEffect(
     () => {
-      dispatch(fetchSpecialization(id));
+      dispatch(fetchSpecialization(requestKey));
 
       return () => {
         dispatch(
@@ -23,7 +23,7 @@ const Specialization = ({ id, ...rest }) => {
         );
       };
     },
-    [requestKey],
+    [dispatch, requestKey],
   );
 
   return (

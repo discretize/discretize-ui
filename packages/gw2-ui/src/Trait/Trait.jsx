@@ -12,7 +12,7 @@ const Trait = ({ id, ...rest }) => {
 
   useEffect(
     () => {
-      dispatch(fetchTrait(id));
+      dispatch(fetchTrait(requestKey));
 
       return () => {
         dispatch(
@@ -23,7 +23,7 @@ const Trait = ({ id, ...rest }) => {
         );
       };
     },
-    [requestKey],
+    [dispatch, requestKey],
   );
 
   return (
