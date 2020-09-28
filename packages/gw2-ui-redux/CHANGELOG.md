@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.4.0...gw2-ui-redux@0.4.1) (2020-09-28)
+
+
+### Bug Fixes
+
+* set takeLatest false ([f2438fd](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/commit/f2438fd3f6812973899413fca6ddf31a7876584e))
+
+
+
+
+
 # [0.4.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-redux/compare/gw2-ui-redux@0.3.1...gw2-ui-redux@0.4.0) (2020-09-27)
 
 

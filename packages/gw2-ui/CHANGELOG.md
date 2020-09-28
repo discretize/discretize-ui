@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.8.1...gw2-ui@0.8.2) (2020-09-28)
+
+
+### Bug Fixes
+
+* set takeLatest false ([f2438fd](https://github.com/ManuelHaag/gw2-ui/commit/f2438fd3f6812973899413fca6ddf31a7876584e))
+
+
+
+
+
 ## [0.8.1](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.8.0...gw2-ui@0.8.1) (2020-09-27)
 
 
