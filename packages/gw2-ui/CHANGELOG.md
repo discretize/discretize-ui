@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.8.3...gw2-ui@0.9.0) (2020-09-29)
+
+
+### Features
+
+* add possibility to overwrite item attributes with calculated data ([557f1c7](https://github.com/ManuelHaag/gw2-ui/commit/557f1c7c466e327a08fd84e582da8f641a2acdd7))
+
+
+
+
+
 ## [0.8.3](https://github.com/ManuelHaag/gw2-ui/compare/gw2-ui@0.8.2...gw2-ui@0.8.3) (2020-09-29)
 
 **Note:** Version bump only for package gw2-ui
