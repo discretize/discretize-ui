@@ -13,9 +13,5 @@
   "repository": "https://github.com/ManuelHaag/gw2-ui/tree/master/packages/typeface-menomonia",
   "license": "MIT",
   "author": "Manuel Haag <manuel@haag.online>",
-  "sideEffects": false,
-  "main": "index.css",
-  "files": [
-    "files"
-  ]
+  "main": "index.css"
 }
