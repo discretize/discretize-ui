@@ -1,5 +1,5 @@
 import { abortRequests, getQuery } from '@redux-requests/core';
-import { Query } from '@redux-requests/react';
+import { useQuery } from '@redux-requests/react';
 import { createItem } from 'gw2-ui-builder';
 import { Item as ItemComponent } from 'gw2-ui-components';
 import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux';
@@ -21,15 +21,25 @@ const getUpgradesSelector = upgrades => state =>
       })
     : [];
 
-const ReduxItem = ({ id, upgrades: propsUpgrades, ...rest }) => {
-  const requestKey = `${id}`;
+const Item = ({
+  id,
+  upgrades: propsUpgrades,
+  type,
+  stat,
+  weight,
+  createItemParams,
+  ...rest
+}) => {
+  const requestKey = id && `${id}`;
   const upgrades = useSelector(getUpgradesSelector(propsUpgrades));
 
   const dispatch = useDispatch();
 
   useEffect(
     () => {
-      dispatch(fetchItem(requestKey));
+      if (requestKey) {
+        dispatch(fetchItem(requestKey));
+      }
 
       if (upgrades) {
         upgrades.forEach(({ id: upgradeId }) => {
@@ -38,9 +48,14 @@ const ReduxItem = ({ id, upgrades: propsUpgrades, ...rest }) => {
       }
 
       return () => {
-        dispatch(
-          abortRequests([FETCH_ITEM, { requestType: FETCH_ITEM, requestKey }]),
-        );
+        if (requestKey) {
+          dispatch(
+            abortRequests([
+              FETCH_ITEM,
+              { requestType: FETCH_ITEM, requestKey },
+            ]),
+          );
+        }
 
         if (upgrades) {
           upgrades.forEach(({ id: upgradeId }) => {
@@ -57,41 +72,54 @@ const ReduxItem = ({ id, upgrades: propsUpgrades, ...rest }) => {
     [dispatch, requestKey, propsUpgrades],
   );
 
-  return (
-    <Query
-      type={FETCH_ITEM}
-      requestKey={requestKey}
-      loadingComponent={ItemComponent}
-      loadingComponentProps={{ id, ...rest, loading: true }}
-      errorComponent={ItemComponent}
-      errorComponentProps={{ id, ...rest }}
-    >
-      {({ data, error, loading }) => (
-        <ItemComponent
-          data={data}
-          error={error}
-          loading={loading}
-          upgrades={upgrades}
-          {...rest}
-        />
-      )}
-    </Query>
-  );
-};
+  const { data, error, loading } = useQuery({ type: FETCH_ITEM, requestKey });
 
-const Item = ({ id, type, stat, weight, ...rest }) => {
-  if (id) {
-    return <ReduxItem id={id} {...rest} />;
-  }
-
+  let mergedData;
   try {
-    // TODO add upgrades
-    return (
-      <ItemComponent {...rest} data={createItem({ type, stat, weight })} />
-    );
-  } catch (error) {
-    return <ItemComponent {...rest} error={error} />;
+    const createdData =
+      (type || stat || weight || createItemParams) &&
+      createItem({
+        ...(data?.name && { nameSuffix: data?.name }),
+        type: type || data?.details?.type,
+        stat,
+        // eslint-disable-next-line camelcase
+        weight: weight || data?.details?.weight_class,
+        ...createItemParams,
+      });
+
+    mergedData =
+      data || createdData
+        ? {
+            ...data,
+            ...createdData,
+            details: {
+              ...data?.details,
+              ...createdData?.details,
+              infix_upgrade: {
+                /* eslint-disable camelcase */
+                ...data?.details?.infix_upgrade,
+                ...createdData?.details?.infix_upgrade,
+                attributes:
+                  createdData?.details?.infix_upgrade?.attributes ||
+                  data?.details?.infix_upgrade?.attributes,
+                /* eslint-enable camelcase */
+              },
+            },
+          }
+        : null;
+  } catch (e) {
+    return <ItemComponent {...rest} error={e} />;
   }
+
+  return (
+    <ItemComponent
+      data={mergedData}
+      error={error}
+      loading={loading}
+      upgrades={upgrades}
+      {...rest}
+    />
+  );
 };
 
 export default Item;

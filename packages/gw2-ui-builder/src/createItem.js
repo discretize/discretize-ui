@@ -1,11 +1,11 @@
-import ITEM_RARITIES from './itemRarities';
-import ITEM_MODIFIERS from './itemModifiers';
-import ITEM_TYPE_NAMES from './itemTypeNames';
-import ITEM_STATS from './itemStats';
-import ITEM_CATEGORIES from './itemCategories';
-import ITEM_STAT_NAMES from './itemStatNames';
-import ITEM_CATEGORY_NAMES from './itemCategoryNames';
 import ITEM_ARMOR_WEIGHTS from './itemArmorWeights';
+import ITEM_CATEGORIES from './itemCategories';
+import ITEM_CATEGORY_NAMES from './itemCategoryNames';
+import ITEM_MODIFIERS from './itemModifiers';
+import ITEM_RARITIES from './itemRarities';
+import ITEM_STAT_NAMES from './itemStatNames';
+import ITEM_STATS from './itemStats';
+import ITEM_TYPE_NAMES from './itemTypeNames';
 
 const getModifiers = ({ rarity, category, type, stat, weight }) => {
   const {
@@ -53,6 +53,8 @@ export default ({
   type,
   stat,
   weight,
+  nameSuffix = type,
+  name = `${stat}'s ${nameSuffix}`,
 }) => {
   if (!rarity) {
     throw new Error(`Missing item rarity`);
@@ -93,7 +95,6 @@ export default ({
     }
   }
 
-  const name = `${stat}'s ${type}`;
   const { defense, minPower, maxPower, attributes } = getModifiers({
     rarity,
     category,
@@ -103,7 +104,7 @@ export default ({
   });
 
   return {
-    name,
+    ...(name && { name }),
     type: category,
     level,
     rarity,
