@@ -15,5 +15,6 @@
   "Sugar Rush": "Increases movement speed and attack speed by 15%. Elite and lower enemies' movement speed and attack speed increases by 35%.",
   "Toxic Trail": "Enemies leave a path of poison behind them. Blocking a toxic trail attack will absorb it and cleanse the condition.",
   "Vengeance": "When enemies die, they enhance nearby foes with multiple boons; does not apply to elite foes. Strip any enemy boon to inflict them with weakness.",
-  "We Bleed Fire": "Enemies create flaming missiles when damaged. Incoming condition damage is reduced by 20%."
+  "We Bleed Fire": "Enemies create flaming missiles when damaged. Incoming condition damage is reduced by 20%.",
+  "Toxic Sickness": "Team members will periodically be affected with vomit-inducing sickness."
 }
