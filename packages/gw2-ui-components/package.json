@@ -5,8 +5,8 @@
   "keywords": [
     "guild wars 2",
     "gw2",
-    "jss",
-    "react"
+    "react",
+    "theme-ui"
   ],
   "homepage": "https://github.com/ManuelHaag/gw2-ui",
   "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
@@ -20,27 +20,40 @@
   ],
   "main": "lib/index.js",
   "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "unpkg": "dist/gw2-ui-components.min.js",
   "scripts": {
-    "prebuild": "npm-run-all clean",
-    "build": "npm-run-all -p build:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --copy-files --source-maps --no-comments",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --copy-files --source-maps --no-comments",
-    "clean": "rimraf lib es",
-    "rebuild": "cross-env NODE_ENV=production npm-run-all build",
-    "prewatch": "rimraf es",
-    "watch": "npm-run-all \"build:es --watch\""
+    "clean": "del-cli lib es dist",
+    "prebuild": "run-s clean",
+    "build": "run-p build:* build:*:*",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib --copy-files",
+    "build:es": "cross-env babel --root-mode upward src -d es --copy-files",
+    "build:umd": "webpack --mode development -o dist/gw2-ui-components.js",
+    "build:umd:min": "webpack --mode production -o dist/gw2-ui-components.min.js",
+    "prepublish": "run-s build",
+    "prewatch": "del-cli es",
+    "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "@emotion/core": "10.0.28",
-    "@theme-ui/core": "0.3.1",
-    "@tippyjs/react": "4.0.5",
-    "classnames": "2.2.6",
-    "lodash.camelcase": "4.3.0",
+    "@theme-ui/core": "^0.3.1",
+    "@tippyjs/react": "^4.2.0",
+    "classnames": "^2.2.6",
+    "lodash.camelcase": "^4.3.0",
+    "react-resize-aware": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "7.10.4",
+    "@babel/plugin-transform-react-jsx": "7.10.4",
+    "@babel/preset-react": "7.10.4",
+    "@babel/runtime-corejs3": "7.4.0",
+    "@emotion/babel-plugin-jsx-pragmatic": "0.1.5",
     "prop-types": "15.7.2",
-    "react-resize-aware": "3.0.1",
-    "tippy.js": "6.2.3"
+    "react": "16.8.0",
+    "react-dom": "16.8.0"
   },
   "peerDependencies": {
+    "@babel/runtime-corejs3": "^7.4.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },

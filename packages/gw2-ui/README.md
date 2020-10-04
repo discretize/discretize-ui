@@ -28,3 +28,7 @@ _Note:_ The `rebuild` script can't be called `prepare` currently ([see the relat
 ## Contributing
 
 Make sure your commit messages follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0-beta.4/#summary).
+
+# Notes
+
+- https://github.com/webpack/webpack/issues/10227

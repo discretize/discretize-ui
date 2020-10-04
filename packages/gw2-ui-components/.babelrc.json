@@ -1,7 +1,7 @@
 {
-  "extends": "../../babel.config.js",
+  "presets": ["@babel/preset-react"],
   "plugins": [
-    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties",
     [
       "@emotion/babel-plugin-jsx-pragmatic",
       {
@@ -15,14 +15,6 @@
       {
         "pragma": "jsx",
         "pragmaFrag": "React.Fragment"
-      }
-    ],
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": false,
-        "helpers": true,
-        "regenerator": true
       }
     ]
   ]

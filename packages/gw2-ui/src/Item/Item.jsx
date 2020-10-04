@@ -5,6 +5,7 @@ import { Item as ItemComponent } from 'gw2-ui-components';
 import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import useIsInViewport from 'use-is-in-viewport';
 
 const getUpgradesSelector = upgrades => state =>
   Array.isArray(upgrades)
@@ -30,13 +31,23 @@ const Item = ({
   createItemParams,
   ...rest
 }) => {
+  const [isInViewport, targetRef] = useIsInViewport();
+
   const requestKey = id && `${id}`;
   const upgrades = useSelector(getUpgradesSelector(propsUpgrades));
 
   const dispatch = useDispatch();
 
+  const { data, error, loading } = useQuery({ type: FETCH_ITEM, requestKey });
+
   useEffect(
     () => {
+      if (data || loading || !isInViewport) {
+        return () => {};
+      }
+
+      console.log(`${id} query`, { data, error, loading, isInViewport });
+
       if (requestKey) {
         dispatch(fetchItem(requestKey));
       }
@@ -69,10 +80,8 @@ const Item = ({
         }
       };
     },
-    [dispatch, requestKey, propsUpgrades],
+    [dispatch, requestKey, propsUpgrades, isInViewport],
   );
-
-  const { data, error, loading } = useQuery({ type: FETCH_ITEM, requestKey });
 
   let mergedData;
   try {
@@ -87,38 +96,45 @@ const Item = ({
         ...createItemParams,
       });
 
-    mergedData =
-      data || createdData
-        ? {
-            ...data,
-            ...createdData,
-            details: {
-              ...data?.details,
-              ...createdData?.details,
-              infix_upgrade: {
-                /* eslint-disable camelcase */
-                ...data?.details?.infix_upgrade,
-                ...createdData?.details?.infix_upgrade,
-                attributes:
-                  createdData?.details?.infix_upgrade?.attributes ||
-                  data?.details?.infix_upgrade?.attributes,
-                /* eslint-enable camelcase */
-              },
-            },
-          }
-        : null;
+    if (!data && !createdData) {
+      mergedData = null;
+    } else if (!data) {
+      mergedData = createdData;
+    } else if (!createdData) {
+      mergedData = data;
+    } else {
+      mergedData = {
+        ...data,
+        ...createdData,
+        details: {
+          ...data.details,
+          ...createdData.details,
+          infix_upgrade: {
+            /* eslint-disable camelcase */
+            ...data.details?.infix_upgrade,
+            ...createdData.details?.infix_upgrade,
+            attributes:
+              createdData.details?.infix_upgrade?.attributes ||
+              data.details?.infix_upgrade?.attributes,
+            /* eslint-enable camelcase */
+          },
+        },
+      };
+    }
   } catch (e) {
     return <ItemComponent {...rest} error={e} />;
   }
 
   return (
-    <ItemComponent
-      data={mergedData}
-      error={error}
-      loading={loading}
-      upgrades={upgrades}
-      {...rest}
-    />
+    <div ref={targetRef}>
+      <ItemComponent
+        data={mergedData}
+        error={error}
+        loading={loading}
+        upgrades={upgrades}
+        {...rest}
+      />
+    </div>
   );
 };
 

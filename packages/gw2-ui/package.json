@@ -5,10 +5,8 @@
   "keywords": [
     "guild wars 2",
     "gw2",
-    "jss",
     "react",
-    "redux",
-    "redux-saga"
+    "redux"
   ],
   "homepage": "https://github.com/ManuelHaag/gw2-ui",
   "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
@@ -20,30 +18,52 @@
     "es",
     "src"
   ],
+  "directories": {
+    "lib": "lib"
+  },
   "main": "lib/index.js",
   "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "unpkg": "dist/gw2-ui.min.js",
   "scripts": {
-    "prebuild": "npm-run-all clean",
-    "build": "npm-run-all -p build:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --source-maps --no-comments",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --source-maps --no-comments",
-    "clean": "rimraf lib es",
-    "rebuild": "cross-env NODE_ENV=production npm-run-all build",
-    "prewatch": "rimraf es",
-    "watch": "npm-run-all \"build:es --watch\""
+    "clean": "del-cli lib es dist",
+    "prebuild": "run-s clean",
+    "build": "run-p build:* build:*:*",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib",
+    "build:es": "cross-env babel --root-mode upward src -d es",
+    "build:umd": "webpack --mode development -o dist/gw2-ui.js",
+    "build:umd:min": "webpack --mode production -o dist/gw2-ui.min.js",
+    "prepublish": "run-s build",
+    "prewatch": "del-cli es",
+    "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
     "@redux-requests/react": "^1.0.0",
     "gw2-ui-builder": "^0.2.0",
     "gw2-ui-components": "^0.10.1",
-    "gw2-ui-redux": "^0.4.2"
+    "gw2-ui-redux": "^0.4.2",
+    "use-is-in-viewport": "^1.0.9"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "7.10.4",
+    "@babel/runtime-corejs3": "7.4.0",
+    "@redux-requests/core": "1.0.0",
+    "prop-types": "15.7.2",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
+    "react-redux": "7.1.0",
+    "redux": "4.0.0",
+    "reselect": "4.0.0"
   },
   "peerDependencies": {
+    "@babel/runtime-corejs3": "^7.4.0",
     "@redux-requests/core": "^1.0.0",
-    "prop-types": "15.7.2",
+    "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-redux": "^7.1.0"
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.0",
+    "reselect": "^4.0.0"
   },
   "sideEffects": false
 }

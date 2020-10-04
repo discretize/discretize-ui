@@ -4,9 +4,7 @@
   "description": "Builder functions to create custom Guild Wars 2 items",
   "keywords": [
     "guild wars 2",
-    "gw2",
-    "jss",
-    "react"
+    "gw2"
   ],
   "homepage": "https://github.com/ManuelHaag/gw2-ui",
   "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
@@ -16,19 +14,30 @@
   "files": [
     "lib",
     "es",
+    "dist",
     "src"
   ],
   "main": "lib/index.js",
   "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "unpkg": "dist/gw2-ui-builder.min.js",
   "scripts": {
-    "prebuild": "npm-run-all clean",
-    "build": "npm-run-all -p build:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --source-maps --no-comments",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --source-maps --no-comments",
-    "clean": "rimraf lib es",
-    "rebuild": "cross-env NODE_ENV=production npm-run-all build",
-    "prewatch": "rimraf es",
-    "watch": "npm-run-all \"build:es --watch\""
+    "clean": "del-cli lib es dist",
+    "prebuild": "run-s clean",
+    "build": "run-p build:* build:*:*",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib",
+    "build:es": "cross-env babel --root-mode upward src -d es",
+    "build:umd": "webpack --mode development -o dist/gw2-ui-builder.js",
+    "build:umd:min": "webpack --mode production -o dist/gw2-ui-builder.min.js",
+    "prepublish": "run-s build",
+    "prewatch": "del-cli es",
+    "watch": "run-s \"build:es --watch\""
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "devDependencies": {
+    "@babel/runtime-corejs3": "7.4.0"
+  },
+  "peerDependencies": {
+    "@babel/runtime-corejs3": "^7.4.0"
+  }
 }

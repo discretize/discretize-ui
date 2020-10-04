@@ -1,39 +1,33 @@
 {
-  "root": true,
   "parser": "babel-eslint",
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "root": true,
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "prettier/standard"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parserOptions": {
-    "ecmaVersion": 2016,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true,
-    "jest": true
-  },
   "rules": {
-    "react/prop-types": [
-      "warn",
-      {
-        "ignore": ["classes", "className", "children"]
-      }
-    ],
-    "react/jsx-indent": "off",
-    "react/jsx-closing-bracket-location": "off",
-    "react/jsx-wrap-multilines": "off",
-    "react/jsx-indent-props": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/jsx-first-prop-new-line": "off",
-    "react/forbid-prop-types": "off",
-    "import/no-extraneous-dependencies": [
-      "warn",
-      {
-        "devDependencies": true
-      }
-    ]
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-pascal-case": "off",
+    "react/jsx-indent": "off"
   }
 }

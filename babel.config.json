@@ -1,0 +1,25 @@
+{
+  "babelrcRoots": [".", "packages/*"],
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "loose": true
+      }
+    ]
+  ],
+  "plugins": [["@babel/plugin-transform-runtime", { "corejs": 3 }]],
+  "env": {
+    "commonjs": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "loose": true
+          }
+        ]
+      ]
+    }
+  }
+}
