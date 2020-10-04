@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { MistlockInstability } from 'gw2-ui'; // or gw2-ui-components
+import { MistlockInstability } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

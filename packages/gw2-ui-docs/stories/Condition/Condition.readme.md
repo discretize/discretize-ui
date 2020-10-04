@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Condition } from 'gw2-ui'; // or gw2-ui-components
+import { Condition } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

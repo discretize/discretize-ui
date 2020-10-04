@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Aura } from 'gw2-ui'; // or gw2-ui-components
+import { Aura } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

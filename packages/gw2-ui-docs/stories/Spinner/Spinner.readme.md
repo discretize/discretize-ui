@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Spinner } from 'gw2-ui'; // or gw2-ui-components
+import { Spinner } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

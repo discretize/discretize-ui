@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Augmentation } from 'gw2-ui'; // or gw2-ui-components
+import { Augmentation } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

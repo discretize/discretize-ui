@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Trait } from 'gw2-ui';
+import { Trait } from 'gw2-ui'
 ```
 
 ## Properties

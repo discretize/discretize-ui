@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Tooltip } from 'gw2-ui'; // or gw2-ui-components
+import { Tooltip } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

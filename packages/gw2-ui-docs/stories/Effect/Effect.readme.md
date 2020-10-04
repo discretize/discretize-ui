@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Effect } from 'gw2-ui'; // or gw2-ui-components
+import { Effect } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

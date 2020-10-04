@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { WikiLink } from 'gw2-ui'; // or gw2-ui-components
+import { WikiLink } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

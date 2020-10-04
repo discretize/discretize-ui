@@ -9,7 +9,7 @@ Use it like so:
 
 ```jsx
 <Attributes level={80} items={[37131]}>
-  {attributes => {
+  {(attributes) => {
     const {
       base: baseAttributes,
       items: {
@@ -17,7 +17,7 @@ Use it like so:
         errors: itemErrors,
         loading: itemLoading,
       },
-    } = attributes;
+    } = attributes
 
     // Render attributes
     return JSON.stringify({
@@ -25,7 +25,7 @@ Use it like so:
       itemAttributes,
       itemErrors,
       itemLoading,
-    });
+    })
   }}
 </Attributes>
 ```

@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Error } from 'gw2-ui'; // or gw2-ui-components
+import { Error } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties

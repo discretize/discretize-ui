@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Profession } from 'gw2-ui'; // or gw2-ui-components
+import { Profession } from 'gw2-ui' // or gw2-ui-components
 ```
 
 ## Properties
