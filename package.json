@@ -1,6 +1,47 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "develop": "run-p watch docs",
+    "docs": "lerna run develop --scope=gw2-ui-docs --stream",
+    "fix": "run-p fix:*",
+    "fix:code": "run-s \"lint:code --fix\"",
+    "fix:other": "run-s \"lint:other --write\"",
+    "lint": "run-p lint:*",
+    "lint:code": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
+    "lint:other": "prettier --list-different --ignore-path .gitignore \"**/*.{md,json,yaml,yml}\" \"!**/*CHANGELOG.md\"",
+    "prepare": "lerna run prepare --stream",
+    "pretest_disabled": "run-s lint",
+    "prepublish": "lerna run prepublish --stream",
+    "test": "echo \"No tests configured\"",
+    "watch": "lerna run watch --parallel"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Opera versions",
+    "last 2 FirefoxAndroid versions",
+    "last 2 iOS version",
+    "last 2 safari version"
+  ],
+  "resolutions": {
+    "acorn": "npm:acorn-with-stage3"
+  },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
@@ -27,46 +68,5 @@
     "terser-webpack-plugin": "^4.2.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
-  },
-  "resolutions": {
-    "acorn": "npm:acorn-with-stage3"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "scripts": {
-    "prepublish": "lerna run prepublish --stream",
-    "prepare": "lerna run prepare --stream",
-    "watch": "lerna run watch --parallel",
-    "docs": "lerna run develop --scope=gw2-ui-docs --stream",
-    "develop": "run-p watch docs",
-    "fix": "run-p fix:*",
-    "fix:code": "run-s \"lint:code --fix\"",
-    "fix:other": "run-s \"lint:other --write\"",
-    "lint": "run-p lint:*",
-    "lint:code": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
-    "lint:other": "prettier --list-different --ignore-path .gitignore \"**/*.{md,json,yaml,yml}\" \"!**/*CHANGELOG.md\"",
-    "pretest_disabled": "run-s lint",
-    "test": "echo \"No tests configured\""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "run-s test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Edge versions",
-    "last 2 Opera versions",
-    "last 2 FirefoxAndroid versions",
-    "last 2 iOS version",
-    "last 2 safari version"
-  ]
+  }
 }

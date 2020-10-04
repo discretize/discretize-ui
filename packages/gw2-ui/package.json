@@ -13,26 +13,27 @@
   "repository": "https://github.com/ManuelHaag/gw2-ui",
   "license": "MIT",
   "author": "Manuel Haag <manuel@haag.online>",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "unpkg": "dist/gw2-ui.min.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "files": [
     "lib",
     "es",
     "src"
   ],
-  "directories": {
-    "lib": "lib"
-  },
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "jsnext:main": "es/index.js",
-  "unpkg": "dist/gw2-ui.min.js",
   "scripts": {
-    "clean": "del-cli lib es dist",
     "prebuild": "run-s clean",
     "build": "run-p build:* build:*:*",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib",
     "build:es": "cross-env babel --root-mode upward src -d es",
     "build:umd": "webpack --mode development -o dist/gw2-ui.js",
     "build:umd:min": "webpack --mode production -o dist/gw2-ui.min.js",
+    "clean": "del-cli lib es dist",
     "prepublish": "run-s build",
     "prewatch": "del-cli es",
     "watch": "run-s \"build:es --watch\""
@@ -64,6 +65,5 @@
     "react-redux": "^7.1.0",
     "redux": "^4.0.0",
     "reselect": "^4.0.0"
-  },
-  "sideEffects": false
+  }
 }
