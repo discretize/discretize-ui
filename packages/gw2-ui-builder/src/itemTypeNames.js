@@ -31,4 +31,4 @@ export default {
   SHIELD: 'Shield',
   TORCH: 'Torch',
   WARHORN: 'Warhorn',
-};
+}

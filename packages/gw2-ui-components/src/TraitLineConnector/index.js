@@ -1,1 +1,1 @@
-export { default, Paths } from './TraitLineConnector';
+export { default, Paths } from './TraitLineConnector'

@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import { keyframes } from '@emotion/core';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import { keyframes } from '@emotion/core'
 
 const progress = keyframes({
   from: {
@@ -9,7 +9,7 @@ const progress = keyframes({
   to: {
     backgroundPosition: '4em 0',
   },
-});
+})
 
 const Progress = forwardRef(
   ({ component: Component, inline, ...rest }, ref) => (
@@ -36,18 +36,18 @@ const Progress = forwardRef(
       ref={ref}
     />
   ),
-);
+)
 
 Progress.propTypes = {
   component: PropTypes.elementType,
   inline: PropTypes.bool,
-};
+}
 
 Progress.defaultProps = {
   component: 'span',
   inline: true,
-};
+}
 
-Progress.displayName = 'Progress';
+Progress.displayName = 'Progress'
 
-export default Progress;
+export default Progress

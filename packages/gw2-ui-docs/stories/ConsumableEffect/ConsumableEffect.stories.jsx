@@ -1,10 +1,10 @@
-import React from 'react';
-import { select, boolean, number } from '@storybook/addon-knobs';
-import { ConsumableEffect, consumableEffects } from 'gw2-ui';
+import React from 'react'
+import { select, boolean, number } from '@storybook/addon-knobs'
+import { ConsumableEffect, consumableEffects } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './ConsumableEffect.readme.md';
-import docs from './ConsumableEffect.docs.md';
+import categories from '../categories'
+import readme from './ConsumableEffect.readme.md'
+import docs from './ConsumableEffect.docs.md'
 
 export default {
   category: categories.CORE,
@@ -34,4 +34,4 @@ export default {
     { category: categories.HELPERS, name: 'Tooltip' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

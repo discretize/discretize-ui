@@ -1,1 +1,1 @@
-export { default } from './Specialization';
+export { default } from './Specialization'

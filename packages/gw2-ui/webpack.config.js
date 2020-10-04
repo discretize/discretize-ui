@@ -1,26 +1,26 @@
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = (env, argv) => ({
   output: {
-    library: "Gw2Ui",
-    libraryTarget: "umd",
-    globalObject: "this",
+    library: 'Gw2Ui',
+    libraryTarget: 'umd',
+    globalObject: 'this',
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          rootMode: "upward",
+          rootMode: 'upward',
         },
       },
       {
         test: /\.(png|jpg|gif)$/i,
         use: [
           {
-            loader: "url-loader",
+            loader: 'url-loader',
             options: {
               limit: 8192,
             },
@@ -30,53 +30,54 @@ module.exports = (env, argv) => ({
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
   },
-  ...(argv.mode === "production" && {
+  ...(argv.mode === 'production' && {
     optimization: {
       minimize: true,
-      minimizer: [new TerserPlugin({
-
-        terserOptions: {
-          output: {
-            comments: false,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            output: {
+              comments: false,
+            },
           },
-        },
-        extractComments: false,
-      })],
+          extractComments: false,
+        }),
+      ],
     },
   }),
   externals: {
     axios: {
-      root: "Axios",
-      commonjs: "axios",
-      commonjs2: "axios",
-      amd: "axios",
+      root: 'Axios',
+      commonjs: 'axios',
+      commonjs2: 'axios',
+      amd: 'axios',
     },
     react: {
-      root: "React",
-      commonjs: "react",
-      commonjs2: "react",
-      amd: "react",
+      root: 'React',
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
     },
-    "react-dom": {
-      root: "ReactDOM",
-      commonjs2: "react-dom",
-      commonjs: "react-dom",
-      amd: "react-dom",
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
     },
     redux: {
-      root: "Redux",
-      commonjs: "redux",
-      commonjs2: "redux",
-      amd: "redux",
+      root: 'Redux',
+      commonjs: 'redux',
+      commonjs2: 'redux',
+      amd: 'redux',
     },
     reselect: {
-      root: "Reselect",
-      commonjs: "reselect",
-      commonjs2: "reselect",
-      amd: "reselect",
-    }
+      root: 'Reselect',
+      commonjs: 'reselect',
+      commonjs2: 'reselect',
+      amd: 'reselect',
+    },
   },
-  devtool: "source-map",
-});
+  devtool: 'source-map',
+})

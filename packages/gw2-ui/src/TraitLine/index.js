@@ -1,1 +1,1 @@
-export { default } from './TraitLine';
+export { default } from './TraitLine'

@@ -1,1 +1,1 @@
-export { default } from './MistlockInstability';
+export { default } from './MistlockInstability'

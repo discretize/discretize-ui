@@ -3,9 +3,9 @@ import {
   FETCH_SKILL,
   FETCH_SPECIALIZATION,
   FETCH_TRAIT,
-} from './constants';
+} from './constants'
 
-export const fetchItem = id => ({
+export const fetchItem = (id) => ({
   type: FETCH_ITEM,
   request: {
     url: `/items/${id}?lang=en`,
@@ -15,9 +15,9 @@ export const fetchItem = id => ({
     requestKey: `${id}`,
     takeLatest: false,
   },
-});
+})
 
-export const fetchSkill = id => ({
+export const fetchSkill = (id) => ({
   type: FETCH_SKILL,
   request: {
     url: `/skills/${id}?lang=en`,
@@ -27,9 +27,9 @@ export const fetchSkill = id => ({
     requestKey: `${id}`,
     takeLatest: false,
   },
-});
+})
 
-export const fetchSpecialization = id => ({
+export const fetchSpecialization = (id) => ({
   type: FETCH_SPECIALIZATION,
   request: {
     url: `/specializations/${id}?lang=en`,
@@ -39,9 +39,9 @@ export const fetchSpecialization = id => ({
     requestKey: `${id}`,
     takeLatest: false,
   },
-});
+})
 
-export const fetchTrait = id => ({
+export const fetchTrait = (id) => ({
   type: FETCH_TRAIT,
   request: {
     url: `/traits/${id}?lang=en`,
@@ -51,4 +51,4 @@ export const fetchTrait = id => ({
     requestKey: `${id}`,
     takeLatest: false,
   },
-});
+})

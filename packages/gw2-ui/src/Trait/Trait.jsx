@@ -1,30 +1,24 @@
-import { abortRequests } from '@redux-requests/core';
-import { Query } from '@redux-requests/react';
-import { Trait as TraitComponent } from 'gw2-ui-components';
-import { fetchTrait, FETCH_TRAIT } from 'gw2-ui-redux';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { abortRequests } from '@redux-requests/core'
+import { Query } from '@redux-requests/react'
+import { Trait as TraitComponent } from 'gw2-ui-components'
+import { fetchTrait, FETCH_TRAIT } from 'gw2-ui-redux'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const Trait = ({ id, ...rest }) => {
-  const requestKey = `${id}`;
+  const requestKey = `${id}`
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  useEffect(
-    () => {
-      dispatch(fetchTrait(requestKey));
+  useEffect(() => {
+    dispatch(fetchTrait(requestKey))
 
-      return () => {
-        dispatch(
-          abortRequests([
-            FETCH_TRAIT,
-            { requestType: FETCH_TRAIT, requestKey },
-          ]),
-        );
-      };
-    },
-    [dispatch, requestKey],
-  );
+    return () => {
+      dispatch(
+        abortRequests([FETCH_TRAIT, { requestType: FETCH_TRAIT, requestKey }]),
+      )
+    }
+  }, [dispatch, requestKey])
 
   return (
     <Query
@@ -39,7 +33,7 @@ const Trait = ({ id, ...rest }) => {
         <TraitComponent data={data} error={error} loading={loading} {...rest} />
       )}
     </Query>
-  );
-};
+  )
+}
 
-export default Trait;
+export default Trait

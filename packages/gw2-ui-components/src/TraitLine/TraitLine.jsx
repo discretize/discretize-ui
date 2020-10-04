@@ -4,13 +4,13 @@ import React, {
   useState,
   useCallback,
   useEffect,
-} from 'react';
-import PropTypes from 'prop-types';
+} from 'react'
+import PropTypes from 'prop-types'
 
-import withLoading from '../withLoading';
-import Tooltip from '../Tooltip';
-import Icon from '../Icon';
-import TraitLineConnector, { Paths } from '../TraitLineConnector';
+import withLoading from '../withLoading'
+import Tooltip from '../Tooltip'
+import Icon from '../Icon'
+import TraitLineConnector, { Paths } from '../TraitLineConnector'
 
 // eslint-disable-next-line react/prop-types
 const renderTraitLineConnector = ({ css, ...rest } = {}) => (
@@ -24,7 +24,7 @@ const renderTraitLineConnector = ({ css, ...rest } = {}) => (
       ...css,
     }}
   />
-);
+)
 
 const TraitLine = forwardRef(
   (
@@ -57,24 +57,21 @@ const TraitLine = forwardRef(
   ) => {
     const [uncontrolledSelected, setUncontrolledSelected] = useState(
       defaultSelected,
-    );
+    )
 
-    useEffect(
-      () => {
-        setUncontrolledSelected(defaultSelected);
-      },
-      [...defaultSelected],
-    );
+    useEffect(() => {
+      setUncontrolledSelected(defaultSelected)
+    }, [...defaultSelected])
 
-    const controlled = typeof onSelect === 'function';
-    let selected;
+    const controlled = typeof onSelect === 'function'
+    let selected
 
     if (controlled) {
-      selected = propsSelected;
+      selected = propsSelected
     } else if (selectable) {
-      selected = uncontrolledSelected;
+      selected = uncontrolledSelected
     } else {
-      selected = defaultSelected || propsSelected;
+      selected = defaultSelected || propsSelected
     }
 
     const renderMinorTrait = useCallback(
@@ -97,7 +94,7 @@ const TraitLine = forwardRef(
         />
       ),
       TraitComponent,
-    );
+    )
 
     const renderMajorTrait = useCallback(
       ({
@@ -124,23 +121,23 @@ const TraitLine = forwardRef(
             inactive: !isSelected,
             ...(!isSelected &&
               (controlled || selectable) && {
-                onClick: event => {
-                  event.preventDefault();
+                onClick: (event) => {
+                  event.preventDefault()
 
                   if (controlled) {
                     onSelect({
                       tier,
                       id: majorTraitId,
                       index: majorTraitIndex,
-                    });
+                    })
                   } else {
                     // find selected major trait from same tier to replace
                     const selectedIndexToReplace = selected.findIndex(
-                      selectedMajorTraitId =>
+                      (selectedMajorTraitId) =>
                         majorTraits
                           .slice(tier * 3, tier * 3 + 3)
                           .includes(selectedMajorTraitId),
-                    );
+                    )
 
                     if (selectedIndexToReplace !== -1) {
                       setUncontrolledSelected(
@@ -149,46 +146,46 @@ const TraitLine = forwardRef(
                             ? majorTraitId
                             : value,
                         ),
-                      );
+                      )
                     } else {
                       // find selected major trait from one tier below
                       const selectedIndexBelowToAppend =
                         tier > 0 &&
-                        selected.findIndex(selectedMajorTraitId =>
+                        selected.findIndex((selectedMajorTraitId) =>
                           majorTraits
                             .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
                             .includes(selectedMajorTraitId),
-                        );
+                        )
 
                       if (selectedIndexBelowToAppend !== -1) {
-                        const newSelected = [...selected];
+                        const newSelected = [...selected]
                         newSelected.splice(
                           selectedIndexBelowToAppend + 1,
                           0,
                           majorTraitId,
-                        );
-                        setUncontrolledSelected(newSelected);
+                        )
+                        setUncontrolledSelected(newSelected)
                       } else {
                         // find selected major trait from one tier above
                         const selectedIndexAboveToPrepend =
                           tier < 2 &&
-                          selected.findIndex(selectedMajorTraitId =>
+                          selected.findIndex((selectedMajorTraitId) =>
                             majorTraits
                               .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
                               .includes(selectedMajorTraitId),
-                          );
+                          )
 
                         if (selectedIndexAboveToPrepend !== -1) {
-                          const newSelected = [...selected];
+                          const newSelected = [...selected]
                           newSelected.splice(
                             selectedIndexBelowToAppend,
                             0,
                             majorTraitId,
-                          );
-                          setUncontrolledSelected(newSelected);
+                          )
+                          setUncontrolledSelected(newSelected)
                         } else {
                           // well, just append it
-                          setUncontrolledSelected([...selected, majorTraitId]);
+                          setUncontrolledSelected([...selected, majorTraitId])
                         }
                       }
                     }
@@ -199,7 +196,7 @@ const TraitLine = forwardRef(
         />
       ),
       [TraitComponent, controlled, selectable, ...selected],
-    );
+    )
 
     return (
       <div
@@ -309,9 +306,9 @@ const TraitLine = forwardRef(
               )
               .map((majorTraitsChunk, tier) => {
                 const selectedMajorTraitIndex = majorTraitsChunk.findIndex(
-                  majorTraitId => selected.includes(majorTraitId),
-                );
-                const path = Object.values(Paths)[selectedMajorTraitIndex];
+                  (majorTraitId) => selected.includes(majorTraitId),
+                )
+                const path = Object.values(Paths)[selectedMajorTraitIndex]
 
                 return (
                   // eslint-disable-next-line react/no-array-index-key
@@ -351,7 +348,7 @@ const TraitLine = forwardRef(
                           : { disabled: true },
                       )}
                   </Fragment>
-                );
+                )
               })}
           </div>
         </div>
@@ -379,15 +376,15 @@ const TraitLine = forwardRef(
                       fontSize: '32px',
                       border: '1px solid rgba(255,255,255,0.5)',
                     }}
-                    onClick={event => {
-                      event.preventDefault();
+                    onClick={(event) => {
+                      event.preventDefault()
 
                       if (!controlled) {
-                        setUncontrolledSelected(defaultSelected);
+                        setUncontrolledSelected(defaultSelected)
                       }
 
                       if (typeof onReset === 'function') {
-                        onReset();
+                        onReset()
                       }
                     }}
                   />
@@ -395,9 +392,9 @@ const TraitLine = forwardRef(
               </Tooltip>
             ))}
       </div>
-    );
+    )
   },
-);
+)
 
 TraitLine.propTypes = {
   id: PropTypes.number,
@@ -409,7 +406,7 @@ TraitLine.propTypes = {
   onReset: PropTypes.func,
   onSelect: PropTypes.func,
   data: PropTypes.object.isRequired,
-};
+}
 
 TraitLine.defaultProps = {
   id: null,
@@ -419,9 +416,9 @@ TraitLine.defaultProps = {
   resettable: true,
   onReset: null,
   onSelect: null,
-};
+}
 
-TraitLine.displayName = 'TraitLine';
+TraitLine.displayName = 'TraitLine'
 
 export default withLoading({
   iconWithTextProps: {
@@ -450,4 +447,4 @@ export default withLoading({
       fontSize: '34px',
     },
   },
-})(TraitLine);
+})(TraitLine)

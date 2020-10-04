@@ -1,19 +1,19 @@
 module.exports = {
   output: {
-    library: "Gw2UiBuilder",
-    libraryTarget: "umd",
-    globalObject: "this",
+    library: 'Gw2UiBuilder',
+    libraryTarget: 'umd',
+    globalObject: 'this',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          rootMode: "upward",
+          rootMode: 'upward',
         },
       },
     ],
   },
-  devtool: "source-map",
-};
+  devtool: 'source-map',
+}

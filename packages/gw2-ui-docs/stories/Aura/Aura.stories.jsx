@@ -1,10 +1,10 @@
-import React from 'react';
-import { select, boolean, number } from '@storybook/addon-knobs';
-import { Aura, auras } from 'gw2-ui';
+import React from 'react'
+import { select, boolean, number } from '@storybook/addon-knobs'
+import { Aura, auras } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Aura.readme.md';
-import docs from './Aura.docs.md';
+import categories from '../categories'
+import readme from './Aura.readme.md'
+import docs from './Aura.docs.md'
 
 export default {
   category: categories.CORE,
@@ -30,4 +30,4 @@ export default {
     { category: categories.HELPERS, name: 'Tooltip' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

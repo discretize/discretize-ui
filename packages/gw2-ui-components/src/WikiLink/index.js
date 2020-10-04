@@ -1,1 +1,1 @@
-export { default, languages } from './WikiLink';
+export { default, languages } from './WikiLink'

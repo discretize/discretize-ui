@@ -1,16 +1,16 @@
-import { abortRequests, getQuery } from '@redux-requests/core';
-import { getBaseAttributes } from 'gw2-ui-components';
-import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux';
-import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { abortRequests, getQuery } from '@redux-requests/core'
+import { getBaseAttributes } from 'gw2-ui-components'
+import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux'
+import PropTypes from 'prop-types'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Attributes = ({ level, children, items }) => {
   if (typeof children !== 'function') {
-    return null;
+    return null
   }
 
-  const base = getBaseAttributes(level);
+  const base = getBaseAttributes(level)
 
   /* eslint-disable no-param-reassign */
   const {
@@ -21,19 +21,19 @@ const Attributes = ({ level, children, items }) => {
     (result, { data, loading: singleItemLoading, error: itemError }) => {
       if (itemError) {
         if (!result.errors) {
-          result.errors = [];
+          result.errors = []
         }
 
-        result.errors.push(itemError);
+        result.errors.push(itemError)
 
-        return result;
+        return result
       }
       if (singleItemLoading || !data) {
         if (!result.loading) {
-          result.loading = singleItemLoading;
+          result.loading = singleItemLoading
         }
 
-        return result;
+        return result
       }
 
       if (data) {
@@ -41,20 +41,20 @@ const Attributes = ({ level, children, items }) => {
           details: {
             infix_upgrade: { attributes: singleItemAttributes } = {},
           } = {},
-        } = data;
+        } = data
 
         if (singleItemAttributes) {
           singleItemAttributes.forEach(({ attribute, modifier }) => {
             result.attributes[attribute] =
-              (result.attributes[attribute] || 0) + modifier;
-          });
+              (result.attributes[attribute] || 0) + modifier
+          })
         }
       }
 
-      return result;
+      return result
     },
     { attributes: {}, errors: null, loading: false },
-  );
+  )
   /* eslint-enable no-param-reassign */
 
   const props = {
@@ -64,10 +64,10 @@ const Attributes = ({ level, children, items }) => {
       errors: itemErrors,
       loading: itemLoading,
     },
-  };
+  }
 
-  return children(props);
-};
+  return children(props)
+}
 
 Attributes.propTypes = {
   level: PropTypes.number,
@@ -86,54 +86,51 @@ Attributes.propTypes = {
   fetchItem: PropTypes.func.isRequired,
   cancelItem: PropTypes.func.isRequired,
   children: PropTypes.func.isRequired,
-};
+}
 
 Attributes.defaultProps = {
   level: null,
   items: [],
-};
+}
 
-Attributes.displayName = 'Attributes';
+Attributes.displayName = 'Attributes'
 
-const getItemsSelector = items => state =>
+const getItemsSelector = (items) => (state) =>
   Array.isArray(items)
-    ? items.map(id => ({
+    ? items.map((id) => ({
         id,
         ...getQuery(state, {
           type: FETCH_ITEM,
           requestKey: id,
         }),
       }))
-    : [];
+    : []
 
 export default ({ items: propsItems, ...rest }) => {
-  const items = useSelector(getItemsSelector(propsItems));
+  const items = useSelector(getItemsSelector(propsItems))
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  useEffect(
-    () => {
+  useEffect(() => {
+    if (items) {
+      items.forEach(({ id }) => {
+        dispatch(fetchItem(`${id}`))
+      })
+    }
+
+    return () => {
       if (items) {
         items.forEach(({ id }) => {
-          dispatch(fetchItem(`${id}`));
-        });
+          dispatch(
+            abortRequests([
+              FETCH_ITEM,
+              { requestType: FETCH_ITEM, requestKey: `${id}` },
+            ]),
+          )
+        })
       }
+    }
+  }, [dispatch, propsItems])
 
-      return () => {
-        if (items) {
-          items.forEach(({ id }) => {
-            dispatch(
-              abortRequests([
-                FETCH_ITEM,
-                { requestType: FETCH_ITEM, requestKey: `${id}` },
-              ]),
-            );
-          });
-        }
-      };
-    },
-    [dispatch, propsItems],
-  );
-
-  return <Attributes items={items} {...rest} />;
-};
+  return <Attributes items={items} {...rest} />
+}

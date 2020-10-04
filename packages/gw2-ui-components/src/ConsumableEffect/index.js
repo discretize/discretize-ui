@@ -1,1 +1,1 @@
-export { default } from './ConsumableEffect';
+export { default } from './ConsumableEffect'

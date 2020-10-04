@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import withLoading from '../withLoading/index';
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import { useColorModeHighlightSuffix } from '../helpers';
+import withLoading from '../withLoading/index'
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import { useColorModeHighlightSuffix } from '../helpers'
 
 const Specialization = forwardRef(
   (
@@ -24,9 +24,9 @@ const Specialization = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
-    const { name, icon, profession } = data;
+    const { name, icon, profession } = data
 
     return (
       <IconWithText
@@ -60,9 +60,9 @@ const Specialization = forwardRef(
         }}
         ref={ref}
       />
-    );
+    )
   },
-);
+)
 
 Specialization.propTypes = {
   id: PropTypes.number,
@@ -73,7 +73,7 @@ Specialization.propTypes = {
   disableLink: PropTypes.bool,
   inline: PropTypes.bool,
   wikiLinkProps: PropTypes.object,
-};
+}
 
 Specialization.defaultProps = {
   id: null,
@@ -83,8 +83,8 @@ Specialization.defaultProps = {
   disableLink: false,
   inline: true,
   wikiLinkProps: {},
-};
+}
 
-Specialization.displayName = 'Specialization';
+Specialization.displayName = 'Specialization'
 
-export default withLoading()(Specialization);
+export default withLoading()(Specialization)

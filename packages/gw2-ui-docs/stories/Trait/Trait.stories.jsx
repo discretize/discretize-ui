@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, boolean } from '@storybook/addon-knobs';
-import { Trait } from 'gw2-ui';
+import React from 'react'
+import { number, boolean } from '@storybook/addon-knobs'
+import { Trait } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Trait.readme.md';
-import docs from './Trait.docs.md';
+import categories from '../categories'
+import readme from './Trait.readme.md'
+import docs from './Trait.docs.md'
 
 export default {
   category: categories.CORE,
@@ -32,4 +32,4 @@ export default {
     { category: categories.HELPERS, name: 'Progress' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

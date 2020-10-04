@@ -1,9 +1,9 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Effect from '../Effect';
+import Effect from '../Effect'
 
-import augmentations from '../data/augmentations.json';
+import augmentations from '../data/augmentations.json'
 
 const Augmentation = forwardRef(({ name, ...rest }, ref) => (
   <Effect
@@ -13,12 +13,12 @@ const Augmentation = forwardRef(({ name, ...rest }, ref) => (
     {...rest}
     ref={ref}
   />
-));
+))
 
 Augmentation.propTypes = {
   name: PropTypes.oneOf(Object.keys(augmentations)).isRequired,
-};
+}
 
-Augmentation.displayName = 'Augmentation';
+Augmentation.displayName = 'Augmentation'
 
-export default Augmentation;
+export default Augmentation

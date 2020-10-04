@@ -1,10 +1,10 @@
-import React from 'react';
-import { select, boolean, number } from '@storybook/addon-knobs';
-import { Attribute, attributes } from 'gw2-ui';
+import React from 'react'
+import { select, boolean, number } from '@storybook/addon-knobs'
+import { Attribute, attributes } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Attribute.readme.md';
-import docs from './Attribute.docs.md';
+import categories from '../categories'
+import readme from './Attribute.readme.md'
+import docs from './Attribute.docs.md'
 
 export default {
   category: categories.CORE,
@@ -12,9 +12,9 @@ export default {
   readme,
   docs,
   story: () => {
-    const selectableAttributes = Object.entries(attributes).flatMap(
-      ([, values]) => Object.keys(values),
-    );
+    const selectableAttributes = Object.entries(
+      attributes,
+    ).flatMap(([, values]) => Object.keys(values))
     return (
       <Attribute
         name={select('name', selectableAttributes, selectableAttributes[0])}
@@ -25,7 +25,7 @@ export default {
         inline={boolean('inline', true)}
         style={{ fontSize: number('style.fontSize', 24) }}
       />
-    );
+    )
   },
   related: [
     { category: categories.HELPERS, name: 'IconWithText' },
@@ -34,4 +34,4 @@ export default {
     { category: categories.HELPERS, name: 'Tooltip' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

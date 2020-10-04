@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Icon from '../Icon';
-import Progress from '../Progress';
+import Icon from '../Icon'
+import Progress from '../Progress'
 
 const IconWithText = forwardRef(
   (
@@ -74,7 +74,7 @@ const IconWithText = forwardRef(
         ))}
     </Component>
   ),
-);
+)
 
 IconWithText.propTypes = {
   component: PropTypes.elementType,
@@ -88,7 +88,7 @@ IconWithText.propTypes = {
   textProps: PropTypes.object,
   progressProps: PropTypes.object,
   loading: PropTypes.bool,
-};
+}
 
 IconWithText.defaultProps = {
   component: 'span',
@@ -102,8 +102,8 @@ IconWithText.defaultProps = {
   textProps: {},
   progressProps: {},
   loading: false,
-};
+}
 
-IconWithText.displayName = 'IconWithText';
+IconWithText.displayName = 'IconWithText'
 
-export default IconWithText;
+export default IconWithText

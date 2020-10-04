@@ -1,13 +1,13 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import withLoading from '../withLoading/index';
-import Tooltip from '../Tooltip';
-import TooltipContainer from '../TooltipContainer';
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import AbilityDetails from '../AbilityDetails';
-import { specializations, useColorModeHighlightSuffix } from '../helpers';
+import withLoading from '../withLoading/index'
+import Tooltip from '../Tooltip'
+import TooltipContainer from '../TooltipContainer'
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import AbilityDetails from '../AbilityDetails'
+import { specializations, useColorModeHighlightSuffix } from '../helpers'
 
 const Trait = forwardRef(
   (
@@ -27,27 +27,29 @@ const Trait = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
-    const { name, icon, specialization, skills, slot } = data;
+    const { name, icon, specialization, skills, slot } = data
 
     const [profession] =
       (specialization &&
         Object.entries(specializations).find(([, specializationIds]) =>
           specializationIds.includes(specialization),
         )) ||
-      [];
+      []
 
     return (
       <Tooltip
         render={
           <>
-            <TooltipContainer {...skills && { sx: { borderColor: '#537ca5' } }}>
+            <TooltipContainer
+              {...(skills && { sx: { borderColor: '#537ca5' } })}
+            >
               <AbilityDetails data={data} />
             </TooltipContainer>
 
             {skills &&
-              skills.map(skill => (
+              skills.map((skill) => (
                 <TooltipContainer key={`${skill.id}`} sx={{ mt: '6px' }}>
                   <AbilityDetails data={skill} />
                 </TooltipContainer>
@@ -94,9 +96,9 @@ const Trait = forwardRef(
           ref={ref}
         />
       </Tooltip>
-    );
+    )
   },
-);
+)
 
 Trait.propTypes = {
   id: PropTypes.number,
@@ -110,7 +112,7 @@ Trait.propTypes = {
   tooltipProps: PropTypes.object,
   wikiLinkProps: PropTypes.object,
   inactive: PropTypes.bool,
-};
+}
 
 Trait.defaultProps = {
   id: null,
@@ -123,8 +125,8 @@ Trait.defaultProps = {
   tooltipProps: {},
   wikiLinkProps: {},
   inactive: false,
-};
+}
 
-Trait.displayName = 'Trait';
+Trait.displayName = 'Trait'
 
-export default withLoading()(Trait);
+export default withLoading()(Trait)

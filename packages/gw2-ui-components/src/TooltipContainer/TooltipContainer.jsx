@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from 'react'
 
-import tooltipBackgroundImage from '../assets/images/tooltip-background.png';
+import tooltipBackgroundImage from '../assets/images/tooltip-background.png'
 
 const TooltipContainer = forwardRef(({ children, ...rest }, ref) => (
   <div
@@ -31,8 +31,8 @@ const TooltipContainer = forwardRef(({ children, ...rest }, ref) => (
   >
     {children}
   </div>
-));
+))
 
-TooltipContainer.displayName = 'TooltipContainer';
+TooltipContainer.displayName = 'TooltipContainer'
 
-export default TooltipContainer;
+export default TooltipContainer

@@ -10,7 +10,7 @@ export {
   itemStats,
   itemStatTypes,
   itemTypeNames,
-} from 'gw2-ui-builder';
+} from 'gw2-ui-builder'
 export {
   AbilityDetails,
   Attribute,
@@ -58,11 +58,11 @@ export {
   useColorModeHighlightSuffix,
   WikiLink,
   wikiLinkLanguages,
-} from 'gw2-ui-components';
-export { handleRequests } from 'gw2-ui-redux';
-export { default as Attributes } from './Attributes';
-export { default as Item } from './Item';
-export { default as Skill } from './Skill';
-export { default as Specialization } from './Specialization';
-export { default as Trait } from './Trait';
-export { default as TraitLine } from './TraitLine';
+} from 'gw2-ui-components'
+export { handleRequests } from 'gw2-ui-redux'
+export { default as Attributes } from './Attributes'
+export { default as Item } from './Item'
+export { default as Skill } from './Skill'
+export { default as Specialization } from './Specialization'
+export { default as Trait } from './Trait'
+export { default as TraitLine } from './TraitLine'

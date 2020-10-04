@@ -153,4 +153,4 @@ export default {
   zIndices: {
     tooltip: 1500,
   },
-};
+}

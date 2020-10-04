@@ -1,1 +1,1 @@
-export { default } from './CommonEffect';
+export { default } from './CommonEffect'

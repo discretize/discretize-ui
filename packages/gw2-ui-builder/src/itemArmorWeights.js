@@ -1,1 +1,1 @@
-export default { HEAVY: 'Heavy', MEDIUM: 'Medium', LIGHT: 'Light' };
+export default { HEAVY: 'Heavy', MEDIUM: 'Medium', LIGHT: 'Light' }

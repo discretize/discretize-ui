@@ -1,9 +1,9 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
-import Error from '../Error';
-import { getDisplayName } from '../helpers';
-import IconWithText from '../IconWithText';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import React, { forwardRef } from 'react'
+import Error from '../Error'
+import { getDisplayName } from '../helpers'
+import IconWithText from '../IconWithText'
 
 export default ({
   component: defaultComponent = undefined,
@@ -13,8 +13,8 @@ export default ({
   inline: defaultInline = true,
   iconWithTextProps: defaultIconWithTextProps = {},
   errorProps: defaultErrorProps = {},
-} = {}) => Component => {
-  const displayName = getDisplayName(Component);
+} = {}) => (Component) => {
+  const displayName = getDisplayName(Component)
 
   const WithLoading = forwardRef(
     ({ loading, error, errorProps, iconWithTextProps, ...rest }, ref) => {
@@ -28,7 +28,7 @@ export default ({
         iconProps,
       } = {
         ...rest,
-      };
+      }
 
       if (loading) {
         return (
@@ -50,7 +50,7 @@ export default ({
               },
             }}
           />
-        );
+        )
       }
 
       if (error || !data) {
@@ -58,12 +58,11 @@ export default ({
           <Error
             code={error?.code || error?.response?.status}
             name={`Invalid ${displayName}${id ? ` ${id}` : ''}`}
-            message={`${error?.name ? `${error.name}: ` : ''}${error?.response
-              ?.data?.text ||
+            message={`${error?.name ? `${error.name}: ` : ''}${
+              error?.response?.data?.text ||
               error?.message ||
-              (!data ? 'No data' : 'Unknown error')}${
-              id ? ` for ${displayName} ${id}` : ''
-            }`}
+              (!data ? 'No data' : 'Unknown error')
+            }${id ? ` for ${displayName} ${id}` : ''}`}
             disableTooltip={disableTooltip}
             disableIcon={disableIcon}
             disableText={disableText}
@@ -82,12 +81,12 @@ export default ({
               },
             }}
           />
-        );
+        )
       }
 
-      return <Component {...rest} ref={ref} />;
+      return <Component {...rest} ref={ref} />
     },
-  );
+  )
 
   WithLoading.propTypes = {
     id: PropTypes.number,
@@ -105,7 +104,7 @@ export default ({
     inline: PropTypes.bool,
     iconWithTextProps: PropTypes.object,
     errorProps: PropTypes.object,
-  };
+  }
 
   WithLoading.defaultProps = {
     id: null,
@@ -119,9 +118,9 @@ export default ({
     inline: defaultInline,
     iconWithTextProps: defaultIconWithTextProps,
     errorProps: defaultErrorProps,
-  };
+  }
 
-  WithLoading.displayName = `WithLoading(${displayName})`;
+  WithLoading.displayName = `WithLoading(${displayName})`
 
-  return WithLoading;
-};
+  return WithLoading
+}

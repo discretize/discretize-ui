@@ -1,13 +1,13 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Effect from '../Effect';
+import Effect from '../Effect'
 
-import commonEffects from '../data/commonEffects.json';
+import commonEffects from '../data/commonEffects.json'
 
 const CommonEffect = forwardRef(({ name: propsName, ...rest }, ref) => {
   const name =
-    propsName === 'Mistlock Singularity' ? 'Rigorous Certainty' : propsName;
+    propsName === 'Mistlock Singularity' ? 'Rigorous Certainty' : propsName
 
   return (
     <Effect
@@ -17,13 +17,13 @@ const CommonEffect = forwardRef(({ name: propsName, ...rest }, ref) => {
       {...rest}
       ref={ref}
     />
-  );
-});
+  )
+})
 
 CommonEffect.propTypes = {
   name: PropTypes.oneOf(Object.keys(commonEffects)).isRequired,
-};
+}
 
-CommonEffect.displayName = 'CommonEffect';
+CommonEffect.displayName = 'CommonEffect'
 
-export default CommonEffect;
+export default CommonEffect

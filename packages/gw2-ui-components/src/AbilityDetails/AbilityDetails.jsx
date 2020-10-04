@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import DetailsHeader from '../DetailsHeader';
-import DetailsFact from '../DetailsFact';
-import DetailsText from '../DetailsText';
-import { factsOrder } from '../helpers';
+import DetailsHeader from '../DetailsHeader'
+import DetailsFact from '../DetailsFact'
+import DetailsText from '../DetailsText'
+import { factsOrder } from '../helpers'
 
 const AbilityDetails = forwardRef(
   (
@@ -15,32 +15,32 @@ const AbilityDetails = forwardRef(
     ref,
   ) => {
     const { value: rechargeValue, icon: rechargeIcon } =
-      (facts && facts.find(({ type }) => type === 'Recharge')) || {};
+      (facts && facts.find(({ type }) => type === 'Recharge')) || {}
 
-    let description = unparsedDescription;
+    let description = unparsedDescription
 
     if (categories) {
       description = description.replace(
         new RegExp(
-          `^(${categories.map(category => `${category}\\. `).join('|')})`,
+          `^(${categories.map((category) => `${category}\\. `).join('|')})`,
           'g',
         ),
         '',
-      );
+      )
     }
 
     return (
       <div {...rest} ref={ref}>
         <DetailsHeader
           sx={{ mb: '8px' }}
-          {...rechargeValue && {
+          {...(rechargeValue && {
             flags: [
               {
                 value: rechargeValue,
                 icon: rechargeIcon,
               },
             ],
-          }}
+          })}
         >
           {name}
         </DetailsHeader>
@@ -49,7 +49,7 @@ const AbilityDetails = forwardRef(
           lines={[
             categories && (
               <span sx={{ color: 'gw2.details.abilityType' }}>
-                {categories.map(category => `${category}. `)}
+                {categories.map((category) => `${category}. `)}
               </span>
             ),
             description,
@@ -90,14 +90,14 @@ const AbilityDetails = forwardRef(
           </div>
         )}
       </div>
-    );
+    )
   },
-);
+)
 
 AbilityDetails.propTypes = {
   data: PropTypes.object.isRequired,
-};
+}
 
-AbilityDetails.displayName = 'AbilityDetails';
+AbilityDetails.displayName = 'AbilityDetails'
 
-export default AbilityDetails;
+export default AbilityDetails

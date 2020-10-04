@@ -1,14 +1,14 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import camelCase from 'lodash.camelcase';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import camelCase from 'lodash.camelcase'
 
-import Tooltip from '../Tooltip';
-import DetailsHeader from '../DetailsHeader';
-import DetailsText from '../DetailsText';
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import Error from '../Error';
-import { useColorModeHighlightSuffix } from '../helpers';
+import Tooltip from '../Tooltip'
+import DetailsHeader from '../DetailsHeader'
+import DetailsText from '../DetailsText'
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import Error from '../Error'
+import { useColorModeHighlightSuffix } from '../helpers'
 
 const Effect = forwardRef(
   (
@@ -31,7 +31,7 @@ const Effect = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
     if (!type || !name || typeof description === 'undefined') {
       return (
@@ -56,7 +56,7 @@ const Effect = forwardRef(
             ...rest.sx,
           }}
         />
-      );
+      )
     }
 
     return (
@@ -106,9 +106,9 @@ const Effect = forwardRef(
           ref={ref}
         />
       </Tooltip>
-    );
+    )
   },
-);
+)
 
 Effect.propTypes = {
   type: PropTypes.string.isRequired,
@@ -124,7 +124,7 @@ Effect.propTypes = {
   tooltipProps: PropTypes.object,
   wikiLinkProps: PropTypes.object,
   errorProps: PropTypes.object,
-};
+}
 
 Effect.defaultProps = {
   displayName: null,
@@ -138,8 +138,8 @@ Effect.defaultProps = {
   tooltipProps: {},
   wikiLinkProps: {},
   errorProps: {},
-};
+}
 
-Effect.displayName = 'Effect';
+Effect.displayName = 'Effect'
 
-export default Effect;
+export default Effect

@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import { useColorModeHighlightSuffix } from '../helpers';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import { useColorModeHighlightSuffix } from '../helpers'
 
 // https://wiki.guildwars2.com/wiki/Template:Language
 export const languages = [
@@ -23,11 +23,11 @@ export const languages = [
   'sv',
   'tr',
   'un',
-];
+]
 
 const WikiLink = forwardRef(
   ({ component: Component, to, lang, ...rest }, ref) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
     return (
       <Component
@@ -49,21 +49,21 @@ const WikiLink = forwardRef(
       >
         {to}
       </Component>
-    );
+    )
   },
-);
+)
 
 WikiLink.propTypes = {
   component: PropTypes.elementType,
   to: PropTypes.string.isRequired,
   lang: PropTypes.oneOf(languages),
-};
+}
 
 WikiLink.defaultProps = {
   component: 'a',
   lang: 'en',
-};
+}
 
-WikiLink.displayName = 'WikiLink';
+WikiLink.displayName = 'WikiLink'
 
-export default WikiLink;
+export default WikiLink

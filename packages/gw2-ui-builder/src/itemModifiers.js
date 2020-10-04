@@ -1,8 +1,8 @@
-import ITEM_CATEGORIES from './itemCategoryNames';
-import ITEM_TYPE_NAMES from './itemTypeNames';
-import ITEM_RARITIES from './itemRarities';
-import ITEM_STAT_TYPES from './itemStatTypes';
-import ITEM_ARMOR_WEIGHTS from './itemArmorWeights';
+import ITEM_CATEGORIES from './itemCategoryNames'
+import ITEM_TYPE_NAMES from './itemTypeNames'
+import ITEM_RARITIES from './itemRarities'
+import ITEM_STAT_TYPES from './itemStatTypes'
+import ITEM_ARMOR_WEIGHTS from './itemArmorWeights'
 
 export default {
   [ITEM_CATEGORIES.ARMOR]: {
@@ -314,4 +314,4 @@ export default {
       },
     },
   },
-};
+}

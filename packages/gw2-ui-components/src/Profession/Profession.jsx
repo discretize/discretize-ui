@@ -1,13 +1,13 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
 
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import Error from '../Error';
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import Error from '../Error'
 
-import professions from '../data/professions.json';
-import { useColorModeHighlightSuffix } from '../helpers';
+import professions from '../data/professions.json'
+import { useColorModeHighlightSuffix } from '../helpers'
 
 const Profession = forwardRef(
   (
@@ -27,18 +27,19 @@ const Profession = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
-    let name;
+    let name
 
     if (eliteSpecialization) {
       // eslint-disable-next-line prefer-destructuring
-      name = (Object.entries(professions).find(
-        ([, professionEliteSpecializations]) =>
-          professionEliteSpecializations.includes(eliteSpecialization),
-      ) || [])[0];
+      name = (Object.entries(
+        professions,
+      ).find(([, professionEliteSpecializations]) =>
+        professionEliteSpecializations.includes(eliteSpecialization),
+      ) || [])[0]
     } else if (Object.keys(professions).includes(propsName)) {
-      name = propsName;
+      name = propsName
     }
 
     if (!name) {
@@ -70,7 +71,7 @@ const Profession = forwardRef(
             },
           }}
         />
-      );
+      )
     }
 
     return (
@@ -107,9 +108,9 @@ const Profession = forwardRef(
         }}
         ref={ref}
       />
-    );
+    )
   },
-);
+)
 
 Profession.propTypes = {
   name: PropTypes.oneOf(Object.keys(professions)),
@@ -125,7 +126,7 @@ Profession.propTypes = {
   tooltipProps: PropTypes.object,
   wikiLinkProps: PropTypes.object,
   errorProps: PropTypes.object,
-};
+}
 
 Profession.defaultProps = {
   name: null,
@@ -139,8 +140,8 @@ Profession.defaultProps = {
   tooltipProps: {},
   wikiLinkProps: {},
   errorProps: {},
-};
+}
 
-Profession.displayName = 'Profession';
+Profession.displayName = 'Profession'
 
-export default Profession;
+export default Profession

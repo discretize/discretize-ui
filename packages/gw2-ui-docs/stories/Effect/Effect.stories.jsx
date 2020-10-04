@@ -1,10 +1,10 @@
-import React from 'react';
-import { text, boolean, number } from '@storybook/addon-knobs';
-import { Effect } from 'gw2-ui';
+import React from 'react'
+import { text, boolean, number } from '@storybook/addon-knobs'
+import { Effect } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Effect.readme.md';
-import docs from './Effect.docs.md';
+import categories from '../categories'
+import readme from './Effect.readme.md'
+import docs from './Effect.docs.md'
 
 export default {
   category: categories.HELPERS,
@@ -35,4 +35,4 @@ export default {
     { category: categories.HELPERS, name: 'Tooltip' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, text, boolean, select } from '@storybook/addon-knobs';
-import { IconWithText } from 'gw2-ui';
+import React from 'react'
+import { number, text, boolean, select } from '@storybook/addon-knobs'
+import { IconWithText } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './IconWithText.readme.md';
-import docs from './IconWithText.docs.md';
+import categories from '../categories'
+import readme from './IconWithText.readme.md'
+import docs from './IconWithText.docs.md'
 
 export default {
   category: categories.HELPERS,
@@ -41,4 +41,4 @@ export default {
       name: 'Progress',
     },
   ],
-};
+}

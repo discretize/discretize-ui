@@ -1,12 +1,12 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import withLoading from '../withLoading/index';
-import Tooltip from '../Tooltip';
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import ItemDetails from '../ItemDetails';
-import { useColorModeHighlightSuffix } from '../helpers';
+import withLoading from '../withLoading/index'
+import Tooltip from '../Tooltip'
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import ItemDetails from '../ItemDetails'
+import { useColorModeHighlightSuffix } from '../helpers'
 
 const Item = forwardRef(
   (
@@ -27,7 +27,7 @@ const Item = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
     const {
       name,
@@ -35,7 +35,7 @@ const Item = forwardRef(
       rarity,
       type,
       details: { type: detailsType } = {},
-    } = data;
+    } = data
 
     return (
       <Tooltip
@@ -135,9 +135,9 @@ const Item = forwardRef(
           ref={ref}
         />
       </Tooltip>
-    );
+    )
   },
-);
+)
 
 Item.propTypes = {
   id: PropTypes.number,
@@ -163,7 +163,7 @@ Item.propTypes = {
       count: PropTypes.number,
     }),
   ),
-};
+}
 
 Item.defaultProps = {
   id: null,
@@ -177,8 +177,8 @@ Item.defaultProps = {
   tooltipProps: {},
   wikiLinkProps: {},
   upgrades: null,
-};
+}
 
-Item.displayName = 'Item';
+Item.displayName = 'Item'
 
-export default withLoading()(Item);
+export default withLoading()(Item)

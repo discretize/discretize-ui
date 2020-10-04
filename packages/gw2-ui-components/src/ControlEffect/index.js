@@ -1,1 +1,1 @@
-export { default } from './ControlEffect';
+export { default } from './ControlEffect'

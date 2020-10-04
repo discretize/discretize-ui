@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from 'react'
 
 const DetailsHeaderTitle = forwardRef(({ children, ...rest }, ref) => (
   <div
@@ -16,8 +16,8 @@ const DetailsHeaderTitle = forwardRef(({ children, ...rest }, ref) => (
   >
     {children}
   </div>
-));
+))
 
-DetailsHeaderTitle.displayName = 'DetailsHeaderTitle';
+DetailsHeaderTitle.displayName = 'DetailsHeaderTitle'
 
-export default DetailsHeaderTitle;
+export default DetailsHeaderTitle

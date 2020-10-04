@@ -1,6 +1,6 @@
-import ITEM_STAT_NAMES from './itemStatNames';
-import ITEM_STAT_TYPES from './itemStatTypes';
-import ATTRIBUTES from './attributes';
+import ITEM_STAT_NAMES from './itemStatNames'
+import ITEM_STAT_TYPES from './itemStatTypes'
+import ATTRIBUTES from './attributes'
 
 export default {
   [ITEM_STAT_NAMES.BERSERKER]: {
@@ -333,4 +333,4 @@ export default {
       ],
     ],
   },
-};
+}

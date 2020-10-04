@@ -1,10 +1,10 @@
-import React from 'react';
-import { select, boolean, number } from '@storybook/addon-knobs';
-import { Boon, boons } from 'gw2-ui';
+import React from 'react'
+import { select, boolean, number } from '@storybook/addon-knobs'
+import { Boon, boons } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Boon.readme.md';
-import docs from './Boon.docs.md';
+import categories from '../categories'
+import readme from './Boon.readme.md'
+import docs from './Boon.docs.md'
 
 export default {
   category: categories.CORE,
@@ -31,4 +31,4 @@ export default {
     { category: categories.HELPERS, name: 'Tooltip' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

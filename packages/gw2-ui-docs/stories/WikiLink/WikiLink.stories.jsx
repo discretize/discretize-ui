@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, text, select } from '@storybook/addon-knobs';
-import { WikiLink, wikiLinkLanguages } from 'gw2-ui';
+import React from 'react'
+import { number, text, select } from '@storybook/addon-knobs'
+import { WikiLink, wikiLinkLanguages } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './WikiLink.readme.md';
-import docs from './WikiLink.docs.md';
+import categories from '../categories'
+import readme from './WikiLink.readme.md'
+import docs from './WikiLink.docs.md'
 
 export default {
   category: categories.HELPERS,
@@ -19,4 +19,4 @@ export default {
       style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
-};
+}

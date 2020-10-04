@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, text } from '@storybook/addon-knobs';
-import { Coin } from 'gw2-ui';
+import React from 'react'
+import { number, text } from '@storybook/addon-knobs'
+import { Coin } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Coin.readme.md';
-import docs from './Coin.docs.md';
+import categories from '../categories'
+import readme from './Coin.readme.md'
+import docs from './Coin.docs.md'
 
 export default {
   category: categories.HELPERS,
@@ -24,4 +24,4 @@ export default {
       name: 'Icon',
     },
   ],
-};
+}

@@ -6,4 +6,4 @@ export default {
   MASTERWORK: 'Masterwork',
   FINE: 'Fine',
   BASIC: 'Basic',
-};
+}

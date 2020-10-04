@@ -79,38 +79,38 @@ const progression = [
     max: 80,
     increase: 46,
   },
-];
+]
 
-const primaryAttributes = ['Power', 'Precision', 'Toughness', 'Vitality'];
+const primaryAttributes = ['Power', 'Precision', 'Toughness', 'Vitality']
 
-export default level => {
+export default (level) => {
   if (!level) {
-    return {};
+    return {}
   }
 
-  let primaryAttributesBaseValue = 37; // level 1
+  let primaryAttributesBaseValue = 37 // level 1
 
   if (level >= 2) {
     for (let i = 2; i <= Math.min(10, level); i += 1) {
       const { increase } = progression.find(
         ({ min, max }) => min <= i && max >= i,
-      );
-      primaryAttributesBaseValue += increase;
+      )
+      primaryAttributesBaseValue += increase
     }
 
     if (level >= 10) {
       for (let i = 12; i <= Math.min(80, level); i += 2) {
         const { increase } = progression.find(
           ({ min, max }) => min <= i && max >= i,
-        );
-        primaryAttributesBaseValue += increase;
+        )
+        primaryAttributesBaseValue += increase
       }
     }
   }
 
   return primaryAttributes.reduce((result, primaryAttribute) => {
     // eslint-disable-next-line no-param-reassign
-    result[primaryAttribute] = primaryAttributesBaseValue;
-    return result;
-  }, {});
-};
+    result[primaryAttribute] = primaryAttributesBaseValue
+    return result
+  }, {})
+}

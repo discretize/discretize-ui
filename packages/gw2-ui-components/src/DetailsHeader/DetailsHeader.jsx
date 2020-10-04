@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Icon from '../Icon';
-import DetailsHeaderTitle from '../DetailsHeaderTitle';
+import Icon from '../Icon'
+import DetailsHeaderTitle from '../DetailsHeaderTitle'
 
 const DetailsHeader = forwardRef(
   ({ icon, iconProps, titleProps, flags, children, ...rest }, ref) => (
@@ -41,7 +41,7 @@ const DetailsHeader = forwardRef(
       )}
     </div>
   ),
-);
+)
 
 DetailsHeader.propTypes = {
   icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -53,15 +53,15 @@ DetailsHeader.propTypes = {
       value: PropTypes.node,
     }),
   ),
-};
+}
 
 DetailsHeader.defaultProps = {
   icon: null,
   iconProps: {},
   titleProps: {},
   flags: [],
-};
+}
 
-DetailsHeader.displayName = 'DetailsHeader';
+DetailsHeader.displayName = 'DetailsHeader'
 
-export default DetailsHeader;
+export default DetailsHeader

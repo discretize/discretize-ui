@@ -1,9 +1,9 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Effect from '../Effect';
+import Effect from '../Effect'
 
-import consumableEffects from '../data/consumableEffects.json';
+import consumableEffects from '../data/consumableEffects.json'
 
 const ConsumableEffect = forwardRef(({ name, ...rest }, ref) => (
   <Effect
@@ -13,12 +13,12 @@ const ConsumableEffect = forwardRef(({ name, ...rest }, ref) => (
     {...rest}
     ref={ref}
   />
-));
+))
 
 ConsumableEffect.propTypes = {
   name: PropTypes.oneOf(Object.keys(consumableEffects)).isRequired,
-};
+}
 
-ConsumableEffect.displayName = 'ConsumableEffect';
+ConsumableEffect.displayName = 'ConsumableEffect'
 
-export default ConsumableEffect;
+export default ConsumableEffect

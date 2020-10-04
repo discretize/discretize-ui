@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, object } from '@storybook/addon-knobs';
-import { Attributes } from 'gw2-ui';
+import React from 'react'
+import { number, object } from '@storybook/addon-knobs'
+import { Attributes } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Attributes.readme.md';
-import docs from './Attributes.docs.md';
+import categories from '../categories'
+import readme from './Attributes.readme.md'
+import docs from './Attributes.docs.md'
 
 export default {
   category: categories.CORE,
@@ -16,7 +16,7 @@ export default {
       level={number('level', 80)}
       items={object('items', [48073, 37131])}
     >
-      {attributes => {
+      {(attributes) => {
         const {
           base: baseAttributes,
           items: {
@@ -24,15 +24,15 @@ export default {
             errors: itemErrors,
             loading: itemLoading,
           },
-        } = attributes;
+        } = attributes
 
         return JSON.stringify({
           baseAttributes,
           itemAttributes,
           itemErrors,
           itemLoading,
-        });
+        })
       }}
     </Attributes>
   ),
-};
+}

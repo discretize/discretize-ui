@@ -1,1 +1,1 @@
-export { default } from './Trait';
+export { default } from './Trait'

@@ -3,4 +3,4 @@ export default {
   TRINKET: 'Trinket',
   BACK: 'Back',
   WEAPON: 'Weapon',
-};
+}

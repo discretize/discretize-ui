@@ -1,2 +1,2 @@
-export default Component =>
-  (Component && (Component.displayName || Component.name)) || 'Component';
+export default (Component) =>
+  (Component && (Component.displayName || Component.name)) || 'Component'

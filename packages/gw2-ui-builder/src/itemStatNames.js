@@ -49,4 +49,4 @@ export default {
   MAGI: 'Magi',
   APOTHECARY: 'Apothecary',
   CELESTIAL: 'Celestial',
-};
+}

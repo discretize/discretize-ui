@@ -9,4 +9,4 @@ export default {
   CritDamage: 'Ferocity',
   Healing: 'Healing Power',
   AgonyResistance: 'Agony Resistance',
-};
+}

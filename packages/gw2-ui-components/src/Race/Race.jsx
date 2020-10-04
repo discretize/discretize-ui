@@ -1,13 +1,13 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
 
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import Error from '../Error';
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import Error from '../Error'
 
-import races from '../data/races.json';
-import { useColorModeHighlightSuffix } from '../helpers';
+import races from '../data/races.json'
+import { useColorModeHighlightSuffix } from '../helpers'
 
 const Race = forwardRef(
   (
@@ -26,7 +26,7 @@ const Race = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
     if (!name || !races.includes(name)) {
       return (
@@ -51,7 +51,7 @@ const Race = forwardRef(
             },
           }}
         />
-      );
+      )
     }
 
     return (
@@ -88,9 +88,9 @@ const Race = forwardRef(
         }}
         ref={ref}
       />
-    );
+    )
   },
-);
+)
 
 Race.propTypes = {
   name: PropTypes.oneOf(races).isRequired,
@@ -103,7 +103,7 @@ Race.propTypes = {
   tooltipProps: PropTypes.object,
   wikiLinkProps: PropTypes.object,
   errorProps: PropTypes.object,
-};
+}
 
 Race.defaultProps = {
   component: undefined,
@@ -115,8 +115,8 @@ Race.defaultProps = {
   tooltipProps: {},
   wikiLinkProps: {},
   errorProps: {},
-};
+}
 
-Race.displayName = 'Race';
+Race.displayName = 'Race'
 
-export default Race;
+export default Race

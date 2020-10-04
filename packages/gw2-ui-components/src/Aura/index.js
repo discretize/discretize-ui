@@ -1,1 +1,1 @@
-export { default } from './Aura';
+export { default } from './Aura'

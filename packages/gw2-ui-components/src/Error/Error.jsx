@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Tooltip from '../Tooltip';
-import DetailsHeader from '../DetailsHeader';
-import DetailsText from '../DetailsText';
-import IconWithText from '../IconWithText';
+import Tooltip from '../Tooltip'
+import DetailsHeader from '../DetailsHeader'
+import DetailsText from '../DetailsText'
+import IconWithText from '../IconWithText'
 
 const Error = forwardRef(
   (
@@ -57,7 +57,7 @@ const Error = forwardRef(
       />
     </Tooltip>
   ),
-);
+)
 
 Error.propTypes = {
   component: PropTypes.elementType,
@@ -69,7 +69,7 @@ Error.propTypes = {
   disableTooltip: PropTypes.bool,
   inline: PropTypes.bool,
   tooltipProps: PropTypes.object,
-};
+}
 
 Error.defaultProps = {
   component: undefined,
@@ -81,8 +81,8 @@ Error.defaultProps = {
   disableTooltip: false,
   inline: true,
   tooltipProps: {},
-};
+}
 
-Error.displayName = 'Error';
+Error.displayName = 'Error'
 
-export default Error;
+export default Error

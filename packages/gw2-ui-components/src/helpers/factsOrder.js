@@ -25,4 +25,4 @@ export default {
   NoData: 17,
 
   Range: 18,
-};
+}

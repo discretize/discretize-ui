@@ -1,9 +1,9 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Effect from '../Effect';
+import Effect from '../Effect'
 
-import conditions from '../data/conditions.json';
+import conditions from '../data/conditions.json'
 
 const Condition = forwardRef(({ name, count, ...rest }, ref) => (
   <Effect
@@ -14,17 +14,17 @@ const Condition = forwardRef(({ name, count, ...rest }, ref) => (
     iconProps={{ applyCount: count, ...rest.iconProps }}
     ref={ref}
   />
-));
+))
 
 Condition.propTypes = {
   name: PropTypes.oneOf(Object.keys(conditions)).isRequired,
   count: PropTypes.number,
-};
+}
 
 Condition.defaultProps = {
   count: null,
-};
+}
 
-Condition.displayName = 'Condition';
+Condition.displayName = 'Condition'
 
-export default Condition;
+export default Condition

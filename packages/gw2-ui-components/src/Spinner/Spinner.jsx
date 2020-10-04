@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import { keyframes } from '@emotion/core';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import { keyframes } from '@emotion/core'
 
 const spin = keyframes({
   from: {
@@ -9,7 +9,7 @@ const spin = keyframes({
   to: {
     transform: 'rotate(360deg)',
   },
-});
+})
 
 const Spinner = forwardRef(({ component: Component, inline, ...rest }, ref) => (
   <Component
@@ -26,18 +26,18 @@ const Spinner = forwardRef(({ component: Component, inline, ...rest }, ref) => (
     {...rest}
     ref={ref}
   />
-));
+))
 
 Spinner.propTypes = {
   component: PropTypes.elementType,
   inline: PropTypes.bool,
-};
+}
 
 Spinner.defaultProps = {
   component: 'span',
   inline: true,
-};
+}
 
-Spinner.displayName = 'Spinner';
+Spinner.displayName = 'Spinner'
 
-export default Spinner;
+export default Spinner

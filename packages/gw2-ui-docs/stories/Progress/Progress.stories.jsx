@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, text, boolean } from '@storybook/addon-knobs';
-import { Progress } from 'gw2-ui';
+import React from 'react'
+import { number, text, boolean } from '@storybook/addon-knobs'
+import { Progress } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Progress.readme.md';
-import docs from './Progress.docs.md';
+import categories from '../categories'
+import readme from './Progress.readme.md'
+import docs from './Progress.docs.md'
 
 export default {
   category: categories.HELPERS,
@@ -18,4 +18,4 @@ export default {
       style={{ fontSize: number('style.fontSize', 24) }}
     />
   ),
-};
+}

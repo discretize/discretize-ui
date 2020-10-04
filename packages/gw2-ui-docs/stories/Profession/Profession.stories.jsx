@@ -1,10 +1,10 @@
-import React from 'react';
-import { select, boolean, number } from '@storybook/addon-knobs';
-import { Profession, professions } from 'gw2-ui';
+import React from 'react'
+import { select, boolean, number } from '@storybook/addon-knobs'
+import { Profession, professions } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Profession.readme.md';
-import docs from './Profession.docs.md';
+import categories from '../categories'
+import readme from './Profession.readme.md'
+import docs from './Profession.docs.md'
 
 export default {
   category: categories.CORE,
@@ -36,4 +36,4 @@ export default {
     { category: categories.HELPERS, name: 'WikiLink' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

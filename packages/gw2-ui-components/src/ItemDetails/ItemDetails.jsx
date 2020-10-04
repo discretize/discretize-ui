@@ -1,12 +1,12 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import withLoading from '../withLoading/index';
-import DetailsHeader from '../DetailsHeader';
-import DetailsText from '../DetailsText';
-import { apiAttributes } from '../helpers';
-import Coin from '../Coin';
-import DetailsFact from '../DetailsFact';
+import withLoading from '../withLoading/index'
+import DetailsHeader from '../DetailsHeader'
+import DetailsText from '../DetailsText'
+import { apiAttributes } from '../helpers'
+import Coin from '../Coin'
+import DetailsFact from '../DetailsFact'
 
 const ItemDetails = forwardRef(
   (
@@ -219,7 +219,7 @@ const ItemDetails = forwardRef(
       )}
     </div>
   ),
-);
+)
 
 ItemDetails.propTypes = {
   count: PropTypes.number,
@@ -227,18 +227,18 @@ ItemDetails.propTypes = {
   upgrades: PropTypes.node,
   upgradeBonusCount: PropTypes.number,
   data: PropTypes.object.isRequired,
-};
+}
 
 ItemDetails.defaultProps = {
   count: null,
   upgrade: false,
   upgrades: null,
   upgradeBonusCount: null,
-};
+}
 
-ItemDetails.displayName = 'ItemDetails';
+ItemDetails.displayName = 'ItemDetails'
 
 export default withLoading({
   disableTooltip: true,
   iconWithTextProps: { sx: { color: '#fff' } },
-})(ItemDetails);
+})(ItemDetails)

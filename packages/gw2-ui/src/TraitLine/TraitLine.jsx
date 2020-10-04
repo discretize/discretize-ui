@@ -1,31 +1,28 @@
-import { abortRequests } from '@redux-requests/core';
-import { Query } from '@redux-requests/react';
-import { TraitLine as TraitLineComponent } from 'gw2-ui-components';
-import { fetchSpecialization, FETCH_SPECIALIZATION } from 'gw2-ui-redux';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import Trait from '../Trait';
+import { abortRequests } from '@redux-requests/core'
+import { Query } from '@redux-requests/react'
+import { TraitLine as TraitLineComponent } from 'gw2-ui-components'
+import { fetchSpecialization, FETCH_SPECIALIZATION } from 'gw2-ui-redux'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import Trait from '../Trait'
 
 const TraitLine = ({ id, ...rest }) => {
-  const requestKey = `${id}`;
+  const requestKey = `${id}`
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  useEffect(
-    () => {
-      dispatch(fetchSpecialization(requestKey));
+  useEffect(() => {
+    dispatch(fetchSpecialization(requestKey))
 
-      return () => {
-        dispatch(
-          abortRequests([
-            FETCH_SPECIALIZATION,
-            { requestType: FETCH_SPECIALIZATION, requestKey },
-          ]),
-        );
-      };
-    },
-    [dispatch, requestKey],
-  );
+    return () => {
+      dispatch(
+        abortRequests([
+          FETCH_SPECIALIZATION,
+          { requestType: FETCH_SPECIALIZATION, requestKey },
+        ]),
+      )
+    }
+  }, [dispatch, requestKey])
 
   return (
     <Query
@@ -46,7 +43,7 @@ const TraitLine = ({ id, ...rest }) => {
         />
       )}
     </Query>
-  );
-};
+  )
+}
 
-export default TraitLine;
+export default TraitLine

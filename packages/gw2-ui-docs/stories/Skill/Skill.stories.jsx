@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, boolean } from '@storybook/addon-knobs';
-import { Skill } from 'gw2-ui';
+import React from 'react'
+import { number, boolean } from '@storybook/addon-knobs'
+import { Skill } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './Skill.readme.md';
-import docs from './Skill.docs.md';
+import categories from '../categories'
+import readme from './Skill.readme.md'
+import docs from './Skill.docs.md'
 
 export default {
   category: categories.CORE,
@@ -31,4 +31,4 @@ export default {
     { category: categories.HELPERS, name: 'Progress' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}

@@ -1,1 +1,1 @@
-export { default } from './IconWithText';
+export { default } from './IconWithText'

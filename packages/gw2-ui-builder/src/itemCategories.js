@@ -1,5 +1,5 @@
-import ITEM_CATEGORY_NAMES from './itemCategoryNames';
-import ITEM_TYPE_NAMES from './itemTypeNames';
+import ITEM_CATEGORY_NAMES from './itemCategoryNames'
+import ITEM_TYPE_NAMES from './itemTypeNames'
 
 export default {
   [ITEM_CATEGORY_NAMES.ARMOR]: [
@@ -40,4 +40,4 @@ export default {
     ITEM_TYPE_NAMES.TORCH,
     ITEM_TYPE_NAMES.WARHORN,
   ],
-};
+}

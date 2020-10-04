@@ -1,147 +1,145 @@
-import React, { Fragment, forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import Icon from '../Icon';
-import { apiAttributes, formatDuration } from '../helpers';
+import Icon from '../Icon'
+import { apiAttributes, formatDuration } from '../helpers'
 
 const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
-  const { type, icon, prefix } = data;
+  const { type, icon, prefix } = data
 
-  let key;
-  let value;
-  let count;
+  let key
+  let value
+  let count
 
   switch (type) {
     case 'AttributeAdjust': {
-      const { text, value: factValue, target } = data;
+      const { text, value: factValue, target } = data
 
-      const attribute = !text && target && apiAttributes[target];
-      key = attribute ? `${attribute} Increase` : text;
+      const attribute = !text && target && apiAttributes[target]
+      key = attribute ? `${attribute} Increase` : text
       value = `${!text || text.endsWith('Increase') ? '+' : ''}${Number(
         factValue,
-      ).toLocaleString()}`;
+      ).toLocaleString()}`
 
-      break;
+      break
     }
     case 'Buff': {
-      const { duration, status, description, apply_count: applyCount } = data;
+      const { duration, status, description, apply_count: applyCount } = data
 
       if (duration) {
         key = (
-          <Fragment>
+          <>
             {status}
             <span sx={{ ml: '2px' }}>{`(${formatDuration(duration)})`}</span>
-          </Fragment>
-        );
+          </>
+        )
       } else {
-        key = status;
+        key = status
       }
-      value = description;
-      count = applyCount;
+      value = description
+      count = applyCount
 
-      break;
+      break
     }
     case 'BuffConversion': {
-      const { source, target, percent } = data;
+      const { source, target, percent } = data
 
-      key = `Gain ${apiAttributes[target]} Based on a Percentage of ${
-        apiAttributes[source]
-      }`;
-      value = `${percent}%`;
+      key = `Gain ${apiAttributes[target]} Based on a Percentage of ${apiAttributes[source]}`
+      value = `${percent}%`
 
-      break;
+      break
     }
     case 'ComboField': {
-      const { text, field_type: fieldType } = data;
+      const { text, field_type: fieldType } = data
 
-      key = text;
-      value = fieldType;
+      key = text
+      value = fieldType
 
-      break;
+      break
     }
     case 'ComboFinisher': {
-      const { text, percent, finisher_type: finisherType } = data;
+      const { text, percent, finisher_type: finisherType } = data
 
-      key = text;
+      key = text
       value = `${finisherType}${
         percent !== undefined && percent !== 0 && percent !== 100
           ? ` (${percent}% Chance)`
           : ''
-      }`;
+      }`
 
-      break;
+      break
     }
     case 'Damage': {
-      const { text, hit_count: hitCount, dmg_multiplier: dmgMultiplier } = data;
+      const { text, hit_count: hitCount, dmg_multiplier: dmgMultiplier } = data
 
       if (hitCount > 1) {
         key = (
-          <Fragment>
+          <>
             {text}
             <span sx={{ ml: '2px' }}>{`(${hitCount}x)`}</span>
-          </Fragment>
-        );
+          </>
+        )
       } else {
-        key = text;
+        key = text
       }
-      value = Math.round(1047.5 * 1000 * (dmgMultiplier / 2597)); // Greatsword weapon strength
+      value = Math.round(1047.5 * 1000 * (dmgMultiplier / 2597)) // Greatsword weapon strength
 
-      break;
+      break
     }
     case 'Distance': {
-      const { text, distance } = data;
+      const { text, distance } = data
 
-      key = text;
-      value = distance;
+      key = text
+      value = distance
 
-      break;
+      break
     }
     case 'Duration': {
-      const { text, duration } = data;
+      const { text, duration } = data
 
-      key = text;
-      value = duration;
+      key = text
+      value = duration
 
-      break;
+      break
     }
     case 'Heal': {
-      const { text, hit_count: hitCount } = data;
+      const { text, hit_count: hitCount } = data
 
-      key = text;
-      value = `${hitCount}x`;
+      key = text
+      value = `${hitCount}x`
 
-      break;
+      break
     }
     case 'HealingAdjust': {
-      const { text, hit_count: hitCount } = data;
+      const { text, hit_count: hitCount } = data
 
-      key = text;
-      value = `${hitCount}x`;
+      key = text
+      value = `${hitCount}x`
 
-      break;
+      break
     }
     case 'NoData': {
-      const { text } = data;
+      const { text } = data
 
-      value = text;
+      value = text
 
-      break;
+      break
     }
     case 'Number': {
-      const { text, value: factValue } = data;
+      const { text, value: factValue } = data
 
-      key = text;
-      value = factValue;
+      key = text
+      value = factValue
 
-      break;
+      break
     }
     case 'Percent': {
-      const { text, percent } = data;
+      const { text, percent } = data
 
-      key = text;
-      value = `${percent}%`;
+      key = text
+      value = `${percent}%`
 
-      break;
+      break
     }
     case 'PrefixedBuff': {
       const {
@@ -150,85 +148,85 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         status,
         description,
         apply_count: applyCount,
-      } = data;
+      } = data
 
       if (duration) {
         key = (
-          <Fragment>
+          <>
             {status}
             <span sx={{ ml: '2px' }}>{`(${duration}s)`}</span>
-          </Fragment>
-        );
+          </>
+        )
       } else {
-        key = text;
+        key = text
       }
-      value = description;
-      count = applyCount;
+      value = description
+      count = applyCount
 
-      break;
+      break
     }
     case 'Radius': {
-      const { text, distance } = data;
+      const { text, distance } = data
 
-      key = text;
-      value = distance;
+      key = text
+      value = distance
 
-      break;
+      break
     }
     case 'Range': {
-      const { text, value: factValue } = data;
+      const { text, value: factValue } = data
 
-      key = text;
-      value = Number(factValue).toLocaleString();
+      key = text
+      value = Number(factValue).toLocaleString()
 
-      break;
+      break
     }
     case 'Recharge': {
-      const { text, value: factValue } = data;
+      const { text, value: factValue } = data
 
-      key = text;
-      value = factValue;
+      key = text
+      value = factValue
 
-      break;
+      break
     }
     case 'StunBreak': {
-      value = 'Breaks Stun';
-      break;
+      value = 'Breaks Stun'
+      break
     }
     case 'Time': {
-      const { text, duration } = data;
+      const { text, duration } = data
 
-      key = text;
-      value = `${duration} second${duration > 1 ? 's' : ''}`;
+      key = text
+      value = `${duration} second${duration > 1 ? 's' : ''}`
 
-      break;
+      break
     }
     case 'Unblockable': {
-      const { text } = data;
+      const { text } = data
 
-      value = text;
+      value = text
 
-      break;
+      break
     }
     default: {
       // eslint-disable-next-line no-console
-      console.warn('Unknown fact type', data);
+      console.warn('Unknown fact type', data)
 
-      const { text, value: factValue } = data;
+      const { text, value: factValue } = data
 
       if (value === true) {
-        value = text;
+        value = text
       } else {
-        key = text;
-        value = factValue;
+        key = text
+        value = factValue
       }
 
-      break;
+      break
     }
   }
 
   if (!key && !value) {
-    return null;
+    return null
   }
 
   return (
@@ -254,13 +252,13 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         {value}
       </div>
     </div>
-  );
-});
+  )
+})
 
 DetailsFact.propTypes = {
   data: PropTypes.object.isRequired,
-};
+}
 
-DetailsFact.displayName = 'DetailsFact';
+DetailsFact.displayName = 'DetailsFact'
 
-export default DetailsFact;
+export default DetailsFact

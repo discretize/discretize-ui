@@ -1,12 +1,12 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
 
-import withLoading from '../withLoading/index';
-import Tooltip from '../Tooltip';
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import AbilityDetails from '../AbilityDetails';
-import { useColorModeHighlightSuffix } from '../helpers';
+import withLoading from '../withLoading/index'
+import Tooltip from '../Tooltip'
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import AbilityDetails from '../AbilityDetails'
+import { useColorModeHighlightSuffix } from '../helpers'
 
 const Skill = forwardRef(
   (
@@ -25,11 +25,11 @@ const Skill = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
-    const { name, icon, professions } = data;
+    const { name, icon, professions } = data
 
-    const profession = professions?.length && professions[0].toLowerCase();
+    const profession = professions?.length && professions[0].toLowerCase()
 
     return (
       <Tooltip
@@ -69,9 +69,9 @@ const Skill = forwardRef(
           ref={ref}
         />
       </Tooltip>
-    );
+    )
   },
-);
+)
 
 Skill.propTypes = {
   id: PropTypes.number,
@@ -84,7 +84,7 @@ Skill.propTypes = {
   inline: PropTypes.bool,
   tooltipProps: PropTypes.object,
   wikiLinkProps: PropTypes.object,
-};
+}
 
 Skill.defaultProps = {
   id: null,
@@ -96,8 +96,8 @@ Skill.defaultProps = {
   inline: true,
   tooltipProps: {},
   wikiLinkProps: {},
-};
+}
 
-Skill.displayName = 'Skill';
+Skill.displayName = 'Skill'
 
-export default withLoading()(Skill);
+export default withLoading()(Skill)

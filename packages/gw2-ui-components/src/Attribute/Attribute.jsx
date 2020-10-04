@@ -1,16 +1,16 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React, { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
 
-import Tooltip from '../Tooltip';
-import DetailsHeader from '../DetailsHeader';
-import DetailsText from '../DetailsText';
-import IconWithText from '../IconWithText';
-import WikiLink from '../WikiLink';
-import Error from '../Error';
-import useColorModeHighlightSuffix from '../helpers/useColorModeHighlightSuffix';
+import Tooltip from '../Tooltip'
+import DetailsHeader from '../DetailsHeader'
+import DetailsText from '../DetailsText'
+import IconWithText from '../IconWithText'
+import WikiLink from '../WikiLink'
+import Error from '../Error'
+import useColorModeHighlightSuffix from '../helpers/useColorModeHighlightSuffix'
 
-import attributes from '../data/attributes.json';
+import attributes from '../data/attributes.json'
 
 const Attribute = forwardRef(
   (
@@ -29,11 +29,11 @@ const Attribute = forwardRef(
     },
     ref,
   ) => {
-    const highlightSuffix = useColorModeHighlightSuffix();
+    const highlightSuffix = useColorModeHighlightSuffix()
 
     const description = (Object.entries(attributes).find(([, values]) =>
       Object.keys(values).includes(name),
-    ) || [])[1]?.[name];
+    ) || [])[1]?.[name]
 
     if (!name || typeof description === 'undefined') {
       return (
@@ -58,7 +58,7 @@ const Attribute = forwardRef(
             },
           }}
         />
-      );
+      )
     }
 
     return (
@@ -106,13 +106,15 @@ const Attribute = forwardRef(
           ref={ref}
         />
       </Tooltip>
-    );
+    )
   },
-);
+)
 
 Attribute.propTypes = {
   name: PropTypes.oneOf(
-    [].concat(...Object.values(attributes).map(values => Object.keys(values))),
+    [].concat(
+      ...Object.values(attributes).map((values) => Object.keys(values)),
+    ),
   ).isRequired,
   component: PropTypes.elementType,
   disableTooltip: PropTypes.bool,
@@ -123,7 +125,7 @@ Attribute.propTypes = {
   tooltipProps: PropTypes.object,
   wikiLinkProps: PropTypes.object,
   errorProps: PropTypes.object,
-};
+}
 
 Attribute.defaultProps = {
   component: undefined,
@@ -135,8 +137,8 @@ Attribute.defaultProps = {
   tooltipProps: {},
   wikiLinkProps: {},
   errorProps: {},
-};
+}
 
-Attribute.displayName = 'Attribute';
+Attribute.displayName = 'Attribute'
 
-export default Attribute;
+export default Attribute

@@ -1,1 +1,1 @@
-export { default } from './Skill';
+export { default } from './Skill'

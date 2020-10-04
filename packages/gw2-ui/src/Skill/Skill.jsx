@@ -1,30 +1,24 @@
-import { abortRequests } from '@redux-requests/core';
-import { Query } from '@redux-requests/react';
-import { Skill as SkillComponent } from 'gw2-ui-components';
-import { fetchSkill, FETCH_SKILL } from 'gw2-ui-redux';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { abortRequests } from '@redux-requests/core'
+import { Query } from '@redux-requests/react'
+import { Skill as SkillComponent } from 'gw2-ui-components'
+import { fetchSkill, FETCH_SKILL } from 'gw2-ui-redux'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const Skill = ({ id, ...rest }) => {
-  const requestKey = `${id}`;
+  const requestKey = `${id}`
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  useEffect(
-    () => {
-      dispatch(fetchSkill(requestKey));
+  useEffect(() => {
+    dispatch(fetchSkill(requestKey))
 
-      return () => {
-        dispatch(
-          abortRequests([
-            FETCH_SKILL,
-            { requestType: FETCH_SKILL, requestKey },
-          ]),
-        );
-      };
-    },
-    [dispatch, requestKey],
-  );
+    return () => {
+      dispatch(
+        abortRequests([FETCH_SKILL, { requestType: FETCH_SKILL, requestKey }]),
+      )
+    }
+  }, [dispatch, requestKey])
 
   return (
     <Query
@@ -39,7 +33,7 @@ const Skill = ({ id, ...rest }) => {
         <SkillComponent data={data} error={error} loading={loading} {...rest} />
       )}
     </Query>
-  );
-};
+  )
+}
 
-export default Skill;
+export default Skill

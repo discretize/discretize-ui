@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, array, boolean } from '@storybook/addon-knobs';
-import { TraitLine } from 'gw2-ui';
+import React from 'react'
+import { number, array, boolean } from '@storybook/addon-knobs'
+import { TraitLine } from 'gw2-ui'
 
-import categories from '../categories';
-import readme from './TraitLine.readme.md';
-import docs from './TraitLine.docs.md';
+import categories from '../categories'
+import readme from './TraitLine.readme.md'
+import docs from './TraitLine.docs.md'
 
 export default {
   category: categories.CORE,
@@ -14,7 +14,7 @@ export default {
   story: () => (
     <TraitLine
       id={number('id', 41)}
-      defaultSelected={array('defaultSelected', [227, 214, 1672]).map(value =>
+      defaultSelected={array('defaultSelected', [227, 214, 1672]).map((value) =>
         Number(value),
       )}
       selectable={boolean('selectable', true)}
@@ -31,4 +31,4 @@ export default {
     { category: categories.HELPERS, name: 'Progress' },
     { category: categories.HELPERS, name: 'Error' },
   ],
-};
+}
