@@ -6,25 +6,33 @@
   "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
   "repository": "https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-docs",
   "scripts": {
-    "develop": "echo develop"
+    "prebuild": "run-s clean",
+    "build": "cross-env NODE_ENV=production build-storybook",
+    "clean": "del-cli .cache storybook-static",
+    "predeploy": "run-s build",
+    "deploy": "gh-pages -d storybook-static",
+    "storybook": "cross-env NODE_ENV=development start-storybook -p 9001"
   },
   "dependencies": {
     "axios": "0.16.0",
-    "gw2-ui": "0.9.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-redux": "7.2.1",
+    "gw2-ui": "^0.9.0",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "react-redux": "7.1.0",
     "redux": "4.0.0",
+    "reselect": "4.0.0",
     "styled-components": "5.2.0",
-    "typeface-menomonia": "0.1.2"
+    "typeface-menomonia": "^0.1.2"
   },
   "devDependencies": {
     "@storybook/addon-knobs": "5.2.3",
     "@storybook/addon-viewport": "5.2.3",
     "@storybook/react": "5.2.3",
     "@storybook/theming": "5.2.3",
-    "babel-loader": "8.0.5",
+    "babel-loader": "8.1.0",
     "babel-plugin-styled-components": "1.10.0",
+    "cross-env": "7.0.2",
+    "del-cli": "3.0.1",
     "gh-pages": "2.0.1",
     "storybook-readme": "5.0.3"
   }
