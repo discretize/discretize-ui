@@ -7,13 +7,13 @@
 
 ## Prerequisites
 
-- `node` >= 8.11.0
+- `node` >= 10.13.0
 - `yarn` >= 1.2.1
 
 ## Developing
 
 ```sh
-yarn bootstrap
+yarn
 yarn develop
 ```
 
@@ -23,11 +23,9 @@ yarn develop
 yarn run publish
 ```
 
-_Note:_ The `rebuild` script can't be called `prepare` currently ([see the related lerna issue](https://github.com/lerna/lerna/issues/1944)).
-
 ## Contributing
 
-Make sure your commit messages follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0-beta.4/#summary).
+Make sure your commit messages follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/#summary).
 
 # Notes
 

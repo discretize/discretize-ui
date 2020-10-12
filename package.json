@@ -13,9 +13,9 @@
     "lint:code": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
     "lint:other": "prettier --list-different --ignore-path .gitignore \"**/*.{md,json,yaml,yml}\" \"!**/*CHANGELOG.md\"",
     "prepare": "lerna run prepare --stream",
-    "pretest_disabled": "run-s lint",
     "prepublish": "lerna run prepublish --stream",
     "storybook": "lerna run storybook --stream",
+    "pretest": "run-s lint",
     "test": "echo \"No tests configured\"",
     "watch": "lerna run watch --parallel"
   },
