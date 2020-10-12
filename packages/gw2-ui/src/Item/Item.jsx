@@ -31,21 +31,19 @@ const Item = ({
   createItemParams,
   ...rest
 }) => {
+  const requestKey = id && `${id}`
+
   const [isInViewport, targetRef] = useIsInViewport()
 
-  const requestKey = id && `${id}`
   const upgrades = useSelector(getUpgradesSelector(propsUpgrades))
+  const { data, error, loading } = useQuery({ type: FETCH_ITEM, requestKey })
 
   const dispatch = useDispatch()
-
-  const { data, error, loading } = useQuery({ type: FETCH_ITEM, requestKey })
 
   useEffect(() => {
     if (data || loading || !isInViewport) {
       return () => {}
     }
-
-    console.log(`${id} query`, { data, error, loading, isInViewport })
 
     if (requestKey) {
       dispatch(fetchItem(requestKey))

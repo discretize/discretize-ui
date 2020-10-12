@@ -32,3 +32,4 @@ Make sure your commit messages follow the [Conventional Commits specification](h
 # Notes
 
 - https://github.com/webpack/webpack/issues/10227
+- Only one `react` version should be present - otherwise weird things happen to hooks and the redux store

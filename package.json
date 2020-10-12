@@ -5,8 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "develop": "run-p watch docs",
-    "docs": "lerna run develop --scope=gw2-ui-docs --stream",
+    "develop": "run-p watch storybook",
     "fix": "run-p fix:*",
     "fix:code": "run-s \"lint:code --fix\"",
     "fix:other": "run-s \"lint:other --write\"",
@@ -16,6 +15,7 @@
     "prepare": "lerna run prepare --stream",
     "pretest_disabled": "run-s lint",
     "prepublish": "lerna run prepublish --stream",
+    "storybook": "lerna run storybook --stream",
     "test": "echo \"No tests configured\"",
     "watch": "lerna run watch --parallel"
   },
@@ -30,43 +30,24 @@
       "@commitlint/config-conventional"
     ]
   },
-  "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Edge versions",
-    "last 2 Opera versions",
-    "last 2 FirefoxAndroid versions",
-    "last 2 iOS version",
-    "last 2 safari version"
-  ],
-  "resolutions": {
-    "acorn": "npm:acorn-with-stage3"
-  },
   "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-transform-runtime": "^7.11.5",
-    "@babel/preset-env": "^7.11.5",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
-    "cross-env": "^7.0.2",
-    "del-cli": "^3.0.1",
-    "eslint": "^7.10.0",
+    "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.3",
+    "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "terser-webpack-plugin": "^4.2.2",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "prettier": "^2.1.2"
+  },
+  "engines": {
+    "node": ">=10.13.0"
   }
 }

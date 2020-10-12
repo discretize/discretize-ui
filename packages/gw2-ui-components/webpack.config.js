@@ -1,6 +1,4 @@
-const TerserPlugin = require('terser-webpack-plugin')
-
-module.exports = (env, argv) => ({
+module.exports = {
   output: {
     library: 'Gw2UiComponents',
     libraryTarget: 'umd',
@@ -32,21 +30,6 @@ module.exports = (env, argv) => ({
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  ...(argv.mode === 'production' && {
-    optimization: {
-      minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            output: {
-              comments: false,
-            },
-          },
-          extractComments: false,
-        }),
-      ],
-    },
-  }),
   externals: {
     react: {
       root: 'React',
@@ -62,4 +45,4 @@ module.exports = (env, argv) => ({
     },
   },
   devtool: 'source-map',
-})
+}

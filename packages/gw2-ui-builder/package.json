@@ -26,16 +26,27 @@
     "prebuild": "run-s clean",
     "build": "run-p build:* build:*:*",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib",
-    "build:es": "cross-env babel --root-mode upward src -d es",
-    "build:umd": "webpack --mode development -o dist/gw2-ui-builder.js",
-    "build:umd:min": "webpack --mode production -o dist/gw2-ui-builder.min.js",
+    "build:es": "babel --root-mode upward src -d es",
+    "build:umd": "cross-env BABEL_ENV=webpack webpack --mode development -o dist/gw2-ui-builder.js",
+    "build:umd:min": "cross-env BABEL_ENV=webpack webpack --mode production -o dist/gw2-ui-builder.min.js",
     "clean": "del-cli lib es dist",
     "prepublish": "run-s build",
     "prewatch": "del-cli es",
     "watch": "run-s \"build:es --watch\""
   },
   "devDependencies": {
-    "@babel/runtime-corejs3": "7.4.0"
+    "@babel/cli": "7.11.6",
+    "@babel/core": "7.11.6",
+    "@babel/plugin-proposal-class-properties": "7.10.4",
+    "@babel/plugin-transform-runtime": "7.11.5",
+    "@babel/preset-env": "7.11.5",
+    "@babel/runtime-corejs3": "7.4.0",
+    "babel-loader": "8.1.0",
+    "cross-env": "7.0.2",
+    "del-cli": "3.0.1",
+    "npm-run-all": "4.1.5",
+    "webpack": "5.0.0",
+    "webpack-cli": "4.0.0"
   },
   "peerDependencies": {
     "@babel/runtime-corejs3": "^7.4.0"
