@@ -1,23 +1,23 @@
-import React from 'react';
+import React from 'react'
 import {
   storiesOf,
   configure,
   addDecorator,
   addParameters,
-} from '@storybook/react';
-import { create } from '@storybook/theming';
-import { Provider } from 'react-redux';
-import { addReadme, configureReadme } from 'storybook-readme';
-import { withKnobs } from '@storybook/addon-knobs';
-import { ThemeProvider, baseTheme } from 'gw2-ui';
-import styled from 'styled-components';
+} from '@storybook/react'
+import { create } from '@storybook/theming'
+import { Provider } from 'react-redux'
+import { addReadme, configureReadme } from 'storybook-readme'
+import { withKnobs } from '@storybook/addon-knobs'
+import { ThemeProvider, baseTheme } from 'gw2-ui'
+import styled from 'styled-components'
 
-import 'typeface-menomonia';
+import 'typeface-menomonia'
 
-import createStore from './createStore';
-import categories from '../stories/categories';
+import createStore from './createStore'
+import categories from '../stories/categories'
 
-const store = createStore();
+const store = createStore()
 
 addParameters({
   options: {
@@ -28,15 +28,15 @@ addParameters({
     panelPosition: 'right',
     sortStoriesByKind: true,
   },
-});
+})
 
-addDecorator(story => (
+addDecorator((story) => (
   <Provider store={store}>
     <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
   </Provider>
-));
+))
 
-addDecorator(addReadme);
+addDecorator(addReadme)
 
 configureReadme({
   StoryPreview: styled.div`
@@ -56,21 +56,21 @@ configureReadme({
       'Segoe UI Symbol';
   `,
   footer: 'ignored',
-});
+})
 
-const requireContext = require.context('../stories', true, /\.stories.jsx$/);
+const requireContext = require.context('../stories', true, /\.stories.jsx$/)
 
 const loadStories = async () => {
   const stories = Object.assign(
-    ...Object.values(categories).map(category => {
-      const story = storiesOf(category, module);
-      story.addDecorator(withKnobs);
+    ...Object.values(categories).map((category) => {
+      const story = storiesOf(category, module)
+      story.addDecorator(withKnobs)
 
       return {
         [category]: story,
-      };
+      }
     }),
-  );
+  )
 
   requireContext
     .keys()
@@ -102,7 +102,7 @@ const loadStories = async () => {
                                 .match(
                                   /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g,
                                 )
-                                .map(x => x.toLowerCase())
+                                .map((x) => x.toLowerCase())
                                 .join('-')}--${componentName.toLowerCase()}`}
                             >
                               <code>{`<${componentName}/>`}</code>
@@ -115,9 +115,9 @@ const loadStories = async () => {
                 )
               : () => null,
           },
-        });
+        })
       },
-    );
-};
+    )
+}
 
-configure(loadStories, module);
+configure(loadStories, module)
