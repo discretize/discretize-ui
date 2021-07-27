@@ -1,39 +1,68 @@
 import { abortRequests } from '@redux-requests/core'
-import { Query } from '@redux-requests/react'
+import { useQuery } from '@redux-requests/react'
 import { Skill as SkillComponent } from 'gw2-ui-components'
-import { fetchSkill, FETCH_SKILL } from 'gw2-ui-redux'
+import { addSkill, FETCH_SKILLS } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { PageContext } from '../withPageName'
 
 const Skill = ({ id, ...rest }) => {
   const requestKey = `${id}`
 
+  // context for the current opened page
+  const page = React.useContext(PageContext)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchSkill(requestKey))
+    dispatch(addSkill({ id: requestKey, page }))
 
     return () => {
       dispatch(
-        abortRequests([FETCH_SKILL, { requestType: FETCH_SKILL, requestKey }]),
+        abortRequests([
+          FETCH_SKILLS,
+          { requestType: FETCH_SKILLS, requestKey },
+        ]),
       )
     }
   }, [dispatch, requestKey])
 
+  const { data, error, loading } = useQuery({
+    type: FETCH_SKILLS,
+    requestKey: page,
+  })
+
+  return (
+    <SkillComponent
+      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      error={error}
+      loading={loading}
+      {...rest}
+    />
+  )
+  /*
   return (
     <Query
-      type={FETCH_SKILL}
+      type={FETCH_SKILLS}
       requestKey={requestKey}
       loadingComponent={SkillComponent}
       loadingComponentProps={{ id, ...rest, loading: true }}
       errorComponent={SkillComponent}
       errorComponentProps={{ id, ...rest }}
     >
-      {({ data, error, loading }) => (
-        <SkillComponent data={data} error={error} loading={loading} {...rest} />
-      )}
+      {({ data, error, loading }) => {
+        console.log(data)
+        return (
+          <SkillComponent
+            data={data.filter((d) => d.id === requestKey)[0]}
+            error={error}
+            loading={loading}
+            {...rest}
+          />
+        )
+      }}
     </Query>
-  )
+  ) */
 }
 
 export default Skill

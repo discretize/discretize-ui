@@ -1,27 +1,28 @@
+import { boolean, number } from '@storybook/addon-knobs'
+import { Skill, withPageName } from 'gw2-ui'
 import React from 'react'
-import { number, boolean } from '@storybook/addon-knobs'
-import { Skill } from 'gw2-ui'
-
 import categories from '../categories'
-import readme from './Skill.readme.md'
 import docs from './Skill.docs.md'
+import readme from './Skill.readme.md'
 
+const PAGE_NAME = 'Skill'
 export default {
   category: categories.CORE,
-  name: 'Skill',
+  name: PAGE_NAME,
   readme,
   docs,
-  story: () => (
-    <Skill
-      id={number('id', 14375)}
-      disableIcon={boolean('disableIcon', false)}
-      disableText={boolean('disableText', false)}
-      disableLink={boolean('disableLink', false)}
-      disableTooltip={boolean('disableTooltip', false)}
-      inline={boolean('inline', true)}
-      style={{ fontSize: number('style.fontSize', 24) }}
-    />
-  ),
+  story: () =>
+    withPageName(PAGE_NAME)(() => (
+      <Skill
+        id={number('id', 14375)}
+        disableIcon={boolean('disableIcon', false)}
+        disableText={boolean('disableText', false)}
+        disableLink={boolean('disableLink', false)}
+        disableTooltip={boolean('disableTooltip', false)}
+        inline={boolean('inline', true)}
+        style={{ fontSize: number('style.fontSize', 24) }}
+      />
+    )),
   related: [
     { category: categories.HELPERS, name: 'IconWithText' },
     { category: categories.HELPERS, name: 'Icon' },

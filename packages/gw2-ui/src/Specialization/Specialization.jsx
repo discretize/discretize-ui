@@ -1,28 +1,46 @@
 import { abortRequests } from '@redux-requests/core'
-import { Query } from '@redux-requests/react'
+import { useQuery } from '@redux-requests/react'
 import { Specialization as SpecializationComponent } from 'gw2-ui-components'
-import { fetchSpecialization, FETCH_SPECIALIZATION } from 'gw2-ui-redux'
+import { FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
+import { addSpecialization } from 'gw2-ui-redux/src/gw2-ui-slice'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { PageContext } from '../withPageName'
 
 const Specialization = ({ id, ...rest }) => {
   const requestKey = `${id}`
 
+  // context for the current opened page
+  const page = React.useContext(PageContext)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchSpecialization(requestKey))
+    dispatch(addSpecialization({ id: requestKey, page }))
 
     return () => {
       dispatch(
         abortRequests([
-          FETCH_SPECIALIZATION,
-          { requestType: FETCH_SPECIALIZATION, requestKey },
+          FETCH_SPECIALIZATIONS,
+          { requestType: FETCH_SPECIALIZATIONS, requestKey },
         ]),
       )
     }
   }, [dispatch, requestKey])
 
+  const { data, error, loading } = useQuery({
+    type: FETCH_SPECIALIZATIONS,
+    requestKey: page,
+  })
+  return (
+    <SpecializationComponent
+      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      error={error}
+      loading={loading}
+      {...rest}
+    />
+  )
+  /*
   return (
     <Query
       type={FETCH_SPECIALIZATION}
@@ -41,7 +59,7 @@ const Specialization = ({ id, ...rest }) => {
         />
       )}
     </Query>
-  )
+  ) */
 }
 
 export default Specialization

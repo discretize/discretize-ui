@@ -1,16 +1,34 @@
+import {
+  fetchItems,
+  fetchSkills,
+  fetchSpecializations,
+  fetchTraits,
+} from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
-import { fetchItems } from 'gw2-ui-redux'
 
 export const withPageName = (pageName) => (Component) => {
   const store = window.REDUX_STORE
+
+  const dispatcher = (type, fetcher) => {
+    const { gw2UiStore } = store.getState()
+
+    if (Array.isArray(gw2UiStore[type][pageName])) {
+      store.dispatch(
+        fetcher(
+          gw2UiStore[type][pageName].map((i) => i.id),
+          pageName,
+        ),
+      )
+    }
+  }
+
   useEffect(() => {
-    const itemsQuery = store
-      .getState()
-      .gw2UiStore.toQuery[pageName].map((i) => i.id)
-      .toString()
-    // TODO clean up passing a string here.
-    store.dispatch(fetchItems(itemsQuery, pageName))
+    dispatcher('items', fetchItems)
+    dispatcher('skills', fetchSkills)
+    dispatcher('specializations', fetchSpecializations)
+    dispatcher('traits', fetchTraits)
   })
+
   return (
     <PageContext.Provider value={pageName}>
       <Component />

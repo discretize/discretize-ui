@@ -1,32 +1,51 @@
 import { abortRequests } from '@redux-requests/core'
-import { Query } from '@redux-requests/react'
+import { useQuery } from '@redux-requests/react'
 import { TraitLine as TraitLineComponent } from 'gw2-ui-components'
-import { fetchSpecialization, FETCH_SPECIALIZATION } from 'gw2-ui-redux'
+import { addSpecialization, FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Trait from '../Trait'
+import { PageContext } from '../withPageName'
 
 const TraitLine = ({ id, ...rest }) => {
   const requestKey = `${id}`
 
+  // context for the current opened page
+  const page = React.useContext(PageContext)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchSpecialization(requestKey))
+    dispatch(addSpecialization({ id: requestKey, page }))
 
     return () => {
       dispatch(
         abortRequests([
-          FETCH_SPECIALIZATION,
-          { requestType: FETCH_SPECIALIZATION, requestKey },
+          FETCH_SPECIALIZATIONS,
+          { requestType: FETCH_SPECIALIZATIONS, requestKey },
         ]),
       )
     }
   }, [dispatch, requestKey])
 
+  const { data, error, loading } = useQuery({
+    type: FETCH_SPECIALIZATIONS,
+    requestKey: page,
+  })
+
+  return (
+    <TraitLineComponent
+      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      error={error}
+      loading={loading}
+      traitComponent={Trait}
+      {...rest}
+    />
+  )
+  /*
   return (
     <Query
-      type={FETCH_SPECIALIZATION}
+      type={FETCH_SPECIALIZATIONS}
       requestKey={requestKey}
       loadingComponent={TraitLineComponent}
       loadingComponentProps={{ id, ...rest, loading: true }}
@@ -44,6 +63,7 @@ const TraitLine = ({ id, ...rest }) => {
       )}
     </Query>
   )
+  */
 }
 
 export default TraitLine

@@ -1,25 +1,47 @@
 import { abortRequests } from '@redux-requests/core'
-import { Query } from '@redux-requests/react'
+import { useQuery } from '@redux-requests/react'
 import { Trait as TraitComponent } from 'gw2-ui-components'
-import { fetchTrait, FETCH_TRAIT } from 'gw2-ui-redux'
+import { addTrait, FETCH_TRAITS } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { PageContext } from '../withPageName'
 
 const Trait = ({ id, ...rest }) => {
   const requestKey = `${id}`
 
+  // context for the current opened page
+  const page = React.useContext(PageContext)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchTrait(requestKey))
+    dispatch(addTrait({ id: requestKey, page }))
 
     return () => {
       dispatch(
-        abortRequests([FETCH_TRAIT, { requestType: FETCH_TRAIT, requestKey }]),
+        abortRequests([
+          FETCH_TRAITS,
+          { requestType: FETCH_TRAITS, requestKey },
+        ]),
       )
     }
   }, [dispatch, requestKey])
 
+  const { data, error, loading } = useQuery({
+    type: FETCH_TRAITS,
+    requestKey: page,
+  })
+
+  return (
+    <TraitComponent
+      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      error={error}
+      loading={loading}
+      {...rest}
+    />
+  )
+
+  /*
   return (
     <Query
       type={FETCH_TRAIT}
@@ -34,6 +56,7 @@ const Trait = ({ id, ...rest }) => {
       )}
     </Query>
   )
+  */
 }
 
 export default Trait

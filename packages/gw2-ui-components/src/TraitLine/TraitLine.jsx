@@ -93,7 +93,7 @@ const TraitLine = forwardRef(
           }}
         />
       ),
-      TraitComponent,
+      [TraitComponent],
     )
 
     const renderMajorTrait = useCallback(

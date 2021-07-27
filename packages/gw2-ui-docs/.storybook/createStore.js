@@ -19,6 +19,6 @@ export default () => {
     reducers,
     composeEnhancers(applyMiddleware(...requestsMiddleware)),
   )
-
+  window.REDUX_STORE = store
   return store
 }

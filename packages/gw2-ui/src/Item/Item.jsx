@@ -1,10 +1,10 @@
+import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { createItem } from 'gw2-ui-builder'
 import { Item as ItemComponent } from 'gw2-ui-components'
-import { fetchItems, FETCH_ITEMS } from 'gw2-ui-redux'
+import { FETCH_ITEMS, addItem } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { add } from 'gw2-ui-redux/src/gw2-ui-slice'
 import { PageContext } from '../withPageName'
 
 // filter the returned data for the right value.
@@ -38,16 +38,6 @@ const Item = ({
   })
   const data = findRight(dataRaw, id)
 
-  // get the data for the upgrades
-  const {
-    data: dataUpgrades,
-    error: errorUpgrades,
-    loading: loadingUpgrades,
-  } = useQuery({
-    type: FETCH_ITEMS,
-    requestKey: `${page}_${id}_upgrades`,
-  })
-
   // format upgrades so that the underlaying Item-component understands it
   const upgrades = Array.isArray(propsUpgrades)
     ? propsUpgrades.map((upgrade) => {
@@ -56,9 +46,9 @@ const Item = ({
         return {
           id: id1,
           count,
-          error: errorUpgrades,
-          loading: loadingUpgrades,
-          data: findRight(dataUpgrades, id1),
+          error,
+          loading,
+          data: findRight(dataRaw, id1),
         }
       })
     : []
@@ -66,27 +56,24 @@ const Item = ({
   useEffect(() => {
     // Fetch all the upgrades
     if (Array.isArray(propsUpgrades)) {
-      const idArray = []
       propsUpgrades.forEach((upgrade) => {
         const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        idArray.push(localID)
-        dispatch(
-          add({ gw2type: 'item', id: localID, page: `${page}_${id}_upgrades` }),
-        )
+        dispatch(addItem({ id: localID, page }))
       })
-      dispatch(fetchItems(idArray, `${page}_${id}_upgrades`))
     }
 
     // fetch the basic item
     if (!data && !loading) {
       // console.log('called ' + requestKey)
-      dispatch(add({ gw2type: 'item', id: requestKey, page }))
+      dispatch(addItem({ id: requestKey, page }))
     } else {
       return () => {}
     }
 
     return () => {
-      // TODO cleanup
+      dispatch(
+        abortRequests([FETCH_ITEMS, { requestType: FETCH_ITEMS, requestKey }]),
+      )
     }
   }, [dispatch, requestKey, propsUpgrades])
 
@@ -133,15 +120,13 @@ const Item = ({
   }
 
   return (
-    <div>
-      <ItemComponent
-        data={mergedData}
-        error={error}
-        loading={loading}
-        upgrades={upgrades}
-        {...rest}
-      />
-    </div>
+    <ItemComponent
+      data={mergedData}
+      error={error}
+      loading={loading}
+      upgrades={upgrades}
+      {...rest}
+    />
   )
 }
 

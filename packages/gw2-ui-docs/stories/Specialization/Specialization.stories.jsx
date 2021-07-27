@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, boolean } from '@storybook/addon-knobs'
-import { Specialization } from 'gw2-ui'
+import { Specialization, withPageName } from 'gw2-ui'
 
 import categories from '../categories'
 import readme from './Specialization.readme.md'
@@ -11,16 +11,17 @@ export default {
   name: 'Specialization',
   readme,
   docs,
-  story: () => (
-    <Specialization
-      id={number('id', 59)}
-      disableIcon={boolean('disableIcon', false)}
-      disableText={boolean('disableText', false)}
-      disableLink={boolean('disableLink', false)}
-      inline={boolean('inline', true)}
-      style={{ fontSize: number('style.fontSize', 24) }}
-    />
-  ),
+  story: () =>
+    withPageName('Specialization')(() => (
+      <Specialization
+        id={number('id', 59)}
+        disableIcon={boolean('disableIcon', false)}
+        disableText={boolean('disableText', false)}
+        disableLink={boolean('disableLink', false)}
+        inline={boolean('inline', true)}
+        style={{ fontSize: number('style.fontSize', 24) }}
+      />
+    )),
   related: [
     { category: categories.HELPERS, name: 'IconWithText' },
     { category: categories.HELPERS, name: 'Icon' },

@@ -7,18 +7,32 @@ import gw2uiReducer from './gw2-ui-slice'
 export const gw2UIReducer = gw2uiReducer
 
 export {
+  getItems,
+  addItem,
+  addSkill,
+  addSpecialization,
+  addTrait,
+} from './gw2-ui-slice'
+
+export {
   fetchItem,
   fetchItems,
   fetchSkill,
+  fetchSkills,
   fetchSpecialization,
+  fetchSpecializations,
   fetchTrait,
+  fetchTraits,
 } from './actions'
 export {
   FETCH_ITEM,
   FETCH_ITEMS,
   FETCH_SKILL,
+  FETCH_SKILLS,
   FETCH_SPECIALIZATION,
+  FETCH_SPECIALIZATIONS,
   FETCH_TRAIT,
+  FETCH_TRAITS,
 } from './constants'
 export const handleRequests = ({ ssr = false } = {}) =>
   reduxRequestsHandleRequests({
