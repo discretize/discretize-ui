@@ -30,11 +30,14 @@ addParameters({
   },
 })
 
-addDecorator((story) => (
-  <Provider store={store}>
-    <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
-  </Provider>
-))
+addDecorator((story) => {
+  window.REDUX_STORE = store // https://stackoverflow.com/questions/59887678/adding-storybook-knobs-in-react-hooks-app-with-redux
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
+    </Provider>
+  )
+})
 
 addDecorator(addReadme)
 

@@ -1,5 +1,6 @@
 import {
   FETCH_ITEM,
+  FETCH_ITEMS,
   FETCH_SKILL,
   FETCH_SPECIALIZATION,
   FETCH_TRAIT,
@@ -14,6 +15,20 @@ export const fetchItem = (id) => ({
     cache: true,
     requestKey: `${id}`,
     takeLatest: false,
+  },
+})
+
+export const fetchItems = (ids, pageName) => ({
+  type: FETCH_ITEMS,
+  request: {
+    // TODO clean up this method so it takes an error instead of a string.
+    // pad ',1' here bc the ids parameter of the gw2 api expects at least two items
+    url: `/items?ids=${ids.indexOf(',') > 0 ? ids : `${ids},1`}?lang=en`,
+  },
+  meta: {
+    cache: true,
+    takeLatest: false,
+    requestKey: pageName,
   },
 })
 

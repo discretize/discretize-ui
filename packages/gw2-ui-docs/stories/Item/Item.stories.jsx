@@ -5,6 +5,7 @@ import {
   itemTypeNames as ITEM_TYPE_NAMES,
   itemStatNames as ITEM_STAT_NAMES,
   itemArmorWeights as ITEM_ARMOR_WEIGHTS,
+  withPageName,
 } from 'gw2-ui'
 
 import categories from '../categories'
@@ -39,26 +40,27 @@ ${Object.values(ITEM_STAT_NAMES)
 ${Object.values(ITEM_ARMOR_WEIGHTS)
   .map((weight) => `- \`${weight}\`\n`)
   .join('')}`,
-  story: () => (
-    <Item
-      id={number('id', 48073)}
-      count={number('count', null)}
-      upgrades={object('upgrades', [37131, [24836, 4]])}
-      type={select('type', [null, ...Object.values(ITEM_TYPE_NAMES)], null)}
-      stat={select('stat', [null, ...Object.values(ITEM_STAT_NAMES)], null)}
-      weight={select(
-        'weight',
-        [null, ...Object.values(ITEM_ARMOR_WEIGHTS)],
-        null,
-      )}
-      disableIcon={boolean('disableIcon', false)}
-      disableText={boolean('disableText', false)}
-      disableLink={boolean('disableLink', false)}
-      disableTooltip={boolean('disableTooltip', false)}
-      inline={boolean('inline', true)}
-      style={{ fontSize: number('style.fontSize', 24) }}
-    />
-  ),
+  story: () =>
+    withPageName('Items')(() => (
+      <Item
+        id={number('id', 48073)}
+        count={number('count', null)}
+        upgrades={object('upgrades', [37131, [24836, 4]])}
+        type={select('type', [null, ...Object.values(ITEM_TYPE_NAMES)], null)}
+        stat={select('stat', [null, ...Object.values(ITEM_STAT_NAMES)], null)}
+        weight={select(
+          'weight',
+          [null, ...Object.values(ITEM_ARMOR_WEIGHTS)],
+          null,
+        )}
+        disableIcon={boolean('disableIcon', false)}
+        disableText={boolean('disableText', false)}
+        disableLink={boolean('disableLink', false)}
+        disableTooltip={boolean('disableTooltip', false)}
+        inline={boolean('inline', true)}
+        style={{ fontSize: number('style.fontSize', 24) }}
+      />
+    )),
   related: [
     { category: categories.HELPERS, name: 'IconWithText' },
     { category: categories.HELPERS, name: 'Icon' },

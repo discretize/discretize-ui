@@ -59,10 +59,12 @@ export {
   WikiLink,
   wikiLinkLanguages,
 } from 'gw2-ui-components'
-export { handleRequests } from 'gw2-ui-redux'
+export { handleRequests, gw2UIReducer } from 'gw2-ui-redux'
 export { default as Attributes } from './Attributes'
 export { default as Item } from './Item'
 export { default as Skill } from './Skill'
 export { default as Specialization } from './Specialization'
 export { default as Trait } from './Trait'
 export { default as TraitLine } from './TraitLine'
+
+export { PageContext, withPageName } from './withPageName'

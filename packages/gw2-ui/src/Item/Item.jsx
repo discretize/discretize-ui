@@ -1,26 +1,19 @@
-import { abortRequests, getQuery } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { createItem } from 'gw2-ui-builder'
 import { Item as ItemComponent } from 'gw2-ui-components'
-import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux'
+import { fetchItems, FETCH_ITEMS } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import useIsInViewport from 'use-is-in-viewport'
+import { useDispatch } from 'react-redux'
+import { add } from 'gw2-ui-redux/src/gw2-ui-slice'
+import { PageContext } from '../withPageName'
 
-const getUpgradesSelector = (upgrades) => (state) =>
-  Array.isArray(upgrades)
-    ? upgrades.map((upgrade) => {
-        const [id, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        return {
-          id,
-          count,
-          ...getQuery(state, {
-            type: FETCH_ITEM,
-            requestKey: id,
-          }),
-        }
-      })
-    : []
+// filter the returned data for the right value.
+const findRight = (object, toFind) => {
+  const dataMatches = object
+    ? object.filter((d) => Number(toFind) === Number(d.id))
+    : undefined
+  return dataMatches && dataMatches.length > 0 ? dataMatches[0] : undefined
+}
 
 const Item = ({
   id,
@@ -31,49 +24,71 @@ const Item = ({
   createItemParams,
   ...rest
 }) => {
-  const requestKey = id && `${id}`
-
-  const [isInViewport, targetRef] = useIsInViewport()
-
-  const upgrades = useSelector(getUpgradesSelector(propsUpgrades))
-  const { data, error, loading } = useQuery({ type: FETCH_ITEM, requestKey })
-
   const dispatch = useDispatch()
 
+  const requestKey = id && `${id}`
+
+  // context for the current opened page
+  const page = React.useContext(PageContext)
+
+  // get the data for the basic item (without upgrades)
+  const { data: dataRaw, error, loading } = useQuery({
+    type: FETCH_ITEMS,
+    requestKey: page,
+  })
+  const data = findRight(dataRaw, id)
+
+  // get the data for the upgrades
+  const {
+    data: dataUpgrades,
+    error: errorUpgrades,
+    loading: loadingUpgrades,
+  } = useQuery({
+    type: FETCH_ITEMS,
+    requestKey: `${page}_${id}_upgrades`,
+  })
+
+  // format upgrades so that the underlaying Item-component understands it
+  const upgrades = Array.isArray(propsUpgrades)
+    ? propsUpgrades.map((upgrade) => {
+        const [id1, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
+
+        return {
+          id: id1,
+          count,
+          error: errorUpgrades,
+          loading: loadingUpgrades,
+          data: findRight(dataUpgrades, id1),
+        }
+      })
+    : []
+
   useEffect(() => {
-    if (data || loading || !isInViewport) {
+    // Fetch all the upgrades
+    if (Array.isArray(propsUpgrades)) {
+      const idArray = []
+      propsUpgrades.forEach((upgrade) => {
+        const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
+        idArray.push(localID)
+        dispatch(
+          add({ gw2type: 'item', id: localID, page: `${page}_${id}_upgrades` }),
+        )
+      })
+      dispatch(fetchItems(idArray, `${page}_${id}_upgrades`))
+    }
+
+    // fetch the basic item
+    if (!data && !loading) {
+      // console.log('called ' + requestKey)
+      dispatch(add({ gw2type: 'item', id: requestKey, page }))
+    } else {
       return () => {}
     }
 
-    if (requestKey) {
-      dispatch(fetchItem(requestKey))
-    }
-
-    if (upgrades) {
-      upgrades.forEach(({ id: upgradeId }) => {
-        dispatch(fetchItem(`${upgradeId}`))
-      })
-    }
-
     return () => {
-      if (requestKey) {
-        dispatch(
-          abortRequests([FETCH_ITEM, { requestType: FETCH_ITEM, requestKey }]),
-        )
-      }
-
-      if (upgrades) {
-        upgrades.forEach(({ id: upgradeId }) => {
-          dispatch(
-            abortRequests([
-              FETCH_ITEM,
-              { requestType: FETCH_ITEM, requestKey: `${upgradeId}` },
-            ]),
-          )
-        })
-      }
+      // TODO cleanup
     }
-  }, [dispatch, requestKey, propsUpgrades, isInViewport])
+  }, [dispatch, requestKey, propsUpgrades])
 
   let mergedData
   try {
@@ -118,7 +133,7 @@ const Item = ({
   }
 
   return (
-    <div ref={targetRef}>
+    <div>
       <ItemComponent
         data={mergedData}
         error={error}

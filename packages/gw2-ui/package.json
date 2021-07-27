@@ -42,7 +42,7 @@
     "@redux-requests/react": "^1.0.0",
     "gw2-ui-builder": "^0.2.0",
     "gw2-ui-components": "^0.10.1",
-    "gw2-ui-redux": "^0.4.2",
+    "gw2-ui-redux": "^0.4.3",
     "use-is-in-viewport": "^1.0.9"
   },
   "devDependencies": {

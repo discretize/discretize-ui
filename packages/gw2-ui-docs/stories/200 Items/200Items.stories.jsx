@@ -1,12 +1,13 @@
-import { Item, withPageName } from 'gw2-ui'
 import React from 'react'
-import categories from '../categories'
-import docs from './100Items.docs.md'
+import { withPageName, Item } from 'gw2-ui'
 
-const PAGE_NAME = '100 Items'
+import categories from '../categories'
+import docs from './200Items.docs.md'
+
+const PAGE_NAME = '200 Items'
 
 const Data = () => {
-  return [...Array(100).keys()]
+  return [...Array(200).keys()]
     .map((value) => `${value + 200}`)
     .map((value) => <Item key={value} id={value} />)
 }

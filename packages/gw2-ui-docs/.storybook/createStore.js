@@ -1,10 +1,11 @@
-import { handleRequests } from 'gw2-ui'
+import { handleRequests, gw2UIReducer } from 'gw2-ui'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 
 const { requestsReducer, requestsMiddleware } = handleRequests()
 
 const reducers = combineReducers({
   requests: requestsReducer,
+  gw2UiStore: gw2UIReducer,
 })
 
 const composeEnhancers =
