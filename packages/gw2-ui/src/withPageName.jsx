@@ -6,27 +6,27 @@ import {
 } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 
-export const withPageName = (pageName) => (Component) => {
+export const forceAPICall = (type, fetcher, pageName) => {
   const store = window.REDUX_STORE
 
-  const dispatcher = (type, fetcher) => {
-    const { gw2UiStore } = store.getState()
+  const { gw2UiStore } = store.getState()
 
-    if (Array.isArray(gw2UiStore[type][pageName])) {
-      store.dispatch(
-        fetcher(
-          gw2UiStore[type][pageName].map((i) => i.id),
-          pageName,
-        ),
-      )
-    }
+  if (Array.isArray(gw2UiStore[type][pageName])) {
+    store.dispatch(
+      fetcher(
+        gw2UiStore[type][pageName].map((i) => i.id),
+        pageName,
+      ),
+    )
   }
+}
 
+export const withPageName = (pageName) => (Component) => {
   useEffect(() => {
-    dispatcher('items', fetchItems)
-    dispatcher('skills', fetchSkills)
-    dispatcher('specializations', fetchSpecializations)
-    dispatcher('traits', fetchTraits)
+    forceAPICall('items', fetchItems, pageName)
+    forceAPICall('skills', fetchSkills, pageName)
+    forceAPICall('specializations', fetchSpecializations, pageName)
+    forceAPICall('traits', fetchTraits, pageName)
   })
 
   return (

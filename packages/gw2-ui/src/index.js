@@ -67,4 +67,4 @@ export { default as Specialization } from './Specialization'
 export { default as Trait } from './Trait'
 export { default as TraitLine } from './TraitLine'
 
-export { PageContext, withPageName } from './withPageName'
+export { PageContext, withPageName, forceAPICall } from './withPageName'

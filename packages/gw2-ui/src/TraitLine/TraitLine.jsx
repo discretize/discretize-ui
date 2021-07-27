@@ -1,11 +1,15 @@
 import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { TraitLine as TraitLineComponent } from 'gw2-ui-components'
-import { addSpecialization, FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
+import {
+  addSpecialization,
+  FETCH_SPECIALIZATIONS,
+  fetchTraits,
+} from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Trait from '../Trait'
-import { PageContext } from '../withPageName'
+import { forceAPICall, PageContext } from '../withPageName'
 
 const TraitLine = ({ id, ...rest }) => {
   const requestKey = `${id}`
@@ -39,6 +43,7 @@ const TraitLine = ({ id, ...rest }) => {
       error={error}
       loading={loading}
       traitComponent={Trait}
+      forceAPICall={() => forceAPICall('traits', fetchTraits, page)} // The parent is not aware of the individual traits later (for some reason). By forcing the call then we fetch the traits
       {...rest}
     />
   )
