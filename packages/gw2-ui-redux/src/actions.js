@@ -12,7 +12,7 @@ import {
 export const fetchItem = (id) => ({
   type: FETCH_ITEM,
   request: {
-    url: `/items/${id}&lang=en`,
+    url: `/items/${id}?lang=en`,
   },
   meta: {
     cache: true,
@@ -36,7 +36,7 @@ export const fetchItems = (ids, pageName) => ({
 export const fetchSkill = (id) => ({
   type: FETCH_SKILL,
   request: {
-    url: `/skills/${id}&lang=en`,
+    url: `/skills/${id}?lang=en`,
   },
   meta: {
     cache: true,
@@ -60,7 +60,7 @@ export const fetchSkills = (ids, pageName) => ({
 export const fetchSpecialization = (id) => ({
   type: FETCH_SPECIALIZATION,
   request: {
-    url: `/specializations/${id}&lang=en`,
+    url: `/specializations/${id}?lang=en`,
   },
   meta: {
     cache: true,
@@ -84,7 +84,7 @@ export const fetchSpecializations = (ids, pageName) => ({
 export const fetchTrait = (id) => ({
   type: FETCH_TRAIT,
   request: {
-    url: `/traits/${id}&lang=en`,
+    url: `/traits/${id}?lang=en`,
   },
   meta: {
     cache: true,

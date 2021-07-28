@@ -7,14 +7,6 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { PageContext } from '../withGW2UI'
 
-// filter the returned data for the right value.
-const findRight = (object, toFind) => {
-  const dataMatches = object
-    ? object.filter((d) => Number(toFind) === Number(d.id))
-    : undefined
-  return dataMatches && dataMatches.length > 0 ? dataMatches[0] : undefined
-}
-
 const Item = ({
   id,
   upgrades: propsUpgrades,
@@ -36,7 +28,7 @@ const Item = ({
     type: FETCH_ITEMS,
     requestKey: page,
   })
-  const data = findRight(dataRaw, id)
+  const data = dataRaw && dataRaw.find((d) => Number(d.id) === Number(id))
 
   // format upgrades so that the underlaying Item-component understands it
   const upgrades = Array.isArray(propsUpgrades)
@@ -48,7 +40,7 @@ const Item = ({
           count,
           error,
           loading,
-          data: findRight(dataRaw, id1),
+          data: dataRaw && dataRaw.find((d) => Number(d.id) === Number(id1)),
         }
       })
     : []

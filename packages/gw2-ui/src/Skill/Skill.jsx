@@ -34,7 +34,7 @@ const Skill = ({ id, ...rest }) => {
 
   return (
     <SkillComponent
-      data={data && data.filter((d) => d.id === id)[0]}
+      data={data && data.find((d) => d.id === id)}
       error={error}
       loading={loading}
       {...rest}
@@ -54,7 +54,7 @@ const Skill = ({ id, ...rest }) => {
         console.log(data)
         return (
           <SkillComponent
-            data={data.filter((d) => d.id === requestKey)[0]}
+            data={data.find((d) => d.id === id)}
             error={error}
             loading={loading}
             {...rest}

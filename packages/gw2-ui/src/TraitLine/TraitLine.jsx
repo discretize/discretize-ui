@@ -39,7 +39,7 @@ const TraitLine = ({ id, ...rest }) => {
 
   return (
     <TraitLineComponent
-      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      data={data && data.find((d) => d.id === id)}
       error={error}
       loading={loading}
       traitComponent={Trait}

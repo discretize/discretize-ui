@@ -34,7 +34,7 @@ const Specialization = ({ id, ...rest }) => {
   })
   return (
     <SpecializationComponent
-      data={data && data.filter((d) => d.id === id)[0]}
+      data={data && data.find((d) => d.id === id)}
       error={error}
       loading={loading}
       {...rest}
