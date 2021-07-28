@@ -16,7 +16,7 @@ const Specialization = ({ id, ...rest }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(addSpecialization({ id: requestKey, page }))
+    dispatch(addSpecialization({ id, page }))
 
     return () => {
       dispatch(
@@ -34,7 +34,7 @@ const Specialization = ({ id, ...rest }) => {
   })
   return (
     <SpecializationComponent
-      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      data={data && data.filter((d) => d.id === id)[0]}
       error={error}
       loading={loading}
       {...rest}

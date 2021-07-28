@@ -10,7 +10,7 @@ const add = (name) => (state, action) => {
   // dont add duplicates
   if (array.filter((a) => a.id === action.payload.id).length === 0) {
     // eslint-disable-next-line no-param-reassign
-    state[name][action.payload.page] = array.concat(action.payload)
+    state[name][action.payload.page] = array.concat(action.payload.id)
   }
 }
 
@@ -35,6 +35,5 @@ export const {
   addSpecialization,
   addTrait,
 } = docsSlice.actions
-export const getItems = (id) => (state) => state.gw2UiStore.items[id]
 
 export default docsSlice.reducer

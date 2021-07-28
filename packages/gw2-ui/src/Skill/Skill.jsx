@@ -15,7 +15,7 @@ const Skill = ({ id, ...rest }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(addSkill({ id: requestKey, page }))
+    dispatch(addSkill({ id, page }))
 
     return () => {
       dispatch(
@@ -34,7 +34,7 @@ const Skill = ({ id, ...rest }) => {
 
   return (
     <SkillComponent
-      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      data={data && data.filter((d) => d.id === id)[0]}
       error={error}
       loading={loading}
       {...rest}

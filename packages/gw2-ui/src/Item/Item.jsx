@@ -65,7 +65,7 @@ const Item = ({
     // fetch the basic item
     if (!data && !loading) {
       // console.log('called ' + requestKey)
-      dispatch(addItem({ id: requestKey, page }))
+      dispatch(addItem({ id, page }))
     } else {
       return () => {}
     }

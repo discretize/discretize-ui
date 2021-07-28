@@ -12,12 +12,7 @@ export const forceAPICall = (type, fetcher, pageName) => {
   const { gw2UiStore } = store.getState()
 
   if (Array.isArray(gw2UiStore[type][pageName])) {
-    store.dispatch(
-      fetcher(
-        gw2UiStore[type][pageName].map((i) => i.id),
-        pageName,
-      ),
-    )
+    store.dispatch(fetcher(gw2UiStore[type][pageName], pageName))
   }
 }
 

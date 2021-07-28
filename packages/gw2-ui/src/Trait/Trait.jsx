@@ -15,7 +15,7 @@ const Trait = ({ id, ...rest }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(addTrait({ id: requestKey, page }))
+    dispatch(addTrait({ id, page }))
 
     return () => {
       dispatch(
@@ -34,7 +34,7 @@ const Trait = ({ id, ...rest }) => {
 
   return (
     <TraitComponent
-      data={data && data.filter((d) => d.id === Number(requestKey))[0]}
+      data={data && data.filter((d) => d.id === id)[0]}
       error={error}
       loading={loading}
       {...rest}
