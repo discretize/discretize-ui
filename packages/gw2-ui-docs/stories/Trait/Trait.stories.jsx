@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, boolean } from '@storybook/addon-knobs'
-import { Trait, withPageName } from 'gw2-ui'
+import { Trait, withGW2UI } from 'gw2-ui'
 
 import categories from '../categories'
 import readme from './Trait.readme.md'
@@ -12,7 +12,7 @@ export default {
   readme,
   docs,
   story: () =>
-    withPageName('Trait')(() => (
+    withGW2UI('Trait')(() => (
       <Trait
         id={number('id', 229)}
         disableIcon={boolean('disableIcon', false)}

@@ -5,7 +5,7 @@ import { FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
 import { addSpecialization } from 'gw2-ui-redux/src/gw2-ui-slice'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { PageContext } from '../withPageName'
+import { PageContext } from '../withGW2UI'
 
 const Specialization = ({ id, ...rest }) => {
   const requestKey = `${id}`

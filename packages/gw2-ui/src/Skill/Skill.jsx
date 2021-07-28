@@ -4,7 +4,7 @@ import { Skill as SkillComponent } from 'gw2-ui-components'
 import { addSkill, FETCH_SKILLS } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { PageContext } from '../withPageName'
+import { PageContext } from '../withGW2UI'
 
 const Skill = ({ id, ...rest }) => {
   const requestKey = `${id}`

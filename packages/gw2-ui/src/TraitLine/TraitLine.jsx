@@ -9,7 +9,7 @@ import {
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Trait from '../Trait'
-import { forceAPICall, PageContext } from '../withPageName'
+import { forceAPICall, PageContext } from '../withGW2UI'
 
 const TraitLine = ({ id, ...rest }) => {
   const requestKey = `${id}`

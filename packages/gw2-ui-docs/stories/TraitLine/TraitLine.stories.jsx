@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, array, boolean } from '@storybook/addon-knobs'
-import { TraitLine, withPageName } from 'gw2-ui'
+import { TraitLine, withGW2UI } from 'gw2-ui'
 
 import categories from '../categories'
 import readme from './TraitLine.readme.md'
@@ -12,7 +12,7 @@ export default {
   readme,
   docs,
   story: () =>
-    withPageName('TraitLine')(() => (
+    withGW2UI('TraitLine')(() => (
       <TraitLine
         id={number('id', 41)}
         defaultSelected={array('defaultSelected', [

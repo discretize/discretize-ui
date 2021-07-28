@@ -4,7 +4,7 @@ import { Trait as TraitComponent } from 'gw2-ui-components'
 import { addTrait, FETCH_TRAITS } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { PageContext } from '../withPageName'
+import { PageContext } from '../withGW2UI'
 
 const Trait = ({ id, ...rest }) => {
   const requestKey = `${id}`

@@ -5,7 +5,7 @@ import { Item as ItemComponent } from 'gw2-ui-components'
 import { FETCH_ITEMS, addItem } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { PageContext } from '../withPageName'
+import { PageContext } from '../withGW2UI'
 
 // filter the returned data for the right value.
 const findRight = (object, toFind) => {

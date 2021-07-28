@@ -5,7 +5,7 @@ import {
   itemTypeNames as ITEM_TYPE_NAMES,
   itemStatNames as ITEM_STAT_NAMES,
   itemArmorWeights as ITEM_ARMOR_WEIGHTS,
-  withPageName,
+  withGW2UI,
 } from 'gw2-ui'
 
 import categories from '../categories'
@@ -41,7 +41,7 @@ ${Object.values(ITEM_ARMOR_WEIGHTS)
   .map((weight) => `- \`${weight}\`\n`)
   .join('')}`,
   story: () =>
-    withPageName('Items')(() => (
+    withGW2UI('Items')(() => (
       <Item
         id={number('id', 48073)}
         count={number('count', null)}

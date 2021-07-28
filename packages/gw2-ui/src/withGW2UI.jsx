@@ -21,7 +21,7 @@ export const forceAPICall = (type, fetcher, pageName) => {
   }
 }
 
-export const withPageName = (pageName) => (Component) => {
+export const withGW2UI = (pageName) => (Component) => {
   useEffect(() => {
     forceAPICall('items', fetchItems, pageName)
     forceAPICall('skills', fetchSkills, pageName)

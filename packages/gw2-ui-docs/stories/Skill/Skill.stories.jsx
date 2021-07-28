@@ -1,5 +1,5 @@
 import { boolean, number } from '@storybook/addon-knobs'
-import { Skill, withPageName } from 'gw2-ui'
+import { Skill, withGW2UI } from 'gw2-ui'
 import React from 'react'
 import categories from '../categories'
 import docs from './Skill.docs.md'
@@ -12,7 +12,7 @@ export default {
   readme,
   docs,
   story: () =>
-    withPageName(PAGE_NAME)(() => (
+    withGW2UI(PAGE_NAME)(() => (
       <Skill
         id={number('id', 14375)}
         disableIcon={boolean('disableIcon', false)}
