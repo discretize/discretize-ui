@@ -8,6 +8,7 @@ import {
   FETCH_TRAIT,
   FETCH_TRAITS,
 } from './constants'
+import { addItemsToStore } from './gw2-ui-slice'
 
 export const fetchItem = (id) => ({
   type: FETCH_ITEM,
@@ -30,6 +31,10 @@ export const fetchItems = (ids, pageName) => ({
     cache: true,
     takeLatest: false,
     requestKey: pageName,
+    onSuccess: (response, requestAction, store) => {
+      store.dispatch(addItemsToStore(response.data))
+      return response
+    },
   },
 })
 

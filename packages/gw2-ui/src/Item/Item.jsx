@@ -3,8 +3,9 @@ import { useQuery } from '@redux-requests/react'
 import { createItem } from 'gw2-ui-builder'
 import { Item as ItemComponent } from 'gw2-ui-components'
 import { FETCH_ITEMS, addItem } from 'gw2-ui-redux'
+import { getItemsFromStore } from 'gw2-ui-redux/src/gw2-ui-slice'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { PageContext } from '../withGW2UI'
 
 const Item = ({
@@ -23,24 +24,47 @@ const Item = ({
   // context for the current opened page
   const page = React.useContext(PageContext)
 
-  // get the data for the basic item (without upgrades)
-  const { data: dataRaw, error, loading } = useQuery({
+  let data = null
+  let error
+  let loading
+  let dataRaw = useSelector(
+    getItemsFromStore([
+      Number(id),
+      ...(propsUpgrades
+        ? propsUpgrades.map((upgrade) =>
+            Array.isArray(upgrade) ? upgrade[0] : upgrade,
+          )
+        : []),
+    ]),
+  )
+
+  // search the dataStore if the data is already available.
+  data = dataRaw.find((d) => Number(d.id) === Number(id))
+
+  // this query is only being used, in case the data was not found in the store ( data is undefined).
+  const { data: dataQ, error: errorQ, loading: loadingQ } = useQuery({
     type: FETCH_ITEMS,
     requestKey: page,
   })
-  const data = dataRaw && dataRaw.find((d) => Number(d.id) === Number(id))
+  // assign the found properties, so that our items starts to load
+  if (!data) {
+    dataRaw = dataQ
+    error = errorQ
+    loading = loadingQ
+  }
 
   // format upgrades so that the underlaying Item-component understands it
   const upgrades = Array.isArray(propsUpgrades)
     ? propsUpgrades.map((upgrade) => {
         const [id1, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
-
         return {
           id: id1,
           count,
           error,
           loading,
-          data: dataRaw && dataRaw.find((d) => Number(d.id) === Number(id1)),
+          data: Array.isArray(dataRaw)
+            ? dataRaw.find((d) => Number(d.id) === Number(id1))
+            : [],
         }
       })
     : []
