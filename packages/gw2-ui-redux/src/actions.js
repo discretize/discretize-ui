@@ -8,7 +8,12 @@ import {
   FETCH_TRAIT,
   FETCH_TRAITS,
 } from './constants'
-import { addItemsToStore } from './gw2-ui-slice'
+import {
+  addItemsToStore,
+  addSkillsToStore,
+  addSpecializationsToStore,
+  addTraitsToStore,
+} from './gw2-ui-slice'
 
 export const fetchItem = (id) => ({
   type: FETCH_ITEM,
@@ -59,6 +64,10 @@ export const fetchSkills = (ids, pageName) => ({
     cache: true,
     takeLatest: false,
     requestKey: pageName,
+    onSuccess: (response, requestAction, store) => {
+      store.dispatch(addSkillsToStore(response.data))
+      return response
+    },
   },
 })
 
@@ -83,6 +92,10 @@ export const fetchSpecializations = (ids, pageName) => ({
     cache: true,
     takeLatest: false,
     requestKey: pageName,
+    onSuccess: (response, requestAction, store) => {
+      store.dispatch(addSpecializationsToStore(response.data))
+      return response
+    },
   },
 })
 
@@ -107,5 +120,9 @@ export const fetchTraits = (ids, pageName) => ({
     cache: true,
     requestKey: pageName,
     takeLatest: false,
+    onSuccess: (response, requestAction, store) => {
+      store.dispatch(addTraitsToStore(response.data))
+      return response
+    },
   },
 })

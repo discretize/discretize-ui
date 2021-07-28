@@ -2,9 +2,12 @@ import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { Specialization as SpecializationComponent } from 'gw2-ui-components'
 import { FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
-import { addSpecialization } from 'gw2-ui-redux/src/gw2-ui-slice'
+import {
+  addSpecialization,
+  getSpecializationsFromStore,
+} from 'gw2-ui-redux/src/gw2-ui-slice'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { PageContext } from '../withGW2UI'
 
 const Specialization = ({ id, ...rest }) => {
@@ -28,13 +31,29 @@ const Specialization = ({ id, ...rest }) => {
     }
   }, [dispatch, requestKey])
 
-  const { data, error, loading } = useQuery({
+  let data = null
+  let error
+  let loading
+  let dataRaw = useSelector(getSpecializationsFromStore([Number(id)]))
+
+  // search the dataStore if the data is already available.
+  data = dataRaw.find((d) => Number(d.id) === Number(id))
+
+  // this query is only being used, in case the data was not found in the store ( data is undefined).
+  const { data: dataQ, error: errorQ, loading: loadingQ } = useQuery({
     type: FETCH_SPECIALIZATIONS,
     requestKey: page,
   })
+  // assign the found properties, so that our items starts to load
+  if (!data) {
+    dataRaw = dataQ
+    error = errorQ
+    loading = loadingQ
+  }
+
   return (
     <SpecializationComponent
-      data={data && data.find((d) => d.id === id)}
+      data={data}
       error={error}
       loading={loading}
       {...rest}

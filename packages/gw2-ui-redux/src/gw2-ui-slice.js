@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 
 const add = (name) => (state, action) => {
@@ -12,6 +13,10 @@ const add = (name) => (state, action) => {
     // eslint-disable-next-line no-param-reassign
     state.ids[name][action.payload.page] = array.concat(action.payload.id)
   }
+}
+
+const addToStore = (name) => (state, action) => {
+  state.store[name] = state.store[name].concat(action.payload)
 }
 
 const docsSlice = createSlice({
@@ -32,24 +37,34 @@ const docsSlice = createSlice({
   },
   reducers: {
     addItem: add('items'),
-    addItemsToStore: (state, action) => {
-      state.store.items = state.store.items.concat(action.payload)
-    },
+    addItemsToStore: addToStore('items'),
     addSkill: add('skills'),
+    addSkillsToStore: addToStore('skills'),
     addSpecialization: add('specializations'),
+    addSpecializationsToStore: addToStore('specializations'),
     addTrait: add('traits'),
+    addTraitsToStore: addToStore('traits'),
   },
 })
 
 export const getItemsFromStore = (ids) => (state) =>
   state.gw2UiStore.store.items.filter((s) => ids.includes(s.id))
+export const getSkillsFromStore = (ids) => (state) =>
+  state.gw2UiStore.store.skills.filter((s) => ids.includes(s.id))
+export const getSpecializationsFromStore = (ids) => (state) =>
+  state.gw2UiStore.store.specializations.filter((s) => ids.includes(s.id))
+export const getTraitsFromStore = (ids) => (state) =>
+  state.gw2UiStore.store.traits.filter((s) => ids.includes(s.id))
 
 export const {
   addItem,
   addItemsToStore,
   addSkill,
+  addSkillsToStore,
   addSpecialization,
+  addSpecializationsToStore,
   addTrait,
+  addTraitsToStore,
 } = docsSlice.actions
 
 export default docsSlice.reducer
