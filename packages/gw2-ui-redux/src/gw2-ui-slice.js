@@ -1,6 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 
+/**
+ * Adds an id to a [names]'s collection of ids for a page (action.payload.page)
+ * @param {String} name the type of component that should be appended at
+ * @returns
+ */
 const add = (name) => (state, action) => {
   let array = []
   if (state.ids[name][action.payload.page]) {
@@ -15,6 +20,11 @@ const add = (name) => (state, action) => {
   }
 }
 
+/**
+ * Add gw2data to the shared global store
+ * @param {String} name the type of component that should be added to
+ * @returns
+ */
 const addToStore = (name) => (state, action) => {
   state.store[name] = state.store[name].concat(action.payload)
 }
