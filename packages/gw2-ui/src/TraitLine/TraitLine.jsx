@@ -1,8 +1,11 @@
 import { useQuery } from '@redux-requests/react'
 import { TraitLine as TraitLineComponent } from 'gw2-ui-components'
-import { addSpecialization, fetchTraits } from 'gw2-ui-redux'
+import {
+  addSpecialization,
+  fetchTraits,
+  getSpecializationsFromStore,
+} from 'gw2-ui-redux'
 import { FETCH_TRAITS } from 'gw2-ui-redux/src'
-import { getSpecializationsFromStore } from 'gw2-ui-redux/src/gw2-ui-slice'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Trait from '../Trait'

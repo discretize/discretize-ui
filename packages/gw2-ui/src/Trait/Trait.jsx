@@ -1,7 +1,6 @@
 import { useQuery } from '@redux-requests/react'
 import { Trait as TraitComponent } from 'gw2-ui-components'
-import { addTrait, FETCH_TRAITS } from 'gw2-ui-redux'
-import { getTraitsFromStore } from 'gw2-ui-redux/src/gw2-ui-slice'
+import { addTrait, FETCH_TRAITS, getTraitsFromStore } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PageContext } from '../withGW2UI'

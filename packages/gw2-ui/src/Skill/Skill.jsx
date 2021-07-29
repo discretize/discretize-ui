@@ -1,7 +1,6 @@
 import { useQuery } from '@redux-requests/react'
 import { Skill as SkillComponent } from 'gw2-ui-components'
-import { addSkill, FETCH_SKILLS } from 'gw2-ui-redux'
-import { getSkillsFromStore } from 'gw2-ui-redux/src/gw2-ui-slice'
+import { addSkill, FETCH_SKILLS, getSkillsFromStore } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PageContext } from '../withGW2UI'

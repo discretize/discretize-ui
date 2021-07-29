@@ -1,10 +1,10 @@
 import { useQuery } from '@redux-requests/react'
 import { Specialization as SpecializationComponent } from 'gw2-ui-components'
-import { FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
 import {
+  FETCH_SPECIALIZATIONS,
   addSpecialization,
   getSpecializationsFromStore,
-} from 'gw2-ui-redux/src/gw2-ui-slice'
+} from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PageContext } from '../withGW2UI'
