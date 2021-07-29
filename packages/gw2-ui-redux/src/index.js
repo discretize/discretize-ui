@@ -6,7 +6,16 @@ import gw2uiReducer from './gw2-ui-slice'
 
 export const gw2UIReducer = gw2uiReducer
 
-export { addItem, addSkill, addSpecialization, addTrait } from './gw2-ui-slice'
+export {
+  addItem,
+  addSkill,
+  addSpecialization,
+  addTrait,
+  getItemsFromStore,
+  getSkillsFromStore,
+  getSpecializationsFromStore,
+  getTraitsFromStore,
+} from './gw2-ui-slice'
 
 export {
   fetchItem,
