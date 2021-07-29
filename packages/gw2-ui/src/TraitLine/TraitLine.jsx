@@ -4,8 +4,8 @@ import {
   addSpecialization,
   fetchTraits,
   getSpecializationsFromStore,
+  FETCH_TRAITS,
 } from 'gw2-ui-redux'
-import { FETCH_TRAITS } from 'gw2-ui-redux/src'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Trait from '../Trait'
