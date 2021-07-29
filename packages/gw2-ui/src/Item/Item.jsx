@@ -1,8 +1,7 @@
-import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { createItem } from 'gw2-ui-builder'
 import { Item as ItemComponent } from 'gw2-ui-components'
-import { FETCH_ITEMS, addItem } from 'gw2-ui-redux'
+import { addItem, FETCH_ITEMS } from 'gw2-ui-redux'
 import { getItemsFromStore } from 'gw2-ui-redux/src/gw2-ui-slice'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -84,12 +83,6 @@ const Item = ({
       dispatch(addItem({ id, page }))
     } else {
       return () => {}
-    }
-
-    return () => {
-      dispatch(
-        abortRequests([FETCH_ITEMS, { requestType: FETCH_ITEMS, requestKey }]),
-      )
     }
   }, [dispatch, requestKey, propsUpgrades])
 

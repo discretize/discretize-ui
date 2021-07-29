@@ -1,4 +1,3 @@
-import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { Trait as TraitComponent } from 'gw2-ui-components'
 import { addTrait, FETCH_TRAITS } from 'gw2-ui-redux'
@@ -17,15 +16,6 @@ const Trait = ({ id, ...rest }) => {
 
   useEffect(() => {
     dispatch(addTrait({ id, page }))
-
-    return () => {
-      dispatch(
-        abortRequests([
-          FETCH_TRAITS,
-          { requestType: FETCH_TRAITS, requestKey },
-        ]),
-      )
-    }
   }, [dispatch, requestKey])
 
   let data = null

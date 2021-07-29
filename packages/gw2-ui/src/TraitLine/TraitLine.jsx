@@ -1,16 +1,8 @@
-import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { TraitLine as TraitLineComponent } from 'gw2-ui-components'
-import {
-  addSpecialization,
-  FETCH_SPECIALIZATIONS,
-  fetchTraits,
-} from 'gw2-ui-redux'
+import { addSpecialization, fetchTraits } from 'gw2-ui-redux'
 import { FETCH_TRAITS } from 'gw2-ui-redux/src'
-import {
-  getSpecializationsFromStore,
-  getTraitsFromStore,
-} from 'gw2-ui-redux/src/gw2-ui-slice'
+import { getSpecializationsFromStore } from 'gw2-ui-redux/src/gw2-ui-slice'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Trait from '../Trait'
@@ -26,15 +18,6 @@ const TraitLine = ({ id, ...rest }) => {
 
   useEffect(() => {
     dispatch(addSpecialization({ id: requestKey, page }))
-
-    return () => {
-      dispatch(
-        abortRequests([
-          FETCH_SPECIALIZATIONS,
-          { requestType: FETCH_SPECIALIZATIONS, requestKey },
-        ]),
-      )
-    }
   }, [dispatch, requestKey])
 
   let data = null

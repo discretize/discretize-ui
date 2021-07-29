@@ -1,4 +1,3 @@
-import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { Specialization as SpecializationComponent } from 'gw2-ui-components'
 import { FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
@@ -20,15 +19,6 @@ const Specialization = ({ id, ...rest }) => {
 
   useEffect(() => {
     dispatch(addSpecialization({ id, page }))
-
-    return () => {
-      dispatch(
-        abortRequests([
-          FETCH_SPECIALIZATIONS,
-          { requestType: FETCH_SPECIALIZATIONS, requestKey },
-        ]),
-      )
-    }
   }, [dispatch, requestKey])
 
   let data = null

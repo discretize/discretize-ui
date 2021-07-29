@@ -1,4 +1,3 @@
-import { abortRequests } from '@redux-requests/core'
 import { useQuery } from '@redux-requests/react'
 import { Skill as SkillComponent } from 'gw2-ui-components'
 import { addSkill, FETCH_SKILLS } from 'gw2-ui-redux'
@@ -17,15 +16,6 @@ const Skill = ({ id, ...rest }) => {
 
   useEffect(() => {
     dispatch(addSkill({ id, page }))
-
-    return () => {
-      dispatch(
-        abortRequests([
-          FETCH_SKILLS,
-          { requestType: FETCH_SKILLS, requestKey },
-        ]),
-      )
-    }
   }, [dispatch, requestKey])
 
   let data = null
