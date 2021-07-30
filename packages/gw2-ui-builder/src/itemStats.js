@@ -330,6 +330,8 @@ export default {
         ATTRIBUTES.FEROCITY,
         ATTRIBUTES.CONDITION_DAMAGE,
         ATTRIBUTES.HEALING_POWER,
+        ATTRIBUTES.CONCENTRATION,
+        ATTRIBUTES.EXPERTISE,
       ],
     ],
   },
