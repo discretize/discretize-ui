@@ -1,24 +1,53 @@
 import { Query } from '@redux-requests/react'
-import { Specialization as SpecializationComponent } from 'gw2-ui-components'
-import { addSpecialization, FETCH_SPECIALIZATIONS } from 'gw2-ui-redux'
+import {
+  Specialization as SpecializationComponent,
+  useThemeUI,
+} from 'gw2-ui-components'
+import {
+  addSpecialization,
+  FETCH_SPECIALIZATIONS,
+  FETCH_SPECIALIZATION,
+  fetchSpecialization,
+} from 'gw2-ui-redux'
+import { abortRequests } from '@redux-requests/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { PageContext } from '../withGW2UI'
 
 const Specialization = ({ id, ...rest }) => {
-  // context for the current opened page
-  const page = React.useContext(PageContext)
+  const context = useThemeUI()
+  const { theme } = context
+
+  let requestKey
+  const useBulk = theme.useBulkRequests
+
+  if (useBulk) {
+    requestKey = `${React.useContext(PageContext)}`
+  } else {
+    requestKey = `${id}`
+  }
 
   const dispatch = useDispatch()
-
   useEffect(() => {
-    dispatch(addSpecialization({ id, page }))
-  }, [dispatch, id])
+    if (useBulk) {
+      dispatch(addSpecialization({ id, page: requestKey }))
+      return () => {}
+    }
+    dispatch(fetchSpecialization(requestKey))
+    return () => {
+      dispatch(
+        abortRequests([
+          FETCH_SPECIALIZATION,
+          { requestType: FETCH_SPECIALIZATION, requestKey },
+        ]),
+      )
+    }
+  }, [dispatch, requestKey])
 
   return (
     <Query
-      type={FETCH_SPECIALIZATIONS}
-      requestKey={page}
+      type={useBulk ? FETCH_SPECIALIZATIONS : FETCH_SPECIALIZATION}
+      requestKey={requestKey}
       loadingComponent={SpecializationComponent}
       loadingComponentProps={{ id, ...rest, loading: true }}
       errorComponent={SpecializationComponent}
@@ -26,7 +55,7 @@ const Specialization = ({ id, ...rest }) => {
     >
       {({ data, error, loading }) => (
         <SpecializationComponent
-          data={data.find((d) => Number(d.id) === Number(id))}
+          data={useBulk ? data.find((d) => Number(d.id) === Number(id)) : data}
           error={error}
           loading={loading}
           {...rest}

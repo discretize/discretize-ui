@@ -59,3 +59,4 @@ export { default as races } from './data/races.json'
 
 export { baseTheme } from './styles'
 export { ThemeProvider } from '@theme-ui/core'
+export { useThemeUI } from '@theme-ui/core'

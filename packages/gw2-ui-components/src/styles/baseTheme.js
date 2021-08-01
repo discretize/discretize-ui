@@ -153,4 +153,5 @@ export default {
   zIndices: {
     tooltip: 1500,
   },
+  useBulkRequests: false,
 }

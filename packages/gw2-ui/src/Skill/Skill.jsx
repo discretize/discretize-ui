@@ -1,34 +1,42 @@
 import { Query } from '@redux-requests/react'
-import { Skill as SkillComponent } from 'gw2-ui-components'
+import { Skill as SkillComponent, useThemeUI } from 'gw2-ui-components'
 import { addSkill, FETCH_SKILLS, FETCH_SKILL, fetchSkill } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
+import { abortRequests } from '@redux-requests/core'
 import { useDispatch } from 'react-redux'
 import { PageContext } from '../withGW2UI'
 
 const Skill = ({ id, ...rest }) => {
-  // context for the current opened page
-  let requestKey
-  const legacy = false
+  const context = useThemeUI()
+  const { theme } = context
 
-  if (legacy) {
-    requestKey = `${id}`
-  } else {
+  let requestKey
+  const useBulk = theme.useBulkRequests
+
+  if (useBulk) {
     requestKey = `${React.useContext(PageContext)}`
+  } else {
+    requestKey = `${id}`
   }
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (legacy) {
-      dispatch(fetchSkill(requestKey))
-    } else {
+    if (useBulk) {
       dispatch(addSkill({ id, page: requestKey }))
+      return () => {}
+    }
+    dispatch(fetchSkill(requestKey))
+    return () => {
+      dispatch(
+        abortRequests([FETCH_SKILL, { requestType: FETCH_SKILL, requestKey }]),
+      )
     }
   }, [dispatch, requestKey])
 
   return (
     <Query
-      type={legacy ? FETCH_SKILL : FETCH_SKILLS}
+      type={useBulk ? FETCH_SKILLS : FETCH_SKILL}
       requestKey={requestKey}
       loadingComponent={SkillComponent}
       loadingComponentProps={{ id, ...rest, loading: true }}
@@ -38,7 +46,9 @@ const Skill = ({ id, ...rest }) => {
       {({ data, error, loading }) => {
         return (
           <SkillComponent
-            data={legacy ? data : data.find((d) => Number(d.id) === Number(id))}
+            data={
+              useBulk ? data.find((d) => Number(d.id) === Number(id)) : data
+            }
             error={error}
             loading={loading}
             {...rest}

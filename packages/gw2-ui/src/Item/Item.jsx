@@ -1,10 +1,26 @@
 import { useQuery } from '@redux-requests/react'
 import { createItem } from 'gw2-ui-builder'
-import { Item as ItemComponent } from 'gw2-ui-components'
-import { addItem, FETCH_ITEMS } from 'gw2-ui-redux'
+import { Item as ItemComponent, useThemeUI } from 'gw2-ui-components'
+import { addItem, fetchItem, FETCH_ITEMS, FETCH_ITEM } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { abortRequests, getQuery } from '@redux-requests/core'
 import { PageContext } from '../withGW2UI'
+
+const getUpgradesSelector = (upgrades) => (state) =>
+  Array.isArray(upgrades)
+    ? upgrades.map((upgrade) => {
+        const [id, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
+        return {
+          id,
+          count,
+          ...getQuery(state, {
+            type: FETCH_ITEM,
+            requestKey: id,
+          }),
+        }
+      })
+    : []
 
 const Item = ({
   id,
@@ -16,50 +32,103 @@ const Item = ({
   ...rest
 }) => {
   const dispatch = useDispatch()
-  const requestKey = id && `${id}`
+  const context = useThemeUI()
+  const { theme } = context
+
+  const useBulk = theme.useBulkRequests
   let data
-
-  // context for the current opened page
-  const page = React.useContext(PageContext)
-
-  const { data: dataRaw, error, loading } = useQuery({
-    type: FETCH_ITEMS,
-    requestKey: page,
-  })
-  if (dataRaw) {
-    data = dataRaw.find((d) => Number(d.id) === Number(id))
+  let requestKey
+  let upgrades
+  if (useBulk) {
+    requestKey = `${React.useContext(PageContext)}`
+  } else {
+    requestKey = `${id}`
   }
 
-  // format upgrades so that the underlaying Item-component understands it
-  const upgrades = Array.isArray(propsUpgrades)
-    ? propsUpgrades.map((upgrade) => {
-        const [id1, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        return {
-          id: id1,
-          count,
-          error,
-          loading,
-          data: dataRaw && dataRaw.find((d) => Number(d.id) === Number(id1)),
-        }
-      })
-    : []
+  const { data: dataRaw, error, loading } = useQuery({
+    type: useBulk ? FETCH_ITEMS : FETCH_ITEM,
+    requestKey,
+  })
+  if (dataRaw) {
+    if (useBulk) {
+      data = dataRaw.find((d) => Number(d.id) === Number(id))
+    } else {
+      data = dataRaw
+    }
+  }
+
+  if (useBulk) {
+    // format upgrades so that the underlaying Item-component understands it
+    upgrades = Array.isArray(propsUpgrades)
+      ? propsUpgrades.map((upgrade) => {
+          const [id1, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
+          return {
+            id: id1,
+            count,
+            error,
+            loading,
+            data: dataRaw && dataRaw.find((d) => Number(d.id) === Number(id1)),
+          }
+        })
+      : []
+  } else {
+    upgrades = useSelector(getUpgradesSelector(propsUpgrades))
+  }
 
   useEffect(() => {
-    // Fetch all the upgrades
-    if (Array.isArray(propsUpgrades)) {
-      propsUpgrades.forEach((upgrade) => {
-        const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        dispatch(addItem({ id: localID, page }))
-      })
+    if (data || loading) {
+      return () => {}
     }
 
-    // fetch the basic item
-    if (!data && !loading) {
-      // console.log('called ' + requestKey)
-      dispatch(addItem({ id, page }))
+    if (useBulk) {
+      // Fetch all the upgrades
+      if (Array.isArray(propsUpgrades)) {
+        propsUpgrades.forEach((upgrade) => {
+          const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
+          dispatch(addItem({ id: localID, page: requestKey }))
+        })
+      }
+
+      // fetch the basic item
+      if (!data && !loading) {
+        // console.log('called ' + requestKey)
+        dispatch(addItem({ id, page: requestKey }))
+      }
+    } else {
+      if (requestKey) {
+        dispatch(fetchItem(requestKey))
+      }
+
+      if (upgrades) {
+        upgrades.forEach(({ id: upgradeId }) => {
+          dispatch(fetchItem(`${upgradeId}`))
+        })
+      }
     }
 
-    return () => {}
+    return () => {
+      if (!useBulk) {
+        if (requestKey) {
+          dispatch(
+            abortRequests([
+              FETCH_ITEM,
+              { requestType: FETCH_ITEM, requestKey },
+            ]),
+          )
+        }
+
+        if (upgrades) {
+          upgrades.forEach(({ id: upgradeId }) => {
+            dispatch(
+              abortRequests([
+                FETCH_ITEM,
+                { requestType: FETCH_ITEM, requestKey: `${upgradeId}` },
+              ]),
+            )
+          })
+        }
+      }
+    }
   }, [dispatch, requestKey, propsUpgrades])
 
   let mergedData
