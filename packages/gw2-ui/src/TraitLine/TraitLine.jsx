@@ -8,7 +8,7 @@ import {
 import React, { useEffect } from 'react'
 import { useDispatch, useStore } from 'react-redux'
 import Trait from '../Trait'
-import { forceAPICall, PageContext } from '../withGW2UI'
+import { forceAPICall, PageContext } from '../withBulkRequest'
 
 const TraitLine = ({ id, ...rest }) => {
   // context for the current opened page

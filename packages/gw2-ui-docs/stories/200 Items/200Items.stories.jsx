@@ -1,5 +1,5 @@
 import React from 'react'
-import { withGW2UI, Item } from 'gw2-ui'
+import { withBulkRequest, Item } from 'gw2-ui'
 
 import categories from '../categories'
 import docs from './200Items.docs.md'
@@ -17,6 +17,6 @@ export default {
   name: PAGE_NAME,
   docs,
   story: () => {
-    return withGW2UI(PAGE_NAME)(Data)
+    return withBulkRequest(PAGE_NAME)(Data)
   },
 }

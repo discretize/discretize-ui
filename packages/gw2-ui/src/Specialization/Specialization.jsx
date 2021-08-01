@@ -12,7 +12,7 @@ import {
 import { abortRequests } from '@redux-requests/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { PageContext } from '../withGW2UI'
+import { PageContext } from '../withBulkRequest'
 
 const Specialization = ({ id, ...rest }) => {
   const context = useThemeUI()

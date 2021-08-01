@@ -4,7 +4,7 @@ import { addTrait, fetchTrait, FETCH_TRAITS, FETCH_TRAIT } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { abortRequests } from '@redux-requests/core'
 import { useDispatch } from 'react-redux'
-import { PageContext } from '../withGW2UI'
+import { PageContext } from '../withBulkRequest'
 
 const Trait = ({ id, ...rest }) => {
   const context = useThemeUI()

@@ -5,7 +5,7 @@ import { addItem, fetchItem, FETCH_ITEMS, FETCH_ITEM } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { abortRequests, getQuery } from '@redux-requests/core'
-import { PageContext } from '../withGW2UI'
+import { PageContext } from '../withBulkRequest'
 
 const getUpgradesSelector = (upgrades) => (state) =>
   Array.isArray(upgrades)

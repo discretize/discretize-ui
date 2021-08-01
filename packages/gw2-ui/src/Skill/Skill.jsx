@@ -4,7 +4,7 @@ import { addSkill, FETCH_SKILLS, FETCH_SKILL, fetchSkill } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
 import { abortRequests } from '@redux-requests/core'
 import { useDispatch } from 'react-redux'
-import { PageContext } from '../withGW2UI'
+import { PageContext } from '../withBulkRequest'
 
 const Skill = ({ id, ...rest }) => {
   const context = useThemeUI()

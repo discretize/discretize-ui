@@ -20,7 +20,7 @@ export const forceAPICall = (type, fetcher, pageName, store) => {
   }
 }
 
-export const withGW2UI = (pageName) => (Component) => {
+export const withBulkRequest = (pageName) => (Component) => {
   const dispatch = useDispatch()
   const store = useStore()
 

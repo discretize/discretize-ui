@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, boolean } from '@storybook/addon-knobs'
-import { Specialization, withGW2UI } from 'gw2-ui'
+import { Specialization, withBulkRequest } from 'gw2-ui'
 
 import categories from '../categories'
 import readme from './Specialization.readme.md'
@@ -12,7 +12,7 @@ export default {
   readme,
   docs,
   story: () =>
-    withGW2UI('Specialization')(() => (
+    withBulkRequest('Specialization')(() => (
       <Specialization
         id={number('id', 59)}
         disableIcon={boolean('disableIcon', false)}

@@ -67,4 +67,4 @@ export { default as Specialization } from './Specialization'
 export { default as Trait } from './Trait'
 export { default as TraitLine } from './TraitLine'
 
-export { PageContext, withGW2UI, forceAPICall } from './withGW2UI'
+export { PageContext, withBulkRequest, forceAPICall } from './withBulkRequest'
