@@ -8,12 +8,6 @@ import {
   FETCH_TRAIT,
   FETCH_TRAITS,
 } from './constants'
-import {
-  addItemsToStore,
-  addSkillsToStore,
-  addSpecializationsToStore,
-  addTraitsToStore,
-} from './gw2-ui-slice'
 
 export const fetchItem = (id) => ({
   type: FETCH_ITEM,
@@ -34,11 +28,14 @@ export const fetchItems = (ids, pageName) => ({
   },
   meta: {
     cache: true,
+    normalize: true,
     takeLatest: false,
     requestKey: pageName,
-    onSuccess: (response, requestAction, store) => {
-      store.dispatch(addItemsToStore(response.data))
-      return response
+    onSuccess: (response) => {
+      return {
+        ...response,
+        data: response.data.map((d) => ({ ...d, gw2UIType: 'Item' })),
+      }
     },
   },
 })
@@ -62,11 +59,14 @@ export const fetchSkills = (ids, pageName) => ({
   },
   meta: {
     cache: true,
+    normalize: true,
     takeLatest: false,
     requestKey: pageName,
-    onSuccess: (response, requestAction, store) => {
-      store.dispatch(addSkillsToStore(response.data))
-      return response
+    onSuccess: (response) => {
+      return {
+        ...response,
+        data: response.data.map((d) => ({ ...d, gw2UIType: 'Skill' })),
+      }
     },
   },
 })
@@ -90,11 +90,14 @@ export const fetchSpecializations = (ids, pageName) => ({
   },
   meta: {
     cache: true,
+    normalize: true,
     takeLatest: false,
     requestKey: pageName,
-    onSuccess: (response, requestAction, store) => {
-      store.dispatch(addSpecializationsToStore(response.data))
-      return response
+    onSuccess: (response) => {
+      return {
+        ...response,
+        data: response.data.map((d) => ({ ...d, gw2UIType: 'Specialization' })),
+      }
     },
   },
 })
@@ -118,11 +121,14 @@ export const fetchTraits = (ids, pageName) => ({
   },
   meta: {
     cache: true,
+    normalize: true,
     requestKey: pageName,
     takeLatest: false,
-    onSuccess: (response, requestAction, store) => {
-      store.dispatch(addTraitsToStore(response.data))
-      return response
+    onSuccess: (response) => {
+      return {
+        ...response,
+        data: response.data.map((d) => ({ ...d, gw2UIType: 'Traits' })),
+      }
     },
   },
 })

@@ -7,8 +7,8 @@ import docs from './200Items.docs.md'
 const PAGE_NAME = '200 Items'
 
 const Data = () => {
-  return [...Array(200).keys()]
-    .map((value) => `${value + 200}`)
+  return [...Array(20).keys()]
+    .map((value) => `${value + 155}`)
     .map((value) => <Item key={value} id={value} />)
 }
 

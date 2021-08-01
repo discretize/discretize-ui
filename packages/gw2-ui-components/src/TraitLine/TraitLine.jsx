@@ -61,8 +61,11 @@ const TraitLine = forwardRef(
     )
 
     useEffect(() => {
-      setUncontrolledSelected(defaultSelected)
       forceAPICall()
+    })
+
+    useEffect(() => {
+      setUncontrolledSelected(defaultSelected)
     }, [...defaultSelected])
 
     const controlled = typeof onSelect === 'function'

@@ -6,16 +6,7 @@ import gw2uiReducer from './gw2-ui-slice'
 
 export const gw2UIReducer = gw2uiReducer
 
-export {
-  addItem,
-  addSkill,
-  addSpecialization,
-  addTrait,
-  getItemsFromStore,
-  getSkillsFromStore,
-  getSpecializationsFromStore,
-  getTraitsFromStore,
-} from './gw2-ui-slice'
+export { addItem, addSkill, addSpecialization, addTrait } from './gw2-ui-slice'
 
 export {
   fetchItem,
@@ -46,4 +37,7 @@ export const handleRequests = ({ ssr = false } = {}) =>
     ),
     cache: true,
     ssr: ssr ? 'server' : 'client',
+    // since ids are not unique accross e.g. items and skills, this defines a custom identifier
+    // used by the normalization process of redux-requests
+    getNormalisationObjectKey: (obj) => `${obj.id}_${obj.gw2UIType}`,
   })

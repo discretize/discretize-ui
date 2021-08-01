@@ -20,17 +20,8 @@ const add = (name) => (state, action) => {
   }
 }
 
-/**
- * Add gw2data to the shared global store
- * @param {String} name the type of component that should be added to
- * @returns
- */
-const addToStore = (name) => (state, action) => {
-  state.store[name] = state.store[name].concat(action.payload)
-}
-
 const docsSlice = createSlice({
-  name: 'gw2-ui-docs',
+  name: 'gw2-ui-data',
   initialState: {
     ids: {
       items: {},
@@ -38,43 +29,20 @@ const docsSlice = createSlice({
       specializations: {},
       traits: {},
     },
-    store: {
-      items: [],
-      skills: [],
-      specializations: [],
-      traits: [],
-    },
   },
   reducers: {
     addItem: add('items'),
-    addItemsToStore: addToStore('items'),
     addSkill: add('skills'),
-    addSkillsToStore: addToStore('skills'),
     addSpecialization: add('specializations'),
-    addSpecializationsToStore: addToStore('specializations'),
     addTrait: add('traits'),
-    addTraitsToStore: addToStore('traits'),
   },
 })
 
-export const getItemsFromStore = (ids) => (state) =>
-  state.gw2UiStore.store.items.filter((s) => ids.includes(s.id))
-export const getSkillsFromStore = (ids) => (state) =>
-  state.gw2UiStore.store.skills.filter((s) => ids.includes(s.id))
-export const getSpecializationsFromStore = (ids) => (state) =>
-  state.gw2UiStore.store.specializations.filter((s) => ids.includes(s.id))
-export const getTraitsFromStore = (ids) => (state) =>
-  state.gw2UiStore.store.traits.filter((s) => ids.includes(s.id))
-
 export const {
   addItem,
-  addItemsToStore,
   addSkill,
-  addSkillsToStore,
   addSpecialization,
-  addSpecializationsToStore,
   addTrait,
-  addTraitsToStore,
 } = docsSlice.actions
 
 export default docsSlice.reducer

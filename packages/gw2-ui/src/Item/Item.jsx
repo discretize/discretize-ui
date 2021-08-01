@@ -1,9 +1,9 @@
 import { useQuery } from '@redux-requests/react'
 import { createItem } from 'gw2-ui-builder'
 import { Item as ItemComponent } from 'gw2-ui-components'
-import { addItem, FETCH_ITEMS, getItemsFromStore } from 'gw2-ui-redux'
+import { addItem, FETCH_ITEMS } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { PageContext } from '../withGW2UI'
 
 const Item = ({
@@ -16,39 +16,18 @@ const Item = ({
   ...rest
 }) => {
   const dispatch = useDispatch()
-
   const requestKey = id && `${id}`
+  let data
 
   // context for the current opened page
   const page = React.useContext(PageContext)
 
-  let data = null
-  let error
-  let loading
-  let dataRaw = useSelector(
-    getItemsFromStore([
-      Number(id),
-      ...(propsUpgrades
-        ? propsUpgrades.map((upgrade) =>
-            Array.isArray(upgrade) ? upgrade[0] : upgrade,
-          )
-        : []),
-    ]),
-  )
-
-  // search the dataStore if the data is already available.
-  data = dataRaw.find((d) => Number(d.id) === Number(id))
-
-  // this query is only being used, in case the data was not found in the store ( data is undefined).
-  const { data: dataQ, error: errorQ, loading: loadingQ } = useQuery({
+  const { data: dataRaw, error, loading } = useQuery({
     type: FETCH_ITEMS,
     requestKey: page,
   })
-  // assign the found properties, so that our items starts to load
-  if (!data) {
-    dataRaw = dataQ
-    error = errorQ
-    loading = loadingQ
+  if (dataRaw) {
+    data = dataRaw.find((d) => Number(d.id) === Number(id))
   }
 
   // format upgrades so that the underlaying Item-component understands it
@@ -60,9 +39,7 @@ const Item = ({
           count,
           error,
           loading,
-          data: Array.isArray(dataRaw)
-            ? dataRaw.find((d) => Number(d.id) === Number(id1))
-            : [],
+          data: dataRaw && dataRaw.find((d) => Number(d.id) === Number(id1)),
         }
       })
     : []
@@ -80,9 +57,9 @@ const Item = ({
     if (!data && !loading) {
       // console.log('called ' + requestKey)
       dispatch(addItem({ id, page }))
-    } else {
-      return () => {}
     }
+
+    return () => {}
   }, [dispatch, requestKey, propsUpgrades])
 
   let mergedData

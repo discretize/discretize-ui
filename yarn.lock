@@ -2407,12 +2407,12 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redux-requests/axios@^1.0.0":
+"@redux-requests/axios@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@redux-requests/axios/-/axios-1.0.0.tgz#56ec3a732925fa6e254da93f8b06607367bbcc01"
   integrity sha512-zA/cJffEFMu/XdO09nWERFWEodEFKkCpEDsKs26NFmVZ39kJBGBqK9d+1K4WlH5uRM3dF8ytaLUK15ZLeIjThA==
 
-"@redux-requests/core@1.1.1", "@redux-requests/core@^1.1.1":
+"@redux-requests/core@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@redux-requests/core/-/core-1.1.1.tgz#eadff0f6e7bdcba848d99e080534e2015e300ea1"
   integrity sha512-e83cdFYkKbLaLlLBSnCsyqJcYYz0YSa/5ip5POL2/Y295gHoPQ+0CwitC3gWHO7PrFcrge1Y5N+cZa5qsHZEDg==
