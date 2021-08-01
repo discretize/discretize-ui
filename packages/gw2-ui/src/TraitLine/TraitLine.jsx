@@ -7,7 +7,7 @@ import {
   FETCH_TRAITS,
 } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, useStore } from 'react-redux'
 import Trait from '../Trait'
 import { forceAPICall, PageContext } from '../withGW2UI'
 
@@ -18,6 +18,7 @@ const TraitLine = ({ id, ...rest }) => {
   const page = React.useContext(PageContext)
 
   const dispatch = useDispatch()
+  const store = useStore()
 
   useEffect(() => {
     dispatch(addSpecialization({ id: requestKey, page }))
@@ -49,7 +50,7 @@ const TraitLine = ({ id, ...rest }) => {
       error={error}
       loading={loading}
       traitComponent={Trait}
-      forceAPICall={() => forceAPICall('traits', fetchTraits, page)} // The parent is not aware of the individual traits later (for some reason). By forcing the call then we fetch the traits
+      forceAPICall={() => forceAPICall('traits', fetchTraits, page, store)} // The parent is not aware of the individual traits later (for some reason). By forcing the call then we fetch the traits
       {...rest}
     />
   )

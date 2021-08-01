@@ -10,46 +10,45 @@ import {
   FETCH_TRAITS,
 } from 'gw2-ui-redux'
 import React, { useEffect } from 'react'
+import { useDispatch, useStore } from 'react-redux'
 
-export const forceAPICall = (type, fetcher, pageName) => {
-  const store = window.REDUX_STORE
-
+export const forceAPICall = (type, fetcher, pageName, store) => {
   const { gw2UiStore } = store.getState()
-
   if (Array.isArray(gw2UiStore.ids[type][pageName])) {
     store.dispatch(fetcher(gw2UiStore.ids[type][pageName], pageName))
   }
 }
 
 export const withGW2UI = (pageName) => (Component) => {
+  const dispatch = useDispatch()
+  const store = useStore()
+
   useEffect(() => {
-    forceAPICall('items', fetchItems, pageName)
-    forceAPICall('skills', fetchSkills, pageName)
-    forceAPICall('specializations', fetchSpecializations, pageName)
-    forceAPICall('traits', fetchTraits, pageName)
+    forceAPICall('items', fetchItems, pageName, store)
+    forceAPICall('skills', fetchSkills, pageName, store)
+    forceAPICall('specializations', fetchSpecializations, pageName, store)
+    forceAPICall('traits', fetchTraits, pageName, store)
 
     return () => {
-      const store = window.REDUX_STORE
-
-      store.dispatch(
+      dispatch(
         abortRequests([
           FETCH_ITEMS,
           { requestType: FETCH_ITEMS, requestKey: pageName },
         ]),
       )
-      store.dispatch(
+      dispatch(
         abortRequests([
           FETCH_SKILLS,
           { requestType: FETCH_SKILLS, requestKey: pageName },
         ]),
       )
-      store.dispatch(
+      dispatch(
         abortRequests([
           FETCH_SPECIALIZATIONS,
           { requestType: FETCH_SPECIALIZATIONS, requestKey: pageName },
         ]),
       )
-      store.dispatch(
+      dispatch(
         abortRequests([
           FETCH_TRAITS,
           { requestType: FETCH_TRAITS, requestKey: pageName },

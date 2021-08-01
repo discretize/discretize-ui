@@ -31,12 +31,14 @@ addParameters({
 })
 
 addDecorator((story) => {
-  return (
-    <Provider store={store}>
-      <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
-    </Provider>
-  )
+  return <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
 })
+
+addDecorator((S) => (
+  <Provider store={store}>
+    <S />
+  </Provider>
+))
 
 addDecorator(addReadme)
 
