@@ -1,10 +1,10 @@
-import React from 'react';
-import { number, text, boolean } from '@storybook/addon-knobs';
-import { Icon } from 'gw2-ui';
+import React from 'react'
+import { number, text, boolean } from '@storybook/addon-knobs'
+import { Icon } from 'gw2-ui-bulk'
 
-import categories from '../categories';
-import readme from './Icon.readme.md';
-import docs from './Icon.docs.md';
+import categories from '../categories'
+import readme from './Icon.readme.md'
+import docs from './Icon.docs.md'
 
 export default {
   category: categories.HELPERS,
@@ -31,4 +31,4 @@ export default {
     />
   ),
   related: [{ category: categories.HELPERS, name: 'Spinner' }],
-};
+}

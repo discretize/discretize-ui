@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, text } from '@storybook/addon-knobs'
-import { Coin } from 'gw2-ui'
+import { Coin } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Coin.readme.md'

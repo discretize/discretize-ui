@@ -6,7 +6,7 @@ import {
   itemStatNames as ITEM_STAT_NAMES,
   itemArmorWeights as ITEM_ARMOR_WEIGHTS,
   withBulkRequest,
-} from 'gw2-ui'
+} from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Item.readme.md'

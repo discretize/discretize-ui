@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, object } from '@storybook/addon-knobs'
-import { Attributes } from 'gw2-ui'
+import { Attributes } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Attributes.readme.md'

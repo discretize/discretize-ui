@@ -1,6 +1,6 @@
 import React from 'react'
 import { select, boolean, number } from '@storybook/addon-knobs'
-import { Race, races } from 'gw2-ui'
+import { Race, races } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Race.readme.md'

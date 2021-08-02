@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, text, select } from '@storybook/addon-knobs'
-import { WikiLink, wikiLinkLanguages } from 'gw2-ui'
+import { WikiLink, wikiLinkLanguages } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './WikiLink.readme.md'

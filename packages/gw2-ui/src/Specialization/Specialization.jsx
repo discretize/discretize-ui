@@ -2,13 +2,13 @@ import { Query } from '@redux-requests/react'
 import {
   Specialization as SpecializationComponent,
   useThemeUI,
-} from 'gw2-ui-components'
+} from 'gw2-ui-components-bulk'
 import {
   addSpecialization,
   FETCH_SPECIALIZATIONS,
   FETCH_SPECIALIZATION,
   fetchSpecialization,
-} from 'gw2-ui-redux'
+} from 'gw2-ui-redux-bulk'
 import { abortRequests } from '@redux-requests/core'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'

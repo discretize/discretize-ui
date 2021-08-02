@@ -1,6 +1,6 @@
 import React from 'react'
 import { text } from '@storybook/addon-knobs'
-import { Tooltip } from 'gw2-ui'
+import { Tooltip } from 'gw2-ui-bulk'
 import styled from 'styled-components'
 
 import categories from '../categories'

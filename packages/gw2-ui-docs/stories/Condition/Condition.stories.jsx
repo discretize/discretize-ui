@@ -1,6 +1,6 @@
 import React from 'react'
 import { select, boolean, number } from '@storybook/addon-knobs'
-import { Condition, conditions } from 'gw2-ui'
+import { Condition, conditions } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Condition.readme.md'

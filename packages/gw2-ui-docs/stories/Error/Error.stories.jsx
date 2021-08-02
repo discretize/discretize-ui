@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, text, boolean } from '@storybook/addon-knobs'
-import { Error } from 'gw2-ui'
+import { Error } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Error.readme.md'

@@ -1,6 +1,6 @@
 {
   "name": "gw2-ui-bulk",
-  "version": "0.10.1",
+  "version": "0.10.4",
   "description": "React components and API wrapper for Guild Wars 2",
   "keywords": [
     "guild wars 2",
@@ -40,9 +40,9 @@
   },
   "dependencies": {
     "@redux-requests/react": "1.0.0",
-    "gw2-ui-builder-bulk": "^0.2.1",
-    "gw2-ui-components-bulk": "^0.11.0",
-    "gw2-ui-redux-bulk": "^0.5.0",
+    "gw2-ui-builder-bulk": "^0.2.2",
+    "gw2-ui-components-bulk": "^0.11.2",
+    "gw2-ui-redux-bulk": "^0.5.2",
     "use-is-in-viewport": "^1.0.9"
   },
   "devDependencies": {
@@ -59,10 +59,10 @@
     "file-loader": "6.1.0",
     "npm-run-all": "4.1.5",
     "prop-types": "15.7.2",
-    "react": "16.11.0",
-    "react-dom": "16.11.0",
-    "react-redux": "7.1.0",
-    "redux": "4.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "7.2.0",
+    "redux": "4.0.5",
     "reselect": "4.0.0",
     "url-loader": "4.1.1",
     "webpack": "5.0.0",
@@ -72,10 +72,10 @@
     "@babel/runtime-corejs3": "^7.4.0",
     "@redux-requests/core": "^1.1.1",
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-redux": "^7.1.0",
-    "redux": "^4.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
     "reselect": "^4.0.0"
   }
 }

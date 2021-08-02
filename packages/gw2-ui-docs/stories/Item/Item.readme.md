@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Item } from 'gw2-ui'
+import { Item } from 'gw2-ui-bulk'
 ```
 
 ## Properties

@@ -1,6 +1,6 @@
 import { abortRequests, getQuery } from '@redux-requests/core'
-import { getBaseAttributes } from 'gw2-ui-components'
-import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux'
+import { getBaseAttributes } from 'gw2-ui-components-bulk'
+import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux-bulk'
 import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

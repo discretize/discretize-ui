@@ -1,4 +1,4 @@
-import { handleRequests, gw2UIReducer } from 'gw2-ui'
+import { handleRequests, gw2UIReducer } from 'gw2-ui-bulk'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 
 const { requestsReducer, requestsMiddleware } = handleRequests()

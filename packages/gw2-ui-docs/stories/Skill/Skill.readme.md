@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Skill } from 'gw2-ui'
+import { Skill } from 'gw2-ui-bulk'
 ```
 
 ## Properties

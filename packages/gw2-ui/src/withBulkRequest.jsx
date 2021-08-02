@@ -8,9 +8,9 @@ import {
   FETCH_SKILLS,
   FETCH_SPECIALIZATIONS,
   FETCH_TRAITS,
-} from 'gw2-ui-redux'
+} from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
-import { useDispatch, useStore } from 'react-redux'
+import { useStore } from 'react-redux'
 
 export const forceAPICall = (type, fetcher, pageName, store) => {
   const { gw2UiStore } = store.getState()
@@ -20,9 +20,9 @@ export const forceAPICall = (type, fetcher, pageName, store) => {
   }
 }
 
-export const withBulkRequest = (pageName) => (Component) => {
-  const dispatch = useDispatch()
+export const withBulkRequest = (pageName, Component) => {
   const store = useStore()
+  const { dispatch } = store
 
   useEffect(() => {
     forceAPICall('items', fetchItems, pageName, store)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, text, boolean } from '@storybook/addon-knobs'
-import { Spinner } from 'gw2-ui'
+import { Spinner } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Spinner.readme.md'

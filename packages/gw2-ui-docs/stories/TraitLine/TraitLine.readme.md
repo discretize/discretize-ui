@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { TraitLine } from 'gw2-ui'
+import { TraitLine } from 'gw2-ui-bulk'
 ```
 
 ## Properties

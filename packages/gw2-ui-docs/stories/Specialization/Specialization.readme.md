@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { Specialization } from 'gw2-ui'
+import { Specialization } from 'gw2-ui-bulk'
 ```
 
 ## Properties

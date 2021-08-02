@@ -1,10 +1,10 @@
 import { Query } from '@redux-requests/react'
-import { TraitLine as TraitLineComponent } from 'gw2-ui-components'
+import { TraitLine as TraitLineComponent } from 'gw2-ui-components-bulk'
 import {
   addSpecialization,
   fetchTraits,
   FETCH_SPECIALIZATIONS,
-} from 'gw2-ui-redux'
+} from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
 import { useDispatch, useStore } from 'react-redux'
 import Trait from '../Trait'

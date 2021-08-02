@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, boolean } from '@storybook/addon-knobs'
-import { Specialization, withBulkRequest } from 'gw2-ui'
+import { Specialization, withBulkRequest } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Specialization.readme.md'

@@ -10,7 +10,7 @@ export {
   itemStats,
   itemStatTypes,
   itemTypeNames,
-} from 'gw2-ui-builder'
+} from 'gw2-ui-builder-bulk'
 export {
   AbilityDetails,
   Attribute,
@@ -58,8 +58,8 @@ export {
   useColorModeHighlightSuffix,
   WikiLink,
   wikiLinkLanguages,
-} from 'gw2-ui-components'
-export { handleRequests, gw2UIReducer } from 'gw2-ui-redux'
+} from 'gw2-ui-components-bulk'
+export { handleRequests, gw2UIReducer } from 'gw2-ui-redux-bulk'
 export { default as Attributes } from './Attributes'
 export { default as Item } from './Item'
 export { default as Skill } from './Skill'

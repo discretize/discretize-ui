@@ -1,6 +1,6 @@
 import React from 'react'
 import { select, boolean, number } from '@storybook/addon-knobs'
-import { Boon, boons } from 'gw2-ui'
+import { Boon, boons } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Boon.readme.md'

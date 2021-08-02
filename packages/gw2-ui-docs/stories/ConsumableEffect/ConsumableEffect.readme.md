@@ -1,7 +1,7 @@
 ## Usage
 
 ```js
-import { ConsumableEffect } from 'gw2-ui' // or gw2-ui-components
+import { ConsumableEffect } from 'gw2-ui-bulk' // or gw2-ui-components
 ```
 
 ## Properties

@@ -1,6 +1,6 @@
 import React from 'react'
 import { number, text, boolean } from '@storybook/addon-knobs'
-import { Progress } from 'gw2-ui'
+import { Progress } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Progress.readme.md'

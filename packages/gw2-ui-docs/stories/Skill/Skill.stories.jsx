@@ -1,5 +1,5 @@
 import { boolean, number } from '@storybook/addon-knobs'
-import { Skill, withBulkRequest } from 'gw2-ui'
+import { Skill, withBulkRequest } from 'gw2-ui-bulk'
 import React from 'react'
 import categories from '../categories'
 import docs from './Skill.docs.md'

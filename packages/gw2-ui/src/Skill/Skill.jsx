@@ -1,6 +1,11 @@
 import { Query } from '@redux-requests/react'
-import { Skill as SkillComponent, useThemeUI } from 'gw2-ui-components'
-import { addSkill, FETCH_SKILLS, FETCH_SKILL, fetchSkill } from 'gw2-ui-redux'
+import { Skill as SkillComponent, useThemeUI } from 'gw2-ui-components-bulk'
+import {
+  addSkill,
+  FETCH_SKILLS,
+  FETCH_SKILL,
+  fetchSkill,
+} from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
 import { abortRequests } from '@redux-requests/core'
 import { useDispatch } from 'react-redux'

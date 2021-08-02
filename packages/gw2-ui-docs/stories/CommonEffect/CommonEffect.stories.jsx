@@ -1,6 +1,6 @@
 import React from 'react'
 import { select, boolean, number } from '@storybook/addon-knobs'
-import { CommonEffect, commonEffects } from 'gw2-ui'
+import { CommonEffect, commonEffects } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './CommonEffect.readme.md'

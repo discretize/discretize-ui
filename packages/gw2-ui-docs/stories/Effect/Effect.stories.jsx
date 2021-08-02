@@ -1,6 +1,6 @@
 import React from 'react'
 import { text, boolean, number } from '@storybook/addon-knobs'
-import { Effect } from 'gw2-ui'
+import { Effect } from 'gw2-ui-bulk'
 
 import categories from '../categories'
 import readme from './Effect.readme.md'

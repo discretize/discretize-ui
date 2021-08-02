@@ -1,6 +1,11 @@
 import { Query } from '@redux-requests/react'
-import { Trait as TraitComponent, useThemeUI } from 'gw2-ui-components'
-import { addTrait, fetchTrait, FETCH_TRAITS, FETCH_TRAIT } from 'gw2-ui-redux'
+import { Trait as TraitComponent, useThemeUI } from 'gw2-ui-components-bulk'
+import {
+  addTrait,
+  fetchTrait,
+  FETCH_TRAITS,
+  FETCH_TRAIT,
+} from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
 import { abortRequests } from '@redux-requests/core'
 import { useDispatch } from 'react-redux'

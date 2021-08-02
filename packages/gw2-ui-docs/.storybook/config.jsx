@@ -9,7 +9,7 @@ import { create } from '@storybook/theming'
 import { Provider } from 'react-redux'
 import { addReadme, configureReadme } from 'storybook-readme'
 import { withKnobs } from '@storybook/addon-knobs'
-import { ThemeProvider, baseTheme } from 'gw2-ui'
+import { ThemeProvider, baseTheme } from 'gw2-ui-bulk'
 import styled from 'styled-components'
 
 import 'typeface-menomonia'
@@ -30,13 +30,13 @@ addParameters({
   },
 })
 
-addDecorator((story) => {
-  return <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
-})
+addDecorator((story) => (
+  <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
+))
 
-addDecorator((S) => (
+addDecorator((Story) => (
   <Provider store={store}>
-    <S />
+    <Story />
   </Provider>
 ))
 
