@@ -1,6 +1,6 @@
 {
-  "name": "gw2-ui-components",
-  "version": "0.10.1",
+  "name": "gw2-ui-components-bulk",
+  "version": "0.11.1",
   "description": "React components for Guild Wars 2",
   "keywords": [
     "guild wars 2",
@@ -8,9 +8,9 @@
     "react",
     "theme-ui"
   ],
-  "homepage": "https://github.com/ManuelHaag/gw2-ui",
-  "bugs": "https://github.com/ManuelHaag/gw2-ui/issues",
-  "repository": "https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components",
+  "homepage": "https://github.com/gw2princeps/gw2-ui",
+  "bugs": "https://github.com/gw2princeps/gw2-ui/issues",
+  "repository": "https://github.com/gw2princeps/gw2-ui/tree/master/packages/gw2-ui-components",
   "license": "MIT",
   "author": "Manuel Haag <manuel@haag.online>",
   "sideEffects": false,
