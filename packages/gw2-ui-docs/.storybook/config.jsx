@@ -30,14 +30,12 @@ addParameters({
   },
 })
 
-addDecorator((story) => (
-  <ThemeProvider theme={baseTheme}>{story()}</ThemeProvider>
-))
-
 addDecorator((Story) => (
-  <Provider store={store}>
-    <Story />
-  </Provider>
+  <ThemeProvider theme={baseTheme}>
+    <Provider store={store}>
+      <Story />
+    </Provider>
+  </ThemeProvider>
 ))
 
 addDecorator(addReadme)

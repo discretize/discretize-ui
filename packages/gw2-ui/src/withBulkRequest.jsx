@@ -1,36 +1,40 @@
-import { abortRequests } from '@redux-requests/core'
 import {
   fetchItems,
   fetchSkills,
   fetchSpecializations,
   fetchTraits,
-  FETCH_ITEMS,
-  FETCH_SKILLS,
-  FETCH_SPECIALIZATIONS,
-  FETCH_TRAITS,
 } from 'gw2-ui-redux-bulk'
-import React, { useEffect } from 'react'
-import { useStore } from 'react-redux'
+import React from 'react'
+import { connect } from 'react-redux'
 
-export const forceAPICall = (type, fetcher, pageName, store) => {
-  const { gw2UiStore } = store.getState()
-
-  if (Array.isArray(gw2UiStore.ids[type][pageName])) {
-    store.dispatch(fetcher(gw2UiStore.ids[type][pageName], pageName))
+export const forceAPICall = (type, fetcher, pageName, ids, setIds) => {
+  if (Array.isArray(ids[type][pageName])) {
+    setIds(type, fetcher, pageName, ids)
   }
 }
 
-export const withBulkRequest = (pageName, Component) => {
-  const store = useStore()
-  const { dispatch } = store
+export function withBulkRequest(pageName, WrappedComponent) {
+  class Component extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {}
+    }
 
-  useEffect(() => {
-    forceAPICall('items', fetchItems, pageName, store)
-    forceAPICall('skills', fetchSkills, pageName, store)
-    forceAPICall('specializations', fetchSpecializations, pageName, store)
-    forceAPICall('traits', fetchTraits, pageName, store)
+    componentDidMount() {
+      const { ids, setIds } = this.state
+      forceAPICall('items', fetchItems, pageName, ids, setIds)
+      forceAPICall('skills', fetchSkills, pageName, ids, setIds)
+      forceAPICall(
+        'specializations',
+        fetchSpecializations,
+        pageName,
+        ids,
+        setIds,
+      )
+      forceAPICall('traits', fetchTraits, pageName, ids, setIds)
 
-    return () => {
+      return () => {
+        /*
       dispatch(
         abortRequests([
           FETCH_ITEMS,
@@ -55,14 +59,34 @@ export const withBulkRequest = (pageName, Component) => {
           { requestType: FETCH_TRAITS, requestKey: pageName },
         ]),
       )
+      */
+      }
     }
-  })
 
-  return (
-    <PageContext.Provider value={pageName}>
-      <Component />
-    </PageContext.Provider>
-  )
+    render() {
+      return (
+        <PageContext.Provider value={pageName}>
+          <WrappedComponent />
+        </PageContext.Provider>
+      )
+    }
+  }
+
+  const mapStateToProps = (state) => {
+    console.log(state.ids)
+    return {
+      ids: state.ids,
+    }
+  }
+
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      setIds: (type, fetcher, page, idss) =>
+        dispatch(fetcher(idss[type][page], page)),
+    }
+  }
+
+  return connect(mapStateToProps, mapDispatchToProps)(Component)
 }
 
 export const PageContext = React.createContext()
