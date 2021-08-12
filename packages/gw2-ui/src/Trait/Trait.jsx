@@ -1,61 +1,30 @@
-import { Query } from '@redux-requests/react'
-import { Trait as TraitComponent, useThemeUI } from 'gw2-ui-components-bulk'
-import {
-  addTrait,
-  fetchTrait,
-  FETCH_TRAITS,
-  FETCH_TRAIT,
-} from 'gw2-ui-redux-bulk'
+import { Trait as TraitComponent } from 'gw2-ui-components-bulk'
+import { fetchTrait } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
-import { abortRequests } from '@redux-requests/core'
-import { useDispatch } from 'react-redux'
-import { PageContext } from '../withBulkRequest'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Trait = ({ id, ...rest }) => {
-  const context = useThemeUI()
-  const { theme } = context
-
-  let requestKey
-  const useBulk = theme.useBulkRequests
-
-  if (useBulk) {
-    requestKey = `${React.useContext(PageContext)}`
-  } else {
-    requestKey = `${id}`
-  }
   const dispatch = useDispatch()
 
+  const data = useSelector((state) => {
+    return state.gw2UiStore.ids.traits.find(
+      (item) => Number(item.id) === Number(id),
+    )
+  })
+  const error = useSelector((state) => {
+    return state.gw2UiStore.errors.traits.find(
+      (item) => Number(item.id) === Number(id),
+    )
+  })
+  const loading = !data && !error
+
   useEffect(() => {
-    if (useBulk) {
-      dispatch(addTrait({ id, page: requestKey }))
-      return () => {}
-    }
-    dispatch(fetchTrait(requestKey))
-    return () => {
-      dispatch(
-        abortRequests([FETCH_TRAIT, { requestType: FETCH_TRAIT, requestKey }]),
-      )
-    }
-  }, [dispatch, requestKey])
+    fetchTrait(id, dispatch)
+    return () => {}
+  }, [dispatch])
 
   return (
-    <Query
-      type={useBulk ? FETCH_TRAITS : FETCH_TRAIT}
-      requestKey={requestKey}
-      loadingComponent={TraitComponent}
-      loadingComponentProps={{ id, ...rest, loading: true }}
-      errorComponent={TraitComponent}
-      errorComponentProps={{ id, ...rest }}
-    >
-      {({ data, error, loading }) => (
-        <TraitComponent
-          data={useBulk ? data.find((d) => Number(d.id) === Number(id)) : data}
-          error={error}
-          loading={loading}
-          {...rest}
-        />
-      )}
-    </Query>
+    <TraitComponent data={data} error={error} loading={loading} {...rest} />
   )
 }
 

@@ -40,8 +40,7 @@ ${Object.values(ITEM_STAT_NAMES)
 ${Object.values(ITEM_ARMOR_WEIGHTS)
   .map((weight) => `- \`${weight}\`\n`)
   .join('')}`,
-  story: () =>
-    withBulkRequest('Items')(() => (
+  story: () => (
       <Item
         id={number('id', 48073)}
         count={number('count', null)}
@@ -60,7 +59,7 @@ ${Object.values(ITEM_ARMOR_WEIGHTS)
         inline={boolean('inline', true)}
         style={{ fontSize: number('style.fontSize', 24) }}
       />
-    )),
+    ),
   related: [
     { category: categories.HELPERS, name: 'IconWithText' },
     { category: categories.HELPERS, name: 'Icon' },

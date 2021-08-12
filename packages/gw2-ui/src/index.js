@@ -66,5 +66,3 @@ export { default as Skill } from './Skill'
 export { default as Specialization } from './Specialization'
 export { default as Trait } from './Trait'
 export { default as TraitLine } from './TraitLine'
-
-export { PageContext, withBulkRequest, forceAPICall } from './withBulkRequest'

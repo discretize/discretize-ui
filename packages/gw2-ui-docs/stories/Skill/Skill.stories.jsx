@@ -11,18 +11,17 @@ export default {
   name: PAGE_NAME,
   readme,
   docs,
-  story: () =>
-    withBulkRequest(PAGE_NAME)(() => (
-      <Skill
-        id={number('id', 14375)}
-        disableIcon={boolean('disableIcon', false)}
-        disableText={boolean('disableText', false)}
-        disableLink={boolean('disableLink', false)}
-        disableTooltip={boolean('disableTooltip', false)}
-        inline={boolean('inline', true)}
-        style={{ fontSize: number('style.fontSize', 24) }}
-      />
-    )),
+  story: () => (
+    <Skill
+      id={number('id', 14375)}
+      disableIcon={boolean('disableIcon', false)}
+      disableText={boolean('disableText', false)}
+      disableLink={boolean('disableLink', false)}
+      disableTooltip={boolean('disableTooltip', false)}
+      inline={boolean('inline', true)}
+      style={{ fontSize: number('style.fontSize', 24) }}
+    />
+  ),
   related: [
     { category: categories.HELPERS, name: 'IconWithText' },
     { category: categories.HELPERS, name: 'Icon' },

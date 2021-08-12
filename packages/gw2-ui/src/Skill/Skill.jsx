@@ -1,66 +1,30 @@
-import { Query } from '@redux-requests/react'
-import { Skill as SkillComponent, useThemeUI } from 'gw2-ui-components-bulk'
-import {
-  addSkill,
-  FETCH_SKILLS,
-  FETCH_SKILL,
-  fetchSkill,
-} from 'gw2-ui-redux-bulk'
+import { Skill as SkillComponent } from 'gw2-ui-components-bulk'
+import { fetchSkill } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
-import { abortRequests } from '@redux-requests/core'
-import { useDispatch } from 'react-redux'
-import { PageContext } from '../withBulkRequest'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Skill = ({ id, ...rest }) => {
-  const context = useThemeUI()
-  const { theme } = context
-
-  let requestKey
-  const useBulk = theme.useBulkRequests
-
-  if (useBulk) {
-    requestKey = `${React.useContext(PageContext)}`
-  } else {
-    requestKey = `${id}`
-  }
-
   const dispatch = useDispatch()
 
+  const data = useSelector((state) => {
+    return state.gw2UiStore.ids.skills.find(
+      (item) => Number(item.id) === Number(id),
+    )
+  })
+  const error = useSelector((state) => {
+    return state.gw2UiStore.errors.skills.find(
+      (item) => Number(item.id) === Number(id),
+    )
+  })
+  const loading = !data && !error
+
   useEffect(() => {
-    if (useBulk) {
-      dispatch(addSkill({ id, page: requestKey }))
-      return () => {}
-    }
-    dispatch(fetchSkill(requestKey))
-    return () => {
-      dispatch(
-        abortRequests([FETCH_SKILL, { requestType: FETCH_SKILL, requestKey }]),
-      )
-    }
-  }, [dispatch, requestKey])
+    fetchSkill(id, dispatch)
+    return () => {}
+  }, [dispatch])
 
   return (
-    <Query
-      type={useBulk ? FETCH_SKILLS : FETCH_SKILL}
-      requestKey={requestKey}
-      loadingComponent={SkillComponent}
-      loadingComponentProps={{ id, ...rest, loading: true }}
-      errorComponent={SkillComponent}
-      errorComponentProps={{ id, ...rest }}
-    >
-      {({ data, error, loading }) => {
-        return (
-          <SkillComponent
-            data={
-              useBulk ? data.find((d) => Number(d.id) === Number(id)) : data
-            }
-            error={error}
-            loading={loading}
-            {...rest}
-          />
-        )
-      }}
-    </Query>
+    <SkillComponent data={data} error={error} loading={loading} {...rest} />
   )
 }
 

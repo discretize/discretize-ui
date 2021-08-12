@@ -11,19 +11,18 @@ export default {
   name: 'Trait',
   readme,
   docs,
-  story: () =>
-    withBulkRequest('Trait')(() => (
-      <Trait
-        id={number('id', 229)}
-        disableIcon={boolean('disableIcon', false)}
-        disableText={boolean('disableText', false)}
-        disableLink={boolean('disableLink', false)}
-        disableTooltip={boolean('disableTooltip', false)}
-        inline={boolean('inline', true)}
-        inactive={boolean('inactive', false)}
-        style={{ fontSize: number('style.fontSize', 24) }}
-      />
-    )),
+  story: () => (
+    <Trait
+      id={number('id', 229)}
+      disableIcon={boolean('disableIcon', false)}
+      disableText={boolean('disableText', false)}
+      disableLink={boolean('disableLink', false)}
+      disableTooltip={boolean('disableTooltip', false)}
+      inline={boolean('inline', true)}
+      inactive={boolean('inactive', false)}
+      style={{ fontSize: number('style.fontSize', 24) }}
+    />
+  ),
   related: [
     { category: categories.HELPERS, name: 'IconWithText' },
     { category: categories.HELPERS, name: 'Icon' },

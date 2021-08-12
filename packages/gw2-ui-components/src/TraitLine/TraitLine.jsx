@@ -50,7 +50,6 @@ const TraitLine = forwardRef(
       disableText: ignoredDisableText,
       disableTooltip: ignoredDisableTooltip,
       inline: ignoredInline,
-      forceAPICall,
       /* eslint-enable react/prop-types */
       ...rest
     },
@@ -59,10 +58,6 @@ const TraitLine = forwardRef(
     const [uncontrolledSelected, setUncontrolledSelected] = useState(
       defaultSelected,
     )
-
-    useEffect(() => {
-      forceAPICall()
-    })
 
     useEffect(() => {
       setUncontrolledSelected(defaultSelected)
@@ -411,7 +406,6 @@ TraitLine.propTypes = {
   onReset: PropTypes.func,
   onSelect: PropTypes.func,
   data: PropTypes.object.isRequired,
-  forceAPICall: PropTypes.func,
 }
 
 TraitLine.defaultProps = {
@@ -422,7 +416,6 @@ TraitLine.defaultProps = {
   resettable: true,
   onReset: null,
   onSelect: null,
-  forceAPICall: null,
 }
 
 TraitLine.displayName = 'TraitLine'

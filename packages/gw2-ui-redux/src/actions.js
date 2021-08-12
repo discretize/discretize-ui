@@ -1,14 +1,52 @@
+import axios from 'axios'
+import functionBatch from 'function-batch'
+import { BASE_URL } from './constants'
 import {
-  FETCH_ITEM,
-  FETCH_ITEMS,
-  FETCH_SKILL,
-  FETCH_SKILLS,
-  FETCH_SPECIALIZATION,
-  FETCH_SPECIALIZATIONS,
-  FETCH_TRAIT,
-  FETCH_TRAITS,
-} from './constants'
+  addItem,
+  addItemError,
+  addSkill,
+  addSkillError,
+  addSpecialization,
+  addSpecializationsError,
+  addTrait,
+  addTraitError,
+} from './gw2-ui-slice'
 
+const addGeneric = (add, addError, name) => (ids, dispatch) => {
+  axios.get(`${BASE_URL}/${name}?ids=${ids}&lang=en`).then((res) => {
+    res.data.forEach((element) => {
+      dispatch(add(element))
+    })
+    const missing = ids.filter(
+      (id) => !res.data.map((rec) => Number(rec.id)).includes(Number(id)),
+    )
+    missing.forEach((element) => {
+      dispatch(
+        addError({
+          id: element,
+          code: '404',
+          message: 'Not Found',
+          name: `ID: ${element}`,
+        }),
+      )
+    })
+  })
+}
+
+export const fetchItem = functionBatch(
+  addGeneric(addItem, addItemError, 'items'),
+)
+export const fetchSpecialization = functionBatch(
+  addGeneric(addSpecialization, addSpecializationsError, 'specializations'),
+)
+export const fetchSkill = functionBatch(
+  addGeneric(addSkill, addSkillError, 'skills'),
+)
+export const fetchTrait = functionBatch(
+  addGeneric(addTrait, addTraitError, 'traits'),
+)
+
+/*
 export const fetchItem = (id) => ({
   type: FETCH_ITEM,
   request: {
@@ -132,3 +170,4 @@ export const fetchTraits = (ids, pageName) => ({
     },
   },
 })
+*/

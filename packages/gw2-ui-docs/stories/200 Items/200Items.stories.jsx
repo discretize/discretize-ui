@@ -17,6 +17,6 @@ export default {
   name: PAGE_NAME,
   docs,
   story: () => {
-    return withBulkRequest(PAGE_NAME)(Data)
+    return Data()
   },
 }

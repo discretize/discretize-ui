@@ -1,46 +1,36 @@
-import { Query } from '@redux-requests/react'
 import { TraitLine as TraitLineComponent } from 'gw2-ui-components-bulk'
-import {
-  addSpecialization,
-  fetchTraits,
-  FETCH_SPECIALIZATIONS,
-} from 'gw2-ui-redux-bulk'
+import { fetchSpecialization } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
-import { useDispatch, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Trait from '../Trait'
-import { forceAPICall, PageContext } from '../withBulkRequest'
 
 const TraitLine = ({ id, ...rest }) => {
-  // context for the current opened page
-  const page = React.useContext(PageContext)
-
   const dispatch = useDispatch()
-  const store = useStore()
+
+  const data = useSelector((state) => {
+    return state.gw2UiStore.ids.specializations.find(
+      (item) => Number(item.id) === Number(id),
+    )
+  })
+  const error = useSelector((state) => {
+    return state.gw2UiStore.errors.specializations.find(
+      (item) => Number(item.id) === Number(id),
+    )
+  })
+  const loading = !data && !error
 
   useEffect(() => {
-    dispatch(addSpecialization({ id, page }))
-  }, [dispatch, id])
+    fetchSpecialization(id, dispatch)
+  }, [dispatch])
 
   return (
-    <Query
-      type={FETCH_SPECIALIZATIONS}
-      requestKey={page}
-      loadingComponent={TraitLineComponent}
-      loadingComponentProps={{ id, ...rest, loading: true }}
-      errorComponent={TraitLineComponent}
-      errorComponentProps={{ id, ...rest }}
-    >
-      {({ data, error, loading }) => (
-        <TraitLineComponent
-          data={data.find((d) => Number(d.id) === Number(id))}
-          error={error}
-          loading={loading}
-          traitComponent={Trait}
-          forceAPICall={() => forceAPICall('traits', fetchTraits, page, store)}
-          {...rest}
-        />
-      )}
-    </Query>
+    <TraitLineComponent
+      data={data}
+      error={error}
+      loading={loading}
+      traitComponent={Trait}
+      {...rest}
+    />
   )
 }
 

@@ -1,29 +1,25 @@
+import { array, boolean, number } from '@storybook/addon-knobs'
+import { TraitLine } from 'gw2-ui-bulk'
 import React from 'react'
-import { number, array, boolean } from '@storybook/addon-knobs'
-import { TraitLine, withBulkRequest } from 'gw2-ui-bulk'
-
 import categories from '../categories'
-import readme from './TraitLine.readme.md'
 import docs from './TraitLine.docs.md'
+import readme from './TraitLine.readme.md'
 
 export default {
   category: categories.CORE,
   name: 'TraitLine',
   readme,
   docs,
-  story: () =>
-    withBulkRequest('TraitLine')(() => (
-      <TraitLine
-        id={number('id', 41)}
-        defaultSelected={array('defaultSelected', [
-          227,
-          214,
-          1672,
-        ]).map((value) => Number(value))}
-        selectable={boolean('selectable', true)}
-        resettable={boolean('resettable', true)}
-      />
-    )),
+  story: () => (
+    <TraitLine
+      id={number('id', 41)}
+      defaultSelected={array('defaultSelected', [227, 214, 1672]).map((value) =>
+        Number(value),
+      )}
+      selectable={boolean('selectable', true)}
+      resettable={boolean('resettable', true)}
+    />
+  ),
   related: [
     { category: categories.CORE, name: 'Trait' },
     { category: categories.HELPERS, name: 'IconWithText' },
