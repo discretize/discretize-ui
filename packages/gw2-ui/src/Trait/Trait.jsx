@@ -16,10 +16,10 @@ const Trait = ({ id, ...rest }) => {
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = !data && !error
+  const loading = id && !data && !error
 
   useEffect(() => {
-    fetchTrait(id, dispatch)
+    if (id) fetchTrait(id, dispatch)
     return () => {}
   }, [dispatch])
 

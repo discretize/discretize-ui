@@ -17,10 +17,10 @@ const TraitLine = ({ id, ...rest }) => {
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = !data && !error
+  const loading = id && !data && !error
 
   useEffect(() => {
-    fetchSpecialization(id, dispatch)
+    if (id) fetchSpecialization(id, dispatch)
   }, [dispatch])
 
   return (

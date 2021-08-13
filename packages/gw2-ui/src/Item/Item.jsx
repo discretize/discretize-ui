@@ -25,7 +25,7 @@ const Item = ({
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = !data && !error
+  const loading = id && !data && !error
 
   const upgrades = Array.isArray(propsUpgrades)
     ? propsUpgrades.map((upgrade) => {
@@ -58,7 +58,7 @@ const Item = ({
     }
 
     // fetch the basic item
-    if (!data) {
+    if (!data && id) {
       fetchItem(id, dispatch)
     }
 
