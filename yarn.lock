@@ -7780,6 +7780,14 @@ gud@^1.0.0:
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
   integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
 
+"gw2-ui-redux-bulk@file:packages/gw2-ui-redux":
+  version "0.5.3"
+  dependencies:
+    "@redux-requests/axios" "1.0.0"
+    "@redux-requests/core" "1.1.1"
+    "@reduxjs/toolkit" "^1.6.1"
+    function-batch "^1.1.2"
+
 gzip-size@5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-5.1.1.tgz#cb9bee692f87c0612b232840a873904e4c135274"
@@ -10446,11 +10454,6 @@ object.values@^1.1.0, object.values@^1.1.1:
     es-abstract "^1.17.0-next.1"
     function-bind "^1.1.1"
     has "^1.0.3"
-
-observe-element-in-viewport@0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/observe-element-in-viewport/-/observe-element-in-viewport-0.0.15.tgz#06284e84da80bd43c348ac3d957ba6b99fb2bbd0"
-  integrity sha512-BaJGtCHp8XXxe8zFOnsbv93f4SRLb0W5P3okGJkLLKC9IM9aXvpKF4C8lFxivcS5eROlNkhOCnUOSk4tUnJnKQ==
 
 octokit-pagination-methods@^1.1.0:
   version "1.1.0"
@@ -13873,13 +13876,6 @@ use-callback-ref@^1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.4.tgz#d86d1577bfd0b955b6e04aaf5971025f406bea3c"
   integrity sha512-rXpsyvOnqdScyied4Uglsp14qzag1JIemLeTWGKbwpotWht57hbP78aNT+Q4wdFKQfQibbUX4fb6Qb4y11aVOQ==
-
-use-is-in-viewport@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/use-is-in-viewport/-/use-is-in-viewport-1.0.9.tgz#bbc1f2f39ece752c7af0ddcd17b251ba5b4587e2"
-  integrity sha512-Dgi0z/X9eTk3ziI+b28mZVoYtCtyoUFQ+9VBq6fR5EdjqmmsSlbr8ysXAwmEl89OUNBQwVGLGdI9nqwiu3168g==
-  dependencies:
-    observe-element-in-viewport "0.0.15"
 
 use-sidecar@^1.0.1:
   version "1.0.3"

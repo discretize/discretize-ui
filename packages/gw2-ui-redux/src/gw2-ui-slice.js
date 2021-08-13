@@ -16,7 +16,7 @@ const add = (name, type) => (state, action) => {
   }
 }
 
-const docsSlice = createSlice({
+const gw2uiSlice = createSlice({
   name: 'gw2-ui-data',
   initialState: {
     ids: {
@@ -53,6 +53,6 @@ export const {
   addSpecializationsError,
   addTrait,
   addTraitError,
-} = docsSlice.actions
+} = gw2uiSlice.actions
 
-export default docsSlice.reducer
+export default gw2uiSlice.reducer
