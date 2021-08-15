@@ -21,7 +21,7 @@ const Skill = ({ id, ...rest }) => {
   useEffect(() => {
     fetchSkill(id, dispatch)
     return () => {}
-  }, [dispatch])
+  }, [dispatch, id])
 
   return (
     <SkillComponent data={data} error={error} loading={loading} {...rest} />

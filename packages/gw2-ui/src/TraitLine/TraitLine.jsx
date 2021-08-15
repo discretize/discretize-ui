@@ -21,7 +21,7 @@ const TraitLine = ({ id, ...rest }) => {
 
   useEffect(() => {
     if (id) fetchSpecialization(id, dispatch)
-  }, [dispatch])
+  }, [dispatch, id])
 
   return (
     <TraitLineComponent

@@ -21,7 +21,7 @@ const Trait = ({ id, ...rest }) => {
   useEffect(() => {
     if (id) fetchTrait(id, dispatch)
     return () => {}
-  }, [dispatch])
+  }, [dispatch, id])
 
   return (
     <TraitComponent data={data} error={error} loading={loading} {...rest} />

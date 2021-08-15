@@ -20,7 +20,7 @@ const Specialization = ({ id, ...rest }) => {
   useEffect(() => {
     fetchSpecialization(id, dispatch)
     return () => {}
-  }, [dispatch])
+  }, [dispatch, id])
 
   return (
     <SpecializationComponent

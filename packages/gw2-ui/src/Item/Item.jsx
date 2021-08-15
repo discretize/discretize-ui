@@ -45,10 +45,6 @@ const Item = ({
     : []
 
   useEffect(() => {
-    if (data) {
-      return () => {}
-    }
-
     // Fetch all the upgrades
     if (Array.isArray(propsUpgrades)) {
       propsUpgrades.forEach((upgrade) => {
@@ -58,12 +54,12 @@ const Item = ({
     }
 
     // fetch the basic item
-    if (!data && id) {
+    if (id) {
       fetchItem(id, dispatch)
     }
 
     return () => {}
-  }, [dispatch, propsUpgrades])
+  }, [dispatch, propsUpgrades, id])
 
   let mergedData
   try {
