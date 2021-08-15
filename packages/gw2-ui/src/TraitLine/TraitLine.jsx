@@ -27,7 +27,7 @@ const TraitLine = ({ id, ...rest }) => {
     <TraitLineComponent
       data={data}
       error={error}
-      loading={loading}
+      loading={Boolean(loading)}
       traitComponent={Trait}
       {...rest}
     />

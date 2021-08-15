@@ -24,7 +24,12 @@ const Skill = ({ id, ...rest }) => {
   }, [dispatch, id])
 
   return (
-    <SkillComponent data={data} error={error} loading={loading} {...rest} />
+    <SkillComponent
+      data={data}
+      error={error}
+      loading={Boolean(loading)}
+      {...rest}
+    />
   )
 }
 

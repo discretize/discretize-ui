@@ -26,7 +26,7 @@ const Specialization = ({ id, ...rest }) => {
     <SpecializationComponent
       data={data}
       error={error}
-      loading={loading}
+      loading={Boolean(loading)}
       {...rest}
     />
   )

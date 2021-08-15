@@ -24,7 +24,12 @@ const Trait = ({ id, ...rest }) => {
   }, [dispatch, id])
 
   return (
-    <TraitComponent data={data} error={error} loading={loading} {...rest} />
+    <TraitComponent
+      data={data}
+      error={error}
+      loading={Boolean(loading)}
+      {...rest}
+    />
   )
 }
 

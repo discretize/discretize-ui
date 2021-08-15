@@ -107,7 +107,7 @@ const Item = ({
     <ItemComponent
       data={mergedData}
       error={error}
-      loading={loading}
+      loading={Boolean(loading)}
       upgrades={upgrades}
       {...rest}
     />
