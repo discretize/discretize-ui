@@ -84,6 +84,8 @@ const Item = ({
       mergedData = {
         ...data,
         ...createdData,
+        name: data.name,
+        rarity: data.rarity,
         details: {
           ...data.details,
           ...createdData.details,
