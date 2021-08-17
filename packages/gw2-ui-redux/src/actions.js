@@ -13,7 +13,12 @@ import {
 import { BASE_URL } from './constants'
 
 const addGeneric = (add, addError, name) => (ids, dispatch) => {
-  const cleaned = ids.filter((id) => id !== '')
+  const cleaned = ids
+    .filter((id) => id !== '')
+    .reduce((a, b) => {
+      if (a.indexOf(b) < 0) a.push(b)
+      return a
+    }, [])
 
   axios
     .get(`${BASE_URL}/${name}?ids=${cleaned}&lang=en`)
