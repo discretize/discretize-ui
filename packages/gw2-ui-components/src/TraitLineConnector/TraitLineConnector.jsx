@@ -106,7 +106,7 @@ const TraitLineConnector = forwardRef(
               ...(!disabled && {
                 backgroundImage: `url(${traitLineConnectorImage})`,
                 backgroundRepeat: 'repeat-x',
-                animation: `${move.toString()} 10s linear infinite`,
+                animation: `${move.toString()} 10s steps(150) infinite`,
               }),
             }}
             css={{
