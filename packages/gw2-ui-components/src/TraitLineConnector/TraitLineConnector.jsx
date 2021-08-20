@@ -7,10 +7,10 @@ import traitLineConnectorImage from '../assets/images/trait-line-connector.png'
 
 const move = keyframes({
   from: {
-    backgroundPositionX: 0,
+    transform: 'translateX(0)',
   },
   to: {
-    backgroundPositionX: -300,
+    transform: 'translateX(-50%)',
   },
 })
 
@@ -91,22 +91,30 @@ const TraitLineConnector = forwardRef(
         {resizeListener}
 
         <div
-          sx={{
-            position: 'absolute',
-            ...(!disabled && {
-              backgroundImage: `url(${traitLineConnectorImage})`,
-              backgroundRepeat: 'repeat-x',
-              animation: `${move.toString()} 30s linear infinite`,
-            }),
-          }}
           css={{
+            position: 'absolute',
             height: 8,
             bottom,
             left,
             width: length,
             transform: `rotate(${angle}deg)`,
+            overflow: 'hidden',
           }}
-        />
+        >
+          <div
+            sx={{
+              ...(!disabled && {
+                backgroundImage: `url(${traitLineConnectorImage})`,
+                backgroundRepeat: 'repeat-x',
+                animation: `${move.toString()} 10s linear infinite`,
+              }),
+            }}
+            css={{
+              height: 8,
+              width: 43 * 4,
+            }}
+          />
+        </div>
       </div>
     )
   },
