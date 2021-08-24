@@ -37,8 +37,6 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "@redux-requests/axios": "1.0.0",
-    "@redux-requests/core": "1.1.1",
     "@reduxjs/toolkit": "^1.6.1",
     "function-batch": "^1.1.2"
   },

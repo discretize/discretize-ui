@@ -1,5 +1,5 @@
 import { createItem } from 'gw2-ui-builder-bulk'
-import { Item as ItemComponent } from 'gw2-ui-components-bulk'
+import { Item as ItemComponent, isLoading } from 'gw2-ui-components-bulk'
 import { fetchItem } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -25,7 +25,7 @@ const Item = ({
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = id && !data && !error
+  const loading = id && isLoading(data, error)
 
   const upgrades = Array.isArray(propsUpgrades)
     ? propsUpgrades.map((upgrade) => {

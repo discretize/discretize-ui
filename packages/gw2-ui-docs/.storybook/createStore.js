@@ -1,12 +1,9 @@
-import { handleRequests, gw2UIReducer } from 'gw2-ui-bulk'
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
+import { gw2UIReducer } from 'gw2-ui-bulk'
+import { combineReducers, compose, createStore } from 'redux'
 
-const { requestsReducer, requestsMiddleware } = handleRequests()
-
-const reducers = combineReducers({
-  requests: requestsReducer,
+const reducers = {
   gw2UiStore: gw2UIReducer,
-})
+}
 
 const composeEnhancers =
   (typeof window !== 'undefined' &&
@@ -15,10 +12,6 @@ const composeEnhancers =
   compose
 
 export default () => {
-  const store = createStore(
-    reducers,
-    composeEnhancers(applyMiddleware(...requestsMiddleware)),
-  )
-  window.REDUX_STORE = store
+  const store = createStore(gw2UIReducer)
   return store
 }

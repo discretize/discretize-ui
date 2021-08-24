@@ -1,6 +1,5 @@
-import { abortRequests, getQuery } from '@redux-requests/core'
 import { getBaseAttributes } from 'gw2-ui-components-bulk'
-import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux-bulk'
+import { fetchItem } from 'gw2-ui-redux-bulk'
 import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -99,9 +98,10 @@ const getItemsSelector = (items) => (state) =>
   Array.isArray(items)
     ? items.map((id) => ({
         id,
-        ...getQuery(state, {
-          type: FETCH_ITEM,
-          requestKey: id,
+        ...useSelector((state) => {
+          return state.gw2UiStore.ids.items.find(
+            (item) => Number(item.id) === Number(id),
+          )
         }),
       }))
     : []
@@ -114,22 +114,11 @@ export default ({ items: propsItems, ...rest }) => {
   useEffect(() => {
     if (items) {
       items.forEach(({ id }) => {
-        dispatch(fetchItem(`${id}`))
+        fetchItem(id, dispatch)
       })
     }
 
-    return () => {
-      if (items) {
-        items.forEach(({ id }) => {
-          dispatch(
-            abortRequests([
-              FETCH_ITEM,
-              { requestType: FETCH_ITEM, requestKey: `${id}` },
-            ]),
-          )
-        })
-      }
-    }
+    return () => {}
   }, [dispatch, propsItems])
 
   return <Attributes items={items} {...rest} />

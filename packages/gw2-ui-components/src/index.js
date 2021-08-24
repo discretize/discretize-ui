@@ -31,6 +31,7 @@ export { default as DetailsText } from './DetailsText'
 export { default as DetailsFact } from './DetailsFact'
 export { default as WikiLink, languages as wikiLinkLanguages } from './WikiLink'
 export { default as withLoading } from './withLoading'
+export { isLoading } from './helpers'
 
 export { default as Effect } from './Effect'
 export { default as Augmentation } from './Augmentation'

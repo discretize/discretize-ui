@@ -1,4 +1,7 @@
-import { Specialization as SpecializationComponent } from 'gw2-ui-components-bulk'
+import {
+  Specialization as SpecializationComponent,
+  isLoading,
+} from 'gw2-ui-components-bulk'
 import { fetchSpecialization } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,7 +18,7 @@ const Specialization = ({ id, ...rest }) => {
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = !data && !error
+  const loading = isLoading(data, error)
 
   useEffect(() => {
     fetchSpecialization(id, dispatch)
