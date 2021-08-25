@@ -49,12 +49,17 @@ const Item = ({
     if (Array.isArray(propsUpgrades)) {
       propsUpgrades.forEach((upgrade) => {
         const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        fetchItem(localID, dispatch)
+        if (
+          upgrades.find((u) => u.id === localID) &&
+          !upgrades.find((u) => u.id === localID).data
+        ) {
+          fetchItem(localID, dispatch)
+        }
       })
     }
 
     // fetch the basic item
-    if (id) {
+    if (id && !data) {
       fetchItem(id, dispatch)
     }
 
