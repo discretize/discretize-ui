@@ -1,4 +1,4 @@
-import { Skill as SkillComponent, isLoading } from 'gw2-ui-components-bulk'
+import { Skill as SkillComponent } from 'gw2-ui-components-bulk'
 import { fetchSkill } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,7 +16,7 @@ const Skill = ({ id, ...rest }) => {
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = isLoading(data, error)
+  const loading = !data && !error
 
   useEffect(() => {
     fetchSkill(id, dispatch)

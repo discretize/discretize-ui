@@ -17,7 +17,7 @@ import 'typeface-menomonia'
 import createStore from './createStore'
 import categories from '../stories/categories'
 
-const store = createStore()
+export const store = createStore()
 
 addParameters({
   options: {
@@ -30,11 +30,7 @@ addParameters({
   },
 })
 
-addDecorator((Storyy) => (
-  <Provider store={store}>
-    <Storyy />
-  </Provider>
-))
+addDecorator((storyy) => <div><Provider store={store}> {storyy()} </Provider> </div>)
 
 addDecorator((S) => (
   <ThemeProvider theme={baseTheme}>
