@@ -2,7 +2,7 @@ import { createItem } from 'gw2-ui-builder-bulk'
 import { Item as ItemComponent } from 'gw2-ui-components-bulk'
 import { fetchItem } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector, useStore } from 'react-redux'
 
 const Item = ({
   id,
@@ -14,6 +14,8 @@ const Item = ({
   ...rest
 }) => {
   const dispatch = useDispatch()
+  const store = useStore()
+  const itemIds = store.getState().gw2UiStore.ids.items
 
   const data = useSelector((state) => {
     return state.gw2UiStore.ids.items.find(
@@ -35,11 +37,7 @@ const Item = ({
           count,
           error,
           loading,
-          data: useSelector((state) => {
-            return state.gw2UiStore.ids.items.find(
-              (item) => Number(item.id) === Number(id1),
-            )
-          }),
+          data: itemIds.find((item) => Number(item.id) === Number(id1)),
         }
       })
     : []
