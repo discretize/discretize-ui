@@ -1,10 +1,9 @@
+import { boolean, number } from '@storybook/addon-knobs'
+import { Trait } from 'gw2-ui-bulk'
 import React from 'react'
-import { number, boolean } from '@storybook/addon-knobs'
-import { Trait, withBulkRequest } from 'gw2-ui-bulk'
-
 import categories from '../categories'
-import readme from './Trait.readme.md'
 import docs from './Trait.docs.md'
+import readme from './Trait.readme.md'
 
 export default {
   category: categories.CORE,

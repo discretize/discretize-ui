@@ -1,5 +1,5 @@
-import { Item, withBulkRequest } from 'gw2-ui-bulk'
-import React, { useEffect } from 'react'
+import { Item } from 'gw2-ui-bulk'
+import React from 'react'
 import categories from '../categories'
 import docs from './100Items.docs.md'
 

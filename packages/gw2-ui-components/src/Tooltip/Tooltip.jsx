@@ -24,6 +24,7 @@ const Tooltip = forwardRef(
         // visible
         ignoreAttributes
         followCursor
+        appendTo={ref ? ref.ownerDocument.body : document.body}
         plugins={[lazyPlugin, followCursor]}
         render={(attrs) => {
           if (!mounted) {
