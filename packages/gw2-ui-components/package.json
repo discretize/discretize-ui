@@ -36,8 +36,8 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "@theme-ui/core": "^0.3.1",
-    "@tippyjs/react": "^4.2.0",
+    "@theme-ui/core": "^0.11.1",
+    "@tippyjs/react": "^4.2.5",
     "classnames": "^2.2.6",
     "lodash.camelcase": "^4.3.0",
     "react-resize-aware": "^3.0.1"
