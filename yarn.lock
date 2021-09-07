@@ -3012,31 +3012,31 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
-"@theme-ui/core@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@theme-ui/core/-/core-0.11.1.tgz#e7a3ced17a51cc57346360437cb6f94e4cbd3b0a"
-  integrity sha512-8TRblBlVdFfcGwm6xluaglY4VasHfvHFFXRJhiQe0wUriNto6jpWaLQnw+y9mQZ/cffLbX68Vo8i4pAauM8U2g==
+"@theme-ui/core@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@theme-ui/core/-/core-0.10.0.tgz#2373d53368da5fa561915414ade070a9de0e9678"
+  integrity sha512-3DeTHGqyqIi05JCsJ+G+fqW6YsX/oGJiaAvMgLfd86tGdJOnDseEBQG41oDFHSWtQSJDpBcoFgAWMGITmYdH+g==
   dependencies:
     "@emotion/react" "^11.1.1"
-    "@theme-ui/css" "0.11.1"
-    "@theme-ui/parse-props" "0.11.1"
+    "@theme-ui/css" "0.10.0"
+    "@theme-ui/parse-props" "0.10.0"
     deepmerge "^4.2.2"
 
-"@theme-ui/css@0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@theme-ui/css/-/css-0.11.1.tgz#e91f58306bd015c813f72b4dce25850a93d5ba47"
-  integrity sha512-b3M9EJ6EaUeJolQ5jMySGVqcliYgpMliSJmvTUPWogW43J+7chb6h/bZLymXDDhPHt+SVAtGIkR7n8aIvjFbcQ==
+"@theme-ui/css@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@theme-ui/css/-/css-0.10.0.tgz#871f63334fb138491406c32f8347d53b19846a9b"
+  integrity sha512-Up3HqXoy2ERn/9gVxApCSl2n9vwtHBwPrYlMyEjX0YPs/rxmo+Aqe3kAxO+SG9idMw08mtdaDfMIFaPsBE5ovA==
   dependencies:
     "@emotion/react" "^11.1.1"
     csstype "^3.0.5"
 
-"@theme-ui/parse-props@0.11.1":
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/@theme-ui/parse-props/-/parse-props-0.11.1.tgz#2845c9b6f5503646aec972e2e7ade987fe1dea8b"
-  integrity sha512-0BHLVLiueLkH9jbT7TBuoIhqxKkgdmFFP6j/xe4V6bGfD33C4Qn/71nVwryecMFOI8AygvERhvzYu9fq1e3VNg==
+"@theme-ui/parse-props@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@theme-ui/parse-props/-/parse-props-0.10.0.tgz#8d2f4f3b3edafd925c3872ddd559e2b62006f43f"
+  integrity sha512-UfcLyThXYsB9azc8qbsZVgbF7xf+GLF2Hhy+suyjwQ3XSVOx97B5ZsuzCNUGbggtBw4dXayJgRmMz0FHyp0L8Q==
   dependencies:
     "@emotion/react" "^11.1.1"
-    "@theme-ui/css" "0.11.1"
+    "@theme-ui/css" "0.10.0"
 
 "@tippyjs/react@^4.2.5":
   version "4.2.5"
