@@ -59,8 +59,7 @@ export {
   WikiLink,
   wikiLinkLanguages,
 } from 'gw2-ui-components-bulk'
-export { handleRequests, gw2UIReducer } from 'gw2-ui-redux-bulk'
-export { default as Attributes } from './Attributes'
+export { gw2UIReducer } from 'gw2-ui-redux-bulk'
 export { default as Item } from './Item'
 export { default as Skill } from './Skill'
 export { default as Specialization } from './Specialization'

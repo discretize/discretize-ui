@@ -1,18 +1,11 @@
-import { abortRequests, getQuery } from '@redux-requests/core'
 import { getBaseAttributes } from 'gw2-ui-components-bulk'
 import { fetchItem, FETCH_ITEM } from 'gw2-ui-redux-bulk'
 import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-const Attributes = ({ level, children, items }) => {
-  if (typeof children !== 'function') {
-    return null
-  }
-
-  const base = getBaseAttributes(level)
-
-  /* eslint-disable no-param-reassign */
+import {
+  useDispatch,
+  useSelector,
+} from 'react-redux' /*
   const {
     attributes: itemAttributes,
     errors: itemErrors,
@@ -55,7 +48,7 @@ const Attributes = ({ level, children, items }) => {
     },
     { attributes: {}, errors: null, loading: false },
   )
-  /* eslint-enable no-param-reassign */
+  /* eslint-enable no-param-reassign */ /*
 
   const props = {
     base,
@@ -134,3 +127,13 @@ export default ({ items: propsItems, ...rest }) => {
 
   return <Attributes items={items} {...rest} />
 }
+*/
+/*
+const Attributes = ({ level, children, items }) => {
+  if (typeof children !== 'function') {
+    return null
+  }
+
+  const base = getBaseAttributes(level)
+
+  /* eslint-disable no-param-reassign */

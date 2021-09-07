@@ -39,7 +39,6 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "@redux-requests/react": "1.0.0",
     "gw2-ui-builder-bulk": "^0.2.3",
     "gw2-ui-components-bulk": "^0.11.17",
     "gw2-ui-redux-bulk": "^0.5.10"
@@ -51,7 +50,6 @@
     "@babel/preset-env": "7.11.5",
     "@babel/preset-react": "7.10.4",
     "@babel/runtime-corejs3": "7.4.0",
-    "@redux-requests/core": "1.1.1",
     "babel-loader": "8.1.0",
     "cross-env": "7.0.2",
     "del-cli": "3.0.1",
@@ -69,7 +67,6 @@
   },
   "peerDependencies": {
     "@babel/runtime-corejs3": "^7.4.0",
-    "@redux-requests/core": "^1.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
