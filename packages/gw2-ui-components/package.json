@@ -36,8 +36,7 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "@emotion/core": "10.0.28",
-    "@theme-ui/core": "0.3.1",
+    "theme-ui": "^0.3.5",
     "@tippyjs/react": "^4.2.5",
     "classnames": "^2.2.6",
     "lodash.camelcase": "^4.3.0",
