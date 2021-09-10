@@ -1,6 +1,6 @@
 {
   "name": "gw2-ui-components-bulk",
-  "version": "0.11.22",
+  "version": "0.11.23",
   "description": "React components for Guild Wars 2",
   "keywords": [
     "guild wars 2",
@@ -36,11 +36,11 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "theme-ui": "^0.3.5",
     "@tippyjs/react": "^4.2.5",
     "classnames": "^2.2.6",
     "lodash.camelcase": "^4.3.0",
-    "react-resize-aware": "^3.0.1"
+    "react-resize-aware": "^3.0.1",
+    "theme-ui": "^0.3.5"
   },
   "devDependencies": {
     "@babel/cli": "7.15.4",
