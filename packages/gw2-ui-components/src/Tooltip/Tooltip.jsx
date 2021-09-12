@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Tippy from '@tippyjs/react/headless'
 import { followCursor } from 'tippy.js/headless'
@@ -11,6 +11,7 @@ const Tooltip = forwardRef(
     ref,
   ) => {
     const [mounted, setMounted] = useState(false)
+    const [appendTo, setAppendTo] = useState(undefined)
 
     const lazyPlugin = {
       fn: () => ({
@@ -20,8 +21,13 @@ const Tooltip = forwardRef(
     }
 
     // append to netlify-cms
-    const appendTo =
-      document?.querySelector('#nc-root iframe')?.contentDocument.body
+    useEffect(() => {
+      if (typeof document !== `undefined`) {
+        const appendTo =
+          document?.querySelector('#nc-root iframe')?.contentDocument.body
+        setAppendTo(appendTo)
+      }
+    }, [])
 
     return (
       <Tippy
