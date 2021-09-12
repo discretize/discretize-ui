@@ -19,10 +19,15 @@ const Tooltip = forwardRef(
       }),
     }
 
+    // append to netlify-cms
+    const appendTo =
+      document?.querySelector('#nc-root iframe')?.contentDocument.body
+
     return (
       <Tippy
         // visible
         ignoreAttributes
+        {...(appendTo && { appendTo })}
         followCursor
         plugins={[lazyPlugin, followCursor]}
         render={(attrs) => {
