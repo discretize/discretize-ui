@@ -19,12 +19,6 @@
     "test": "echo \"No tests configured\"",
     "watch": "lerna run watch --parallel"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "run-s test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -36,13 +30,13 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "husky": "^4.3.0",
+    "husky": "^7.0.2",
     "lerna": "^3.22.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2"
