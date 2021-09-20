@@ -39,45 +39,7 @@ const Item = forwardRef(
 
     return (
       <Tooltip
-        content={
-          <ItemDetails
-            data={data}
-            count={count}
-            upgrades={
-              upgrades &&
-              upgrades.map(
-                (
-                  {
-                    id: upgradeId,
-                    data: upgradeData,
-                    loading: upgradeLoading,
-                    error: upgradeError,
-                    count: upgradeBonusCount,
-                  },
-                  index,
-                ) => (
-                  <div
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={`${upgradeId}-${index}`}
-                    sx={{
-                      mt: '16px',
-                      ...(index < upgrades.length && { mb: '16px' }),
-                    }}
-                  >
-                    <ItemDetails
-                      upgrade
-                      id={upgradeId}
-                      loading={upgradeLoading}
-                      error={upgradeError}
-                      data={upgradeData}
-                      upgradeBonusCount={upgradeBonusCount}
-                    />
-                  </div>
-                ),
-              )
-            }
-          />
-        }
+        content={<ItemDetails data={data} count={count} upgrades={upgrades} />}
         disabled={disableTooltip}
         {...tooltipProps}
         containerProps={{
@@ -151,18 +113,7 @@ Item.propTypes = {
   inline: PropTypes.bool,
   tooltipProps: PropTypes.object,
   wikiLinkProps: PropTypes.object,
-  upgrades: PropTypes.arrayOf(
-    PropTypes.shape({
-      data: PropTypes.object,
-      loading: PropTypes.bool,
-      error: PropTypes.shape({
-        code: PropTypes.string,
-        name: PropTypes.string,
-        message: PropTypes.string,
-      }),
-      count: PropTypes.number,
-    }),
-  ),
+  upgrades: PropTypes.array,
 }
 
 Item.defaultProps = {

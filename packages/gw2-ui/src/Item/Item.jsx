@@ -6,6 +6,7 @@ import { useDispatch, useSelector, useStore } from 'react-redux'
 
 const Item = ({
   id,
+  data: apiData,
   upgrades: propsUpgrades,
   type,
   stat,
@@ -14,50 +15,30 @@ const Item = ({
   ...rest
 }) => {
   const dispatch = useDispatch()
-  const store = useStore()
-  const itemIds = store.getState().gw2UiStore.ids.items
 
   const data = useSelector((state) => {
+    if (apiData) return apiData
+    // only query api if there is no apiData provided via props
     return state.gw2UiStore.ids.items.find(
       (item) => Number(item.id) === Number(id),
     )
   })
   const error = useSelector((state) => {
+    if (apiData) return null
     return state.gw2UiStore.errors.items.find(
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = id && !data && !error
-
-  const upgrades = Array.isArray(propsUpgrades)
-    ? propsUpgrades.map((upgrade) => {
-        const [id1, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        return {
-          id: id1,
-          count,
-          error,
-          loading,
-          data: itemIds.find((item) => Number(item.id) === Number(id1)),
-        }
-      })
-    : []
+  const loading = !data && !error
 
   useEffect(() => {
-    // Fetch all the upgrades
-    if (Array.isArray(propsUpgrades)) {
-      propsUpgrades.forEach((upgrade) => {
-        const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        fetchItem(localID, dispatch)
-      })
-    }
-
     // fetch the basic item
-    if (id) {
+    if (id && !data) {
       fetchItem(id, dispatch)
     }
 
     return () => {}
-  }, [dispatch, propsUpgrades, id])
+  }, [dispatch, id])
 
   let mergedData
   try {
@@ -108,7 +89,7 @@ const Item = ({
       data={mergedData}
       error={error}
       loading={Boolean(loading)}
-      upgrades={upgrades}
+      upgrades={propsUpgrades}
       {...rest}
     />
   )
