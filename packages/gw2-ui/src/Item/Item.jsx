@@ -2,7 +2,7 @@ import { createItem } from 'gw2-ui-builder-bulk'
 import { Item as ItemComponent } from 'gw2-ui-components-bulk'
 import { fetchItem } from 'gw2-ui-redux-bulk'
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Item = ({
   id,

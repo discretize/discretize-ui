@@ -3,7 +3,7 @@ import React from 'react'
 import categories from '../categories'
 import docs from './100Items.docs.md'
 
-const PAGE_NAME = '100 Items'
+const PAGE_NAME = '100 Items - API'
 
 export default {
   category: categories.PERFORMANCE,
