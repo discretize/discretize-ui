@@ -5,6 +5,7 @@ import DetailsHeader from '../DetailsHeader'
 import DetailsFact from '../DetailsFact'
 import DetailsText from '../DetailsText'
 import { factsOrder } from '../helpers'
+import { Spinner } from '..'
 
 const axios = require('axios')
 
@@ -81,7 +82,7 @@ const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
       >
         {name}
       </DetailsHeader>
-
+      {!(unparsedDescription || categories || facts) && <Spinner />}
       <DetailsText
         lines={[
           categories && (
