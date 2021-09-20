@@ -33,7 +33,7 @@ const Skill = forwardRef(
 
     return (
       <Tooltip
-        content={<AbilityDetails data={data} />}
+        content={<AbilityDetails data={data} type="skills" />}
         disabled={disableTooltip}
         {...tooltipProps}
       >
