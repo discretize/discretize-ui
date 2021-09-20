@@ -9,7 +9,6 @@ const Skill = ({ data: apiData, id, ...rest }) => {
   const data = useSelector((state) => {
     if (apiData) return apiData
     // only query api if there is no apiData provided via props
-
     return state.gw2UiStore.ids.skills.find(
       (item) => Number(item.id) === Number(id),
     )
