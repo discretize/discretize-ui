@@ -16,7 +16,37 @@ export default {
       <Item id={43360} />
       <Item id={79722} />
       <Item id={49940} />
-      <Item id={79980} />
+      <Item
+        data={{
+          name: 'Attuned Mist Band (Infused)',
+          id: 80793,
+          icon: 'https://render.guildwars2.com/file/EAA61AAF9BEF031104FD063C0A301A520EF5F5E6/1614682.png',
+          rarity: 'Ascended',
+          details: {
+            type: 'Ring',
+            infix_upgrade: {
+              attributes: [
+                {
+                  attribute: 'Power',
+                  modifier: 106,
+                },
+                {
+                  attribute: 'ConditionDamage',
+                  modifier: 106,
+                },
+                {
+                  attribute: 'Precision',
+                  modifier: 56,
+                },
+                {
+                  attribute: 'ConditionDuration',
+                  modifier: 56,
+                },
+              ],
+            },
+          },
+        }}
+      />
       {traits
         .filter((trait) => !trait.description)
         .slice(0, 200)

@@ -6,7 +6,7 @@ import Tooltip from '../Tooltip'
 import IconWithText from '../IconWithText'
 import WikiLink from '../WikiLink'
 import ItemDetails from '../ItemDetails'
-import { useColorModeHighlightSuffix } from '../helpers'
+import { useColorModeHighlightSuffix, populateMissingItemAPI } from '../helpers'
 
 const Item = forwardRef(
   (
@@ -39,7 +39,13 @@ const Item = forwardRef(
 
     return (
       <Tooltip
-        content={<ItemDetails data={data} count={count} upgrades={upgrades} />}
+        content={
+          <ItemDetails
+            data={populateMissingItemAPI(data)}
+            count={count}
+            upgrades={upgrades}
+          />
+        }
         disabled={disableTooltip}
         {...tooltipProps}
         containerProps={{

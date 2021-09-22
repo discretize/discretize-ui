@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 import DetailsHeader from '../DetailsHeader'
 import DetailsFact from '../DetailsFact'
 import DetailsText from '../DetailsText'
-import { factsOrder } from '../helpers'
+import { factsOrder, populateMissingTraitAPI } from '../helpers'
 import { Spinner } from '..'
-import { populateMissingTraitAPI } from '../helpers/populateMissingData'
 
 const axios = require('axios')
 

@@ -4,13 +4,12 @@ import PropTypes from 'prop-types'
 import withLoading from '../withLoading/index'
 import DetailsHeader from '../DetailsHeader'
 import DetailsText from '../DetailsText'
-import { apiAttributes } from '../helpers'
+import { apiAttributes, populateMissingItemAPI } from '../helpers'
 import Coin from '../Coin'
 import DetailsFact from '../DetailsFact'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchItem } from 'gw2-ui-redux-bulk'
 import axios from 'axios'
-import { populateMissingItemAPI } from '../helpers/populateMissingData'
 
 const ItemDetails = forwardRef(
   (
@@ -35,6 +34,9 @@ const ItemDetails = forwardRef(
   ) => {
     const [state, setState] = React.useState({ data: suppliedData })
     const dispatch = useDispatch()
+
+    // if there are less than 6 attributes supplied via data props, the data is considered incomplete and will be refetched from the api
+    const shouldFetch = suppliedData && Object.keys(suppliedData).length <= 6
 
     const { CancelToken } = axios
     const source = CancelToken.source()
@@ -90,10 +92,11 @@ const ItemDetails = forwardRef(
       } = {},
       vendor_value: vendorValue,
     } = state.data
+
     console.log(state.data)
+
     React.useEffect(() => {
-      // Fetch all the upgrades
-      if (!state.data.details || state.data.details?.type === 'Food') {
+      if (shouldFetch) {
         axios
           .get(`https://api.guildwars2.com/v2/items?ids=${state.data.id}`, {
             cancelToken: source.token,
@@ -103,13 +106,25 @@ const ItemDetails = forwardRef(
             if (res && res.data && res.data.length === 1) {
               const [apiData] = res.data
               const populatedData = populateMissingItemAPI(apiData)
+              console.log({
+                data: {
+                  ...state.data,
+                  ...populatedData,
+                  details: { ...state.data.details, ...populatedData.details },
+                },
+              })
               setState({
-                data: populatedData,
+                data: {
+                  ...state.data,
+                  ...populatedData,
+                  details: { ...state.data.details, ...populatedData.details },
+                },
               })
             }
           })
       }
 
+      // Fetch all the upgrades
       if (Array.isArray(propsUpgrades)) {
         propsUpgrades.forEach((upgrade) => {
           if (upgrade.data) return
@@ -118,7 +133,7 @@ const ItemDetails = forwardRef(
         })
       }
 
-      if (!state.data.details) {
+      if (shouldFetch) {
         return () => {
           source.cancel(
             `Operation cancelled for fetching item with id ${state.data.id}`,
