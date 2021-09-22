@@ -36,7 +36,7 @@ const ItemDetails = forwardRef(
     const dispatch = useDispatch()
 
     // if there are less than 6 attributes supplied via data props, the data is considered incomplete and will be refetched from the api
-    const shouldFetch = suppliedData && Object.keys(suppliedData).length <= 6
+    const shouldFetch = suppliedData && Object.keys(suppliedData).length <= 7
 
     const { CancelToken } = axios
     const source = CancelToken.source()
