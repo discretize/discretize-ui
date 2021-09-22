@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
-import { Spinner } from '..';
-import withAsyncProp from '../helpers/withAsyncProp';
+import PropTypes from 'prop-types'
+import React, { forwardRef } from 'react'
+import { Spinner } from '..'
+import withAsyncProp from '../helpers/withAsyncProp'
 
 const Icon = forwardRef(
   (
@@ -39,7 +39,7 @@ const Icon = forwardRef(
         width: '0.875em',
       }),
       ...rest.sx,
-    };
+    }
 
     if (loading) {
       return (
@@ -54,11 +54,11 @@ const Icon = forwardRef(
           }}
           {...spinnerProps}
         />
-      );
+      )
     }
 
     if (!src) {
-      return null;
+      return null
     }
 
     return (
@@ -103,9 +103,9 @@ const Icon = forwardRef(
           </span>
         )}
       </Component>
-    );
+    )
   },
-);
+)
 
 Icon.propTypes = {
   component: PropTypes.elementType,
@@ -121,7 +121,7 @@ Icon.propTypes = {
   loading: PropTypes.bool,
   spinnerProps: PropTypes.object,
   applyCountProps: PropTypes.object,
-};
+}
 
 Icon.defaultProps = {
   component: 'span',
@@ -137,17 +137,19 @@ Icon.defaultProps = {
   loading: false,
   spinnerProps: {},
   applyCountProps: {},
-};
+}
 
-Icon.displayName = 'Icon';
+Icon.displayName = 'Icon'
 
 export default withAsyncProp(
   ({ src, name }) =>
     !src &&
     name && {
-      src: import(/* webpackMode: "eager" */ `../assets/images/icons/${`${name}`
-        .replace('.', '/')
-        .replace(/[^\w\\/]/g, '')}.png`).then(({ default: module }) => module),
+      src: import(
+        `../assets/images/icons/${`${name}`
+          .replace('.', '/')
+          .replace(/[^\w\\/]/g, '')}.png`
+      ).then(({ default: module }) => module),
     },
   ['name'],
-)(Icon);
+)(Icon)
