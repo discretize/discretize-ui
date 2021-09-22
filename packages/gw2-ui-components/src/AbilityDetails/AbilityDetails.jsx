@@ -6,6 +6,7 @@ import DetailsFact from '../DetailsFact'
 import DetailsText from '../DetailsText'
 import { factsOrder } from '../helpers'
 import { Spinner } from '..'
+import { populateMissingTraitAPI } from '../helpers/populateMissingData'
 
 const axios = require('axios')
 
@@ -34,10 +35,12 @@ const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
         .then((res) => {
           if (res && res.data && res.data.length === 1) {
             const [apiData] = res.data
+            const { description, categories, facts } =
+              apiType === 'traits' ? populateMissingTraitAPI(apiData) : apiData
             setState({
-              unparsedDescription: apiData.description,
-              categories: apiData.categories,
-              facts: apiData.facts,
+              unparsedDescription: description,
+              categories,
+              facts,
             })
           }
         })

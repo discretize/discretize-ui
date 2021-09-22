@@ -10,6 +10,7 @@ import DetailsFact from '../DetailsFact'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchItem } from 'gw2-ui-redux-bulk'
 import axios from 'axios'
+import { populateMissingItemAPI } from '../helpers/populateMissingData'
 
 const ItemDetails = forwardRef(
   (
@@ -92,7 +93,7 @@ const ItemDetails = forwardRef(
 
     React.useEffect(() => {
       // Fetch all the upgrades
-      if (!state.data.details) {
+      if (!state.data.details?.description) {
         axios
           .get(`https://api.guildwars2.com/v2/items?ids=${state.data.id}`, {
             cancelToken: source.token,
@@ -101,8 +102,9 @@ const ItemDetails = forwardRef(
           .then((res) => {
             if (res && res.data && res.data.length === 1) {
               const [apiData] = res.data
+              const populatedData = populateMissingItemAPI(apiData)
               setState({
-                data: apiData,
+                data: populatedData,
               })
             }
           })
@@ -176,7 +178,6 @@ const ItemDetails = forwardRef(
               })`
             : ''}
         </DetailsHeader>
-
         <div>
           {type === 'Consumable' && <div>Double-click to consume.</div>}
 
@@ -216,7 +217,10 @@ const ItemDetails = forwardRef(
           {(!attributes || !attributes.length) &&
             (buffDescription || (!upgrade && description)) && (
               <DetailsText
-                lines={[buffDescription || (!upgrade && description)]}
+                lines={[
+                  buffDescription ||
+                    (!upgrade && type !== 'Consumable' && description),
+                ]}
                 sx={{
                   ...(type === 'UpgradeComponent' && {
                     color: 'gw2.details.bonus',
@@ -242,7 +246,6 @@ const ItemDetails = forwardRef(
               </div>
             ))}
         </div>
-
         {upgrades && (
           <div>
             {upgrades
@@ -279,7 +282,6 @@ const ItemDetails = forwardRef(
               )}
           </div>
         )}
-
         {detailsIcon && detailsName && detailsDuration && detailsDescription && (
           <DetailsFact
             data={{
@@ -293,18 +295,27 @@ const ItemDetails = forwardRef(
           />
         )}
 
+        {type === 'Consumable' && description && (
+          <DetailsText lines={[description]} />
+        )}
+
         {!upgrade && (
           <DetailsText
+            sx={{ mt: '12px' }}
             lines={[
               ...(type === 'UpgradeComponent'
                 ? [description, level > 0 && `Required Level: ${level}`]
                 : [
                     ...(type === 'Consumable'
-                      ? [type, level > 0 && `Required Level: ${level}`]
+                      ? [
+                          type,
+                          level > 0 && `Required Level: ${level}`,
+                          flags.includes('AccountBound') && 'Account Bound',
+                        ]
                       : [
-                          rarity,
+                          type !== 'Gizmo' && rarity,
                           weightClass,
-                          detailsType,
+                          type !== 'Gizmo' && detailsType,
                           level > 0 && `Required Level: ${level}`,
                           ((attributes && attributes.length) ||
                             buffDescription) &&
