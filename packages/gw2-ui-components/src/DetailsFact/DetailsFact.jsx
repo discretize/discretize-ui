@@ -234,7 +234,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
       sx={{
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'start',
       }}
       {...rest}
       ref={ref}
