@@ -9,6 +9,7 @@ import Coin from '../Coin'
 import DetailsFact from '../DetailsFact'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchItem } from 'gw2-ui-redux-bulk'
+import axios from 'axios'
 
 const ItemDetails = forwardRef(
   (
@@ -17,33 +18,7 @@ const ItemDetails = forwardRef(
       upgrade,
       upgrades: propsUpgrades,
       upgradeBonusCount,
-      data: {
-        icon,
-        name,
-        rarity,
-        level,
-        description,
-        flags = [],
-        type,
-        details: {
-          icon: detailsIcon,
-          name: detailsName,
-          type: detailsType,
-          duration_ms: detailsDuration,
-          description: detailsDescription,
-          min_power: minPower,
-          max_power: maxPower,
-          defense,
-          weight_class: weightClass,
-          infusion_upgrade_flags: infusionUpgradeFlags = [],
-          infix_upgrade: {
-            attributes,
-            buff: { description: buffDescription } = {},
-          } = {},
-          bonuses,
-        } = {},
-        vendor_value: vendorValue,
-      },
+      data: suppliedData,
       // remove ignored props from withLoading
       /* eslint-disable react/prop-types */
       id: ignoredId,
@@ -57,7 +32,11 @@ const ItemDetails = forwardRef(
     },
     ref,
   ) => {
+    const [state, setState] = React.useState({ data: suppliedData })
     const dispatch = useDispatch()
+
+    const { CancelToken } = axios
+    const source = CancelToken.source()
 
     const upgrades = useSelector((state) => {
       const localUpgrades = Array.isArray(propsUpgrades)
@@ -83,14 +62,66 @@ const ItemDetails = forwardRef(
       return localUpgrades
     })
 
+    const {
+      icon,
+      name,
+      rarity,
+      level,
+      description,
+      flags = [],
+      type,
+      details: {
+        icon: detailsIcon,
+        name: detailsName,
+        type: detailsType,
+        duration_ms: detailsDuration,
+        description: detailsDescription,
+        min_power: minPower,
+        max_power: maxPower,
+        defense,
+        weight_class: weightClass,
+        infusion_upgrade_flags: infusionUpgradeFlags = [],
+        infix_upgrade: {
+          attributes,
+          buff: { description: buffDescription } = {},
+        } = {},
+        bonuses,
+      } = {},
+      vendor_value: vendorValue,
+    } = state.data
+
     React.useEffect(() => {
       // Fetch all the upgrades
+      if (!state.data.details) {
+        axios
+          .get(`https://api.guildwars2.com/v2/items?ids=${state.data.id}`, {
+            cancelToken: source.token,
+          })
+          .catch(() => {})
+          .then((res) => {
+            if (res && res.data && res.data.length === 1) {
+              const [apiData] = res.data
+              setState({
+                data: apiData,
+              })
+            }
+          })
+      }
+
       if (Array.isArray(propsUpgrades)) {
         propsUpgrades.forEach((upgrade) => {
           if (upgrade.data) return
           const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
           fetchItem(localID, dispatch)
         })
+      }
+
+      if (!state.data.details) {
+        return () => {
+          source.cancel(
+            `Operation cancelled for fetching item with id ${state.data.id}`,
+          )
+        }
       }
     }, [])
 
