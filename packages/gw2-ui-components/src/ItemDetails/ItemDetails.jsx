@@ -62,15 +62,17 @@ const ItemDetails = forwardRef(
     const upgrades = useSelector((state) => {
       const localUpgrades = Array.isArray(propsUpgrades)
         ? propsUpgrades.map((upgrade) => {
-            const [id1, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
+            const [localId, count] = Array.isArray(upgrade)
+              ? upgrade
+              : [upgrade]
             const upgradeData = state.gw2UiStore.ids.items.find(
-              (item) => Number(item.id) === Number(id1),
+              (item) => Number(item.id) === Number(localId),
             )
             const upgradeError = state.gw2UiStore.errors.skills.find(
-              (item) => Number(item.id) === Number(id),
+              (item) => Number(item.id) === Number(localId),
             )
             return {
-              id: id1,
+              id: localId,
               count,
               error: upgradeError,
               loading: !upgradeData && !upgradeError,
