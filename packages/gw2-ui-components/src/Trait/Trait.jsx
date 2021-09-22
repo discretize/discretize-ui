@@ -45,7 +45,7 @@ const Trait = forwardRef(
             <TooltipContainer
               {...(skills && { sx: { borderColor: '#537ca5' } })}
             >
-              <AbilityDetails data={data} />
+              <AbilityDetails data={data} type="traits" />
             </TooltipContainer>
 
             {skills &&

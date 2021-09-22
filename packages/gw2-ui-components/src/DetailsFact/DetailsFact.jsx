@@ -234,7 +234,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
       sx={{
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'start',
       }}
       {...rest}
       ref={ref}
@@ -246,7 +246,7 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         {icon && <Icon src={icon} applyCount={count} />}
       </div>
 
-      <div sx={{ ml: '4px', color: 'gw2.details.muted' }}>
+      <div sx={{ ml: '4px', color: 'gw2.details.muted', alignSelf: 'center' }}>
         {key}
         {key ? ': ' : ''}
         {value}
