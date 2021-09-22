@@ -90,10 +90,10 @@ const ItemDetails = forwardRef(
       } = {},
       vendor_value: vendorValue,
     } = state.data
-
+    console.log(state.data)
     React.useEffect(() => {
       // Fetch all the upgrades
-      if (!state.data.details?.description) {
+      if (!state.data.details || state.data.details?.type === 'Food') {
         axios
           .get(`https://api.guildwars2.com/v2/items?ids=${state.data.id}`, {
             cancelToken: source.token,

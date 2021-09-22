@@ -16,7 +16,7 @@ export default {
       <Item id={43360} />
       <Item id={79722} />
       <Item id={49940} />
-
+      <Item id={79980} />
       {traits
         .filter((trait) => !trait.description)
         .slice(0, 200)
