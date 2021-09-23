@@ -133,6 +133,83 @@ const missingItemData = {
         '66% Chance to Steal Life on Critical Hit\n+100 Power\n+70 Ferocity\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
     },
   },
+  91878: {
+    details: {
+      type: 'Food',
+      duration_ms: 3600000,
+      apply_count: 1,
+      name: 'Nourishment',
+      icon: 'https://render.guildwars2.com/file/13906DE02D374DBB6A013C5EF76F26FBAFD5A39A/2191050.png',
+      description:
+        '66% Chance to Steal Life on Critical Hit\n+100 Condition Damage\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    },
+  },
+  91876: {
+    details: {
+      type: 'Food',
+      duration_ms: 3600000,
+      apply_count: 1,
+      name: 'Nourishment',
+      icon: 'https://render.guildwars2.com/file/161BD739DCBE0BA737081A079017D6F660BE5642/2191029.png',
+      description:
+        '66% Chance to Steal Life on Critical Hit\n+100 Expertise\n+70 Condition Damage\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    },
+  },
+  91847: {
+    details: {
+      type: 'Food',
+      duration_ms: 3600000,
+      apply_count: 1,
+      name: 'Nourishment',
+      icon: 'https://render.guildwars2.com/file/0C1654600B0E40F9EEC909B8950CD6140FE17FCD/2191055.png',
+      description:
+        '66% Chance to Steal Life on Critical Hit\n+100 Concentration\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    },
+  },
+  91690: {
+    details: {
+      type: 'Food',
+      duration_ms: 3600000,
+      apply_count: 1,
+      name: 'Nourishment',
+      icon: 'https://render.guildwars2.com/file/1D44545301F3BB1C046898EA08D5906EB369DD0A/2191059.png',
+      description:
+        '+10% Outgoing Healing\n+100 Healing Power\n+70 Concentration\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    },
+  },
+  91758: {
+    details: {
+      type: 'Food',
+      duration_ms: 3600000,
+      apply_count: 1,
+      name: 'Nourishment',
+      icon: 'https://render.guildwars2.com/file/247DFE7FA45A2DF9B24E5515C3BDB96D28ED213B/2191053.png',
+      description:
+        '+10% Outgoing Healing\n+100 Concentration\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    },
+  },
+  91727: {
+    details: {
+      type: 'Food',
+      duration_ms: 3600000,
+      apply_count: 1,
+      name: 'Nourishment',
+      icon: 'https://render.guildwars2.com/file/FCB44856734BE45744C8B10509CF710BBBE13C7B/2191027.png',
+      description:
+        '+10% Outgoing Healing\n+100 Expertise\n+70 Condition Damage\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    },
+  },
+  91703: {
+    details: {
+      type: 'Food',
+      duration_ms: 3600000,
+      apply_count: 1,
+      name: 'Nourishment',
+      icon: 'https://render.guildwars2.com/file/F56EAF0DD0CFF41CE402282E37F20F4D22501358/2191048.png',
+      description:
+        '+10% Outgoing Healing\n+100 Condition Damage\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    },
+  },
 }
 
 export const populateMissingItemAPI = (data) => {
