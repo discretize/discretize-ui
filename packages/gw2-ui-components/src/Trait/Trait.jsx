@@ -7,7 +7,11 @@ import TooltipContainer from '../TooltipContainer'
 import IconWithText from '../IconWithText'
 import WikiLink from '../WikiLink'
 import AbilityDetails from '../AbilityDetails'
-import { specializations, useColorModeHighlightSuffix } from '../helpers'
+import {
+  populateMissingTraitAPI,
+  specializations,
+  useColorModeHighlightSuffix,
+} from '../helpers'
 
 const Trait = forwardRef(
   (
@@ -45,7 +49,10 @@ const Trait = forwardRef(
             <TooltipContainer
               {...(skills && { sx: { borderColor: '#537ca5' } })}
             >
-              <AbilityDetails data={data} type="traits" />
+              <AbilityDetails
+                data={populateMissingTraitAPI(data)}
+                type="traits"
+              />
             </TooltipContainer>
 
             {skills &&

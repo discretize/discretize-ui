@@ -23,9 +23,9 @@ const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
   })
 
   React.useEffect(() => {
-    const { unparsedDescription, categories, facts } = state
+    const { categories, facts } = state
     // only request data in case it wasnt provided by props
-    if (!(unparsedDescription || categories || facts)) {
+    if (!(categories || facts)) {
       axios
         .get(`https://api.guildwars2.com/v2/${apiType}?ids=${id}`, {
           cancelToken: source.token,

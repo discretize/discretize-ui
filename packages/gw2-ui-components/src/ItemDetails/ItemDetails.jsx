@@ -93,8 +93,6 @@ const ItemDetails = forwardRef(
       vendor_value: vendorValue,
     } = state.data
 
-    console.log(state.data)
-
     React.useEffect(() => {
       if (shouldFetch) {
         axios
@@ -106,13 +104,6 @@ const ItemDetails = forwardRef(
             if (res && res.data && res.data.length === 1) {
               const [apiData] = res.data
               const populatedData = populateMissingItemAPI(apiData)
-              console.log({
-                data: {
-                  ...state.data,
-                  ...populatedData,
-                  details: { ...state.data.details, ...populatedData.details },
-                },
-              })
               setState({
                 data: {
                   ...state.data,
