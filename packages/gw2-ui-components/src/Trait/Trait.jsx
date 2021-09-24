@@ -58,7 +58,7 @@ const Trait = forwardRef(
             {skills &&
               skills.map((skill) => (
                 <TooltipContainer key={`${skill.id}`} sx={{ mt: '6px' }}>
-                  <AbilityDetails data={skill} />
+                  <AbilityDetails data={skill} type="skills" />
                 </TooltipContainer>
               ))}
           </>
