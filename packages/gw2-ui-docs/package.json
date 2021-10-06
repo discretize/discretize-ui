@@ -14,7 +14,7 @@
     "storybook": "cross-env NODE_ENV=development start-storybook -p 9001"
   },
   "dependencies": {
-    "gw2-ui-bulk": "^0.10.0",
+    "gw2-ui-bulk": "^0.11.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "7.2.5",
