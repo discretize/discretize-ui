@@ -1,6 +1,6 @@
 {
   "name": "gw2-ui-bulk",
-  "version": "0.11.8",
+  "version": "0.11.9",
   "description": "React components and API wrapper for Guild Wars 2",
   "keywords": [
     "guild wars 2",
@@ -40,8 +40,8 @@
   },
   "dependencies": {
     "gw2-ui-builder-bulk": "^0.2.4",
-    "gw2-ui-components-bulk": "^0.12.7",
-    "gw2-ui-redux-bulk": "^0.5.11"
+    "gw2-ui-components-bulk": "^0.12.8",
+    "gw2-ui-redux-bulk": "^0.5.12"
   },
   "devDependencies": {
     "@babel/cli": "7.15.4",
