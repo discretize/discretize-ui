@@ -55,9 +55,8 @@ const TraitLine = forwardRef(
     },
     ref,
   ) => {
-    const [uncontrolledSelected, setUncontrolledSelected] = useState(
-      defaultSelected,
-    )
+    const [uncontrolledSelected, setUncontrolledSelected] =
+      useState(defaultSelected)
 
     useEffect(() => {
       setUncontrolledSelected(defaultSelected)

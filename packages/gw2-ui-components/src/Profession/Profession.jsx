@@ -33,10 +33,9 @@ const Profession = forwardRef(
 
     if (eliteSpecialization) {
       // eslint-disable-next-line prefer-destructuring
-      name = (Object.entries(
-        professions,
-      ).find(([, professionEliteSpecializations]) =>
-        professionEliteSpecializations.includes(eliteSpecialization),
+      name = (Object.entries(professions).find(
+        ([, professionEliteSpecializations]) =>
+          professionEliteSpecializations.includes(eliteSpecialization),
       ) || [])[0]
     } else if (Object.keys(professions).includes(propsName)) {
       name = propsName
