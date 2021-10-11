@@ -20,8 +20,12 @@ const addGeneric = (add, addError, name) => (ids, dispatch) => {
       return a
     }, [])
 
+  // only show native language for chinese people
+  const userLang = navigator.language || navigator.userLanguage
+  const language = userLang.includes('zh') ? 'zh' : 'en'
+
   axios
-    .get(`${BASE_URL}/${name}?ids=${cleaned}&lang=en`)
+    .get(`${BASE_URL}/${name}?ids=${cleaned}&lang=${language}`)
     .then((res) => {
       res.data.forEach((element) => {
         dispatch(add(element))

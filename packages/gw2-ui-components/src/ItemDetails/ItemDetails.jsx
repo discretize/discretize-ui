@@ -95,10 +95,17 @@ const ItemDetails = forwardRef(
 
     React.useEffect(() => {
       if (shouldFetch) {
+        // only show native language for chinese people
+        const userLang = navigator.language || navigator.userLanguage
+        const language = userLang.includes('zh') ? 'zh' : 'en'
+
         axios
-          .get(`https://api.guildwars2.com/v2/items?ids=${state.data.id}`, {
-            cancelToken: source.token,
-          })
+          .get(
+            `https://api.guildwars2.com/v2/items?ids=${state.data.id}&lang=${language}`,
+            {
+              cancelToken: source.token,
+            },
+          )
           .catch(() => {})
           .then((res) => {
             if (res && res.data && res.data.length === 1) {

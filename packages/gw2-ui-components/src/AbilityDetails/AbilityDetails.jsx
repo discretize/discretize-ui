@@ -26,10 +26,16 @@ const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
     const { categories, facts } = state
     // only request data in case it wasnt provided by props
     if (!(categories || facts)) {
+      // only show native language for chinese people
+      const userLang = navigator.language || navigator.userLanguage
+      const language = userLang.includes('zh') ? 'zh' : 'en'
       axios
-        .get(`https://api.guildwars2.com/v2/${apiType}?ids=${id}`, {
-          cancelToken: source.token,
-        })
+        .get(
+          `https://api.guildwars2.com/v2/${apiType}?ids=${id}&lang=${language}`,
+          {
+            cancelToken: source.token,
+          },
+        )
         .catch(() => {})
         .then((res) => {
           if (res && res.data && res.data.length === 1) {
