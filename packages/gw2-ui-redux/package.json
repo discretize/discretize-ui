@@ -1,6 +1,6 @@
 {
   "name": "gw2-ui-redux-bulk",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "description": "Redux wrapper for the Guild Wars 2 API",
   "keywords": [
     "ajax",
