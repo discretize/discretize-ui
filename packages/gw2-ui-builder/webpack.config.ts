@@ -21,7 +21,7 @@ const config: webpack.Configuration = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts'],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
     path: path.join(__dirname, 'dist'),
