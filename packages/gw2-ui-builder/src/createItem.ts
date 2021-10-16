@@ -1,4 +1,4 @@
-import { Attribute, Attributes } from './attributes'
+import { Attribute } from './attributes'
 import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights'
 import ITEM_CATEGORIES from './itemCategories'
 import ITEM_CATEGORY_NAMES, { ItemCategoryName } from './itemCategoryNames'

@@ -1,17 +1,16 @@
 {
   "extends": "../../tsconfig.json",
-  "target": "es5",
-  "module": "commonjs",
   "compilerOptions": {
-    "outDir": "./lib",
+    "outDir": "lib",
     // Ensure that .d.ts files are created by tsc, but not .js files
     "declaration": true,
     "emitDeclarationOnly": true,
     // Ensure that Babel can safely transpile files in the TypeScript project
-    "isolatedModules": true
+    "isolatedModules": true,
+    "esModuleInterop": true
   },
   "include": [
-    "./src"
+    "src/*"
   ],
   "exclude": ["node_modules"],
 }
