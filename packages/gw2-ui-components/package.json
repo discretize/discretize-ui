@@ -26,8 +26,8 @@
   "scripts": {
     "prebuild": "run-s clean",
     "build": "run-p build:* build:*:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib --copy-files",
-    "build:es": "babel --root-mode upward src -d es --copy-files",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib --copy-files --extensions '.js,.jsx,.ts,.tsx'",
+    "build:es": "babel --root-mode upward src -d es --copy-files --extensions '.js,.jsx,.ts,.tsx'",
     "build:umd": "cross-env BABEL_ENV=webpack webpack --mode development -o dist/gw2-ui-components.js",
     "build:umd:min": "cross-env BABEL_ENV=webpack webpack --mode production -o dist/gw2-ui-components.min.js",
     "clean": "del-cli lib es dist",
