@@ -12,13 +12,13 @@ module.exports = {
     },
     module: {
         rules: [
-        {
-            test: /\.js$/,
-            loader: 'babel-loader',
-            options: {
-            rootMode: 'upward',
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                options: {
+                    rootMode: 'upward',
+                },
             },
-        },
         ],
     },
     externals: [nodeExternals()],

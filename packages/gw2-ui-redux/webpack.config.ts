@@ -18,7 +18,6 @@ const config: webpack.Configuration = {
           rootMode: 'upward',
           presets: [
             "@babel/preset-env",
-            "@babel/preset-react",
             "@babel/preset-typescript",
           ],
         },
