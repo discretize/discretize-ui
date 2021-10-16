@@ -1,4 +1,4 @@
-export interface ItemStatRarities {
+export interface ItemRarities {
   LEGENDARY: string;
   ASCENDED: string;
   EXOTIC:string;
@@ -8,7 +8,7 @@ export interface ItemStatRarities {
   BASIC: string;
 }
 
-const itemStatRarities: ItemStatRarities = {
+const itemRarities: ItemRarities = {
   LEGENDARY: 'Legendary',
   ASCENDED: 'Ascended',
   EXOTIC: 'Exotic',
@@ -18,4 +18,4 @@ const itemStatRarities: ItemStatRarities = {
   BASIC: 'Basic',
 }
 
-export default itemStatRarities;
+export default itemRarities;

@@ -1,10 +1,10 @@
-export interface ItermArmorWeights {
+export interface ItemArmorWeights {
     HEAVY: string;
     MEDIUM: string;
     LIGHT: string;
 }
 
-const itemArmorWeights: ItermArmorWeights = {
+const itemArmorWeights: ItemArmorWeights = {
     HEAVY: 'Heavy',
     MEDIUM: 'Medium',
     LIGHT: 'Light'

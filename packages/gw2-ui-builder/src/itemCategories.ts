@@ -1,7 +1,12 @@
-import ITEM_CATEGORY_NAMES from './itemCategoryNames'
-import ITEM_TYPE_NAMES from './itemTypeNames'
+import ITEM_CATEGORY_NAMES, { ItemCategoryNames } from './itemCategoryNames'
+import ITEM_TYPE_NAMES, { ItemTypeNames } from './itemTypeNames'
+import ValueOf from './valueOf'
 
-export default {
+export interface ItemCategories {
+  [itemCategoryName: ValueOf<ItemCategoryNames>]: ValueOf<ItemTypeNames>[];
+}
+
+const itemCategories: ItemCategories = {
   [ITEM_CATEGORY_NAMES.ARMOR]: [
     ITEM_TYPE_NAMES.HELM,
     ITEM_TYPE_NAMES.SHOULDERS,
@@ -41,3 +46,5 @@ export default {
     ITEM_TYPE_NAMES.WARHORN,
   ],
 }
+
+export default itemCategories;

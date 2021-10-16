@@ -1,10 +1,32 @@
 import ITEM_CATEGORIES from './itemCategoryNames'
-import ITEM_TYPE_NAMES from './itemTypeNames'
-import ITEM_RARITIES from './itemRarities'
-import ITEM_STAT_TYPES from './itemStatTypes'
-import ITEM_ARMOR_WEIGHTS from './itemArmorWeights'
+import ITEM_TYPE_NAMES, { ItemTypeNames } from './itemTypeNames'
+import ITEM_RARITIES, { ItemRarities } from './itemRarities'
+import ITEM_STAT_TYPES, { ItemStatTypes } from './itemStatTypes'
+import ITEM_ARMOR_WEIGHTS, { ItemArmorWeights } from './itemArmorWeights'
+import ValueOf from './valueOf'
 
-export default {
+export interface ItemAttributes {
+  [itemStatType: ValueOf<ItemStatTypes>]: [number] | [number, number];
+}
+
+export interface ItemDefense {
+  [itemArmorWeight: ValueOf<ItemArmorWeights>]: number;
+}
+
+export interface ItemType {
+  [itemRarity: ValueOf<ItemRarities>]: {
+    attributes?: ItemAttributes;
+    defense?: ItemDefense | number;
+    minPower?: number;
+    maxPower?: number;
+  }
+}
+
+export interface ItemModifiers {
+  [itemCategory: ValueOf<ItemTypeNames>]: ItemType;
+}
+
+const itemModifiers: ItemModifiers = {
   [ITEM_CATEGORIES.ARMOR]: {
     [ITEM_TYPE_NAMES.HELM]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -315,3 +337,5 @@ export default {
     },
   },
 }
+
+export default itemModifiers;
