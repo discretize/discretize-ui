@@ -7,7 +7,20 @@ import ITEM_STAT_NAMES from './itemStatNames'
 import ITEM_STATS from './itemStats'
 import ITEM_TYPE_NAMES from './itemTypeNames'
 
-const getModifiers = ({ rarity, category, type, stat, weight }) => {
+export interface GetModifiersProps {
+  rarity: string;
+  category: string;
+  type: string;
+  stat: string;
+  weight: string;
+}
+
+export interface Attribute {
+  attribute: string;
+  modifier: number;
+}
+
+const getModifiers = ({ rarity, category, type, stat, weight }: GetModifiersProps) => {
   const {
     attributes: attributeModifiers,
     defense: defensePerWeight,

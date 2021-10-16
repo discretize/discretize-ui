@@ -1,8 +1,26 @@
-import ITEM_STAT_NAMES from './itemStatNames'
-import ITEM_STAT_TYPES from './itemStatTypes'
-import ATTRIBUTES from './attributes'
+import ITEM_STAT_NAMES, { ItemStatNames } from './itemStatNames'
+import ITEM_STAT_TYPES, { ItemStatTypes } from './itemStatTypes'
+import ATTRIBUTES, { Attributes } from './attributes'
+import ValueOf from './valueOf';
 
-export default {
+type Attribute = ValueOf<Attributes>;
+
+export type RegularItemBonuses = [[Attribute], [Attribute, Attribute]];
+export type MixedItemBonuses = [[Attribute, Attribute], [Attribute, Attribute]];
+export type CelestialItemBonuses = [[Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute]];
+
+export type ItemBonuses = RegularItemBonuses | MixedItemBonuses | CelestialItemBonuses;
+
+export interface Item {
+  type: ValueOf<ItemStatTypes>;
+  bonuses: ItemBonuses;
+}
+
+export interface ItemStats {
+  [itemStatName: ValueOf<ItemStatNames>]: Item;
+}
+
+const itemStats: ItemStats = {
   [ITEM_STAT_NAMES.BERSERKER]: {
     type: ITEM_STAT_TYPES.TRIPLE,
     bonuses: [[ATTRIBUTES.POWER], [ATTRIBUTES.PRECISION, ATTRIBUTES.FEROCITY]],
@@ -336,3 +354,5 @@ export default {
     ],
   },
 }
+
+export default itemStats;
