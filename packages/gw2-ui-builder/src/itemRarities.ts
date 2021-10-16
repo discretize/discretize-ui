@@ -1,7 +1,11 @@
+import ValueOf from "./valueOf";
+
+export type ItemRarity = ValueOf<ItemRarities>;
+
 export interface ItemRarities {
   LEGENDARY: string;
   ASCENDED: string;
-  EXOTIC:string;
+  EXOTIC: string;
   RARE: string;
   MASTERWORK: string;
   FINE: string;

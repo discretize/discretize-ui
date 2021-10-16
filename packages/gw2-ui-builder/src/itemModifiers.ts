@@ -1,29 +1,39 @@
-import ITEM_CATEGORIES from './itemCategoryNames'
-import ITEM_TYPE_NAMES, { ItemTypeNames } from './itemTypeNames'
-import ITEM_RARITIES, { ItemRarities } from './itemRarities'
-import ITEM_STAT_TYPES, { ItemStatTypes } from './itemStatTypes'
-import ITEM_ARMOR_WEIGHTS, { ItemArmorWeights } from './itemArmorWeights'
+import ITEM_CATEGORIES, { ItemCategoryName } from './itemCategoryNames'
+import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames'
+import ITEM_RARITIES, { ItemRarity } from './itemRarities'
+import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes'
+import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights'
 import ValueOf from './valueOf'
 
-export interface ItemAttributes {
-  [itemStatType: ValueOf<ItemStatTypes>]: [number] | [number, number];
+export type ItemModifier = ValueOf<ItemModifiers>;
+
+export type ItemModifierAttribute = [number] | [number, number]
+
+export interface ItemModifierAttributes {
+  [itemStatType: ItemStatType]: ItemModifierAttribute;
 }
 
-export interface ItemDefense {
-  [itemArmorWeight: ValueOf<ItemArmorWeights>]: number;
+export interface ItemModifierDefense {
+  [itemArmorWeight: ItemArmorWeight]: number;
 }
 
-export interface ItemType {
-  [itemRarity: ValueOf<ItemRarities>]: {
-    attributes?: ItemAttributes;
-    defense?: ItemDefense | number;
-    minPower?: number;
-    maxPower?: number;
-  }
+export interface Item {
+  attributes?: ItemModifierAttributes;
+  defense?: ItemModifierDefense | number;
+  minPower?: number;
+  maxPower?: number;
+}
+
+export interface ItemModifierType {
+  [itemRarity: ItemRarity]: Item;
+}
+
+export interface ItemModifierCategory {
+  [itemTypeName: ItemTypeName]: ItemModifierType;
 }
 
 export interface ItemModifiers {
-  [itemCategory: ValueOf<ItemTypeNames>]: ItemType;
+  [itemCategory: ItemCategoryName]: ItemModifierCategory;
 }
 
 const itemModifiers: ItemModifiers = {

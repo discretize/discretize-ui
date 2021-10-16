@@ -1,3 +1,7 @@
+import ValueOf from "./valueOf";
+
+export type ItemTypeName = ValueOf<ItemTypeNames>;
+
 export interface ItemTypeNames {
   HELM: string;
   SHOULDERS: string;

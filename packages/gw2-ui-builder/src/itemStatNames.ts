@@ -1,3 +1,7 @@
+import ValueOf from "./valueOf";
+
+export type ItemStatName = ValueOf<ItemStatNames>;
+
 export interface ItemStatNames {
   BERSERKER: string;
   ZEALOT: string;

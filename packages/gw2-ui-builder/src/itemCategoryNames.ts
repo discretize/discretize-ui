@@ -1,3 +1,7 @@
+import ValueOf from "./valueOf";
+
+export type ItemCategoryName = ValueOf<ItemCategoryNames>;
+
 export interface ItemCategoryNames {
   ARMOR: string;
   TRINKET: string;

@@ -1,3 +1,7 @@
+import ValueOf from "./valueOf";
+
+export type ItemArmorWeight = ValueOf<ItemArmorWeights>;
+
 export interface ItemArmorWeights {
     HEAVY: string;
     MEDIUM: string;

@@ -1,3 +1,7 @@
+import ValueOf from "./valueOf";
+
+export type ItemStatType = ValueOf<ItemStatTypes>;
+
 export interface ItemStatTypes {
   TRIPLE: string;
   QUADRUPLE: string;

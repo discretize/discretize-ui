@@ -1,23 +1,19 @@
-import ITEM_ARMOR_WEIGHTS from './itemArmorWeights'
+import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights'
 import ITEM_CATEGORIES from './itemCategories'
-import ITEM_CATEGORY_NAMES from './itemCategoryNames'
-import ITEM_MODIFIERS from './itemModifiers'
-import ITEM_RARITIES from './itemRarities'
-import ITEM_STAT_NAMES from './itemStatNames'
-import ITEM_STATS from './itemStats'
-import ITEM_TYPE_NAMES from './itemTypeNames'
+import ITEM_CATEGORY_NAMES, { ItemCategoryName } from './itemCategoryNames'
+import ITEM_MODIFIERS, { Item, ItemModifierAttribute } from './itemModifiers'
+import ITEM_RARITIES, { ItemRarity } from './itemRarities'
+import ITEM_STAT_NAMES, { ItemStatName } from './itemStatNames'
+import ITEM_STATS, { ItemStat } from './itemStats'
+import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames'
+import ValueOf from './valueOf'
 
 export interface GetModifiersProps {
-  rarity: string;
-  category: string;
-  type: string;
-  stat: string;
-  weight: string;
-}
-
-export interface Attribute {
-  attribute: string;
-  modifier: number;
+  rarity: ItemRarity;
+  category: ItemCategoryName;
+  type: ItemTypeName;
+  stat: ItemStatName;
+  weight: ItemArmorWeight;
 }
 
 const getModifiers = ({ rarity, category, type, stat, weight }: GetModifiersProps) => {
@@ -26,11 +22,11 @@ const getModifiers = ({ rarity, category, type, stat, weight }: GetModifiersProp
     defense: defensePerWeight,
     minPower,
     maxPower,
-  } = ITEM_MODIFIERS[category][type][rarity]
+  }: Item = ITEM_MODIFIERS[category][type][rarity]
 
-  const { type: statType, bonuses: statBonuses } = ITEM_STATS[stat]
+  const { type: statType, bonuses: statBonuses }: ItemStat = ITEM_STATS[stat]
 
-  const statModifiers = attributeModifiers[statType]
+  const statModifiers: ItemModifierAttribute | undefined = attributeModifiers !== undefined ? attributeModifiers[statType] : undefined;
 
   if (!statModifiers) {
     throw new Error(`Invalid item stat '${stat}' for type '${type}'`)

@@ -1,3 +1,7 @@
+import ValueOf from "./valueOf";
+
+export type Attribute = ValueOf<Attributes>;
+
 export interface Attributes {
   POWER: string;
   PRECISION: string;
