@@ -1,4 +1,6 @@
-module.exports = {
+import * as webpack from 'webpack';
+
+const config: webpack.Configuration = {
   output: {
     library: 'Gw2UiBuilder',
     libraryTarget: 'umd',
@@ -16,4 +18,6 @@ module.exports = {
     ],
   },
   devtool: 'source-map',
-}
+};
+
+export default config;
