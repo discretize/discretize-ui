@@ -6,7 +6,7 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.(ts)x?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
@@ -21,7 +21,7 @@ const config: webpack.Configuration = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts'],
   },
   output: {
     path: path.join(__dirname, 'dist'),
