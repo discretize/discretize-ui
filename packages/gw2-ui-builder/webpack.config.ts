@@ -1,7 +1,13 @@
+var nodeExternals = require('webpack-node-externals');
+
 import * as path from 'path';
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
+  target: 'node',
+  externalsPresets: {
+      node: true // in order to ignore built-in modules like path, fs, etc. 
+  },
   entry: './src/index.ts',
   module: {
     rules: [
@@ -20,6 +26,7 @@ const config: webpack.Configuration = {
       },
     ],
   },
+  externals: [nodeExternals()],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },

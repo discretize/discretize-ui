@@ -1,4 +1,10 @@
+var nodeExternals = require('webpack-node-externals');
+
 module.exports = {
+  target: 'node',
+  externalsPresets: {
+      node: true // in order to ignore built-in modules like path, fs, etc. 
+  },
   output: {
     library: 'Gw2UiComponents',
     libraryTarget: 'umd',
@@ -30,19 +36,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  externals: {
-    react: {
-      root: 'React',
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'react',
-    },
-    'react-dom': {
-      root: 'ReactDOM',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom',
-    },
-  },
+  externals: [nodeExternals()],
   devtool: 'source-map',
 }

@@ -1,7 +1,13 @@
+var nodeExternals = require('webpack-node-externals');
+
 import * as path from 'path';
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
+  target: 'node',
+  externalsPresets: {
+      node: true // in order to ignore built-in modules like path, fs, etc. 
+  },
   entry: './src/index.js',
   module: {
     rules: [
@@ -40,38 +46,7 @@ const config: webpack.Configuration = {
     libraryTarget: 'umd',
     globalObject: 'this',
   },
-  externals: {
-    axios: {
-      root: 'Axios',
-      commonjs: 'axios',
-      commonjs2: 'axios',
-      amd: 'axios',
-    },
-    react: {
-      root: 'React',
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'react',
-    },
-    'react-dom': {
-      root: 'ReactDOM',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom',
-    },
-    redux: {
-      root: 'Redux',
-      commonjs: 'redux',
-      commonjs2: 'redux',
-      amd: 'redux',
-    },
-    reselect: {
-      root: 'Reselect',
-      commonjs: 'reselect',
-      commonjs2: 'reselect',
-      amd: 'reselect',
-    },
-  },
+  externals: [nodeExternals()],
   devtool: 'source-map',
 };
 
