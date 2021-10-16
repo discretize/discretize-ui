@@ -29,7 +29,7 @@ const Item = ({
       (item) => Number(item.id) === Number(id),
     )
   })
-  const loading = !data && !error
+  const loading = !data && !error && !(type && stat)
 
   useEffect(() => {
     // fetch the basic item
