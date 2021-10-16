@@ -1,17 +1,21 @@
-module.exports = {
-  output: {
-    library: 'Gw2UiComponents',
-    libraryTarget: 'umd',
-    globalObject: 'this',
-  },
+import * as path from 'path';
+import * as webpack from 'webpack';
+
+const config: webpack.Configuration = {
+  entry: './src/index.js',
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
+        test: /\.(ts|js)x?$/,
         loader: 'babel-loader',
+        exclude: /node_modules/,
         options: {
           rootMode: 'upward',
+          presets: [
+            "@babel/preset-env",
+            "@babel/preset-react",
+            "@babel/preset-typescript",
+          ],
         },
       },
       {
@@ -27,9 +31,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
   externals: {
     react: {
       root: 'React',
@@ -44,5 +45,16 @@ module.exports = {
       amd: 'react-dom',
     },
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    library: 'Gw2UiBuilder',
+    libraryTarget: 'umd',
+    globalObject: 'this',
+  },
   devtool: 'source-map',
-}
+};
+
+export default config;
