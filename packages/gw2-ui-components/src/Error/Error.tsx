@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import Tooltip from '../Tooltip/Tooltip'
 import DetailsHeader from '../DetailsHeader/DetailsHeader'
@@ -58,8 +57,7 @@ const Error = ({
         inline={inline}
         {...rest}
         iconProps={{ name: code, ...rest.iconProps }}
-        sx={{ color: 'error', ...rest.sx }}
-        ref={ref}
+        sx={{ color: 'error' }}
       />
     </Tooltip>
   )

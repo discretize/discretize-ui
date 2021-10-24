@@ -1,16 +1,16 @@
-import React, { forwardRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import DetailsHeader from '../DetailsHeader/DetailsHeader'
 import DetailsFact from '../DetailsFact/DetailsFact'
 import DetailsText from '../DetailsText/DetailsText'
 import { factsOrder, populateMissingTraitAPI } from '../helpers'
-import { Spinner } from '../Spinner/Spinner'
+import Spinner from '../Spinner/Spinner'
 
 const axios = require('axios')
 
 export interface AbilityDetailsProps {
   data: object
-  type: object
+  type: string
 }
 
 // type is "skills" or "traits"

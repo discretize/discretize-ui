@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import withLoading from '../withLoading/withLoading'
 import Tooltip from '../Tooltip/Tooltip'
@@ -14,7 +13,7 @@ import {
 } from '../helpers'
 
 export interface TraitProps {
-  data: object
+  data: TraitDataProps
   disableIcon: boolean
   disableText: boolean
   disableLink: boolean
@@ -23,6 +22,14 @@ export interface TraitProps {
   tooltipProps: object
   wikiLinkProps: object
   inactive: boolean
+}
+
+export interface TraitDataProps {
+  name: string
+  icon: string
+  specialization: number
+  skills: string[]
+  slot: string
 }
 
 const Trait = ({
@@ -95,11 +102,9 @@ const Trait = ({
           zoom: 13,
           inactive,
           hexagon: slot === 'Minor',
-          ...rest.iconProps,
         }}
         sx={{
           color: `gw2.profession.${profession}`,
-          ...rest.sx,
         }}
       />
     </Tooltip>

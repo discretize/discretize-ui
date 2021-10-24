@@ -10,7 +10,7 @@ import { useColorModeHighlightSuffix } from '../helpers'
 export interface SkillProps {
   id: number
   component: object
-  data: object
+  data: SkillDataProps
   disableIcon: boolean
   disableText: boolean
   disableLink: boolean
@@ -18,6 +18,12 @@ export interface SkillProps {
   inline: boolean
   tooltipProps: object
   wikiLinkProps: object
+}
+
+export interface SkillDataProps {
+  name: string
+  icon: string
+  professions: string[]
 }
 
 const Skill = ({
