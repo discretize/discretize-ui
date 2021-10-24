@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { forwardRef, useEffect } from 'react'
 
 import DetailsHeader from '../DetailsHeader/DetailsHeader'
 import DetailsFact from '../DetailsFact/DetailsFact'
@@ -9,8 +8,16 @@ import { Spinner } from '../Spinner/Spinner'
 
 const axios = require('axios')
 
+export interface AbilityDetailsProps {
+  data: object
+  type: object
+}
+
 // type is "skills" or "traits"
-const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
+const AbilityDetails = ({
+  data,
+  type
+}: AbilityDetailsProps) => {
   const { name, id } = data
 
   const { CancelToken } = axios
@@ -22,12 +29,12 @@ const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
     facts: data.facts,
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     const { categories, facts } = state
     // only request data in case it wasnt provided by props
     if (!(categories || facts)) {
       // only show native language for chinese people
-      const userLang = navigator.language || navigator.userLanguage
+      const userLang = navigator.language
       const language = userLang.includes('zh') ? 'zh' : 'en'
       axios
         .get(
@@ -76,7 +83,7 @@ const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
   }
 
   return (
-    <div {...rest} ref={ref}>
+    <div>
       <DetailsHeader
         sx={{ mb: '8px' }}
         {...(rechargeValue && {
@@ -138,12 +145,5 @@ const AbilityDetails = forwardRef(({ data, type: apiType, ...rest }, ref) => {
     </div>
   )
 })
-
-AbilityDetails.propTypes = {
-  data: PropTypes.object.isRequired,
-  type: PropTypes.string.isRequired, // skills or traits
-}
-
-AbilityDetails.displayName = 'AbilityDetails'
 
 export default AbilityDetails

@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import Icon from '../Icon/Icon'
 import Progress from '../Progress/Progress'
@@ -17,7 +16,18 @@ export interface IconWithTextProps {
   loading: boolean
 }
 
-const IconWithText = (): ReactElement => {
+const IconWithText = ({
+  icon,
+  iconPosition,
+  text,
+  disableIcon,
+  disableText,
+  inline,
+  iconProps,
+  textProps,
+  progressProps,
+  loading,
+}: IconWithTextProps): ReactElement => {
   return (
     <Component
       sx={{
