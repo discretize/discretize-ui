@@ -4,11 +4,7 @@
   "env": {
     "browser": true
   },
-  "extends": [
-    "airbnb",
-    "plugin:prettier/recommended",
-    "prettier"
-  ],
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier"],
   "settings": {
     "react": {
       "version": "detect"
@@ -30,7 +26,13 @@
     "react/jsx-curly-newline": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-pascal-case": "off",
-    "react/jsx-indent": "off"
+    "react/jsx-indent": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "ignorePatterns": ["!.storybook"]
 }
