@@ -9,7 +9,7 @@ export {
   getBaseAttributes,
 } from './helpers'
 
-export { default as Coin } from './Coin/Coin'
+export { default as Coin } from './Error/Error'
 export { default as Error } from './Error/Error'
 export { default as Icon } from './Icon/Icon'
 export { default as IconWithText } from './IconWithText/IconWithText'
@@ -60,7 +60,3 @@ export { default as mistlockInstabilities } from './data/mistlockInstabilities.j
 export { default as professions } from './data/professions.json'
 export { default as attributes } from './data/attributes.json'
 export { default as races } from './data/races.json'
-
-export { default as baseTheme } from './styles/baseTheme'
-export { ThemeProvider } from '@theme-ui/core'
-export { useThemeUI } from '@theme-ui/core'

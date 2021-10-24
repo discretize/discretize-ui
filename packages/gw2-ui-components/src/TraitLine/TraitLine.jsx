@@ -7,10 +7,12 @@ import React, {
 } from 'react'
 import PropTypes from 'prop-types'
 
-import withLoading from '../withLoading'
-import Tooltip from '../Tooltip'
-import Icon from '../Icon'
-import TraitLineConnector, { Paths } from '../TraitLineConnector'
+import withLoading from '../withLoading/withLoading'
+import Tooltip from '../Tooltip/Tooltip'
+import Icon from '../Icon/Icon'
+import TraitLineConnector, {
+  Paths,
+} from '../TraitLineConnector/TraitLineConnector'
 
 // eslint-disable-next-line react/prop-types
 const renderTraitLineConnector = ({ css, ...rest } = {}) => (

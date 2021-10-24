@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-import IconWithText from '../IconWithText'
-import WikiLink from '../WikiLink'
-import Error from '../Error'
+import IconWithText from '../IconWithText/IconWithText'
+import WikiLink from '../WikiLink/WikiLink'
+import Error from '../Error/Error'
 
 import professions from '../data/professions.json'
 import { useColorModeHighlightSuffix } from '../helpers'

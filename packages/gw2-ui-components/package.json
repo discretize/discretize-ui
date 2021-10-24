@@ -36,6 +36,7 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
+    "@theme-ui/core": "^0.11.3",
     "@tippyjs/react": "^4.2.5",
     "axios": "^0.21.4",
     "classnames": "^2.2.6",
@@ -56,7 +57,7 @@
     "babel-loader": "8.2.2",
     "cross-env": "7.0.3",
     "del-cli": "4.0.1",
-    "file-loader": "6.2.0",
+    "file-loader": "^6.2.0",
     "npm-run-all": "4.1.5",
     "prop-types": "15.7.2",
     "react": "^16.11.0",

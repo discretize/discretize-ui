@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
 import Error from '../Error'
 import { getDisplayName } from '../helpers'
-import IconWithText from '../IconWithText'
+import IconWithText from '../IconWithText/IconWithText'
 
 export default ({
     component: defaultComponent = undefined,

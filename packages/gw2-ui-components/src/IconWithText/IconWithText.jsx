@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-import Icon from '../Icon'
-import Progress from '../Progress'
+import Icon from '../Icon/Icon'
+import Progress from '../Progress/Progress'
 
 const IconWithText = forwardRef(
   (

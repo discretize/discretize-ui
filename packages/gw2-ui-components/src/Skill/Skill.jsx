@@ -2,10 +2,10 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 import withLoading from '../withLoading/index'
-import Tooltip from '../Tooltip'
-import IconWithText from '../IconWithText'
-import WikiLink from '../WikiLink'
-import AbilityDetails from '../AbilityDetails'
+import Tooltip from '../Tooltip/Tooltip'
+import IconWithText from '../IconWithText/IconWithText'
+import WikiLink from '../WikiLink/WikiLink'
+import AbilityDetails from '../AbilityDetails/AbilityDetails'
 import { useColorModeHighlightSuffix } from '../helpers'
 
 const Skill = forwardRef(

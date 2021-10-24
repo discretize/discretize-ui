@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, ReactElement } from 'react'
 
-import tooltipBackgroundImage from '../assets/images/tooltip-background.png'
+// import tooltipBackgroundImage from '../assets/images/tooltip-background.png'
 
 //TODO: Other styles passed as props should be appended likely.
 const TooltipContainer = ({
@@ -8,22 +8,23 @@ const TooltipContainer = ({
 }: PropsWithChildren<unknown>): ReactElement => {
   return (
     <div
-      sx={{
+      style={{
         backgroundColor: 'rgba(46, 53, 56, 0.7)',
         borderStyle: 'solid',
         borderWidth: '2px',
         borderColor: '#040505',
         boxShadow:
           '0px 1px 5px 0px rgba(0, 0, 0, 0.2),0px 2px 2px 0px rgba(0, 0, 0, 0.14),0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
-        p: '4px',
+        //p: '4px',
         backgroundPosition: 'top left',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundImage: `url(${tooltipBackgroundImage})`,
+        backgroundImage: `url(test)`,
+        // backgroundImage: `url(${tooltipBackgroundImage})`,
         color: '#fff',
         fontFamily: 'gw2.body',
         fontSize: '14px',
-        fontWeight: 'gw2.body',
+        //fontWeight: 'gw2.body',
         lineHeight: 'gw2.heading',
         borderRadius: '0px',
         textShadow: '1px 1px 1px #010101',

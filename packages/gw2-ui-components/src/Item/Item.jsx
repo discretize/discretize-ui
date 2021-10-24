@@ -2,10 +2,10 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 import withLoading from '../withLoading/index'
-import Tooltip from '../Tooltip'
-import IconWithText from '../IconWithText'
-import WikiLink from '../WikiLink'
-import ItemDetails from '../ItemDetails'
+import Tooltip from '../Tooltip/Tooltip'
+import IconWithText from '../IconWithText/IconWithText'
+import WikiLink from '../WikiLink/WikiLink'
+import ItemDetails from '../ItemDetails/ItemDetails'
 import { useColorModeHighlightSuffix, populateMissingItemAPI } from '../helpers'
 
 const Item = forwardRef(

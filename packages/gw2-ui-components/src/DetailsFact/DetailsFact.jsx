@@ -1,7 +1,7 @@
 import React, { Fragment, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-import Icon from '../Icon'
+import Icon from '../Icon/Icon'
 import { apiAttributes, formatDuration } from '../helpers'
 
 const DetailsFact = forwardRef(({ data, ...rest }, ref) => {

@@ -2,11 +2,11 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 import withLoading from '../withLoading/index'
-import Tooltip from '../Tooltip'
-import TooltipContainer from '../TooltipContainer'
-import IconWithText from '../IconWithText'
-import WikiLink from '../WikiLink'
-import AbilityDetails from '../AbilityDetails'
+import Tooltip from '../Tooltip/Tooltip'
+import TooltipContainer from '../TooltipContainer/TooltipContainer'
+import IconWithText from '../IconWithText/IconWithText'
+import WikiLink from '../WikiLink/WikiLink'
+import AbilityDetails from '../AbilityDetails/AbilityDetails'
 import {
   populateMissingTraitAPI,
   specializations,

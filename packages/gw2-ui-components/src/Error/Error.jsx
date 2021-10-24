@@ -1,21 +1,21 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-import Tooltip from '../Tooltip'
-import DetailsHeader from '../DetailsHeader'
-import DetailsText from '../DetailsText'
-import IconWithText from '../IconWithText'
+import Tooltip from '../Tooltip/Tooltip'
+import DetailsHeader from '../DetailsHeader/DetailsHeader'
+import DetailsText from '../DetailsText/DetailsText'
+import IconWithText from '../IconWithText/IconWithText'
 
-interface ErrorProps {
-  code: string
-  name: string
-  message: string
-  disableIcon: string
-  disableText: boolean
-  disableTooltip: boolean
-  inline: boolean
-  //tooltipProps: TODO IMPORT TOOLTIP PROPS HERE.
-}
+// interface ErrorProps {
+//   code: string
+//   name: string
+//   message: string
+//   disableIcon: string
+//   disableText: boolean
+//   disableTooltip: boolean
+//   inline: boolean
+//   //tooltipProps: TODO IMPORT TOOLTIP PROPS HERE.
+// }
 
 const Error = forwardRef(
   (

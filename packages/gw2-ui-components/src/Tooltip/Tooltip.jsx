@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Tippy from '@tippyjs/react/headless'
 import { followCursor } from 'tippy.js/headless'
 
-import TooltipContainer from '../TooltipContainer'
+import TooltipContainer from '../TooltipContainer/TooltipContainer'
 
 const Tooltip = forwardRef(
   (

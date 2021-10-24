@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-import Skill from '../Skill'
+import Skill from '../Skill/Skill'
 import axios from 'axios'
 
 const normalize = (string) =>

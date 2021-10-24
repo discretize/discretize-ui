@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-import DetailsHeader from '../DetailsHeader'
-import DetailsFact from '../DetailsFact'
-import DetailsText from '../DetailsText'
+import DetailsHeader from '../DetailsHeader/DetailsHeader'
+import DetailsFact from '../DetailsFact/DetailsFact'
+import DetailsText from '../DetailsText/DetailsText'
 import { factsOrder, populateMissingTraitAPI } from '../helpers'
-import { Spinner } from '..'
+import { Spinner } from '../Spinner/Spinner'
 
 const axios = require('axios')
 

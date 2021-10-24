@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-import Icon from '../Icon'
-import DetailsHeaderTitle from '../DetailsHeaderTitle'
+import Icon from '../Icon/Icon'
+import DetailsHeaderTitle from '../DetailsHeaderTitle/DetailsHeaderTitle'
 
 const DetailsHeader = forwardRef(
   ({ icon, iconProps, titleProps, flags, children, ...rest }, ref) => (

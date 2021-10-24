@@ -25,15 +25,11 @@ const config: webpack.Configuration = {
         },
       },
       {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
+        test: /\.(png|jpe?g|gif|jp2|webp)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/images/[name].[ext]',
+        },
       },
     ],
   },

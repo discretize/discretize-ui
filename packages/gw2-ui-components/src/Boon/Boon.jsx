@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
-import Effect from '../Effect'
+import Effect from '../Effect/Effect'
 
 import boons from '../data/boons.json'
 

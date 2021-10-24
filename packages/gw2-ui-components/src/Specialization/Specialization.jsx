@@ -2,8 +2,8 @@ import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 
 import withLoading from '../withLoading/index'
-import IconWithText from '../IconWithText'
-import WikiLink from '../WikiLink'
+import IconWithText from '../IconWithText/IconWithText'
+import WikiLink from '../WikiLink/WikiLink'
 import { useColorModeHighlightSuffix } from '../helpers'
 
 const Specialization = forwardRef(

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { forwardRef } from 'react'
-import { Spinner } from '..'
+import { Spinner } from '../Spinner/Spinner'
 import withAsyncProp from '../helpers/withAsyncProp'
 
 const Icon = forwardRef(
