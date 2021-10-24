@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import Icon from '../Icon/Icon'
 
@@ -12,7 +11,12 @@ const silverImg =
 const copperImg =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAACK1BMVEWtopWtpJq0qJu3qp7Btaji2tHi29Pj3NTl3dXo4Njp49zs5t/z7ebz7ufz7uj///9CJgxaQSpHMR16ZlRoUz9JMxxhTjtgSDFlU0BaRjJSPCdrVkNxXElNNiBONyE/KRRLMhxWPihCKxRDLRdJMBhFLhhiSzVVPSddRS9JMRpMNSBFLRZSOSJBKRFFKxRGLhc/JxBDKhJJLhRGLBNBJw1HLBNDKA9NMhpRNx9LMBdXPyhBJgxCJg1PNBxQLg9RLxFZLAlZLgtZNBJaLQtaNRNbOx5dMQ1dOhhdRS5eOhZfRzFgMxBhOhZjOhNkPRllPBVmNBJmOhNnORlnPRZpPh1rPx5rRBxsOhdtPxlwORJwSCVxRCJxSyhyRB12Pxh2RRh4US15UCl6USl7RRV8SBl8TiJ8WDZ9RBV9Shp9TSB/RxZ/SRiASRaAZUqBSh2BVTWCRRWCVTODSxuDTxyEUyOEXTqFSheGYD6IXjyIYkOJTSGKUiqOUxuObk+QVyKQbEqQbU6RcFKSUyOTUR2TWiaaWiKbWiibZTOcbEacfmKeeVufZTegWiOghm6keFaqdEOqelCrYiWtdEWvdDqwbjCxkHaycTmzhl20fEO0knW2l363hFy3jWu3knO5hli6dzK6lHC6mXu7fEG8fj28h1C8kmu8noO8oIa9jGC9lXTAdjjBhkbBkWrBqJPDezjDmHTHlmrIgT3IiUXIr5nKl2PLp4jMq47NpH/PrZBy/iAhAAAAO3RSTlMAAAAAAAAAAAAAAAAAAAAAAwcQExYiIzM3XWVucnd3fZivtLu+wcLGx8vR1t7j6evx9fj6/Pz9/f3+/kfuU3oAAADhSURBVAgdBcG7TsMwGAbQL/afxlXUOIGCKNChEgusSDwEOzMDGy/KKyAkVGhuTajSSrk4dm6cY0kAgO3OZq2qh5EAgPtXjz5Lt3nUEQDv5mVllPY3H9OOgODhbf6XKRWbp7HkQt6/i7DX1dAW023GnNUr+5aXNJmu3U1z8p79xOEHo5PGvq418+60y5JTmRT1ch2X5Mqok1RNzoJ4fDxSfzqvpGhEx2jxlTc8MOtgiOtDs6HPbN9zpkYniosz9vObpg3nQ2f2RpTJNg9DzZll98sLxza6jISxiCwJAAAAAMA/7KBtyaLzlLgAAAAASUVORK5CYII='
 
-const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
+export interface CoinProps {
+  Component: ReactElement
+  value: number
+}
+
+const Coin = ({ Component, value }: CoinProps): ReactElement => {
   let copper = value
 
   const gold = Math.floor(copper / 10000)
@@ -28,8 +32,6 @@ const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
         fontWeight: 'gw2.body',
         lineHeight: 'gw2.body',
       }}
-      {...rest}
-      ref={ref}
     >
       {gold > 0 && (
         <>
@@ -69,17 +71,6 @@ const Coin = forwardRef(({ component: Component, value, ...rest }, ref) => {
       </>
     </Component>
   )
-})
-
-Coin.propTypes = {
-  component: PropTypes.elementType,
-  value: PropTypes.number.isRequired,
 }
-
-Coin.defaultProps = {
-  component: 'span',
-}
-
-Coin.displayName = 'Coin'
 
 export default Coin

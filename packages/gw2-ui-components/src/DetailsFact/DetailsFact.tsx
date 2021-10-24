@@ -1,10 +1,13 @@
-import React, { Fragment, forwardRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import Icon from '../Icon/Icon'
 import { apiAttributes, formatDuration } from '../helpers'
 
-const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
+export interface DetailsFactProps {
+  data: object
+}
+
+const DetailsFact = ({ data }: DetailsFactProps): ReactElement => {
   const { type, icon, prefix } = data
 
   let key
@@ -236,8 +239,6 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
         flexDirection: 'row',
         alignItems: 'start',
       }}
-      {...rest}
-      ref={ref}
     >
       <div sx={{ display: 'flex', flexDirection: 'row', fontSize: '30px' }}>
         {prefix?.icon && (
@@ -253,12 +254,6 @@ const DetailsFact = forwardRef(({ data, ...rest }, ref) => {
       </div>
     </div>
   )
-})
-
-DetailsFact.propTypes = {
-  data: PropTypes.object.isRequired,
 }
-
-DetailsFact.displayName = 'DetailsFact'
 
 export default DetailsFact

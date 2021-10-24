@@ -1,16 +1,28 @@
-import React, { forwardRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import Icon from '../Icon/Icon'
 import DetailsHeaderTitle from '../DetailsHeaderTitle/DetailsHeaderTitle'
 
-const DetailsHeader = forwardRef(
-  ({ icon, iconProps, titleProps, flags, children, ...rest }, ref) => (
-    <div
-      sx={{ display: 'flex', flexDirection: 'row', mb: '3px' }}
-      {...rest}
-      ref={ref}
-    >
+export interface DetailsHeaderFlagProps {
+  icon: string
+  value: object
+}
+
+export interface DetailsHeaderProps {
+  icon: string
+  iconProps: object
+  titleProps: object
+  flags: DetailsHeaderFlagProps[]
+}
+
+const DetailsHeader = ({
+  icon,
+  iconProps,
+  titleProps,
+  flags,
+}: DetailsHeaderProps): ReactElement => {
+  return (
+    <div sx={{ display: 'flex', flexDirection: 'row', mb: '3px' }}>
       {typeof icon === 'string' || iconProps?.src || iconProps?.name ? (
         <Icon
           src={icon}
@@ -40,28 +52,7 @@ const DetailsHeader = forwardRef(
         </div>
       )}
     </div>
-  ),
-)
-
-DetailsHeader.propTypes = {
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  iconProps: PropTypes.object,
-  titleProps: PropTypes.object,
-  flags: PropTypes.arrayOf(
-    PropTypes.shape({
-      icon: PropTypes.string,
-      value: PropTypes.node,
-    }),
-  ),
+  )
 }
-
-DetailsHeader.defaultProps = {
-  icon: null,
-  iconProps: {},
-  titleProps: {},
-  flags: [],
-}
-
-DetailsHeader.displayName = 'DetailsHeader'
 
 export default DetailsHeader
