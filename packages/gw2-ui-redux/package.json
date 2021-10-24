@@ -37,7 +37,8 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.1"
+    "@reduxjs/toolkit": "^1.6.1",
+    "batcher-js": "^1.0.3"
   },
   "devDependencies": {
     "@babel/cli": "7.15.4",
@@ -47,7 +48,6 @@
     "@babel/runtime-corejs3": "7.15.4",
     "axios": "0.21.4",
     "babel-loader": "8.2.2",
-    "batcher-js": "^1.0.3",
     "cross-env": "7.0.3",
     "del-cli": "4.0.1",
     "npm-run-all": "4.1.5",
