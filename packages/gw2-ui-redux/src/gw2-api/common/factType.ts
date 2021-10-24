@@ -1,4 +1,4 @@
-const SKILL_FACT_TYPES = [
+const FACT_TYPES = [
   'AttributeAdjust',
   'Buff',
   'ComboField',
@@ -18,6 +18,6 @@ const SKILL_FACT_TYPES = [
   'Time',
   'Unblockable',
 ] as const
-type GW2ApiSkillFactType = typeof SKILL_FACT_TYPES[number]
+type GW2ApiFactType = typeof FACT_TYPES[number]
 
-export default GW2ApiSkillFactType
+export default GW2ApiFactType
