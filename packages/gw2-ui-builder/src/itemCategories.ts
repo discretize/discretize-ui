@@ -2,10 +2,10 @@ import ITEM_CATEGORY_NAMES, { ItemCategoryName } from './itemCategoryNames'
 import ITEM_TYPE_NAMES, { ItemTypeNames } from './itemTypeNames'
 import ValueOf from './valueOf'
 
-export type ItemCategory = ValueOf<ItemTypeNames>[];
+export type ItemCategory = ValueOf<ItemTypeNames>[]
 
 export interface ItemCategories {
-  [itemCategoryName: ItemCategoryName]: ItemCategory;
+  [itemCategoryName: ItemCategoryName]: ItemCategory
 }
 
 const itemCategories: ItemCategories = {
@@ -49,4 +49,4 @@ const itemCategories: ItemCategories = {
   ],
 }
 
-export default itemCategories;
+export default itemCategories

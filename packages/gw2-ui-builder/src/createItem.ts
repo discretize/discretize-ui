@@ -2,62 +2,72 @@ import { Attribute } from './attributes'
 import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights'
 import ITEM_CATEGORIES from './itemCategories'
 import ITEM_CATEGORY_NAMES, { ItemCategoryName } from './itemCategoryNames'
-import ITEM_MODIFIERS, { ItemModifier, ItemModifierAttribute, ItemModifiers } from './itemModifiers'
+import ITEM_MODIFIERS, {
+  ItemModifier,
+  ItemModifierAttribute,
+  ItemModifiers,
+} from './itemModifiers'
 import ITEM_RARITIES, { ItemRarity } from './itemRarities'
 import ITEM_STAT_NAMES, { ItemStatName } from './itemStatNames'
 import ITEM_STATS, { ItemStat } from './itemStats'
 import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames'
 
 export interface GetModifiersProps {
-  rarity: ItemRarity;
-  category: ItemCategoryName;
-  type: ItemTypeName;
-  stat: ItemStatName;
-  weight: ItemArmorWeight;
+  rarity: ItemRarity
+  category: ItemCategoryName
+  type: ItemTypeName
+  stat: ItemStatName
+  weight: ItemArmorWeight
 }
 
 export interface CreateItemProps {
-  rarity: ItemRarity;
-  level: number;
-  type: ItemTypeName;
-  stat: ItemStatName;
-  weight: ItemArmorWeight;
-  nameSuffix: string;
-  name: string;
+  rarity: ItemRarity
+  level: number
+  type: ItemTypeName
+  stat: ItemStatName
+  weight: ItemArmorWeight
+  nameSuffix: string
+  name: string
 }
 
 export interface ItemAttribute {
-  attribute: Attribute;
-  modifier: ItemModifier;
+  attribute: Attribute
+  modifier: ItemModifier
 }
 
 export interface ItemModifiersResult {
-  attributes: ItemAttribute[];
-  defense?: ItemModifier;
-  minPower?: ItemModifier;
-  maxPower?: ItemModifier;
+  attributes: ItemAttribute[]
+  defense?: ItemModifier
+  minPower?: ItemModifier
+  maxPower?: ItemModifier
 }
 
 export interface ItemDetails {
-  type: ItemTypeName;
-  weight_class: ItemArmorWeight;
-  min_power?: ItemModifier;
-  max_power?: ItemModifier;
-  defense?: ItemModifier;
+  type: ItemTypeName
+  weight_class: ItemArmorWeight
+  min_power?: ItemModifier
+  max_power?: ItemModifier
+  defense?: ItemModifier
   infix_upgrade?: {
-    attributes: ItemAttribute[];
+    attributes: ItemAttribute[]
   }
 }
 
 export interface CreateItemResult {
-  name?: string;
-  type: ItemCategoryName;
-  level: number;
-  rarity: ItemRarity;
-  details: ItemDetails;
+  name?: string
+  type: ItemCategoryName
+  level: number
+  rarity: ItemRarity
+  details: ItemDetails
 }
 
-const getModifiers = ({ rarity, category, type, stat, weight }: GetModifiersProps): ItemModifiersResult => {
+const getModifiers = ({
+  rarity,
+  category,
+  type,
+  stat,
+  weight,
+}: GetModifiersProps): ItemModifiersResult => {
   const {
     attributes: attributeModifiers,
     defense: defensePerWeight,
@@ -67,7 +77,8 @@ const getModifiers = ({ rarity, category, type, stat, weight }: GetModifiersProp
 
   const { type: statType, bonuses: statBonuses }: ItemStat = ITEM_STATS[stat]
 
-  const statModifiers: ItemModifierAttribute | undefined = attributeModifiers !== undefined ? attributeModifiers[statType] : undefined;
+  const statModifiers: ItemModifierAttribute | undefined =
+    attributeModifiers !== undefined ? attributeModifiers[statType] : undefined
 
   if (!statModifiers) {
     throw new Error(`Invalid item stat '${stat}' for type '${type}'`)
@@ -79,8 +90,8 @@ const getModifiers = ({ rarity, category, type, stat, weight }: GetModifiersProp
         attribute,
         modifier,
       }
-    })
-  );
+    }),
+  )
 
   const defense =
     defensePerWeight &&
@@ -170,4 +181,4 @@ const createItem = ({
   }
 }
 
-export default createItem;
+export default createItem

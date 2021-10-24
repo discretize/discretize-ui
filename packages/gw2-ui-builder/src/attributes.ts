@@ -1,17 +1,17 @@
-import ValueOf from "./valueOf";
+import ValueOf from './valueOf'
 
-export type Attribute = ValueOf<Attributes>;
+export type Attribute = ValueOf<Attributes>
 
 export interface Attributes {
-  POWER: string;
-  PRECISION: string;
-  TOUGHNESS: string;
-  VITALITY: string;
-  CONCENTRATION: string;
-  CONDITION_DAMAGE: string;
-  EXPERTISE: string;
-  FEROCITY: string;
-  HEALING_POWER: string;
+  POWER: string
+  PRECISION: string
+  TOUGHNESS: string
+  VITALITY: string
+  CONCENTRATION: string
+  CONDITION_DAMAGE: string
+  EXPERTISE: string
+  FEROCITY: string
+  HEALING_POWER: string
 }
 
 const attributes: Attributes = {
@@ -26,4 +26,4 @@ const attributes: Attributes = {
   HEALING_POWER: 'Healing',
 }
 
-export default attributes;
+export default attributes

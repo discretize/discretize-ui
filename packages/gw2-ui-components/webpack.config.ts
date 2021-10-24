@@ -1,14 +1,14 @@
-var nodeExternals = require('webpack-node-externals');
+var nodeExternals = require('webpack-node-externals')
 
-import * as path from 'path';
-import * as webpack from 'webpack';
+import * as path from 'path'
+import * as webpack from 'webpack'
 
 const config: webpack.Configuration = {
   target: 'node',
   externalsPresets: {
-      node: true // in order to ignore built-in modules like path, fs, etc. 
+    node: true, // in order to ignore built-in modules like path, fs, etc.
   },
-  entry: './src/index.js',
+  entry: './src/index.ts',
   module: {
     rules: [
       {
@@ -18,9 +18,9 @@ const config: webpack.Configuration = {
         options: {
           rootMode: 'upward',
           presets: [
-            "@babel/preset-env",
-            "@babel/preset-react",
-            "@babel/preset-typescript",
+            '@babel/preset-env',
+            '@babel/preset-react',
+            '@babel/preset-typescript',
           ],
         },
       },
@@ -48,6 +48,6 @@ const config: webpack.Configuration = {
     globalObject: 'this',
   },
   devtool: 'source-map',
-};
+}
 
-export default config;
+export default config

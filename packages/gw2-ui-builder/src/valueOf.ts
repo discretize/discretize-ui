@@ -1,3 +1,3 @@
-type ValueOf<T> = T[keyof T];
+type ValueOf<T> = T[keyof T]
 
-export default ValueOf;
+export default ValueOf

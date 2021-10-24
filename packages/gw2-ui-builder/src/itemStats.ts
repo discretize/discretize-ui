@@ -2,19 +2,34 @@ import ITEM_STAT_NAMES, { ItemStatName } from './itemStatNames'
 import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes'
 import ATTRIBUTES, { Attribute } from './attributes'
 
-export type RegularItemBonuses = [[Attribute], [Attribute, Attribute]];
-export type MixedItemBonuses = [[Attribute, Attribute], [Attribute, Attribute]];
-export type CelestialItemBonuses = [[Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute]];
+export type RegularItemBonuses = [[Attribute], [Attribute, Attribute]]
+export type MixedItemBonuses = [[Attribute, Attribute], [Attribute, Attribute]]
+export type CelestialItemBonuses = [
+  [
+    Attribute,
+    Attribute,
+    Attribute,
+    Attribute,
+    Attribute,
+    Attribute,
+    Attribute,
+    Attribute,
+    Attribute,
+  ],
+]
 
-export type ItemBonuses = RegularItemBonuses | MixedItemBonuses | CelestialItemBonuses;
+export type ItemBonuses =
+  | RegularItemBonuses
+  | MixedItemBonuses
+  | CelestialItemBonuses
 
 export interface ItemStat {
-  type: ItemStatType;
-  bonuses: ItemBonuses;
+  type: ItemStatType
+  bonuses: ItemBonuses
 }
 
 export interface ItemStats {
-  [itemStatName: ItemStatName]: ItemStat;
+  [itemStatName: ItemStatName]: ItemStat
 }
 
 const itemStats: ItemStats = {
@@ -352,4 +367,4 @@ const itemStats: ItemStats = {
   },
 }
 
-export default itemStats;
+export default itemStats
