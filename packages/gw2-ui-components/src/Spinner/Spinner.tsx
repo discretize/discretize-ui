@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, ReactElement } from 'react'
 import PropTypes from 'prop-types'
 import { keyframes } from '@emotion/core'
 
@@ -11,7 +11,15 @@ const spin = keyframes({
   },
 })
 
-const Spinner = forwardRef(({ component: Component, inline, ...rest }, ref) => (
+export interface SpinnerProps {
+  component: object
+  inline: boolean
+}
+
+const Spinner = ({
+  component,
+  inline
+}: SpinnerProps): ReactElement => (
   <Component
     sx={{
       display: 'inline-flex',
@@ -23,21 +31,7 @@ const Spinner = forwardRef(({ component: Component, inline, ...rest }, ref) => (
       boxSizing: 'border-box',
       ...(inline && { verticalAlign: 'text-top' }),
     }}
-    {...rest}
-    ref={ref}
   />
 ))
-
-Spinner.propTypes = {
-  component: PropTypes.elementType,
-  inline: PropTypes.bool,
-}
-
-Spinner.defaultProps = {
-  component: 'span',
-  inline: true,
-}
-
-Spinner.displayName = 'Spinner'
 
 export default Spinner

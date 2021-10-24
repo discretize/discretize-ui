@@ -1,20 +1,25 @@
-import React, { forwardRef } from 'react'
+import React, { ReactElement } from 'react'
 import PropTypes from 'prop-types'
 
 import Skill from '../Skill/Skill'
 import axios from 'axios'
 
-const normalize = (string) =>
-  string === undefined
-    ? string
-    : string
+const normalize = (str: string) =>
+  str === undefined
+    ? str
+    : str
         .replace(/[^A-Za-z]/g, '')
         .toLowerCase()
         .trim()
+
+export interface MissingSkillProps {
+  name: string
+}
+
 /**
  * Wrapper around skill, which fetches from the discretize-gw2api repo json files for skills, that are not included in the gw2 api.
  */
-const MissingSkill = forwardRef(({ name, ...rest }, ref) => {
+const MissingSkill = ({ name }: MissingSkillProps): ReactElement => {
   const [state, setState] = React.useState({})
 
   const { CancelToken } = axios
@@ -38,17 +43,7 @@ const MissingSkill = forwardRef(({ name, ...rest }, ref) => {
     }
   }, [])
 
-  return <Skill data={state} ref={ref} {...rest} />
-})
-
-MissingSkill.propTypes = {
-  name: PropTypes.string,
+  return <Skill data={state} />
 }
-
-MissingSkill.defaultProps = {
-  name: '',
-}
-
-Skill.displayName = 'MissingSkill'
 
 export default MissingSkill

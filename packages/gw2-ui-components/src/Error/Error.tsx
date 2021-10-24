@@ -6,7 +6,7 @@ import DetailsHeader from '../DetailsHeader/DetailsHeader'
 import DetailsText from '../DetailsText/DetailsText'
 import IconWithText from '../IconWithText/IconWithText'
 
-interface ErrorProps {
+export interface ErrorProps {
   code: string
   name: string
   message: string

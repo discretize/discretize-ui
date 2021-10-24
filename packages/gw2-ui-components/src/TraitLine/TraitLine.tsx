@@ -4,6 +4,7 @@ import React, {
   useState,
   useCallback,
   useEffect,
+  ReactElement,
 } from 'react'
 import PropTypes from 'prop-types'
 
@@ -28,35 +29,29 @@ const renderTraitLineConnector = ({ css, ...rest } = {}) => (
   />
 )
 
-const TraitLine = forwardRef(
-  (
-    {
-      id,
-      traitComponent: TraitComponent,
-      defaultSelected,
-      selected: propsSelected,
-      onSelect,
-      selectable,
-      resettable,
-      onReset,
-      data: {
-        background,
-        name,
-        minor_traits: minorTraits,
-        major_traits: majorTraits,
-      },
-      // remove ignored props from withLoading
-      /* eslint-disable react/prop-types */
-      component: ignoredComponent,
-      disableIcon: ignoredDisableIcon,
-      disableText: ignoredDisableText,
-      disableTooltip: ignoredDisableTooltip,
-      inline: ignoredInline,
-      /* eslint-enable react/prop-types */
-      ...rest
-    },
-    ref,
-  ) => {
+export interface TraitLineProps {
+  id: number,
+  traitComponent: object
+  defaultSelected: number[]
+  selected: number[]
+  selectable: boolean
+  resettable: boolean
+  onReset: object //func
+  onSelect: object
+  data: object
+}
+
+const TraitLine = ({
+  id,
+  traitComponent,
+  defaultSelected,
+  selected,
+  selectable,
+  resettable,
+  onReset,
+  onSelect,
+  data
+}: TraitLineProps): ReactElement => {
     const [uncontrolledSelected, setUncontrolledSelected] =
       useState(defaultSelected)
 
@@ -223,8 +218,6 @@ const TraitLine = forwardRef(
             right: 0,
           },
         }}
-        {...rest}
-        ref={ref}
       >
         <div
           css={{
@@ -396,30 +389,6 @@ const TraitLine = forwardRef(
     )
   },
 )
-
-TraitLine.propTypes = {
-  id: PropTypes.number,
-  traitComponent: PropTypes.elementType.isRequired,
-  defaultSelected: PropTypes.arrayOf(PropTypes.number),
-  selected: PropTypes.arrayOf(PropTypes.number),
-  selectable: PropTypes.bool,
-  resettable: PropTypes.bool,
-  onReset: PropTypes.func,
-  onSelect: PropTypes.func,
-  data: PropTypes.object.isRequired,
-}
-
-TraitLine.defaultProps = {
-  id: null,
-  defaultSelected: [],
-  selected: [],
-  selectable: true,
-  resettable: true,
-  onReset: null,
-  onSelect: null,
-}
-
-TraitLine.displayName = 'TraitLine'
 
 export default withLoading({
   iconWithTextProps: {

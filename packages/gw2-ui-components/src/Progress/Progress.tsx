@@ -11,8 +11,13 @@ const progress = keyframes({
   },
 })
 
-const Progress = forwardRef(
-  ({ component: Component, inline, ...rest }, ref) => (
+export interface ProgressProps {
+  component: object
+  inline: boolean
+}
+
+const Progress = ({ component, inline }: ProgressProps): ProgressProps => {
+  return (
     <Component
       sx={{
         display: 'inline-flex',
@@ -32,22 +37,8 @@ const Progress = forwardRef(
           borderRadius: '4px',
         },
       }}
-      {...rest}
-      ref={ref}
     />
-  ),
-)
-
-Progress.propTypes = {
-  component: PropTypes.elementType,
-  inline: PropTypes.bool,
+  )
 }
-
-Progress.defaultProps = {
-  component: 'span',
-  inline: true,
-}
-
-Progress.displayName = 'Progress'
 
 export default Progress
