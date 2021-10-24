@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Batcher from 'batcher-js'
 import {
   addItem,
   addItemError,
@@ -13,7 +14,7 @@ import {
   GW2UiSliceIdentifier,
 } from './gw2-ui-slice'
 import BASE_URL from './constants'
-import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
+import { ActionCreatorWithPayload, Dispatch } from '@reduxjs/toolkit'
 
 const addGeneric =
   (
@@ -21,7 +22,7 @@ const addGeneric =
     addError: ActionCreatorWithPayload<GW2UiSliceError>,
     name: string,
   ) =>
-  (ids: string[], dispatch: any) => {
+  (ids: string[], dispatch: Dispatch<any>) => {
     const cleaned = ids
       .filter((id: string) => id !== '')
       .reduce((a: string[], b: string) => {
@@ -89,15 +90,9 @@ const addGeneric =
       })
   }
 
-// export const fetchItem = functionBatch(
-//   addGeneric(addItem, addItemError, 'items'),
-// )
-// export const fetchSpecialization = functionBatch(
-//   addGeneric(addSpecialization, addSpecializationsError, 'specializations'),
-// )
-// export const fetchSkill = functionBatch(
-//   addGeneric(addSkill, addSkillError, 'skills'),
-// )
-// export const fetchTrait = functionBatch(
-//   addGeneric(addTrait, addTraitError, 'traits'),
-// )
+export const fetchItem = Batcher(addGeneric(addItem, addItemError, 'items'))
+export const fetchSpecialization = Batcher(
+  addGeneric(addSpecialization, addSpecializationsError, 'specializations'),
+)
+export const fetchSkill = Batcher(addGeneric(addSkill, addSkillError, 'skills'))
+export const fetchTrait = Batcher(addGeneric(addTrait, addTraitError, 'traits'))
