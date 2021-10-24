@@ -1,5 +1,4 @@
 import axios from 'axios'
-import functionBatch from 'function-batch'
 import {
   addItem,
   addItemError,
@@ -22,7 +21,7 @@ const addGeneric =
     addError: ActionCreatorWithPayload<GW2UiSliceError>,
     name: string,
   ) =>
-  (ids: string[], dispatch) => {
+  (ids: string[], dispatch: any) => {
     const cleaned = ids
       .filter((id: string) => id !== '')
       .reduce((a: string[], b: string) => {
@@ -31,7 +30,7 @@ const addGeneric =
       }, [])
 
     // only show native language for chinese people
-    const userLang = navigator.language || navigator.userLanguage
+    const userLang = navigator.language
     const language = userLang.includes('zh') ? 'zh' : 'en'
 
     axios
@@ -90,15 +89,15 @@ const addGeneric =
       })
   }
 
-export const fetchItem = functionBatch(
-  addGeneric(addItem, addItemError, 'items'),
-)
-export const fetchSpecialization = functionBatch(
-  addGeneric(addSpecialization, addSpecializationsError, 'specializations'),
-)
-export const fetchSkill = functionBatch(
-  addGeneric(addSkill, addSkillError, 'skills'),
-)
-export const fetchTrait = functionBatch(
-  addGeneric(addTrait, addTraitError, 'traits'),
-)
+// export const fetchItem = functionBatch(
+//   addGeneric(addItem, addItemError, 'items'),
+// )
+// export const fetchSpecialization = functionBatch(
+//   addGeneric(addSpecialization, addSpecializationsError, 'specializations'),
+// )
+// export const fetchSkill = functionBatch(
+//   addGeneric(addSkill, addSkillError, 'skills'),
+// )
+// export const fetchTrait = functionBatch(
+//   addGeneric(addTrait, addTraitError, 'traits'),
+// )

@@ -27,7 +27,7 @@
   "scripts": {
     "prebuild": "run-s clean",
     "build": "run-p build:* build:*:*",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib --extensions '.js,.jsx,.ts,.tsx'",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel --root-mode upward src -d lib --extensions '.ts,.tsx'",
     "build:es": "babel --root-mode upward src -d es --extensions '.js,.jsx'",
     "build:umd": "cross-env BABEL_ENV=webpack webpack --mode development -o dist/gw2-ui-redux.js",
     "build:umd:min": "cross-env BABEL_ENV=webpack webpack --mode production -o dist/gw2-ui-redux.min.js",
@@ -47,6 +47,7 @@
     "@babel/runtime-corejs3": "7.15.4",
     "axios": "0.21.4",
     "babel-loader": "8.2.2",
+    "batcher-js": "^1.0.3",
     "cross-env": "7.0.3",
     "del-cli": "4.0.1",
     "npm-run-all": "4.1.5",

@@ -4650,6 +4650,11 @@ batch-processor@1.0.0:
   resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
   integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
 
+batcher-js@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/batcher-js/-/batcher-js-1.0.3.tgz#2ef063bcbef472f5139ba3e96dbfe0995c0a20ce"
+  integrity sha512-7AlbNWWNM4asd7QFpmdhaAmBpKa2u0PVzgfSo1cJZL6MACoG1UgtwxBquCuf5Wf36qDl6EKZbdBqn32Gs9q20w==
+
 bcrypt-pbkdf@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz#a4301d389b6a43f9b67ff3ca11a3f6637e360e9e"
