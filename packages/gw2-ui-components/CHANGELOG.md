@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.10.1...gw2-ui-components@0.11.0) (2021-05-25)
+
+
+### Features
+
+* added new instab toxic sickness ([66bc562](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/66bc562fed5be5dc81917ec87941658c13bf1b30))
+* implemented new resolution boon ([cf2c7de](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/commit/cf2c7de9ac5c5cbca4268e87bf3c1894fb7642b9))
+
+
+
+
+
 ## [0.10.1](https://github.com/ManuelHaag/gw2-ui/tree/master/packages/gw2-ui-components/compare/gw2-ui-components@0.10.0...gw2-ui-components@0.10.1) (2020-09-27)
 
 
