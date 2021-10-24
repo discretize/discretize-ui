@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type GW2UiSliceValueName =
   | 'items'
@@ -9,8 +9,8 @@ export type GW2UiSliceValueName =
 
 export type GW2UiSliceTypeName = keyof GW2UiSliceState
 
-interface GW2UiSliceData {
-  id: number
+export interface GW2UiSliceData {
+  id: string
 }
 
 export interface GW2UiSliceIdentifier extends GW2UiSliceData {}
@@ -46,12 +46,20 @@ export interface GW2UiSliceState {
  * @returns
  */
 const add =
-  (name: GW2UiSliceValueName, type: GW2UiSliceTypeName) =>
-  (state: GW2UiSliceState, action: PayloadAction<GW2UiSliceData>) => {
-    const array: GW2UiSliceData[] = state[type][name]
+  <T extends GW2UiSliceError | GW2UiSliceIdentifier>(
+    name: GW2UiSliceValueName,
+    type: GW2UiSliceTypeName,
+  ) =>
+  (state: GW2UiSliceState, action: PayloadAction<T>) => {
+    const array: (GW2UiSliceError | GW2UiSliceIdentifier)[] = state[type][name]
 
     // don't add duplicates
-    if (!array.find((a: GW2UiSliceData) => a.id === action.payload.id)) {
+    if (
+      !array.find(
+        (a: GW2UiSliceError | GW2UiSliceIdentifier) =>
+          a.id === action.payload.id,
+      )
+    ) {
       // eslint-disable-next-line no-param-reassign
       state[type][name] = array.concat(action.payload)
     }
@@ -74,14 +82,14 @@ const gw2uiSlice = createSlice({
     },
   },
   reducers: {
-    addItem: add('items', 'ids'),
-    addItemError: add('items', 'errors'),
-    addSkill: add('skills', 'ids'),
-    addSkillError: add('skills', 'errors'),
-    addSpecialization: add('specializations', 'ids'),
-    addSpecializationsError: add('specializations', 'errors'),
-    addTrait: add('traits', 'ids'),
-    addTraitError: add('traits', 'errors'),
+    addItem: add<GW2UiSliceIdentifier>('items', 'ids'),
+    addItemError: add<GW2UiSliceError>('items', 'errors'),
+    addSkill: add<GW2UiSliceIdentifier>('skills', 'ids'),
+    addSkillError: add<GW2UiSliceError>('skills', 'errors'),
+    addSpecialization: add<GW2UiSliceIdentifier>('specializations', 'ids'),
+    addSpecializationsError: add<GW2UiSliceError>('specializations', 'errors'),
+    addTrait: add<GW2UiSliceIdentifier>('traits', 'ids'),
+    addTraitError: add<GW2UiSliceError>('traits', 'errors'),
   },
 })
 
