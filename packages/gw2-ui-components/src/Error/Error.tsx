@@ -6,6 +6,17 @@ import DetailsHeader from '../DetailsHeader'
 import DetailsText from '../DetailsText'
 import IconWithText from '../IconWithText'
 
+interface ErrorProps {
+  code: string
+  name: string
+  message: string
+  disableIcon: string
+  disableText: boolean
+  disableTooltip: boolean
+  inline: boolean
+  //tooltipProps: TODO IMPORT TOOLTIP PROPS HERE.
+}
+
 const Error = forwardRef(
   (
     {
