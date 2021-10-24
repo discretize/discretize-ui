@@ -50,13 +50,11 @@ const Error = ({
       {...tooltipProps}
     >
       <IconWithText
-        component={component}
         text={name}
         disableIcon={disableIcon}
         disableText={disableText}
         inline={inline}
-        {...rest}
-        iconProps={{ name: code, ...rest.iconProps }}
+        iconProps={{ name: code }}
         sx={{ color: 'error' }}
       />
     </Tooltip>

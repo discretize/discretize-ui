@@ -2,31 +2,29 @@ import React, { forwardRef, ReactElement } from 'react'
 import PropTypes from 'prop-types'
 
 import withLoading from '../withLoading/withLoading'
-import Tooltip from '../Tooltip/Tooltip'
+import Tooltip, { TooltipProps } from '../Tooltip/Tooltip'
 import IconWithText from '../IconWithText/IconWithText'
-import WikiLink from '../WikiLink/WikiLink'
+import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink'
 import ItemDetails from '../ItemDetails/ItemDetails'
 import { useColorModeHighlightSuffix, populateMissingItemAPI } from '../helpers'
 
 export interface ItemProps {
   id: number
   count: number
-  component: object
   data: object
   disableIcon: boolean
   disableText: boolean
   disableLink: boolean
   disableTooltip: boolean
   inline: boolean
-  tooltipProps: object
-  wikiLinkProps: object
+  tooltipProps: TooltipProps
+  wikiLinkProps: WikiLinkProps
   upgrades: string[]
 }
 
 const Item = ({
   id,
   count,
-  component,
   data,
   disableIcon,
   disableText,
@@ -97,11 +95,9 @@ const Item = ({
               color: `#fee49a`,
             },
           },
-          ...rest.iconProps,
         }}
         sx={{
           color: `gw2.rarity.${rarity.toLowerCase()}`,
-          ...rest.sx,
         }}
       />
     </Tooltip>

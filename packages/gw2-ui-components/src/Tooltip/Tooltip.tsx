@@ -5,14 +5,14 @@ import { followCursor } from 'tippy.js/headless'
 import TooltipContainer from '../TooltipContainer/TooltipContainer'
 
 export interface TooltipProps {
-  content: object
+  propsContent: object
   render: object
   containerProps: object
   wrapperProps: object
 }
 
 const Tooltip = ({
-  content,
+  propsContent,
   render,
   containerProps,
   wrapperProps,

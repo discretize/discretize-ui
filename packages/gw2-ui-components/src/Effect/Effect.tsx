@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import Tooltip from '../Tooltip/Tooltip'
 import DetailsHeader from '../DetailsHeader/DetailsHeader'
@@ -56,11 +55,9 @@ const Effect = ({
         {...errorProps}
         style={{
           ...errorProps?.style,
-          ...rest.style,
         }}
         sx={{
           ...errorProps?.sx,
-          ...rest.sx,
         }}
       />
     )
@@ -101,14 +98,11 @@ const Effect = ({
         disableText={disableText}
         inline={inline}
         className={className}
-        {...rest}
         iconProps={{
           name: `${type}.${name}`,
-          ...rest.iconProps,
         }}
         sx={{
           color: `gw2.effect.${camelCase(type)}`,
-          ...rest.sx,
         }}
       />
     </Tooltip>

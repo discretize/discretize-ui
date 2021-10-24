@@ -1,6 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
-import cx from 'classnames'
+import React, { ReactElement } from 'react'
 
 import Tooltip from '../Tooltip/Tooltip'
 import DetailsHeader from '../DetailsHeader/DetailsHeader'
@@ -54,12 +52,10 @@ const Attribute = ({
         {...errorProps}
         {...{
           style: {
-            ...rest.style,
             ...errorProps?.style,
           },
-          className: cx(rest.className, errorProps.className),
+          className: errorProps.className,
           sx: {
-            ...rest.sx,
             ...errorProps?.sx,
           },
         }}
@@ -101,11 +97,9 @@ const Attribute = ({
         inline={inline}
         iconProps={{
           name: `Attribute.${name}`,
-          ...rest.iconProps,
         }}
         sx={{
           color: `gw2.attribute`,
-          ...rest.sx,
         }}
       />
     </Tooltip>

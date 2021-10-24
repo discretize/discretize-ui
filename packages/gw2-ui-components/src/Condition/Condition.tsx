@@ -15,7 +15,7 @@ const Condition = ({ name, count }: ConditionProps): ReactElement => {
       type="Condition"
       name={name}
       description={conditions[name]}
-      iconProps={{ applyCount: count, ...rest.iconProps }}
+      iconProps={{ applyCount: count }}
     />
   )
 }

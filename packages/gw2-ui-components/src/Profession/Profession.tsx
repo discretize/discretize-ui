@@ -1,13 +1,12 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
-import cx from 'classnames'
+import React, { ReactElement } from 'react'
 
 import IconWithText from '../IconWithText/IconWithText'
-import WikiLink from '../WikiLink/WikiLink'
-import Error from '../Error/Error'
+import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink'
+import Error, { ErrorProps } from '../Error/Error'
 
 import professions from '../data/professions.json'
 import { useColorModeHighlightSuffix } from '../helpers'
+import { TooltipProps } from '../Tooltip/Tooltip'
 
 export interface ProfessionProps {
   name: string
@@ -17,9 +16,9 @@ export interface ProfessionProps {
   disableIcon: boolean
   disableLink: boolean
   inline: boolean
-  tooltipProps: object
-  wikiLinkProps: object
-  errorProps: object
+  tooltipProps: TooltipProps
+  wikiLinkProps: WikiLinkProps
+  errorProps: ErrorProps
 }
 
 const Profession = ({
@@ -67,12 +66,10 @@ const Profession = ({
         {...errorProps}
         {...{
           style: {
-            ...rest.style,
             ...errorProps?.style,
           },
-          className: cx(rest.className, errorProps.className),
+          className: errorProps.className,
           sx: {
-            ...rest.sx,
             ...errorProps?.sx,
           },
         }}
@@ -103,14 +100,11 @@ const Profession = ({
       disableIcon={disableIcon}
       disableText={disableText}
       inline={inline}
-      {...rest}
       iconProps={{
         name: `Profession.${eliteSpecialization || name}`,
-        ...rest.iconProps,
       }}
       sx={{
         color: `gw2.profession.${name.toLowerCase()}`,
-        ...rest.sx,
       }}
     />
   )

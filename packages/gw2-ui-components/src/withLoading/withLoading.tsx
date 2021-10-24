@@ -97,7 +97,7 @@ export default ({
         )
       }
 
-      return <Component />
+      return <div />
     }
 
     return WithLoading

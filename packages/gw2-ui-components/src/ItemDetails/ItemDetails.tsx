@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import withLoading from '../withLoading/withLoading'
 import DetailsHeader from '../DetailsHeader/DetailsHeader'
@@ -127,7 +126,7 @@ const ItemDetails = ({}): ReactElement => {
   }, [])
 
   return (
-    <div {...rest} ref={ref}>
+    <div>
       <DetailsHeader
         icon={icon}
         iconProps={{

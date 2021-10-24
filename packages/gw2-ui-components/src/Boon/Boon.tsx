@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 import Effect from '../Effect/Effect'
 
@@ -16,7 +15,7 @@ const Boon = ({ name, count }: BoonProps): ReactElement => {
       type="Boon"
       name={name}
       description={boons[name]}
-      iconProps={{ applyCount: count, ...rest.iconProps }}
+      iconProps={{ applyCount: count }}
     />
   )
 }

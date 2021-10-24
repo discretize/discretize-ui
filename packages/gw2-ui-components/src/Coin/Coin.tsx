@@ -26,7 +26,7 @@ const Coin = ({ Component, value }: CoinProps): ReactElement => {
   copper %= 100
 
   return (
-    <Component
+    <div
       sx={{
         fontFamily: 'gw2.body',
         fontWeight: 'gw2.body',
@@ -69,7 +69,7 @@ const Coin = ({ Component, value }: CoinProps): ReactElement => {
         </span>
         <Icon src={copperImg} gutterLeft />
       </>
-    </Component>
+    </div>
   )
 }
 

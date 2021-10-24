@@ -1,5 +1,4 @@
 import React, { forwardRef, useState, useEffect, ReactElement } from 'react'
-import PropTypes from 'prop-types'
 import useResizeAware from 'react-resize-aware'
 import { keyframes } from '@emotion/core'
 

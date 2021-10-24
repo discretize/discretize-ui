@@ -54,13 +54,10 @@ const Specialization = ({
       disableIcon={disableIcon}
       disableText={disableText}
       inline={inline}
-      {...rest}
-      iconProps={{ hexagon: true, ...rest.iconProps }}
+      iconProps={{ hexagon: true }}
       sx={{
         color: `gw2.profession.${profession.toLowerCase()}`,
-        ...rest.sx,
       }}
-      ref={ref}
     />
   )
 }

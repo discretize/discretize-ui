@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 import { useColorModeHighlightSuffix } from '../helpers'
 
 // https://wiki.guildwars2.com/wiki/Template:Language
@@ -35,7 +34,7 @@ const WikiLink = ({ component, to, lang }: WikiLinkProps): ReactElement => {
   const highlightSuffix = useColorModeHighlightSuffix()
 
   return (
-    <Component
+    <div
       sx={{
         color: 'primary',
         textDecoration: 'none',
@@ -51,7 +50,7 @@ const WikiLink = ({ component, to, lang }: WikiLinkProps): ReactElement => {
       rel="noreferrer noopener nofollow"
     >
       {to}
-    </Component>
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
-import React, { forwardRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 import { keyframes } from '@emotion/core'
 
 const progress = keyframes({
@@ -16,9 +15,9 @@ export interface ProgressProps {
   inline: boolean
 }
 
-const Progress = ({ component, inline }: ProgressProps): ProgressProps => {
+const Progress = ({ component, inline }: ProgressProps): ReactElement => {
   return (
-    <Component
+    <div
       sx={{
         display: 'inline-flex',
         alignItems: 'flex-end',

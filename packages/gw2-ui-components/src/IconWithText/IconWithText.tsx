@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 
-import Icon from '../Icon/Icon'
-import Progress from '../Progress/Progress'
+import Icon, { IconProps } from '../Icon/Icon'
+import Progress, { ProgressProps } from '../Progress/Progress'
 
 export interface IconWithTextProps {
   icon: string | ReactElement //TODO verify
@@ -10,9 +10,9 @@ export interface IconWithTextProps {
   disableIcon: boolean
   disableText: boolean
   inline: boolean
-  iconProps: object
+  iconProps: IconProps
   textProps: object
-  progressProps: object
+  progressProps: ProgressProps
   loading: boolean
 }
 
@@ -29,7 +29,7 @@ const IconWithText = ({
   loading,
 }: IconWithTextProps): ReactElement => {
   return (
-    <Component
+    <div
       sx={{
         color: 'text',
         fontFamily: 'gw2.body',
@@ -77,7 +77,7 @@ const IconWithText = ({
         ) : (
           icon
         ))}
-    </Component>
+    </div>
   )
 }
 

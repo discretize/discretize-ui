@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react'
-import PropTypes from 'prop-types'
 
 import Skill from '../Skill/Skill'
 import axios from 'axios'

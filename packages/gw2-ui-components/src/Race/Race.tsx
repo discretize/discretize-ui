@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react'
-import cx from 'classnames'
 
 import IconWithText from '../IconWithText/IconWithText'
 import WikiLink from '../WikiLink/WikiLink'
@@ -37,12 +36,10 @@ const Race = (): ReactElement => {
         {...errorProps}
         {...{
           style: {
-            ...rest.style,
             ...errorProps?.style,
           },
-          className: cx(rest.className, errorProps.className),
+          className: errorProps.className,
           sx: {
-            ...rest.sx,
             ...errorProps?.sx,
           },
         }}
@@ -52,7 +49,6 @@ const Race = (): ReactElement => {
 
   return (
     <IconWithText
-      component={component}
       text={
         disableLink ? (
           name
@@ -73,16 +69,12 @@ const Race = (): ReactElement => {
       disableIcon={disableIcon}
       disableText={disableText}
       inline={inline}
-      {...rest}
       iconProps={{
         name: `Race.${name}`,
-        ...rest.iconProps,
       }}
       sx={{
         color: `gw2.race.${name.toLowerCase()}`,
-        ...rest.sx,
       }}
-      ref={ref}
     />
   )
 }

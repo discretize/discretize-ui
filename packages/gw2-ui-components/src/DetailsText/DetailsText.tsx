@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement } from 'react'
 
 const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g')
 
@@ -64,23 +63,17 @@ export interface DetailsProps {
   lineProps: object
 }
 
-const DetailsText = ({
-  component,
-  lines,
-  lineComponent,
-  lineProps,
-}: DetailsProps): ReactElement => {
+const DetailsText = ({ lines, lineProps }: DetailsProps): ReactElement => {
   return (
-    <Component>
+    <div>
       {lines
         .filter((line) => !!line)
         .map((line, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <LineComponent key={index} {...lineProps}>
+          <div key={index} {...lineProps}>
             {React.isValidElement(line) ? line : renderFlavor(line)}
-          </LineComponent>
+          </div>
         ))}
-    </Component>
+    </div>
   )
 }
 

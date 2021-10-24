@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 
 import withLoading from '../withLoading/withLoading'
-import Tooltip from '../Tooltip/Tooltip'
+import Tooltip, { TooltipProps } from '../Tooltip/Tooltip'
 import IconWithText from '../IconWithText/IconWithText'
-import WikiLink from '../WikiLink/WikiLink'
+import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink'
 import AbilityDetails from '../AbilityDetails/AbilityDetails'
 import { useColorModeHighlightSuffix } from '../helpers'
 
@@ -16,8 +16,8 @@ export interface SkillProps {
   disableLink: boolean
   disableTooltip: boolean
   inline: boolean
-  tooltipProps: object
-  wikiLinkProps: object
+  tooltipProps: TooltipProps
+  wikiLinkProps: WikiLinkProps
 }
 
 export interface SkillDataProps {
@@ -73,10 +73,9 @@ const Skill = ({
         disableIcon={disableIcon}
         disableText={disableText}
         inline={inline}
-        iconProps={{ zoom: 5, ...rest.iconProps }}
+        iconProps={{ zoom: 5 }}
         sx={{
           color: `gw2.profession.${profession}`,
-          ...rest.sx,
         }}
       />
     </Tooltip>

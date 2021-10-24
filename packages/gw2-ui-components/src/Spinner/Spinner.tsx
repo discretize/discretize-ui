@@ -20,7 +20,7 @@ const Spinner = ({
   component,
   inline
 }: SpinnerProps): ReactElement => (
-  <Component
+  <div
     sx={{
       display: 'inline-flex',
       size: `1em`,

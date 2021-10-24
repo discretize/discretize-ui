@@ -1,12 +1,10 @@
-import React, {
-  forwardRef,
+import React, {\
   Fragment,
   useState,
   useCallback,
   useEffect,
   ReactElement,
-} from 'react'
-import PropTypes from 'prop-types'
+} from 'react'\
 
 import withLoading from '../withLoading/withLoading'
 import Tooltip from '../Tooltip/Tooltip'
@@ -16,9 +14,8 @@ import TraitLineConnector, {
 } from '../TraitLineConnector/TraitLineConnector'
 
 // eslint-disable-next-line react/prop-types
-const renderTraitLineConnector = ({ css, ...rest } = {}) => (
+const renderTraitLineConnector = ({ css } = {}) => (
   <TraitLineConnector
-    {...rest}
     css={{
       alignSelf: 'stretch',
       flexGrow: 1,
@@ -191,7 +188,7 @@ const TraitLine = ({
           }}
         />
       ),
-      [TraitComponent, controlled, selectable, ...selected],
+      [controlled, selectable, ...selected],
     )
 
     return (

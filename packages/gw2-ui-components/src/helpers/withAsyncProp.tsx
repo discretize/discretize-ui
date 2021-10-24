@@ -46,7 +46,7 @@ export default (transformProps, keys) => (Component) => {
 
     render = () => {
       const { forwardedRef, ...rest } = this.props
-      return <Component ref={forwardedRef} {...rest} {...this.state} />
+      return <div ref={forwardedRef} {...rest} {...this.state} />
     }
   }
 

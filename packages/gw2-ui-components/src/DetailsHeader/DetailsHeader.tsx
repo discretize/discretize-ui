@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
+import React, { PropsWithChildren, ReactElement } from 'react'
 
-import Icon from '../Icon/Icon'
+import Icon, { IconProps } from '../Icon/Icon'
 import DetailsHeaderTitle from '../DetailsHeaderTitle/DetailsHeaderTitle'
 
 export interface DetailsHeaderFlagProps {
@@ -10,7 +10,7 @@ export interface DetailsHeaderFlagProps {
 
 export interface DetailsHeaderProps {
   icon: string
-  iconProps: object
+  iconProps: IconProps
   titleProps: object
   flags: DetailsHeaderFlagProps[]
 }
@@ -20,7 +20,8 @@ const DetailsHeader = ({
   iconProps,
   titleProps,
   flags,
-}: DetailsHeaderProps): ReactElement => {
+  children,
+}: PropsWithChildren<DetailsHeaderProps>): ReactElement => {
   return (
     <div sx={{ display: 'flex', flexDirection: 'row', mb: '3px' }}>
       {typeof icon === 'string' || iconProps?.src || iconProps?.name ? (

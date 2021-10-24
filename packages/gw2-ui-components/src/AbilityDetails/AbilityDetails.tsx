@@ -9,8 +9,16 @@ import Spinner from '../Spinner/Spinner'
 const axios = require('axios')
 
 export interface AbilityDetailsProps {
-  data: object
+  data: AbilityDetailsDataProps
   type: string
+}
+
+export interface AbilityDetailsDataProps {
+  name: string
+  id: string
+  description: string
+  categories: string[]
+  facts: string[]
 }
 
 // type is "skills" or "traits"

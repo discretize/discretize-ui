@@ -4,7 +4,20 @@ import Icon from '../Icon/Icon'
 import { apiAttributes, formatDuration } from '../helpers'
 
 export interface DetailsFactProps {
-  data: object
+  data: DetailsFactDataProps
+}
+
+export interface DetailsFactDataProps {
+  type: string
+  icon: string
+  prefix: string
+  value: string
+  target: string
+  text: string
+  duration: string
+  status: string
+  description: string
+  apply_count: string
 }
 
 const DetailsFact = ({ data }: DetailsFactProps): ReactElement => {
