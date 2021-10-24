@@ -1,10 +1,11 @@
 import GW2ApiFact from '../common/fact'
 import GW2ApiSkillFlag from './flag'
 import GW2ApiTraitedFact from '../common/traited_fact'
-import GW2ApiProfession from './profession'
+import GW2ApiProfession from '../common/profession'
 import GW2ApiSkillAttunement from './attunement'
 import GW2ApiSkillType from './skillType'
 import GW2ApiSlot from './slot'
+import GW2ApiWeaponType from '../common/weaponType'
 
 interface GW2ApiSkill {
   id: number
@@ -13,7 +14,7 @@ interface GW2ApiSkill {
   icon: string
   chat_link: string
   type?: GW2ApiSkillType
-  weapon_type?: string
+  weapon_type?: GW2ApiWeaponType | 'None'
   professions: GW2ApiProfession[]
   slot?: GW2ApiSlot
   facts?: GW2ApiFact[]

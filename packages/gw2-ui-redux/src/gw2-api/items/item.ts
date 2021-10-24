@@ -1,5 +1,5 @@
 import GW2ApiGameType from '../common/gameType'
-import GW2ApiItemDetails from './details'
+import GW2ApiItemDetails from './details/details'
 import GW2ApiItemRarity from './rarity'
 import GW2ApiItemType from './type'
 import GW2ApiRestriction from './restriction'

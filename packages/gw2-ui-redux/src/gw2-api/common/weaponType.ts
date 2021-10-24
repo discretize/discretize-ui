@@ -23,7 +23,6 @@ const WEAPON_TYPES = [
   'SmallBundle',
   'Toy',
   'ToyTwoHanded',
-  'None',
 ] as const
 type GW2ApiWeaponType = typeof WEAPON_TYPES[number]
 
