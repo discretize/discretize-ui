@@ -1,12 +1,12 @@
-import ValueOf from "./valueOf";
+import ValueOf from './valueOf'
 
-export type ItemCategoryName = ValueOf<ItemCategoryNames>;
+export type ItemCategoryName = ValueOf<ItemCategoryNames>
 
 export interface ItemCategoryNames {
-  ARMOR: string;
-  TRINKET: string;
-  BACK: string;
-  WEAPON: string;
+  ARMOR: string
+  TRINKET: string
+  BACK: string
+  WEAPON: string
 }
 
 const itemCategoryNames: ItemCategoryNames = {
@@ -16,4 +16,4 @@ const itemCategoryNames: ItemCategoryNames = {
   WEAPON: 'Weapon',
 }
 
-export default itemCategoryNames;
+export default itemCategoryNames

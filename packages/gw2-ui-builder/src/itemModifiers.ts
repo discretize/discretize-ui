@@ -4,35 +4,37 @@ import ITEM_RARITIES, { ItemRarity } from './itemRarities'
 import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes'
 import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights'
 
-export type ItemModifier = number;
+export type ItemModifier = number
 
-export type ItemModifierAttribute = [ItemModifier] | [ItemModifier, ItemModifier]
+export type ItemModifierAttribute =
+  | [ItemModifier]
+  | [ItemModifier, ItemModifier]
 
 export interface ItemModifierAttributes {
-  [itemStatType: ItemStatType]: ItemModifierAttribute;
+  [itemStatType: ItemStatType]: ItemModifierAttribute
 }
 
 export interface ItemModifierDefense {
-  [itemArmorWeight: ItemArmorWeight]: ItemModifier;
+  [itemArmorWeight: ItemArmorWeight]: ItemModifier
 }
 
 export interface ItemModifiers {
-  attributes: ItemModifierAttributes;
-  defense?: ItemModifierDefense | ItemModifier;
-  minPower?: ItemModifier;
-  maxPower?: ItemModifier;
+  attributes: ItemModifierAttributes
+  defense?: ItemModifierDefense | ItemModifier
+  minPower?: ItemModifier
+  maxPower?: ItemModifier
 }
 
 export interface ItemModifierType {
-  [itemRarity: ItemRarity]: ItemModifiers;
+  [itemRarity: ItemRarity]: ItemModifiers
 }
 
 export interface ItemModifierCategory {
-  [itemTypeName: ItemTypeName]: ItemModifierType;
+  [itemTypeName: ItemTypeName]: ItemModifierType
 }
 
 export interface ItemModifiersCollection {
-  [itemCategory: ItemCategoryName]: ItemModifierCategory;
+  [itemCategory: ItemCategoryName]: ItemModifierCategory
 }
 
 const itemModifiers: ItemModifiersCollection = {
@@ -347,4 +349,4 @@ const itemModifiers: ItemModifiersCollection = {
   },
 }
 
-export default itemModifiers;
+export default itemModifiers
