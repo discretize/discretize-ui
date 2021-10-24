@@ -1,29 +1,12 @@
-const WEAPON_TYPES = [
-  // Reference: https://wiki.guildwars2.com/wiki/API:2/items#Weapon
-  'Axe',
-  'Dagger',
-  'Mace',
-  'Pistol',
-  'Scepter',
-  'Sword',
-  'Focus',
-  'Shield',
-  'Torch',
-  'Warhorn',
-  'Greatsword',
-  'Hammer',
-  'LongBow',
-  'Rifle',
-  'ShortBow',
-  'Staff',
-  'Harpoon',
-  'Speargun',
-  'Trident',
-  'LargeBundle',
-  'SmallBundle',
-  'Toy',
-  'ToyTwoHanded',
-] as const
-type GW2ApiWeaponType = typeof WEAPON_TYPES[number]
+import GW2ApiOneHandedWeaponType from './weaponType/oneHanded'
+import GW2ApiTwoHandedWeaponType from './weaponType/twoHanded'
+import GW2ApiAquaticWeaponType from './weaponType/aquatic'
+import GW2ApiOtherWeaponType from './weaponType/other'
+
+type GW2ApiWeaponType =
+  | GW2ApiOneHandedWeaponType
+  | GW2ApiTwoHandedWeaponType
+  | GW2ApiAquaticWeaponType
+  | GW2ApiOtherWeaponType
 
 export default GW2ApiWeaponType
