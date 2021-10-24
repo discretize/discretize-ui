@@ -8,13 +8,3 @@ export {
   fetchSpecialization,
   fetchTrait,
 } from './actions'
-export {
-  FETCH_ITEM,
-  FETCH_ITEMS,
-  FETCH_SKILL,
-  FETCH_SKILLS,
-  FETCH_SPECIALIZATION,
-  FETCH_SPECIALIZATIONS,
-  FETCH_TRAIT,
-  FETCH_TRAITS,
-} from './constants'

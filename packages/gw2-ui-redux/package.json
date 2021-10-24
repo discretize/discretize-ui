@@ -37,8 +37,7 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.1",
-    "function-batch": "^1.1.2"
+    "@reduxjs/toolkit": "^1.6.1"
   },
   "devDependencies": {
     "@babel/cli": "7.15.4",

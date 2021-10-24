@@ -1,20 +1,27 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+export 
+
+export interface GW2UiSliceState {
+  
+}
 
 /**
  * Adds an id to a [names]'s collection of ids for a page (action.payload.page)
  * @param {String} name the type of component that should be appended at
  * @returns
  */
-const add = (name, type) => (state, action) => {
-  const array = state[type][name]
+const add =
+  (name: string, type: string) => (state: State, action: PayloadAction) => {
+    const array = state[type][name]
 
-  // dont add duplicates
-  if (!array.find((a) => a.id === action.payload.id)) {
-    // eslint-disable-next-line no-param-reassign
-    state[type][name] = array.concat(action.payload)
+    // dont add duplicates
+    if (!array.find((a) => a.id === action.payload.id)) {
+      // eslint-disable-next-line no-param-reassign
+      state[type][name] = array.concat(action.payload)
+    }
   }
-}
 
 const gw2uiSlice = createSlice({
   name: 'gw2-ui-data',

@@ -10,7 +10,7 @@ import {
   addTrait,
   addTraitError,
 } from './gw2-ui-slice'
-import { BASE_URL } from './constants'
+import BASE_URL from './constants'
 
 const addGeneric = (add, addError, name) => (ids, dispatch) => {
   const cleaned = ids
