@@ -1,7 +1,7 @@
 import GW2ApiDamageType from '../../common/damageType'
 import GW2ApiWeaponType from '../../common/weaponType'
 import GW2ApiInfixUpgrade from './common/infixUpgrade'
-import GW2ApiInflusionSlots from './common/infusionSlots'
+import GW2ApiInflusionSlot from './common/infusionSlot'
 
 interface GW2ApiWeaponDetails {
   type: GW2ApiWeaponType
@@ -9,7 +9,7 @@ interface GW2ApiWeaponDetails {
   min_power: number
   max_power: number
   defense: number
-  infusion_slots: GW2ApiInflusionSlots[]
+  infusion_slots: GW2ApiInflusionSlot[]
   attribute_adjustment: number
   infix_upgrade?: GW2ApiInfixUpgrade
   suffix_item_id?: number
