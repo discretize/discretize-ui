@@ -1,10 +1,41 @@
-import ITEM_CATEGORIES from './itemCategoryNames'
-import ITEM_TYPE_NAMES from './itemTypeNames'
-import ITEM_RARITIES from './itemRarities'
-import ITEM_STAT_TYPES from './itemStatTypes'
-import ITEM_ARMOR_WEIGHTS from './itemArmorWeights'
+import ITEM_CATEGORIES, { ItemCategoryName } from './itemCategoryNames'
+import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames'
+import ITEM_RARITIES, { ItemRarity } from './itemRarities'
+import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes'
+import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights'
 
-export default {
+export type ItemModifier = number;
+
+export type ItemModifierAttribute = [ItemModifier] | [ItemModifier, ItemModifier]
+
+export interface ItemModifierAttributes {
+  [itemStatType: ItemStatType]: ItemModifierAttribute;
+}
+
+export interface ItemModifierDefense {
+  [itemArmorWeight: ItemArmorWeight]: ItemModifier;
+}
+
+export interface ItemModifiers {
+  attributes: ItemModifierAttributes;
+  defense?: ItemModifierDefense | ItemModifier;
+  minPower?: ItemModifier;
+  maxPower?: ItemModifier;
+}
+
+export interface ItemModifierType {
+  [itemRarity: ItemRarity]: ItemModifiers;
+}
+
+export interface ItemModifierCategory {
+  [itemTypeName: ItemTypeName]: ItemModifierType;
+}
+
+export interface ItemModifiersCollection {
+  [itemCategory: ItemCategoryName]: ItemModifierCategory;
+}
+
+const itemModifiers: ItemModifiersCollection = {
   [ITEM_CATEGORIES.ARMOR]: {
     [ITEM_TYPE_NAMES.HELM]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -315,3 +346,5 @@ export default {
     },
   },
 }
+
+export default itemModifiers;

@@ -1,8 +1,23 @@
-import ITEM_STAT_NAMES from './itemStatNames'
-import ITEM_STAT_TYPES from './itemStatTypes'
-import ATTRIBUTES from './attributes'
+import ITEM_STAT_NAMES, { ItemStatName } from './itemStatNames'
+import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes'
+import ATTRIBUTES, { Attribute } from './attributes'
 
-export default {
+export type RegularItemBonuses = [[Attribute], [Attribute, Attribute]];
+export type MixedItemBonuses = [[Attribute, Attribute], [Attribute, Attribute]];
+export type CelestialItemBonuses = [[Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute, Attribute]];
+
+export type ItemBonuses = RegularItemBonuses | MixedItemBonuses | CelestialItemBonuses;
+
+export interface ItemStat {
+  type: ItemStatType;
+  bonuses: ItemBonuses;
+}
+
+export interface ItemStats {
+  [itemStatName: ItemStatName]: ItemStat;
+}
+
+const itemStats: ItemStats = {
   [ITEM_STAT_NAMES.BERSERKER]: {
     type: ITEM_STAT_TYPES.TRIPLE,
     bonuses: [[ATTRIBUTES.POWER], [ATTRIBUTES.PRECISION, ATTRIBUTES.FEROCITY]],
@@ -336,3 +351,5 @@ export default {
     ],
   },
 }
+
+export default itemStats;

@@ -1,39 +1,26 @@
+var nodeExternals = require('webpack-node-externals');
+
 module.exports = {
-  output: {
-    library: 'Gw2UiRedux',
-    libraryTarget: 'umd',
-    globalObject: 'this',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        options: {
-          rootMode: 'upward',
-        },
-      },
-    ],
-  },
-  externals: {
-    axios: {
-      root: 'Axios',
-      commonjs: 'axios',
-      commonjs2: 'axios',
-      amd: 'axios',
+    target: 'node',
+    externalsPresets: {
+        node: true // in order to ignore built-in modules like path, fs, etc. 
     },
-    redux: {
-      root: 'Redux',
-      commonjs: 'redux',
-      commonjs2: 'redux',
-      amd: 'redux',
+    output: {
+        library: 'Gw2UiRedux',
+        libraryTarget: 'umd',
+        globalObject: 'this',
     },
-    reselect: {
-      root: 'Reselect',
-      commonjs: 'reselect',
-      commonjs2: 'reselect',
-      amd: 'reselect',
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                options: {
+                    rootMode: 'upward',
+                },
+            },
+        ],
     },
-  },
-  devtool: 'source-map',
+    externals: [nodeExternals()],
+    devtool: 'source-map',
 }
