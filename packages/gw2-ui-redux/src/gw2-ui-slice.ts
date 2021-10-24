@@ -1,10 +1,43 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 
-export 
+export type GW2UiSliceValueName =
+  | 'items'
+  | 'skills'
+  | 'specializations'
+  | 'traits'
+
+export type GW2UiSliceTypeName = keyof GW2UiSliceState
+
+interface GW2UiSliceData {
+  id: number
+}
+
+export interface GW2UiSliceIdentifier extends GW2UiSliceData {}
+
+export interface GW2UiSliceIdentifiers {
+  items: GW2UiSliceIdentifier[]
+  skills: GW2UiSliceIdentifier[]
+  specializations: GW2UiSliceIdentifier[]
+  traits: GW2UiSliceIdentifier[]
+}
+
+export interface GW2UiSliceError extends GW2UiSliceData {
+  code: string
+  message: string
+  name: string
+}
+
+export interface GW2UiSliceErrors {
+  items: GW2UiSliceError[]
+  skills: GW2UiSliceError[]
+  specializations: GW2UiSliceError[]
+  traits: GW2UiSliceError[]
+}
 
 export interface GW2UiSliceState {
-  
+  ids: GW2UiSliceIdentifiers
+  errors: GW2UiSliceErrors
 }
 
 /**
@@ -13,11 +46,12 @@ export interface GW2UiSliceState {
  * @returns
  */
 const add =
-  (name: string, type: string) => (state: State, action: PayloadAction) => {
-    const array = state[type][name]
+  (name: GW2UiSliceValueName, type: GW2UiSliceTypeName) =>
+  (state: GW2UiSliceState, action: PayloadAction<GW2UiSliceData>) => {
+    const array: GW2UiSliceData[] = state[type][name]
 
-    // dont add duplicates
-    if (!array.find((a) => a.id === action.payload.id)) {
+    // don't add duplicates
+    if (!array.find((a: GW2UiSliceData) => a.id === action.payload.id)) {
       // eslint-disable-next-line no-param-reassign
       state[type][name] = array.concat(action.payload)
     }
