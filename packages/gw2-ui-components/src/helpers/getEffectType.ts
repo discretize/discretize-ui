@@ -18,5 +18,5 @@ const effects = {
   'Mistlock Instability': Object.keys(mistlockInstabilities),
 }
 
-export default (name) =>
+export default (name: string) =>
   (Object.entries(effects).find(([, names]) => names.includes(name)) || [])[0]

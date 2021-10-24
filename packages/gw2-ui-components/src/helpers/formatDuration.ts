@@ -1,4 +1,4 @@
-export default (value) => {
+export default (value: number) => {
   let seconds = value
 
   const weeks = Math.floor(seconds / 604800)

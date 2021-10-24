@@ -83,7 +83,7 @@ const progression = [
 
 const primaryAttributes = ['Power', 'Precision', 'Toughness', 'Vitality']
 
-export default (level) => {
+export default (level: number) => {
   if (!level) {
     return {}
   }

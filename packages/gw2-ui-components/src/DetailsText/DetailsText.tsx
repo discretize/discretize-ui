@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, ReactElement } from 'react'
 import PropTypes from 'prop-types'
 
 const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g')
@@ -57,18 +57,21 @@ const renderFlavor = (text) => {
   )
 }
 
-const DetailsText = forwardRef(
-  (
-    {
-      component: Component,
-      lineComponent: LineComponent,
-      lineProps,
-      lines,
-      ...rest
-    },
-    ref,
-  ) => (
-    <Component {...rest} ref={ref}>
+export interface DetailsProps {
+  component: object
+  lines: object
+  lineComponent: object
+  lineProps: object
+}
+
+const DetailsText = ({
+  component,
+  lines,
+  lineComponent,
+  lineProps,
+}: DetailsProps): ReactElement => {
+  return (
+    <Component>
       {lines
         .filter((line) => !!line)
         .map((line, index) => (
@@ -78,22 +81,7 @@ const DetailsText = forwardRef(
           </LineComponent>
         ))}
     </Component>
-  ),
-)
-
-DetailsText.propTypes = {
-  component: PropTypes.elementType,
-  lines: PropTypes.arrayOf(PropTypes.node).isRequired,
-  lineComponent: PropTypes.elementType,
-  lineProps: PropTypes.object,
+  )
 }
-
-DetailsText.defaultProps = {
-  component: 'div',
-  lineComponent: 'div',
-  lineProps: {},
-}
-
-DetailsText.displayName = 'DetailsText'
 
 export default DetailsText
