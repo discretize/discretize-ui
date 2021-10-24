@@ -39,16 +39,10 @@
     "watch": "run-s \"build:es --watch\""
   },
   "dependencies": {
-<<<<<<< HEAD
+    "@redux-requests/react": "^1.0.0",
     "gw2-ui-builder-bulk": "^0.2.4",
     "gw2-ui-components-bulk": "^0.12.8",
     "gw2-ui-redux-bulk": "^0.5.13"
-=======
-    "@redux-requests/react": "^1.0.0",
-    "gw2-ui-builder": "^0.2.0",
-    "gw2-ui-components": "^0.11.0",
-    "gw2-ui-redux": "^0.4.2"
->>>>>>> upstream/master
   },
   "devDependencies": {
     "@babel/cli": "7.15.4",
