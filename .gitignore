@@ -1,0 +1,17 @@
+node_modules/
+_backup/
+.idea/
+dist/
+misc/
+.history
+.cache
+public/
+
+src/.idea
+install.bat
+*.iml
+
+.DS_Store
+
+.vscode/
+jsconfig.json

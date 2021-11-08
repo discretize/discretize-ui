@@ -1,0 +1,37 @@
+{
+  "name": "react-discretize-components",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The source repo for common react components of discretize projects",
+  "main": "index.js",
+  "author": "gw2princeps",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "babel src/* -d dist --copy-files",
+    "publish:npm": "rm -rf dist && mkdir dist && babel src/* -d dist --copy-files",
+    "build": "yarn prebuild && NODE_ENV=production webpack",
+    "prebuild": "mkdir -p ./lib && rm -rf ./lib/*"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
