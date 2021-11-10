@@ -1,9 +1,9 @@
-import Character from "./character/Character.jsx";
-import Armor from "./character/Armor.jsx";
-import Attributes from "./character/Attributes.jsx";
-import BackAndTrinkets from "./character/BackAndTrinkets.jsx";
-import Consumables from "./character/Consumables.jsx";
-import Skills from "./character/Skills.jsx";
+import Character from "./character/Character";
+import Armor from "./character/Armor";
+import Attributes from "./character/Attributes";
+import BackAndTrinkets from "./character/BackAndTrinkets";
+import Consumables from "./character/Consumables";
+import Skills from "./character/Skills";
 import Weapons from "./character/Weapons.jsx";
 
 import iconSizes from "./helpers/iconSizes.js";

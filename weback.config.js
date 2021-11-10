@@ -1,69 +1,29 @@
-// webpack.config.js
-
-/* eslint-disable */
 const path = require("path");
-const webpack = require("webpack");
-
-const ENVIRONMENT = process.env.NODE_ENV;
-const PRODUCTION = ENVIRONMENT === "production";
-const SOURCEMAP = !PRODUCTION || process.env.SOURCEMAP;
-
-const library = "react-discretize-components";
-const filename = PRODUCTION ? `${library}.min.js` : `${library}.js`;
-
-const plugins = [];
-
-if (PRODUCTION) {
-  plugins.push(
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(ENVIRONMENT),
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      output: { comments: false, semicolons: false },
-      sourceMap: SOURCEMAP,
-    })
-  );
-}
 
 module.exports = {
-  devtool: SOURCEMAP ? "source-map" : "none",
-  entry: `${__dirname}/index.js`,
-  externals: {
-    react: "react",
-    "react-dom": "react-dom",
+  //Where files should be sent once they are bundled
+  output: {
+    path: path.join(__dirname, "/dist"),
+    filename: "index.bundle.js",
+  },
+  //webpack 5 comes with devServer which loads in development mode
+  devServer: {
+    port: 3000,
+    watchContentBase: true,
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
+  //Rules of how webpack will take our files, complie & bundle them for the browser
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: [["@babel/preset-env", { targets: "defaults" }]],
-          },
         },
       },
     ],
-    loaders: [
-      {
-        test: /\.js$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-      },
-    ],
   },
-  output: {
-    filename,
-    library,
-    path: `${__dirname}/lib`,
-    libraryTarget: "umd",
-    umdNamedDefine: true,
-  },
-  plugins,
 };
