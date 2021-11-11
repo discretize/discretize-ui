@@ -8,7 +8,7 @@ import {
 import classNames from "classnames";
 import React from "react";
 import { Skill } from "gw2-ui-bulk";
-import NoSelection from "../NoSelection";
+import NoSelection from "../NoSelection.jsx";
 
 const useStyles = makeStyles((theme) => ({
   grid: {

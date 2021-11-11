@@ -8,8 +8,8 @@ import {
 } from "@material-ui/core";
 import { Icon, Item } from "gw2-ui-bulk";
 import React from "react";
-import NoSelection from "../NoSelection";
-import TextDivider from "../TextDivider";
+import NoSelection from "../NoSelection.jsx";
+import TextDivider from "../TextDivider.jsx";
 
 const useStyles = makeStyles((theme) => ({
   listItem: {

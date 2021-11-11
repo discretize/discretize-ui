@@ -7,13 +7,13 @@ import {
 } from "@material-ui/core";
 import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import Skills from "./Skills";
-import Legends from "./Legends";
-import Armor from "./Armor";
-import Attributes from "./Attributes";
-import BackAndTrinkets from "./BackAndTrinkets";
-import Consumables from "./Consumables";
-import Weapons from "./Weapons";
+import Skills from "./Skills.jsx";
+import Legends from "./Legends.jsx";
+import Armor from "./Armor.jsx";
+import Attributes from "./Attributes.jsx";
+import BackAndTrinkets from "./BackAndTrinkets.jsx";
+import Consumables from "./Consumables.jsx";
+import Weapons from "./Weapons.jsx";
 
 const useStyles = makeStyles((theme) => ({
   section: {
