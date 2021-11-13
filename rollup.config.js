@@ -1,4 +1,3 @@
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 import babel from "@rollup/plugin-babel";
@@ -9,7 +8,7 @@ export default {
   input: "src/index.js",
   output: {
     file: "dist/bundle.js",
-    format: "umd",
+    format: "es",
     sourcemap: true,
     name: "discretizeComponents",
   },
