@@ -13,8 +13,16 @@ export default {
     sourcemap: true,
     name: "discretizeComponents",
   },
+  external: [
+    "@material-ui/core",
+    "gw2-ui-bulk",
+    "gatsby-plugin-image",
+    "gw2-ui-components-bulk",
+    "classnames",
+    "react",
+  ],
   plugins: [
-    peerDepsExternal(), // declares peer deps as external for rollup
+    // peerDepsExternal(),  // declares peer deps as external for rollup
     resolve(),
     babel({
       presets: ["@babel/preset-react"],
