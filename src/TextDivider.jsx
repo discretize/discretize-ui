@@ -1,6 +1,5 @@
-import { makeStyles } from '@material-ui/core'
-import classNames from 'classnames'
-import React from 'react'
+import { makeStyles } from '@material-ui/core';
+import classNames from 'classnames';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 2,
     lineHeight: '1.35417em',
   },
-}))
+}));
 
 const TextDivider = ({ className, text, children }) => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <div className={classNames(classes.root, className)}>
@@ -36,6 +35,6 @@ const TextDivider = ({ className, text, children }) => {
       <div className={classes.content}>{text || children}</div>
       <div className={classes.divider} />
     </div>
-  )
-}
-export default TextDivider
+  );
+};
+export default TextDivider;

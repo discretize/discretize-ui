@@ -10,35 +10,46 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && rollup -c --environment BUILD:production",
-    "serve": "rollup -c -w"
+    "build": "del-cli dist && rollup -c --environment BUILD:production",
+    "serve": "rollup -c -w --environment BUILD:development"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
+    "@types/react": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.0",
+    "eslint-config-airbnb-typescript": "^16.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsdoc": "^37.0.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.4.1",
     "react": "^17.0.2",
-    "rollup": "^2.59.0",
-    "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-serve": "^1.1.0"
+    "rollup": "^2.60.0",
+    "typescript": "^4.4.4"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@babel/runtime": "^7.16.3",
+    "@material-ui/core": "^4.12.3",
+    "classnames": "^2.3.1",
+    "gatsby-plugin-image": "^2.2.0",
+    "gw2-ui-bulk": "^0.11.12",
+    "gw2-ui-components-bulk": "^0.12.10"
   },
   "peerDependencies": {
-    "@material-ui/core": "^4.11.1",
-    "@material-ui/icons": "^4.9.1",
-    "gw2-ui-bulk": "^0.11.12",
-    "gw2-ui-components-bulk": "^0.12.10",
-    "classnames": "^2.3.1",
-    "prop-types": "^15.6.0",
-    "gatsby-plugin-image": "^2.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^17.0.2"
   },
   "browserslist": {
     "production": [

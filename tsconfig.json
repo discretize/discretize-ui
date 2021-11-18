@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "outDir": "lib"
+  },
+  "exclude": ["node_modules/**/*", "dist/**/*"]
+}
