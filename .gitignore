@@ -1,7 +1,10 @@
 node_modules/
 _backup/
 .idea/
+.vscode/
 dist/
+es/
+lib/
 misc/
 .history
 .cache
@@ -13,5 +16,3 @@ install.bat
 
 .DS_Store
 
-.vscode/
-jsconfig.json

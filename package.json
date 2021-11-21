@@ -2,7 +2,15 @@
   "name": "react-discretize-components",
   "version": "1.0.0",
   "description": "The source repo for common react components of discretize projects",
-  "main": "dist/bundle.js",
+  "main": "lib/bundle.js",
+  "module": "es/bundle.js",
+  "browser": "es/bundle.js",
+  "exports": {
+    "require": "./lib/bundle.js",
+    "import": "./es/bundle.js",
+    "browser": "./es/bundle.js",
+    "module": "./es/bundle.js"
+  },
   "author": "gw2princeps",
   "license": "MIT",
   "private": false,
@@ -10,7 +18,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "del-cli dist && rollup -c --environment BUILD:production",
+    "build": "del-cli es lib && rollup -c --environment BUILD:production",
     "serve": "rollup -c -w --environment BUILD:development"
   },
   "devDependencies": {
@@ -19,7 +27,6 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@types/react": "^17.0.35",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
@@ -38,10 +45,11 @@
     "prettier": "^2.4.1",
     "react": "^17.0.2",
     "rollup": "^2.60.0",
+    "rollup-plugin-node-externals": "^2.2.0",
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@babel/runtime": "^7.16.3",
+    "@babel/runtime-corejs3": "^7.16.3",
     "@material-ui/core": "^4.12.3",
     "classnames": "^2.3.1",
     "gatsby-plugin-image": "^2.2.0",
