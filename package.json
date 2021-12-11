@@ -2,14 +2,14 @@
   "name": "react-discretize-components",
   "version": "1.0.0",
   "description": "The source repo for common react components of discretize projects",
-  "main": "lib/bundle.js",
-  "module": "es/bundle.js",
-  "browser": "es/bundle.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "browser": "es/index.js",
   "exports": {
-    "require": "./lib/bundle.js",
-    "import": "./es/bundle.js",
-    "browser": "./es/bundle.js",
-    "module": "./es/bundle.js"
+    "require": "./lib/index.js",
+    "import": "./es/index.js",
+    "browser": "./es/index.js",
+    "module": "./es/index.js"
   },
   "author": "gw2princeps",
   "license": "MIT",
