@@ -9,6 +9,9 @@ import Weapons from './character/Weapons';
 import iconSizes from './helpers/iconSizes';
 import firstUppercase from './helpers/firstUppercase';
 
+import TextDivider from './TextDivider';
+import NoSelection from './NoSelection';
+
 export {
   Character,
   Armor,
@@ -19,4 +22,6 @@ export {
   Weapons,
   iconSizes,
   firstUppercase,
+  TextDivider,
+  NoSelection,
 };
