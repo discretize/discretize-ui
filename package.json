@@ -1,13 +1,12 @@
 {
   "name": "react-discretize-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The source repo for common react components of discretize projects",
-  "main": "lib/index.js",
+  "main": "es/index.js",
   "module": "es/index.js",
   "browser": "es/index.js",
-  "type": "module",
   "exports": {
-    "require": "./lib/index.js",
+    "require": "./es/index.js",
     "import": "./es/index.js",
     "browser": "./es/index.js",
     "module": "./es/index.js"
