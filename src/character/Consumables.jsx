@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Consumables = ({ foodData, utilityData, infusionData, foodId, utilityId, infusionId }) => {
   const classes = useStyles();
+
   return (
     <Grid container spacing={2} className={classes.grid}>
       <Grid item xs={4} className={classes.gridItem}>
@@ -37,20 +38,20 @@ const Consumables = ({ foodData, utilityData, infusionData, foodId, utilityId, i
           <ConsumableEffect name="Nourishment" disableText /> Food
         </Typography>
       </Grid>
-
       <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
         <Item data={utilityData} id={utilityId} className={classes.gw2Item} disableText />
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           <ConsumableEffect name="Enhancement" disableText /> Utility
         </Typography>
       </Grid>
-
-      <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
-        <Item data={infusionData} id={infusionId} className={classes.gw2Item} disableText />
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
-          Infusion
-        </Typography>
-      </Grid>
+      {(infusionData || infusionId) && (
+        <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
+          <Item data={infusionData} id={infusionId} className={classes.gw2Item} disableText />
+          <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+            Infusion
+          </Typography>
+        </Grid>
+      )}
     </Grid>
   );
 };
