@@ -1,19 +1,12 @@
-import {
-  Box,
-  makeStyles,
-  Paper,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
-import { GatsbyImage } from "gatsby-plugin-image";
-import React from "react";
-import Skills from "./Skills.jsx";
-import Legends from "./Legends.jsx";
-import Armor from "./Armor.jsx";
-import Attributes from "./Attributes.jsx";
-import BackAndTrinkets from "./BackAndTrinkets.jsx";
-import Consumables from "./Consumables.jsx";
-import Weapons from "./Weapons.jsx";
+import { Box, makeStyles, Paper, useMediaQuery, useTheme } from '@material-ui/core';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import Skills from './Skills';
+import Legends from './Legends';
+import Armor from './Armor';
+import Attributes from './Attributes';
+import BackAndTrinkets from './BackAndTrinkets';
+import Consumables from './Consumables';
+import Weapons from './Weapons';
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -37,16 +30,11 @@ const Character = ({
   const classes = useStyles();
 
   const theme = useTheme();
-  const big = useMediaQuery(theme.breakpoints.up("md"));
+  const big = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <Box display="flex" flexWrap="wrap" justifyContent="space-between">
-      <Box
-        flex="0 0 250px"
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-      >
+      <Box flex="0 0 250px" display="flex" flexDirection="column" justifyContent="space-between">
         <Paper elevation={5} className={classes.section}>
           <Armor {...armorPropsAPI} />
         </Paper>
@@ -66,9 +54,7 @@ const Character = ({
 
         {(skillsPropsAPI || legendsPropsAPI) && (
           <Paper
-            style={
-              big ? { maxWidth: 390, alignSelf: "center" } : { maxWidth: 390 }
-            }
+            style={big ? { maxWidth: 390, alignSelf: 'center' } : { maxWidth: 390 }}
             elevation={5}
             className={classes.section}
           >
@@ -78,12 +64,7 @@ const Character = ({
         )}
       </Box>
 
-      <Box
-        flex="0 0 250px"
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-between"
-      >
+      <Box flex="0 0 250px" display="flex" flexDirection="column" justifyContent="space-between">
         <Paper elevation={5} className={classes.section}>
           <Attributes profession={profession} data={attributes} />
         </Paper>

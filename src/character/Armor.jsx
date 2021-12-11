@@ -1,6 +1,5 @@
-import { List, ListItem, ListItemText, makeStyles } from '@material-ui/core'
-import { Item } from 'gw2-ui-bulk'
-import React from 'react'
+import { List, ListItem, ListItemText, makeStyles } from '@material-ui/core';
+import { Item } from 'gw2-ui-bulk';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   secondaryText: {
     fontSize: '0.80rem',
   },
-}))
+}));
 
 const Armor = ({
   helmData,
@@ -79,7 +78,7 @@ const Armor = ({
   bootsAffix,
   bootsRune,
 }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <List disablePadding>
       <ListItem disableGutters className={classes.listItem}>
@@ -202,7 +201,7 @@ const Armor = ({
         />
       </ListItem>
     </List>
-  )
-}
+  );
+};
 
-export default Armor
+export default Armor;

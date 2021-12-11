@@ -1,102 +1,57 @@
-import { Grid, makeStyles, Typography } from "@material-ui/core";
-import classNames from "classnames";
-import { ConsumableEffect } from "gw2-ui-components-bulk";
-import React from "react";
-import { Item } from "gw2-ui-bulk";
+import { Grid, makeStyles, Typography } from '@material-ui/core';
+import classNames from 'classnames';
+import { ConsumableEffect } from 'gw2-ui-components-bulk';
+import { Item } from 'gw2-ui-bulk';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   gridItem: {
-    display: "flex",
-    flexDirection: "column",
-    textAlign: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'center',
   },
   title: {
-    fontSize: "0.8125rem",
+    fontSize: '0.8125rem',
   },
   borderLeft: {
-    borderLeft: "1px solid #1e2124",
+    borderLeft: '1px solid #1e2124',
   },
   gw2Item: {
-    fontSize: "60px",
-    lineHeight: "0 !important",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "45px",
+    fontSize: '60px',
+    lineHeight: '0 !important',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '45px',
     },
   },
 }));
 
-const Consumables = ({
-  foodData,
-  utilityData,
-  infusionData,
-  foodId,
-  utilityId,
-  infusionId,
-}) => {
+const Consumables = ({ foodData, utilityData, infusionData, foodId, utilityId, infusionId }) => {
   const classes = useStyles();
+
   return (
     <Grid container spacing={2} className={classes.grid}>
       <Grid item xs={4} className={classes.gridItem}>
-        <Item
-          data={foodData}
-          id={foodId}
-          className={classes.gw2Item}
-          disableText
-        />
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
+        <Item data={foodData} id={foodId} className={classes.gw2Item} disableText />
+        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           <ConsumableEffect name="Nourishment" disableText /> Food
         </Typography>
       </Grid>
-
-      <Grid
-        item
-        xs={4}
-        className={classNames(classes.gridItem, classes.borderLeft)}
-      >
-        <Item
-          data={utilityData}
-          id={utilityId}
-          className={classes.gw2Item}
-          disableText
-        />
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
+      <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
+        <Item data={utilityData} id={utilityId} className={classes.gw2Item} disableText />
+        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           <ConsumableEffect name="Enhancement" disableText /> Utility
         </Typography>
       </Grid>
-
-      <Grid
-        item
-        xs={4}
-        className={classNames(classes.gridItem, classes.borderLeft)}
-      >
-        <Item
-          data={infusionData}
-          id={infusionId}
-          className={classes.gw2Item}
-          disableText
-        />
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          Infusion
-        </Typography>
-      </Grid>
+      {(infusionData || infusionId) && (
+        <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
+          <Item data={infusionData} id={infusionId} className={classes.gw2Item} disableText />
+          <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+            Infusion
+          </Typography>
+        </Grid>
+      )}
     </Grid>
   );
 };

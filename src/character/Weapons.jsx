@@ -5,24 +5,23 @@ import {
   makeStyles,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core";
-import { Icon, Item } from "gw2-ui-bulk";
-import React from "react";
-import NoSelection from "../NoSelection.jsx";
-import TextDivider from "../TextDivider.jsx";
+} from '@material-ui/core';
+import { Icon, Item } from 'gw2-ui-bulk';
+import NoSelection from '../NoSelection';
+import TextDivider from '../TextDivider';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
     lineHeight: 0,
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
-    "& > *:first-child": {
-      textAlign: "right",
+    '& > *:first-child': {
+      textAlign: 'right',
     },
-    "& > *:last-child": {
-      width: "55%",
-      textAlign: "left",
+    '& > *:last-child': {
+      width: '55%',
+      textAlign: 'left',
     },
   },
   listItemText: {
@@ -31,22 +30,22 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.divider}`,
     lineHeight: 0,
-    overflowWrap: "break-word",
-    fontSize: "0.82rem !important",
+    overflowWrap: 'break-word',
+    fontSize: '0.82rem !important',
   },
   divider: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
   gw2Item: {
-    fontSize: "60px",
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "45px",
+    fontSize: '60px',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '45px',
     },
-    lineHeight: "1 !important",
+    lineHeight: '1 !important',
   },
   secondaryText: {
-    fontSize: "0.80rem",
+    fontSize: '0.80rem',
   },
 }));
 
@@ -88,7 +87,7 @@ const Weapons = ({
 }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <>
@@ -111,19 +110,16 @@ const Weapons = ({
                 disableText
               />
               <ListItemText
-                secondaryTypographyProps={{ fontSize: "0.82rem !important" }}
+                secondaryTypographyProps={{ fontSize: '0.82rem !important' }}
                 primary={`${weapon1MainAffix}`}
-                secondary={
-                  weapon1MainSigil1 +
-                  (weapon1MainSigil2 ? `, ${weapon1MainSigil2}` : "")
-                }
+                secondary={weapon1MainSigil1 + (weapon1MainSigil2 ? `, ${weapon1MainSigil2}` : '')}
                 classes={{ secondary: classes.secondaryText }}
                 className={classes.listItemText}
               />
             </>
           ) : (
             <>
-              <NoSelection size={isMobile ? "large2" : "big"} />
+              <NoSelection size={isMobile ? 'large2' : 'big'} />
               <ListItemText className={classes.listItemText} primary="Empty" />
             </>
           )}
@@ -137,9 +133,7 @@ const Weapons = ({
               stat={weapon1OffAffix}
               className={classes.gw2Item}
               type={weapon1OffType}
-              upgrades={[weapon1OffSigilId, weapon1OffInfusionId].filter(
-                (d) => d !== undefined
-              )}
+              upgrades={[weapon1OffSigilId, weapon1OffInfusionId].filter((d) => d !== undefined)}
               disableText
             />
             <ListItemText
@@ -152,7 +146,7 @@ const Weapons = ({
         )}
         {!weapon1OffId && !weapon1MainSigil2Id && (
           <ListItem disableGutters className={classes.listItem}>
-            <NoSelection size={isMobile ? "large2" : "big"} />
+            <NoSelection size={isMobile ? 'large2' : 'big'} />
             <ListItemText className={classes.listItemText} primary="Empty" />
           </ListItem>
         )}
@@ -184,8 +178,7 @@ const Weapons = ({
                 <ListItemText
                   primary={`${weapon2MainAffix}`}
                   secondary={
-                    weapon2MainSigil1 +
-                    (weapon2MainSigil2 ? `, ${weapon2MainSigil2}` : "")
+                    weapon2MainSigil1 + (weapon2MainSigil2 ? `, ${weapon2MainSigil2}` : '')
                   }
                   classes={{ secondary: classes.secondaryText }}
                   className={classes.listItemText}
@@ -193,11 +186,8 @@ const Weapons = ({
               </ListItem>
             ) : (
               <ListItem disableGutters className={classes.listItem}>
-                <NoSelection size={isMobile ? "large2" : "big"} />
-                <ListItemText
-                  className={classes.listItemText}
-                  primary="Empty"
-                />
+                <NoSelection size={isMobile ? 'large2' : 'big'} />
+                <ListItemText className={classes.listItemText} primary="Empty" />
               </ListItem>
             )}
 
@@ -210,7 +200,7 @@ const Weapons = ({
                   className={classes.gw2Item}
                   type={weapon2OffType}
                   upgrades={[weapon2OffSigilId, weapon2OffInfusionId].filter(
-                    (d) => d !== undefined
+                    (d) => d !== undefined,
                   )}
                   disableText
                 />
@@ -224,11 +214,8 @@ const Weapons = ({
             )}
             {!weapon2OffId && !weapon2MainSigil2Id && (
               <ListItem disableGutters className={classes.listItem}>
-                <NoSelection size={isMobile ? "large2" : "big"} />
-                <ListItemText
-                  className={classes.listItemText}
-                  primary="Empty"
-                />
+                <NoSelection size={isMobile ? 'large2' : 'big'} />
+                <ListItemText className={classes.listItemText} primary="Empty" />
               </ListItem>
             )}
           </List>
