@@ -2,11 +2,11 @@
   "name": "react-discretize-components",
   "version": "1.0.2",
   "description": "The source repo for common react components of discretize projects",
-  "main": "es/index.js",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "browser": "es/index.js",
   "exports": {
-    "require": "./es/index.js",
+    "require": "./lib/index.js",
     "import": "./es/index.js",
     "browser": "./es/index.js",
     "module": "./es/index.js"
@@ -15,7 +15,8 @@
   "license": "MIT",
   "private": false,
   "files": [
-    "dist"
+    "es",
+    "lib"
   ],
   "scripts": {
     "build": "del-cli es lib && rollup -c --environment BUILD:production",
