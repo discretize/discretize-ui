@@ -1,6 +1,6 @@
 {
   "name": "react-discretize-components",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The source repo for common react components of discretize projects",
   "main": "lib/index.js",
   "module": "es/index.js",
