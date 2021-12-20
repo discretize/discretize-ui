@@ -1,7 +1,7 @@
 import { Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import classNames from 'classnames';
-import { Skill } from 'gw2-ui-bulk';
 import NoSelection from '../NoSelection';
+import Skill from '../Skill';
 
 const useStyles = makeStyles((theme) => ({
   grid: {
