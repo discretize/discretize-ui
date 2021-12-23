@@ -1,46 +1,24 @@
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import serve from "rollup-plugin-serve";
-import livereload from "rollup-plugin-livereload";
-import babel from "@rollup/plugin-babel";
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
+import babel from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
+import externals from 'rollup-plugin-node-externals';
 
-export default {
-  input: "src/index.js",
-  output: {
-    file: "dist/bundle.js",
-    format: "umd",
-    sourcemap: true,
-    name: "discretizeComponents",
+export default [
+  {
+    input: 'src/index.js',
+    output: [
+      { file: 'es/index.js', format: 'es' },
+      { file: 'lib/index.js', format: 'cjs' },
+    ],
+    plugins: [
+      externals({ deps: true }),
+      resolve({
+        extensions: ['.mjs', '.js', '.json', '.node', '.jsx'],
+      }),
+      babel({
+        presets: ['@babel/preset-env', ['@babel/preset-react', { 'runtime': 'automatic' }]],
+        babelHelpers: 'runtime',
+        plugins: [['@babel/plugin-transform-runtime', { 'corejs': 3 }]],
+      }),
+    ],
   },
-  external: [
-    "@material-ui/core",
-    "gw2-ui-bulk",
-    "gatsby-plugin-image",
-    "gw2-ui-components-bulk",
-    "classnames",
-    "react",
-  ],
-  plugins: [
-    // peerDepsExternal(),  // declares peer deps as external for rollup
-    resolve(),
-    babel({
-      presets: ["@babel/preset-react"],
-      babelHelpers: "bundled",
-    }),
-    commonjs(),
-
-    ...(process.env.BUILD !== "production"
-      ? [
-          serve({
-            open: true,
-            verbose: true,
-            contentBase: ["", "public"],
-            host: "localhost",
-            port: 3000,
-          }),
-          livereload({ watch: "dist" }),
-        ]
-      : []),
-  ],
-};
+];
