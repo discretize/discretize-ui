@@ -1,8 +1,9 @@
-import { Grid, makeStyles } from '@material-ui/core';
+import { Grid } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import { Icon } from 'gw2-ui-components-bulk';
 import { Skill } from 'gw2-ui-bulk';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   legends: {
     padding: theme.spacing(1),
   },

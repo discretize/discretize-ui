@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from 'tss-react/mui';
 import { DetailsHeader } from 'gw2-ui-components-bulk';
 import { Tooltip, Icon } from 'gw2-ui-bulk';
 import iconSizes from './helpers/iconSizes';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   root: {
     [theme.breakpoints.up('lg')]: {
       whiteSpace: 'nowrap',

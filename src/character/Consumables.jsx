@@ -1,9 +1,10 @@
-import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
 import { ConsumableEffect } from 'gw2-ui-components-bulk';
 import { Item } from 'gw2-ui-bulk';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   grid: {
     justifyContent: 'center',
   },
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   gw2Item: {
     fontSize: '60px',
     lineHeight: '0 !important',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '45px',
     },
   },

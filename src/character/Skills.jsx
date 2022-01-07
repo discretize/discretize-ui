@@ -1,9 +1,10 @@
-import { Grid, makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
 import NoSelection from '../NoSelection';
 import Skill from '../Skill';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   grid: {
     justifyContent: 'center',
   },
@@ -41,7 +42,7 @@ const Skills = ({
 }) => {
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const iconSize = isMobile ? 'large' : 'big';
 
   return (

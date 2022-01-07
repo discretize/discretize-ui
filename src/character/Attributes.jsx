@@ -1,8 +1,9 @@
-import { Grid, List, ListItem, makeStyles } from '@material-ui/core';
+import { Grid, List, ListItem } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import { Attribute, Profession } from 'gw2-ui-bulk';
 import firstUppercase from '../helpers/firstUppercase';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles()(() => ({
   root: {
     width: '100%',
   },

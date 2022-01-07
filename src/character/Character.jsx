@@ -1,4 +1,5 @@
-import { Box, makeStyles, Paper, useMediaQuery, useTheme } from '@material-ui/core';
+import { Box, Paper, useMediaQuery, useTheme } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Skills from './Skills';
 import Legends from './Legends';
@@ -8,7 +9,7 @@ import BackAndTrinkets from './BackAndTrinkets';
 import Consumables from './Consumables';
 import Weapons from './Weapons';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   section: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(1.5),
