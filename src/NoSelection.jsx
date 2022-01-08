@@ -14,7 +14,7 @@ const useStyles = makeStyles()((theme) => ({
 }));
 
 const NoSelection = React.memo(({ className, size, ...rest }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Tooltip content={<DetailsHeader>Empty Slot</DetailsHeader>}>

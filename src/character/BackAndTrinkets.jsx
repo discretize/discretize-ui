@@ -64,7 +64,7 @@ const BackAndTrinkets = ({
   ring2Infusion3Id,
   ring2Affix,
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Grid container spacing={3}>

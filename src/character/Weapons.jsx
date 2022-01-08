@@ -79,7 +79,7 @@ const Weapons = ({
   weapon2OffSigil,
   weapon2OffInfusionId,
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 

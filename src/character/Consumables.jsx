@@ -29,7 +29,7 @@ const useStyles = makeStyles()((theme) => ({
 }));
 
 const Consumables = ({ foodData, utilityData, infusionData, foodId, utilityId, infusionId }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Grid container spacing={2} className={classes.grid}>

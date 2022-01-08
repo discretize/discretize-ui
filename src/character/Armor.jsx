@@ -79,7 +79,7 @@ const Armor = ({
   bootsAffix,
   bootsRune,
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <List disablePadding>
       <ListItem disableGutters className={classes.listItem}>

@@ -10,7 +10,7 @@ const useStyles = makeStyles()((theme) => ({
 }));
 
 const Legends = ({ legend1Id, legend2Id }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <>
       {legend1Id && legend2Id && (

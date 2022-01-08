@@ -15,7 +15,7 @@ const useStyles = makeStyles()(() => ({
 }));
 
 const Attributes = ({ profession, data }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <div className={classes.root}>
       <Grid container>

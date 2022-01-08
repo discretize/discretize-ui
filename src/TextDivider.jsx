@@ -27,7 +27,7 @@ const useStyles = makeStyles()((theme) => ({
 }));
 
 const TextDivider = ({ className, text, children }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <div className={classNames(classes.root, className)}>
