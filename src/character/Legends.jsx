@@ -7,6 +7,13 @@ const useStyles = makeStyles()((theme) => ({
   legends: {
     padding: theme.spacing(1),
   },
+  gw2Item: {
+    fontSize: '60px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '45px',
+    },
+    lineHeight: '1 !important',
+  },
 }));
 
 const Legends = ({ legend1Id, legend2Id }) => {
@@ -16,11 +23,11 @@ const Legends = ({ legend1Id, legend2Id }) => {
       {legend1Id && legend2Id && (
         <Grid container justifyContent="center" alignItems="center">
           <Grid item className={classes.legends}>
-            <Skill id={legend1Id} disableText size="big" />
+            <Skill id={legend1Id} disableText className={classes.gw2item} />
           </Grid>
           <Icon name="WeaponSwap" style={{ verticalAlign: 'text-bottom' }} />
           <Grid item className={classes.legends}>
-            <Skill id={legend2Id} disableText size="big" />
+            <Skill id={legend2Id} disableText className={classes.gw2item} />
           </Grid>
         </Grid>
       )}
