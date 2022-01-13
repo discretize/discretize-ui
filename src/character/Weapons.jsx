@@ -19,13 +19,11 @@ const useStyles = makeStyles()((theme) => ({
     },
   },
   listItemText: {
-    flexGrow: 1,
+    flexGrow: 0,
     marginLeft: theme.spacing(2),
     paddingLeft: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.divider}`,
     lineHeight: 0,
-    overflowWrap: 'break-word',
-    fontSize: '0.82rem !important',
   },
   divider: {
     marginTop: theme.spacing(1),

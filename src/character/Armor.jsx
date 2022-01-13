@@ -21,7 +21,7 @@ const useStyles = makeStyles()((theme) => ({
     marginLeft: theme.spacing(2),
     paddingLeft: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.divider}`,
-    lineHeight: '0',
+    lineHeight: 0,
   },
   gw2Item: {
     fontSize: '60px',
