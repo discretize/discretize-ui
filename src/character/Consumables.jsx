@@ -9,6 +9,7 @@ const useStyles = makeStyles()((theme) => ({
     display: 'grid',
     justifyContent: 'center',
     gridAutoFlow: 'column',
+    margin: -12,
   },
   gridItem: {
     display: 'flex',

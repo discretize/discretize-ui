@@ -68,7 +68,7 @@ const BackAndTrinkets = ({
   const { classes } = useStyles();
 
   return (
-    <Box display="grid" sx={{ gridTemplateColumns: 'repeat(3,1fr)' }}>
+    <Box display="grid" sx={{ gridTemplateColumns: 'repeat(3,1fr)', margin: '-12px' }}>
       <Box className={classNames(classes.gridItem, classes.borderBottom)}>
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           {backItemAffix}
