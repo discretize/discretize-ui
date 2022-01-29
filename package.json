@@ -1,6 +1,6 @@
 {
   "name": "@discretize/react-discretize-components",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "The source repo for common react components of discretize projects",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -51,11 +51,11 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.16.3",
+    "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.7",
     "classnames": "^2.3.1",
     "gatsby-plugin-image": "^2.4.0",
-    "gw2-ui-bulk": "^0.11.16",
-    "gw2-ui-components-bulk": "^0.12.12",
+    "gw2-ui-bulk": "^0.11.17",
     "tss-react": "^3.3.1",
     "typeface-fira-mono": "^0.0.72",
     "typeface-menomonia": "^0.1.2",
