@@ -1,14 +1,12 @@
-import React, { ReactElement } from 'react'
-
-import Effect from '../Effect/Effect'
-
-import auras from '../data/auras.json'
+import React, { ReactElement } from 'react';
+import Effect from '../Effect/Effect';
+import auras from '../data/auras.json';
 
 export interface AuraProps {
-  name: string
+  name: string;
 }
 
-const Aura = (): ReactElement => {
+const Aura = ({ name }: AuraProps): ReactElement => {
   return (
     <Effect
       type="Aura"
@@ -16,7 +14,7 @@ const Aura = (): ReactElement => {
       displayName={`${name} Aura`}
       description={auras[name]}
     />
-  )
-}
+  );
+};
 
-export default Aura
+export default Aura;

@@ -8,19 +8,11 @@ export interface CommonEffectProps {
   name: string
 }
 
-const CommonEffect = ({
-  
-}: CommonEffectProps): ReactElement => {
+const CommonEffect = ({ name: propsName }: CommonEffectProps): ReactElement => {
   const name =
     propsName === 'Mistlock Singularity' ? 'Rigorous Certainty' : propsName
 
-  return (
-    <Effect
-      type="Common"
-      name={name}
-      description={commonEffects[name]}
-    />
-  )
-})
+  return <Effect type="Common" name={name} description={commonEffects[name]} />
+}
 
 export default CommonEffect

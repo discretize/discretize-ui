@@ -1,19 +1,19 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement } from 'react';
 
-import Tooltip from '../Tooltip/Tooltip'
-import DetailsHeader from '../DetailsHeader/DetailsHeader'
-import DetailsText from '../DetailsText/DetailsText'
-import IconWithText from '../IconWithText/IconWithText'
+import Tooltip from '../Tooltip/Tooltip';
+import DetailsHeader from '../DetailsHeader/DetailsHeader';
+import DetailsText from '../DetailsText/DetailsText';
+import IconWithText from '../IconWithText/IconWithText';
 
 export interface ErrorProps {
-  code: string
-  name: string
-  message: string
-  disableIcon: string
-  disableText: boolean
-  disableTooltip: boolean
-  inline: boolean
-  tooltipProps: object
+  code: string;
+  name: string;
+  message: string;
+  disableIcon: boolean;
+  disableText: boolean;
+  disableTooltip: boolean;
+  inline: boolean;
+  tooltipProps: object;
 }
 
 const Error = ({
@@ -58,7 +58,7 @@ const Error = ({
         sx={{ color: 'error' }}
       />
     </Tooltip>
-  )
-}
+  );
+};
 
-export default Error
+export default Error;

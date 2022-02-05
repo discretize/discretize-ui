@@ -16,10 +16,7 @@ export interface SpinnerProps {
   inline: boolean
 }
 
-const Spinner = ({
-  component,
-  inline
-}: SpinnerProps): ReactElement => (
+const Spinner = ({ component, inline }: SpinnerProps): ReactElement => (
   <div
     sx={{
       display: 'inline-flex',
@@ -32,6 +29,6 @@ const Spinner = ({
       ...(inline && { verticalAlign: 'text-top' }),
     }}
   />
-))
+)
 
 export default Spinner

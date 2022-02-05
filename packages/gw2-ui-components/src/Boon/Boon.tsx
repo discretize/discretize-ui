@@ -1,12 +1,12 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement } from 'react';
 
-import Effect from '../Effect/Effect'
+import Effect from '../Effect/Effect';
 
-import boons from '../data/boons.json'
+import boons from '../data/boons.json';
 
 export interface BoonProps {
-  name: string
-  count: number
+  name: string;
+  count: number;
 }
 
 const Boon = ({ name, count }: BoonProps): ReactElement => {
@@ -17,7 +17,7 @@ const Boon = ({ name, count }: BoonProps): ReactElement => {
       description={boons[name]}
       iconProps={{ applyCount: count }}
     />
-  )
-}
+  );
+};
 
-export default Boon
+export default Boon;

@@ -22,10 +22,7 @@ export interface AbilityDetailsDataProps {
 }
 
 // type is "skills" or "traits"
-const AbilityDetails = ({
-  data,
-  type
-}: AbilityDetailsProps) => {
+const AbilityDetails = ({ data, type }: AbilityDetailsProps) => {
   const { name, id } = data
 
   const { CancelToken } = axios
@@ -152,6 +149,6 @@ const AbilityDetails = ({
       )}
     </div>
   )
-})
+}
 
 export default AbilityDetails

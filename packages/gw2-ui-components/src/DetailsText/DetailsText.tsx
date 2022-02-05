@@ -1,33 +1,34 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement } from 'react';
 
-const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g')
+const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g');
 
-const renderFlavor = (text) => {
-  const parts = text.replace(/<br\s*?\/?\s*?>/g, '\n').split(REGEX)
+const renderFlavor = (text: string) => {
+  const parts = text.replace(/<br\s*?\/?\s*?>/g, '\n').split(REGEX);
 
+  const returnParts = new Array(parts.length);
   for (let i = 1; i < parts.length; i += 2) {
-    const [type, textPart] = parts[i].split('>')
+    const [type, textPart] = parts[i].split('>');
 
     if (type) {
-      let color
+      let color;
       switch (type) {
         case 'ability':
-          color = null
-          break
+          color = null;
+          break;
         case 'abilitytype':
-          color = 'abilityType'
-          break
+          color = 'abilityType';
+          break;
         case 'reminder':
-          color = 'muted'
-          break
+          color = 'muted';
+          break;
         default:
-          color = type
-          break
+          color = type;
+          break;
       }
 
-      parts[i] = [textPart, color]
+      returnParts[i] = [textPart, color];
     } else {
-      parts[i] = textPart
+      returnParts[i] = textPart;
     }
   }
 
@@ -37,7 +38,7 @@ const renderFlavor = (text) => {
         .filter((part) => !!part)
         .map((part, index) => {
           if (Array.isArray(part)) {
-            const [textPart, color] = part
+            const [textPart, color] = part;
 
             if (color) {
               return (
@@ -45,22 +46,22 @@ const renderFlavor = (text) => {
                 <span key={index} sx={{ color: `gw2.details.${color}` }}>
                   {textPart}
                 </span>
-              )
+              );
             }
-            return textPart
+            return textPart;
           }
 
-          return part
+          return part;
         })}
     </>
-  )
-}
+  );
+};
 
 export interface DetailsProps {
-  component: object
-  lines: object
-  lineComponent: object
-  lineProps: object
+  component?: string;
+  lines: (ReactElement | string)[];
+  lineComponent?: string;
+  lineProps?: any;
 }
 
 const DetailsText = ({ lines, lineProps }: DetailsProps): ReactElement => {
@@ -69,12 +70,12 @@ const DetailsText = ({ lines, lineProps }: DetailsProps): ReactElement => {
       {lines
         .filter((line) => !!line)
         .map((line, index) => (
-          <div key={index} {...lineProps}>
+          <div key={`DetailsText${index.toString()}`} {...lineProps}>
             {React.isValidElement(line) ? line : renderFlavor(line)}
           </div>
         ))}
     </div>
-  )
-}
+  );
+};
 
-export default DetailsText
+export default DetailsText;

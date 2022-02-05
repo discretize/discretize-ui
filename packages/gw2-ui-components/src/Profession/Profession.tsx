@@ -22,7 +22,7 @@ export interface ProfessionProps {
 }
 
 const Profession = ({
-  name,
+  name: propsName,
   eliteSpecialization,
   component,
   disableTooltip,

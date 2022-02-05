@@ -1,26 +1,29 @@
-import React, { ReactElement } from 'react'
-
-import Tooltip from '../Tooltip/Tooltip'
-import DetailsHeader from '../DetailsHeader/DetailsHeader'
-import DetailsText from '../DetailsText/DetailsText'
-import IconWithText from '../IconWithText/IconWithText'
-import WikiLink from '../WikiLink/WikiLink'
-import Error from '../Error/Error'
-import { useColorModeHighlightSuffix } from '../helpers'
+import camelCase from 'lodash.camelcase';
+import React, { ReactElement } from 'react';
+import DetailsHeader from '../DetailsHeader/DetailsHeader';
+import DetailsText from '../DetailsText/DetailsText';
+import Error from '../Error/Error';
+import useColorModeHighlightSuffix from '../helpers/useColorModeHighlightSuffix';
+import { IconProps } from '../Icon/Icon';
+import IconWithText from '../IconWithText/IconWithText';
+import Tooltip from '../Tooltip/Tooltip';
+import WikiLink from '../WikiLink/WikiLink';
 
 export interface EffectProps {
-  type: string
-  name: string
-  displayName: string
-  description: string
-  component: object
-  disableTooltip: boolean
-  disableText: boolean
-  disableLink: boolean
-  inline: boolean
-  tooltipProps: object
-  wikiLinkProps: object
-  errorProps: object
+  type: string;
+  name: string;
+  displayName?: string;
+  description?: string;
+  component?: object;
+  disableTooltip: boolean;
+  disableText: boolean;
+  disableLink: boolean;
+  disableIcon: boolean;
+  inline: boolean;
+  tooltipProps?: object;
+  wikiLinkProps?: object;
+  errorProps?: object;
+  iconProps?: IconProps;
 }
 
 const Effect = ({
@@ -29,15 +32,16 @@ const Effect = ({
   displayName,
   description,
   component,
-  disableTooltip,
-  disableText,
-  disableLink,
-  inline,
+  disableTooltip = false,
+  disableText = false,
+  disableLink = false,
+  disableIcon = false,
+  inline = false,
   tooltipProps,
   wikiLinkProps,
   errorProps,
 }: EffectProps): ReactElement => {
-  const highlightSuffix = useColorModeHighlightSuffix()
+  const highlightSuffix = useColorModeHighlightSuffix();
 
   if (!type || !name || typeof description === 'undefined') {
     return (
@@ -60,7 +64,7 @@ const Effect = ({
           ...errorProps?.sx,
         }}
       />
-    )
+    );
   }
 
   return (
@@ -106,7 +110,7 @@ const Effect = ({
         }}
       />
     </Tooltip>
-  )
-}
+  );
+};
 
-export default Effect
+export default Effect;
