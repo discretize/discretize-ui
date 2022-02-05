@@ -24,10 +24,9 @@
     "noFallthroughCasesInSwitch": true,
     "module": "commonjs",
     "resolveJsonModule": true,
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "jsxImportSource": "theme-ui"
   },
   "include": ["packages/*"],
-  "exclude": [
-    "node_modules/*"
-  ]
+  "exclude": ["node_modules/*"]
 }

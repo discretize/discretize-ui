@@ -1,17 +1,18 @@
 {
-  "presets": ["@babel/preset-react"],
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "importSource": "@theme-ui/core",
+        "runtime": "automatic",
+        "throwIfNamespace": false
+      }
+    ]
+  ],
   "plugins": [
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
     ["@babel/plugin-proposal-private-methods", { "loose": true }],
     ["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
-    [
-      "@emotion/babel-plugin-jsx-pragmatic",
-      {
-        "module": "@theme-ui/core",
-        "import": "jsx",
-        "export": "jsx"
-      }
-    ],
     [
       "@babel/plugin-transform-react-jsx",
       {
