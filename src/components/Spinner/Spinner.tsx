@@ -1,5 +1,4 @@
-import React, { forwardRef, ReactElement } from 'react';
-
+import React, { ReactElement } from 'react';
 import { keyframes } from '@emotion/core';
 
 const spin = keyframes({
@@ -12,11 +11,10 @@ const spin = keyframes({
 });
 
 export interface SpinnerProps {
-  component: object;
-  inline: boolean;
+  inline?: boolean;
 }
 
-const Spinner = ({ component, inline }: SpinnerProps): ReactElement => (
+const Spinner = ({ inline }: SpinnerProps): ReactElement => (
   <div
     sx={{
       display: 'inline-flex',
