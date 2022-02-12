@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { ReactElement } from 'react';
-import './TooltipContainer.module.css';
+import * as css from './TooltipContainer.module.css';
 
 // TODO move into another file? unsure where I would put such helper types
 export type WithChildren<T = {}> = T & { children?: React.ReactNode };
@@ -13,7 +13,7 @@ const TooltipContainer = ({
   children,
   className,
 }: TooltipContainerProps): ReactElement => {
-  return <div className={classNames('root', className)}>{children}</div>;
+  return <div className={classNames(css.root, className)}>{children}</div>;
 };
 
 export default TooltipContainer;
