@@ -34,7 +34,7 @@
     "@tippyjs/react": "^4.2.5",
     "axios": "^0.21.4",
     "batcher-js": "^1.0.3",
-    "classnames": "^2.2.6",
+    "clsx": "^1.1.1",
     "lodash.camelcase": "^4.3.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
