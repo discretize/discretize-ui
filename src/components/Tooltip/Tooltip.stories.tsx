@@ -14,6 +14,7 @@ const Template = (args) => {
   return (
     <>
       <Tooltip
+        {...args}
         content={
           <>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

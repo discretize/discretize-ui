@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 import React, { ReactElement } from 'react';
 import * as css from './TooltipContainer.module.css';
 
@@ -13,7 +13,7 @@ const TooltipContainer = ({
   children,
   className,
 }: TooltipContainerProps): ReactElement => {
-  return <div className={classNames(css.root, className)}>{children}</div>;
+  return <div className={clsx(css.root, className)}>{children}</div>;
 };
 
 export default TooltipContainer;
