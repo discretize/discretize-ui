@@ -1,0 +1,7 @@
+.root {
+  max-height: calc(100vh - 20px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  z-index: 1500;
+}

@@ -6,6 +6,11 @@
   },
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier"],
   "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
     "react": {
       "version": "detect"
     }
