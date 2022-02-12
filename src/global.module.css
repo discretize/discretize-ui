@@ -1,0 +1,121 @@
+:root {
+  --gw2-color-warrior-light: #fff2a4;
+  --gw2-color-warrior-main: #ffd166;
+  --gw2-color-warrior-dark: #caaa2a;
+
+  --gw2-color-elementalist-light: #f6bebc;
+  --gw2-color-elementalist-main: #f68a87;
+  --gw2-color-elementalist-dark: #dc423e;
+
+  --gw2-color-engineer-light: #e8bc84;
+  --gw2-color-engineer-main: #d09c59;
+  --gw2-color-engineer-dark: #87581d;
+
+  --gw2-color-guardian-light: #bce8fd;
+  --gw2-color-guardian-main: #72c1d9;
+  --gw2-color-guardian-dark: #186885;
+
+  --gw2-color-mesmer-light: #d09eea;
+  --gw2-color-mesmer-main: #b679d5;
+  --gw2-color-mesmer-dark: #69278a;
+
+  --gw2-color-necromancer-light: #bfe6d0;
+  --gw2-color-necromancer-main: #52a76f;
+  --gw2-color-necromancer-dark: #2c9d5d;
+
+  --gw2-color-ranger-light: #d2f6bc;
+  --gw2-color-ranger-main: #8cdc82;
+  --gw2-color-ranger-dark: #67a833;
+
+  --gw2-color-revenant-light: #e4aea3;
+  --gw2-color-revenant-main: #d16e5a;
+  --gw2-color-revenant-dark: #a66356;
+
+  --gw2-color-thief-light: #dec6c9;
+  --gw2-color-thief-main: #c08f95;
+  --gw2-color-thief-dark: #974550;
+
+  --gw2-color-details-title: #eebb66;
+  --gw2-color-details-muted: rgba(255, 255, 255, 0.7);
+  --gw2-color-details-ability-type: #efdf80;
+
+  --gw2-font: Menomonia, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  --gw2-font-weight-body: 400;
+  --gw2-font-weight-heading: 600;
+  --gw2-line-height-body: 1.46429;
+  --gw2-line-height-heading: 1.16667;
+}
+
+.coloredProfessionWarrior {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-warrior-main);
+}
+.coloredProfessionWarrior:hover {
+  color: var(--gw2-color-warrior-dark);
+}
+
+.coloredProfessionElementalist {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-elementalist-main);
+}
+.coloredProfessionElementalist:hover {
+  color: var(--gw2-color-elementalist-dark);
+}
+
+.coloredProfessionEngineer {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-engineer-main);
+}
+.coloredProfessionEngineer:hover {
+  color: var(--gw2-color-engineer-dark);
+}
+
+.coloredProfessionGuardian {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-guardian-main);
+}
+.coloredProfessionGuardian:hover {
+  color: var(--gw2-color-guardian-dark);
+}
+
+.coloredProfessionMesmer {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-mesmer-main);
+}
+.coloredProfessionMesmer:hover {
+  color: var(--gw2-color-mesmer-dark);
+}
+
+.coloredProfessionNecromancer {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-necromancer-main);
+}
+.coloredProfessionNecromancer:hover {
+  color: var(--gw2-color-necromancer-dark);
+}
+
+.coloredProfessionRanger {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-ranger-main);
+}
+.coloredProfessionRanger:hover {
+  color: var(--gw2-color-ranger-dark);
+}
+
+.coloredProfessionRevenant {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-revenant-main);
+}
+.coloredProfessionRevenant:hover {
+  color: var(--gw2-color-revenant-dark);
+}
+
+.coloredProfessionThief {
+  transition: color 200ms ease-in-out;
+  color: var(--gw2-color-thief-main);
+}
+.coloredProfessionThief:hover {
+  color: var(--gw2-color-thief-dark);
+}

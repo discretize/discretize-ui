@@ -1,3 +1,5 @@
+@import '../../global.module.css';
+
 .root {
   background-color: rgba(46, 53, 56, 0.7);
   border-style: solid;
@@ -13,11 +15,9 @@
   background-size: cover;
   background-image: url(../../assets/tooltip-background.png);
   color: #fff;
-  /*
-  font-family: gw2.body;
-  font-weight: gw2.body;
-  line-height: gw2.heading;
-  */
+  font-family: var(--gw2-font);
+  font-weight: var(--gw2-font-weight-body);
+  line-height: var(--gw2-line-height-heading);
   font-size: 14px;
   border-radius: 0px;
   text-shadow: 1px 1px 1px #010101;
