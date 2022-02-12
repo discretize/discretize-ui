@@ -1,35 +1,62 @@
 {
-  "name": "root",
+  "name": "gw2-ui-new",
+  "version": "0.12.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
+  "description": "React components and API wrapper for Guild Wars 2",
+  "keywords": [
+    "guild wars 2",
+    "gw2",
+    "react",
+    "redux"
   ],
+  "homepage": "https://github.com/discretize/gw2-ui",
+  "bugs": "https://github.com/discretize/gw2-ui/issues",
+  "repository": "https://github.com/discretize/gw2-ui/gw2-ui",
+  "license": "MIT",
+  "author": "Manuel Haag <manuel@haag.online>",
+  "contributors": [
+    "Kulinda (https://kulinda.github.io)"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "develop": "run-p watch storybook",
-    "fix": "run-p fix:*",
-    "fix:code": "run-s \"lint:code --fix\"",
-    "fix:other": "run-s \"lint:other --write\"",
-    "lint": "run-p lint:*",
-    "lint:code": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
-    "lint:other": "prettier --list-different --ignore-path .gitignore \"**/*.{md,json,yaml,yml}\" \"!**/*CHANGELOG.md\"",
-    "prepare": "lerna run prepare --stream",
-    "prepublish": "lerna run prepublish --stream",
-    "storybook": "lerna run storybook --stream",
-    "pretest": "run-s lint",
-    "test": "echo \"No tests configured\"",
-    "watch": "lerna run watch --parallel"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
+  "dependencies": {
+    "@redux-requests/react": "^1.0.0",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@theme-ui/core": "^0.11.3",
+    "@tippyjs/react": "^4.2.5",
+    "axios": "^0.21.4",
+    "batcher-js": "^1.0.3",
+    "classnames": "^2.2.6",
+    "lodash.camelcase": "^4.3.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-redux": "^7.2.5",
+    "react-resize-aware": "^3.0.1",
+    "redux": "^4.1.1",
+    "redux-saga": "1.0.0",
+    "reselect": "^4.0.0",
+    "styled-components": "5.3.1",
+    "theme-ui": "^0.13.1"
+  },
   "devDependencies": {
+    "@babel/core": "^7.17.0",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/react": "^6.4.18",
     "@types/node": "^16.11.0",
     "@types/webpack": "^5.28.0",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.3",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^8.3.0",
@@ -38,6 +65,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-storybook": "^0.5.6",
     "husky": "^7.0.2",
     "lerna": "^3.22.1",
     "npm-run-all": "^4.1.5",
@@ -47,6 +75,6 @@
     "webpack-node-externals": "^3.0.0"
   },
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.0.0"
   }
 }

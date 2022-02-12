@@ -1,6 +1,6 @@
-import React, { forwardRef, ReactElement } from 'react'
-import PropTypes from 'prop-types'
-import { keyframes } from '@emotion/core'
+import React, { forwardRef, ReactElement } from 'react';
+
+import { keyframes } from '@emotion/core';
 
 const spin = keyframes({
   from: {
@@ -9,11 +9,11 @@ const spin = keyframes({
   to: {
     transform: 'rotate(360deg)',
   },
-})
+});
 
 export interface SpinnerProps {
-  component: object
-  inline: boolean
+  component: object;
+  inline: boolean;
 }
 
 const Spinner = ({ component, inline }: SpinnerProps): ReactElement => (
@@ -29,6 +29,6 @@ const Spinner = ({ component, inline }: SpinnerProps): ReactElement => (
       ...(inline && { verticalAlign: 'text-top' }),
     }}
   />
-)
+);
 
-export default Spinner
+export default Spinner;
