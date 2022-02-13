@@ -36,9 +36,29 @@ function isObjectWithId(o: unknown): o is { id: Id } {
   );
 }
 
-// We do return our internal cache, but we don't want the caller to modify it.
-// To prevent accidents, we hide the mutating methods from the return type.
-type ReadonlyMap<K, V> = Readonly<Omit<Map<K, V>, 'set' | 'delete' | 'clear'>>;
+// Define return types for the getter methods
+export type APICacheGetOneResult<T> =
+  | {
+      loading: true;
+      error: false;
+      data: null;
+    }
+  | {
+      loading: false;
+      error: true | string;
+      data: null;
+    }
+  | {
+      loading: false;
+      error: false;
+      data: T;
+    };
+
+export interface APICacheGetMultipleResult<T> {
+  loading: boolean;
+  error: boolean | string;
+  data: Record<Id, T>;
+}
 
 export default class APICache<T extends { id: Id }> {
   private path: string; // The relative URL of the API endpoint
@@ -70,7 +90,10 @@ export default class APICache<T extends { id: Id }> {
     this.max_concurrent_requests = max_concurrent_requests;
   }
 
-  public get(ids: Id[], callback: () => void): ReadonlyMap<Id, T | null> {
+  public getMultiple(
+    ids: Id[],
+    callback: () => void,
+  ): APICacheGetMultipleResult<T> {
     let missing = 0;
     for (let id of ids) {
       if (!this.cache.has(id)) {
@@ -84,7 +107,55 @@ export default class APICache<T extends { id: Id }> {
       this.fetchLater();
     }
 
-    return this.cache;
+    let errored = 0;
+    let map: Record<Id, T> = {};
+    for (let id of ids) {
+      let item = this.cache.get(id);
+      if (item === undefined) {
+        missing++;
+      } else if (item === null) {
+        errored++;
+      } else {
+        map[id] = item;
+      }
+    }
+    return {
+      loading: missing > 0,
+      error: errored > 0,
+      data: map,
+    };
+  }
+
+  public getOne(id: Id, callback: () => void): APICacheGetOneResult<T> {
+    let res = this.getMultiple([id], callback);
+    let item = res.data[id];
+    if (res.loading) {
+      return {
+        loading: true,
+        error: false,
+        data: null,
+      };
+    } else if (res.error) {
+      return {
+        loading: false,
+        error: res.error,
+        data: null,
+      };
+    } else if (item) {
+      return {
+        loading: false,
+        error: false,
+        data: item,
+      };
+    }
+
+    // This should never happen, but typescript complains if we don't handle this case
+    console.error('APICache: invalid state reached', id, res);
+    return {
+      loading: false,
+      error: true,
+      data: null,
+    };
   }
 
   private fetchLater() {

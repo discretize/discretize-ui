@@ -33,11 +33,11 @@ const Skill = (props: SkillProps): ReactElement => {
     tooltipProps,
     wikiLinkProps,
   } = props;
-  const data = useSkill(id);
+  const { loading, error, data } = useSkill(id);
 
-  if (data === 'LOADING') {
+  if (loading) {
     return <IconWithText {...props} loading={true} />;
-  } else if (data === 'ERROR') {
+  } else if (error) {
     // TODO: port and use <Error />
     return (
       <IconWithText
