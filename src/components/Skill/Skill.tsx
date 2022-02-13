@@ -21,12 +21,14 @@ export interface SkillDataProps {
 }
 
 const Skill = (props: SkillProps): ReactElement => {
-  let { id, disableLink, disableTooltip, tooltipProps, wikiLinkProps } = props;
-  let skill = useSkill(id);
+  const { id, disableLink, disableTooltip, tooltipProps, wikiLinkProps } =
+    props;
+  const skill = useSkill(id);
 
   if (skill.loading) {
-    return <IconWithText {...props} loading={true} />;
-  } else if (skill.error) {
+    return <IconWithText {...props} loading />;
+  }
+  if (skill.error) {
     // TODO: port and use <Error />
     return (
       <IconWithText
