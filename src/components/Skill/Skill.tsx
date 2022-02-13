@@ -7,7 +7,6 @@ import { useSkill } from '../../gw2api/hooks';
 
 export interface SkillProps {
   id: number;
-  component?: any;
   disableIcon?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -25,7 +24,6 @@ export interface SkillDataProps {
 
 const Skill = ({
   id,
-  component,
   disableIcon,
   disableText,
   disableLink,
@@ -39,7 +37,7 @@ const Skill = ({
   const { name, icon, professions } = data;
 
   const profession = professions?.length && professions[0].toLowerCase();
-
+  //TODO add error handling
   return (
     <Tooltip
       content={
@@ -50,7 +48,7 @@ const Skill = ({
       {...tooltipProps}
     >
       <IconWithText
-        component={component}
+        loading={data === 'LOADING'}
         icon={icon}
         text={
           disableLink ? (
