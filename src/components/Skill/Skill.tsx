@@ -33,11 +33,11 @@ const Skill = (props: SkillProps): ReactElement => {
     tooltipProps,
     wikiLinkProps,
   } = props;
-  const { loading, error, data } = useSkill(id);
+  let skill = useSkill(id);
 
-  if (loading) {
+  if (skill.loading) {
     return <IconWithText {...props} loading={true} />;
-  } else if (error) {
+  } else if (skill.error) {
     // TODO: port and use <Error />
     return (
       <IconWithText
@@ -49,7 +49,7 @@ const Skill = (props: SkillProps): ReactElement => {
     );
   }
 
-  const { name, icon, professions } = data;
+  const { name, icon, professions } = skill.data;
 
   const profession = professions?.length && professions[0].toLowerCase();
 
@@ -57,7 +57,7 @@ const Skill = (props: SkillProps): ReactElement => {
     <Tooltip
       content={
         /* <AbilityDetails data={data} type="skills" /> */
-        <>{JSON.stringify(data)}</>
+        <>{JSON.stringify(skill.data)}</>
       }
       disabled={disableTooltip}
       {...tooltipProps}

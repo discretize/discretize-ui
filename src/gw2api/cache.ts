@@ -45,7 +45,7 @@ export type APICacheGetOneResult<T> =
     }
   | {
       loading: false;
-      error: true | string;
+      error: true;
       data: null;
     }
   | {
@@ -56,7 +56,7 @@ export type APICacheGetOneResult<T> =
 
 export interface APICacheGetMultipleResult<T> {
   loading: boolean;
-  error: boolean | string;
+  error: boolean;
   data: Record<Id, T>;
 }
 
