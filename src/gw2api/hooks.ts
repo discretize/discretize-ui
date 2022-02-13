@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import APICache, { Id } from './cache';
-import GW2ApiSkill from 'gw2-ui-redux/src/gw2-api/skill';
+import { GW2ApiSkill } from './types/skills/skill';
 
 const CACHE = new APICache<GW2ApiSkill>('/v2/skills', 200, 3);
 
