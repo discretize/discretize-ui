@@ -6,7 +6,7 @@ import css from './IconWithText.module.css';
 
 export interface IconWithTextProps {
   icon?: string;
-  text?: string;
+  text?: string | JSX.Element;
   disableIcon?: boolean;
   disableText?: boolean;
   inline?: boolean;
