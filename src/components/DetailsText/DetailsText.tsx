@@ -41,9 +41,12 @@ const renderFlavor = (text: string) => {
             const [textPart, color] = part;
 
             if (color) {
+              // TODO check if the coloring is correct here
               return (
-                // eslint-disable-next-line react/no-array-index-key
-                <span key={index} sx={{ color: `gw2.details.${color}` }}>
+                <span
+                  key={`flav${index.toString()}`}
+                  style={{ color: `var(--gw2-color-details-${color})` }}
+                >
                   {textPart}
                 </span>
               );
