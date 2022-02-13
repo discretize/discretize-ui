@@ -1,0 +1,13 @@
+@import url(../../global.module.css);
+
+.root {
+  color: var(--gw2-color-primary);
+  text-decoration: none;
+  transition: color 200ms ease-in-out;
+}
+.root:hover {
+  /* TODO
+     Implement theming: with light theme this onHover color should be primary-light
+  */
+  color: var(--gw2-color-primary-dark);
+}

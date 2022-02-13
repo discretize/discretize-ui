@@ -33,7 +33,7 @@
   will-change: opacity;
   transition: opacity 200ms;
 }
-.inactive::hover {
+.inactive:hover {
   opacity: 0.8;
 }
 
