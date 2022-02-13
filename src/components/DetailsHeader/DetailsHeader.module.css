@@ -1,0 +1,22 @@
+@import url(../../global.module.css);
+
+.root {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3px;
+}
+
+.icon {
+  font-size: 32px;
+  margin-right: 6px;
+  border: 1px solid #cfd0d0;
+  border-radius: 0px;
+}
+
+.flagsRoot {
+  margin-left: 6px;
+}
+
+.flagsIcon {
+  margin-left: 2px;
+}
