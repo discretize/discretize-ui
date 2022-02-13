@@ -1,0 +1,167 @@
+@import url(../../global.module.css);
+
+.root {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+}
+.rootBgSizeCover {
+  background-size: cover;
+}
+.rootHexagon {
+  clip-path: polygon(50% 4%, 100% 28%, 100% 73%, 50% 99%, 0% 73%, 0% 28%);
+  border-radius: 0px;
+}
+.gutterRight {
+  margin-right: 0.25em;
+}
+.gutterLeft {
+  margin-left: 0.25em;
+}
+.inline {
+  vertical-align: text-top;
+}
+.hexagon {
+  width: 0.875em;
+}
+.inactive {
+  opacity: 0.5;
+  will-change: opacity;
+  transition: opacity 200ms;
+}
+.inactive::hover {
+  opacity: 0.8;
+}
+
+.applyCount {
+  position: absolute;
+  bottom: 0.1em;
+  right: 0;
+  font-size: 0.5em;
+  font-weight: var(--gw2-font-weight-body);
+  font-family: var(--gw2-font);
+  line-height: 1;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+
+.imageProfessionGuardian {
+  background-image: url('../../assets/icons/Profession/Guardian.png');
+}
+.imageProfessionDragonhunter {
+  background-image: url('../../assets/icons/Profession/Dragonhunter.png');
+}
+.imageProfessionFirebrand {
+  background-image: url('../../assets/icons/Profession/Firebrand.png');
+}
+.imageProfessionWillbender {
+  background-image: url('../../assets/icons/Profession/Willbender.png');
+}
+
+.imageProfessionWarrior {
+  background-image: url('../../assets/icons/Profession/Warrior.png');
+}
+.imageProfessionSpellbreaker {
+  background-image: url('../../assets/icons/Profession/Spellbreaker.png');
+}
+.imageProfessionBerserker {
+  background-image: url('../../assets/icons/Profession/Berserker.png');
+}
+.imageProfessionBladesworn {
+  background-image: url('../../assets/icons/Profession/Bladesworn.png');
+}
+
+.imageProfessionRevenant {
+  background-image: url('../../assets/icons/Profession/Revenant.png');
+}
+.imageProfessionHerald {
+  background-image: url('../../assets/icons/Profession/Herald.png');
+}
+.imageProfessionRenegade {
+  background-image: url('../../assets/icons/Profession/Renegade.png');
+}
+.imageProfessionVindicator {
+  /* background-image: url("../../assets/icons/Profession/Vindicator.png"); */
+}
+
+.imageProfessionRanger {
+  background-image: url('../../assets/icons/Profession/Ranger.png');
+}
+.imageProfessionDruid {
+  background-image: url('../../assets/icons/Profession/Druid.png');
+}
+.imageProfessionSoulbeast {
+  background-image: url('../../assets/icons/Profession/Soulbeast.png');
+}
+.imageProfessionUntamed {
+  background-image: url('../../assets/icons/Profession/Untamed.png');
+}
+
+.imageProfessionEngineer {
+  background-image: url('../../assets/icons/Profession/Engineer.png');
+}
+.imageProfessionScrapper {
+  background-image: url('../../assets/icons/Profession/Scrapper.png');
+}
+.imageProfessionHolosmith {
+  background-image: url('../../assets/icons/Profession/Holosmith.png');
+}
+.imageProfessionMechanist {
+  background-image: url('../../assets/icons/Profession/Mechanist.png');
+}
+
+.imageProfessionElementalist {
+  background-image: url('../../assets/icons/Profession/Elementalist.png');
+}
+.imageProfessionTempest {
+  background-image: url('../../assets/icons/Profession/Tempest.png');
+}
+.imageProfessionWeaver {
+  background-image: url('../../assets/icons/Profession/Weaver.png');
+}
+.imageProfessionCatalyst {
+  /* background-image: url("../../assets/icons/Profession/Catalyst.png"); */
+}
+
+.imageProfessionMesmer {
+  background-image: url('../../assets/icons/Profession/Mesmer.png');
+}
+.imageProfessionChronomancer {
+  background-image: url('../../assets/icons/Profession/Chronomancer.png');
+}
+.imageProfessionMirage {
+  background-image: url('../../assets/icons/Profession/Mirage.png');
+}
+.imageProfessionVirtuoso {
+  background-image: url('../../assets/icons/Profession/Virtuoso.png');
+}
+
+.imageProfessionNecromancer {
+  background-image: url('../../assets/icons/Profession/Necromancer.png');
+}
+.imageProfessionReaper {
+  background-image: url('../../assets/icons/Profession/Reaper.png');
+}
+.imageProfessionScourge {
+  background-image: url('../../assets/icons/Profession/Scourge.png');
+}
+.imageProfessionHarbinger {
+  background-image: url('../../assets/icons/Profession/Harbinger.png');
+}
+
+.imageProfessionThief {
+  background-image: url('../../assets/icons/Profession/Thief.png');
+}
+.imageProfessionDaredevil {
+  background-image: url('../../assets/icons/Profession/Daredevil.png');
+}
+.imageProfessionDeadeye {
+  background-image: url('../../assets/icons/Profession/Deadeye.png');
+}
+.imageProfessionSpecter {
+  /* background-image: url("../../assets/icons/Profession/Specter.png"); */
+}
