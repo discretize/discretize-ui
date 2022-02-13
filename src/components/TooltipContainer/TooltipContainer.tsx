@@ -1,11 +1,8 @@
 import clsx from 'clsx';
-import React, { ReactElement } from 'react';
+import React, { PropsWithChildren, ReactElement } from 'react';
 import * as css from './TooltipContainer.module.css';
 
-// TODO move into another file? unsure where I would put such helper types
-export type WithChildren<T = {}> = T & { children?: React.ReactNode };
-
-export type TooltipContainerProps = WithChildren<{
+export type TooltipContainerProps = PropsWithChildren<{
   className?: string;
 }>;
 

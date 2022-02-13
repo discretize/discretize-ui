@@ -1,12 +1,16 @@
-import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
+import React, {
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import Tippy from '@tippyjs/react/headless';
 import { followCursor } from 'tippy.js/headless';
 import css from './Tooltip.module.css';
-import TooltipContainer, {
-  WithChildren,
-} from '../TooltipContainer/TooltipContainer';
+import TooltipContainer from '../TooltipContainer/TooltipContainer';
 
-export type TooltipProps = WithChildren<{
+export type TooltipProps = PropsWithChildren<{
   content: ReactNode;
   render?: ReactNode | (() => ReactNode);
   containerProps?: any;
