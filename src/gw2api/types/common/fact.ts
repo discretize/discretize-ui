@@ -1,7 +1,8 @@
 import GW2ApiFactComboFieldType from './comboFieldType';
 import GW2ApiFactType from './factType';
+import { ApiAttributes } from './attributeType';
 
-interface GW2ApiFactBase {
+export interface GW2ApiFactBase {
   text: string;
   icon?: string;
   type: GW2ApiFactType;
@@ -9,7 +10,7 @@ interface GW2ApiFactBase {
 
 export interface GW2ApiFactAttributeAdjust extends GW2ApiFactBase {
   value: number;
-  target: string; //TODO: Likely can be its own type.
+  target: keyof ApiAttributes;
 }
 
 export interface GW2ApiFactBuff extends GW2ApiFactBase {
@@ -23,6 +24,11 @@ export interface GW2ApiFactComboField extends GW2ApiFactBase {
   field_type: GW2ApiFactComboFieldType;
 }
 
+export interface GW2ApiFactComboFinisher extends GW2ApiFactBase {
+  percent: number;
+  finisher_type: 'Blast' | 'Leap' | 'Projectile' | 'Whirl';
+}
+
 export interface GW2ApiFactDamage extends GW2ApiFactBase {
   hit_count: number;
   dmg_multiplier: number;
@@ -30,6 +36,10 @@ export interface GW2ApiFactDamage extends GW2ApiFactBase {
 
 export interface GW2ApiFactDistance extends GW2ApiFactBase {
   distance: number;
+}
+
+export interface GW2ApiFactDuration extends GW2ApiFactBase {
+  duration: number;
 }
 
 export interface GW2ApiFactHeal extends GW2ApiFactBase {

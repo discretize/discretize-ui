@@ -17,6 +17,7 @@ const FACT_TYPES = [
   'Recharge',
   'Time',
   'Unblockable',
+  'StunBreak',
 ] as const;
 type GW2ApiFactType = typeof FACT_TYPES[number];
 

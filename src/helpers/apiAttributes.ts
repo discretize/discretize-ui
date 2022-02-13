@@ -1,4 +1,6 @@
-export default {
+import { ApiAttributes } from '../gw2api/types/common/attributeType';
+// eslint-disable-next-line import/prefer-default-export
+export const apiAttributes: ApiAttributes = {
   Power: 'Power',
   Precision: 'Precision',
   Toughness: 'Toughness',
@@ -9,4 +11,4 @@ export default {
   CritDamage: 'Ferocity',
   Healing: 'Healing Power',
   AgonyResistance: 'Agony Resistance',
-}
+};
