@@ -4,6 +4,7 @@ import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { useSkill } from '../../gw2api/hooks';
+import AbilityDetails from '../AbilityDetails/AbilityDetails';
 
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
@@ -46,10 +47,7 @@ const Skill = (props: SkillProps): ReactElement => {
 
   return (
     <Tooltip
-      content={
-        /* <AbilityDetails data={data} type="skills" /> */
-        <>{JSON.stringify(skill.data)}</>
-      }
+      content={<AbilityDetails data={skill.data} />}
       disabled={disableTooltip}
       {...tooltipProps}
     >

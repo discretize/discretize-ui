@@ -62,7 +62,7 @@ const renderFlavor = (text: string) => {
 
 export interface DetailsProps {
   component?: string;
-  lines: (ReactElement | string)[];
+  lines: (ReactElement | undefined | string)[];
   lineComponent?: string;
   lineProps?: any;
 }

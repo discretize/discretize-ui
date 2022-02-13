@@ -10,7 +10,7 @@ import GW2ApiFact, {
 } from '../../gw2api/types/common/fact';
 import { apiAttributes } from '../../helpers/apiAttributes';
 import { formatDuration } from '../../helpers/formatDuration';
-import classes from './Facts.module.css';
+import classes from './DetailsFact.module.css';
 import { GW2ApiFactRadius } from '../../gw2api/types/common/fact';
 import {
   GW2ApiFactRecharge,
