@@ -29,6 +29,8 @@ export function Multiple() {
         <Skill id={1175} />. When <Skill id={1175} /> finishes,{' '}
         <Skill id={5548} /> should be off cooldown, making for a smooth
         rotation.
+        <br />
+        Do not cast <Skill id={42} />, because that skill does not exist.
       </p>
       <p>
         Check your browser console - there should be a single request to the

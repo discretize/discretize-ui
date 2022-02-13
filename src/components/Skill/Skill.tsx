@@ -22,22 +22,37 @@ export interface SkillDataProps {
   professions: string[];
 }
 
-const Skill = ({
-  id,
-  disableIcon,
-  disableText,
-  disableLink,
-  disableTooltip,
-  inline,
-  tooltipProps,
-  wikiLinkProps,
-}: SkillProps): ReactElement => {
+const Skill = (props: SkillProps): ReactElement => {
+  let {
+    id,
+    disableIcon,
+    disableText,
+    disableLink,
+    disableTooltip,
+    inline,
+    tooltipProps,
+    wikiLinkProps,
+  } = props;
   const data = useSkill(id);
+
+  if (data === 'LOADING') {
+    return <IconWithText {...props} loading={true} />;
+  } else if (data === 'ERROR') {
+    // TODO: port and use <Error />
+    return (
+      <IconWithText
+        {...props}
+        text="Unknown Skill"
+        // TODO: decide on a good error icon
+        icon="https://render.guildwars2.com/file/A5DE06130C0D1E2C9A9780EAD037E61462B1E825/102597.png"
+      />
+    );
+  }
 
   const { name, icon, professions } = data;
 
   const profession = professions?.length && professions[0].toLowerCase();
-  //TODO add error handling
+
   return (
     <Tooltip
       content={
@@ -48,7 +63,6 @@ const Skill = ({
       {...tooltipProps}
     >
       <IconWithText
-        loading={data === 'LOADING'}
         icon={icon}
         text={
           disableLink ? (
