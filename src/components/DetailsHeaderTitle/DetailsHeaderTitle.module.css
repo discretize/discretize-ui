@@ -1,0 +1,11 @@
+@import url(../../global.module.css);
+
+.root {
+  color: var(--gw2-color-details-title);
+  font-size: 16px;
+  font-family: var(--gw2-font);
+  font-weight: var(--gw2-font-weight-heading);
+  flex-grow: 1;
+  align-self: center;
+  line-height: var(--gw2-line-height-heading);
+}
