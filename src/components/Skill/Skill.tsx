@@ -1,17 +1,15 @@
 import React, { ReactElement } from 'react';
 
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
-import IconWithText from '../IconWithText/IconWithText';
+import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { useSkill } from '../../gw2api/hooks';
 
-export interface SkillProps {
+export interface SkillProps
+  extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
   id: number;
-  disableIcon?: boolean;
-  disableText?: boolean;
   disableLink?: boolean;
   disableTooltip?: boolean;
-  inline?: boolean;
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
 }
@@ -23,16 +21,7 @@ export interface SkillDataProps {
 }
 
 const Skill = (props: SkillProps): ReactElement => {
-  let {
-    id,
-    disableIcon,
-    disableText,
-    disableLink,
-    disableTooltip,
-    inline,
-    tooltipProps,
-    wikiLinkProps,
-  } = props;
+  let { id, disableLink, disableTooltip, tooltipProps, wikiLinkProps } = props;
   let skill = useSkill(id);
 
   if (skill.loading) {
@@ -63,6 +52,7 @@ const Skill = (props: SkillProps): ReactElement => {
       {...tooltipProps}
     >
       <IconWithText
+        {...props}
         icon={icon}
         text={
           disableLink ? (
@@ -82,10 +72,6 @@ const Skill = (props: SkillProps): ReactElement => {
             />
           )
         }
-        disableIcon={disableIcon}
-        disableText={disableText}
-        inline={inline}
-        iconProps={{ zoom: 5 }}
         style={{ color: `var(--gw2-color-${profession}-main)` }}
       />
     </Tooltip>
