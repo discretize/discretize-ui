@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { CSSProperties } from 'react';
 
 import Icon, { IconProps } from '../Icon/Icon';
 import Progress, { ProgressProps } from '../Progress/Progress';
@@ -14,40 +14,47 @@ export interface IconWithTextProps {
   textProps?: any;
   progressProps?: ProgressProps;
   loading?: boolean;
+  style?: CSSProperties;
 }
 
-const IconWithText = ({
-  icon,
-  text,
-  disableIcon,
-  disableText,
-  inline,
-  iconProps,
-  textProps,
-  progressProps,
-  loading,
-}: IconWithTextProps): ReactElement => {
-  return (
-    <div className={css.root}>
-      {!disableIcon &&
-        (loading || icon || iconProps?.src || iconProps?.name) && (
-          <Icon
-            src={icon}
-            gutterRight={!disableText}
-            inline={!disableText || inline}
-            loading={loading}
-            {...iconProps}
-          />
-        )}
+const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
+  (
+    {
+      icon,
+      text,
+      disableIcon,
+      disableText,
+      inline,
+      iconProps,
+      textProps,
+      progressProps,
+      loading,
+      style,
+    }: IconWithTextProps,
+    ref,
+  ) => {
+    return (
+      <span ref={ref} className={css.root} style={style}>
+        {!disableIcon &&
+          (loading || icon || iconProps?.src || iconProps?.name) && (
+            <Icon
+              src={icon}
+              gutterRight={!disableText}
+              inline={!disableText || inline}
+              loading={loading}
+              {...iconProps}
+            />
+          )}
 
-      {!disableText &&
-        (loading ? (
-          <Progress inline={!disableText || inline} {...progressProps} />
-        ) : (
-          <span {...textProps}>{text}</span>
-        ))}
-    </div>
-  );
-};
+        {!disableText &&
+          (loading ? (
+            <Progress inline={!disableText || inline} {...progressProps} />
+          ) : (
+            <span {...textProps}>{text}</span>
+          ))}
+      </span>
+    );
+  },
+);
 
 export default IconWithText;

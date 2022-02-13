@@ -15,6 +15,7 @@ export type TooltipProps = PropsWithChildren<{
   render?: ReactNode | (() => ReactNode);
   containerProps?: any;
   wrapperProps?: any;
+  disabled?: boolean;
 }>;
 
 const Tooltip = ({
@@ -23,6 +24,7 @@ const Tooltip = ({
   render,
   containerProps,
   wrapperProps,
+  disabled,
 }: TooltipProps): ReactElement => {
   const [mounted, setMounted] = useState(false);
   const [appendTo, setAppendTo] = useState(undefined);
@@ -45,6 +47,7 @@ const Tooltip = ({
 
   return (
     <Tippy
+      disabled={disabled}
       // visible
       ignoreAttributes
       {...(appendTo && { appendTo })}
@@ -76,7 +79,7 @@ const Tooltip = ({
         );
       }}
     >
-      <div>{children}</div>
+      {children}
     </Tippy>
   );
 };
