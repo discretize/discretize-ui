@@ -5,8 +5,8 @@ import Progress, { ProgressProps } from '../Progress/Progress';
 import css from './IconWithText.module.css';
 
 export interface IconWithTextProps {
-  icon: string;
-  text: string;
+  icon?: string;
+  text?: string;
   disableIcon?: boolean;
   disableText?: boolean;
   inline?: boolean;
@@ -35,16 +35,15 @@ const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
   ) => {
     return (
       <span ref={ref} className={css.root} style={style}>
-        {!disableIcon &&
-          (loading || icon || iconProps?.src || iconProps?.name) && (
-            <Icon
-              src={icon}
-              gutterRight={!disableText}
-              inline={!disableText || inline}
-              loading={loading}
-              {...iconProps}
-            />
-          )}
+        {!disableIcon && (loading || icon || iconProps?.src) && (
+          <Icon
+            src={icon}
+            gutterRight={!disableText}
+            inline={!disableText || inline}
+            loading={loading}
+            {...iconProps}
+          />
+        )}
 
         {!disableText &&
           (loading ? (
