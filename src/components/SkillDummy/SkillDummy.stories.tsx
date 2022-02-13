@@ -1,4 +1,4 @@
-import type { ComponentMeta } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import SkillDummy from './SkillDummy';
 
@@ -15,9 +15,10 @@ const Template = (args: React.ComponentProps<typeof SkillDummy>) => {
   );
 };
 
-export function LavaFont() {
-  return <SkillDummy id={5548} />;
-}
+export const LavaFont: ComponentStory<typeof SkillDummy> = Template.bind({});
+LavaFont.args = {
+  id: 5548,
+};
 
 export function Multiple() {
   return (

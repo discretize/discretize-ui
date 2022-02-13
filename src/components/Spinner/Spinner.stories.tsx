@@ -1,5 +1,5 @@
-import type { ComponentMeta } from '@storybook/react';
-import React from 'react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import React, { ComponentProps } from 'react';
 import Spinner from './Spinner';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: Spinner,
 } as ComponentMeta<typeof Spinner>;
 
-const Template = (args) => {
+const Template = (args: ComponentProps<typeof Spinner>) => {
   return (
     <>
       Spinner with inline {args.inline ? 'enabled' : 'disabled'}

@@ -1,5 +1,5 @@
 import type { ComponentMeta } from '@storybook/react';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import Progress from './Progress';
 
 export default {
@@ -10,7 +10,7 @@ export default {
   },
 } as ComponentMeta<typeof Progress>;
 
-const Template = (args) => {
+const Template = (args: ComponentProps<typeof Progress>) => {
   return (
     <>
       <Progress {...args} />
