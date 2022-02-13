@@ -160,10 +160,13 @@ export default class APICache<T extends { id: Id }> {
 
   private fetchLater() {
     if (this.fetch_delay_timeout) return;
-    this.fetch_delay_timeout = setTimeout(() => {
-      this.fetch_delay_timeout = null;
-      this.tryFetch();
-    }, 0);
+    this.fetch_delay_timeout = setTimeout(
+      () => {
+        this.fetch_delay_timeout = null;
+        this.tryFetch();
+      },
+      process.env.NODE_ENV === 'development' ? 1000 : 0,
+    );
   }
 
   private async tryFetch() {
