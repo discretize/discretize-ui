@@ -1,5 +1,12 @@
 const GW2_API_URL = 'https://api.guildwars2.com';
 
+// An error occurred when connecting to the API
+export const API_ERROR_NETWORK = 500;
+// The API call succeeded, but didn't return an item. This means that an item with the requested Id does not exist.
+export const API_ERROR_NOT_FOUND = 404;
+
+export type APIError = typeof API_ERROR_NETWORK | typeof API_ERROR_NOT_FOUND;
+
 const FETCH_OPTIONS: RequestInit = {
   method: 'GET',
   mode: 'cors',
@@ -45,7 +52,7 @@ export type APICacheGetOneResult<T> =
     }
   | {
       loading: false;
-      error: true;
+      error: APIError;
       data: null;
     }
   | {
@@ -56,14 +63,14 @@ export type APICacheGetOneResult<T> =
 
 export interface APICacheGetMultipleResult<T> {
   loading: boolean;
-  error: boolean;
+  errors: null | Record<Id, APIError>;
   data: Record<Id, T>;
 }
 
 export default class APICache<T extends { id: Id }> {
   private path: string; // The relative URL of the API endpoint
-  // All known Ts returned from the API. If an entry is null, then there was an error.
-  private cache: Map<Id, T | null> = new Map();
+  // All known Ts returned from the API.
+  private cache: Map<Id, T | APIError> = new Map();
   // For proper batching, we limit the number of concurrent requests.
   // A new request is only generated once previous requests finish.
   private requests_inflight: number = 0;
@@ -107,21 +114,22 @@ export default class APICache<T extends { id: Id }> {
       this.fetchLater();
     }
 
-    let errored = 0;
     let map: Record<Id, T> = {};
+    let errors: Record<Id, APIError> | null = null;
     for (let id of ids) {
       let item = this.cache.get(id);
       if (item === undefined) {
         missing++;
-      } else if (item === null) {
-        errored++;
+      } else if (item === API_ERROR_NOT_FOUND || item === API_ERROR_NETWORK) {
+        if (!errors) errors = {};
+        errors[id] = item;
       } else {
         map[id] = item;
       }
     }
     return {
       loading: missing > 0,
-      error: errored > 0,
+      errors: errors,
       data: map,
     };
   }
@@ -135,10 +143,10 @@ export default class APICache<T extends { id: Id }> {
         error: false,
         data: null,
       };
-    } else if (res.error) {
+    } else if (res.errors) {
       return {
         loading: false,
-        error: res.error,
+        error: res.errors[id],
         data: null,
       };
     } else if (item) {
@@ -153,7 +161,7 @@ export default class APICache<T extends { id: Id }> {
     console.error('APICache: invalid state reached', id, res);
     return {
       loading: false,
-      error: true,
+      error: API_ERROR_NETWORK,
       data: null,
     };
   }
@@ -201,6 +209,7 @@ export default class APICache<T extends { id: Id }> {
       this.fetched_ids.add(id);
     }
     let response: unknown[];
+    let error: APIError = API_ERROR_NOT_FOUND;
     try {
       ids.sort();
       let json = await fetch_api(this.path + '?ids=' + ids.join(','));
@@ -209,7 +218,7 @@ export default class APICache<T extends { id: Id }> {
       }
       response = json;
     } catch (e) {
-      // If there is an error, we treat is as an empty response.
+      error = API_ERROR_NETWORK;
       response = [];
       console.error(e);
     }
@@ -230,7 +239,7 @@ export default class APICache<T extends { id: Id }> {
     for (let id of ids) {
       if (!this.cache.has(id)) {
         // mark missing ids as errors
-        this.cache.set(id, null);
+        this.cache.set(id, error);
       }
       // mark the ids as fetched
       this.requested_ids.delete(id);

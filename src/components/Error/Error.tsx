@@ -9,8 +9,9 @@ import iconcss from '../Icon/Icon.module.css';
 
 export interface ErrorProps {
   code: number;
-  name: string;
-  message: string;
+  id?: number;
+  names: Record<number, string | ((id: number) => string)>;
+  messages: Record<number, string | ((id: number) => string)>;
   disableIcon?: boolean;
   disableText?: boolean;
   disableTooltip?: boolean;
@@ -20,8 +21,9 @@ export interface ErrorProps {
 
 const Error = ({
   code,
-  name,
-  message,
+  id,
+  names,
+  messages,
   disableIcon,
   disableText,
   disableTooltip,
@@ -30,6 +32,18 @@ const Error = ({
 }: ErrorProps): ReactElement => {
   const errorIconClass =
     code === 404 ? iconcss.imageError404 : iconcss.imageError500;
+
+  function getMessage(
+    raw: string | ((id: number) => string) | undefined,
+  ): string {
+    if (raw === undefined) return '';
+    if (typeof raw === 'string') return raw;
+    if (id !== undefined) return raw(id);
+    return '';
+  }
+  const name = getMessage(names[code]);
+  const message = getMessage(messages[code]);
+
   return (
     <Tooltip
       content={
@@ -38,16 +52,9 @@ const Error = ({
             iconProps={{ className: errorIconClass, iconViaClassname: true }}
             titleClassName={css.errorColor}
           >
-            {name}
+            {names[code]}
           </DetailsHeader>
-          <DetailsText
-            lines={[
-              <>
-                {message}
-                {code && ` (code ${code})`}
-              </>,
-            ]}
-          />
+          <DetailsText lines={[message]} />
         </>
       }
       disabled={disableTooltip}

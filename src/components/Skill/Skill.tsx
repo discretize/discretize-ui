@@ -5,8 +5,8 @@ import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { useSkill } from '../../gw2api/hooks';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
-import css from '../../global.module.css';
 import Error from '../Error/Error';
+import css from '../../global.module.css';
 
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
@@ -23,6 +23,15 @@ export interface SkillDataProps {
   professions: string[];
 }
 
+const SKILL_ERROR_NAMES: React.ComponentProps<typeof Error>['names'] = {
+  404: 'Skill Not Found',
+  500: 'Network Error',
+};
+const SKILL_ERROR_MESSAGES: React.ComponentProps<typeof Error>['messages'] = {
+  404: (id) => `The requested skill with the id ${id} was not found.`,
+  500: (id) => `A Network Error occured trying to fetch the skill ${id}.`,
+};
+
 const Skill = (props: SkillProps): ReactElement => {
   const { id, disableLink, disableTooltip, tooltipProps, wikiLinkProps } =
     props;
@@ -32,13 +41,12 @@ const Skill = (props: SkillProps): ReactElement => {
     return <IconWithText {...props} loading />;
   }
   if (skill.error) {
-    // TODO differentiate between 404 and 5xx errors
     return (
       <Error
         {...props}
-        code={404}
-        name="Not Found"
-        message={`The requested item with the id ${id} was not found`}
+        code={skill.error}
+        names={SKILL_ERROR_NAMES}
+        messages={SKILL_ERROR_MESSAGES}
       />
     );
   }
