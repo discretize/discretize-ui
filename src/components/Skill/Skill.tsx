@@ -6,7 +6,7 @@ import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { useSkill } from '../../gw2api/hooks';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import Error from '../Error/Error';
-import css from '../../global.module.css';
+import globalcss from '../../global.module.css';
 
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
@@ -75,11 +75,13 @@ const Skill = (props: SkillProps): ReactElement => {
             <WikiLink
               to={name}
               {...wikiLinkProps}
-              className={profession && css[`coloredProfession${profession}`]}
+              className={
+                profession && globalcss[`coloredProfession${profession}`]
+              }
             />
           )
         }
-        className={profession && css[`coloredProfession${profession}`]}
+        className={profession && globalcss[`coloredProfession${profession}`]}
       />
     </Tooltip>
   );

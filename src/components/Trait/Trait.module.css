@@ -1,0 +1,9 @@
+@import url(../../global.module.css);
+
+.traitSkill {
+  margin-top: 6px;
+}
+
+.ability {
+  border-color: #537ca5;
+}

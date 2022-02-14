@@ -7,15 +7,19 @@ interface GW2ApiTraitBase {
   description: string;
   icon: string;
   facts?: GW2ApiFact[];
-  traited_facts: GW2ApiTraitedFact[];
+  traited_facts?: GW2ApiTraitedFact[];
 }
 
-export interface GW2ApiTraitSkill extends GW2ApiTraitBase {}
+export interface GW2ApiTraitSkill extends GW2ApiTraitBase {
+  flags: any[];
+  chat_link: string;
+}
 
 interface GW2ApiTrait extends GW2ApiTraitBase {
   specialization: number;
   tier: number;
-  slot: string; //TODO could be its own separate type.
+  order: number;
+  slot: 'Major' | 'Minor';
   skills?: GW2ApiTraitSkill[];
 }
 

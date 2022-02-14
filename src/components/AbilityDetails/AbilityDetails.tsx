@@ -6,9 +6,10 @@ import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import Spinner from '../Spinner/Spinner';
 import css from './AbilityDetails.module.css';
+import GW2ApiTrait, { GW2ApiTraitSkill } from '../../gw2api/types/traits/trait';
 
 export interface AbilityDetailsProps {
-  data: GW2ApiSkill;
+  data: GW2ApiSkill | GW2ApiTrait | GW2ApiTraitSkill;
 }
 
 // type is "skills" or "traits"
