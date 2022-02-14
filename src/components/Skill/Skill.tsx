@@ -5,6 +5,7 @@ import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { useSkill } from '../../gw2api/hooks';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
+import css from '../../global.module.css';
 
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
@@ -43,7 +44,11 @@ const Skill = (props: SkillProps): ReactElement => {
 
   const { name, icon, professions } = skill.data;
 
-  const profession = professions?.length && professions[0].toLowerCase();
+  let profession;
+  if (professions?.length > 0) {
+    profession =
+      professions[0].charAt(0).toUpperCase() + professions[0].slice(1);
+  }
 
   return (
     <Tooltip
@@ -61,18 +66,11 @@ const Skill = (props: SkillProps): ReactElement => {
             <WikiLink
               to={name}
               {...wikiLinkProps}
-              sx={{
-                // TODO remove theme-ui from here. Unsure how to proceed.
-                color: 'inherit',
-                '&:hover': {
-                  color: `var(--gw2-color-${profession}-dark)`,
-                },
-                ...wikiLinkProps?.sx,
-              }}
+              className={profession && css[`coloredProfession${profession}`]}
             />
           )
         }
-        style={{ color: `var(--gw2-color-${profession}-main)` }}
+        className={profession && css[`coloredProfession${profession}`]}
       />
     </Tooltip>
   );

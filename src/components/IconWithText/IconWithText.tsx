@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { CSSProperties } from 'react';
 
 import Icon, { IconProps } from '../Icon/Icon';
@@ -15,6 +16,7 @@ export interface IconWithTextProps {
   progressProps?: ProgressProps;
   loading?: boolean;
   style?: CSSProperties;
+  className?: string;
 }
 
 const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
@@ -30,11 +32,12 @@ const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
       progressProps,
       loading,
       style,
+      className,
     }: IconWithTextProps,
     ref,
   ) => {
     return (
-      <span ref={ref} className={css.root} style={style}>
+      <span ref={ref} className={clsx(css.root, className)} style={style}>
         {!disableIcon && (loading || icon || iconProps?.src) && (
           <Icon
             src={icon}

@@ -41,7 +41,8 @@ const WikiLink = ({
 }: WikiLinkProps): ReactElement => {
   return (
     <Component
-      className={clsx(className, css.root)}
+      // if there is no className provided, we assume that there is no profession specific styling wanted and default.
+      className={clsx(className || css.default, css.root)}
       href={`https://wiki-${lang}.guildwars2.com/wiki/Special:Search/${encodeURIComponent(
         to,
       )}`}
