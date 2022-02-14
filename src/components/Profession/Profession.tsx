@@ -8,13 +8,6 @@ import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import css from './Profession.module.css';
 
-const ERROR_NAMES: React.ComponentProps<typeof Error>['names'] = {
-  404: 'Invalid Profession',
-};
-const ERROR_MESSAGES: React.ComponentProps<typeof Error>['messages'] = {
-  404: `Error: no data for Profession`,
-};
-
 export interface ProfessionProps {
   name: string;
   disableTooltip?: boolean;
@@ -56,8 +49,8 @@ const Profession = ({
     return (
       <Error
         code={404}
-        names={ERROR_NAMES}
-        messages={ERROR_MESSAGES}
+        name="Invalid Profession"
+        message={`Error: no data for Profession ${propsName}`}
         disableTooltip={disableTooltip}
         disableIcon={disableIcon}
         disableText={disableText}

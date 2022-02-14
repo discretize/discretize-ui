@@ -9,8 +9,10 @@ import css from './Error.module.css';
 export interface ErrorProps {
   code: number;
   id?: number;
-  names: Record<number, string | ((id: number) => string)>;
-  messages: Record<number, string | ((id: number) => string)>;
+  name?: string;
+  message?: string;
+  names?: Record<number, string | ((id: number) => string)>;
+  messages?: Record<number, string | ((id: number) => string)>;
   disableIcon?: boolean;
   disableText?: boolean;
   disableTooltip?: boolean;
@@ -18,9 +20,16 @@ export interface ErrorProps {
   tooltipProps?: TooltipProps;
 }
 
+/**
+ * Either path name + message for a static error name and message.
+ *
+ * Alternatively, pass names + messages, which will pick the right message based on the provided code
+ */
 const Error = ({
   code,
   id,
+  name: nameProps,
+  message: messageProps,
   names,
   messages,
   disableIcon,
@@ -39,8 +48,15 @@ const Error = ({
     if (id !== undefined) return raw(id);
     return '';
   }
-  const name = getMessage(names[code]);
-  const message = getMessage(messages[code]);
+  if (!names || !messages)
+    return (
+      <span>
+        Missing Props. Either pass `name` + `message` or `names` + `messages`
+      </span>
+    );
+
+  const name = nameProps || getMessage(names[code]);
+  const message = messageProps || getMessage(messages[code]);
 
   return (
     <Tooltip
