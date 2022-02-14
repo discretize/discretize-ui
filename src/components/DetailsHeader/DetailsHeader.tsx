@@ -10,11 +10,11 @@ export interface DetailsHeaderFlagProps {
 }
 
 export interface DetailsHeaderProps {
-  icon: string;
-  iconProps: IconProps;
-  titleClassName: string;
-  flags: DetailsHeaderFlagProps[];
-  className: string;
+  icon?: string;
+  iconProps?: IconProps;
+  titleClassName?: string;
+  flags?: DetailsHeaderFlagProps[];
+  className?: string;
 }
 
 const DetailsHeader = ({
