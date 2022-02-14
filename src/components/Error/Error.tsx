@@ -5,7 +5,6 @@ import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import IconWithText from '../IconWithText/IconWithText';
 import css from './Error.module.css';
-import iconcss from '../Icon/Icon.module.css';
 
 export interface ErrorProps {
   code: number;
@@ -30,8 +29,7 @@ const Error = ({
   inline,
   tooltipProps,
 }: ErrorProps): ReactElement => {
-  const errorIconClass =
-    code === 404 ? iconcss.imageError404 : iconcss.imageError500;
+  const errorIconClass = code === 404 ? css.imageError404 : css.imageError500;
 
   function getMessage(
     raw: string | ((id: number) => string) | undefined,

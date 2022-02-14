@@ -1,5 +1,5 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import Icon from './Icon';
 
 export default {
@@ -10,7 +10,9 @@ export default {
   },
 } as ComponentMeta<typeof Icon>;
 
-const Template: ComponentStory<typeof Icon> = (args) => {
+const Template: ComponentStory<typeof Icon> = (
+  args: ComponentProps<typeof Icon>,
+) => {
   return (
     <>
       <Icon {...args} />
@@ -19,3 +21,6 @@ const Template: ComponentStory<typeof Icon> = (args) => {
 };
 
 export const Simple = Template.bind({});
+Simple.args = {
+  src: 'https://render.guildwars2.com/file/2FA9DF9D6BC17839BBEA14723F1C53D645DDB5E1/102852.png',
+};

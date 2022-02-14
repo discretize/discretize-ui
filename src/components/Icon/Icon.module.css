@@ -165,10 +165,3 @@
 .imageProfessionSpecter {
   /* background-image: url("../../assets/icons/Profession/Specter.png"); */
 }
-
-.imageError404 {
-  background-image: url('../../assets/icons/404.png');
-}
-.imageError500 {
-  background-image: url('../../assets/icons/500.png');
-}

@@ -3,3 +3,10 @@
 .errorColor {
   color: var(--gw2-color-error);
 }
+
+.imageError404 {
+  background-image: url('../../assets/icons/404.png');
+}
+.imageError500 {
+  background-image: url('../../assets/icons/500.png');
+}
