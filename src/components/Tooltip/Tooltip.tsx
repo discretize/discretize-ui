@@ -11,7 +11,7 @@ import css from './Tooltip.module.css';
 import TooltipContainer from '../TooltipContainer/TooltipContainer';
 
 export type TooltipProps = PropsWithChildren<{
-  content: ReactNode;
+  content?: ReactNode;
   render?: ReactNode | (() => ReactNode);
   containerProps?: any;
   wrapperProps?: any;
