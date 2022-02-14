@@ -1,0 +1,5 @@
+@import url(../../global.module.css);
+
+.errorColor {
+  color: var(--gw2-color-error);
+}

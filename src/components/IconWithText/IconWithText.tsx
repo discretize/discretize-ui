@@ -38,15 +38,19 @@ const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
   ) => {
     return (
       <span ref={ref} className={clsx(css.root, className)} style={style}>
-        {!disableIcon && (loading || icon || iconProps?.src) && (
-          <Icon
-            src={icon}
-            gutterRight={!disableText}
-            inline={!disableText || inline}
-            loading={loading}
-            {...iconProps}
-          />
-        )}
+        {!disableIcon &&
+          (loading ||
+            icon ||
+            iconProps?.src ||
+            iconProps?.iconViaClassname) && (
+            <Icon
+              src={icon}
+              gutterRight={!disableText}
+              inline={!disableText || inline}
+              loading={loading}
+              {...iconProps}
+            />
+          )}
 
         {!disableText &&
           (loading ? (

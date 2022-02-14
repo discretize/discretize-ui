@@ -27,7 +27,9 @@ const DetailsHeader = ({
 }: PropsWithChildren<DetailsHeaderProps>): ReactElement => {
   return (
     <div className={clsx(className, css.root)}>
-      {typeof icon === 'string' || iconProps?.src || iconProps?.name ? (
+      {typeof icon === 'string' ||
+      iconProps?.src ||
+      iconProps?.iconViaClassname ? (
         <Icon
           src={icon}
           {...iconProps}

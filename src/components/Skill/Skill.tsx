@@ -6,6 +6,7 @@ import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { useSkill } from '../../gw2api/hooks';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import css from '../../global.module.css';
+import Error from '../Error/Error';
 
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
@@ -31,13 +32,13 @@ const Skill = (props: SkillProps): ReactElement => {
     return <IconWithText {...props} loading />;
   }
   if (skill.error) {
-    // TODO: port and use <Error />
+    // TODO differentiate between 404 and 5xx errors
     return (
-      <IconWithText
+      <Error
         {...props}
-        text="Unknown Skill"
-        // TODO: decide on a good error icon
-        icon="https://render.guildwars2.com/file/A5DE06130C0D1E2C9A9780EAD037E61462B1E825/102597.png"
+        code={404}
+        name="Not Found"
+        message={`The requested item with the id ${id} was not found`}
       />
     );
   }

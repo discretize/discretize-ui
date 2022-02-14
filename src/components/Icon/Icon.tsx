@@ -17,6 +17,7 @@ export interface IconProps {
   inactive?: boolean;
   applyCountProps?: any;
   className?: string;
+  iconViaClassname?: boolean; // indicates that the icon url is inserted via an additional className
 }
 
 const Icon = ({
