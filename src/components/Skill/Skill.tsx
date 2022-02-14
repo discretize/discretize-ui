@@ -1,12 +1,13 @@
+import clsx from 'clsx';
+import capitalize from 'lodash.capitalize';
 import React, { ReactElement } from 'react';
-
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
-import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
-import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import globalcss from '../../global.module.css';
 import { useSkill } from '../../gw2api/hooks';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import Error from '../Error/Error';
-import globalcss from '../../global.module.css';
+import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
+import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
+import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
@@ -55,8 +56,7 @@ const Skill = (props: SkillProps): ReactElement => {
 
   let profession;
   if (professions?.length > 0) {
-    profession =
-      professions[0].charAt(0).toUpperCase() + professions[0].slice(1);
+    profession = capitalize(professions[0]);
   }
 
   return (
@@ -75,9 +75,10 @@ const Skill = (props: SkillProps): ReactElement => {
             <WikiLink
               to={name}
               {...wikiLinkProps}
-              className={
-                profession && globalcss[`coloredProfession${profession}`]
-              }
+              className={clsx(
+                profession && globalcss[`coloredProfession${profession}`],
+                wikiLinkProps?.className,
+              )}
             />
           )
         }

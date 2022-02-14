@@ -9,6 +9,7 @@ import specializations from '../../helpers/specializations';
 import GW2ApiTrait from '../../gw2api/types/traits/trait';
 import globalcss from '../../global.module.css';
 import css from './Trait.module.css';
+import capitalize from 'lodash.capitalize';
 
 export interface TraitProps {
   data: GW2ApiTrait;
@@ -41,9 +42,7 @@ const Trait = ({
         specializationIds.includes(specialization),
       )) ||
     [];
-  const profession = professionRaw
-    ? professionRaw?.charAt(0).toUpperCase() + professionRaw?.slice(1)
-    : undefined;
+  const profession = capitalize(professionRaw);
 
   return (
     <Tooltip
