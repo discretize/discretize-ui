@@ -1,0 +1,73 @@
+@import url(../../global.module.css);
+
+.wikiLink {
+  color: inherit;
+}
+.wikiLink:hover {
+  color: var(--gw2-color-attribute-dark);
+}
+
+.iconWithText {
+  color: var(--gw2-color-attribute-main);
+}
+
+.imageAttributePower {
+  background-image: url('../../assets/icons/Attribute/Power.png');
+}
+.imageAttributePrecision {
+  background-image: url('../../assets/icons/Attribute/Precision.png');
+}
+.imageAttributeToughness {
+  background-image: url('../../assets/icons/Attribute/Toughness.png');
+}
+.imageAttributeVitality {
+  background-image: url('../../assets/icons/Attribute/Vitality.png');
+}
+.imageAttributeConcentration {
+  background-image: url('../../assets/icons/Attribute/Concentration.png');
+}
+.imageAttributeConditionDamage {
+  background-image: url('../../assets/icons/Attribute/ConditionDamage.png');
+}
+.imageAttributeExpertise {
+  background-image: url('../../assets/icons/Attribute/Expertise.png');
+}
+.imageAttributeFerocity {
+  background-image: url('../../assets/icons/Attribute/Ferocity.png');
+}
+.imageAttributeHealingPower {
+  background-image: url('../../assets/icons/Attribute/HealingPower.png');
+}
+.imageAttributeArmor {
+  background-image: url('../../assets/icons/Attribute/Armor.png');
+}
+.imageAttributeBoonDuration {
+  background-image: url('../../assets/icons/Attribute/BoonDuration.png');
+}
+.imageAttributeCriticalChance {
+  background-image: url('../../assets/icons/Attribute/CriticalChance.png');
+}
+.imageAttributeCriticalDamage {
+  background-image: url('../../assets/icons/Attribute/CriticalDamage.png');
+}
+.imageAttributeConditionDuration {
+  background-image: url('../../assets/icons/Attribute/ConditionDuration.png');
+}
+.imageAttributeHealth {
+  background-image: url('../../assets/icons/Attribute/Health.png');
+}
+.imageAttributeAgonyResistance {
+  background-image: url('../../assets/icons/Attribute/AgonyResistance.png');
+}
+.imageAttributeGoldFind {
+  background-image: url('../../assets/icons/Attribute/GoldFind.png');
+}
+.imageAttributeKarmaGain {
+  background-image: url('../../assets/icons/Attribute/KarmaGain.png');
+}
+.imageAttributeMagicFind {
+  background-image: url('../../assets/icons/Attribute/MagicFind.png');
+}
+.imageAttributeXPGain {
+  background-image: url('../../assets/icons/Attribute/XPGain.png');
+}

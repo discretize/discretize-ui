@@ -39,6 +39,10 @@
   --gw2-color-details-muted: rgba(255, 255, 255, 0.7);
   --gw2-color-details-ability-type: #efdf80;
 
+  --gw2-color-attribute-main: #aaa;
+  --gw2-color-attribute-dark: #7a7a7a;
+  --gw2-color-attribute-light: #e0e0e0;
+
   --gw2-color-text: #000;
   --gw2-color-primary: #2b6cb0;
   --gw2-color-primary-dark: #183c63;
