@@ -30,8 +30,8 @@ const Error = ({
   id,
   name: nameProps,
   message: messageProps,
-  names,
-  messages,
+  names = {},
+  messages = {},
   disableIcon,
   disableText,
   disableTooltip,
@@ -48,7 +48,7 @@ const Error = ({
     if (id !== undefined) return raw(id);
     return '';
   }
-  if (!names || !messages)
+  if (!names && !messages && !nameProps && !messageProps)
     return (
       <span>
         Missing Props. Either pass `name` + `message` or `names` + `messages`
@@ -66,7 +66,7 @@ const Error = ({
             iconProps={{ className: errorIconClass, iconViaClassname: true }}
             titleClassName={css.errorColor}
           >
-            {names[code]}
+            {name}
           </DetailsHeader>
           <DetailsText lines={[message]} />
         </>
