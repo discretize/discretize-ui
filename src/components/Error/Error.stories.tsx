@@ -10,9 +10,7 @@ export default {
   },
 } as ComponentMeta<typeof Error>;
 
-const Template: ComponentStory<typeof Error> = (
-  args: ComponentProps<typeof Error>,
-) => {
+const Template: ComponentStory<typeof Error> = (args) => {
   return (
     <>
       <Error {...args} />
@@ -20,11 +18,11 @@ const Template: ComponentStory<typeof Error> = (
   );
 };
 
-const ERROR_NAMES: React.ComponentProps<typeof Error>['names'] = {
+const ERROR_NAMES: ComponentProps<typeof Error>['names'] = {
   404: 'Mishap :(',
   500: 'Network Mishap :(',
 };
-const ERROR_MESSAGES: React.ComponentProps<typeof Error>['messages'] = {
+const ERROR_MESSAGES: ComponentProps<typeof Error>['messages'] = {
   404: `Quaggan looked everywhere but coouldn't find what yoou're looking foor *pohooo*`,
   500: `Quaggan's network waddles slower than a centaur *pohooo*`,
 };

@@ -1,4 +1,4 @@
-import type { ComponentMeta } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import IconWithText from './IconWithText';
 
@@ -10,7 +10,7 @@ export default {
   },
 } as ComponentMeta<typeof IconWithText>;
 
-const Template = (args) => {
+const Template: ComponentStory<typeof IconWithText> = (args) => {
   return (
     <>
       <IconWithText {...args} />

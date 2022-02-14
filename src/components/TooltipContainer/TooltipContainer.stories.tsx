@@ -1,5 +1,5 @@
-import type { ComponentMeta } from '@storybook/react';
-import React, { ComponentProps } from 'react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import TooltipContainer from './TooltipContainer';
 
 export default {
@@ -10,7 +10,7 @@ export default {
   },
 } as ComponentMeta<typeof TooltipContainer>;
 
-const Template = (args: ComponentProps<typeof TooltipContainer>) => {
+const Template: ComponentStory<typeof TooltipContainer> = (args) => {
   return (
     <>
       <TooltipContainer {...args}>

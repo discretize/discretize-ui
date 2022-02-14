@@ -10,9 +10,7 @@ export default {
   },
 } as ComponentMeta<typeof Skill>;
 
-const Template: ComponentStory<typeof Skill> = (
-  args: React.ComponentProps<typeof Skill>,
-) => {
+const Template: ComponentStory<typeof Skill> = (args) => {
   return <Skill {...args} />;
 };
 
