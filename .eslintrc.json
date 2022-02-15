@@ -4,7 +4,12 @@
   "env": {
     "browser": true
   },
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier"],
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "settings": {
     "import/resolver": {
       "node": {
