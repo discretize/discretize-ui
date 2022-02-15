@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import capitalize from 'lodash.capitalize';
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import Error, { ErrorProps } from '../Error/Error';
@@ -23,16 +23,17 @@ export interface EffectProps {
   name: string;
   displayName?: string;
   description?: string;
-  disableTooltip: boolean;
-  disableText: boolean;
-  disableLink: boolean;
-  disableIcon: boolean;
-  inline: boolean;
+  disableTooltip?: boolean;
+  disableText?: boolean;
+  disableLink?: boolean;
+  disableIcon?: boolean;
+  inline?: boolean;
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
   errorProps?: ErrorProps;
   iconProps?: IconProps;
   className?: string;
+  style?: CSSProperties;
 }
 
 const Effect = ({
@@ -48,7 +49,9 @@ const Effect = ({
   tooltipProps,
   wikiLinkProps,
   errorProps,
+  iconProps,
   className,
+  style,
 }: EffectProps): ReactElement => {
   if (!type || !name || typeof description === 'undefined') {
     return (
@@ -65,6 +68,7 @@ const Effect = ({
         {...errorProps}
         className={clsx(className, errorProps?.className)}
         style={{
+          ...style,
           ...errorProps?.style,
         }}
       />
@@ -102,9 +106,11 @@ const Effect = ({
         disableText={disableText}
         inline={inline}
         iconProps={{
+          ...iconProps,
           className: css[`image${type}${name}`],
           iconViaClassname: true,
         }}
+        style={style}
         className={clsx(className, css[`color${capitalize(type)}Main`])}
       />
     </Tooltip>
