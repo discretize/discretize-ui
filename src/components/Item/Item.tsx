@@ -2,10 +2,12 @@ import clsx from 'clsx';
 import capitalize from 'lodash.capitalize';
 import React, { ReactElement } from 'react';
 import { useItems } from '../../gw2api/hooks';
+import GW2ApiItem from '../../gw2api/types/items/item';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import ItemDetails from './ItemDetails';
 import css from './Item.module.css';
 
 export interface ItemProps {
@@ -84,26 +86,24 @@ const Item = (props: ItemProps): ReactElement => {
   // TODO redo the typing for details: the type of the details field depends
   //      on what string is supplied via type (Gw2ApiItemType)
 
+  let upgradedata: [GW2ApiItem, number][] = [];
+  if (upgrades) {
+    for (let u of upgrades) {
+      let id: number;
+      let count: number = 1;
+      if (Array.isArray(u)) {
+        id = u[0];
+        count = u[1];
+      } else {
+        id = u;
+      }
+      upgradedata.push([items.data[id], count]);
+    }
+  }
+
   return (
     <Tooltip
-      content={
-        <>
-          {JSON.stringify(itemdata.name)}
-          <br />
-          {upgrades
-            ? upgrades.map(
-                (uid) => items.data[Array.isArray(uid) ? uid[0] : uid].name,
-              )
-            : null}
-        </>
-        /*
-        <ItemDetails
-          data={populateMissingItemAPI(data)}
-          count={count}
-          upgrades={upgrades}
-        />
-        */
-      }
+      content={<ItemDetails item={itemdata} upgrades={upgradedata} />}
       disabled={disableTooltip}
       {...tooltipProps}
       containerProps={{
