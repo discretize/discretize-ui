@@ -37,10 +37,10 @@ const Profession = ({
   } else {
     // in this case the user selected an elitespecialization.
     // Need to query the corresponding profession for coloring
-    [profession] =
-      Object.values(PROFESSIONS).find((eliteSpec) =>
-        eliteSpec.includes(professionName),
-      ) || [];
+    profession =
+      Object.keys(PROFESSIONS).find((prof) => {
+        return PROFESSIONS[prof].includes(professionName);
+      }) || '';
     profession = capitalize(profession);
     specialization = capitalize(professionName);
   }
