@@ -15,7 +15,8 @@
   "license": "MIT",
   "author": "Manuel Haag <manuel@haag.online>",
   "contributors": [
-    "Kulinda (https://kulinda.github.io)"
+    "Kulinda (https://kulinda.github.io)",
+    "gw2princeps"
   ],
   "sideEffects": false,
   "scripts": {
@@ -28,14 +29,10 @@
     ]
   },
   "dependencies": {
-    "@redux-requests/react": "^1.0.0",
-    "@reduxjs/toolkit": "^1.6.1",
     "@theme-ui/core": "^0.11.3",
     "@tippyjs/react": "^4.2.5",
     "axios": "^0.21.4",
-    "batcher-js": "^1.0.3",
     "clsx": "^1.1.1",
-    "lodash.camelcase": "^4.3.0",
     "lodash.capitalize": "^4.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
