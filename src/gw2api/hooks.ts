@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import APICache, { APILanguage, API_LANGUAGES, Id } from './cache';
+import GW2ApiItem from './types/items/item';
 import { GW2ApiSkill } from './types/skills/skill';
 import GW2ApiTrait from './types/traits/trait';
 
@@ -46,9 +47,10 @@ function getCache<T extends { id: number }>(
 
 const CACHE_SKILLS: Partial<Record<APILanguage, APICache<GW2ApiSkill>>> = {};
 function skillCache(lang: APILanguage) {
-  return getCache(CACHE_SKILLS, '/v2/skills', lang, 200, 3);
+  return getCache(CACHE_SKILLS, '/v2/skills', lang, 200, 1);
 }
 
+// Skills
 export function useSkills(ids: Id[]) {
   const lang = React.useContext(APILanguageContext);
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
@@ -63,9 +65,10 @@ export function useSkill(id: Id) {
   return skillCache(lang).getOne(id, forceRedraw);
 }
 
+// Traits
 const CACHE_TRAITS: Partial<Record<APILanguage, APICache<GW2ApiTrait>>> = {};
 function traitCache(lang: APILanguage) {
-  return getCache(CACHE_TRAITS, '/v2/traits', lang, 200, 3);
+  return getCache(CACHE_TRAITS, '/v2/traits', lang, 200, 1);
 }
 
 export function useTraits(ids: Id[]) {
@@ -80,4 +83,24 @@ export function useTrait(id: Id) {
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return traitCache(lang).getOne(id, forceRedraw);
+}
+
+// Items
+const CACHE_ITEMS: Partial<Record<APILanguage, APICache<GW2ApiItem>>> = {};
+function itemCache(lang: APILanguage) {
+  return getCache(CACHE_ITEMS, '/v2/items', lang, 200, 2);
+}
+
+export function useItems(ids: Id[]) {
+  const lang = React.useContext(APILanguageContext);
+  const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
+
+  return itemCache(lang).getMultiple(ids, forceRedraw);
+}
+
+export function useItem(id: Id) {
+  const lang = React.useContext(APILanguageContext);
+  const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
+
+  return itemCache(lang).getOne(id, forceRedraw);
 }
