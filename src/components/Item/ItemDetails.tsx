@@ -1,55 +1,30 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement } from 'react';
 
-import withLoading from '../withLoading/withLoading'
-import DetailsHeader from '../DetailsHeader/DetailsHeader'
-import DetailsText from '../DetailsText/DetailsText'
-import { apiAttributes, populateMissingItemAPI } from '../helpers'
-import Coin from '../Coin/Coin'
-import DetailsFact from '../DetailsFact/DetailsFact'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchItem } from 'gw2-ui-redux-bulk'
-import axios from 'axios'
+import DetailsHeader from '../DetailsHeader/DetailsHeader';
+import DetailsText from '../DetailsText/DetailsText';
+//import Coin from '../Coin/Coin'
+import { apiAttributes } from '../../helpers/apiAttributes';
+import DetailsFact from '../DetailsFact/DetailsFact';
+import GW2ApiItem from '../../gw2api/types/items/item';
 
-export interface ItemDetailsProps {
-  count: number
-  upgrade: boolean
-  upgrades: object
-  upgradeBonusCount: number
-  data: object
+function Coin() {
+  // TODO: port Coin
+  return null;
 }
 
-const ItemDetails = ({}): ReactElement => {
-  const [state, setState] = React.useState({ data: suppliedData })
-  const dispatch = useDispatch()
+export interface ItemDetailsProps {
+  item: GW2ApiItem;
+  upgrade?: boolean; // True if this is an upgrade
+  upgrades?: [GW2ApiItem, number][];
+  upgradeBonusCount?: number;
+}
 
-  // if there are less than 6 attributes supplied via data props, the data is considered incomplete and will be refetched from the api
-  const shouldFetch = suppliedData && Object.keys(suppliedData).length <= 7
-
-  const { CancelToken } = axios
-  const source = CancelToken.source()
-
-  const upgrades = useSelector((state) => {
-    const localUpgrades = Array.isArray(propsUpgrades)
-      ? propsUpgrades.map((upgrade) => {
-          const [localId, count] = Array.isArray(upgrade) ? upgrade : [upgrade]
-          const upgradeData = state.gw2UiStore.ids.items.find(
-            (item) => Number(item.id) === Number(localId),
-          )
-          const upgradeError = state.gw2UiStore.errors.skills.find(
-            (item) => Number(item.id) === Number(localId),
-          )
-          return {
-            id: localId,
-            count,
-            error: upgradeError,
-            loading: !upgradeData && !upgradeError,
-            data: upgradeData,
-          }
-        })
-      : []
-    return localUpgrades
-  })
-
+const ItemDetails = ({
+  item,
+  upgrade = false,
+  upgrades,
+  upgradeBonusCount = 1,
+}: ItemDetailsProps): ReactElement => {
   const {
     icon,
     name,
@@ -76,54 +51,9 @@ const ItemDetails = ({}): ReactElement => {
       bonuses,
     } = {},
     vendor_value: vendorValue,
-  } = state.data
+  } = item;
 
-  React.useEffect(() => {
-    if (shouldFetch) {
-      // only show native language for chinese people
-      const userLang = navigator.language || navigator.userLanguage
-      const language = userLang.includes('zh') ? 'zh' : 'en'
-
-      axios
-        .get(
-          `https://api.guildwars2.com/v2/items?ids=${state.data.id}&lang=${language}`,
-          {
-            cancelToken: source.token,
-          },
-        )
-        .catch(() => {})
-        .then((res) => {
-          if (res && res.data && res.data.length === 1) {
-            const [apiData] = res.data
-            const populatedData = populateMissingItemAPI(apiData)
-            setState({
-              data: {
-                ...state.data,
-                ...populatedData,
-                details: { ...state.data.details, ...populatedData.details },
-              },
-            })
-          }
-        })
-    }
-
-    // Fetch all the upgrades
-    if (Array.isArray(propsUpgrades)) {
-      propsUpgrades.forEach((upgrade) => {
-        if (upgrade.data) return
-        const [localID] = Array.isArray(upgrade) ? upgrade : [upgrade]
-        fetchItem(localID, dispatch)
-      })
-    }
-
-    if (shouldFetch) {
-      return () => {
-        source.cancel(
-          `Operation cancelled for fetching item with id ${state.data.id}`,
-        )
-      }
-    }
-  }, [])
+  let count = 1;
 
   return (
     <div>
@@ -245,38 +175,22 @@ const ItemDetails = ({}): ReactElement => {
       </div>
       {upgrades && (
         <div>
-          {upgrades
-            .filter((up) => up.data)
-            .map(
-              (
-                {
-                  id: upgradeId,
-                  data: upgradeData,
-                  loading: upgradeLoading,
-                  error: upgradeError,
-                  count: upgradeBonusCount,
-                },
-                index,
-              ) => (
-                <div
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={`${upgradeId}-${index}`}
-                  sx={{
-                    mt: '16px',
-                    ...(index < upgrades.length && { mb: '16px' }),
-                  }}
-                >
-                  <ItemDetails
-                    upgrade
-                    id={upgradeId}
-                    // No idea why this throws an error...  loading={upgradeLoading}
-                    error={upgradeError}
-                    data={upgradeData}
-                    upgradeBonusCount={upgradeBonusCount}
-                  />
-                </div>
-              ),
-            )}
+          {upgrades.map(([data, upgradeBonusCount], index) => (
+            <div
+              // eslint-disable-next-line react/no-array-index-key
+              key={`${data.id}-${index}`}
+              sx={{
+                mt: '16px',
+                ...(index < upgrades.length && { mb: '16px' }),
+              }}
+            >
+              <ItemDetails
+                upgrade
+                item={data}
+                upgradeBonusCount={upgradeBonusCount}
+              />
+            </div>
+          ))}
         </div>
       )}
       {detailsIcon && detailsName && detailsDuration && detailsDescription && (
@@ -333,10 +247,7 @@ const ItemDetails = ({}): ReactElement => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default withLoading({
-  disableTooltip: true,
-  iconWithTextProps: { sx: { color: '#fff' } },
-})(ItemDetails)
+export default ItemDetails;
