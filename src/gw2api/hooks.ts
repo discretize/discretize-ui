@@ -1,10 +1,26 @@
 import * as React from 'react';
 
-import APICache, { APILanguage, Id } from './cache';
+import APICache, { APILanguage, API_LANGUAGES, Id } from './cache';
 import { GW2ApiSkill } from './types/skills/skill';
 import GW2ApiTrait from './types/traits/trait';
 
-const APILanguageContext = React.createContext<APILanguage>('en');
+function isAPILanguage(l: string): l is APILanguage {
+  return API_LANGUAGES.indexOf(l) >= 0;
+}
+
+function getNavigatorDefaultLanguage(): APILanguage {
+  const languages = navigator.languages || [navigator.language];
+  for (let l of languages) {
+    l = l.split('-')[0].toLowerCase(); // en-US -> en
+    if (isAPILanguage(l)) return l;
+  }
+
+  return 'en';
+}
+
+const APILanguageContext = React.createContext<APILanguage>(
+  getNavigatorDefaultLanguage(),
+);
 
 export const APILanguageProvider = APILanguageContext.Provider;
 

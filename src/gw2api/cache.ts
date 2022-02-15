@@ -1,6 +1,7 @@
 const GW2_API_URL = 'https://api.guildwars2.com';
 
-export type APILanguage = 'en' | 'de' | 'fr' | 'es';
+export type APILanguage = 'de' | 'en' | 'es' | 'fr' | 'zh';
+export const API_LANGUAGES = ['de', 'en', 'es', 'fr', 'zh'];
 
 // An error occurred when connecting to the API
 export const API_ERROR_NETWORK = 500;

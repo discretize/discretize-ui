@@ -80,6 +80,13 @@ export function Languages() {
           <Skill id={5548} />
         </p>
       </APILanguageProvider>
+
+      <APILanguageProvider value="zh">
+        <p>
+          zh:
+          <Skill id={5548} />
+        </p>
+      </APILanguageProvider>
     </div>
   );
 }
