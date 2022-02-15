@@ -1,0 +1,17 @@
+@import url(../../global.module.css);
+
+.root {
+  font-family: var(--gw2-font);
+  font-weight: var(--gw2-font-weight-body);
+  line-height: var(--gw2-line-height-body);
+}
+
+.gold {
+  color: var(--gw2-color-gold);
+}
+.silver {
+  color: var(--gw2-color-silver);
+}
+.copper {
+  color: var(--gw2-color-copper);
+}
