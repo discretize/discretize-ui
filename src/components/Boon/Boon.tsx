@@ -1,5 +1,5 @@
 import React, { CSSProperties, ReactElement } from 'react';
-import boons from '../../data/boons.json';
+import BOONS from '../../data/boons';
 import Effect from '../Effect/Effect';
 
 export interface BoonProps {
@@ -27,7 +27,7 @@ const Boon = ({
     <Effect
       type="Boon"
       name={name}
-      description={boons[name]}
+      description={BOONS[name]}
       iconProps={{ applyCount: count }}
       disableTooltip={disableTooltip}
       disableText={disableText}

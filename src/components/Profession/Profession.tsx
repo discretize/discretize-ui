@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import capitalize from 'lodash.capitalize';
 import React, { ReactElement } from 'react';
-import professions from '../../data/professions.json';
+import PROFESSIONS from '../../data/professions';
 import globalcss from '../../global.module.css';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
@@ -30,7 +30,7 @@ const Profession = ({
   let profession: string | undefined;
   let specialization: string;
 
-  if (Object.keys(professions).includes(professionName)) {
+  if (Object.keys(PROFESSIONS).includes(professionName)) {
     // in this case the selected propsName is equivalent to a profession
     profession = professionName;
     specialization = professionName;
@@ -38,7 +38,7 @@ const Profession = ({
     // in this case the user selected an elitespecialization.
     // Need to query the corresponding profession for coloring
     [profession] =
-      Object.entries(professions).find(([, eliteSpec]) =>
+      Object.values(PROFESSIONS).find((eliteSpec) =>
         eliteSpec.includes(professionName),
       ) || [];
     profession = capitalize(profession);
