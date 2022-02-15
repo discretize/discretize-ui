@@ -153,3 +153,46 @@
 .imageAugmentationMistAttunement4 {
   background-image: url(../../assets/icons/Augmentation/MistAttunement4.png);
 }
+
+.imageConditionBleeding {
+  background-image: url(../../assets/icons/Condition/Bleeding.png);
+}
+.imageConditionBlinded {
+  background-image: url(../../assets/icons/Condition/Blinded.png);
+}
+.imageConditionBurning {
+  background-image: url(../../assets/icons/Condition/Burning.png);
+}
+.imageConditionChilled {
+  background-image: url(../../assets/icons/Condition/Chilled.png);
+}
+.imageConditionConfusion {
+  background-image: url(../../assets/icons/Condition/Confusion.png);
+}
+.imageConditionCrippled {
+  background-image: url(../../assets/icons/Condition/Crippled.png);
+}
+.imageConditionFear {
+  background-image: url(../../assets/icons/Condition/Fear.png);
+}
+.imageConditionImmobile {
+  background-image: url(../../assets/icons/Condition/Immobile.png);
+}
+.imageConditionPoison {
+  background-image: url(../../assets/icons/Condition/Poison.png);
+}
+.imageConditionSlow {
+  background-image: url(../../assets/icons/Condition/Slow.png);
+}
+.imageConditionTaunt {
+  background-image: url(../../assets/icons/Condition/Taunt.png);
+}
+.imageConditionTorment {
+  background-image: url(../../assets/icons/Condition/Torment.png);
+}
+.imageConditionVulnerability {
+  background-image: url(../../assets/icons/Condition/Vulnerability.png);
+}
+.imageConditionWeakness {
+  background-image: url(../../assets/icons/Condition/Weakness.png);
+}
