@@ -1,18 +1,32 @@
 import * as React from 'react';
 
-import APICache, { Id } from './cache';
+import APICache, { APILanguage, Id } from './cache';
 import { GW2ApiSkill } from './types/skills/skill';
 
-const CACHE = new APICache<GW2ApiSkill>('/v2/skills', 200, 3);
+const APILanguageContext = React.createContext<APILanguage>('en');
+
+export const APILanguageProvider = APILanguageContext.Provider;
+
+const CACHES_SKILLS: Partial<Record<APILanguage, APICache<GW2ApiSkill>>> = {};
+function skillCache(lang: APILanguage): APICache<GW2ApiSkill> {
+  let cache = CACHES_SKILLS[lang];
+  if (!cache) {
+    cache = new APICache<GW2ApiSkill>('/v2/skills', lang, 200, 3);
+    CACHES_SKILLS[lang] = cache;
+  }
+  return cache;
+}
 
 export function useSkills(ids: Id[]) {
-  let [, forceRedraw] = React.useReducer((i) => i + 1, 0);
+  const lang = React.useContext(APILanguageContext);
+  const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
-  return CACHE.getMultiple(ids, forceRedraw);
+  return skillCache(lang).getMultiple(ids, forceRedraw);
 }
 
 export function useSkill(id: Id) {
-  let [, forceRedraw] = React.useReducer((i) => i + 1, 0);
+  const lang = React.useContext(APILanguageContext);
+  const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
-  return CACHE.getOne(id, forceRedraw);
+  return skillCache(lang).getOne(id, forceRedraw);
 }

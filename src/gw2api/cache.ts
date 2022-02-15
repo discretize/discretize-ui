@@ -1,5 +1,7 @@
 const GW2_API_URL = 'https://api.guildwars2.com';
 
+export type APILanguage = 'en' | 'de' | 'fr' | 'es';
+
 // An error occurred when connecting to the API
 export const API_ERROR_NETWORK = 500;
 // The API call succeeded, but didn't return an item. This means that an item with the requested Id does not exist.
@@ -69,6 +71,7 @@ export interface APICacheGetMultipleResult<T> {
 
 export default class APICache<T extends { id: Id }> {
   private path: string; // The relative URL of the API endpoint
+  private language: APILanguage;
   // All known Ts returned from the API.
   private cache: Map<Id, T | APIError> = new Map();
   // For proper batching, we limit the number of concurrent requests.
@@ -88,11 +91,13 @@ export default class APICache<T extends { id: Id }> {
 
   constructor(
     path: string,
+    language: APILanguage = 'en',
     max_ids_per_request: number = 200,
     max_concurrent_requests: number = 1,
   ) {
     // Nothing else to do in the constructor
     this.path = path;
+    this.language = language;
     this.max_ids_per_request = max_ids_per_request;
     this.max_concurrent_requests = max_concurrent_requests;
   }
@@ -211,8 +216,10 @@ export default class APICache<T extends { id: Id }> {
     let response: unknown[];
     let error: APIError = API_ERROR_NOT_FOUND;
     try {
-      ids.sort();
-      let json = await fetch_api(this.path + '?ids=' + ids.join(','));
+      ids.sort((a, b) => a - b);
+      let json = await fetch_api(
+        this.path + '?ids=' + ids.join(',') + '&lang=' + this.language,
+      );
       if (!(json instanceof Array)) {
         throw new Error('Response is not a list');
       }
