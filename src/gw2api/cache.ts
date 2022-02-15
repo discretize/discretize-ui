@@ -95,7 +95,9 @@ export default class APICache<T extends { id: Id }> {
     max_ids_per_request: number = 200,
     max_concurrent_requests: number = 1,
   ) {
-    // Nothing else to do in the constructor
+    // Normally, specifying 'private foo' as a constructor parameter should do this for us
+    // But somehow that doesn't work with our current build system.
+    // TODO: revisit this later
     this.path = path;
     this.language = language;
     this.max_ids_per_request = max_ids_per_request;
