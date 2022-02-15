@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import capitalize from 'lodash.capitalize';
 import React, { ReactElement } from 'react';
-import PROFESSIONS from '../../data/professions';
+import PROFESSIONS, { ProfessionTypes } from '../../data/professions';
 import globalcss from '../../global.module.css';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
@@ -9,7 +9,7 @@ import WikiLink from '../WikiLink/WikiLink';
 import css from './Profession.module.css';
 
 export interface ProfessionProps {
-  name: string;
+  name: ProfessionTypes;
   disableTooltip?: boolean;
   disableIcon?: boolean;
   disableLink?: boolean;
