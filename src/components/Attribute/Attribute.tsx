@@ -7,30 +7,8 @@ import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import Error from '../Error/Error';
 
-import attributes from '../../data/attributes.json';
+import ATTRIBUTES, { AttributeTypes } from '../../data/attributes';
 import css from './Attribute.module.css';
-
-export type AttributeTypes =
-  | 'Power'
-  | 'Precision'
-  | 'Toughness'
-  | 'Vitality'
-  | 'Concentration'
-  | 'Condition Damage'
-  | 'Expertise'
-  | 'Ferocity'
-  | 'Healing Power'
-  | 'Armor'
-  | 'Boon Duration'
-  | 'Critical Chance'
-  | 'Critical Damage'
-  | 'Condition Duration'
-  | 'Health'
-  | 'Agony Resistance'
-  | 'Gold Find'
-  | 'Karma Gain'
-  | 'Magic Find'
-  | 'XP Gain';
 
 export interface AttributeProps {
   name: AttributeTypes;
@@ -49,9 +27,10 @@ const Attribute = ({
   disableLink,
   inline,
 }: AttributeProps): ReactElement => {
-  const description = (Object.entries(attributes).find(([, values]) =>
-    Object.keys(values).includes(name),
-  ) || [])[1]?.[name];
+  const description = Object.values(ATTRIBUTES).reduce<string | undefined>(
+    (prev, cur) => cur[name] || prev,
+    undefined,
+  );
 
   if (!name || typeof description === 'undefined') {
     return (
