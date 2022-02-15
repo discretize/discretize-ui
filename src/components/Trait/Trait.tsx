@@ -5,14 +5,15 @@ import TooltipContainer from '../TooltipContainer/TooltipContainer';
 import IconWithText from '../IconWithText/IconWithText';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
-import specializations from '../../helpers/specializations';
-import GW2ApiTrait from '../../gw2api/types/traits/trait';
+import SPECIALIZATIONS from '../../data/specializations';
 import globalcss from '../../global.module.css';
 import css from './Trait.module.css';
 import capitalize from 'lodash.capitalize';
+import { useTrait } from '../../gw2api/hooks';
+import Error from '../Error/Error';
 
 export interface TraitProps {
-  data: GW2ApiTrait;
+  id: number;
   disableIcon?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -23,25 +24,50 @@ export interface TraitProps {
   inactive?: boolean;
 }
 
-const Trait = ({
-  data,
-  disableIcon,
-  disableText,
-  disableLink,
-  disableTooltip,
-  inline,
-  tooltipProps,
-  wikiLinkProps,
-  inactive,
-}: TraitProps): ReactElement => {
-  const { name, icon, specialization, skills, slot } = data;
+const TRAIT_ERROR_NAMES = {
+  404: 'Trait Not Found',
+  500: 'Network Error',
+};
+const TRAIT_ERROR_MESSAGES = {
+  404: (id: number) => `The requested trait with the id ${id} was not found.`,
+  500: (id: number) =>
+    `A Network Error occured trying to fetch the trait ${id}.`,
+};
 
-  const [professionRaw] =
-    (specialization &&
-      Object.entries(specializations).find(([, specializationIds]) =>
-        specializationIds.includes(specialization),
-      )) ||
-    [];
+const Trait = (props: TraitProps): ReactElement => {
+  const {
+    id,
+    disableIcon,
+    disableText,
+    disableLink,
+    disableTooltip,
+    inline,
+    tooltipProps,
+    wikiLinkProps,
+    inactive,
+  } = props;
+  const trait = useTrait(id);
+
+  if (trait.loading) {
+    return <IconWithText {...props} loading />;
+  }
+  if (trait.error) {
+    return (
+      <Error
+        {...props}
+        code={trait.error}
+        name={TRAIT_ERROR_NAMES}
+        message={TRAIT_ERROR_MESSAGES}
+      />
+    );
+  }
+
+  const { name, icon, specialization, skills, slot } = trait.data;
+
+  const [professionRaw] = (specialization &&
+    Object.entries(SPECIALIZATIONS).find(([, specializationIds]) =>
+      specializationIds.includes(specialization),
+    )) || [''];
   const profession = capitalize(professionRaw);
 
   return (
@@ -49,7 +75,7 @@ const Trait = ({
       render={
         <>
           <TooltipContainer {...(skills && { className: css.ability })}>
-            <AbilityDetails data={data} />
+            <AbilityDetails data={trait.data} />
           </TooltipContainer>
 
           {skills &&
