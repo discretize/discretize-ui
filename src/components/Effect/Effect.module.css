@@ -218,3 +218,25 @@
 .imageControlStun {
   background-image: url(../../assets/icons/Control/Stun.png);
 }
+
+.imageAuraChaos {
+  background-image: url(../../assets/icons/Aura/Chaos.png);
+}
+.imageAuraDark {
+  background-image: url(../../assets/icons/Aura/Dark.png);
+}
+.imageAuraFire {
+  background-image: url(../../assets/icons/Aura/Fire.png);
+}
+.imageAuraFrost {
+  background-image: url(../../assets/icons/Aura/Frost.png);
+}
+.imageAuraLight {
+  background-image: url(../../assets/icons/Aura/Light.png);
+}
+.imageAuraMagnetic {
+  background-image: url(../../assets/icons/Aura/Magnetic.png);
+}
+.imageAuraShocking {
+  background-image: url(../../assets/icons/Aura/Shocking.png);
+}
