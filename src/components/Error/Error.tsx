@@ -9,10 +9,8 @@ import css from './Error.module.css';
 export interface ErrorProps {
   code: number;
   id?: number;
-  name?: string;
-  message?: string;
-  names?: Record<number, string | ((id: number) => string)>;
-  messages?: Record<number, string | ((id: number) => string)>;
+  name: string | Record<number, string | ((id: number) => string)>;
+  message: string | Record<number, string | ((id: number) => string)>;
   disableIcon?: boolean;
   disableText?: boolean;
   disableTooltip?: boolean;
@@ -32,8 +30,6 @@ const Error = ({
   id,
   name: nameProps,
   message: messageProps,
-  names = {},
-  messages = {},
   disableIcon,
   disableText,
   disableTooltip,
@@ -45,22 +41,18 @@ const Error = ({
   const errorIconClass = code === 404 ? css.imageError404 : css.imageError500;
 
   function getMessage(
-    raw: string | ((id: number) => string) | undefined,
+    raw: string | Record<number, string | ((id: number) => string)>,
   ): string {
-    if (raw === undefined) return '';
     if (typeof raw === 'string') return raw;
-    if (id !== undefined) return raw(id);
+    let item = raw[code];
+    if (item === undefined) return '';
+    if (typeof item === 'string') return item;
+    if (id !== undefined) return item(id);
     return '';
   }
-  if (!names && !messages && !nameProps && !messageProps)
-    return (
-      <span>
-        Missing Props. Either pass `name` + `message` or `names` + `messages`
-      </span>
-    );
 
-  const name = nameProps || getMessage(names[code]);
-  const message = messageProps || getMessage(messages[code]);
+  const name = getMessage(nameProps);
+  const message = getMessage(messageProps);
 
   return (
     <Tooltip

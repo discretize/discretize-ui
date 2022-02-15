@@ -24,13 +24,14 @@ export interface SkillDataProps {
   professions: string[];
 }
 
-const SKILL_ERROR_NAMES: React.ComponentProps<typeof Error>['names'] = {
+const SKILL_ERROR_NAMES = {
   404: 'Skill Not Found',
   500: 'Network Error',
 };
-const SKILL_ERROR_MESSAGES: React.ComponentProps<typeof Error>['messages'] = {
-  404: (id) => `The requested skill with the id ${id} was not found.`,
-  500: (id) => `A Network Error occured trying to fetch the skill ${id}.`,
+const SKILL_ERROR_MESSAGES = {
+  404: (id: number) => `The requested skill with the id ${id} was not found.`,
+  500: (id: number) =>
+    `A Network Error occured trying to fetch the skill ${id}.`,
 };
 
 const Skill = (props: SkillProps): ReactElement => {
@@ -46,8 +47,8 @@ const Skill = (props: SkillProps): ReactElement => {
       <Error
         {...props}
         code={skill.error}
-        names={SKILL_ERROR_NAMES}
-        messages={SKILL_ERROR_MESSAGES}
+        name={SKILL_ERROR_NAMES}
+        message={SKILL_ERROR_MESSAGES}
       />
     );
   }

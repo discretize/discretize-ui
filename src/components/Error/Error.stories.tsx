@@ -18,11 +18,11 @@ const Template: ComponentStory<typeof Error> = (args) => {
   );
 };
 
-const ERROR_NAMES: ComponentProps<typeof Error>['names'] = {
+const ERROR_NAMES = {
   404: 'Mishap :(',
   500: 'Network Mishap :(',
 };
-const ERROR_MESSAGES: ComponentProps<typeof Error>['messages'] = {
+const ERROR_MESSAGES = {
   404: `Quaggan looked everywhere but coouldn't find what yoou're looking foor *pohooo*`,
   500: `Quaggan's network waddles slower than a centaur *pohooo*`,
 };
@@ -30,13 +30,13 @@ const ERROR_MESSAGES: ComponentProps<typeof Error>['messages'] = {
 export const NotFound = Template.bind({});
 NotFound.args = {
   code: 404,
-  messages: ERROR_MESSAGES,
-  names: ERROR_NAMES,
+  message: ERROR_MESSAGES,
+  name: ERROR_NAMES,
 };
 
 export const NetworkError = Template.bind({});
 NetworkError.args = {
   code: 500,
-  messages: ERROR_MESSAGES,
-  names: ERROR_NAMES,
+  message: ERROR_MESSAGES,
+  name: ERROR_NAMES,
 };
