@@ -43,6 +43,31 @@
   --gw2-color-attribute-dark: #7a7a7a;
   --gw2-color-attribute-light: #e0e0e0;
 
+  --gw2-color-effect-augmentation-main: #fecd76;
+  --gw2-color-effect-augmentation-dark: #feac20;
+  --gw2-color-effect-augmentation-light: #fff7eb;
+  --gw2-color-effect-aura-main: #329ead;
+  --gw2-color-effect-aura-dark: #1c575f;
+  --gw2-color-effect-aura-light: #71cad6;
+  --gw2-color-effect-boon-main: #d67400;
+  --gw2-color-effect-boon-dark: #7a4300;
+  --gw2-color-effect-boon-light: #ffac47;
+  --gw2-color-effect-condition-main: #d23a30;
+  --gw2-color-effect-condition-dark: #86241d;
+  --gw2-color-effect-condition-light: #e5908a;
+  --gw2-color-effect-control-main: #7e6961;
+  --gw2-color-effect-control-dark: #453a35;
+  --gw2-color-effect-control-light: #af9e97;
+  --gw2-color-effect-consumable-main: #329ead;
+  --gw2-color-effect-consumable-dark: #1c575f;
+  --gw2-color-effect-consumable-light: #71cad6;
+  --gw2-color-effect-common-main: #329ead;
+  --gw2-color-effect-common-dark: #1c575f;
+  --gw2-color-effect-common-light: #71cad6;
+  --gw2-color-effect-mistlockInstability-main: #b99700;
+  --gw2-color-effect-mistlockInstability-dark: #524300;
+  --gw2-color-effect-mistlockInstability-light: #ffd61f;
+
   --gw2-color-text: #000;
   --gw2-color-primary: #2b6cb0;
   --gw2-color-primary-dark: #183c63;

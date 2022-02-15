@@ -1,29 +1,38 @@
-import camelCase from 'lodash.camelcase';
+import clsx from 'clsx';
+import capitalize from 'lodash.capitalize';
 import React, { ReactElement } from 'react';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
-import Error from '../Error/Error';
-import useColorModeHighlightSuffix from '../helpers/useColorModeHighlightSuffix';
+import Error, { ErrorProps } from '../Error/Error';
 import { IconProps } from '../Icon/Icon';
 import IconWithText from '../IconWithText/IconWithText';
-import Tooltip from '../Tooltip/Tooltip';
-import WikiLink from '../WikiLink/WikiLink';
+import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
+import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import css from './Effect.module.css';
 
 export interface EffectProps {
-  type: string;
+  type:
+    | 'Augmentation'
+    | 'Aura'
+    | 'Boon'
+    | 'Condition'
+    | 'Control'
+    | 'Consumable'
+    | 'Common'
+    | 'MistlockInstability';
   name: string;
   displayName?: string;
   description?: string;
-  component?: object;
   disableTooltip: boolean;
   disableText: boolean;
   disableLink: boolean;
   disableIcon: boolean;
   inline: boolean;
-  tooltipProps?: object;
-  wikiLinkProps?: object;
-  errorProps?: object;
+  tooltipProps?: TooltipProps;
+  wikiLinkProps?: WikiLinkProps;
+  errorProps?: ErrorProps;
   iconProps?: IconProps;
+  className?: string;
 }
 
 const Effect = ({
@@ -31,7 +40,6 @@ const Effect = ({
   name,
   displayName,
   description,
-  component,
   disableTooltip = false,
   disableText = false,
   disableLink = false,
@@ -40,12 +48,12 @@ const Effect = ({
   tooltipProps,
   wikiLinkProps,
   errorProps,
+  className,
 }: EffectProps): ReactElement => {
-  const highlightSuffix = useColorModeHighlightSuffix();
-
   if (!type || !name || typeof description === 'undefined') {
     return (
       <Error
+        code={404}
         name={`Invalid ${type || 'Effect'}${name ? ` ${name}` : ''}`}
         message={`Error: No data for ${type || 'Effect'}${
           name ? ` ${name}` : ''
@@ -54,14 +62,10 @@ const Effect = ({
         disableIcon={disableIcon}
         disableText={disableText}
         inline={inline}
-        iconProps={{ name: '404' }}
-        className={className}
         {...errorProps}
+        className={clsx(className, errorProps?.className)}
         style={{
           ...errorProps?.style,
-        }}
-        sx={{
-          ...errorProps?.sx,
         }}
       />
     );
@@ -80,7 +84,6 @@ const Effect = ({
       {...tooltipProps}
     >
       <IconWithText
-        component={component}
         text={
           disableLink ? (
             displayName || name
@@ -88,26 +91,21 @@ const Effect = ({
             <WikiLink
               to={displayName || name}
               {...wikiLinkProps}
-              sx={{
-                color: 'inherit',
-                '&:hover': {
-                  color: `gw2.effect.${camelCase(type)}${highlightSuffix}`,
-                },
-                ...wikiLinkProps?.sx,
-              }}
+              className={clsx(
+                wikiLinkProps?.className,
+                css[`color${capitalize(type)}Main`],
+              )}
             />
           )
         }
         disableIcon={disableIcon}
         disableText={disableText}
         inline={inline}
-        className={className}
         iconProps={{
-          name: `${type}.${name}`,
+          className: css[`image${type}${name}`],
+          iconViaClassname: true,
         }}
-        sx={{
-          color: `gw2.effect.${camelCase(type)}`,
-        }}
+        className={clsx(className, css[`color${capitalize(type)}Main`])}
       />
     </Tooltip>
   );

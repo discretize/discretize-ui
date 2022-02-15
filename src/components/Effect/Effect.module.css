@@ -1,0 +1,142 @@
+@import url(../../global.module.css);
+
+.colorAugmentationMain {
+  color: var(--gw2-color-effect-augmentation-main);
+}
+.colorAugmentationMain:hover {
+  color: var(--gw2-color-effect-augmentation-dark);
+}
+.colorAugmentationDark {
+  color: var(--gw2-color-effect-augmentation-dark);
+}
+.colorAugmentationLight {
+  color: var(--gw2-color-effect-augmentation-light);
+}
+
+.colorAuraMain {
+  color: var(--gw2-color-effect-aura-main);
+}
+.colorAuraMain:hover {
+  color: var(--gw2-color-effect-aura-dark);
+}
+.colorAuraDark {
+  color: var(--gw2-color-effect-aura-dark);
+}
+.colorAuraLight {
+  color: var(--gw2-color-effect-aura-light);
+}
+
+.colorBoonMain {
+  color: var(--gw2-color-effect-boon-main);
+}
+.colorBoonMain:hover {
+  color: var(--gw2-color-effect-boon-dark);
+}
+.colorBoonDark {
+  color: var(--gw2-color-effect-boon-dark);
+}
+.colorBoonLight {
+  color: var(--gw2-color-effect-boon-light);
+}
+
+.colorConditionMain {
+  color: var(--gw2-color-effect-condition-main);
+}
+.colorConditionMain:hover {
+  color: var(--gw2-color-effect-condition-dark);
+}
+.colorConditionDark {
+  color: var(--gw2-color-effect-condition-dark);
+}
+.colorConditionLight {
+  color: var(--gw2-color-effect-condition-light);
+}
+
+.colorControlMain {
+  color: var(--gw2-color-effect-control-main);
+}
+.colorControlMain:hover {
+  color: var(--gw2-color-effect-control-dark);
+}
+.colorControlDark {
+  color: var(--gw2-color-effect-control-dark);
+}
+.colorControlLight {
+  color: var(--gw2-color-effect-control-light);
+}
+
+.colorConsumableMain {
+  color: var(--gw2-color-effect-consumable-main);
+}
+.colorConsumableMain:hover {
+  color: var(--gw2-color-effect-consumable-dark);
+}
+.colorConsumableDark {
+  color: var(--gw2-color-effect-consumable-dark);
+}
+.colorConsumableLight {
+  color: var(--gw2-color-effect-consumable-light);
+}
+
+.colorCommonMain {
+  color: var(--gw2-color-effect-common-main);
+}
+.colorCommonMain:hover {
+  color: var(--gw2-color-effect-common-dark);
+}
+.colorCommonDark {
+  color: var(--gw2-color-effect-common-dark);
+}
+.colorCommonLight {
+  color: var(--gw2-color-effect-common-light);
+}
+
+.colorMistlockInstabilityMain {
+  color: var(--gw2-color-effect-mistlockInstability-main);
+}
+.colorMistlockInstabilityMain:hover {
+  color: var(--gw2-color-effect-mistlockInstability-dark);
+}
+.colorMistlockInstabilityDark {
+  color: var(--gw2-color-effect-mistlockInstability-dark);
+}
+.colorMistlockInstabilityLight {
+  color: var(--gw2-color-effect-mistlockInstability-light);
+}
+
+.imageBoonAegis {
+  background-image: url(../../assets/icons/Boon/Aegis.png);
+}
+.imageBoonAlacrity {
+  background-image: url(../../assets/icons/Boon/Alacrity.png);
+}
+.imageBoonFury {
+  background-image: url(../../assets/icons/Boon/Fury.png);
+}
+.imageBoonMight {
+  background-image: url(../../assets/icons/Boon/Might.png);
+}
+.imageBoonProtection {
+  background-image: url(../../assets/icons/Boon/Protection.png);
+}
+.imageBoonQuickness {
+  background-image: url(../../assets/icons/Boon/Quickness.png);
+}
+.imageBoonRegeneration {
+  background-image: url(../../assets/icons/Boon/Regeneration.png);
+}
+.imageBoonResistance {
+  background-image: url(../../assets/icons/Boon/Resistance.png);
+}
+.imageBoonResolution {
+  background-image: url(../../assets/icons/Boon/Resolution.png);
+}
+.imageBoonStability {
+  background-image: url(../../assets/icons/Boon/Stability.png);
+}
+.imageBoonSwiftness {
+  background-image: url(../../assets/icons/Boon/Swiftness.png);
+}
+.imageBoonVigor {
+  background-image: url(../../assets/icons/Boon/Vigor.png);
+}

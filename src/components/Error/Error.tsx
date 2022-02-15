@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
+import clsx from 'clsx';
+import React, { CSSProperties, ReactElement } from 'react';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import IconWithText from '../IconWithText/IconWithText';
+import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import css from './Error.module.css';
 
 export interface ErrorProps {
@@ -18,6 +18,8 @@ export interface ErrorProps {
   disableTooltip?: boolean;
   inline?: boolean;
   tooltipProps?: TooltipProps;
+  className?: string;
+  style?: CSSProperties;
 }
 
 /**
@@ -37,6 +39,8 @@ const Error = ({
   disableTooltip,
   inline,
   tooltipProps,
+  className,
+  style,
 }: ErrorProps): ReactElement => {
   const errorIconClass = code === 404 ? css.imageError404 : css.imageError500;
 
@@ -80,7 +84,8 @@ const Error = ({
         disableText={disableText}
         inline={inline}
         iconProps={{ className: errorIconClass, iconViaClassname: true }}
-        className={css.errorColor}
+        className={clsx(className, css.errorColor)}
+        style={style}
       />
     </Tooltip>
   );
