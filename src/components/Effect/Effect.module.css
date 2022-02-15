@@ -274,3 +274,10 @@
 .imageCommonAgony {
   background-image: url(../../assets/icons/Common/Agony.png);
 }
+
+.imageConsumableNourishment {
+  background-image: url(../../assets/icons/Consumable/Nourishment.png);
+}
+.imageConsumableEnhancement {
+  background-image: url(../../assets/icons/Consumable/Enhancement.png);
+}
