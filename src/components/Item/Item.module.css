@@ -53,3 +53,9 @@
 .colorRarityJunk:hover {
   color: var(--gw2-color-rarity-junk-dark);
 }
+.colorRarityBasic {
+  color: var(--gw2-color-rarity-junk-main);
+}
+.colorRarityBasic:hover {
+  color: var(--gw2-color-rarity-junk-dark);
+}

@@ -38,6 +38,10 @@
   --gw2-color-details-title: #eebb66;
   --gw2-color-details-muted: rgba(255, 255, 255, 0.7);
   --gw2-color-details-ability-type: #efdf80;
+  --gw2-color-details-bonus: #5599ff;
+  --gw2-color-details-bonus-inactive: #aaa;
+  --gw2-color-details-attribute: #00ff00;
+  --gw2-color-details-flavor: #99dddd;
 
   --gw2-color-attribute-main: #aaa;
   --gw2-color-attribute-dark: #7a7a7a;

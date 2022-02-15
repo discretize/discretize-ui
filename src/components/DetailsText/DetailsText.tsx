@@ -65,11 +65,16 @@ export interface DetailsProps {
   lines: (ReactElement | undefined | string)[];
   lineComponent?: string;
   lineProps?: any;
+  className?: string;
 }
 
-const DetailsText = ({ lines, lineProps }: DetailsProps): ReactElement => {
+const DetailsText = ({
+  lines,
+  lineProps,
+  className,
+}: DetailsProps): ReactElement => {
   return (
-    <div>
+    <div className={className}>
       {lines
         .filter((line) => !!line)
         .map((line, index) => (

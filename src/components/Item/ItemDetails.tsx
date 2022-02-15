@@ -2,15 +2,14 @@ import React, { ReactElement } from 'react';
 
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
-//import Coin from '../Coin/Coin'
+import Coin from '../Coin/Coin';
 import { apiAttributes } from '../../helpers/apiAttributes';
 import DetailsFact from '../DetailsFact/DetailsFact';
 import GW2ApiItem from '../../gw2api/types/items/item';
-
-function Coin() {
-  // TODO: port Coin
-  return null;
-}
+import css from './ItemDetails.module.css';
+import itemcss from './Item.module.css';
+import clsx from 'clsx';
+import capitalize from 'lodash.capitalize';
 
 export interface ItemDetailsProps {
   item: GW2ApiItem;
@@ -65,35 +64,21 @@ const ItemDetails = ({
               name: `${type}.${detailsType}`,
             }),
           ...(upgrade && {
-            sx: {
-              border: 'none',
-              fontSize: '16px',
-            },
+            className: css.detailsHeaderIcon,
           }),
         }}
-        titleProps={{
-          sx: {
-            color:
-              rarity === 'Basic'
-                ? '#fff'
-                : `gw2.rarity.${rarity.toLowerCase()}`,
-            ...(upgrade && {
-              color: 'gw2.details.bonus',
-              fontSize: '14px',
-              fontWeight: 'gw2.body',
-            }),
-          },
-        }}
+        titleClassName={clsx(
+          itemcss[`colorRarity${capitalize(rarity)}`],
+          upgrade && css.detailsHeaderTitleUpgrade,
+        )}
         {...(upgrade
           ? {
-              sx: {
-                mb: '1px',
-              },
+              className: css.mb1,
             }
           : {
               ...(((!attributes && buffDescription) ||
                 (attributes && infusionUpgradeFlags.includes('Infusion'))) && {
-                sx: { mb: '16px' },
+                className: css.mb16,
               }),
             })}
       >
@@ -112,7 +97,7 @@ const ItemDetails = ({
           <div>
             {`Weapon Strength: `}
             <span
-              sx={{ color: 'gw2.details.attribute' }}
+              className={css.attributeColor}
             >{`${minPower} - ${maxPower}`}</span>
           </div>
         )}
@@ -120,7 +105,7 @@ const ItemDetails = ({
         {defense > 0 && (
           <div>
             {`Defense: `}
-            <span sx={{ color: 'gw2.details.attribute' }}>{defense}</span>
+            <span className={css.attributeColor}>{defense}</span>
           </div>
         )}
 
@@ -129,12 +114,11 @@ const ItemDetails = ({
           attributes.map(({ attribute, modifier }) => (
             <div key={`${attribute}-${modifier}`}>
               <span
-                sx={{
-                  color:
-                    upgrade || infusionUpgradeFlags.includes('Infusion')
-                      ? 'gw2.details.bonus'
-                      : 'gw2.details.attribute',
-                }}
+                className={
+                  upgrade || infusionUpgradeFlags.includes('Infusion')
+                    ? css.bonusColor
+                    : css.attributeColor
+                }
               >
                 {`+${modifier} ${apiAttributes[attribute]}`}
               </span>
@@ -148,11 +132,7 @@ const ItemDetails = ({
                 buffDescription ||
                   (!upgrade && type !== 'Consumable' && description),
               ]}
-              sx={{
-                ...(type === 'UpgradeComponent' && {
-                  color: 'gw2.details.bonus',
-                }),
-              }}
+              className={type === 'UpgradeComponent' && css.bonusColor}
             />
           )}
 
@@ -161,12 +141,11 @@ const ItemDetails = ({
           bonuses.map((bonus, index) => (
             <div
               key={bonus}
-              sx={{
-                color:
-                  upgradeBonusCount > index
-                    ? 'gw2.details.bonus'
-                    : 'gw2.details.bonusInactive',
-              }}
+              className={
+                upgradeBonusCount > index
+                  ? css.bonusColor
+                  : css.bonusInactiveColor
+              }
             >
               <span>({index + 1}): </span>
               {bonus}
@@ -179,10 +158,7 @@ const ItemDetails = ({
             <div
               // eslint-disable-next-line react/no-array-index-key
               key={`${data.id}-${index}`}
-              sx={{
-                mt: '16px',
-                ...(index < upgrades.length && { mb: '16px' }),
-              }}
+              className={clsx(css.mt16, index < upgrades.length && css.mb16)}
             >
               <ItemDetails
                 upgrade
@@ -202,7 +178,7 @@ const ItemDetails = ({
             description: detailsDescription,
             status: detailsName,
           }}
-          sx={{ mb: '12px' }}
+          className={css.mb12}
         />
       )}
 
@@ -212,7 +188,7 @@ const ItemDetails = ({
 
       {!upgrade && (
         <DetailsText
-          sx={{ mt: '12px' }}
+          className={css.mt12}
           lines={[
             ...(type === 'UpgradeComponent'
               ? [description, level > 0 && `Required Level: ${level}`]
