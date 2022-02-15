@@ -178,8 +178,8 @@
 .imageConditionImmobile {
   background-image: url(../../assets/icons/Condition/Immobile.png);
 }
-.imageConditionPoison {
-  background-image: url(../../assets/icons/Condition/Poison.png);
+.imageConditionPoisoned {
+  background-image: url(../../assets/icons/Condition/Poisoned.png);
 }
 .imageConditionSlow {
   background-image: url(../../assets/icons/Condition/Slow.png);

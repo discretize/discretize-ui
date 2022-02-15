@@ -7,7 +7,7 @@ export type ConditionTypes =
   | 'Crippled'
   | 'Fear'
   | 'Immobile'
-  | 'Poison'
+  | 'Poisoned'
   | 'Slow'
   | 'Taunt'
   | 'Torment'
@@ -24,7 +24,7 @@ const CONDITIONS: Record<string, string> = {
   Crippled: 'Movement speed decreased by 50%; stacks duration.',
   Fear: 'Involuntary retreat; unable to act; stacks duration.',
   Immobile: 'Unable to move; stacks duration.',
-  Poison:
+  Poisoned:
     'Deals damage every second; decreases healing effectiveness 33%; damage stacks intensity.',
   Slow: 'Skills and actions are slower.',
   Taunt: 'Involuntarily attack foes.',
