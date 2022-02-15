@@ -107,7 +107,7 @@ const Effect = ({
         inline={inline}
         iconProps={{
           ...iconProps,
-          className: css[`image${type}${name}`],
+          className: css[`image${type}${name.replaceAll(' ', '')}`],
           iconViaClassname: true,
         }}
         style={style}

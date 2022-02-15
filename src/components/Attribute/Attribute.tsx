@@ -64,7 +64,7 @@ const Attribute = ({
         disableText={disableText}
         inline={inline}
         iconProps={{
-          className: css[`imageAttribute${name.replace(' ', '')}`],
+          className: css[`imageAttribute${name.replaceAll(' ', '')}`],
           iconViaClassname: true,
         }}
         className={css.iconWithText}
