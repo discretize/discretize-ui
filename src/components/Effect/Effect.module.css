@@ -196,3 +196,25 @@
 .imageConditionWeakness {
   background-image: url(../../assets/icons/Condition/Weakness.png);
 }
+
+.imageControlDaze {
+  background-image: url(../../assets/icons/Control/Daze.png);
+}
+.imageControlFloat {
+  background-image: url(../../assets/icons/Control/Float.png);
+}
+.imageControlKnockback {
+  background-image: url(../../assets/icons/Control/Knockback.png);
+}
+.imageControlKnockdown {
+  background-image: url(../../assets/icons/Control/Knockdown.png);
+}
+.imageControlPull {
+  background-image: url(../../assets/icons/Control/Pull.png);
+}
+.imageControlSink {
+  background-image: url(../../assets/icons/Control/Sink.png);
+}
+.imageControlStun {
+  background-image: url(../../assets/icons/Control/Stun.png);
+}
