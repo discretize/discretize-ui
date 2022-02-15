@@ -91,17 +91,17 @@
   color: var(--gw2-color-effect-common-light);
 }
 
-.colorMistlockInstabilityMain {
-  color: var(--gw2-color-effect-mistlockInstability-main);
+.colorMistlockinstabilityMain {
+  color: var(--gw2-color-effect-mistlockinstability-main);
 }
-.colorMistlockInstabilityMain:hover {
-  color: var(--gw2-color-effect-mistlockInstability-dark);
+.colorMistlockinstabilityMain:hover {
+  color: var(--gw2-color-effect-mistlockinstability-dark);
 }
-.colorMistlockInstabilityDark {
-  color: var(--gw2-color-effect-mistlockInstability-dark);
+.colorMistlockinstabilityDark {
+  color: var(--gw2-color-effect-mistlockinstability-dark);
 }
-.colorMistlockInstabilityLight {
-  color: var(--gw2-color-effect-mistlockInstability-light);
+.colorMistlockinstabilityLight {
+  color: var(--gw2-color-effect-mistlockinstability-light);
 }
 
 .imageBoonAegis {
@@ -280,4 +280,59 @@
 }
 .imageConsumableEnhancement {
   background-image: url(../../assets/icons/Consumable/Enhancement.png);
+}
+
+.imageMistlockInstabilityAdrenalineRush {
+  background-image: url(../../assets/icons/MistlockInstability/AdrenalineRush.png);
+}
+.imageMistlockInstabilityAfflicted {
+  background-image: url(../../assets/icons/MistlockInstability/Afflicted.png);
+}
+.imageMistlockInstabilityBoonOverload {
+  background-image: url(../../assets/icons/MistlockInstability/BoonOverload.png);
+}
+.imageMistlockInstabilityFluxBomb {
+  background-image: url(../../assets/icons/MistlockInstability/FluxBomb.png);
+}
+.imageMistlockInstabilityFractalVindicators {
+  background-image: url(../../assets/icons/MistlockInstability/FractalVindicators.png);
+}
+.imageMistlockInstabilityFrailty {
+  background-image: url(../../assets/icons/MistlockInstability/Frailty.png);
+}
+.imageMistlockInstabilityHamstrung {
+  background-image: url(../../assets/icons/MistlockInstability/Hamstrung.png);
+}
+.imageMistlockInstabilityLastLaugh {
+  background-image: url(../../assets/icons/MistlockInstability/LastLaugh.png);
+}
+.imageMistlockInstabilityMistsConvergence {
+  background-image: url(../../assets/icons/MistlockInstability/MistsConvergence.png);
+}
+.imageMistlockInstabilityNoPainNoGain {
+  background-image: url(../../assets/icons/MistlockInstability/NoPainNoGain.png);
+}
+.imageMistlockInstabilityOutflanked {
+  background-image: url(../../assets/icons/MistlockInstability/Outflanked.png);
+}
+.imageMistlockInstabilitySocialAwkwardness {
+  background-image: url(../../assets/icons/MistlockInstability/SocialAwkwardness.png);
+}
+.imageMistlockInstabilityStickTogether {
+  background-image: url(../../assets/icons/MistlockInstability/StickTogether.png);
+}
+.imageMistlockInstabilitySugarRush {
+  background-image: url(../../assets/icons/MistlockInstability/SugarRush.png);
+}
+.imageMistlockInstabilityToxicTrail {
+  background-image: url(../../assets/icons/MistlockInstability/ToxicTrail.png);
+}
+.imageMistlockInstabilityVengeance {
+  background-image: url(../../assets/icons/MistlockInstability/Vengeance.png);
+}
+.imageMistlockInstabilityWeBleedFire {
+  background-image: url(../../assets/icons/MistlockInstability/WeBleedFire.png);
+}
+.imageMistlockInstabilityToxicSickness {
+  background-image: url(../../assets/icons/MistlockInstability/ToxicSickness.png);
 }
