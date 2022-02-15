@@ -1,3 +1,16 @@
+export type BoonsTypes =
+  | 'Aegis'
+  | 'Alacrity'
+  | 'Fury'
+  | 'Might'
+  | 'Protection'
+  | 'Quickness'
+  | 'Regeneration'
+  | 'Resistance'
+  | 'Resolution'
+  | 'Stability'
+  | 'Swiftness'
+  | 'Vigor';
 const BOONS: Record<string, string> = {
   Aegis: 'Block the next incoming attack; stacks duration.',
   Alacrity: 'Skills recharge faster.',

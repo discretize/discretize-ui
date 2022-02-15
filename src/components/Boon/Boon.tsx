@@ -1,10 +1,10 @@
 import React, { CSSProperties, ReactElement } from 'react';
-import BOONS from '../../data/boons';
+import BOONS, { BoonsTypes } from '../../data/boons';
 import Effect from '../Effect/Effect';
 
 export interface BoonProps {
-  name: string;
-  count: number;
+  name: BoonsTypes;
+  count?: number;
   disableTooltip?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -15,7 +15,7 @@ export interface BoonProps {
 
 const Boon = ({
   name,
-  count,
+  count = 1,
   disableTooltip,
   disableText,
   disableLink,
