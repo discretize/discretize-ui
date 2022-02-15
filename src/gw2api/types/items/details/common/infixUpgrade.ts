@@ -1,7 +1,7 @@
 import GW2ApiAttribute from '../../../common/attribute';
 
 export interface GW2ApiInfixUpgradeAttribute {
-  attribute: GW2ApiAttribute[];
+  attribute: GW2ApiAttribute;
   modifier: number;
 }
 

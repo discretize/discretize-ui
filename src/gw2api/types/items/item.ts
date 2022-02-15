@@ -3,6 +3,7 @@ import GW2ApiItemDetails from './details/details';
 import GW2ApiItemRarity from './rarity';
 import GW2ApiItemType from './type';
 import GW2ApiRestriction from './restriction';
+import GW2ApiItemFlag from './flag';
 
 export type GW2ApiUpgradeMethod = 'Attunement' | 'Infusion';
 
@@ -22,7 +23,8 @@ interface GW2ApiItem {
   level: number;
   vendor_value: number;
   default_skin?: number;
-  flags: GW2ApiGameType[];
+  game_types: GW2ApiGameType[];
+  flags: GW2ApiItemFlag[];
   restrictions: GW2ApiRestriction[];
   upgrades_into?: GW2ApiUpgradedItem;
   upgrades_from?: GW2ApiUpgradedItem[];

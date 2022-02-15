@@ -68,6 +68,31 @@
   --gw2-color-effect-mistlockInstability-dark: #524300;
   --gw2-color-effect-mistlockInstability-light: #ffd61f;
 
+  --gw2-color-rarity-legendary-main: #4c139d;
+  --gw2-color-rarity-legendary-dark: #230949;
+  --gw2-color-rarity-legendary-light: #8037e6;
+  --gw2-color-rarity-ascended-main: #fb3e8d;
+  --gw2-color-rarity-ascended-dark: #dc045e;
+  --gw2-color-rarity-ascended-light: #fdafd0;
+  --gw2-color-rarity-exotic-main: #ffa405;
+  --gw2-color-rarity-exotic-dark: #a36700;
+  --gw2-color-rarity-exotic-light: #ffcb70;
+  --gw2-color-rarity-rare-main: #fcd00b;
+  --gw2-color-rarity-rare-dark: #a28402;
+  --gw2-color-rarity-rare-light: #fee472;
+  --gw2-color-rarity-masterwork-main: #1a9306;
+  --gw2-color-rarity-masterwork-dark: #0b3b02;
+  --gw2-color-rarity-masterwork-light: #36f514;
+  --gw2-color-rarity-fine-main: #62a4da;
+  --gw2-color-rarity-fine-dark: #2b77b6;
+  --gw2-color-rarity-fine-light: #bdd9ef;
+  --gw2-color-rarity-basic-main: #000;
+  --gw2-color-rarity-basic-dark: #000;
+  --gw2-color-rarity-basic-light: #333;
+  --gw2-color-rarity-junk-main: #aaa;
+  --gw2-color-rarity-junk-dark: #7a7a7a;
+  --gw2-color-rarity-junk-light: #e0e0e0;
+
   --gw2-color-text: #000;
   --gw2-color-primary: #2b6cb0;
   --gw2-color-primary-dark: #183c63;
