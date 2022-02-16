@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { CSSProperties, MouseEventHandler, ReactElement } from 'react';
-import { Spinner } from '..';
+import Spinner from '../Spinner/Spinner';
 import css from './Icon.module.css';
 
 export interface IconProps {
