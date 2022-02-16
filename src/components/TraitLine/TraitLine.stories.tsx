@@ -7,6 +7,7 @@ export default {
   component: TraitLine,
   argTypes: {
     className: { control: false },
+    onSelect: { control: false },
   },
 } as ComponentMeta<typeof TraitLine>;
 
@@ -16,6 +17,7 @@ const Template: ComponentStory<typeof TraitLine> = (args) => {
 
 export const Simple = Template.bind({});
 Simple.args = {
+  onSelect: undefined,
   data: {
     id: 41,
     name: 'Air',

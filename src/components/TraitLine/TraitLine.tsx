@@ -26,19 +26,19 @@ const renderTraitLineConnector = ({
 }) => <TraitLineConnector className={clsx(className, css.connector)} />;
 
 export interface TraitLineProps {
-  id: number;
-  defaultSelected: number[];
-  selected: number[];
-  selectable: boolean;
-  resettable: boolean;
-  onReset: object; //func
-  onSelect: object;
+  id?: number;
+  defaultSelected?: number[];
+  selected?: number[];
+  selectable?: boolean;
+  resettable?: boolean;
+  onReset?: (v: { tier: number; id: number; index: number }) => void;
+  onSelect?: (v: { tier: number; id: number; index: number }) => void;
   data: GW2ApiSpecialization;
 }
 
 const TraitLine = ({
   id,
-  defaultSelected,
+  defaultSelected = [],
   selected: propsSelected,
   selectable,
   resettable,
@@ -70,6 +70,10 @@ const TraitLine = ({
   } else {
     selected = defaultSelected || propsSelected;
   }
+  console.log(`onSelect: ${onSelect}`);
+  console.log(`typeof onSelect: ${typeof onSelect}`);
+  console.log(`Controlled: ${controlled}`);
+  console.log(`Selected: ${selected}`);
 
   const renderMinorTrait = useCallback(
     ({ id: minorTraitId }) => (
