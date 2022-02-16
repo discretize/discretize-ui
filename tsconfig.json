@@ -25,7 +25,6 @@
     "module": "commonjs",
     "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "theme-ui",
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "typings.d.ts"],

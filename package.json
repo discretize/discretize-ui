@@ -1,17 +1,17 @@
 {
   "name": "gw2-ui-new",
-  "version": "0.12.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "description": "React components and API wrapper for Guild Wars 2",
   "keywords": [
     "guild wars 2",
     "gw2",
     "react",
-    "redux"
+    "tooltip library"
   ],
   "homepage": "https://github.com/discretize/gw2-ui",
   "bugs": "https://github.com/discretize/gw2-ui/issues",
-  "repository": "https://github.com/discretize/gw2-ui/gw2-ui",
+  "repository": "https://github.com/discretize/gw2-ui",
   "license": "MIT",
   "author": "Manuel Haag <manuel@haag.online>",
   "contributors": [
@@ -29,20 +29,12 @@
     ]
   },
   "dependencies": {
-    "@theme-ui/core": "^0.11.3",
     "@tippyjs/react": "^4.2.5",
-    "axios": "^0.21.4",
     "clsx": "^1.1.1",
     "lodash.capitalize": "^4.2.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-redux": "^7.2.5",
-    "react-resize-aware": "^3.0.1",
-    "redux": "^4.1.1",
-    "redux-saga": "1.0.0",
-    "reselect": "^4.0.0",
-    "styled-components": "5.3.1",
-    "theme-ui": "^0.13.1"
+    "react-resize-aware": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
@@ -64,8 +56,6 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-storybook": "^0.5.6",
-    "husky": "^7.0.2",
-    "lerna": "^3.22.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
     "ts-node": "^10.3.0",
