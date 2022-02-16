@@ -1,19 +1,14 @@
 import clsx from 'clsx';
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useMemo, CSSProperties } from 'react';
 import useResizeAware from 'react-resize-aware';
 import css from './TraitlLineConnector.module.css';
 
-export const Paths: Record<string, PathsTypes> = {
-  UP: 'up',
-  MID: 'mid',
-  DOWN: 'down',
-};
-
-export type PathsTypes = 'up' | 'mid' | 'down';
+type Direction = 'up' | 'mid' | 'down';
+export const Paths: Direction[] = ['up', 'mid', 'down'];
 
 export interface TraitLineConnectorProps {
-  start?: PathsTypes;
-  end?: PathsTypes;
+  start?: Direction;
+  end?: Direction;
   disabled?: boolean;
   className?: string;
 }
@@ -25,78 +20,72 @@ const TraitLineConnector = ({
   className,
 }: TraitLineConnectorProps): ReactElement => {
   const [resizeListener, { width, height }] = useResizeAware();
-  const [dimensions, setDimensions] = useState({});
-
-  useEffect(() => {
+  const style: CSSProperties | undefined = useMemo(() => {
+    if (width === null || height === null) return;
     let startY;
     switch (start) {
-      case Paths.UP:
+      case 'up':
         startY = height - 18.5;
         break;
-      case Paths.MID:
+      case 'mid':
         startY = height * 0.5;
 
-        if (end === Paths.UP) {
+        if (end === 'up') {
           startY += 4;
-        } else if (end === Paths.DOWN) {
+        } else if (end === 'down') {
           startY -= 4;
         }
 
         break;
-      case Paths.DOWN:
+      case 'down':
         startY = 18.5;
         break;
       default:
-        break;
+        return;
     }
 
     let endY;
     switch (end) {
-      case Paths.UP:
+      case 'up':
         endY = height - 18.5;
         break;
-      case Paths.MID:
+      case 'mid':
         endY = height * 0.5;
 
-        if (start === Paths.UP) {
+        if (start === 'up') {
           endY += 4;
-        } else if (start === Paths.DOWN) {
+        } else if (start === 'down') {
           endY -= 4;
         }
 
         break;
-      case Paths.DOWN:
+      case 'down':
         endY = 18.5;
         break;
       default:
-        break;
+        return;
     }
 
     const length = Math.sqrt(width ** 2 + (startY - endY) ** 2);
+    const angle = Math.atan2(endY - startY, -width) * (180 / Math.PI);
 
-    setDimensions({
-      bottom: (startY + endY) / 2 - 8 / 2,
-      left: width / 2 - length / 2,
-      length,
-      angle: Math.atan2(endY - startY, -width) * (180 / Math.PI),
-    });
+    return {
+      bottom: (startY + endY) / 2 - 8 / 2 + 'px',
+      left: width / 2 - length / 2 + 'px',
+      width: length + 'px',
+      transform: `rotate(${angle}deg)`,
+    };
   }, [start, end, width, height]);
-
-  if (!dimensions) {
-    return null;
-  }
-
-  const { bottom, left, length, angle } = dimensions;
-
-  const style = { width: length, transform: `rotate(${angle}deg)` };
 
   return (
     <div className={clsx(className, css.root)}>
       {resizeListener}
 
-      <div style={style} className={css.wrapper}>
-        <div className={!disabled && css.traitlineConnector} />
-      </div>
+      {style && !disabled ? (
+        <div style={style} className={css.wrapper}>
+          <div className={css.traitlineConnector} />
+        </div>
+      ) : null}
     </div>
   );
 };
