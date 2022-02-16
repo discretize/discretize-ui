@@ -186,7 +186,7 @@ const TraitLine = ({
   return (
     <div
       className={css.root}
-      style={{ backgroundImage: `url('${background})` }}
+      style={{ backgroundImage: `url('${background}')` }}
     >
       <div className={css.wrapper}>
         <div className={css.wrapperTooltip}>
