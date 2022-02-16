@@ -137,7 +137,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
       {...{
         ...(!isSelected &&
           (controlled || selectable) && {
-            onClick: (event: MouseEvent) => {
+            onClick: (event) => {
               event.preventDefault();
 
               if (controlled) {
@@ -272,33 +272,32 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
         </div>
       </div>
 
-      {onReset ||
-        (!controlled &&
-          selectable &&
-          resettable &&
-          JSON.stringify(uncontrolledSelected) !==
-            JSON.stringify(defaultSelected) && (
-            <Tooltip content="Reset">
-              <div className={css.resetWrapper}>
-                <Icon
-                  inactive
-                  className={css.resetIcon}
-                  iconViaClassname
-                  onClick={(event) => {
-                    event.preventDefault();
+      {!controlled &&
+        selectable &&
+        resettable &&
+        JSON.stringify(uncontrolledSelected) !==
+          JSON.stringify(defaultSelected) && (
+          <Tooltip content="Reset">
+            <div className={css.resetWrapper}>
+              <Icon
+                inactive
+                className={css.resetIcon}
+                iconViaClassname
+                onClick={(event) => {
+                  event.preventDefault();
 
-                    if (!controlled) {
-                      setUncontrolledSelected(defaultSelected);
-                    }
+                  if (!controlled) {
+                    setUncontrolledSelected(defaultSelected);
+                  }
 
-                    if (typeof onReset === 'function') {
-                      onReset();
-                    }
-                  }}
-                />
-              </div>
-            </Tooltip>
-          ))}
+                  if (typeof onReset === 'function') {
+                    onReset();
+                  }
+                }}
+              />
+            </div>
+          </Tooltip>
+        )}
     </div>
   );
 };

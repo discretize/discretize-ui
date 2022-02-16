@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { MouseEventHandler, ReactElement } from 'react';
 
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import TooltipContainer from '../TooltipContainer/TooltipContainer';
@@ -24,6 +24,7 @@ export interface TraitProps {
   wikiLinkProps?: WikiLinkProps;
   inactive?: boolean;
   className?: string;
+  onClick?: MouseEventHandler<HTMLSpanElement>;
 }
 
 const TRAIT_ERROR_NAMES = {
@@ -48,6 +49,7 @@ const Trait = (props: TraitProps): ReactElement => {
     wikiLinkProps,
     inactive,
     className,
+    onClick,
   } = props;
   const trait = useTrait(id);
 
@@ -119,6 +121,7 @@ const Trait = (props: TraitProps): ReactElement => {
           className,
           profession && globalcss[`coloredProfession${profession}`],
         )}
+        onClick={onClick}
       />
     </Tooltip>
   );

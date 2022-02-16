@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, MouseEventHandler } from 'react';
 
 import Icon, { IconProps } from '../Icon/Icon';
 import Progress, { ProgressProps } from '../Progress/Progress';
@@ -17,6 +17,7 @@ export interface IconWithTextProps {
   loading?: boolean;
   style?: CSSProperties;
   className?: string;
+  onClick?: MouseEventHandler<HTMLSpanElement>;
 }
 
 const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
@@ -33,11 +34,17 @@ const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
       loading,
       style,
       className,
+      onClick,
     }: IconWithTextProps,
     ref,
   ) => {
     return (
-      <span ref={ref} className={clsx(css.root, className)} style={style}>
+      <span
+        ref={ref}
+        className={clsx(css.root, className)}
+        style={style}
+        onClick={onClick}
+      >
         {!disableIcon &&
           (loading ||
             icon ||
