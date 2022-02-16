@@ -1,5 +1,3 @@
-@import url(../../global.module.css);
-
 .root {
   color: var(--gw2-color-text);
   font-family: var(--gw2-font);

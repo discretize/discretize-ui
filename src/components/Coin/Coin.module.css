@@ -1,5 +1,3 @@
-@import url(../../global.module.css);
-
 .root {
   font-family: var(--gw2-font);
   font-weight: var(--gw2-font-weight-body);
