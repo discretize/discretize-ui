@@ -1,15 +1,16 @@
 import clsx from 'clsx';
 import { Fragment, ReactElement, useEffect, useState } from 'react';
-import { useSpecialization } from '../../gw2api/hooks';
+import Progress from '../Progress/Progress';
 import Error from '../Error/Error';
 import Icon from '../Icon/Icon';
-import IconWithText from '../IconWithText/IconWithText';
+import SpecializationTooltip from '../Specialization/SpecializationTooltip';
 import Tooltip from '../Tooltip/Tooltip';
 import TraitComponent from '../Trait/Trait';
 import TraitLineConnector, {
   Paths,
   TraitLineConnectorProps,
 } from '../TraitLineConnector/TraitLineConnector';
+import { useSpecialization } from '../../gw2api/hooks';
 import css from './TraitLine.module.css';
 
 // eslint-disable-next-line react/prop-types
@@ -66,7 +67,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   if (specialization.loading) {
     return (
       <div className={css.loadingOrError}>
-        <IconWithText {...props} loading disableIcon />
+        <Progress />
       </div>
     );
   }
@@ -84,7 +85,6 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   }
 
   const {
-    name,
     major_traits: majorTraits,
     minor_traits: minorTraits,
     background,
@@ -220,7 +220,9 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
     >
       <div className={css.wrapper}>
         <div className={css.wrapperTooltip}>
-          <Tooltip content={name}>
+          <Tooltip
+            content={<SpecializationTooltip data={specialization.data} />}
+          >
             <span className={css.innerTooltip} />
           </Tooltip>
         </div>
@@ -273,8 +275,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
       {!controlled &&
         selectable &&
         resettable &&
-        JSON.stringify(uncontrolledSelected) !==
-          JSON.stringify(defaultSelected) && (
+        !arrays_equal(uncontrolledSelected, defaultSelected) && (
           <Tooltip content="Reset">
             <div className={css.resetWrapper}>
               <Icon
@@ -300,3 +301,11 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   );
 };
 export default TraitLine;
+
+function arrays_equal<T>(a: T[], b: T[]): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}

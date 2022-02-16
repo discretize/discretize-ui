@@ -1,10 +1,12 @@
 import clsx from 'clsx';
 import { ReactElement } from 'react';
-import globalcss from '../../global.module.css';
-import { useSpecialization } from '../../gw2api/hooks';
+import Tooltip from '../Tooltip/Tooltip';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
+import SpecializationTooltip from './SpecializationTooltip';
+import { useSpecialization } from '../../gw2api/hooks';
+import globalcss from '../../global.module.css';
 
 const SPECIALIZATION_ERROR_NAMES = {
   404: 'Specialization Not Found',
@@ -46,26 +48,28 @@ const Specialization = (props: SpecializationProps): ReactElement => {
   const { name, icon, profession } = specialization.data;
 
   return (
-    <IconWithText
-      icon={icon}
-      text={
-        disableLink ? (
-          name
-        ) : (
-          <WikiLink
-            to={name}
-            className={clsx(
-              profession && globalcss[`coloredProfession${profession}`],
-            )}
-          />
-        )
-      }
-      disableIcon={disableIcon}
-      disableText={disableText}
-      inline={inline}
-      iconProps={{ hexagon: true }}
-      className={profession && globalcss[`coloredProfession${profession}`]}
-    />
+    <Tooltip content={<SpecializationTooltip data={specialization.data} />}>
+      <IconWithText
+        icon={icon}
+        text={
+          disableLink ? (
+            name
+          ) : (
+            <WikiLink
+              to={name}
+              className={clsx(
+                profession && globalcss[`coloredProfession${profession}`],
+              )}
+            />
+          )
+        }
+        disableIcon={disableIcon}
+        disableText={disableText}
+        inline={inline}
+        iconProps={{ hexagon: true }}
+        className={profession && globalcss[`coloredProfession${profession}`]}
+      />
+    </Tooltip>
   );
 };
 
