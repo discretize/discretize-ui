@@ -64,17 +64,15 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   }, [...defaultSelected]);
 
   if (specialization.loading) {
-    // TODO: use a same-sized loading indicator here
     return (
-      <div className={css.root}>
-        <IconWithText {...props} loading />
+      <div className={css.loadingOrError}>
+        <IconWithText {...props} loading disableIcon />
       </div>
     );
   }
   if (specialization.error) {
-    // TODO: use a same-sized error indicator here
     return (
-      <div className={css.root}>
+      <div className={css.loadingOrError}>
         <Error
           {...props}
           code={specialization.error}
@@ -302,34 +300,3 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   );
 };
 export default TraitLine;
-
-/* TODO migrate for loading
-export default withLoading({
-  iconWithTextProps: {
-    sx: {
-      width: '100%',
-      maxWidth: '650px',
-      height: '135px',
-      backgroundColor: 'rgba(0,0,0,0.2)',
-      border: '1px solid rgb(9, 10, 14)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontSize: '34px',
-    },
-  },
-  errorProps: {
-    sx: {
-      width: '100%',
-      maxWidth: '650px',
-      height: '135px',
-      backgroundColor: 'rgba(0,0,0,0.2)',
-      border: '1px solid rgb(9, 10, 14)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      fontSize: '34px',
-    },
-  },
-})(TraitLine);
-*/
