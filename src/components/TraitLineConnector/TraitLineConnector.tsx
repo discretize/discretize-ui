@@ -14,8 +14,8 @@ export interface TraitLineConnectorProps {
 }
 
 const TraitLineConnector = ({
-  start,
-  end,
+  start = 'mid',
+  end = 'mid',
   disabled,
   className,
 }: TraitLineConnectorProps): ReactElement => {

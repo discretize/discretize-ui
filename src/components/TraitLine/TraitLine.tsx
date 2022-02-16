@@ -19,7 +19,9 @@ const renderTraitLineConnector = ({
 }: {
   className?: string;
   props?: TraitLineConnectorProps;
-}) => <TraitLineConnector className={clsx(className, css.connector)} />;
+}) => (
+  <TraitLineConnector className={clsx(className, css.connector)} {...props} />
+);
 
 export interface TraitLineProps {
   id: number;
@@ -100,10 +102,6 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   } else {
     selected = defaultSelected || propsSelected;
   }
-  console.log(`onSelect: ${onSelect}`);
-  console.log(`typeof onSelect: ${typeof onSelect}`);
-  console.log(`Controlled: ${controlled}`);
-  console.log(`Selected: ${selected}`);
 
   const renderMinorTrait = ({ id: minorTraitId }: { id: number }) => (
     <TraitComponent
@@ -211,6 +209,12 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
     />
   );
 
+  // turn [1,2,3,4,5,6,7,8,9] into [[1,2,3], [4,5,6], [7,8,9]]
+  let majorTraitsByTier: number[][] = [];
+  for (let i = 0; i < majorTraits.length; i += 3) {
+    majorTraitsByTier.push(majorTraits.slice(i, i + 3));
+  }
+
   return (
     <div
       className={css.root}
@@ -224,58 +228,47 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
         </div>
 
         <div className={css.majorTraitsWrapper}>
-          {majorTraits
-            .reduce((prevArray, currentValue, currentIndex) => {
-              if (currentIndex % 3 === 0) {
-                return [...prevArray, [currentValue]];
-              }
-              return [
-                ...prevArray.slice(0, -1),
-                [...prevArray.slice(-1)[0], currentValue],
-              ];
-            }, [])
-            .map((majorTraitsChunk, tier) => {
-              const selectedMajorTraitIndex = majorTraitsChunk.findIndex(
-                (majorTraitId) => selected.includes(majorTraitId),
-              );
-              const path = Paths[selectedMajorTraitIndex];
+          {majorTraitsByTier.map((majorTraitsChunk, tier) => {
+            const selectedMajorTraitIndex = majorTraitsChunk.findIndex(
+              (majorTraitId) => selected.includes(majorTraitId),
+            );
+            const path = Paths[selectedMajorTraitIndex];
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <Fragment key={tier}>
+                {tier === 0 &&
+                  renderTraitLineConnector({
+                    className: css.traitlineConnectorExtra,
+                  })}
 
-              return (
-                // eslint-disable-next-line react/no-array-index-key
-                <Fragment key={tier}>
-                  {tier === 0 &&
-                    renderTraitLineConnector({
-                      className: css.traitlineConnectorExtra,
-                    })}
+                {renderMinorTrait({ id: minorTraits[tier] })}
 
-                  {renderMinorTrait({ id: minorTraits[tier] })}
+                {renderTraitLineConnector(
+                  path !== undefined
+                    ? { props: { end: path } }
+                    : { props: { disabled: true } },
+                )}
 
-                  {renderTraitLineConnector(
+                <div className={css.majorTraitsChunk}>
+                  {majorTraitsChunk.map((majorTraitId, majorTraitIndex) => {
+                    return renderMajorTrait({
+                      tier,
+                      id: majorTraitId,
+                      selected: majorTraitIndex === selectedMajorTraitIndex,
+                      index: majorTraitIndex,
+                    });
+                  })}
+                </div>
+
+                {tier !== 2 &&
+                  renderTraitLineConnector(
                     path !== undefined
-                      ? { props: { end: path } }
+                      ? { props: { start: path } }
                       : { props: { disabled: true } },
                   )}
-
-                  <div className={css.majorTraitsChunk}>
-                    {majorTraitsChunk.map((majorTraitId, majorTraitIndex) => {
-                      return renderMajorTrait({
-                        tier,
-                        id: majorTraitId,
-                        selected: majorTraitIndex === selectedMajorTraitIndex,
-                        index: majorTraitIndex,
-                      });
-                    })}
-                  </div>
-
-                  {tier !== 2 &&
-                    renderTraitLineConnector(
-                      path !== undefined
-                        ? { props: { start: path } }
-                        : { props: { disabled: true } },
-                    )}
-                </Fragment>
-              );
-            })}
+              </Fragment>
+            );
+          })}
         </div>
       </div>
 
