@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { CSSProperties, MouseEventHandler, ReactElement } from 'react';
 import { Spinner } from '..';
 import css from './Icon.module.css';
 
@@ -18,6 +18,7 @@ export interface IconProps {
   applyCountProps?: any;
   className?: string;
   iconViaClassname?: boolean; // indicates that the icon url is inserted via an additional className
+  onClick?: MouseEventHandler<HTMLSpanElement>;
 }
 
 const Icon = ({
@@ -33,6 +34,7 @@ const Icon = ({
   inactive = false,
   applyCountProps = {},
   className,
+  onClick,
 }: IconProps): ReactElement => {
   // css that is shared accross spinner and the actual component
   const sharedClassNames = clsx(
@@ -64,6 +66,7 @@ const Icon = ({
 
   return (
     <span
+      onClick={onClick}
       className={clsx(
         sharedClassNames,
         css.root,

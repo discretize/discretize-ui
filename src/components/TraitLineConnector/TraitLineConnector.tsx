@@ -3,15 +3,17 @@ import { ReactElement, useEffect, useState } from 'react';
 import useResizeAware from 'react-resize-aware';
 import css from './TraitlLineConnector.module.css';
 
-export const Paths = {
+export const Paths: Record<string, PathsTypes> = {
   UP: 'up',
   MID: 'mid',
   DOWN: 'down',
 };
 
+export type PathsTypes = 'up' | 'mid' | 'down';
+
 export interface TraitLineConnectorProps {
-  start?: 'up' | 'mid' | 'down';
-  end?: 'up' | 'mid' | 'down';
+  start?: PathsTypes;
+  end?: PathsTypes;
   disabled?: boolean;
   className?: string;
 }

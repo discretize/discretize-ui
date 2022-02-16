@@ -27,7 +27,7 @@ export interface TraitLineProps {
   selected?: number[];
   selectable?: boolean;
   resettable?: boolean;
-  onReset?: (v: { tier: number; id: number; index: number }) => void;
+  onReset?: () => void;
   onSelect?: (v: { tier: number; id: number; index: number }) => void;
 }
 
@@ -105,7 +105,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   console.log(`Controlled: ${controlled}`);
   console.log(`Selected: ${selected}`);
 
-  const renderMinorTrait = ({ id: minorTraitId }) => (
+  const renderMinorTrait = ({ id: minorTraitId }: { id: number }) => (
     <TraitComponent
       key={minorTraitId}
       id={minorTraitId}
@@ -120,6 +120,11 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
     id: majorTraitId,
     selected: isSelected,
     index: majorTraitIndex,
+  }: {
+    tier: number;
+    id: number;
+    selected: boolean;
+    index: number;
   }) => (
     <TraitComponent
       key={majorTraitId}
@@ -134,7 +139,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
       {...{
         ...(!isSelected &&
           (controlled || selectable) && {
-            onClick: (event) => {
+            onClick: (event: MouseEvent) => {
               event.preventDefault();
 
               if (controlled) {
@@ -160,13 +165,12 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
                   );
                 } else {
                   // find selected major trait from one tier below
-                  const selectedIndexBelowToAppend =
-                    tier > 0 &&
-                    selected.findIndex((selectedMajorTraitId) =>
+                  const selectedIndexBelowToAppend = selected.findIndex(
+                    (selectedMajorTraitId) =>
                       majorTraits
                         .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
                         .includes(selectedMajorTraitId),
-                    );
+                  );
 
                   if (selectedIndexBelowToAppend !== -1) {
                     const newSelected = [...selected];
@@ -221,13 +225,15 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
 
         <div className={css.majorTraitsWrapper}>
           {majorTraits
-            .reduce(
-              (array, item, index) =>
-                index % 3 === 0
-                  ? [...array, [item]]
-                  : [...array.slice(0, -1), [...array.slice(-1)[0], item]],
-              [],
-            )
+            .reduce((prevArray, currentValue, currentIndex) => {
+              if (currentIndex % 3 === 0) {
+                return [...prevArray, [currentValue]];
+              }
+              return [
+                ...prevArray.slice(0, -1),
+                [...prevArray.slice(-1)[0], currentValue],
+              ];
+            }, [])
             .map((majorTraitsChunk, tier) => {
               const selectedMajorTraitIndex = majorTraitsChunk.findIndex(
                 (majorTraitId) => selected.includes(majorTraitId),
@@ -242,7 +248,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
                       className: css.traitlineConnectorExtra,
                     })}
 
-                  {renderMinorTrait({ id: minorTraits[tier], tier })}
+                  {renderMinorTrait({ id: minorTraits[tier] })}
 
                   {renderTraitLineConnector(
                     path !== undefined
