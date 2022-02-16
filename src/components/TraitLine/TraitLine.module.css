@@ -89,23 +89,23 @@
   align-items: center;
 }
 
+.innerTooltip,
+.innerTooltip::before,
+.innerTooltip::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.5);
+}
 .innerTooltip {
   position: absolute;
   margin-left: 73px;
   height: 55px;
   width: 95px;
   box-sizing: border-box;
+  border-width: 0 2px;
 }
-.innerTooltip > *::before::after {
-  border-width: 0px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-.innerTooltip > * {
-  border-left-width: 2px;
-  border-right-width: 2px;
-}
-.innerTooltip::before::after {
+.innerTooltip::before,
+.innerTooltip::after {
   content: '';
   position: absolute;
   width: 64px;
