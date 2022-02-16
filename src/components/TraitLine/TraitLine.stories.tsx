@@ -8,16 +8,16 @@ export default {
   argTypes: {
     className: { control: false },
     onSelect: { control: false },
+    onReset: { control: false },
   },
 } as ComponentMeta<typeof TraitLine>;
 
 const Template: ComponentStory<typeof TraitLine> = (args) => {
-  return <TraitLine {...args} />;
+  return <TraitLine {...args} onSelect={undefined} onReset={undefined} />;
 };
 
 export const Simple = Template.bind({});
 Simple.args = {
-  onSelect: undefined,
   data: {
     id: 41,
     name: 'Air',
