@@ -3,6 +3,7 @@ import * as React from 'react';
 import APICache, { APILanguage, API_LANGUAGES, Id } from './cache';
 import GW2ApiItem from './types/items/item';
 import { GW2ApiSkill } from './types/skills/skill';
+import GW2ApiSpecialization from './types/specialization/specialization';
 import GW2ApiTrait from './types/traits/trait';
 
 function isAPILanguage(l: string): l is APILanguage {
@@ -103,4 +104,26 @@ export function useItem(id: Id) {
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return itemCache(lang).getOne(id, forceRedraw);
+}
+
+// Specializations
+const CACHE_SPECIALIZATIONS: Partial<
+  Record<APILanguage, APICache<GW2ApiSpecialization>>
+> = {};
+function specializationCache(lang: APILanguage) {
+  return getCache(CACHE_SPECIALIZATIONS, '/v2/specializations', lang, 200, 2);
+}
+
+export function useSpecializations(ids: Id[]) {
+  const lang = React.useContext(APILanguageContext);
+  const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
+
+  return specializationCache(lang).getMultiple(ids, forceRedraw);
+}
+
+export function useSpecialization(id: Id) {
+  const lang = React.useContext(APILanguageContext);
+  const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
+
+  return specializationCache(lang).getOne(id, forceRedraw);
 }

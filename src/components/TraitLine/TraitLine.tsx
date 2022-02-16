@@ -1,13 +1,9 @@
 import clsx from 'clsx';
-import {
-  Fragment,
-  ReactElement,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
-import GW2ApiSpecialization from '../../gw2api/types/specialization/specialization';
+import { Fragment, ReactElement, useEffect, useState } from 'react';
+import { useSpecialization } from '../../gw2api/hooks';
+import Error from '../Error/Error';
 import Icon from '../Icon/Icon';
+import IconWithText from '../IconWithText/IconWithText';
 import Tooltip from '../Tooltip/Tooltip';
 import TraitComponent from '../Trait/Trait';
 import TraitLineConnector, {
@@ -26,32 +22,37 @@ const renderTraitLineConnector = ({
 }) => <TraitLineConnector className={clsx(className, css.connector)} />;
 
 export interface TraitLineProps {
-  id?: number;
+  id: number;
   defaultSelected?: number[];
   selected?: number[];
   selectable?: boolean;
   resettable?: boolean;
   onReset?: (v: { tier: number; id: number; index: number }) => void;
   onSelect?: (v: { tier: number; id: number; index: number }) => void;
-  data: GW2ApiSpecialization;
 }
 
-const TraitLine = ({
-  id,
-  defaultSelected = [],
-  selected: propsSelected,
-  selectable,
-  resettable,
-  onReset,
-  onSelect,
-  data,
-}: TraitLineProps): ReactElement => {
+const TRAITLINE_ERROR_NAMES = {
+  404: 'Specialization Not Found',
+  500: 'Network Error',
+};
+const TRAITLINE_ERROR_MESSAGES = {
+  404: (id: number) =>
+    `The requested specialization with the id ${id} was not found.`,
+  500: (id: number) =>
+    `A Network Error occured trying to fetch the specialization ${id}.`,
+};
+
+const TraitLine = (props: TraitLineProps): ReactElement => {
   const {
-    name,
-    major_traits: majorTraits,
-    minor_traits: minorTraits,
-    background,
-  } = data;
+    id,
+    defaultSelected = [],
+    selected: propsSelected = [],
+    selectable,
+    resettable,
+    onReset,
+    onSelect,
+  } = props;
+  const specialization = useSpecialization(id);
 
   const [uncontrolledSelected, setUncontrolledSelected] =
     useState(defaultSelected);
@@ -59,6 +60,29 @@ const TraitLine = ({
   useEffect(() => {
     setUncontrolledSelected(defaultSelected);
   }, [...defaultSelected]);
+
+  if (specialization.loading) {
+    // TODO: use a same-sized loading indicator here
+    return <IconWithText {...props} loading />;
+  }
+  if (specialization.error) {
+    // TODO: use a same-sized error indicator here
+    return (
+      <Error
+        {...props}
+        code={specialization.error}
+        name={TRAITLINE_ERROR_NAMES}
+        message={TRAITLINE_ERROR_MESSAGES}
+      />
+    );
+  }
+
+  const {
+    name,
+    major_traits: majorTraits,
+    minor_traits: minorTraits,
+    background,
+  } = specialization.data;
 
   const controlled = typeof onSelect === 'function';
   let selected: number[];
@@ -75,112 +99,106 @@ const TraitLine = ({
   console.log(`Controlled: ${controlled}`);
   console.log(`Selected: ${selected}`);
 
-  const renderMinorTrait = useCallback(
-    ({ id: minorTraitId }) => (
-      <TraitComponent
-        key={minorTraitId}
-        id={minorTraitId}
-        disableText
-        inline={false}
-        className={css.minorTrait}
-      />
-    ),
-    [TraitComponent],
+  const renderMinorTrait = ({ id: minorTraitId }) => (
+    <TraitComponent
+      key={minorTraitId}
+      id={minorTraitId}
+      disableText
+      inline={false}
+      className={css.minorTrait}
+    />
   );
 
-  const renderMajorTrait = useCallback(
-    ({
-      tier,
-      id: majorTraitId,
-      selected: isSelected,
-      index: majorTraitIndex,
-    }) => (
-      <TraitComponent
-        key={majorTraitId}
-        id={majorTraitId}
-        disableText
-        inline={false}
-        inactive={!isSelected}
-        className={clsx(
-          css.majorTrait,
-          !isSelected && (controlled || selectable) && css.majorTraitAdditional,
-        )}
-        {...{
-          ...(!isSelected &&
-            (controlled || selectable) && {
-              onClick: (event) => {
-                event.preventDefault();
+  const renderMajorTrait = ({
+    tier,
+    id: majorTraitId,
+    selected: isSelected,
+    index: majorTraitIndex,
+  }) => (
+    <TraitComponent
+      key={majorTraitId}
+      id={majorTraitId}
+      disableText
+      inline={false}
+      inactive={!isSelected}
+      className={clsx(
+        css.majorTrait,
+        !isSelected && (controlled || selectable) && css.majorTraitAdditional,
+      )}
+      {...{
+        ...(!isSelected &&
+          (controlled || selectable) && {
+            onClick: (event) => {
+              event.preventDefault();
 
-                if (controlled) {
-                  onSelect({
-                    tier,
-                    id: majorTraitId,
-                    index: majorTraitIndex,
-                  });
-                } else {
-                  // find selected major trait from same tier to replace
-                  const selectedIndexToReplace = selected.findIndex(
-                    (selectedMajorTraitId) =>
-                      majorTraits
-                        .slice(tier * 3, tier * 3 + 3)
-                        .includes(selectedMajorTraitId),
+              if (controlled) {
+                onSelect({
+                  tier,
+                  id: majorTraitId,
+                  index: majorTraitIndex,
+                });
+              } else {
+                // find selected major trait from same tier to replace
+                const selectedIndexToReplace = selected.findIndex(
+                  (selectedMajorTraitId) =>
+                    majorTraits
+                      .slice(tier * 3, tier * 3 + 3)
+                      .includes(selectedMajorTraitId),
+                );
+
+                if (selectedIndexToReplace !== -1) {
+                  setUncontrolledSelected(
+                    selected.map((value, index) =>
+                      index === selectedIndexToReplace ? majorTraitId : value,
+                    ),
                   );
-
-                  if (selectedIndexToReplace !== -1) {
-                    setUncontrolledSelected(
-                      selected.map((value, index) =>
-                        index === selectedIndexToReplace ? majorTraitId : value,
-                      ),
+                } else {
+                  // find selected major trait from one tier below
+                  const selectedIndexBelowToAppend =
+                    tier > 0 &&
+                    selected.findIndex((selectedMajorTraitId) =>
+                      majorTraits
+                        .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
+                        .includes(selectedMajorTraitId),
                     );
+
+                  if (selectedIndexBelowToAppend !== -1) {
+                    const newSelected = [...selected];
+                    newSelected.splice(
+                      selectedIndexBelowToAppend + 1,
+                      0,
+                      majorTraitId,
+                    );
+                    setUncontrolledSelected(newSelected);
                   } else {
-                    // find selected major trait from one tier below
-                    const selectedIndexBelowToAppend =
-                      tier > 0 &&
+                    // find selected major trait from one tier above
+                    const selectedIndexAboveToPrepend =
+                      tier < 2 &&
                       selected.findIndex((selectedMajorTraitId) =>
                         majorTraits
-                          .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
+                          .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
                           .includes(selectedMajorTraitId),
                       );
 
-                    if (selectedIndexBelowToAppend !== -1) {
+                    if (selectedIndexAboveToPrepend !== -1) {
                       const newSelected = [...selected];
                       newSelected.splice(
-                        selectedIndexBelowToAppend + 1,
+                        selectedIndexBelowToAppend,
                         0,
                         majorTraitId,
                       );
                       setUncontrolledSelected(newSelected);
                     } else {
-                      // find selected major trait from one tier above
-                      const selectedIndexAboveToPrepend =
-                        tier < 2 &&
-                        selected.findIndex((selectedMajorTraitId) =>
-                          majorTraits
-                            .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
-                            .includes(selectedMajorTraitId),
-                        );
-
-                      if (selectedIndexAboveToPrepend !== -1) {
-                        const newSelected = [...selected];
-                        newSelected.splice(
-                          selectedIndexBelowToAppend,
-                          0,
-                          majorTraitId,
-                        );
-                        setUncontrolledSelected(newSelected);
-                      } else {
-                        // well, just append it
-                        setUncontrolledSelected([...selected, majorTraitId]);
-                      }
+                      // well, just append it
+                      setUncontrolledSelected([...selected, majorTraitId]);
                     }
                   }
                 }
-              },
-            }),
-        }}
-      />
-    ),
-    [controlled, selectable, ...selected],
+              }
+            },
+          }),
+      }}
+    />
   );
 
   return (
