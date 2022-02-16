@@ -30,7 +30,9 @@ import {
 import { Icon } from '..';
 
 const getKeyValue = (data: GW2ApiFact) => {
-  let key, value, count;
+  let key: React.ReactNode;
+  let value: React.ReactNode;
+  let count: number | undefined = undefined;
   switch (data.type) {
     case 'AttributeAdjust': {
       const {
@@ -244,7 +246,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       console.warn('Unknown fact type', data);
 
       key = data.text;
-      value = data;
+      value = `Unknown fact type: ${data.type}`;
 
       break;
     }

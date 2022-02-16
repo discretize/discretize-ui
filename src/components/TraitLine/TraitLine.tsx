@@ -63,17 +63,23 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
 
   if (specialization.loading) {
     // TODO: use a same-sized loading indicator here
-    return <IconWithText {...props} loading />;
+    return (
+      <div className={css.root}>
+        <IconWithText {...props} loading />
+      </div>
+    );
   }
   if (specialization.error) {
     // TODO: use a same-sized error indicator here
     return (
-      <Error
-        {...props}
-        code={specialization.error}
-        name={TRAITLINE_ERROR_NAMES}
-        message={TRAITLINE_ERROR_MESSAGES}
-      />
+      <div className={css.root}>
+        <Error
+          {...props}
+          code={specialization.error}
+          name={TRAITLINE_ERROR_NAMES}
+          message={TRAITLINE_ERROR_MESSAGES}
+        />
+      </div>
     );
   }
 
