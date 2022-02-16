@@ -232,7 +232,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
               const selectedMajorTraitIndex = majorTraitsChunk.findIndex(
                 (majorTraitId) => selected.includes(majorTraitId),
               );
-              const path = Object.values(Paths)[selectedMajorTraitIndex];
+              const path = Paths[selectedMajorTraitIndex];
 
               return (
                 // eslint-disable-next-line react/no-array-index-key
