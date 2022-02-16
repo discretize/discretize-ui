@@ -11,6 +11,7 @@ import css from './Trait.module.css';
 import capitalize from 'lodash.capitalize';
 import { useTrait } from '../../gw2api/hooks';
 import Error from '../Error/Error';
+import clsx from 'clsx';
 
 export interface TraitProps {
   id: number;
@@ -22,6 +23,7 @@ export interface TraitProps {
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
   inactive?: boolean;
+  className?: string;
 }
 
 const TRAIT_ERROR_NAMES = {
@@ -45,6 +47,7 @@ const Trait = (props: TraitProps): ReactElement => {
     tooltipProps,
     wikiLinkProps,
     inactive,
+    className,
   } = props;
   const trait = useTrait(id);
 
@@ -112,7 +115,10 @@ const Trait = (props: TraitProps): ReactElement => {
           inactive,
           hexagon: slot === 'Minor',
         }}
-        className={profession && globalcss[`coloredProfession${profession}`]}
+        className={clsx(
+          className,
+          profession && globalcss[`coloredProfession${profession}`],
+        )}
       />
     </Tooltip>
   );

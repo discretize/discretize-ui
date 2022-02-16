@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { ReactElement, useEffect, useState } from 'react';
 import useResizeAware from 'react-resize-aware';
 import css from './TraitlLineConnector.module.css';
@@ -9,15 +10,17 @@ export const Paths = {
 };
 
 export interface TraitLineConnectorProps {
-  start: string;
-  end: string;
-  disabled: boolean;
+  start?: 'up' | 'mid' | 'down';
+  end?: 'up' | 'mid' | 'down';
+  disabled?: boolean;
+  className?: string;
 }
 
 const TraitLineConnector = ({
   start,
   end,
   disabled,
+  className,
 }: TraitLineConnectorProps): ReactElement => {
   const [resizeListener, { width, height }] = useResizeAware();
   const [dimensions, setDimensions] = useState({});
@@ -86,7 +89,7 @@ const TraitLineConnector = ({
   const style = { width: length, transform: `rotate(${angle}deg)` };
 
   return (
-    <div className={css.root} {...rest}>
+    <div className={clsx(className, css.root)}>
       {resizeListener}
 
       <div style={style} className={css.wrapper}>
