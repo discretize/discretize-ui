@@ -97,6 +97,22 @@
   --gw2-color-rarity-junk-dark: #7a7a7a;
   --gw2-color-rarity-junk-light: #e0e0e0;
 
+  --gw2-color-race-asura-main: #7e2aff;
+  --gw2-color-race-asura-dark: #7e2aff;
+  --gw2-color-race-asura-light: #7e2aff;
+  --gw2-color-race-charr-main: #9b0303;
+  --gw2-color-race-charr-dark: #3c0101;
+  --gw2-color-race-charr-light: #fa0f0f;
+  --gw2-color-race-human-main: #fcd12b;
+  --gw2-color-race-human-dark: #c9a103;
+  --gw2-color-race-human-light: #fdea9b;
+  --gw2-color-race-norn-main: #5f9ffe;
+  --gw2-color-race-norn-dark: #0162f4;
+  --gw2-color-race-norn-light: #c2daff;
+  --gw2-color-race-sylvari-main: #368103;
+  --gw2-color-race-sylvari-dark: #112801;
+  --gw2-color-race-sylvari-light: #63ef06;
+
   --gw2-color-text: #000;
   --gw2-color-primary: #2b6cb0;
   --gw2-color-primary-dark: #183c63;

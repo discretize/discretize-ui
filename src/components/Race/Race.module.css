@@ -1,0 +1,48 @@
+@import url(../../global.module.css);
+
+.colorAsura {
+  color: var(--gw2-color-race-asura-main);
+}
+.colorAsura:hover {
+  color: var(--gw2-color-race-asura-dark);
+}
+.colorCharr {
+  color: var(--gw2-color-race-charr-main);
+}
+.colorCharr:hover {
+  color: var(--gw2-color-race-charr-dark);
+}
+.colorHuman {
+  color: var(--gw2-color-race-human-main);
+}
+.colorHuman:hover {
+  color: var(--gw2-color-race-human-dark);
+}
+.colorNorn {
+  color: var(--gw2-color-race-norn-main);
+}
+.colorNorn:hover {
+  color: var(--gw2-color-race-norn-dark);
+}
+.colorSylvari {
+  color: var(--gw2-color-race-sylvari-main);
+}
+.colorSylvari:hover {
+  color: var(--gw2-color-race-sylvari-dark);
+}
+
+.imageRaceAsura {
+  background-image: url(../../assets/icons/Race/Asura.png);
+}
+.imageRaceSylvari {
+  background-image: url(../../assets/icons/Race/Sylvari.png);
+}
+.imageRaceNorn {
+  background-image: url(../../assets/icons/Race/Norn.png);
+}
+.imageRaceHuman {
+  background-image: url(../../assets/icons/Race/Human.png);
+}
+.imageRaceCharr {
+  background-image: url(../../assets/icons/Race/Charr.png);
+}
