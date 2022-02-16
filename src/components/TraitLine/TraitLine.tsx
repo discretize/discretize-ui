@@ -9,7 +9,7 @@ import TraitComponent from '../Trait/Trait';
 import TraitLineConnector, {
   Paths,
   TraitLineConnectorProps,
-} from '../TraitLineConnector/TraitLineConnector';
+} from './TraitLineConnector';
 import { useSpecialization } from '../../gw2api/hooks';
 import css from './TraitLine.module.css';
 
