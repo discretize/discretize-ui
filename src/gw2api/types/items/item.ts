@@ -4,6 +4,8 @@ import GW2ApiItemRarity from './rarity';
 import GW2ApiItemType from './type';
 import GW2ApiRestriction from './restriction';
 import GW2ApiItemFlag from './flag';
+import GW2ApiArmorDetails from './details/armor';
+import GW2ApiBackItemDetails from './details/backItem';
 
 export type GW2ApiUpgradeMethod = 'Attunement' | 'Infusion';
 
@@ -30,5 +32,18 @@ interface GW2ApiItem {
   upgrades_from?: GW2ApiUpgradedItem[];
   details?: GW2ApiItemDetails;
 }
+
+/* TODO wip item details
+interface GW2ApiItemArmor {
+  details: GW2ApiArmorDetails;
+}
+
+interface GW2ApiItemBack {
+  details: GW2ApiBackItemDetails;
+}
+
+type GW2ApiItem = GW2ApiItemCommon & (GW2ApiItemArmor | GW2ApiItemBack);
+
+*/
 
 export default GW2ApiItem;

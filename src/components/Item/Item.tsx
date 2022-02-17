@@ -76,13 +76,7 @@ const Item = (props: ItemProps): ReactElement => {
   }
 
   let itemdata = items.data[id];
-  const {
-    name,
-    icon,
-    rarity,
-    type,
-    details: { type: detailsType } = {},
-  } = itemdata;
+  const { name, icon, rarity } = itemdata;
   // TODO redo the typing for details: the type of the details field depends
   //      on what string is supplied via type (Gw2ApiItemType)
 
@@ -134,10 +128,6 @@ const Item = (props: ItemProps): ReactElement => {
         disableText={disableText}
         inline={inline}
         iconProps={{
-          ...(type &&
-            detailsType && {
-              name: `${type}.${detailsType}`,
-            }),
           applyCount: count,
           applyCountProps: {
             className: css.iconApplyCount,
