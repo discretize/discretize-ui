@@ -1,6 +1,7 @@
 const FACT_TYPES = [
   'AttributeAdjust',
   'Buff',
+  'BuffConversion',
   'ComboField',
   'ComboFinisher',
   'Damage',

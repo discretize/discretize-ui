@@ -1,4 +1,6 @@
-export default {
+import GW2ApiFactType from '../gw2api/types/common/factType';
+
+const ORDER: Record<GW2ApiFactType, number> = {
   Damage: 0,
   Heal: 1,
   HealingAdjust: 2,
@@ -25,4 +27,7 @@ export default {
   NoData: 17,
 
   Range: 18,
-}
+
+  Recharge: -1,
+};
+export default ORDER;

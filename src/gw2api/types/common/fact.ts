@@ -1,6 +1,7 @@
 import GW2ApiFactComboFieldType from './comboFieldType';
 import GW2ApiFactType from './factType';
 import { ApiAttributes } from './attributeType';
+import GW2ApiAttribute from './attribute';
 
 export interface GW2ApiFactBase {
   text: string;
@@ -20,6 +21,12 @@ export interface GW2ApiFactBuff extends GW2ApiFactBase {
   duration?: number;
 }
 
+export interface GW2ApiFactBuffConversion extends GW2ApiFactBase {
+  percent: number;
+  source: GW2ApiAttribute;
+  target: GW2ApiAttribute;
+}
+
 export interface GW2ApiFactComboField extends GW2ApiFactBase {
   field_type: GW2ApiFactComboFieldType;
 }
@@ -31,7 +38,6 @@ export interface GW2ApiFactComboFinisher extends GW2ApiFactBase {
 
 export interface GW2ApiFactDamage extends GW2ApiFactBase {
   hit_count: number;
-  dmg_multiplier: number;
 }
 
 export interface GW2ApiFactDistance extends GW2ApiFactBase {
@@ -91,9 +97,12 @@ export interface GW2ApiFactUnblockable extends GW2ApiFactBase {
 type GW2ApiFact =
   | GW2ApiFactAttributeAdjust
   | GW2ApiFactBuff
+  | GW2ApiFactBuffConversion
   | GW2ApiFactComboField
+  | GW2ApiFactComboFinisher
   | GW2ApiFactDamage
   | GW2ApiFactDistance
+  | GW2ApiFactDuration
   | GW2ApiFactHeal
   | GW2ApiFactHealingAdjust
   | GW2ApiFactNoData

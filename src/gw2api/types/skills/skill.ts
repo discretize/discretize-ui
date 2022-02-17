@@ -6,6 +6,7 @@ import GW2ApiSkillAttunement from './attunement';
 import GW2ApiSkillType from './skillType';
 import GW2ApiSlot from './slot';
 import GW2ApiWeaponType from '../common/weaponType';
+import GW2ApiSkillCategory from './category';
 
 export interface GW2ApiSkill {
   id: number;
@@ -19,7 +20,7 @@ export interface GW2ApiSkill {
   slot?: GW2ApiSlot;
   facts?: GW2ApiFact[];
   traited_facts?: GW2ApiTraitedFact[];
-  categories?: string[]; //TODO should be its own type, not sure of values.
+  categories?: GW2ApiSkillCategory[];
   attunement?: GW2ApiSkillAttunement;
   cost?: number;
   dual_wield?: string; //TODO should probably be its own type
