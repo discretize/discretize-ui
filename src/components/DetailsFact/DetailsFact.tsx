@@ -90,10 +90,10 @@ const getKeyValue = (data: GW2ApiFact) => {
 
       key = (
         <>
-          Gain {getAttr(target)} based on a percentage of {getAttr(source)}:{' '}
-          {percent}%
+          Gain {getAttr(target)} based on a percentage of {getAttr(source)}
         </>
       );
+      value = `${percent}%`;
       break;
     }
 
