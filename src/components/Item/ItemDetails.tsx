@@ -1,20 +1,16 @@
-import React, { ReactElement } from 'react';
-
-import DetailsHeader from '../DetailsHeader/DetailsHeader';
-import DetailsText from '../DetailsText/DetailsText';
-import Coin from '../Coin/Coin';
-import { apiAttributes } from '../../helpers/apiAttributes';
-import DetailsFact from '../DetailsFact/DetailsFact';
-import GW2ApiItem from '../../gw2api/types/items/item';
-import css from './ItemDetails.module.css';
-import itemcss from './Item.module.css';
 import clsx from 'clsx';
 import capitalize from 'lodash.capitalize';
-import { ItemBonuses } from '../../builder/itemStats';
-import GW2ApiInfixUpgrade, {
-  GW2ApiInfixUpgradeAttribute,
-} from '../../gw2api/types/items/details/common/infixUpgrade';
+import { ReactElement } from 'react';
 import { GW2ApiFactBuff } from '../../gw2api/types/common/fact';
+import { GW2ApiInfixUpgradeAttribute } from '../../gw2api/types/items/details/common/infixUpgrade';
+import GW2ApiItem from '../../gw2api/types/items/item';
+import { apiAttributes } from '../../helpers/apiAttributes';
+import Coin from '../Coin/Coin';
+import DetailsFact from '../DetailsFact/DetailsFact';
+import DetailsHeader from '../DetailsHeader/DetailsHeader';
+import DetailsText from '../DetailsText/DetailsText';
+import itemcss from './Item.module.css';
+import css from './ItemDetails.module.css';
 
 export interface ItemDetailsProps {
   item: GW2ApiItem;
@@ -49,8 +45,8 @@ const ItemDetails = ({
       weight_class: weightClass,
       infusion_upgrade_flags: infusionUpgradeFlags = [],
       infix_upgrade: {
-        attributes,
-        buff: { description: buffDescription } = {},
+        attributes = undefined,
+        buff: { description: buffDescription = undefined } = {},
       } = {},
       bonuses,
     } = {},
@@ -103,7 +99,7 @@ const ItemDetails = ({
           </div>
         )}
 
-        {defense > 0 && (
+        {defense && defense > 0 && (
           <div>
             {`Defense: `}
             <span className={css.attributeColor}>{defense}</span>
@@ -141,7 +137,7 @@ const ItemDetails = ({
 
         {bonuses &&
           bonuses.length > 0 &&
-          (bonuses as ItemBonuses).map((bonus, index) => (
+          bonuses.map((bonus, index) => (
             <div
               key={`bonus${index}`}
               className={

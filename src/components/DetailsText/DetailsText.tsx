@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
 const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g');
 
@@ -62,7 +62,7 @@ const renderFlavor = (text: string) => {
 
 export interface DetailsProps {
   component?: string;
-  lines: (ReactElement | undefined | string)[];
+  lines: (ReactNode | undefined | string)[];
   lineComponent?: string;
   lineProps?: any;
   className?: string;
@@ -79,7 +79,7 @@ const DetailsText = ({
         .filter((line) => !!line)
         .map((line, index) => (
           <div key={`DetailsText${index.toString()}`} {...lineProps}>
-            {React.isValidElement(line) ? line : renderFlavor(line)}
+            {React.isValidElement(line) ? line : renderFlavor(line as string)}
           </div>
         ))}
     </div>
