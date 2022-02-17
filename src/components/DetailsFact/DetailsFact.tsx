@@ -3,6 +3,7 @@ import React from 'react';
 import GW2ApiFact, {
   GW2ApiFactAttributeAdjust,
   GW2ApiFactBuff,
+  GW2ApiFactBuffConversion,
   GW2ApiFactComboField,
   GW2ApiFactComboFinisher,
   GW2ApiFactDamage,
@@ -28,6 +29,8 @@ import {
   GW2ApiFactHealingAdjust,
 } from '../../gw2api/types/common/fact';
 import { Icon } from '..';
+import { attributes } from '../../builder';
+import capitalize from 'lodash.capitalize';
 
 const getKeyValue = (data: GW2ApiFact) => {
   let key: React.ReactNode;
@@ -74,6 +77,26 @@ const getKeyValue = (data: GW2ApiFact) => {
 
       break;
     }
+
+    case 'BuffConversion': {
+      const { percent, source, target } = data as GW2ApiFactBuffConversion;
+
+      function getAttr(target: string) {
+        return capitalize(
+          Object.keys(attributes).find((key) => attributes[key] === target) ||
+            target,
+        );
+      }
+
+      key = (
+        <>
+          Gain {getAttr(target)} based on a percentage of {getAttr(source)}:{' '}
+          {percent}%
+        </>
+      );
+      break;
+    }
+
     case 'ComboField': {
       const { text, field_type: fieldType } = data as GW2ApiFactComboField;
 

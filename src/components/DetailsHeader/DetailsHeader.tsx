@@ -6,7 +6,7 @@ import css from './DetailsHeader.module.css';
 
 export interface DetailsHeaderFlagProps {
   icon: string;
-  value: any;
+  value: number | any;
 }
 
 export interface DetailsHeaderProps {

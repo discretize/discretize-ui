@@ -1,23 +1,25 @@
-import React from 'react';
+import { GW2ApiFactRecharge } from '../../gw2api/types/common/fact';
 import { GW2ApiSkill } from '../../gw2api/types/skills/skill';
+import GW2ApiTrait, { GW2ApiTraitSkill } from '../../gw2api/types/traits/trait';
 import factsOrder from '../../helpers/factsOrder';
 import DetailsFact from '../DetailsFact/DetailsFact';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import Spinner from '../Spinner/Spinner';
 import css from './AbilityDetails.module.css';
-import GW2ApiTrait, { GW2ApiTraitSkill } from '../../gw2api/types/traits/trait';
 
 export interface AbilityDetailsProps {
   data: GW2ApiSkill | GW2ApiTrait | GW2ApiTraitSkill;
 }
-
 // type is "skills" or "traits"
 const AbilityDetails = ({ data }: AbilityDetailsProps) => {
-  const { name, description: unparsedDescription, categories, facts } = data;
+  const { name, description: unparsedDescription, facts } = data;
+  const categories = (data as GW2ApiSkill).categories || undefined;
 
   const { value: rechargeValue, icon: rechargeIcon } =
-    (facts && facts.find(({ type }) => type === 'Recharge')) || {};
+    ((facts &&
+      facts.find(({ type }) => type === 'Recharge')) as GW2ApiFactRecharge) ||
+    {};
 
   let description = unparsedDescription;
   if (categories && description) {
@@ -34,14 +36,15 @@ const AbilityDetails = ({ data }: AbilityDetailsProps) => {
     <div>
       <DetailsHeader
         className={css.mb8}
-        {...(rechargeValue && {
-          flags: [
-            {
-              value: rechargeValue,
-              icon: rechargeIcon,
-            },
-          ],
-        })}
+        {...(rechargeValue &&
+          rechargeIcon && {
+            flags: [
+              {
+                value: rechargeValue,
+                icon: rechargeIcon,
+              },
+            ],
+          })}
       >
         {name}
       </DetailsHeader>
