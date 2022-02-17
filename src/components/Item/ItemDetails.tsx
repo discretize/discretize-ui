@@ -64,10 +64,6 @@ const ItemDetails = ({
       <DetailsHeader
         icon={icon}
         iconProps={{
-          ...(type &&
-            detailsType && {
-              name: `${type}.${detailsType}`,
-            }),
           ...(upgrade && {
             className: css.detailsHeaderIcon,
           }),
