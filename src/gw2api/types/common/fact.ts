@@ -38,6 +38,7 @@ export interface GW2ApiFactComboFinisher extends GW2ApiFactBase {
 
 export interface GW2ApiFactDamage extends GW2ApiFactBase {
   hit_count: number;
+  dmg_multiplier: number;
 }
 
 export interface GW2ApiFactDistance extends GW2ApiFactBase {
