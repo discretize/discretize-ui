@@ -9,7 +9,7 @@ import IconWithText from '../IconWithText/IconWithText';
 import Tooltip from '../Tooltip/Tooltip';
 import WikiLink from '../WikiLink/WikiLink';
 import ItemDetails from './../Item/ItemDetails';
-import css from '../Item/CreateItem.module.css';
+import css from '../Item/Item.module.css';
 
 export interface ItemProps extends CreateItemProps {
   count?: number;
