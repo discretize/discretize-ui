@@ -17,7 +17,7 @@ export interface GetModifiersProps {
   category: ItemCategoryName;
   type: ItemTypeName;
   stat: ItemStatName;
-  weight: ItemArmorWeight;
+  weight?: ItemArmorWeight;
 }
 
 export interface CreateItemProps {
@@ -44,7 +44,7 @@ export interface ItemModifiersResult {
 
 export interface ItemDetails {
   type: ItemTypeName;
-  weight_class: ItemArmorWeight;
+  weight_class?: ItemArmorWeight;
   min_power?: ItemModifier;
   max_power?: ItemModifier;
   defense?: ItemModifier;
@@ -166,7 +166,7 @@ const createItem = ({
   });
 
   return {
-    ...(name && { name }),
+    name,
     type: category,
     level,
     rarity,
