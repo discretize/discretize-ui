@@ -1,22 +1,17 @@
-import React, {
-  PropsWithChildren,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react';
 import Tippy from '@tippyjs/react/headless';
+import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { followCursor } from 'tippy.js/headless';
-import css from './Tooltip.module.css';
 import TooltipContainer from '../TooltipContainer/TooltipContainer';
+import css from './Tooltip.module.css';
 
-export type TooltipProps = PropsWithChildren<{
+export type TooltipProps = {
   content?: ReactNode;
   render?: ReactNode | (() => ReactNode);
   containerProps?: any;
   wrapperProps?: any;
   disabled?: boolean;
-}>;
+  children?: ReactElement;
+};
 
 const Tooltip = ({
   children,
@@ -27,7 +22,7 @@ const Tooltip = ({
   disabled,
 }: TooltipProps): ReactElement => {
   const [mounted, setMounted] = useState(false);
-  const [appendTo, setAppendTo] = useState(undefined);
+  const [appendTo, setAppendTo] = useState<HTMLElement | undefined>(undefined);
 
   const lazyPlugin = {
     fn: () => ({
@@ -40,7 +35,7 @@ const Tooltip = ({
   useEffect(() => {
     if (typeof document !== `undefined`) {
       setAppendTo(
-        document?.querySelector('#nc-root iframe')?.contentDocument.body,
+        document?.querySelector('#nc-root iframe')?.ownerDocument.body,
       );
     }
   }, []);

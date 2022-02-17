@@ -1,6 +1,6 @@
-import { ApiAttributes } from '../gw2api/types/common/attributeType';
+import GW2ApiAttribute from '../gw2api/types/common/attribute';
 // eslint-disable-next-line import/prefer-default-export
-export const apiAttributes: ApiAttributes = {
+export const apiAttributes: Record<GW2ApiAttribute, string> = {
   Power: 'Power',
   Precision: 'Precision',
   Toughness: 'Toughness',

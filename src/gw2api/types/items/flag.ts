@@ -12,6 +12,7 @@ const FLAGS = [
   'NoSell',
   'NotUpgradeable',
   'NoUnderwater',
+  'Soulbound',
   'SoulbindOnAcquire',
   'SoulBindOnUse',
   'Tonic',

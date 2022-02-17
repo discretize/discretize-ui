@@ -10,6 +10,11 @@ import css from './ItemDetails.module.css';
 import itemcss from './Item.module.css';
 import clsx from 'clsx';
 import capitalize from 'lodash.capitalize';
+import { ItemBonuses } from '../../builder/itemStats';
+import GW2ApiInfixUpgrade, {
+  GW2ApiInfixUpgradeAttribute,
+} from '../../gw2api/types/items/details/common/infixUpgrade';
+import { GW2ApiFactBuff } from '../../gw2api/types/common/fact';
 
 export interface ItemDetailsProps {
   item: GW2ApiItem;
@@ -111,19 +116,21 @@ const ItemDetails = ({
 
         {attributes &&
           attributes.length > 0 &&
-          attributes.map(({ attribute, modifier }) => (
-            <div key={`${attribute}-${modifier}`}>
-              <span
-                className={
-                  upgrade || infusionUpgradeFlags.includes('Infusion')
-                    ? css.bonusColor
-                    : css.attributeColor
-                }
-              >
-                {`+${modifier} ${apiAttributes[attribute]}`}
-              </span>
-            </div>
-          ))}
+          (attributes as GW2ApiInfixUpgradeAttribute[]).map(
+            ({ attribute, modifier }) => (
+              <div key={`${attribute}-${modifier}`}>
+                <span
+                  className={
+                    upgrade || infusionUpgradeFlags.includes('Infusion')
+                      ? css.bonusColor
+                      : css.attributeColor
+                  }
+                >
+                  {`+${modifier} ${apiAttributes[attribute]}`}
+                </span>
+              </div>
+            ),
+          )}
 
         {(!attributes || !attributes.length) &&
           (buffDescription || (!upgrade && description)) && (
@@ -138,9 +145,9 @@ const ItemDetails = ({
 
         {bonuses &&
           bonuses.length > 0 &&
-          bonuses.map((bonus, index) => (
+          (bonuses as ItemBonuses).map((bonus, index) => (
             <div
-              key={bonus}
+              key={`bonus${index}`}
               className={
                 upgradeBonusCount > index
                   ? css.bonusColor
@@ -171,13 +178,15 @@ const ItemDetails = ({
       )}
       {detailsIcon && detailsName && detailsDuration && detailsDescription && (
         <DetailsFact
-          data={{
-            type: 'Buff',
-            icon: detailsIcon,
-            duration: detailsDuration / 1000,
-            description: detailsDescription,
-            status: detailsName,
-          }}
+          facts={[
+            {
+              type: 'Buff',
+              icon: detailsIcon,
+              duration: detailsDuration / 1000,
+              description: detailsDescription,
+              status: detailsName,
+            } as GW2ApiFactBuff,
+          ]}
           className={css.mb12}
         />
       )}
