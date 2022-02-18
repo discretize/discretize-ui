@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import capitalize from 'lodash.capitalize';
+import { capitalize } from '../../helpers/capitalize';
 import React, { ReactElement } from 'react';
 import { useItems } from '../../gw2api/hooks';
 import GW2ApiItem from '../../gw2api/types/items/item';

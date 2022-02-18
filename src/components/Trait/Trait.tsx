@@ -8,7 +8,7 @@ import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import SPECIALIZATIONS from '../../data/specializations';
 import globalcss from '../../global.module.css';
 import css from './Trait.module.css';
-import capitalize from 'lodash.capitalize';
+import { capitalize } from '../../helpers/capitalize';
 import { useTrait } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import clsx from 'clsx';

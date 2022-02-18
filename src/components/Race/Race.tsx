@@ -6,7 +6,7 @@ import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { ErrorProps } from '../Error/Error';
 import { TooltipProps } from '../Tooltip/Tooltip';
 import clsx from 'clsx';
-import capitalize from 'lodash.capitalize';
+import { capitalize } from '../../helpers/capitalize';
 import css from './Race.module.css';
 
 export interface RaceProps {

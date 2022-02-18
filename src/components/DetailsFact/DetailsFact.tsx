@@ -30,7 +30,7 @@ import {
 } from '../../gw2api/types/common/fact';
 import { Icon } from '..';
 import { attributes } from '../../builder';
-import capitalize from 'lodash.capitalize';
+import { capitalize } from '../../helpers/capitalize';
 
 const getKeyValue = (data: GW2ApiFact) => {
   let key: React.ReactNode;
