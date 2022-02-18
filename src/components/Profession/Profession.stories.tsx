@@ -20,4 +20,6 @@ Firebrand.args = {
 };
 
 export const invalid = Template.bind({});
-invalid.args = { name: 'AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh' };
+invalid.args = {
+  name: 'AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh' as any,
+};
