@@ -33,17 +33,4 @@ interface GW2ApiItem {
   details?: GW2ApiItemDetails;
 }
 
-/* TODO wip item details
-interface GW2ApiItemArmor {
-  details: GW2ApiArmorDetails;
-}
-
-interface GW2ApiItemBack {
-  details: GW2ApiBackItemDetails;
-}
-
-type GW2ApiItem = GW2ApiItemCommon & (GW2ApiItemArmor | GW2ApiItemBack);
-
-*/
-
 export default GW2ApiItem;

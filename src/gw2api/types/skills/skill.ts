@@ -7,6 +7,7 @@ import GW2ApiSkillType from './skillType';
 import GW2ApiSlot from './slot';
 import GW2ApiWeaponType from '../common/weaponType';
 import GW2ApiSkillCategory from './category';
+import GW2ApiOneHandedWeaponType from '../common/weaponType/oneHanded';
 
 export interface GW2ApiSkill {
   id: number;
@@ -23,7 +24,7 @@ export interface GW2ApiSkill {
   categories?: GW2ApiSkillCategory[];
   attunement?: GW2ApiSkillAttunement;
   cost?: number;
-  dual_wield?: string; //TODO should probably be its own type
+  dual_wield?: GW2ApiOneHandedWeaponType;
   flip_skill?: number;
   initiative?: number;
   next_chain?: number;

@@ -19,7 +19,7 @@ interface GW2ApiUpgradeComponentDetails {
   infusion_upgrade_flags: GW2ApiInfusionUpgradeFlag[];
   suffix: string;
   infix_upgrade: GW2ApiInfixUpgrade;
-  bonuses?: string[]; //TODO should have its own type, not sure about the value
+  bonuses?: string[]; // only from runes, the 6 bonuses a rune provides
 }
 
 export default GW2ApiUpgradeComponentDetails;
