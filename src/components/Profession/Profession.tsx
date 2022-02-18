@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import React, { ReactElement } from 'react';
 import PROFESSIONS, { ProfessionTypes } from '../../data/professions';
-import globalcss from '../../global.module.css';
+import professioncss from './professions.module.css';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
@@ -68,7 +68,7 @@ const Profession = ({
           <WikiLink
             to={specialization}
             className={clsx(
-              profession && globalcss[`coloredProfession${profession}`],
+              profession && professioncss[`coloredProfession${profession}`],
             )}
           />
         )
@@ -80,7 +80,7 @@ const Profession = ({
         className: css[`imageProfession${specialization}`],
         iconViaClassname: true,
       }}
-      className={profession && globalcss[`coloredProfession${profession}`]}
+      className={profession && professioncss[`coloredProfession${profession}`]}
     />
   );
 };

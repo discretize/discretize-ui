@@ -6,7 +6,7 @@ import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import SpecializationTooltip from './SpecializationTooltip';
 import { useSpecialization } from '../../gw2api/hooks';
-import globalcss from '../../global.module.css';
+import professioncss from '../Profession/professions.module.css';
 
 const SPECIALIZATION_ERROR_NAMES = {
   404: 'Specialization Not Found',
@@ -58,7 +58,7 @@ const Specialization = (props: SpecializationProps): ReactElement => {
             <WikiLink
               to={name}
               className={clsx(
-                profession && globalcss[`coloredProfession${profession}`],
+                profession && professioncss[`coloredProfession${profession}`],
               )}
             />
           )
@@ -67,7 +67,9 @@ const Specialization = (props: SpecializationProps): ReactElement => {
         disableText={disableText}
         inline={inline}
         iconProps={{ hexagon: true }}
-        className={profession && globalcss[`coloredProfession${profession}`]}
+        className={
+          profession && professioncss[`coloredProfession${profession}`]
+        }
       />
     </Tooltip>
   );

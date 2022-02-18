@@ -1,4 +1,5 @@
 import 'typeface-menomonia';
+import '../src/default_style.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

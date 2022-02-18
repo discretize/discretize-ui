@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import React, { ReactElement } from 'react';
-import globalcss from '../../global.module.css';
+import professioncss from '../Profession/professions.module.css';
 import { useSkill } from '../../gw2api/hooks';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import Error from '../Error/Error';
@@ -77,13 +77,15 @@ const Skill = (props: SkillProps): ReactElement => {
               to={name}
               {...wikiLinkProps}
               className={clsx(
-                profession && globalcss[`coloredProfession${profession}`],
+                profession && professioncss[`coloredProfession${profession}`],
                 wikiLinkProps?.className,
               )}
             />
           )
         }
-        className={profession && globalcss[`coloredProfession${profession}`]}
+        className={
+          profession && professioncss[`coloredProfession${profession}`]
+        }
       />
     </Tooltip>
   );

@@ -6,7 +6,7 @@ import IconWithText from '../IconWithText/IconWithText';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import SPECIALIZATIONS from '../../data/specializations';
-import globalcss from '../../global.module.css';
+import professioncss from '../Profession/professions.module.css';
 import css from './Trait.module.css';
 import { capitalize } from '../../helpers/capitalize';
 import { useTrait } from '../../gw2api/hooks';
@@ -104,7 +104,7 @@ const Trait = (props: TraitProps): ReactElement => {
               to={name}
               {...wikiLinkProps}
               className={
-                profession && globalcss[`coloredProfession${profession}`]
+                profession && professioncss[`coloredProfession${profession}`]
               }
             />
           )
@@ -119,7 +119,7 @@ const Trait = (props: TraitProps): ReactElement => {
         }}
         className={clsx(
           className,
-          profession && globalcss[`coloredProfession${profession}`],
+          profession && professioncss[`coloredProfession${profession}`],
         )}
         onClick={onClick}
       />
