@@ -11,6 +11,7 @@ import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 import dts from 'rollup-plugin-dts';
+import copy from 'rollup-plugin-copy';
 
 const package_json = JSON.parse(fs.readFileSync('./package.json'));
 
@@ -44,6 +45,18 @@ async function run() {
           extract: true,
           modules: true,
           minimize: true,
+        }),
+        copy({
+          targets: [
+            {
+              src: 'src/assets',
+              dest: 'dist/assets',
+            },
+          ],
+        }),
+        replace({
+          include: 'dist/index.css',
+          '../.': '',
         }),
         terser(),
       ],
