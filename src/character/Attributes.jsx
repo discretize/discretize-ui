@@ -1,6 +1,6 @@
 import { Grid, List, ListItem } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
-import { Attribute, Profession } from 'gw2-ui-bulk';
+import { Attribute, Profession } from 'gw2-ui-new';
 import firstUppercase from '../helpers/firstUppercase';
 
 const useStyles = makeStyles()(() => ({
@@ -22,41 +22,41 @@ const Attributes = ({ profession, data }) => {
         <Grid item xs={6}>
           <List dense disablePadding>
             <ListItem>
-              <Attribute name="Power" text={data.Power} className={classes.gw2Item} />
+              <Attribute name="Power" text={`${data.Power}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
-              <Attribute name="Toughness" text={data.Toughness} className={classes.gw2Item} />
+              <Attribute name="Toughness" text={`${data.Toughness}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
-              <Attribute name="Vitality" text={data.Vitality} className={classes.gw2Item} />
+              <Attribute name="Vitality" text={`${data.Vitality}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
-              <Attribute name="Precision" text={data.Precision} className={classes.gw2Item} />
+              <Attribute name="Precision" text={`${data.Precision}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
-              <Attribute name="Ferocity" text={data.Ferocity} className={classes.gw2Item} />
+              <Attribute name="Ferocity" text={`${data.Ferocity}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
               <Attribute
                 name="Condition Damage"
-                text={data['Condition Damage']}
+                text={`${data['Condition Damage']}`}
                 className={classes.gw2Item}
               />
             </ListItem>
             <ListItem>
-              <Attribute name="Expertise" text={data.Expertise} className={classes.gw2Item} />
+              <Attribute name="Expertise" text={`${data.Expertise}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
               <Attribute
                 name="Concentration"
-                text={data.Concentration}
+                text={`${data.Concentration}`}
                 className={classes.gw2Item}
               />
             </ListItem>
             <ListItem>
               <Attribute
                 name="Agony Resistance"
-                text={data['Agony Resistance']}
+                text={`${data['Agony Resistance']}`}
                 className={classes.gw2Item}
               />
             </ListItem>
@@ -65,13 +65,17 @@ const Attributes = ({ profession, data }) => {
         <Grid item xs={6}>
           <List dense disablePadding>
             <ListItem>
-              <Profession name={firstUppercase(profession)} text={0} className={classes.gw2Item} />
+              <Profession
+                name={firstUppercase(profession)}
+                text={'0'}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem>
-              <Attribute name="Armor" text={data.Armor} className={classes.gw2Item} />
+              <Attribute name="Armor" text={`${data.Armor}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
-              <Attribute name="Health" text={data.Health} className={classes.gw2Item} />
+              <Attribute name="Health" text={`${data.Health}`} className={classes.gw2Item} />
             </ListItem>
             <ListItem>
               <Attribute
@@ -90,7 +94,7 @@ const Attributes = ({ profession, data }) => {
             <ListItem>
               <Attribute
                 name="Healing Power"
-                text={data['Healing Power']}
+                text={`${data['Healing Power']}`}
                 className={classes.gw2Item}
               />
             </ListItem>

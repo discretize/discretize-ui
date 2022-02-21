@@ -2,7 +2,7 @@
 import { Typography, Box } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
-import { Item } from 'gw2-ui-bulk';
+import { Item } from 'gw2-ui-new';
 
 const useStyles = makeStyles()((theme) => ({
   gridItem: {
