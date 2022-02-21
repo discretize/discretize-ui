@@ -8,6 +8,7 @@ import Condition from './Condition/Condition';
 import ConsumableEffect from './ConsumableEffect/ConsumableEffect';
 import ControlEffect from './ControlEffect/ControlEffect';
 import CreateItem from './CreateItem/CreateItem';
+import DetailsHeader from './DetailsHeader/DetailsHeader';
 import Error from './Error/Error';
 import Icon from './Icon/Icon';
 import Item from './Item/Item';
@@ -35,6 +36,7 @@ export {
   ConsumableEffect,
   ControlEffect,
   CreateItem,
+  DetailsHeader,
   Error,
   Icon,
   Item,
