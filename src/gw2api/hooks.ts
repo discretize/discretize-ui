@@ -11,6 +11,7 @@ function isAPILanguage(l: string): l is APILanguage {
 }
 
 function getNavigatorDefaultLanguage(): APILanguage {
+  if (typeof navigator === 'undefined') return 'en';
   const languages = navigator.languages || [navigator.language];
   for (let l of languages) {
     l = l.split('-')[0].toLowerCase(); // en-US -> en
