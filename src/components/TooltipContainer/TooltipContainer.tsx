@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { PropsWithChildren, ReactElement } from 'react';
-import * as css from './TooltipContainer.module.css';
+import css from './TooltipContainer.module.css';
 
 export type TooltipContainerProps = PropsWithChildren<{
   className?: string;
