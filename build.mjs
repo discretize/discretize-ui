@@ -12,6 +12,7 @@ import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 import dts from 'rollup-plugin-dts';
 import url from 'postcss-url';
+import del from 'rollup-plugin-delete';
 
 const package_json = JSON.parse(fs.readFileSync('./package.json'));
 
@@ -20,15 +21,15 @@ const OUTPUT_PATH = path.resolve(package_json.module);
 const OUTPUT_DIR = path.dirname(OUTPUT_PATH);
 
 async function run() {
-  // TODO: maybe we should clean dist/ first?
-
   // Step 1: Rollup the JavaScript
   // This will also generate a bunch of *.d.ts files in dist/types/
   try {
     let bundle = await rollup({
       input: 'src/index.ts',
       plugins: [
+        del({ targets: './dist/*' }),
         replace({
+          preventAssignment: true,
           'process.env.NODE_ENV': JSON.stringify('production'),
         }),
         resolve(),
@@ -42,13 +43,13 @@ async function run() {
           exclude: ['**/*.stories.tsx', '*.module.css'],
         }),
         postcss({
-          extract: true,
+          extract: false,
           modules: true,
           minimize: true,
           to: './dist/assets',
           plugins: [
             url({
-              assetsPath: './dist/assets',
+              assetsPath: './src/assets',
               url: 'copy',
             }),
           ],
