@@ -18,7 +18,11 @@
     "Kulinda (https://kulinda.github.io)",
     "gw2princeps"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css",
+    "*.png",
+    "*.jpg"
+  ],
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

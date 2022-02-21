@@ -43,7 +43,7 @@ async function run() {
           exclude: ['**/*.stories.tsx', '*.module.css'],
         }),
         postcss({
-          extract: false,
+          extract: true,
           modules: true,
           minimize: true,
           to: './dist/assets',
