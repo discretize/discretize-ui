@@ -1,5 +1,11 @@
 import clsx from 'clsx';
-import { Fragment, ReactElement, useEffect, useState } from 'react';
+import {
+  CSSProperties,
+  Fragment,
+  ReactElement,
+  useEffect,
+  useState,
+} from 'react';
 import Progress from '../Progress/Progress';
 import Error from '../Error/Error';
 import Icon from '../Icon/Icon';
@@ -32,6 +38,8 @@ export interface TraitLineProps {
   resettable?: boolean;
   onReset?: () => void;
   onSelect?: (v: { tier: number; id: number; index: number }) => void;
+  style?: CSSProperties;
+  className?: string;
 }
 
 const TRAITLINE_ERROR_NAMES = {
@@ -54,6 +62,8 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
     resettable,
     onReset,
     onSelect,
+    style,
+    className,
   } = props;
   const specialization = useSpecialization(id);
 
@@ -215,8 +225,8 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
 
   return (
     <div
-      className={css.root}
-      style={{ backgroundImage: `url('${background}')` }}
+      className={clsx(className, css.root)}
+      style={{ ...style, backgroundImage: `url('${background}')` }}
     >
       <div className={css.wrapper}>
         <div className={css.wrapperTooltip}>

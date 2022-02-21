@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import professioncss from '../Profession/professions.module.css';
 import { useSkill } from '../../gw2api/hooks';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
@@ -17,6 +17,8 @@ export interface SkillProps
   disableTooltip?: boolean;
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
+  style?: CSSProperties;
+  className?: string;
 }
 
 export interface SkillDataProps {
@@ -85,9 +87,10 @@ const Skill = (props: SkillProps): ReactElement => {
             />
           )
         }
-        className={
-          profession && professioncss[`coloredProfession${profession}`]
-        }
+        className={clsx(
+          props.className,
+          profession && professioncss[`coloredProfession${profession}`],
+        )}
       />
     </Tooltip>
   );

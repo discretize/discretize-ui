@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import css from './WikiLink.module.css';
 
 // https://wiki.guildwars2.com/wiki/Template:Language
@@ -31,6 +31,7 @@ export interface WikiLinkProps {
   to: string;
   text?: string;
   lang?: languagesAvailable;
+  style?: CSSProperties;
   className?: string;
 }
 
@@ -39,6 +40,7 @@ const WikiLink = ({
   to,
   text,
   lang = 'en',
+  style,
   className,
 }: WikiLinkProps): ReactElement => {
   return (
@@ -50,6 +52,7 @@ const WikiLink = ({
       )}`}
       target="_blank"
       rel="noreferrer noopener nofollow"
+      style={style}
     >
       {text || to}
     </Component>

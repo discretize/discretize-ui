@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ReactElement } from 'react';
+import { CSSProperties, ReactElement } from 'react';
 import Tooltip from '../Tooltip/Tooltip';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
@@ -26,6 +26,8 @@ export interface SpecializationProps {
   disableText?: boolean;
   disableLink?: boolean;
   inline?: boolean;
+  style?: CSSProperties;
+  className?: string;
 }
 
 const Specialization = (props: SpecializationProps): ReactElement => {
@@ -45,7 +47,15 @@ const Specialization = (props: SpecializationProps): ReactElement => {
     );
   }
 
-  const { text, disableIcon, disableText, disableLink, inline } = props;
+  const {
+    text,
+    disableIcon,
+    disableText,
+    disableLink,
+    inline,
+    style,
+    className,
+  } = props;
   const { name, icon, profession } = specialization.data;
 
   return (
@@ -69,9 +79,11 @@ const Specialization = (props: SpecializationProps): ReactElement => {
         disableText={disableText}
         inline={inline}
         iconProps={{ hexagon: true }}
-        className={
-          profession && professioncss[`coloredProfession${profession}`]
-        }
+        style={style}
+        className={clsx(
+          className,
+          profession && professioncss[`coloredProfession${profession}`],
+        )}
       />
     </Tooltip>
   );

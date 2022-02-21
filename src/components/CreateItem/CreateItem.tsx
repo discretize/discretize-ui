@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
-import { ReactElement } from 'react';
+import { CSSProperties, ReactElement } from 'react';
 import createItem, { CreateItemProps } from '../../builder/createItem';
 import { useItems } from '../../gw2api/hooks';
 import GW2ApiItem from '../../gw2api/types/items/item';
@@ -20,6 +20,8 @@ export interface ItemProps extends CreateItemProps {
   disableTooltip?: boolean;
   inline?: boolean;
   upgrades?: (number | [number, number])[]; // ItemId, or [ItemId, amount] for runes
+  style?: CSSProperties;
+  className?: string;
 }
 
 const SKILL_ERROR_NAMES = {
@@ -47,6 +49,8 @@ const Item = (props: ItemProps): ReactElement => {
     weight: weightProps,
     rarity: rarityProps,
     level: levelProps,
+    style,
+    className,
   } = props;
 
   let ids = [];
@@ -99,8 +103,6 @@ const Item = (props: ItemProps): ReactElement => {
       />
     );
   }
-
-  console.log(createdData);
 
   const {
     name,
@@ -156,13 +158,17 @@ const Item = (props: ItemProps): ReactElement => {
         disableIcon={disableIcon}
         disableText={disableText}
         inline={inline}
+        style={style}
         iconProps={{
           applyCount: count,
           applyCountProps: {
             className: css.iconApplyCount,
           },
         }}
-        className={rarity && css[`colorRarity${capitalize(rarity)}`]}
+        className={clsx(
+          rarity && css[`colorRarity${capitalize(rarity)}`],
+          className,
+        )}
       />
     </Tooltip>
   );

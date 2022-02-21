@@ -12,6 +12,7 @@ import { capitalize } from '../../helpers/capitalize';
 import { useTrait } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import clsx from 'clsx';
+import { CSSProperties } from 'react';
 
 export interface TraitProps {
   id: number;
@@ -24,6 +25,7 @@ export interface TraitProps {
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
   inactive?: boolean;
+  style?: CSSProperties;
   className?: string;
   onClick?: MouseEventHandler<HTMLSpanElement>;
 }
@@ -50,6 +52,7 @@ const Trait = (props: TraitProps): ReactElement => {
     tooltipProps,
     wikiLinkProps,
     inactive,
+    style,
     className,
     onClick,
   } = props;
@@ -120,6 +123,7 @@ const Trait = (props: TraitProps): ReactElement => {
           inactive,
           hexagon: slot === 'Minor',
         }}
+        style={style}
         className={clsx(
           className,
           profession && professioncss[`coloredProfession${profession}`],

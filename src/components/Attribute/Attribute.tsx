@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 
 import Tooltip from '../Tooltip/Tooltip';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
@@ -9,6 +9,7 @@ import Error from '../Error/Error';
 
 import ATTRIBUTES, { AttributeTypes } from '../../data/attributes';
 import css from './Attribute.module.css';
+import clsx from 'clsx';
 
 export interface AttributeProps {
   name: AttributeTypes;
@@ -18,6 +19,8 @@ export interface AttributeProps {
   disableText?: boolean;
   disableLink?: boolean;
   inline?: boolean;
+  style?: CSSProperties;
+  className?: string;
 }
 
 const Attribute = ({
@@ -28,6 +31,8 @@ const Attribute = ({
   disableText,
   disableLink,
   inline,
+  style,
+  className,
 }: AttributeProps): ReactElement => {
   const description = Object.values(ATTRIBUTES).reduce<string | undefined>(
     (prev, cur) => cur[name] || prev,
@@ -73,7 +78,8 @@ const Attribute = ({
           className: css[`imageAttribute${name.replaceAll(' ', '')}`],
           iconViaClassname: true,
         }}
-        className={css.iconWithText}
+        style={style}
+        className={clsx(className, css.iconWithText)}
       />
     </Tooltip>
   );

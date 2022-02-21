@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import { useItems } from '../../gw2api/hooks';
 import GW2ApiItem from '../../gw2api/types/items/item';
 import Error from '../Error/Error';
@@ -22,6 +22,8 @@ export interface ItemProps {
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
   upgrades?: (number | [number, number])[]; // ItemId, or [ItemId, amount] for runes
+  style?: CSSProperties;
+  className?: string;
 }
 
 const SKILL_ERROR_NAMES = {
@@ -47,6 +49,8 @@ const Item = (props: ItemProps): ReactElement => {
     tooltipProps,
     wikiLinkProps,
     upgrades,
+    style,
+    className,
   } = props;
 
   let ids = [id];
@@ -136,7 +140,8 @@ const Item = (props: ItemProps): ReactElement => {
             className: css.iconApplyCount,
           },
         }}
-        className={css[`colorRarity${capitalize(rarity)}`]}
+        style={style}
+        className={clsx(className, css[`colorRarity${capitalize(rarity)}`])}
       />
     </Tooltip>
   );

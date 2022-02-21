@@ -79,6 +79,7 @@ const Race = ({
         className: css[`imageRace${capitalize(name)}`],
         iconViaClassname: true,
       }}
+      style={style}
       className={clsx(className, css[`color${capitalize(name)}`])}
     />
   );

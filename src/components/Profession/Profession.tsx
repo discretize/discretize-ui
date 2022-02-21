@@ -89,11 +89,11 @@ const Profession = ({
         className: css[`imageProfession${specialization}`],
         iconViaClassname: true,
       }}
+      style={style}
       className={clsx(
         profession && professioncss[`coloredProfession${profession}`],
         className,
       )}
-      style={style}
     />
   );
 };
