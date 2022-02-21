@@ -1,16 +1,21 @@
-import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { Box, Typography } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
 import { ConsumableEffect } from 'gw2-ui-components-bulk';
 import { Item } from 'gw2-ui-bulk';
 
-const useStyles = makeStyles((theme) => ({
-  grid: {
+const useStyles = makeStyles()((theme) => ({
+  root: {
+    display: 'grid',
     justifyContent: 'center',
+    gridAutoFlow: 'column',
+    margin: -12,
   },
   gridItem: {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
+    padding: 12,
   },
   title: {
     fontSize: '0.8125rem',
@@ -21,38 +26,38 @@ const useStyles = makeStyles((theme) => ({
   gw2Item: {
     fontSize: '60px',
     lineHeight: '0 !important',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '45px',
     },
   },
 }));
 
 const Consumables = ({ foodData, utilityData, infusionData, foodId, utilityId, infusionId }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
-    <Grid container spacing={2} className={classes.grid}>
-      <Grid item xs={4} className={classes.gridItem}>
+    <Box className={classes.root}>
+      <Box className={classes.gridItem}>
         <Item data={foodData} id={foodId} className={classes.gw2Item} disableText />
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           <ConsumableEffect name="Nourishment" disableText /> Food
         </Typography>
-      </Grid>
-      <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
+      </Box>
+      <Box className={classNames(classes.gridItem, classes.borderLeft)}>
         <Item data={utilityData} id={utilityId} className={classes.gw2Item} disableText />
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           <ConsumableEffect name="Enhancement" disableText /> Utility
         </Typography>
-      </Grid>
+      </Box>
       {(infusionData || infusionId) && (
-        <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
+        <Box className={classNames(classes.gridItem, classes.borderLeft)}>
           <Item data={infusionData} id={infusionId} className={classes.gw2Item} disableText />
           <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
             Infusion
           </Typography>
-        </Grid>
+        </Box>
       )}
-    </Grid>
+    </Box>
   );
 };
 

@@ -12,6 +12,12 @@ import firstUppercase from './helpers/firstUppercase';
 import TextDivider from './TextDivider';
 import NoSelection from './NoSelection';
 
+import globals from './styles/globals';
+import gw2uiBaseTheme from './styles/gw2uiBaseTheme'
+import muiTheme from './styles/muiTheme'
+import professionTheme from './styles/professionThemes'
+import Layout from './styles/Layout'
+
 export {
   Character,
   Armor,
@@ -24,4 +30,9 @@ export {
   firstUppercase,
   TextDivider,
   NoSelection,
+  globals,
+  gw2uiBaseTheme,
+  muiTheme,
+  professionTheme,
+  Layout
 };

@@ -1,7 +1,8 @@
-import { List, ListItem, ListItemText, makeStyles } from '@material-ui/core';
+import { List, ListItem, ListItemText } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import { Item } from 'gw2-ui-bulk';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   listItem: {
     lineHeight: 0,
     justifyContent: 'center',
@@ -20,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2),
     paddingLeft: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.divider}`,
-    lineHeight: '0',
+    lineHeight: 0,
   },
   gw2Item: {
     fontSize: '60px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '45px',
     },
     lineHeight: '1 !important',
@@ -78,7 +79,7 @@ const Armor = ({
   bootsAffix,
   bootsRune,
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <List disablePadding>
       <ListItem disableGutters className={classes.listItem}>

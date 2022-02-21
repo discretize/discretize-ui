@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { Typography, Box } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
 import { Item } from 'gw2-ui-bulk';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   gridItem: {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
+    padding: 12,
   },
   title: {
     fontSize: '0.8125rem',
@@ -21,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   gw2Item: {
     fontSize: '60px',
     lineHeight: '0 !important',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '45px',
     },
   },
@@ -63,11 +65,11 @@ const BackAndTrinkets = ({
   ring2Infusion3Id,
   ring2Affix,
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={4} className={classNames(classes.gridItem, classes.borderBottom)}>
+    <Box display="grid" sx={{ gridTemplateColumns: 'repeat(3,1fr)', margin: '-12px' }}>
+      <Box className={classNames(classes.gridItem, classes.borderBottom)}>
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           {backItemAffix}
         </Typography>
@@ -81,13 +83,9 @@ const BackAndTrinkets = ({
           disableText
           className={classes.gw2Item}
         />
-      </Grid>
+      </Box>
 
-      <Grid
-        item
-        xs={4}
-        className={classNames(classes.gridItem, classes.borderLeft, classes.borderBottom)}
-      >
+      <Box className={classNames(classes.gridItem, classes.borderLeft, classes.borderBottom)}>
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           {accessory1Affix}
         </Typography>
@@ -101,9 +99,9 @@ const BackAndTrinkets = ({
           disableText
           className={classes.gw2Item}
         />
-      </Grid>
+      </Box>
 
-      <Grid item xs={4} className={classNames(classes.gridItem, classes.borderBottom)}>
+      <Box className={classNames(classes.gridItem, classes.borderBottom)}>
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           {accessory2Affix}
         </Typography>
@@ -117,9 +115,9 @@ const BackAndTrinkets = ({
           disableText
           className={classes.gw2Item}
         />
-      </Grid>
+      </Box>
 
-      <Grid item xs={4} className={classes.gridItem}>
+      <Box className={classes.gridItem}>
         <Item
           data={amuletData}
           id={amuletId}
@@ -132,9 +130,9 @@ const BackAndTrinkets = ({
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           {amuletAffix}
         </Typography>
-      </Grid>
+      </Box>
 
-      <Grid item xs={4} className={classNames(classes.gridItem, classes.borderLeft)}>
+      <Box className={classNames(classes.gridItem, classes.borderLeft)}>
         <Item
           data={ring1Data}
           id={ring1Id}
@@ -150,9 +148,9 @@ const BackAndTrinkets = ({
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           {ring1Affix}
         </Typography>
-      </Grid>
+      </Box>
 
-      <Grid item xs={4} className={classes.gridItem}>
+      <Box className={classes.gridItem}>
         <Item
           data={ring2Data}
           id={ring2Id}
@@ -168,8 +166,8 @@ const BackAndTrinkets = ({
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           {ring2Affix}
         </Typography>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

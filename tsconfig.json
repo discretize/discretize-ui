@@ -4,5 +4,5 @@
     "allowJs": true,
     "outDir": "lib"
   },
-  "exclude": ["node_modules/**/*", "dist/**/*", "es/**/*", "lib/**/*"]
+  "exclude": ["node_modules/**/*", "dist/**/*", "es/**/*", "lib/**/*", "_backup"]
 }

@@ -1,16 +1,10 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  makeStyles,
-  useMediaQuery,
-  useTheme,
-} from '@material-ui/core';
+import { List, ListItem, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 import { Icon, Item } from 'gw2-ui-bulk';
 import NoSelection from '../NoSelection';
 import TextDivider from '../TextDivider';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   listItem: {
     lineHeight: 0,
     justifyContent: 'center',
@@ -25,13 +19,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   listItemText: {
-    flexGrow: 1,
+    flexGrow: 0,
     marginLeft: theme.spacing(2),
     paddingLeft: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.divider}`,
     lineHeight: 0,
-    overflowWrap: 'break-word',
-    fontSize: '0.82rem !important',
   },
   divider: {
     marginTop: theme.spacing(1),
@@ -39,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gw2Item: {
     fontSize: '60px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '45px',
     },
     lineHeight: '1 !important',
@@ -85,9 +77,9 @@ const Weapons = ({
   weapon2OffSigil,
   weapon2OffInfusionId,
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <>
