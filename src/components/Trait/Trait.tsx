@@ -15,6 +15,7 @@ import clsx from 'clsx';
 
 export interface TraitProps {
   id: number;
+  text?: string;
   disableIcon?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -40,6 +41,7 @@ const TRAIT_ERROR_MESSAGES = {
 const Trait = (props: TraitProps): ReactElement => {
   const {
     id,
+    text,
     disableIcon,
     disableText,
     disableLink,
@@ -98,10 +100,11 @@ const Trait = (props: TraitProps): ReactElement => {
         icon={icon}
         text={
           disableLink ? (
-            name
+            text || name
           ) : (
             <WikiLink
               to={name}
+              text={text}
               {...wikiLinkProps}
               className={
                 profession && professioncss[`coloredProfession${profession}`]

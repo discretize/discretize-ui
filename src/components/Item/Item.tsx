@@ -12,6 +12,7 @@ import css from './Item.module.css';
 
 export interface ItemProps {
   id: number;
+  text?: string;
   count?: number;
   disableIcon?: boolean;
   disableText?: boolean;
@@ -36,6 +37,7 @@ const SKILL_ERROR_MESSAGES = {
 const Item = (props: ItemProps): ReactElement => {
   const {
     id,
+    text,
     count = 1,
     disableIcon,
     disableText,
@@ -111,10 +113,11 @@ const Item = (props: ItemProps): ReactElement => {
           <>
             {count > 1 && `${count} `}
             {disableLink ? (
-              name
+              text || name
             ) : (
               <WikiLink
                 to={name}
+                text={text}
                 {...wikiLinkProps}
                 className={clsx(
                   wikiLinkProps?.className,

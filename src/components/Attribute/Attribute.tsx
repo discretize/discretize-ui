@@ -12,15 +12,17 @@ import css from './Attribute.module.css';
 
 export interface AttributeProps {
   name: AttributeTypes;
-  disableTooltip: boolean;
-  disableIcon: boolean;
-  disableText: boolean;
-  disableLink: boolean;
-  inline: boolean;
+  text?: string;
+  disableTooltip?: boolean;
+  disableIcon?: boolean;
+  disableText?: boolean;
+  disableLink?: boolean;
+  inline?: boolean;
 }
 
 const Attribute = ({
   name,
+  text,
   disableTooltip,
   disableIcon,
   disableText,
@@ -58,7 +60,11 @@ const Attribute = ({
     >
       <IconWithText
         text={
-          disableLink ? name : <WikiLink to={name} className={css.wikiLink} />
+          disableLink ? (
+            text || name
+          ) : (
+            <WikiLink to={name} text={text} className={css.wikiLink} />
+          )
         }
         disableIcon={disableIcon}
         disableText={disableText}

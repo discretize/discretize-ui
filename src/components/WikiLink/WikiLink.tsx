@@ -29,6 +29,7 @@ type languagesAvailable = typeof languages[number];
 export interface WikiLinkProps {
   component?: any;
   to: string;
+  text?: string;
   lang?: languagesAvailable;
   className?: string;
 }
@@ -36,6 +37,7 @@ export interface WikiLinkProps {
 const WikiLink = ({
   component: Component = 'a',
   to,
+  text,
   lang = 'en',
   className,
 }: WikiLinkProps): ReactElement => {
@@ -49,7 +51,7 @@ const WikiLink = ({
       target="_blank"
       rel="noreferrer noopener nofollow"
     >
-      {to}
+      {text || to}
     </Component>
   );
 };

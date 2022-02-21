@@ -21,6 +21,7 @@ const SPECIALIZATION_ERROR_MESSAGES = {
 
 export interface SpecializationProps {
   id: number;
+  text?: string;
   disableIcon?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -44,7 +45,7 @@ const Specialization = (props: SpecializationProps): ReactElement => {
     );
   }
 
-  const { disableIcon, disableText, disableLink, inline } = props;
+  const { text, disableIcon, disableText, disableLink, inline } = props;
   const { name, icon, profession } = specialization.data;
 
   return (
@@ -53,10 +54,11 @@ const Specialization = (props: SpecializationProps): ReactElement => {
         icon={icon}
         text={
           disableLink ? (
-            name
+            text || name
           ) : (
             <WikiLink
               to={name}
+              text={text}
               className={clsx(
                 profession && professioncss[`coloredProfession${profession}`],
               )}

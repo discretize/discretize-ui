@@ -12,6 +12,7 @@ import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
   id: number;
+  text?: string;
   disableLink?: boolean;
   disableTooltip?: boolean;
   tooltipProps?: TooltipProps;
@@ -35,7 +36,7 @@ const SKILL_ERROR_MESSAGES = {
 };
 
 const Skill = (props: SkillProps): ReactElement => {
-  const { id, disableLink, disableTooltip, tooltipProps, wikiLinkProps } =
+  const { id, text, disableLink, disableTooltip, tooltipProps, wikiLinkProps } =
     props;
   const skill = useSkill(id);
 
@@ -71,10 +72,11 @@ const Skill = (props: SkillProps): ReactElement => {
         icon={icon}
         text={
           disableLink ? (
-            name
+            text || name
           ) : (
             <WikiLink
               to={name}
+              text={text}
               {...wikiLinkProps}
               className={clsx(
                 profession && professioncss[`coloredProfession${profession}`],

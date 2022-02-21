@@ -13,6 +13,7 @@ import css from '../Item/Item.module.css';
 
 export interface ItemProps extends CreateItemProps {
   count?: number;
+  text?: string;
   disableIcon?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -34,6 +35,7 @@ const SKILL_ERROR_MESSAGES = {
 const Item = (props: ItemProps): ReactElement => {
   const {
     count = 1,
+    text,
     disableIcon,
     disableText,
     disableLink,
@@ -139,10 +141,11 @@ const Item = (props: ItemProps): ReactElement => {
           <>
             {count > 1 && `${count} `}
             {disableLink ? (
-              name
+              text || name
             ) : (
               <WikiLink
                 to={name}
+                text={text}
                 className={clsx(
                   rarity && css[`colorRarity${capitalize(rarity)}`],
                 )}
@@ -154,10 +157,6 @@ const Item = (props: ItemProps): ReactElement => {
         disableText={disableText}
         inline={inline}
         iconProps={{
-          ...(type &&
-            detailsType && {
-              name: `${type}.${detailsType}`,
-            }),
           applyCount: count,
           applyCountProps: {
             className: css.iconApplyCount,

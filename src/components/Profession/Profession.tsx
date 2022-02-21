@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import PROFESSIONS, { ProfessionTypes } from '../../data/professions';
 import professioncss from './professions.module.css';
 import Error from '../Error/Error';
@@ -10,20 +10,26 @@ import css from './Profession.module.css';
 
 export interface ProfessionProps {
   name: ProfessionTypes;
+  text: string;
   disableTooltip?: boolean;
   disableIcon?: boolean;
   disableLink?: boolean;
   disableText?: boolean;
   inline?: boolean;
+  style?: CSSProperties;
+  className?: string;
 }
 
 const Profession = ({
   name: propsName,
+  text,
   disableTooltip,
   disableIcon,
   disableLink,
   disableText,
   inline,
+  style,
+  className,
 }: ProfessionProps): ReactElement => {
   const professionName = capitalize(propsName);
 
@@ -55,6 +61,8 @@ const Profession = ({
         disableIcon={disableIcon}
         disableText={disableText}
         inline={inline}
+        className={className}
+        style={style}
       />
     );
   }
@@ -63,10 +71,11 @@ const Profession = ({
     <IconWithText
       text={
         disableLink ? (
-          specialization
+          text || specialization
         ) : (
           <WikiLink
             to={specialization}
+            text={text}
             className={clsx(
               profession && professioncss[`coloredProfession${profession}`],
             )}
@@ -80,7 +89,11 @@ const Profession = ({
         className: css[`imageProfession${specialization}`],
         iconViaClassname: true,
       }}
-      className={profession && professioncss[`coloredProfession${profession}`]}
+      className={clsx(
+        profession && professioncss[`coloredProfession${profession}`],
+        className,
+      )}
+      style={style}
     />
   );
 };

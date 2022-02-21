@@ -22,6 +22,9 @@ export default {
     rarity: {
       control: { type: 'select', options: Object.values(ITEM_RARITIES) },
     },
+    text: {
+      control: { type: 'string' },
+    },
   },
 } as ComponentMeta<typeof CreateItem>;
 

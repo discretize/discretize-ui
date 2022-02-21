@@ -4,13 +4,13 @@ import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import { ErrorProps } from '../Error/Error';
-import { TooltipProps } from '../Tooltip/Tooltip';
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import css from './Race.module.css';
 
 export interface RaceProps {
   name: RacesTypes;
+  text?: string;
   disableTooltip?: boolean;
   disableIcon?: boolean;
   disableText?: boolean;
@@ -24,6 +24,7 @@ export interface RaceProps {
 
 const Race = ({
   name,
+  text,
   disableTooltip,
   disableText,
   disableLink,
@@ -58,10 +59,11 @@ const Race = ({
     <IconWithText
       text={
         disableLink ? (
-          name
+          text || name
         ) : (
           <WikiLink
             to={name}
+            text={text}
             {...wikiLinkProps}
             className={clsx(
               wikiLinkProps?.className,
