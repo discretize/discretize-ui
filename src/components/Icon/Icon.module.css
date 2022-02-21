@@ -46,3 +46,16 @@
   color: #fff;
   text-shadow: 1px 1px 1px black;
 }
+
+.imageEmpty {
+  background-image: url(../../assets/icons/Empty.png);
+}
+.imageLock {
+  background-image: url(../../assets/icons/Lock.png);
+}
+.imageReset {
+  background-image: url(../../assets/icons/Reset.png);
+}
+.imageWeaponSwap {
+  background-image: url(../../assets/icons/WeaponSwap.png);
+}

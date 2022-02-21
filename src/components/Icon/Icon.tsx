@@ -4,6 +4,7 @@ import Spinner from '../Spinner/Spinner';
 import css from './Icon.module.css';
 
 export interface IconProps {
+  name?: 'Empty' | 'Lock' | 'Reset' | 'WeaponSwap'; // src will take priority over name
   loading?: boolean;
   disableIcon?: boolean;
   spinnerProps?: any;
@@ -22,6 +23,7 @@ export interface IconProps {
 }
 
 const Icon = ({
+  name,
   loading = false,
   spinnerProps = {},
   src,
@@ -72,6 +74,7 @@ const Icon = ({
         css.root,
         (!zoom || hexagon) && css.rootBgSizeCover,
         hexagon && css.rootHexagon,
+        name && css[`image${name}`],
       )}
       style={style}
     >
