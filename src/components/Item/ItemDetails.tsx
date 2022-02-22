@@ -141,6 +141,7 @@ const ItemDetails = ({
             />
           )}
 
+        {/* Rune effects */}
         {bonuses &&
           bonuses.length > 0 &&
           bonuses.map((bonus, index) => (

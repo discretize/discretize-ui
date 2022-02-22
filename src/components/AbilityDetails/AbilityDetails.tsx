@@ -8,6 +8,14 @@ import DetailsText from '../DetailsText/DetailsText';
 import Spinner from '../Spinner/Spinner';
 import css from './AbilityDetails.module.css';
 
+const invalidCategories = [
+  'Signet',
+  'LegendaryDwarf',
+  'LegendaryDemon',
+  'LegendaryAssassin',
+  'LegendaryCentaur',
+];
+
 export interface AbilityDetailsProps {
   data: GW2ApiSkill | GW2ApiTrait | GW2ApiTraitSkill;
 }
@@ -49,14 +57,18 @@ const AbilityDetails = ({ data }: AbilityDetailsProps) => {
         {name}
       </DetailsHeader>
       {!(unparsedDescription || categories || facts) && <Spinner />}
+
       <DetailsText
         lines={[
-          categories && (
+          <>
             <span className={css.detailsText}>
-              {categories.map((category) => `${category}. `)}
+              {categories &&
+                categories
+                  .filter((category) => !invalidCategories.includes(category))
+                  .map((category) => `${category}. `)}
             </span>
-          ),
-          description,
+            {description}
+          </>,
         ]}
         lineComponent="span"
       />
