@@ -1,11 +1,15 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import Item from './Item';
+import ITEM_STAT_NAMES from '../../builder/itemStatNames';
 
 export default {
   title: 'Components/Item',
   component: Item,
   argTypes: {
+    stat: {
+      control: { type: 'select', options: Object.values(ITEM_STAT_NAMES) },
+    },
     className: { control: false },
   },
 } as ComponentMeta<typeof Item>;

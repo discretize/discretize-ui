@@ -11,6 +11,7 @@ import ITEM_RARITIES, { ItemRarity } from './itemRarities';
 import ITEM_STAT_NAMES, { ItemStatName } from './itemStatNames';
 import ITEM_STATS, { ItemStat } from './itemStats';
 import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames';
+import GW2ApiInfixUpgrade from '../gw2api/types/items/details/common/infixUpgrade';
 
 export interface GetModifiersProps {
   rarity: ItemRarity;
@@ -48,9 +49,7 @@ export interface ItemDetails {
   min_power?: ItemModifier;
   max_power?: ItemModifier;
   defense?: ItemModifier;
-  infix_upgrade?: {
-    attributes: ItemAttribute[];
-  };
+  infix_upgrade?: GW2ApiInfixUpgrade;
 }
 
 export interface CreateItemResult {

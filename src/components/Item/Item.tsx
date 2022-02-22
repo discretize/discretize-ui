@@ -1,19 +1,23 @@
 import clsx from 'clsx';
-import { capitalize } from '../../helpers/capitalize';
-import React, { CSSProperties, ReactElement } from 'react';
+import { CSSProperties, ReactElement } from 'react';
+import { createItem } from '../../builder';
+import { ItemStatName } from '../../builder/itemStatNames';
 import { useItems } from '../../gw2api/hooks';
+import GW2ApiItemDetails from '../../gw2api/types/items/details/details';
 import GW2ApiItem from '../../gw2api/types/items/item';
+import { capitalize } from '../../helpers/capitalize';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
-import ItemDetails from './ItemDetails';
 import css from './Item.module.css';
+import ItemDetails from './ItemDetails';
 
 export interface ItemProps {
   id: number;
   text?: string;
   count?: number;
+  stat?: ItemStatName; // Allow explicitlly forcing a certain stat on an item. Many items allow multiple stats and dont provide a "default" one
   disableIcon?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -25,7 +29,6 @@ export interface ItemProps {
   style?: CSSProperties;
   className?: string;
 }
-
 const SKILL_ERROR_NAMES = {
   404: 'Item Not Found',
   500: 'Network Error',
@@ -41,6 +44,7 @@ const Item = (props: ItemProps): ReactElement => {
     id,
     text,
     count = 1,
+    stat,
     disableIcon,
     disableText,
     disableLink,
@@ -101,9 +105,57 @@ const Item = (props: ItemProps): ReactElement => {
     }
   }
 
+  // if there is a stat explicitly requested in the props, we need to augment the existing itemdata to include that stat
+  let stattedItemData = itemdata;
+  if (
+    stat &&
+    itemdata.details?.type && //TODO is there a better way of doing that? [ listOfTypes ].includes(itemdata.details.type) was not recognized by TS
+    (itemdata.details.type === 'Ring' ||
+      itemdata.details.type === 'Accessory' ||
+      itemdata.details.type === 'Amulet' ||
+      itemdata.details.type === 'HeavyArmor' ||
+      itemdata.details.type === 'MediumArmor' ||
+      itemdata.details.type === 'LightArmor' ||
+      itemdata.details.type === 'Axe' ||
+      itemdata.details.type === 'Dagger' ||
+      itemdata.details.type === 'Mace' ||
+      itemdata.details.type === 'Pistol' ||
+      itemdata.details.type === 'Scepter' ||
+      itemdata.details.type === 'Sword' ||
+      itemdata.details.type === 'Focus' ||
+      itemdata.details.type === 'Shield' ||
+      itemdata.details.type === 'Torch' ||
+      itemdata.details.type === 'Warhorn' ||
+      itemdata.details.type === 'Greatsword' ||
+      itemdata.details.type === 'Hammer' ||
+      itemdata.details.type === 'LongBow' ||
+      itemdata.details.type === 'Rifle' ||
+      itemdata.details.type === 'ShortBow' ||
+      itemdata.details.type === 'Staff' ||
+      itemdata.details.type === 'Harpoon' ||
+      itemdata.details.type === 'Speargun' ||
+      itemdata.details.type === 'Trident')
+  ) {
+    const createdData = createItem({
+      type: itemdata.details?.type,
+      stat,
+      weight: itemdata.details?.weight_class,
+    });
+
+    const details: GW2ApiItemDetails = {
+      ...itemdata.details,
+      infix_upgrade: createdData.details.infix_upgrade,
+    };
+
+    stattedItemData = {
+      ...itemdata,
+      details,
+    };
+  }
+
   return (
     <Tooltip
-      content={<ItemDetails item={itemdata} upgrades={upgradedata} />}
+      content={<ItemDetails item={stattedItemData} upgrades={upgradedata} />}
       disabled={disableTooltip}
       {...tooltipProps}
       containerProps={{
