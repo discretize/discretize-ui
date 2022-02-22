@@ -4,3 +4,6 @@
 .detailsText {
   color: var(--gw2-color-details-ability-type);
 }
+.mt12 {
+  margin-top: 12px;
+}

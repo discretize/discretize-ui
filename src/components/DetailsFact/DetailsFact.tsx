@@ -283,7 +283,7 @@ export interface FactsProps {
 }
 const Facts: React.FC<FactsProps> = ({ facts, className }) => {
   return (
-    <div className={clsx(className, classes.factsRoot)}>
+    <div className={clsx(className)}>
       {facts
         .map((fact) => ({
           ...getKeyValue(fact),

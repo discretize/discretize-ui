@@ -66,6 +66,7 @@ const AbilityDetails = ({ data }: AbilityDetailsProps) => {
           facts={facts
             .filter((fact) => fact.type !== 'Recharge')
             .sort((a, b) => factsOrder[a.type] - factsOrder[b.type])}
+          className={css.mt12}
         />
       )}
     </div>
