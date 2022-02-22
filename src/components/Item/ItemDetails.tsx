@@ -60,9 +60,11 @@ const ItemDetails = ({
       <DetailsHeader
         icon={icon}
         iconProps={{
-          ...(upgrade && {
-            className: css.detailsHeaderIcon,
-          }),
+          ...(upgrade
+            ? {
+                className: css.detailsHeaderIcon,
+              }
+            : {}),
         }}
         titleClassName={clsx(
           itemcss[`colorRarity${capitalize(rarity)}`],
@@ -73,10 +75,12 @@ const ItemDetails = ({
               className: css.mb1,
             }
           : {
-              ...(((!attributes && buffDescription) ||
-                (attributes && infusionUpgradeFlags.includes('Infusion'))) && {
-                className: css.mb16,
-              }),
+              ...((!attributes && buffDescription) ||
+              (attributes && infusionUpgradeFlags.includes('Infusion'))
+                ? {
+                    className: css.mb16,
+                  }
+                : {}),
             })}
       >
         {count > 1 && `${count} `}
@@ -131,7 +135,9 @@ const ItemDetails = ({
                 buffDescription ||
                   (!upgrade && type !== 'Consumable' && description),
               ]}
-              className={type === 'UpgradeComponent' && css.bonusColor}
+              className={
+                type === 'UpgradeComponent' ? css.bonusColor : undefined
+              }
             />
           )}
 
@@ -157,7 +163,10 @@ const ItemDetails = ({
             <div
               // eslint-disable-next-line react/no-array-index-key
               key={`${data.id}-${index}`}
-              className={clsx(css.mt16, index < upgrades.length && css.mb16)}
+              className={clsx(
+                css.mt16,
+                index < upgrades.length ? css.mb16 : undefined,
+              )}
             >
               <ItemDetails
                 upgrade
