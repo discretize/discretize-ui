@@ -1,5 +1,4 @@
 import { APILanguageProvider } from './gw2api/hooks';
-import { capitalize } from './helpers/capitalize';
 
-export { APILanguageProvider, capitalize };
+export { APILanguageProvider };
 export * from './components/index';
