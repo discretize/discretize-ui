@@ -1,0 +1,12 @@
+.colorAbilitytype {
+  color: var(--gw2-color-details-ability-type) !important;
+}
+.colorAbility {
+  color: var(--gw2-color-details-ability) !important;
+}
+.colorMuted {
+  color: var(--gw2-color-details-muted) !important;
+}
+.colorFlavor {
+  color: var(--gw2-color-details-flavor) !important;
+}
