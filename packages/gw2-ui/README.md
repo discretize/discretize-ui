@@ -12,10 +12,29 @@ gw2-ui-new is a fork of [gw2-ui](https://github.com/ManuelHaag/gw2-ui) by Manuel
 
 ---
 
-## Prerequisites
+## Installation
+
+Prerequisites:
 
 - `node` >= 12.0.0
 - `yarn` >= 1.22.0 ?
+
+Install:
+
+```
+yarn add gw2-ui-new
+```
+
+import the styles on every page where you want to use the components:
+
+```
+import 'gw2-ui-new/dist/default_style.css';
+import 'gw2-ui-new/dist/index.css';
+```
+
+Alternatively, you can overwrite the `default_style.css` file and import it in case you want to adjust the default theme.
+
+In case you want to disable language selection based on the browser language, wrap pages with an `APILanguageProvider`.
 
 ## Developing
 
