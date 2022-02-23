@@ -12,8 +12,8 @@
     "strict": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
-    // Ensure that .d.ts files are created by tsc, but not .js files
-    "declaration": true,
+    // Do not create bindings, rollup does that.
+    "declaration": false,
     // Ensure that Babel can safely transpile files in the TypeScript project
     "isolatedModules": true,
     // Other configuration
@@ -22,12 +22,11 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "commonjs",
+    "module": "esnext",
     "resolveJsonModule": true,
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["packages/*"],
-  "exclude": [
-    "node_modules/*"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "typings.d.ts"],
+  "exclude": ["node_modules/*"]
 }

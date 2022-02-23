@@ -1,0 +1,61 @@
+.root {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+}
+.rootBgSizeCover {
+  background-size: cover;
+}
+.rootHexagon {
+  clip-path: polygon(50% 4%, 100% 28%, 100% 73%, 50% 99%, 0% 73%, 0% 28%);
+  border-radius: 0px;
+}
+.gutterRight {
+  margin-right: 0.25em;
+}
+.gutterLeft {
+  margin-left: 0.25em;
+}
+.inline {
+  vertical-align: text-top;
+}
+.hexagon {
+  width: 0.875em;
+}
+.inactive {
+  opacity: 0.5;
+  will-change: opacity;
+  transition: opacity 200ms;
+}
+.inactive:hover {
+  opacity: 0.8;
+}
+
+.applyCount {
+  position: absolute;
+  bottom: 0.1em;
+  right: 0;
+  font-size: 0.5em;
+  font-weight: var(--gw2-font-weight-body);
+  font-family: var(--gw2-font);
+  line-height: 1;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+}
+
+.imageEmpty {
+  background-image: url(../../assets/icons/Empty.png);
+}
+.imageLock {
+  background-image: url(../../assets/icons/Lock.png);
+}
+.imageReset {
+  background-image: url(../../assets/icons/Reset.png);
+}
+.imageWeaponSwap {
+  background-image: url(../../assets/icons/WeaponSwap.png);
+}

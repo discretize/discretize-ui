@@ -1,0 +1,336 @@
+.colorAugmentationMain {
+  color: var(--gw2-color-effect-augmentation-main);
+}
+.colorAugmentationMain:hover {
+  color: var(--gw2-color-effect-augmentation-dark);
+}
+.colorAugmentationDark {
+  color: var(--gw2-color-effect-augmentation-dark);
+}
+.colorAugmentationLight {
+  color: var(--gw2-color-effect-augmentation-light);
+}
+
+.colorAuraMain {
+  color: var(--gw2-color-effect-aura-main);
+}
+.colorAuraMain:hover {
+  color: var(--gw2-color-effect-aura-dark);
+}
+.colorAuraDark {
+  color: var(--gw2-color-effect-aura-dark);
+}
+.colorAuraLight {
+  color: var(--gw2-color-effect-aura-light);
+}
+
+.colorBoonMain {
+  color: var(--gw2-color-effect-boon-main);
+}
+.colorBoonMain:hover {
+  color: var(--gw2-color-effect-boon-dark);
+}
+.colorBoonDark {
+  color: var(--gw2-color-effect-boon-dark);
+}
+.colorBoonLight {
+  color: var(--gw2-color-effect-boon-light);
+}
+
+.colorConditionMain {
+  color: var(--gw2-color-effect-condition-main);
+}
+.colorConditionMain:hover {
+  color: var(--gw2-color-effect-condition-dark);
+}
+.colorConditionDark {
+  color: var(--gw2-color-effect-condition-dark);
+}
+.colorConditionLight {
+  color: var(--gw2-color-effect-condition-light);
+}
+
+.colorControlMain {
+  color: var(--gw2-color-effect-control-main);
+}
+.colorControlMain:hover {
+  color: var(--gw2-color-effect-control-dark);
+}
+.colorControlDark {
+  color: var(--gw2-color-effect-control-dark);
+}
+.colorControlLight {
+  color: var(--gw2-color-effect-control-light);
+}
+
+.colorConsumableMain {
+  color: var(--gw2-color-effect-consumable-main);
+}
+.colorConsumableMain:hover {
+  color: var(--gw2-color-effect-consumable-dark);
+}
+.colorConsumableDark {
+  color: var(--gw2-color-effect-consumable-dark);
+}
+.colorConsumableLight {
+  color: var(--gw2-color-effect-consumable-light);
+}
+
+.colorCommonMain {
+  color: var(--gw2-color-effect-common-main);
+}
+.colorCommonMain:hover {
+  color: var(--gw2-color-effect-common-dark);
+}
+.colorCommonDark {
+  color: var(--gw2-color-effect-common-dark);
+}
+.colorCommonLight {
+  color: var(--gw2-color-effect-common-light);
+}
+
+.colorMistlockinstabilityMain {
+  color: var(--gw2-color-effect-mistlockinstability-main);
+}
+.colorMistlockinstabilityMain:hover {
+  color: var(--gw2-color-effect-mistlockinstability-dark);
+}
+.colorMistlockinstabilityDark {
+  color: var(--gw2-color-effect-mistlockinstability-dark);
+}
+.colorMistlockinstabilityLight {
+  color: var(--gw2-color-effect-mistlockinstability-light);
+}
+
+.imageBoonAegis {
+  background-image: url(../../assets/icons/Boon/Aegis.png);
+}
+.imageBoonAlacrity {
+  background-image: url(../../assets/icons/Boon/Alacrity.png);
+}
+.imageBoonFury {
+  background-image: url(../../assets/icons/Boon/Fury.png);
+}
+.imageBoonMight {
+  background-image: url(../../assets/icons/Boon/Might.png);
+}
+.imageBoonProtection {
+  background-image: url(../../assets/icons/Boon/Protection.png);
+}
+.imageBoonQuickness {
+  background-image: url(../../assets/icons/Boon/Quickness.png);
+}
+.imageBoonRegeneration {
+  background-image: url(../../assets/icons/Boon/Regeneration.png);
+}
+.imageBoonResistance {
+  background-image: url(../../assets/icons/Boon/Resistance.png);
+}
+.imageBoonResolution {
+  background-image: url(../../assets/icons/Boon/Resolution.png);
+}
+.imageBoonStability {
+  background-image: url(../../assets/icons/Boon/Stability.png);
+}
+.imageBoonSwiftness {
+  background-image: url(../../assets/icons/Boon/Swiftness.png);
+}
+.imageBoonVigor {
+  background-image: url(../../assets/icons/Boon/Vigor.png);
+}
+
+.imageAugmentationMistAttunement1 {
+  background-image: url(../../assets/icons/Augmentation/MistAttunement1.png);
+}
+.imageAugmentationMistAttunement2 {
+  background-image: url(../../assets/icons/Augmentation/MistAttunement2.png);
+}
+.imageAugmentationMistAttunement3 {
+  background-image: url(../../assets/icons/Augmentation/MistAttunement3.png);
+}
+.imageAugmentationMistAttunement4 {
+  background-image: url(../../assets/icons/Augmentation/MistAttunement4.png);
+}
+
+.imageConditionBleeding {
+  background-image: url(../../assets/icons/Condition/Bleeding.png);
+}
+.imageConditionBlinded {
+  background-image: url(../../assets/icons/Condition/Blinded.png);
+}
+.imageConditionBurning {
+  background-image: url(../../assets/icons/Condition/Burning.png);
+}
+.imageConditionChilled {
+  background-image: url(../../assets/icons/Condition/Chilled.png);
+}
+.imageConditionConfusion {
+  background-image: url(../../assets/icons/Condition/Confusion.png);
+}
+.imageConditionCrippled {
+  background-image: url(../../assets/icons/Condition/Crippled.png);
+}
+.imageConditionFear {
+  background-image: url(../../assets/icons/Condition/Fear.png);
+}
+.imageConditionImmobile {
+  background-image: url(../../assets/icons/Condition/Immobile.png);
+}
+.imageConditionPoisoned {
+  background-image: url(../../assets/icons/Condition/Poisoned.png);
+}
+.imageConditionSlow {
+  background-image: url(../../assets/icons/Condition/Slow.png);
+}
+.imageConditionTaunt {
+  background-image: url(../../assets/icons/Condition/Taunt.png);
+}
+.imageConditionTorment {
+  background-image: url(../../assets/icons/Condition/Torment.png);
+}
+.imageConditionVulnerability {
+  background-image: url(../../assets/icons/Condition/Vulnerability.png);
+}
+.imageConditionWeakness {
+  background-image: url(../../assets/icons/Condition/Weakness.png);
+}
+
+.imageControlDaze {
+  background-image: url(../../assets/icons/Control/Daze.png);
+}
+.imageControlFloat {
+  background-image: url(../../assets/icons/Control/Float.png);
+}
+.imageControlKnockback {
+  background-image: url(../../assets/icons/Control/Knockback.png);
+}
+.imageControlKnockdown {
+  background-image: url(../../assets/icons/Control/Knockdown.png);
+}
+.imageControlPull {
+  background-image: url(../../assets/icons/Control/Pull.png);
+}
+.imageControlSink {
+  background-image: url(../../assets/icons/Control/Sink.png);
+}
+.imageControlStun {
+  background-image: url(../../assets/icons/Control/Stun.png);
+}
+
+.imageAuraChaos {
+  background-image: url(../../assets/icons/Aura/Chaos.png);
+}
+.imageAuraDark {
+  background-image: url(../../assets/icons/Aura/Dark.png);
+}
+.imageAuraFire {
+  background-image: url(../../assets/icons/Aura/Fire.png);
+}
+.imageAuraFrost {
+  background-image: url(../../assets/icons/Aura/Frost.png);
+}
+.imageAuraLight {
+  background-image: url(../../assets/icons/Aura/Light.png);
+}
+.imageAuraMagnetic {
+  background-image: url(../../assets/icons/Aura/Magnetic.png);
+}
+.imageAuraShocking {
+  background-image: url(../../assets/icons/Aura/Shocking.png);
+}
+
+.imageCommonAgony {
+  background-image: url(../../assets/icons/Common/Agony.png);
+}
+.imageCommonBarrier {
+  background-image: url(../../assets/icons/Common/Barrier.png);
+}
+.imageCommonExposed {
+  background-image: url(../../assets/icons/Common/Exposed.png);
+}
+.imageCommonInvulnerability {
+  background-image: url(../../assets/icons/Common/Invulnerability.png);
+}
+.imageCommonRigorousCertainty {
+  background-image: url(../../assets/icons/Common/RigorousCertainty.png);
+}
+.imageCommonStealth {
+  background-image: url(../../assets/icons/Common/Stealth.png);
+}
+.imageCommonStunBreak {
+  background-image: url(../../assets/icons/Common/StunBreak.png);
+}
+.imageCommonSuperspeed {
+  background-image: url(../../assets/icons/Common/Superspeed.png);
+}
+.imageCommonAgony {
+  background-image: url(../../assets/icons/Common/Agony.png);
+}
+.imageCommonAgony {
+  background-image: url(../../assets/icons/Common/Agony.png);
+}
+.imageCommonAgony {
+  background-image: url(../../assets/icons/Common/Agony.png);
+}
+
+.imageConsumableNourishment {
+  background-image: url(../../assets/icons/Consumable/Nourishment.png);
+}
+.imageConsumableEnhancement {
+  background-image: url(../../assets/icons/Consumable/Enhancement.png);
+}
+
+.imageMistlockInstabilityAdrenalineRush {
+  background-image: url(../../assets/icons/MistlockInstability/AdrenalineRush.png);
+}
+.imageMistlockInstabilityAfflicted {
+  background-image: url(../../assets/icons/MistlockInstability/Afflicted.png);
+}
+.imageMistlockInstabilityBoonOverload {
+  background-image: url(../../assets/icons/MistlockInstability/BoonOverload.png);
+}
+.imageMistlockInstabilityFluxBomb {
+  background-image: url(../../assets/icons/MistlockInstability/FluxBomb.png);
+}
+.imageMistlockInstabilityFractalVindicators {
+  background-image: url(../../assets/icons/MistlockInstability/FractalVindicators.png);
+}
+.imageMistlockInstabilityFrailty {
+  background-image: url(../../assets/icons/MistlockInstability/Frailty.png);
+}
+.imageMistlockInstabilityHamstrung {
+  background-image: url(../../assets/icons/MistlockInstability/Hamstrung.png);
+}
+.imageMistlockInstabilityLastLaugh {
+  background-image: url(../../assets/icons/MistlockInstability/LastLaugh.png);
+}
+.imageMistlockInstabilityMistsConvergence {
+  background-image: url(../../assets/icons/MistlockInstability/MistsConvergence.png);
+}
+.imageMistlockInstabilityNoPainNoGain {
+  background-image: url(../../assets/icons/MistlockInstability/NoPainNoGain.png);
+}
+.imageMistlockInstabilityOutflanked {
+  background-image: url(../../assets/icons/MistlockInstability/Outflanked.png);
+}
+.imageMistlockInstabilitySocialAwkwardness {
+  background-image: url(../../assets/icons/MistlockInstability/SocialAwkwardness.png);
+}
+.imageMistlockInstabilityStickTogether {
+  background-image: url(../../assets/icons/MistlockInstability/StickTogether.png);
+}
+.imageMistlockInstabilitySugarRush {
+  background-image: url(../../assets/icons/MistlockInstability/SugarRush.png);
+}
+.imageMistlockInstabilityToxicTrail {
+  background-image: url(../../assets/icons/MistlockInstability/ToxicTrail.png);
+}
+.imageMistlockInstabilityVengeance {
+  background-image: url(../../assets/icons/MistlockInstability/Vengeance.png);
+}
+.imageMistlockInstabilityWeBleedFire {
+  background-image: url(../../assets/icons/MistlockInstability/WeBleedFire.png);
+}
+.imageMistlockInstabilityToxicSickness {
+  background-image: url(../../assets/icons/MistlockInstability/ToxicSickness.png);
+}

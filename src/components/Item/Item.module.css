@@ -1,0 +1,59 @@
+.container {
+  max-width: 353px;
+}
+
+.iconApplyCount {
+  top: 0.1em;
+  right: 0.1em;
+  bottom: initial;
+  color: #fee49a;
+}
+
+.colorRarityLegendary {
+  color: var(--gw2-color-rarity-legendary-main);
+}
+.colorRarityLegendary:hover {
+  color: var(--gw2-color-rarity-legendary-dark);
+}
+.colorRarityAscended {
+  color: var(--gw2-color-rarity-ascended-main);
+}
+.colorRarityAscended:hover {
+  color: var(--gw2-color-rarity-ascended-dark);
+}
+.colorRarityExotic {
+  color: var(--gw2-color-rarity-exotic-main);
+}
+.colorRarityExotic:hover {
+  color: var(--gw2-color-rarity-exotic-dark);
+}
+.colorRarityRare {
+  color: var(--gw2-color-rarity-rare-main);
+}
+.colorRarityRare:hover {
+  color: var(--gw2-color-rarity-rare-dark);
+}
+.colorRarityMasterwork {
+  color: var(--gw2-color-rarity-masterwork-main);
+}
+.colorRarityMasterwork:hover {
+  color: var(--gw2-color-rarity-masterwork-dark);
+}
+.colorRarityFine {
+  color: var(--gw2-color-rarity-fine-main);
+}
+.colorRarityFine:hover {
+  color: var(--gw2-color-rarity-fine-dark);
+}
+.colorRarityJunk {
+  color: var(--gw2-color-rarity-junk-main);
+}
+.colorRarityJunk:hover {
+  color: var(--gw2-color-rarity-junk-dark);
+}
+.colorRarityBasic {
+  color: var(--gw2-color-rarity-junk-main);
+}
+.colorRarityBasic:hover {
+  color: var(--gw2-color-rarity-junk-dark);
+}

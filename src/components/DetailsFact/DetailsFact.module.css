@@ -1,0 +1,25 @@
+.factsRoot {
+  margin-top: 12px;
+}
+
+.factRoot {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.factIconWrapper {
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+}
+
+.factIcon {
+  margin-right: 0px;
+}
+
+.factText {
+  margin-left: 4px;
+  color: var(--gw2-color-details-muted);
+  align-self: center;
+}

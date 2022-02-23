@@ -1,0 +1,137 @@
+.loadingOrError {
+  width: 100%;
+  max-width: 650px;
+  height: 135px;
+  border: 1px solid rgb(9, 10, 14);
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+}
+
+.connector {
+  align-self: stretch;
+  flex-grow: 1;
+  min-width: 13px;
+  max-width: 36px;
+}
+.minorTrait {
+  font-size: 40px;
+  display: inline-flex;
+  color: rgba(255, 255, 255, 0.5);
+}
+.majorTrait {
+  font-size: 37px;
+  display: inline-flex;
+  color: rgba(255, 255, 255, 0.5);
+}
+.majorTraitAdditional {
+  cursor: pointer;
+}
+.root {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  height: 135px;
+  border: 1px solid #0b0e14;
+  background-color: rgb(0, 0, 0);
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.root::before {
+  content: '';
+  position: absolute;
+  min-width: 100%;
+  width: 460px;
+  height: 100%;
+  right: 0;
+}
+
+.wrapper {
+  position: absolute;
+  min-width: 100%;
+  height: 100%;
+  right: 0;
+  display: flex;
+}
+
+.wrapperTooltip {
+  width: 168px;
+  filter: drop-shadow(2px 2px 5px black);
+  display: flex;
+  align-items: center;
+}
+
+.traitlineConnectorExtra {
+  max-width: 33px;
+}
+.resetWrapper {
+  position: absolute;
+  box-sizing: border-box;
+  top: 2px;
+  left: 2px;
+  cursor: pointer;
+}
+.resetIcon {
+  font-size: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-image: url(../../assets/icons/Reset.png);
+}
+.majorTraitsWrapper {
+  display: flex;
+  max-width: 430px;
+  padding-right: 6px;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.majorTraitsChunk {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.innerTooltip,
+.innerTooltip::before,
+.innerTooltip::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.innerTooltip {
+  position: absolute;
+  margin-left: 73px;
+  height: 55px;
+  width: 95px;
+  box-sizing: border-box;
+  border-width: 0 2px;
+}
+.innerTooltip::before,
+.innerTooltip::after {
+  content: '';
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  transform: scaleY(0.5774) rotate(-45deg);
+  left: 12px;
+}
+.innerTooltip::before {
+  top: -33.5px;
+  border-top-width: 3px;
+  border-right-width: 3px;
+}
+.innerTooltip::after {
+  bottom: -33.5px;
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+}

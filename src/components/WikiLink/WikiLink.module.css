@@ -1,0 +1,10 @@
+.default {
+  color: var(--gw2-color-primary);
+  transition: color 200ms ease-in-out;
+}
+.default:hover {
+  color: var(--gw2-color-primary-dark);
+}
+.root {
+  text-decoration: none;
+}
