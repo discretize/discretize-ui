@@ -1,14 +1,16 @@
 import React, { ReactElement, ReactNode } from 'react';
+import { capitalize } from '../../helpers/capitalize';
+import css from './DetailsText.module.css';
 
 const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g');
 
 const renderFlavor = (text: string) => {
-  const parts = text.replace(/<br\s*?\/?\s*?>/g, '\n').split(REGEX);
+  const parts: (string | string[])[] = text
+    .replace(/<br\s*?\/?\s*?>/g, '\n')
+    .split(REGEX);
 
-  const returnParts = new Array(parts.length);
   for (let i = 1; i < parts.length; i += 2) {
-    const [type, textPart] = parts[i].split('>');
-
+    const [type, textPart] = (parts[i] as string).split('>');
     if (type) {
       let color;
       switch (type) {
@@ -26,12 +28,11 @@ const renderFlavor = (text: string) => {
           break;
       }
 
-      returnParts[i] = [textPart, color];
+      parts[i] = [textPart, color || ''];
     } else {
-      returnParts[i] = textPart;
+      parts[i] = textPart;
     }
   }
-
   return (
     <>
       {parts
@@ -41,11 +42,13 @@ const renderFlavor = (text: string) => {
             const [textPart, color] = part;
 
             if (color) {
-              // TODO check if the coloring is correct here
+              if (!css[`color${capitalize(color)}`]) {
+                console.error(`Missing color type: ${color}`);
+              }
               return (
                 <span
+                  className={css[`color${capitalize(color)}`]}
                   key={`flav${index.toString()}`}
-                  style={{ color: `var(--gw2-color-details-${color})` }}
                 >
                   {textPart}
                 </span>

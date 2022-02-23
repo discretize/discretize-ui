@@ -11,7 +11,7 @@ export interface GW2ApiBuff {
 }
 
 interface GW2ApiInfixUpgrade {
-  id: number;
+  id?: number;
   attributes: GW2ApiInfixUpgradeAttribute[];
   buff?: GW2ApiBuff;
 }

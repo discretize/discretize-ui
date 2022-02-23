@@ -21,7 +21,7 @@ function getNavigatorDefaultLanguage(): APILanguage {
   return 'en';
 }
 
-const APILanguageContext = React.createContext<APILanguage>(
+export const APILanguageContext = React.createContext<APILanguage>(
   getNavigatorDefaultLanguage(),
 );
 

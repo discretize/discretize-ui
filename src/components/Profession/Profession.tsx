@@ -1,16 +1,20 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import React, { CSSProperties, ReactElement } from 'react';
-import PROFESSIONS, { ProfessionTypes } from '../../data/professions';
+import PROFESSIONS, {
+  getTranslatedProfession,
+  ProfessionTypes,
+} from '../../data/professions';
 import professioncss from './professions.module.css';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import css from './Profession.module.css';
+import { APILanguageContext } from '../../gw2api/hooks';
 
 export interface ProfessionProps {
   name: ProfessionTypes;
-  text: string;
+  text?: string;
   disableTooltip?: boolean;
   disableIcon?: boolean;
   disableLink?: boolean;
@@ -32,6 +36,7 @@ const Profession = ({
   className,
 }: ProfessionProps): ReactElement => {
   const professionName = capitalize(propsName);
+  const language = React.useContext(APILanguageContext);
 
   let profession: string | undefined;
   let specialization: string;
@@ -67,15 +72,20 @@ const Profession = ({
     );
   }
 
+  const translatedText = getTranslatedProfession({
+    profession: specialization,
+    language,
+  });
+
   return (
     <IconWithText
       text={
         disableLink ? (
-          text || specialization
+          text || translatedText
         ) : (
           <WikiLink
             to={specialization}
-            text={text}
+            text={text || translatedText}
             className={clsx(
               profession && professioncss[`coloredProfession${profession}`],
             )}
