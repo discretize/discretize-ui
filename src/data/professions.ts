@@ -51,47 +51,49 @@ const PROFESSIONS: Record<string, string[]> = {
 };
 export default PROFESSIONS;
 
-const TRANSLATIONS: Partial<
-  Record<APILanguage, Record<ProfessionTypes, string>>
-> = {
-  zh: {
-    Guardian: '守护者',
-    Dragonhunter: '猎龙者',
-    Firebrand: '燃火者',
-    Willbender: '',
-    Revenant: '魂武者',
-    Herald: '',
-    Renegade: '',
-    Vindicator: '',
-    Warrior: '战士',
-    Berserker: '',
-    Spellbreaker: '',
-    Bladesworn: '',
-    Engineer: '工程师',
-    Scrapper: '',
-    Holosmith: '',
-    Mechanist: '',
-    Ranger: '游侠',
-    Druid: '',
-    Soulbeast: '',
-    Untamed: '',
-    Thief: '潜行者',
-    Daredevil: '',
-    Deadeye: '',
-    Specter: '',
-    Elementalist: '元素使',
-    Tempest: '',
-    Weaver: '',
-    Catalyst: '',
-    Mesmer: '幻术师',
-    Chronomancer: '',
-    Mirage: '',
-    Virtuoso: '',
-    Necromancer: '唤灵师',
-    Reaper: '',
-    Scourge: '',
-    Harbinger: '',
+const TRANSLATIONS: Record<string, Partial<Record<APILanguage, string>>> = {
+  Guardian: {
+    zh: '守护者',
   },
+  Dragonhunter: {
+    zh: '猎龙者',
+  },
+  Firebrand: {
+    zh: '燃火者',
+  },
+  Willbender: {},
+  Revenant: { zh: '魂武者' },
+  Herald: { zh: '' },
+  Renegade: { zh: '' },
+  Vindicator: { zh: '' },
+  Warrior: { zh: '战士' },
+  Berserker: { zh: '' },
+  Spellbreaker: { zh: '' },
+  Bladesworn: { zh: '' },
+  Engineer: { zh: '工程师' },
+  Scrapper: { zh: '' },
+  Holosmith: { zh: '' },
+  Mechanist: { zh: '' },
+  Ranger: { zh: '游侠' },
+  Druid: { zh: '' },
+  Soulbeast: { zh: '' },
+  Untamed: { zh: '' },
+  Thief: { zh: '潜行者' },
+  Daredevil: { zh: '' },
+  Deadeye: { zh: '' },
+  Specter: { zh: '' },
+  Elementalist: { zh: '元素使' },
+  Tempest: { zh: '' },
+  Weaver: { zh: '' },
+  Catalyst: { zh: '' },
+  Mesmer: { zh: '幻术师' },
+  Chronomancer: { zh: '' },
+  Mirage: { zh: '' },
+  Virtuoso: { zh: '' },
+  Necromancer: { zh: '唤灵师' },
+  Reaper: { zh: '' },
+  Scourge: { zh: '' },
+  Harbinger: { zh: '' },
 };
 
 export function getTranslatedProfession({
@@ -101,11 +103,10 @@ export function getTranslatedProfession({
   profession: string;
   language?: APILanguage;
 }): string {
-  let translated = profession.toString();
+  let translated = profession;
   if (language) {
-    const availableStrings = TRANSLATIONS[language];
-    if (availableStrings)
-      translated = availableStrings[profession as ProfessionTypes];
+    const availableStrings = TRANSLATIONS[profession];
+    if (availableStrings) translated = availableStrings[language] || profession;
   }
   return translated;
 }
