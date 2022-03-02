@@ -967,6 +967,17 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
+"@discretize/gw2-ui-new@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@discretize/gw2-ui-new/-/gw2-ui-new-0.0.1.tgz#f49072ddea8880a8e1bb022c5fd75436ba35de3b"
+  integrity sha512-sQd3KaPCiOPpmUFGTnAVB27h3WRmXArtPPHVMAFAm0UiH5DuJqp6UEOBoHODcFyde/aUH5KYAZ7NugsdjhApzw==
+  dependencies:
+    "@tippyjs/react" "^4.2.5"
+    clsx "^1.1.1"
+    react "^17.0.0"
+    react-dom "^17.0.0"
+    typeface-menomonia "^0.1.2"
+
 "@emotion/babel-plugin@^11.3.0":
   version "11.7.2"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.7.2.tgz#fec75f38a6ab5b304b0601c74e2a5e77c95e5fa0"
@@ -1193,15 +1204,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@popperjs/core@^2.4.4":
+"@popperjs/core@^2.4.4", "@popperjs/core@^2.9.0":
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
   integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
-
-"@popperjs/core@^2.9.0":
-  version "2.10.2"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
-  integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
 "@rollup/plugin-babel@^5.3.0":
   version "5.3.0"
@@ -2602,10 +2608,6 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4:
   version "4.2.8"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
   integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
-
-"gw2-ui-new@link:../gw2-ui":
-  version "0.0.0"
-  uid ""
 
 hard-rejection@^2.1.0:
   version "2.1.0"

@@ -1,6 +1,6 @@
 import { Grid, List, ListItem } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
-import { Attribute, Profession } from 'gw2-ui-new';
+import { Attribute, Profession } from '@discretize/gw2-ui-new';
 import firstUppercase from '../helpers/firstUppercase';
 
 const useStyles = makeStyles()(() => ({

@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
-import { Item, ConsumableEffect } from 'gw2-ui-new';
+import { Item, ConsumableEffect } from '@discretize/gw2-ui-new';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
