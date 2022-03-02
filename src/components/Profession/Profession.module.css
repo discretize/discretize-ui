@@ -73,7 +73,7 @@
   background-image: url('../../assets/icons/Profession/Weaver.png');
 }
 .imageProfessionCatalyst {
-  /* background-image: url("../../assets/icons/Profession/Catalyst.png"); */
+  background-image: url('../../assets/icons/Profession/Catalyst.png');
 }
 
 .imageProfessionMesmer {
@@ -112,5 +112,5 @@
   background-image: url('../../assets/icons/Profession/Deadeye.png');
 }
 .imageProfessionSpecter {
-  /* background-image: url("../../assets/icons/Profession/Specter.png"); */
+  background-image: url('../../assets/icons/Profession/Specter.png');
 }
