@@ -77,7 +77,6 @@ const DetailsText = ({
   lineProps,
   className,
 }: DetailsProps): ReactElement => {
-  console.log(lines);
   return (
     <div className={className}>
       {lines
