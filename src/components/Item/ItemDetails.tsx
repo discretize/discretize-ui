@@ -93,7 +93,6 @@ const ItemDetails = ({
       </DetailsHeader>
       <div>
         {type === 'Consumable' && <div>Double-click to consume.</div>}
-
         {minPower !== undefined && maxPower !== undefined && (
           <div>
             {`Weapon Strength: `}
@@ -103,12 +102,11 @@ const ItemDetails = ({
           </div>
         )}
 
-        {defense && defense > 0 && (
+        {defense && defense > 0 ? (
           <div>
-            {`Defense: `}
-            <span className={css.attributeColor}>{defense}</span>
+            Defense: <span className={css.attributeColor}>{defense}</span>
           </div>
-        )}
+        ) : undefined}
 
         {attributes &&
           attributes.length > 0 &&
@@ -127,7 +125,6 @@ const ItemDetails = ({
               </div>
             ),
           )}
-
         {(!attributes || !attributes.length) &&
           (buffDescription || (!upgrade && description)) && (
             <DetailsText
@@ -140,7 +137,6 @@ const ItemDetails = ({
               }
             />
           )}
-
         {/* Rune effects */}
         {bonuses &&
           bonuses.length > 0 &&
