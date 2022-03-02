@@ -4,7 +4,7 @@ import GW2ApiTrait, { GW2ApiTraitSkill } from '../../gw2api/types/traits/trait';
 import factsOrder from '../../helpers/factsOrder';
 import DetailsFact from '../DetailsFact/DetailsFact';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
-import DetailsText from '../DetailsText/DetailsText';
+import DetailsText, { renderFlavor } from '../DetailsText/DetailsText';
 import Spinner from '../Spinner/Spinner';
 import css from './AbilityDetails.module.css';
 
@@ -67,7 +67,7 @@ const AbilityDetails = ({ data }: AbilityDetailsProps) => {
                   .filter((category) => !invalidCategories.includes(category))
                   .map((category) => `${category}. `)}
             </span>
-            {description}
+            {renderFlavor(description || '')}
           </>,
         ]}
         lineComponent="span"

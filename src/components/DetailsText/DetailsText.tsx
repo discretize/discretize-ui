@@ -4,7 +4,7 @@ import css from './DetailsText.module.css';
 
 const REGEX = new RegExp('<c=@([^>]+?>[^<>]+?)(?:</c>|$)', 'g');
 
-const renderFlavor = (text: string) => {
+export const renderFlavor = (text: string) => {
   const parts: (string | string[])[] = text
     .replace(/<br\s*?\/?\s*?>/g, '\n')
     .split(REGEX);
@@ -13,6 +13,7 @@ const renderFlavor = (text: string) => {
     const [type, textPart] = (parts[i] as string).split('>');
     if (type) {
       let color;
+
       switch (type) {
         case 'ability':
           color = null;
@@ -76,6 +77,7 @@ const DetailsText = ({
   lineProps,
   className,
 }: DetailsProps): ReactElement => {
+  console.log(lines);
   return (
     <div className={className}>
       {lines
