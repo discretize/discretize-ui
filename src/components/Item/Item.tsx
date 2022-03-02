@@ -109,43 +109,45 @@ const Item = (props: ItemProps): ReactElement => {
   let stattedItemData = itemdata;
   if (
     stat &&
-    itemdata.details?.type && //TODO is there a better way of doing that? [ listOfTypes ].includes(itemdata.details.type) was not recognized by TS
-    (itemdata.details.type === 'Ring' ||
-      itemdata.details.type === 'Accessory' ||
-      itemdata.details.type === 'Amulet' ||
-      itemdata.details.type === 'HeavyArmor' ||
-      itemdata.details.type === 'MediumArmor' ||
-      itemdata.details.type === 'LightArmor' ||
-      itemdata.details.type === 'Axe' ||
-      itemdata.details.type === 'Dagger' ||
-      itemdata.details.type === 'Mace' ||
-      itemdata.details.type === 'Pistol' ||
-      itemdata.details.type === 'Scepter' ||
-      itemdata.details.type === 'Sword' ||
-      itemdata.details.type === 'Focus' ||
-      itemdata.details.type === 'Shield' ||
-      itemdata.details.type === 'Torch' ||
-      itemdata.details.type === 'Warhorn' ||
-      itemdata.details.type === 'Greatsword' ||
-      itemdata.details.type === 'Hammer' ||
-      itemdata.details.type === 'LongBow' ||
-      itemdata.details.type === 'Rifle' ||
-      itemdata.details.type === 'ShortBow' ||
-      itemdata.details.type === 'Staff' ||
-      itemdata.details.type === 'Harpoon' ||
-      itemdata.details.type === 'Speargun' ||
-      itemdata.details.type === 'Trident')
+    ((itemdata.details?.type && //TODO is there a better way of doing that? [ listOfTypes ].includes(itemdata.details.type) was not recognized by TS
+      (itemdata.details.type === 'Ring' ||
+        itemdata.details.type === 'Accessory' ||
+        itemdata.details.type === 'Amulet' ||
+        itemdata.details.type === 'HeavyArmor' ||
+        itemdata.details.type === 'MediumArmor' ||
+        itemdata.details.type === 'LightArmor' ||
+        itemdata.details.type === 'Axe' ||
+        itemdata.details.type === 'Dagger' ||
+        itemdata.details.type === 'Mace' ||
+        itemdata.details.type === 'Pistol' ||
+        itemdata.details.type === 'Scepter' ||
+        itemdata.details.type === 'Sword' ||
+        itemdata.details.type === 'Focus' ||
+        itemdata.details.type === 'Shield' ||
+        itemdata.details.type === 'Torch' ||
+        itemdata.details.type === 'Warhorn' ||
+        itemdata.details.type === 'Greatsword' ||
+        itemdata.details.type === 'Hammer' ||
+        itemdata.details.type === 'LongBow' ||
+        itemdata.details.type === 'Rifle' ||
+        itemdata.details.type === 'ShortBow' ||
+        itemdata.details.type === 'Staff' ||
+        itemdata.details.type === 'Harpoon' ||
+        itemdata.details.type === 'Speargun' ||
+        itemdata.details.type === 'Trident')) ||
+      itemdata.type === 'Back')
   ) {
     const createdData = createItem({
-      type: itemdata.details?.type,
+      type:
+        itemdata.type === 'Back' ? 'Back Item' : itemdata.details?.type || '',
       stat,
       weight: itemdata.details?.weight_class,
     });
 
-    const details: GW2ApiItemDetails = {
+    const details = {
       ...itemdata.details,
       infix_upgrade: createdData.details.infix_upgrade,
-    };
+    } as GW2ApiItemDetails;
 
     stattedItemData = {
       ...itemdata,
