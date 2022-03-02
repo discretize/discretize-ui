@@ -1,6 +1,6 @@
 {
-  "name": "gw2-ui-new",
-  "version": "1.0.0",
+  "name": "@discretize/gw2-ui-new",
+  "version": "0.0.1",
   "private": false,
   "description": "React components and API wrapper for Guild Wars 2",
   "keywords": [
@@ -29,7 +29,9 @@
     "dev": "yarn storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "node ./build.mjs"
+    "build": "node ./build.mjs",
+    "prepublish": "yarn build",
+    "publish": "yarn publish"
   },
   "commitlint": {
     "extends": [
