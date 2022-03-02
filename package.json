@@ -1,6 +1,6 @@
 {
   "name": "@discretize/react-discretize-components",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "The source repo for common react components of discretize projects",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.16.3",
-    "@discretize/gw2-ui-new": "^0.0.1",
+    "@discretize/gw2-ui-new": "^0.0.3",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.7",
     "classnames": "^2.3.1",
