@@ -30,8 +30,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "node ./build.mjs",
-    "prepublish": "yarn build",
-    "publish": "yarn publish"
+    "prepublish": "yarn build"
   },
   "commitlint": {
     "extends": [
