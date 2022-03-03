@@ -10,7 +10,7 @@ Dependencies in the implementing application:
 
 - react
 - gatsby-plugin-image
-- gw2-ui-bulk
+- gw2-ui-new
 - material-ui v4
 
 ## Included components

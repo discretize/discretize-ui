@@ -1,6 +1,6 @@
 import { Grid, useMediaQuery, useTheme } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
-import { Icon } from 'gw2-ui-components-bulk';
+import { Icon } from '@discretize/gw2-ui-new';
 import Skill from '../Skill';
 
 const useStyles = makeStyles()((theme) => ({

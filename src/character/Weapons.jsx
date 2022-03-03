@@ -1,6 +1,6 @@
 import { List, ListItem, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
-import { Icon, Item } from 'gw2-ui-bulk';
+import { Icon, Item } from '@discretize/gw2-ui-new';
 import NoSelection from '../NoSelection';
 import TextDivider from '../TextDivider';
 

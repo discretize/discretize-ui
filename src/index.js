@@ -13,10 +13,9 @@ import TextDivider from './TextDivider';
 import NoSelection from './NoSelection';
 
 import globals from './styles/globals';
-import gw2uiBaseTheme from './styles/gw2uiBaseTheme'
-import muiTheme from './styles/muiTheme'
-import professionTheme from './styles/professionThemes'
-import Layout from './styles/Layout'
+import muiTheme from './styles/muiTheme';
+import professionTheme from './styles/professionThemes';
+import Layout from './styles/Layout';
 
 export {
   Character,
@@ -31,8 +30,7 @@ export {
   TextDivider,
   NoSelection,
   globals,
-  gw2uiBaseTheme,
   muiTheme,
   professionTheme,
-  Layout
+  Layout,
 };

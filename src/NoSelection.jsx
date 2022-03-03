@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { makeStyles } from 'tss-react/mui';
-import { DetailsHeader } from 'gw2-ui-components-bulk';
-import { Tooltip, Icon } from 'gw2-ui-bulk';
+import { Tooltip, Icon, DetailsHeader } from '@discretize/gw2-ui-new';
 import iconSizes from './helpers/iconSizes';
 
 const useStyles = makeStyles()((theme) => ({

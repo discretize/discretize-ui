@@ -1,6 +1,6 @@
-import { Paper } from '@mui/material'
-import { createTheme } from '@mui/material/styles'
-import React from 'react'
+import { Paper } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import React from 'react';
 
 const theme = createTheme({
   palette: {
@@ -48,14 +48,8 @@ const theme = createTheme({
     h6: {
       fontFamily: 'Raleway',
     },
-    body1: {
-      fontFamily: 'Raleway',
-    },
-    body2: {
-      fontFamily: 'Raleway',
-    },
   },
-})
+});
 export default createTheme(theme, {
   components: {
     MuiSvgIcon: {
@@ -237,14 +231,11 @@ export default createTheme(theme, {
     MuiAutocomplete: {
       defaultProps: {
         PaperComponent: ({ children }) => (
-          <Paper
-            elevation={3}
-            sx={{ background: theme.palette.background.paper }}
-          >
+          <Paper elevation={3} sx={{ background: theme.palette.background.paper }}>
             {children}
           </Paper>
         ),
       },
     },
   },
-})
+});

@@ -1,6 +1,6 @@
 {
   "name": "@discretize/react-discretize-components",
-  "version": "2.0.9",
+  "version": "2.1.4",
   "description": "The source repo for common react components of discretize projects",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -20,7 +20,8 @@
   ],
   "scripts": {
     "build": "del-cli es lib && rollup -c --environment BUILD:production",
-    "serve": "rollup -c -w --environment BUILD:development"
+    "serve": "rollup -c -w --environment BUILD:development",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -51,11 +52,11 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.16.3",
+    "@discretize/gw2-ui-new": "^0.0.3",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.7",
     "classnames": "^2.3.1",
     "gatsby-plugin-image": "^2.4.0",
-    "gw2-ui-bulk": "^0.11.18",
     "tss-react": "^3.3.1",
     "typeface-fira-mono": "^0.0.72",
     "typeface-menomonia": "^0.1.2",
