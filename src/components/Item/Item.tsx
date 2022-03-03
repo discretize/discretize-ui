@@ -139,7 +139,9 @@ const Item = (props: ItemProps): ReactElement => {
   ) {
     const createdData = createItem({
       type:
-        itemdata.type === 'Back' ? 'Back Item' : itemdata.details?.type || '',
+        itemdata.type === 'Back'
+          ? 'Back Item'
+          : itemdata.details?.type?.replace(/([A-Z])/g, ' $1').trim() || '',
       stat,
       weight: itemdata.details?.weight_class,
     });
