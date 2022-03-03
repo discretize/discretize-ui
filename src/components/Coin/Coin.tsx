@@ -28,7 +28,7 @@ const Coin = ({ value, className, style }: CoinProps): ReactElement => {
   copper %= 100;
 
   return (
-    <div style={style} className={clsx(className, css.root)}>
+    <span style={style} className={clsx(className, css.root)}>
       {gold > 0 && (
         <>
           <span className={css.gold}>
@@ -53,7 +53,7 @@ const Coin = ({ value, className, style }: CoinProps): ReactElement => {
         </span>
         <Icon src={copperImg} gutterLeft />
       </>
-    </div>
+    </span>
   );
 };
 
