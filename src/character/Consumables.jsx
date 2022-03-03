@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
 import { Item, ConsumableEffect } from '@discretize/gw2-ui-new';
+import NoSelection from '../NoSelection';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -37,13 +38,21 @@ const Consumables = ({ foodData, utilityData, infusionData, foodId, utilityId, i
   return (
     <Box className={classes.root}>
       <Box className={classes.gridItem}>
-        <Item data={foodData} id={foodId} className={classes.gw2Item} disableText />
+        {foodId || foodData ? (
+          <Item data={foodData} id={foodId} className={classes.gw2Item} disableText />
+        ) : (
+          <NoSelection className={classes.gw2Item} />
+        )}
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           <ConsumableEffect name="Nourishment" disableText /> Food
         </Typography>
       </Box>
       <Box className={classNames(classes.gridItem, classes.borderLeft)}>
-        <Item data={utilityData} id={utilityId} className={classes.gw2Item} disableText />
+        {utilityData || utilityId ? (
+          <Item data={utilityData} id={utilityId} className={classes.gw2Item} disableText />
+        ) : (
+          <NoSelection className={classes.gw2Item} />
+        )}
         <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
           <ConsumableEffect name="Enhancement" disableText /> Utility
         </Typography>
