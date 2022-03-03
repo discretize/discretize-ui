@@ -35,6 +35,20 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
+/**
+ * Creates an array of upgrades that can be passed on to the Item component. Undefined values will be filtered out.
+ * @param {number | undefined} infusionId id of the infusion
+ * @param {number | undefined} runeId id of the rune
+ * @param {number | undefined} runeCount number of runes that should be highlighted
+ * @returns
+ */
+function createUpgrades(infusionId, runeId, runeCount) {
+  let upgrades = [];
+  if (infusionId) upgrades = [infusionId];
+  if (runeId) upgrades = [...upgrades, [runeId, runeCount]];
+  return upgrades;
+}
+
 const Armor = ({
   helmData,
   helmId,
@@ -80,17 +94,14 @@ const Armor = ({
   bootsRune,
 }) => {
   const { classes } = useStyles();
+
   return (
     <List disablePadding>
       <ListItem disableGutters className={classes.listItem}>
         <Item
           data={helmData}
           id={helmId}
-          upgrades={
-            helmInfusionId
-              ? [helmInfusionId, [helmRuneId, helmRuneCount]]
-              : [[helmRuneId, helmRuneCount]]
-          }
+          upgrades={createUpgrades(helmInfusionId, helmRuneId, helmRuneCount)}
           disableText
           className={classes.gw2Item}
         />
@@ -106,11 +117,7 @@ const Armor = ({
         <Item
           data={shouldersData}
           id={shouldersId}
-          upgrades={
-            shouldersInfusionId
-              ? [shouldersInfusionId, [shouldersRuneId, shouldersRuneCount]]
-              : [[shouldersRuneId, shouldersRuneCount]]
-          }
+          upgrades={createUpgrades(shouldersInfusionId, shouldersRuneId, shouldersRuneCount)}
           disableText
           className={classes.gw2Item}
         />
@@ -126,11 +133,7 @@ const Armor = ({
         <Item
           data={coatData}
           id={coatId}
-          upgrades={
-            coatInfusionId
-              ? [coatInfusionId, [coatRuneId, coatRuneCount]]
-              : [[coatRuneId, coatRuneCount]]
-          }
+          upgrades={createUpgrades(coatInfusionId, coatRuneId, coatRuneCount)}
           disableText
           className={classes.gw2Item}
         />
@@ -146,11 +149,7 @@ const Armor = ({
         <Item
           data={glovesData}
           id={glovesId}
-          upgrades={
-            glovesInfusionId
-              ? [glovesInfusionId, [glovesRuneId, glovesRuneCount]]
-              : [[glovesRuneId, glovesRuneCount]]
-          }
+          upgrades={createUpgrades(glovesInfusionId, glovesRuneId, glovesRuneCount)}
           disableText
           className={classes.gw2Item}
         />
@@ -166,11 +165,7 @@ const Armor = ({
         <Item
           data={leggingsData}
           id={leggingsId}
-          upgrades={
-            leggingsInfusionId
-              ? [leggingsInfusionId, [leggingsRuneId, leggingsRuneCount]]
-              : [[leggingsRuneId, leggingsRuneCount]]
-          }
+          upgrades={createUpgrades(leggingsInfusionId, leggingsRuneId, leggingsRuneCount)}
           disableText
           className={classes.gw2Item}
         />
@@ -186,11 +181,7 @@ const Armor = ({
         <Item
           data={bootsData}
           id={bootsId}
-          upgrades={
-            bootsInfusionId
-              ? [bootsInfusionId, [bootsRuneId, bootsRuneCount]]
-              : [[bootsRuneId, bootsRuneCount]]
-          }
+          upgrades={createUpgrades(bootsInfusionId, bootsRuneId, bootsRuneCount)}
           disableText
           className={classes.gw2Item}
         />
