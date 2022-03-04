@@ -45,13 +45,14 @@ const Item = (props: ItemProps): ReactElement => {
     inline,
     upgrades,
     type: typeProps,
-    stat: statProps,
+    stat: statRaw,
     weight: weightProps,
     rarity: rarityProps,
     level: levelProps,
     style,
     className,
   } = props;
+  const statProps = capitalize(statRaw);
 
   let ids = [];
   if (upgrades) {

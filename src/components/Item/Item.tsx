@@ -44,7 +44,7 @@ const Item = (props: ItemProps): ReactElement => {
     id,
     text,
     count = 1,
-    stat,
+    stat: statRaw,
     disableIcon,
     disableText,
     disableLink,
@@ -56,6 +56,7 @@ const Item = (props: ItemProps): ReactElement => {
     style,
     className,
   } = props;
+  const stat = statRaw ? capitalize(statRaw) : undefined;
 
   let ids = [id];
   if (upgrades) {
