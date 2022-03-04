@@ -138,11 +138,14 @@ const Item = (props: ItemProps): ReactElement => {
         itemdata.details.type === 'Trident')) ||
       itemdata.type === 'Back')
   ) {
+    // adjust the time due to api inconsistencies: Short Bow <==> Longbow
+    let type = itemdata.details?.type || '';
+    if (itemdata.type === 'Back') type = 'Back Item';
+    else if (itemdata.details?.type === 'LongBow') type = 'Longbow';
+    else if (itemdata.details?.type === 'ShortBow') type = 'Short Bow';
+
     const createdData = createItem({
-      type:
-        itemdata.type === 'Back'
-          ? 'Back Item'
-          : itemdata.details?.type?.replace(/([A-Z])/g, ' $1').trim() || '',
+      type,
       stat,
       weight: itemdata.details?.weight_class,
     });
