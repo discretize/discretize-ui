@@ -24,6 +24,7 @@ import TooltipContainer from './TooltipContainer/TooltipContainer';
 import Trait from './Trait/Trait';
 import TraitLine from './TraitLine/TraitLine';
 import WikiLink from './WikiLink/WikiLink';
+import IconWithText from './IconWithText/IconWithText';
 
 export {
   Attribute,
@@ -39,6 +40,7 @@ export {
   DetailsHeader,
   Error,
   Icon,
+  IconWithText,
   Item,
   MistlockInstability,
   Profession,
