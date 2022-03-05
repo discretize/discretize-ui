@@ -28,7 +28,7 @@ import {
   GW2ApiFactHeal,
   GW2ApiFactHealingAdjust,
 } from '../../gw2api/types/common/fact';
-import { Icon } from '..';
+import Icon from '../Icon/Icon';
 import { attributes } from '../../builder';
 import { capitalize } from '../../helpers/capitalize';
 
