@@ -4,4 +4,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   z-index: 1500;
+  pointer-events: none;
+  padding: 5px;
 }
