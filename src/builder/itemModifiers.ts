@@ -1,40 +1,40 @@
-import ITEM_CATEGORIES, { ItemCategoryName } from './itemCategoryNames'
-import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames'
-import ITEM_RARITIES, { ItemRarity } from './itemRarities'
-import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes'
-import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights'
+import ITEM_CATEGORIES, { ItemCategoryName } from './itemCategoryNames';
+import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames';
+import ITEM_RARITIES, { ItemRarity } from './itemRarities';
+import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes';
+import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights';
 
-export type ItemModifier = number
+export type ItemModifier = number;
 
 export type ItemModifierAttribute =
   | [ItemModifier]
-  | [ItemModifier, ItemModifier]
+  | [ItemModifier, ItemModifier];
 
 export interface ItemModifierAttributes {
-  [itemStatType: ItemStatType]: ItemModifierAttribute
+  [itemStatType: ItemStatType]: ItemModifierAttribute;
 }
 
 export interface ItemModifierDefense {
-  [itemArmorWeight: ItemArmorWeight]: ItemModifier
+  [itemArmorWeight: ItemArmorWeight]: ItemModifier;
 }
 
 export interface ItemModifiers {
-  attributes: ItemModifierAttributes
-  defense?: ItemModifierDefense | ItemModifier
-  minPower?: ItemModifier
-  maxPower?: ItemModifier
+  attributes: ItemModifierAttributes;
+  defense?: ItemModifierDefense | ItemModifier;
+  minPower?: ItemModifier;
+  maxPower?: ItemModifier;
 }
 
 export interface ItemModifierType {
-  [itemRarity: ItemRarity]: ItemModifiers
+  [itemRarity: ItemRarity]: ItemModifiers;
 }
 
 export interface ItemModifierCategory {
-  [itemTypeName: ItemTypeName]: ItemModifierType
+  [itemTypeName: ItemTypeName]: ItemModifierType;
 }
 
 export interface ItemModifiersCollection {
-  [itemCategory: ItemCategoryName]: ItemModifierCategory
+  [itemCategory: ItemCategoryName]: ItemModifierCategory;
 }
 
 const itemModifiers: ItemModifiersCollection = {
@@ -346,7 +346,40 @@ const itemModifiers: ItemModifiersCollection = {
         maxPower: 945,
       },
     },
+    [ITEM_TYPE_NAMES.TRIDENT]: {
+      [ITEM_RARITIES.ASCENDED]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [251, 179],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [215, 118],
+          [ITEM_STAT_TYPES.ALL]: [118],
+        },
+        minPower: 950,
+        maxPower: 1050,
+      },
+    },
+    [ITEM_TYPE_NAMES.HARPOON]: {
+      [ITEM_RARITIES.ASCENDED]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [251, 179],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [215, 118],
+          [ITEM_STAT_TYPES.ALL]: [118],
+        },
+        minPower: 950,
+        maxPower: 1050,
+      },
+    },
+    [ITEM_TYPE_NAMES.SPEARGUN]: {
+      [ITEM_RARITIES.ASCENDED]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [251, 179],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [215, 118],
+          [ITEM_STAT_TYPES.ALL]: [118],
+        },
+        minPower: 950,
+        maxPower: 1050,
+      },
+    },
   },
-}
+};
 
-export default itemModifiers
+export default itemModifiers;

@@ -1,40 +1,44 @@
-import ValueOf from './valueOf'
+import ValueOf from './valueOf';
 
-export type ItemTypeName = ValueOf<ItemTypeNames>
+export type ItemTypeName = ValueOf<ItemTypeNames>;
 
 export interface ItemTypeNames {
-  HELM: string
-  SHOULDERS: string
-  COAT: string
-  GLOVES: string
-  LEGGINGS: string
-  BOOTS: string
+  HELM: string;
+  SHOULDERS: string;
+  COAT: string;
+  GLOVES: string;
+  LEGGINGS: string;
+  BOOTS: string;
 
-  ACCESSORY: string
-  AMULET: string
-  RING: string
+  ACCESSORY: string;
+  AMULET: string;
+  RING: string;
 
-  BACK_ITEM: string
+  BACK_ITEM: string;
 
-  GREATSWORD: string
-  HAMMER: string
-  LONGBOW: string
-  RIFLE: string
-  SHORT_BOW: string
-  STAFF: string
+  GREATSWORD: string;
+  HAMMER: string;
+  LONGBOW: string;
+  RIFLE: string;
+  SHORT_BOW: string;
+  STAFF: string;
 
-  AXE: string
-  DAGGER: string
-  MACE: string
-  PISTOL: string
-  SWORD: string
+  AXE: string;
+  DAGGER: string;
+  MACE: string;
+  PISTOL: string;
+  SWORD: string;
 
-  SCEPTER: string
+  SCEPTER: string;
 
-  FOCUS: string
-  SHIELD: string
-  TORCH: string
-  WARHORN: string
+  FOCUS: string;
+  SHIELD: string;
+  TORCH: string;
+  WARHORN: string;
+
+  HARPOON: string;
+  SPEARGUN: string;
+  TRIDENT: string;
 }
 
 const itemTypeNames: ItemTypeNames = {
@@ -70,6 +74,10 @@ const itemTypeNames: ItemTypeNames = {
   SHIELD: 'Shield',
   TORCH: 'Torch',
   WARHORN: 'Warhorn',
-}
 
-export default itemTypeNames
+  HARPOON: 'Harpoon',
+  SPEARGUN: 'Speargun',
+  TRIDENT: 'Trident',
+};
+
+export default itemTypeNames;
