@@ -42,7 +42,7 @@ const NULL_RECT = rect(0, 0);
 
 // useLayoutEffect does not exist in some SSR solutions
 const useLayoutEffectSafe =
-  document !== undefined ? useLayoutEffect : useEffect;
+  typeof document !== 'undefined' ? useLayoutEffect : useEffect;
 
 const Tooltip = ({
   children,
