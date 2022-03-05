@@ -94,7 +94,7 @@ const Item = (props: ItemProps): ReactElement => {
             level: levelProps,
           })
         : undefined;
-    if (!createdData) throw 'unspecified error';
+    if (!createdData) throw 'Unspecified error';
   } catch (e) {
     return (
       <Error

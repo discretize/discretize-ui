@@ -144,11 +144,23 @@ const Item = (props: ItemProps): ReactElement => {
     else if (itemdata.details?.type === 'LongBow') type = 'Longbow';
     else if (itemdata.details?.type === 'ShortBow') type = 'Short Bow';
 
-    const createdData = createItem({
-      type,
-      stat,
-      weight: itemdata.details?.weight_class,
-    });
+    let createdData;
+    try {
+      createdData = createItem({
+        type,
+        stat,
+        weight: itemdata.details?.weight_class,
+      });
+    } catch (e) {
+      console.error(`Error while loading item with id ${id}!\n ${e}`);
+      return (
+        <Error
+          name="Invalid Item"
+          message={`An error occured ${id}: ${e}`}
+          code={404}
+        />
+      );
+    }
 
     const details = {
       ...itemdata.details,
