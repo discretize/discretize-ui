@@ -24,7 +24,7 @@ export const APILanguageContext = React.createContext<APILanguage>(
 
 export const APILanguageProvider = APILanguageContext.Provider;
 
-type Translation = Partial<Record<APILanguage, string>>;
+export type Translation = Partial<Record<APILanguage, string>>;
 export type TranslationMap = Record<string, Translation>;
 
 // Use this to translate a string. You need to figure out the appropriate language yourself.

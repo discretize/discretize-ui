@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { CSSProperties, ReactElement, useContext } from 'react';
 
 import Tooltip from '../Tooltip/Tooltip';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
@@ -7,7 +7,12 @@ import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import Error from '../Error/Error';
 
-import ATTRIBUTES, { AttributeTypes } from '../../data/attributes';
+import { AttributeTypes } from '../../data/attributes';
+import {
+  TRANSLATIONS_ATTRIBUTES,
+  TRANSLATIONS_ATTRIBUTE_DESCRIPTIONS,
+} from '../../i18n/attributes';
+import { APILanguageContext, translate } from '../../i18n';
 import css from './Attribute.module.css';
 import clsx from 'clsx';
 
@@ -34,12 +39,9 @@ const Attribute = ({
   style,
   className,
 }: AttributeProps): ReactElement => {
-  const description = Object.values(ATTRIBUTES).reduce<string | undefined>(
-    (prev, cur) => cur[name] || prev,
-    undefined,
-  );
+  const language = useContext(APILanguageContext);
 
-  if (!name || typeof description === 'undefined') {
+  if (!name || !TRANSLATIONS_ATTRIBUTES[name]) {
     return (
       <Error
         code={404}
@@ -53,11 +55,18 @@ const Attribute = ({
     );
   }
 
+  let translation = translate(TRANSLATIONS_ATTRIBUTES, name, language);
+  let description = translate(
+    TRANSLATIONS_ATTRIBUTE_DESCRIPTIONS,
+    name,
+    language,
+  );
+
   return (
     <Tooltip
       content={
         <>
-          <DetailsHeader>{name}</DetailsHeader>
+          <DetailsHeader>{translation}</DetailsHeader>
           <DetailsText lines={[description]} />
         </>
       }
@@ -66,9 +75,13 @@ const Attribute = ({
       <IconWithText
         text={
           disableLink ? (
-            text || name
+            text || translation
           ) : (
-            <WikiLink to={name} text={text} className={css.wikiLink} />
+            <WikiLink
+              to={name}
+              text={text || translation}
+              className={css.wikiLink}
+            />
           )
         }
         disableIcon={disableIcon}
