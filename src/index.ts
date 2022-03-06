@@ -1,4 +1,4 @@
-import { APILanguageProvider } from './gw2api/hooks';
+import { APILanguageProvider } from './i18n';
 
 export { APILanguageProvider };
 export * from './components/index';

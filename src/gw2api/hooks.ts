@@ -1,31 +1,11 @@
 import * as React from 'react';
+import { APILanguage, APILanguageContext } from '../i18n';
 
-import APICache, { APILanguage, API_LANGUAGES, Id } from './cache';
+import APICache, { Id } from './cache';
 import GW2ApiItem from './types/items/item';
 import { GW2ApiSkill } from './types/skills/skill';
 import GW2ApiSpecialization from './types/specialization/specialization';
 import GW2ApiTrait from './types/traits/trait';
-
-function isAPILanguage(l: string): l is APILanguage {
-  return API_LANGUAGES.indexOf(l) >= 0;
-}
-
-function getNavigatorDefaultLanguage(): APILanguage {
-  if (typeof navigator === 'undefined') return 'en';
-  const languages = navigator.languages || [navigator.language];
-  for (let l of languages) {
-    l = l.split('-')[0].toLowerCase(); // en-US -> en
-    if (isAPILanguage(l)) return l;
-  }
-
-  return 'en';
-}
-
-export const APILanguageContext = React.createContext<APILanguage>(
-  getNavigatorDefaultLanguage(),
-);
-
-export const APILanguageProvider = APILanguageContext.Provider;
 
 function getCache<T extends { id: number }>(
   record: Partial<Record<APILanguage, APICache<T>>>,

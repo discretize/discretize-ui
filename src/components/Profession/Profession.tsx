@@ -1,16 +1,14 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import React, { CSSProperties, ReactElement } from 'react';
-import PROFESSIONS, {
-  getTranslatedProfession,
-  ProfessionTypes,
-} from '../../data/professions';
+import PROFESSIONS, { ProfessionTypes } from '../../data/professions';
 import professioncss from './professions.module.css';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import css from './Profession.module.css';
-import { APILanguageContext } from '../../gw2api/hooks';
+import { APILanguageContext, translate } from '../../i18n';
+import TRANSLATIONS_PROFESSIONS from '../../i18n/professions';
 
 export interface ProfessionProps {
   name: ProfessionTypes;
@@ -72,10 +70,11 @@ const Profession = ({
     );
   }
 
-  const translatedText = getTranslatedProfession({
-    profession: specialization,
+  const translatedText = translate(
+    TRANSLATIONS_PROFESSIONS,
+    specialization,
     language,
-  });
+  );
 
   return (
     <IconWithText

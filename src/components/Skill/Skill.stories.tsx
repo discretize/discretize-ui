@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { APILanguageProvider } from '../../gw2api/hooks';
+import { APILanguageProvider } from '../../i18n/';
 import Skill from './Skill';
 
 export default {

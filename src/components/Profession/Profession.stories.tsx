@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { APILanguageProvider } from '../../gw2api/hooks';
+import { APILanguageProvider } from '../../i18n/';
 import Profession from './Profession';
 
 export default {
@@ -28,11 +28,12 @@ invalid.args = {
 export function Translated() {
   return (
     <>
-      This is an english guardian: <Profession name="Guardian" />
+      This is an english guardian: <Profession name="Guardian" />,{' '}
+      <Profession name="Willbender" />
       <APILanguageProvider value="zh">
         <p>
           This is a chinese guardian:
-          <Profession name="Guardian" />
+          <Profession name="Guardian" />, <Profession name="Willbender" />
         </p>
       </APILanguageProvider>
     </>
