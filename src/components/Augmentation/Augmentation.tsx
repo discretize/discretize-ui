@@ -1,5 +1,10 @@
-import React, { CSSProperties, ReactElement } from 'react';
-import augmentations, { AugmentationsTypes } from '../../data/augmentations';
+import React, { CSSProperties, ReactElement, useContext } from 'react';
+import { AugmentationsTypes } from '../../data/augmentations';
+import { APILanguageContext, translate } from '../../i18n';
+import {
+  TRANSLATIONS_AUGMENTATIONS,
+  TRANSLATIONS_AUGMENTATION_DESCRIPTIONS,
+} from '../../i18n/augmentations';
 import Effect from '../Effect/Effect';
 
 export interface AugmentationProps {
@@ -12,26 +17,23 @@ export interface AugmentationProps {
   style?: CSSProperties;
 }
 
-const Augmentation = ({
-  name,
-  disableTooltip,
-  disableText,
-  disableLink,
-  disableIcon,
-  className,
-  style,
-}: AugmentationProps): ReactElement => {
+const Augmentation = (props: AugmentationProps): ReactElement => {
+  const { name } = props;
+  const language = useContext(APILanguageContext);
+
+  let translation = translate(TRANSLATIONS_AUGMENTATIONS, name, language);
+  let description = translate(
+    TRANSLATIONS_AUGMENTATION_DESCRIPTIONS,
+    name,
+    language,
+  );
+
   return (
     <Effect
+      {...props}
       type="Augmentation"
-      name={name}
-      description={augmentations[name]}
-      disableTooltip={disableTooltip}
-      disableText={disableText}
-      disableLink={disableLink}
-      disableIcon={disableIcon}
-      className={className}
-      style={style}
+      name={translation}
+      description={description}
     />
   );
 };
