@@ -33,6 +33,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "node ./build.mjs",
+    "generate-from-api": "node --experimental-fetch ./generate_from_api.mjs",
     "deploy-storybook": "gh-pages -d storybook-static",
     "prepublish": "yarn build",
     "postpublish": "yarn build-storybook && yarn deploy-storybook"
