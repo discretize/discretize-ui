@@ -1,5 +1,10 @@
-import React, { CSSProperties, ReactElement } from 'react';
-import BOONS, { BoonsTypes } from '../../data/boons';
+import React, { CSSProperties, ReactElement, useContext } from 'react';
+import { BoonsTypes } from '../../data/boons';
+import { APILanguageContext, translate } from '../../i18n';
+import {
+  TRANSLATIONS_BOONS,
+  TRANSLATIONS_BOON_DESCRIPTIONS,
+} from '../../i18n/boons';
 import Effect from '../Effect/Effect';
 
 export interface BoonProps {
@@ -13,28 +18,20 @@ export interface BoonProps {
   style?: CSSProperties;
 }
 
-const Boon = ({
-  name,
-  count = 1,
-  disableTooltip,
-  disableText,
-  disableLink,
-  disableIcon,
-  className,
-  style,
-}: BoonProps): ReactElement => {
+const Boon = (props: BoonProps): ReactElement => {
+  const { name, count = 1 } = props;
+  const language = useContext(APILanguageContext);
+
+  let translation = translate(TRANSLATIONS_BOONS, name, language);
+  let description = translate(TRANSLATIONS_BOON_DESCRIPTIONS, name, language);
+
   return (
     <Effect
+      {...props}
       type="Boon"
-      name={name}
-      description={BOONS[name]}
+      name={translation}
+      description={description}
       iconProps={{ applyCount: count }}
-      disableTooltip={disableTooltip}
-      disableText={disableText}
-      disableLink={disableLink}
-      disableIcon={disableIcon}
-      className={className}
-      style={style}
     />
   );
 };
