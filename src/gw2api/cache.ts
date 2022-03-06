@@ -19,14 +19,6 @@ const FETCH_OPTIONS: RequestInit = {
 // All ids used by the API are numeric, so let's name a type for readability.
 export type Id = number;
 
-async function fetch_api(path: string): Promise<unknown> {
-  let url = GW2_API_URL + path;
-  let res = await fetch(url, FETCH_OPTIONS);
-  if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
-  let json = await res.json();
-  return json;
-}
-
 // A few type guards to check API responses
 function isPlainObject(o: unknown): o is Record<string, unknown> {
   return (
