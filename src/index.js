@@ -11,6 +11,7 @@ import firstUppercase from './helpers/firstUppercase';
 
 import TextDivider from './TextDivider';
 import NoSelection from './NoSelection';
+import HelperIcon from './HelperIcon';
 
 import globals from './styles/globals';
 import muiTheme from './styles/muiTheme';
@@ -29,6 +30,7 @@ export {
   firstUppercase,
   TextDivider,
   NoSelection,
+  HelperIcon,
   globals,
   muiTheme,
   professionTheme,

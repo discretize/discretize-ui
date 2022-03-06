@@ -52,8 +52,9 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.16.3",
-    "@discretize/gw2-ui-new": "^0.0.3",
+    "@discretize/gw2-ui-new": "^0.0.7",
     "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.2.7",
     "classnames": "^2.3.1",
     "gatsby-plugin-image": "^2.4.0",
