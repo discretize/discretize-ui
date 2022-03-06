@@ -127,9 +127,10 @@ export default PROFESSIONS;
   writeSource(
     'i18n/professions.ts',
     `
-import { type TranslationMap } from '.';
+import type { Translation } from '.';
+import type { ProfessionTypes } from '../data/professions';
 
-const TRANSLATIONS_PROFESSIONS: TranslationMap = ${JSON.stringify(
+const TRANSLATIONS_PROFESSIONS: Record<ProfessionTypes, Translation> = ${JSON.stringify(
       sort_object_by_key(TRANSLATIONS_PROFESSIONS),
     )};
 export default TRANSLATIONS_PROFESSIONS;
