@@ -2,8 +2,12 @@ import React, { CSSProperties, ReactElement } from 'react';
 
 import Effect from '../Effect/Effect';
 
-import controlEffects from '../../data/controlEffects';
 import { ControlEffectTypes } from '../../data/controlEffects';
+import {
+  CONTROL_EFFECTS,
+  CONTROL_EFFECTS_DESCRIPTIONS,
+} from '../../i18n/controlEffects';
+import { useTranslation } from '../../i18n';
 
 export interface ControlEffectProps {
   name: ControlEffectTypes;
@@ -24,11 +28,18 @@ const ControlEffect = ({
   className,
   style,
 }: ControlEffectProps): ReactElement => {
+  const nameTranslated = useTranslation(CONTROL_EFFECTS, name);
+  const descriptionTranslated = useTranslation(
+    CONTROL_EFFECTS_DESCRIPTIONS,
+    name,
+  );
+
   return (
     <Effect
       type="Control"
       name={name}
-      description={controlEffects[name]}
+      displayName={nameTranslated}
+      description={descriptionTranslated}
       disableTooltip={disableTooltip}
       disableText={disableText}
       disableLink={disableLink}
