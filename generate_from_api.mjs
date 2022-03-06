@@ -141,6 +141,23 @@ export default TRANSLATIONS_PROFESSIONS;
   `,
   );
 
+  let SPECIALIZATIONS = Object.fromEntries(
+    PROFESSION_IDS.map((id) => {
+      let p = professions.en[id];
+      return [p.id, [...p.specializations].sort((a, b) => a - b)];
+    }),
+  );
+  writeSource(
+    'data/specializations.ts',
+    `
+import type { ProfessionTypes } from './professions';
+const SPECIALIZATIONS: Partial<Record<ProfessionTypes, number[]>> = ${JSON.stringify(
+      SPECIALIZATIONS,
+    )};
+export default SPECIALIZATIONS;
+  `,
+  );
+
   const RACE_IDS = Object.keys(races.en).sort();
   let TRANSLATIONS_RACES = {};
   for (let id of RACE_IDS) {

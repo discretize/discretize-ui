@@ -74,11 +74,10 @@ const Trait = (props: TraitProps): ReactElement => {
 
   const { name, icon, specialization, skills, slot } = trait.data;
 
-  const [professionRaw] = (specialization &&
+  const [profession] = (specialization &&
     Object.entries(SPECIALIZATIONS).find(([, specializationIds]) =>
       specializationIds.includes(specialization),
     )) || [''];
-  const profession = capitalize(professionRaw);
 
   return (
     <Tooltip
@@ -90,7 +89,7 @@ const Trait = (props: TraitProps): ReactElement => {
 
           {skills &&
             skills.map((skill) => (
-              <TooltipContainer key={`${skill.id}`} className={css.traitSkill}>
+              <TooltipContainer key={skill.id} className={css.traitSkill}>
                 <AbilityDetails data={skill} />
               </TooltipContainer>
             ))}
