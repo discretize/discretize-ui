@@ -2,7 +2,12 @@ import React, { CSSProperties, ReactElement } from 'react';
 
 import Effect from '../Effect/Effect';
 
-import commonEffects, { CommonEffectTypes } from '../../data/commonEffects';
+import { CommonEffectTypes } from '../../data/commonEffects';
+import { useTranslation } from '../../i18n/index';
+import {
+  COMMON_EFFECTS,
+  COMMON_EFFECTS_DESCRIPTIONS,
+} from '../../i18n/commonEffects';
 
 export interface CommonEffectProps {
   name: CommonEffectTypes | 'Mistlock Singularity';
@@ -26,11 +31,18 @@ const CommonEffect = ({
   const name =
     propsName === 'Mistlock Singularity' ? 'Rigorous Certainty' : propsName;
 
+  const nameTranslated = useTranslation(COMMON_EFFECTS, name);
+  const descriptionTranslated = useTranslation(
+    COMMON_EFFECTS_DESCRIPTIONS,
+    name,
+  );
+
   return (
     <Effect
       type="Common"
       name={name}
-      description={commonEffects[name]}
+      displayName={nameTranslated}
+      description={descriptionTranslated}
       disableTooltip={disableTooltip}
       disableText={disableText}
       disableLink={disableLink}

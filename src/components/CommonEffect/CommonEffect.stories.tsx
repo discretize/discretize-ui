@@ -1,5 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
+import { APILanguageProvider } from '../../i18n';
 import CommonEffect from './CommonEffect';
 
 export default {
@@ -18,3 +19,19 @@ export const Simple = Template.bind({});
 Simple.args = {
   name: 'Agony',
 };
+
+export function Translated() {
+  return (
+    <>
+      This is an english effect: <CommonEffect name="Agony" />,{' '}
+      <CommonEffect name="Barrier" />
+      <APILanguageProvider value="zh">
+        <p>
+          This is a chinese effect:
+          <CommonEffect name="Mistlock Singularity" />,{' '}
+          <CommonEffect name="Revealed" />
+        </p>
+      </APILanguageProvider>
+    </>
+  );
+}

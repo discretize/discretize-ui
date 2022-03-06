@@ -93,7 +93,8 @@ const Effect = ({
             displayName || name
           ) : (
             <WikiLink
-              to={displayName || name}
+              to={name}
+              text={displayName}
               {...wikiLinkProps}
               className={clsx(
                 wikiLinkProps?.className,
