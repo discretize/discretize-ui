@@ -1,7 +1,10 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import React, { CSSProperties, ReactElement } from 'react';
-import PROFESSIONS, { ProfessionTypes } from '../../data/professions';
+import PROFESSIONS, {
+  EliteSpecTypes,
+  ProfessionTypes,
+} from '../../data/professions';
 import professioncss from './professions.module.css';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
@@ -11,7 +14,7 @@ import { APILanguageContext, translate } from '../../i18n';
 import TRANSLATIONS_PROFESSIONS from '../../i18n/professions';
 
 export interface ProfessionProps {
-  name: ProfessionTypes;
+  name: ProfessionTypes | EliteSpecTypes;
   text?: string;
   disableTooltip?: boolean;
   disableIcon?: boolean;
@@ -48,7 +51,9 @@ const Profession = ({
     // Need to query the corresponding profession for coloring
     profession =
       Object.keys(PROFESSIONS).find((prof) => {
-        return PROFESSIONS[prof].includes(professionName);
+        return PROFESSIONS[prof as ProfessionTypes].includes(
+          professionName as EliteSpecTypes,
+        );
       }) || '';
     profession = capitalize(profession);
     specialization = capitalize(professionName);

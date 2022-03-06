@@ -75,7 +75,7 @@ async function run() {
 
   console.log('Done fetching, generating files');
   const PROFESSION_IDS = Object.keys(professions.en).sort();
-  let PROFESSION_IDS_WITH_ELITE_SPECS = [...PROFESSION_IDS];
+  let ELITE_SPEC_IDS = [];
   let PROFESSIONS = {};
   let TRANSLATIONS_PROFESSIONS = {};
   for (let id of PROFESSION_IDS) {
@@ -96,7 +96,7 @@ async function run() {
         continue;
       }
       elite_specs.push(t.name);
-      PROFESSION_IDS_WITH_ELITE_SPECS.push(t.name);
+      ELITE_SPEC_IDS.push(t.name);
 
       let translations = {};
       for (let lang of API_LANGUAGES) {
@@ -117,13 +117,17 @@ async function run() {
   writeSource(
     'data/professions.ts',
     `
-export type ProfessionTypes = ${PROFESSION_IDS_WITH_ELITE_SPECS.map((id) =>
-      JSON.stringify(id),
-    )
+export type ProfessionTypes = ${PROFESSION_IDS.map((id) => JSON.stringify(id))
       .sort()
       .join(' | ')};
 
-const PROFESSIONS: Record<string, string[]> = ${JSON.stringify(PROFESSIONS)};
+export type EliteSpecTypes = ${ELITE_SPEC_IDS.map((id) => JSON.stringify(id))
+      .sort()
+      .join(' | ')};
+
+const PROFESSIONS: Record<ProfessionTypes, EliteSpecTypes[]> = ${JSON.stringify(
+      PROFESSIONS,
+    )};
 export default PROFESSIONS;
 `,
   );
@@ -132,9 +136,9 @@ export default PROFESSIONS;
     'i18n/professions.ts',
     `
 import type { Translation } from '.';
-import type { ProfessionTypes } from '../data/professions';
+import type { ProfessionTypes, EliteSpecTypes } from '../data/professions';
 
-const TRANSLATIONS_PROFESSIONS: Record<ProfessionTypes, Translation> = ${JSON.stringify(
+const TRANSLATIONS_PROFESSIONS: Record<ProfessionTypes | EliteSpecTypes, Translation> = ${JSON.stringify(
       sort_object_by_key(TRANSLATIONS_PROFESSIONS),
     )};
 export default TRANSLATIONS_PROFESSIONS;
@@ -151,7 +155,7 @@ export default TRANSLATIONS_PROFESSIONS;
     'data/specializations.ts',
     `
 import type { ProfessionTypes } from './professions';
-const SPECIALIZATIONS: Partial<Record<ProfessionTypes, number[]>> = ${JSON.stringify(
+const SPECIALIZATIONS: Record<ProfessionTypes, number[]> = ${JSON.stringify(
       SPECIALIZATIONS,
     )};
 export default SPECIALIZATIONS;
