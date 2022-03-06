@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { CSSProperties, ReactElement, useContext } from 'react';
 import races, { RacesTypes } from '../../data/races';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
@@ -7,6 +7,8 @@ import { ErrorProps } from '../Error/Error';
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import css from './Race.module.css';
+import { APILanguageContext, translate } from '../../i18n';
+import TRANSLATIONS_RACES from '../../i18n/races';
 
 export interface RaceProps {
   name: RacesTypes;
@@ -35,6 +37,8 @@ const Race = ({
   className,
   style,
 }: RaceProps): ReactElement => {
+  const language = useContext(APILanguageContext);
+
   if (!name || !races.includes(name)) {
     return (
       <Error
@@ -55,15 +59,17 @@ const Race = ({
     );
   }
 
+  let translation = translate(TRANSLATIONS_RACES, name, language);
+
   return (
     <IconWithText
       text={
         disableLink ? (
-          text || name
+          text || translation
         ) : (
           <WikiLink
             to={name}
-            text={text}
+            text={text || translation}
             {...wikiLinkProps}
             className={clsx(
               wikiLinkProps?.className,

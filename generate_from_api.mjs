@@ -68,6 +68,10 @@ async function run() {
       await fetch_api(`/v2/professions?ids=all&lang=${lang}`),
     );
   }
+  let races = {};
+  for (let lang of API_LANGUAGES) {
+    races[lang] = to_record(await fetch_api(`/v2/races?ids=all&lang=${lang}`));
+  }
 
   console.log('Done fetching, generating files');
   const PROFESSION_IDS = Object.keys(professions.en).sort();
@@ -134,6 +138,43 @@ const TRANSLATIONS_PROFESSIONS: Record<ProfessionTypes, Translation> = ${JSON.st
       sort_object_by_key(TRANSLATIONS_PROFESSIONS),
     )};
 export default TRANSLATIONS_PROFESSIONS;
+  `,
+  );
+
+  const RACE_IDS = Object.keys(races.en).sort();
+  let TRANSLATIONS_RACES = {};
+  for (let id of RACE_IDS) {
+    let translations = {};
+    for (let lang of API_LANGUAGES) {
+      let name = races[lang][id].name;
+      if (name !== id) {
+        translations[lang] = races[lang][id].name;
+      }
+    }
+    TRANSLATIONS_RACES[id] = translations;
+  }
+
+  writeSource(
+    'data/races.ts',
+    `
+export type RacesTypes = ${RACE_IDS.map((id) => JSON.stringify(id)).join(
+      ' | ',
+    )};
+
+const RACES: RacesTypes[] = ${JSON.stringify(RACE_IDS)};
+export default RACES;`,
+  );
+
+  writeSource(
+    'i18n/races.ts',
+    `
+import type { Translation } from '.';
+import type { RacesTypes } from '../data/races';
+
+const TRANSLATIONS_RACES: Record<RacesTypes, Translation> = ${JSON.stringify(
+      sort_object_by_key(TRANSLATIONS_RACES),
+    )};
+export default TRANSLATIONS_RACES;
   `,
   );
 }
