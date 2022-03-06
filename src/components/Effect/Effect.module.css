@@ -251,6 +251,9 @@
 .imageCommonInvulnerability {
   background-image: url(../../assets/icons/Common/Invulnerability.png);
 }
+.imageCommonRevealed {
+  background-image: url(../../assets/icons/Common/Revealed.png);
+}
 .imageCommonRigorousCertainty {
   background-image: url(../../assets/icons/Common/RigorousCertainty.png);
 }
@@ -262,15 +265,6 @@
 }
 .imageCommonSuperspeed {
   background-image: url(../../assets/icons/Common/Superspeed.png);
-}
-.imageCommonAgony {
-  background-image: url(../../assets/icons/Common/Agony.png);
-}
-.imageCommonAgony {
-  background-image: url(../../assets/icons/Common/Agony.png);
-}
-.imageCommonAgony {
-  background-image: url(../../assets/icons/Common/Agony.png);
 }
 
 .imageConsumableNourishment {
