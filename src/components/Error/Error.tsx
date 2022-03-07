@@ -1,16 +1,23 @@
 import clsx from 'clsx';
 import React, { CSSProperties, ReactElement } from 'react';
+import { APILanguage, useAPILanguage } from '../../i18n';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import IconWithText from '../IconWithText/IconWithText';
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import css from './Error.module.css';
 
+type ErrorCode = number;
+type ErrorString = string | ((id: number) => string);
+type ErrorStrings =
+  | ErrorString
+  | Record<ErrorCode, ErrorString | Partial<Record<APILanguage, ErrorString>>>;
+
 export interface ErrorProps {
-  code: number;
+  code: ErrorCode;
   id?: number;
-  name: string | Record<number, string | ((id: number) => string)>;
-  message: string | Record<number, string | ((id: number) => string)>;
+  name: ErrorStrings;
+  message: ErrorStrings;
   disableIcon?: boolean;
   disableText?: boolean;
   disableTooltip?: boolean;
@@ -20,11 +27,6 @@ export interface ErrorProps {
   style?: CSSProperties;
 }
 
-/**
- * Either path name + message for a static error name and message.
- *
- * Alternatively, pass names + messages, which will pick the right message based on the provided code
- */
 const Error = ({
   code,
   id,
@@ -38,13 +40,23 @@ const Error = ({
   className,
   style,
 }: ErrorProps): ReactElement => {
+  const language = useAPILanguage();
   const errorIconClass = code === 404 ? css.imageError404 : css.imageError500;
 
-  function getMessage(
-    raw: string | Record<number, string | ((id: number) => string)>,
-  ): string {
-    if (typeof raw === 'string') return raw;
-    let item = raw[code];
+  function getMessage(raw: ErrorStrings): string {
+    let by_code: ErrorString | Partial<Record<APILanguage, ErrorString>>;
+    if (typeof raw !== 'string' && typeof raw !== 'function') {
+      by_code = raw[code];
+    } else {
+      by_code = raw;
+    }
+    let by_language: ErrorString | undefined;
+    if (typeof by_code !== 'string' && typeof by_code !== 'function') {
+      by_language = by_code[language] || by_code['en'];
+    } else {
+      by_language = by_code;
+    }
+    let item = by_language;
     if (item === undefined) return '';
     if (typeof item === 'string') return item;
     if (id !== undefined) return item(id);

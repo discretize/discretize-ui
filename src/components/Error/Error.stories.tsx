@@ -1,5 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import React, { ComponentProps } from 'react';
+import React from 'react';
+import { APILanguageProvider } from '../../i18n';
 import Error from './Error';
 
 export default {
@@ -19,11 +20,14 @@ const Template: ComponentStory<typeof Error> = (args) => {
 };
 
 const ERROR_NAMES = {
-  404: 'Mishap :(',
+  404: { en: 'Mishap :(', es: 'Accidente :(' },
   500: 'Network Mishap :(',
 };
 const ERROR_MESSAGES = {
-  404: `Quaggan looked everywhere but coouldn't find what yoou're looking foor *pohooo*`,
+  404: {
+    en: `Quaggan looked everywhere but coouldn't find what yoou're looking foor *pohooo*`,
+    es: 'Quaggan did not expect the spanish translation.',
+  },
   500: `Quaggan's network waddles slower than a centaur *pohooo*`,
 };
 
@@ -40,3 +44,16 @@ NetworkError.args = {
   message: ERROR_MESSAGES,
   name: ERROR_NAMES,
 };
+
+export function Translated() {
+  return (
+    <>
+      English: <Error code={404} message={ERROR_MESSAGES} name={ERROR_NAMES} />
+      <br />
+      <APILanguageProvider value="es">
+        Spanish:{' '}
+        <Error code={404} message={ERROR_MESSAGES} name={ERROR_NAMES} />
+      </APILanguageProvider>
+    </>
+  );
+}
