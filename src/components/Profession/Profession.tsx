@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { capitalize } from '../../helpers/capitalize';
 import React, { CSSProperties, ReactElement } from 'react';
 import PROFESSIONS, {
   EliteSpecTypes,
@@ -26,7 +25,7 @@ export interface ProfessionProps {
 }
 
 const Profession = ({
-  name: propsName,
+  name: professionOrSpecName,
   text,
   disableTooltip,
   disableIcon,
@@ -36,27 +35,20 @@ const Profession = ({
   style,
   className,
 }: ProfessionProps): ReactElement => {
-  const professionName = capitalize(propsName);
   const language = useAPILanguage();
 
-  let profession: string | undefined;
-  let specialization: string;
+  let profession: ProfessionTypes | undefined;
+  let specialization = professionOrSpecName;
 
-  if (Object.keys(PROFESSIONS).includes(professionName)) {
-    // in this case the selected propsName is equivalent to a profession
-    profession = professionName;
-    specialization = professionName;
-  } else {
-    // in this case the user selected an elitespecialization.
-    // Need to query the corresponding profession for coloring
-    profession =
-      Object.keys(PROFESSIONS).find((prof) => {
-        return PROFESSIONS[prof as ProfessionTypes].includes(
-          professionName as EliteSpecTypes,
-        );
-      }) || '';
-    profession = capitalize(profession);
-    specialization = capitalize(professionName);
+  for (let _id in PROFESSIONS) {
+    let id = _id as ProfessionTypes;
+    if (
+      id === professionOrSpecName ||
+      PROFESSIONS[id].includes(professionOrSpecName as any)
+    ) {
+      profession = id;
+      break;
+    }
   }
 
   if (!profession) {
@@ -64,7 +56,7 @@ const Profession = ({
       <Error
         code={404}
         name="Invalid Profession"
-        message={`Error: no data for Profession ${propsName}`}
+        message={`Error: no data for Profession ${professionOrSpecName}`}
         disableTooltip={disableTooltip}
         disableIcon={disableIcon}
         disableText={disableText}
@@ -77,7 +69,7 @@ const Profession = ({
 
   const translatedText = translate(
     TRANSLATIONS_PROFESSIONS,
-    specialization as ProfessionTypes | EliteSpecTypes,
+    specialization,
     language,
   );
 

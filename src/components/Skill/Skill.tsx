@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { capitalize } from '../../helpers/capitalize';
 import React, { CSSProperties, ReactElement } from 'react';
 import professioncss from '../Profession/professions.module.css';
 import { useSkill } from '../../gw2api/hooks';
@@ -8,6 +7,7 @@ import Error from '../Error/Error';
 import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import { ProfessionTypes } from '../../data/professions';
 
 export interface SkillProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
@@ -58,10 +58,7 @@ const Skill = (props: SkillProps): ReactElement => {
 
   const { name, icon, professions } = skill.data;
 
-  let profession;
-  if (professions?.length > 0) {
-    profession = capitalize(professions[0]);
-  }
+  let profession: ProfessionTypes | undefined = professions?.[0];
 
   return (
     <Tooltip
