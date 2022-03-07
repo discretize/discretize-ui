@@ -1,8 +1,9 @@
+import { Skill } from '@discretize/gw2-ui-new';
 import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
+import { makeStyles } from 'tss-react/mui';
+import iconSizes from '../helpers/iconSizes';
 import NoSelection from '../NoSelection';
-import Skill from '../Skill';
 
 const useStyles = makeStyles()((theme) => ({
   grid: {
@@ -25,7 +26,12 @@ const useStyles = makeStyles()((theme) => ({
   borderLeft: {
     borderLeft: `1px solid ${theme.palette.divider}`,
   },
-  utilities: {},
+  skillDesktop: {
+    fontSize: iconSizes.big,
+  },
+  skillMobile: {
+    fontSize: iconSizes.large,
+  },
 }));
 
 const Skills = ({
@@ -39,18 +45,21 @@ const Skills = ({
   utility2Id,
   utility3Id,
   eliteId,
+  className,
 }) => {
   const { classes } = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const iconSize = isMobile ? 'large' : 'big';
 
+  const classNameSkill = isMobile ? classes.skillMobile : classes.skillDesktop;
+
   return (
-    <Grid container className={classes.grid}>
+    <Grid container className={classNames(className, classes.grid)}>
       <Grid item className={classes.gridItem}>
         <div className={classes.utilities}>
           {healId ? (
-            <Skill data={healData} id={healId} size={iconSize} disableText />
+            <Skill data={healData} id={healId} className={classNameSkill} disableText />
           ) : (
             <NoSelection size="big" />
           )}
@@ -61,19 +70,19 @@ const Skills = ({
       </Grid>
 
       <Grid item className={classNames(classes.gridItem, classes.borderLeft)}>
-        <div className={classes.utilities}>
+        <div>
           {utility1Id ? (
-            <Skill data={utility1Data} id={utility1Id} size={iconSize} disableText />
+            <Skill data={utility1Data} id={utility1Id} className={classNameSkill} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
           {utility2Id ? (
-            <Skill data={utility2Data} id={utility2Id} size={iconSize} disableText />
+            <Skill data={utility2Data} id={utility2Id} className={classNameSkill} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
           {utility3Id ? (
-            <Skill data={utility3Data} id={utility3Id} size={iconSize} disableText />
+            <Skill data={utility3Data} id={utility3Id} className={classNameSkill} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
@@ -86,7 +95,7 @@ const Skills = ({
       <Grid item className={classNames(classes.gridItem, classes.borderLeft)}>
         <div className={classes.utilities}>
           {eliteId ? (
-            <Skill data={eliteData} id={eliteId} size={iconSize} disableText />
+            <Skill data={eliteData} id={eliteId} className={classNameSkill} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
