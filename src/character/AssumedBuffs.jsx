@@ -20,7 +20,7 @@ const AssumedBuffs = ({ appliedBuffs }) => {
               <Boon
                 name={firstUppercase(id)}
                 disableText
-                key={id}
+                key={`${type}_${id}`}
                 className={classes.gw2component}
               />
             );
@@ -29,20 +29,34 @@ const AssumedBuffs = ({ appliedBuffs }) => {
               <Condition
                 name={firstUppercase(id)}
                 disableText
-                key={id}
+                key={`${type}_${id}`}
                 className={classes.gw2component}
               />
             );
           case 'Skill':
-            return <Skill id={gw2id} disableText key={id} className={classes.gw2component} />;
+            return (
+              <Skill
+                id={gw2id}
+                disableText
+                key={`${type}_${gw2id}`}
+                className={classes.gw2component}
+              />
+            );
           case 'Trait':
-            return <Trait id={gw2id} disableText key={id} className={classes.gw2component} />;
+            return (
+              <Trait
+                id={gw2id}
+                disableText
+                key={`${type}_${gw2id}`}
+                className={classes.gw2component}
+              />
+            );
           case 'CommonEffect':
             return (
               <CommonEffect
                 name={firstUppercase(id)}
                 disableText
-                key={id}
+                key={`${type}_${id}`}
                 className={classes.gw2component}
               />
             );
