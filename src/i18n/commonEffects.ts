@@ -4,6 +4,7 @@ import { CommonEffectTypes } from '../data/commonEffects';
 export const COMMON_EFFECTS: Record<CommonEffectTypes, Translation> = {
   Agony: {},
   Barrier: {},
+  Blight: {},
   Exposed: {},
   Invulnerability: {},
   Revealed: {},
@@ -22,6 +23,9 @@ export const COMMON_EFFECTS_DESCRIPTIONS: Record<
   },
   Barrier: {
     en: 'Creates a health barrier that takes damage prior to the health bar.',
+  },
+  Blight: {
+    en: 'Reduces your maximum health. Stacks intensity.',
   },
   Exposed: {
     en: 'Takes additional damage.',

@@ -245,6 +245,9 @@
 .imageCommonBarrier {
   background-image: url(../../assets/icons/Common/Barrier.png);
 }
+.imageCommonBlight {
+  background-image: url(../../assets/icons/Common/Blight.png);
+}
 .imageCommonExposed {
   background-image: url(../../assets/icons/Common/Exposed.png);
 }
