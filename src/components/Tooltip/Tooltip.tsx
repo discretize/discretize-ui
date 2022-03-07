@@ -12,14 +12,15 @@ import React, {
   cloneElement,
 } from 'react';
 import { createPortal } from 'react-dom';
-import TooltipContainer from '../TooltipContainer/TooltipContainer';
+import TooltipContainer, {
+  TooltipContainerProps,
+} from '../TooltipContainer/TooltipContainer';
 import css from './Tooltip.module.css';
 
 export type TooltipProps = {
   content?: ReactNode;
   render?: ReactNode | (() => ReactNode);
-  containerProps?: any;
-  wrapperProps?: any;
+  containerProps?: Partial<Omit<TooltipContainerProps, 'children'>>;
   disabled?: boolean;
   // You must pass exactly one element as children, and it must accept (or forward) a ref.
   children: ReactElement;
@@ -49,7 +50,6 @@ const Tooltip = ({
   content: propsContent,
   render,
   containerProps,
-  wrapperProps,
   disabled,
 }: TooltipProps): ReactElement => {
   const {
@@ -69,7 +69,8 @@ const Tooltip = ({
 
   const children_ref = useRef<HTMLElement>(null);
   const position_ref = useRef<ClientRectObject>(NULL_RECT);
-  const [visible, setVisible] = useState<boolean>(false);
+  const [_visible, setVisible] = useState<boolean>(false);
+  const visible = !disabled && _visible;
 
   // We need to finagle a ref into the child component.
   const children_with_ref = useMemo(() => {

@@ -37,6 +37,18 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
           Hover me
         </div>
       </Tooltip>
+      <br />
+      <Tooltip {...args} content={<>Lorem ipsum</>} disabled>
+        <div
+          style={{
+            padding: 5,
+            borderRadius: 5,
+            backgroundColor: 'grey',
+          }}
+        >
+          My Tooltip is disabled
+        </div>
+      </Tooltip>
     </>
   );
 };
