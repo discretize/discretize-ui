@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as process from 'process';
+import * as child_process from 'child_process';
 
 // rollup and plugins
 import { rollup } from 'rollup';
@@ -21,9 +22,25 @@ const OUTPUT_PATH = path.resolve(package_json.module);
 const OUTPUT_DIR = path.dirname(OUTPUT_PATH);
 
 async function run() {
+  // Check whether our code is good
+  // exec() throws on non-zero exit codes
+  console.log('Typechecking...');
+  child_process.execSync('tsc --noEmit --project ./tsconfig.json', {
+    stdio: [0, 1, 2],
+  });
+
+  /*
+  // TODO: enable when eslint is fixed
+  console.log('Linting...');
+  child_process.execSync('eslint -c .eslintrc.json .', {
+    stdio: [0, 1, 2],
+  });
+  */
+
   // Step 1: Rollup the JavaScript
   // This will also generate a bunch of *.d.ts files in dist/types/
   try {
+    console.log('Compiling code...');
     let bundle = await rollup({
       input: 'src/index.ts',
       plugins: [
@@ -71,6 +88,7 @@ async function run() {
 
   // Step 2: bundle the types
   try {
+    console.log('Bundling types...');
     let bundle = await rollup({
       input: path.join(OUTPUT_DIR, 'types', 'index.d.ts'),
       plugins: [dts()],
