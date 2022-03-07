@@ -5,6 +5,7 @@ import BackAndTrinkets from './character/BackAndTrinkets';
 import Consumables from './character/Consumables';
 import Skills from './character/Skills';
 import Weapons from './character/Weapons';
+import AssumedBuffs from './character/AssumedBuffs';
 
 import iconSizes from './helpers/iconSizes';
 import firstUppercase from './helpers/firstUppercase';
@@ -27,6 +28,7 @@ export {
   Consumables,
   Skills,
   Weapons,
+  AssumedBuffs,
   iconSizes,
   firstUppercase,
   TextDivider,

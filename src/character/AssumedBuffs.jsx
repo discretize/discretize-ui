@@ -8,12 +8,12 @@ const useStyles = makeStyles()(() => ({
   },
 }));
 
-const AssumedBuffs = ({ appliedBuffs }) => {
+const AssumedBuffs = ({ value }) => {
   const { classes } = useStyles();
 
   return (
     <>
-      {appliedBuffs.map(({ id, type, gw2id }) => {
+      {value.map(({ id, type, gw2id }) => {
         switch (type) {
           case 'Boon':
             return (
