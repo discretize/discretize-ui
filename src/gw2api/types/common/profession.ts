@@ -1,14 +1,5 @@
-const PROFESSIONS = [
-  'Guardian',
-  'Thief',
-  'Engineer',
-  'Ranger',
-  'Warrior',
-  'Mesmer',
-  'Renegade',
-  'Elementalist',
-  'Necromancer',
-] as const;
-type GW2ApiProfession = typeof PROFESSIONS[number];
+import { ProfessionTypes } from '../../../data/professions';
+
+type GW2ApiProfession = ProfessionTypes;
 
 export default GW2ApiProfession;
