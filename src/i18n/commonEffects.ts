@@ -12,6 +12,7 @@ export const COMMON_EFFECTS: Record<CommonEffectTypes, Translation> = {
   Stealth: {},
   'Stun Break': {},
   Superspeed: {},
+  Unblockable: {},
 };
 
 export const COMMON_EFFECTS_DESCRIPTIONS: Record<
@@ -40,4 +41,5 @@ export const COMMON_EFFECTS_DESCRIPTIONS: Record<
   Stealth: { en: 'Currently invisible. Ends if you deal damage.' },
   'Stun Break': { en: 'Breaks stun.' },
   Superspeed: { en: 'Movement speed is greatly increased.' },
+  Unblockable: { en: 'Your attacks are unblockable' },
 };

@@ -269,6 +269,9 @@
 .imageCommonSuperspeed {
   background-image: url(../../assets/icons/Common/Superspeed.png);
 }
+.imageCommonUnblockable {
+  background-image: url(../../assets/icons/Common/Unblockable.png);
+}
 
 .imageConsumableNourishment {
   background-image: url(../../assets/icons/Consumable/Nourishment.png);
