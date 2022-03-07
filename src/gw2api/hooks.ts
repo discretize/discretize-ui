@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { APILanguage, APILanguageContext } from '../i18n';
+import { APILanguage, useAPILanguage } from '../i18n';
 
 import APICache, { Id } from './cache';
 import GW2ApiItem from './types/items/item';
@@ -34,14 +34,14 @@ function skillCache(lang: APILanguage) {
 
 // Skills
 export function useSkills(ids: Id[]) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return skillCache(lang).getMultiple(ids, forceRedraw);
 }
 
 export function useSkill(id: Id) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return skillCache(lang).getOne(id, forceRedraw);
@@ -54,14 +54,14 @@ function traitCache(lang: APILanguage) {
 }
 
 export function useTraits(ids: Id[]) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return traitCache(lang).getMultiple(ids, forceRedraw);
 }
 
 export function useTrait(id: Id) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return traitCache(lang).getOne(id, forceRedraw);
@@ -74,14 +74,14 @@ function itemCache(lang: APILanguage) {
 }
 
 export function useItems(ids: Id[]) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return itemCache(lang).getMultiple(ids, forceRedraw);
 }
 
 export function useItem(id: Id) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return itemCache(lang).getOne(id, forceRedraw);
@@ -96,14 +96,14 @@ function specializationCache(lang: APILanguage) {
 }
 
 export function useSpecializations(ids: Id[]) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return specializationCache(lang).getMultiple(ids, forceRedraw);
 }
 
 export function useSpecialization(id: Id) {
-  const lang = React.useContext(APILanguageContext);
+  const lang = useAPILanguage();
   const [, forceRedraw] = React.useReducer((i) => i + 1, 0);
 
   return specializationCache(lang).getOne(id, forceRedraw);

@@ -1,6 +1,6 @@
-import React, { CSSProperties, ReactElement, useContext } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import { BoonsTypes } from '../../data/boons';
-import { APILanguageContext, translate } from '../../i18n';
+import { translate, useAPILanguage } from '../../i18n';
 import {
   TRANSLATIONS_BOONS,
   TRANSLATIONS_BOON_DESCRIPTIONS,
@@ -20,7 +20,7 @@ export interface BoonProps {
 
 const Boon = (props: BoonProps): ReactElement => {
   const { name, count = 1 } = props;
-  const language = useContext(APILanguageContext);
+  const language = useAPILanguage();
 
   let translation = translate(TRANSLATIONS_BOONS, name, language);
   let description = translate(TRANSLATIONS_BOON_DESCRIPTIONS, name, language);

@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement, useContext } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import races, { RacesTypes } from '../../data/races';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
@@ -7,7 +7,7 @@ import { ErrorProps } from '../Error/Error';
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import css from './Race.module.css';
-import { APILanguageContext, translate } from '../../i18n';
+import { translate, useAPILanguage } from '../../i18n';
 import TRANSLATIONS_RACES from '../../i18n/races';
 
 export interface RaceProps {
@@ -37,7 +37,7 @@ const Race = ({
   className,
   style,
 }: RaceProps): ReactElement => {
-  const language = useContext(APILanguageContext);
+  const language = useAPILanguage();
 
   if (!name || !races.includes(name)) {
     return (

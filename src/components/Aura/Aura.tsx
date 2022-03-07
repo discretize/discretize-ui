@@ -1,7 +1,7 @@
-import React, { CSSProperties, ReactElement, useContext } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import Effect from '../Effect/Effect';
 import { AuraTypes } from '../../data/auras';
-import { APILanguageContext, translate } from '../../i18n';
+import { translate, useAPILanguage } from '../../i18n';
 import {
   TRANSLATIONS_AURAS,
   TRANSLATIONS_AURA_DESCRIPTIONS,
@@ -19,7 +19,7 @@ export interface AuraProps {
 
 const Aura = (props: AuraProps): ReactElement => {
   const { name } = props;
-  const language = useContext(APILanguageContext);
+  const language = useAPILanguage();
 
   let translation = translate(TRANSLATIONS_AURAS, name, language);
   let description = translate(TRANSLATIONS_AURA_DESCRIPTIONS, name, language);

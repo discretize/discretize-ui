@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement, useContext } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 
 import Tooltip from '../Tooltip/Tooltip';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
@@ -12,7 +12,7 @@ import {
   TRANSLATIONS_ATTRIBUTES,
   TRANSLATIONS_ATTRIBUTE_DESCRIPTIONS,
 } from '../../i18n/attributes';
-import { APILanguageContext, translate } from '../../i18n';
+import { translate, useAPILanguage } from '../../i18n';
 import css from './Attribute.module.css';
 import clsx from 'clsx';
 
@@ -39,7 +39,7 @@ const Attribute = ({
   style,
   className,
 }: AttributeProps): ReactElement => {
-  const language = useContext(APILanguageContext);
+  const language = useAPILanguage();
 
   if (!name || !TRANSLATIONS_ATTRIBUTES[name]) {
     return (

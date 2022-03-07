@@ -4,7 +4,7 @@ export type APILanguage = 'de' | 'en' | 'es' | 'fr' | 'zh';
 export const API_LANGUAGES = ['de', 'en', 'es', 'fr', 'zh'];
 
 function isAPILanguage(l: string): l is APILanguage {
-  return API_LANGUAGES.indexOf(l) >= 0;
+  return API_LANGUAGES.includes(l);
 }
 
 function getNavigatorDefaultLanguage(): APILanguage {
@@ -18,19 +18,22 @@ function getNavigatorDefaultLanguage(): APILanguage {
   return 'en';
 }
 
-export const APILanguageContext = React.createContext<APILanguage>(
+const APILanguageContext = React.createContext<APILanguage>(
   getNavigatorDefaultLanguage(),
 );
 
 export const APILanguageProvider = APILanguageContext.Provider;
 
+export function useAPILanguage() {
+  return React.useContext(APILanguageContext);
+}
+
 export type Translation = Partial<Record<APILanguage, string>>;
-export type TranslationMap = Record<string, Translation>;
 
 // Use this to translate a string. You need to figure out the appropriate language yourself.
-export function translate(
-  map: TranslationMap,
-  key: string,
+export function translate<T extends string>(
+  map: Record<T, Translation>,
+  key: T,
   lang: APILanguage,
 ): string {
   let t = map[key];
@@ -39,8 +42,11 @@ export function translate(
 }
 
 // A shorthand to both read the configured language and translate a string, for simple one-off uses.
-export function useTranslation(map: TranslationMap, key: string): string {
-  let lang = React.useContext(APILanguageContext);
+export function useTranslation<T extends string>(
+  map: Record<T, Translation>,
+  key: T,
+): string {
+  let lang = useAPILanguage();
 
   return translate(map, key, lang);
 }

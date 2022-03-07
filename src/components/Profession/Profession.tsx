@@ -10,7 +10,7 @@ import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import css from './Profession.module.css';
-import { APILanguageContext, translate } from '../../i18n';
+import { translate, useAPILanguage } from '../../i18n';
 import TRANSLATIONS_PROFESSIONS from '../../i18n/professions';
 
 export interface ProfessionProps {
@@ -37,7 +37,7 @@ const Profession = ({
   className,
 }: ProfessionProps): ReactElement => {
   const professionName = capitalize(propsName);
-  const language = React.useContext(APILanguageContext);
+  const language = useAPILanguage();
 
   let profession: string | undefined;
   let specialization: string;
@@ -77,7 +77,7 @@ const Profession = ({
 
   const translatedText = translate(
     TRANSLATIONS_PROFESSIONS,
-    specialization,
+    specialization as ProfessionTypes | EliteSpecTypes,
     language,
   );
 
