@@ -1,6 +1,7 @@
 import { Grid, useMediaQuery, useTheme } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Icon, Skill } from '@discretize/gw2-ui-new';
+import iconSizes from '../helpers/iconSizes';
 
 const useStyles = makeStyles()((theme) => ({
   legends: {
@@ -12,6 +13,12 @@ const useStyles = makeStyles()((theme) => ({
       fontSize: '45px',
     },
     lineHeight: '1 !important',
+  },
+  skillDesktop: {
+    fontSize: iconSizes.big,
+  },
+  skillMobile: {
+    fontSize: iconSizes.large,
   },
 }));
 
