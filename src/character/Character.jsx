@@ -44,7 +44,7 @@ const Character = ({
       {assumedBuffs && (
         <Box display="flex" justifyContent="flex-end">
           <HelperIcon text="Assumed buffs for this build" />
-          <AssumedBuffs appliedBuffs={assumedBuffs} />
+          <AssumedBuffs value={assumedBuffs} />
         </Box>
       )}
       <Box display="flex" flexWrap="wrap" justifyContent="space-between">
