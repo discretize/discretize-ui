@@ -98,47 +98,47 @@ interface GW2ApiItemBase {
   upgrades_from?: GW2ApiUpgradedItem[];
 }
 
-interface GW2ApiItemArmor extends GW2ApiItemBase {
+export interface GW2ApiItemArmor extends GW2ApiItemBase {
   type: 'Armor';
   details: WrapInUndefined<GW2ApiArmorDetails>;
 }
-interface GW2ApiItemBack extends GW2ApiItemBase {
+export interface GW2ApiItemBack extends GW2ApiItemBase {
   type: 'Back';
   details: WrapInUndefined<GW2ApiBackItemDetails>;
 }
-interface GW2ApiItemBag extends GW2ApiItemBase {
+export interface GW2ApiItemBag extends GW2ApiItemBase {
   type: 'Bag';
   details: WrapInUndefined<GW2ApiBagDetails>;
 }
-interface GW2ApiItemConsumable extends GW2ApiItemBase {
+export interface GW2ApiItemConsumable extends GW2ApiItemBase {
   type: 'Consumable';
   details: WrapInUndefined<GW2ApiConsumableDetails>;
 }
-interface GW2ApiItemContainer extends GW2ApiItemBase {
+export interface GW2ApiItemContainer extends GW2ApiItemBase {
   type: 'Container';
   details: WrapInUndefined<GW2ApiContainerDetails>;
 }
-interface GW2ApiItemCraftingMaterial extends GW2ApiItemBase {
+export interface GW2ApiItemCraftingMaterial extends GW2ApiItemBase {
   type: 'CraftingMaterial';
   details?: undefined;
 }
-interface GW2ApiItemGathering extends GW2ApiItemBase {
+export interface GW2ApiItemGathering extends GW2ApiItemBase {
   type: 'Gathering';
   details: WrapInUndefined<GW2ApiGatheringToolDetails>;
 }
-interface GW2ApiItemGizmo extends GW2ApiItemBase {
+export interface GW2ApiItemGizmo extends GW2ApiItemBase {
   type: 'Gizmo';
   details: WrapInUndefined<Gw2ApiGizmoDetails>;
 }
-interface GW2ApiItemKey extends GW2ApiItemBase {
+export interface GW2ApiItemKey extends GW2ApiItemBase {
   type: 'Key';
   details?: undefined;
 }
-interface GW2ApiItemMiniPet extends GW2ApiItemBase {
+export interface GW2ApiItemMiniPet extends GW2ApiItemBase {
   type: 'MiniPet';
   details: WrapInUndefined<GW2ApiMiniatureDetails>;
 }
-interface GW2ApiItemTool extends GW2ApiItemBase {
+export interface GW2ApiItemTool extends GW2ApiItemBase {
   type: 'Tool';
   details: WrapInUndefined<GW2ApiToolDetails>;
 }
@@ -147,24 +147,24 @@ interface GW2ApiItemTrait extends GW2ApiItemBase {
   type: 'Trait';
   details?: undefined;
 }
-interface GW2ApiItemTrinket extends GW2ApiItemBase {
+export interface GW2ApiItemTrinket extends GW2ApiItemBase {
   type: 'Trinket';
   details: WrapInUndefined<GW2ApiTrinketDetails>;
 }
-interface GW2ApiItemTrophy extends GW2ApiItemBase {
+export interface GW2ApiItemTrophy extends GW2ApiItemBase {
   type: 'Trophy';
   details?: undefined;
 }
-interface GW2ApiItemUpgradeComponent extends GW2ApiItemBase {
+export interface GW2ApiItemUpgradeComponent extends GW2ApiItemBase {
   type: 'UpgradeComponent';
   details: WrapInUndefined<GW2ApiUpgradeComponentDetails>;
 }
-interface GW2ApiItemWeapon extends GW2ApiItemBase {
+export interface GW2ApiItemWeapon extends GW2ApiItemBase {
   type: 'Weapon';
   details: WrapInUndefined<GW2ApiWeaponDetails>;
 }
 
-interface GW2ApiItemJadeBot extends GW2ApiItemBase {
+export interface GW2ApiItemJadeBot extends GW2ApiItemBase {
   type: 'Quux' | 'Qux'; // Don't ask
   details?: undefined;
 }
