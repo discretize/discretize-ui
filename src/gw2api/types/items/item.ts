@@ -37,7 +37,7 @@ type Keys =
 // Tell typescript that all the other properties are either missing or undefined.
 // That'll make destructuring safe.
 // Note: We need this hack for <Item> and <ItemDetails>
-// But typescript-is doesn't handle union types, and we need to disable it for typechecking
+// But typescript-is doesn't handle intersection types, and we need to disable it for typechecking
 type WrapInUndefined<T> = T &
   Partial<Record<Exclude<Keys, keyof T>, undefined>>;
 //type WrapInUndefined<T> = T;

@@ -61,6 +61,11 @@ export interface APICacheGetMultipleResult<T> {
   data: Record<Id, T>;
 }
 
+export type Override<T extends { id: Id }> = (
+  id: Id,
+  item: T | undefined,
+) => T | undefined;
+
 export default class APICache<T extends { id: Id }> {
   private path: string; // The relative URL of the API endpoint
   private language: APILanguage;
@@ -80,6 +85,8 @@ export default class APICache<T extends { id: Id }> {
   private fetch_delay_timeout: ReturnType<typeof setTimeout> | null = null;
   // Different endpoints may have different limits on the amount of items you can fetch in single request
   private max_ids_per_request: number;
+  // The API is inconsistent in several places. We register methods that shall fix the issues.
+  private overrides: Override<T>[] = [];
 
   constructor(
     path: string,
@@ -238,6 +245,7 @@ export default class APICache<T extends { id: Id }> {
     this.requests_inflight--;
 
     // Check our responses, and enter them into the cache.
+    let returned: Record<Id, T> = {};
     for (let o of response) {
       if (!isObjectWithId(o)) {
         console.error('Response contains unexpected value', o);
@@ -245,12 +253,17 @@ export default class APICache<T extends { id: Id }> {
       }
 
       // We trust the API that the rest of the object is correct.
-      this.cache.set(o.id, o as T);
+      // Or rather, it will be correct after we run the overrides.
+      returned[o.id] = o as T;
     }
 
     // See if all requested ids were returned
     for (let id of ids) {
-      if (!this.cache.has(id)) {
+      let item: T | undefined = returned[id];
+      item = this.fixItem(id, item);
+      if (item) {
+        this.cache.set(id, item);
+      } else {
         // mark missing ids as errors
         this.cache.set(id, error);
       }
@@ -274,5 +287,20 @@ export default class APICache<T extends { id: Id }> {
 
     // Maybe there are more unfetched ids, so let's try again
     this.tryFetch();
+  }
+
+  private fixItem(id: Id, item: T | undefined): T | undefined {
+    for (let f of this.overrides) {
+      try {
+        item = f(id, item);
+      } catch (e) {
+        console.error('Error in override', e);
+      }
+    }
+    return item;
+  }
+
+  public addOverride(f: Override<T>) {
+    this.overrides.push(f);
   }
 }

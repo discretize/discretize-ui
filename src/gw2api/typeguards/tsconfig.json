@@ -4,7 +4,9 @@
     "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
+    "noEmit": true,
     "declaration": false,
+    "isolatedModules": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
@@ -19,8 +21,6 @@
         "transformNonNullExpressions": true,
         "emitDetailedErrors": "true"
       }
-    ],
-    "outDir": "out"
-  },
-  "files": ["guards.mts"]
+    ]
+  }
 }

@@ -45,6 +45,29 @@ export function Multiple() {
   );
 }
 
+export function FixedSkills() {
+  return (
+    <div>
+      These skills have inconsistencies in the API, which should be fixed
+      automatically.
+      <br />
+      <br />
+      Should have Life Force cost in percent:
+      <br />
+      <Skill id={40813} />
+      <Skill id={43448} />
+      <Skill id={44428} />
+      <Skill id={44663} />
+      <Skill id={54870} />
+      <br />
+      Should show maximum heat in percent:
+      <br />
+      <Skill id={42938} />
+      <br />
+    </div>
+  );
+}
+
 export function Languages() {
   return (
     <div>
