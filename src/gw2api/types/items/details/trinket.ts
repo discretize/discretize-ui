@@ -9,7 +9,7 @@ interface GW2ApiTrinketDetails {
   infix_upgrade?: GW2ApiInfixUpgrade;
   suffix_item_id?: number;
   secondary_suffix_item_id: string;
-  stat_choices: number[];
+  stat_choices?: number[];
 }
 
 export default GW2ApiTrinketDetails;

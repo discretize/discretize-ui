@@ -1,4 +1,3 @@
-const TRINKET_TYPES = ['Accessory', 'Amulet', 'Ring'] as const;
-type GW2ApiTrinketType = typeof TRINKET_TYPES[number];
+type GW2ApiTrinketType = 'Accessory' | 'Amulet' | 'Ring';
 
 export default GW2ApiTrinketType;

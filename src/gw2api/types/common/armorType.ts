@@ -1,4 +1,3 @@
-const ARMOR_TYPES = ['HeavyArmor', 'MediumArmor', 'LightArmor'] as const;
-type GW2ApiArmorType = typeof ARMOR_TYPES[number];
+type GW2ApiArmorType = 'HeavyArmor' | 'MediumArmor' | 'LightArmor';
 
 export default GW2ApiArmorType;

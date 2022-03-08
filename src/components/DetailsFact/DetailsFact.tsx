@@ -1,33 +1,10 @@
 import clsx from 'clsx';
 import React from 'react';
-import GW2ApiFact, {
-  GW2ApiFactAttributeAdjust,
-  GW2ApiFactBuff,
-  GW2ApiFactBuffConversion,
-  GW2ApiFactComboField,
-  GW2ApiFactComboFinisher,
-  GW2ApiFactDamage,
-  GW2ApiFactDistance,
-} from '../../gw2api/types/common/fact';
+import GW2ApiFact from '../../gw2api/types/common/fact';
 import { apiAttributes } from '../../helpers/apiAttributes';
 import { formatDuration } from '../../helpers/formatDuration';
 import classes from './DetailsFact.module.css';
-import { GW2ApiFactRadius } from '../../gw2api/types/common/fact';
-import {
-  GW2ApiFactRecharge,
-  GW2ApiFactRange,
-  GW2ApiFactTime,
-} from '../../gw2api/types/common/fact';
-import {
-  GW2ApiFactNumber,
-  GW2ApiFactPercent,
-  GW2ApiFactPrefixedBuff,
-} from '../../gw2api/types/common/fact';
-import {
-  GW2ApiFactDuration,
-  GW2ApiFactHeal,
-  GW2ApiFactHealingAdjust,
-} from '../../gw2api/types/common/fact';
+
 import Icon from '../Icon/Icon';
 import { attributes } from '../../builder';
 import { capitalize } from '../../helpers/capitalize';
@@ -38,11 +15,7 @@ const getKeyValue = (data: GW2ApiFact) => {
   let count: number | undefined = undefined;
   switch (data.type) {
     case 'AttributeAdjust': {
-      const {
-        text,
-        value: factValue,
-        target,
-      } = data as GW2ApiFactAttributeAdjust;
+      const { text, value: factValue, target } = data;
 
       const attribute = !text && target && apiAttributes[target];
       key = attribute ? `${attribute} Increase` : text;
@@ -53,12 +26,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Buff': {
-      const {
-        duration,
-        status,
-        description,
-        apply_count: applyCount,
-      } = data as GW2ApiFactBuff;
+      const { duration, status, description, apply_count: applyCount } = data;
 
       if (duration) {
         key = (
@@ -79,7 +47,7 @@ const getKeyValue = (data: GW2ApiFact) => {
     }
 
     case 'BuffConversion': {
-      const { percent, source, target } = data as GW2ApiFactBuffConversion;
+      const { percent, source, target } = data;
 
       function getAttr(target: string) {
         return capitalize(
@@ -98,7 +66,7 @@ const getKeyValue = (data: GW2ApiFact) => {
     }
 
     case 'ComboField': {
-      const { text, field_type: fieldType } = data as GW2ApiFactComboField;
+      const { text, field_type: fieldType } = data;
 
       key = text;
       value = fieldType;
@@ -106,11 +74,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'ComboFinisher': {
-      const {
-        text,
-        percent,
-        finisher_type: finisherType,
-      } = data as GW2ApiFactComboFinisher;
+      const { text, percent, finisher_type: finisherType } = data;
 
       key = text;
       value = `${finisherType}${
@@ -122,11 +86,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Damage': {
-      const {
-        text,
-        hit_count: hitCount,
-        dmg_multiplier: dmgMultiplier,
-      } = data as GW2ApiFactDamage;
+      const { text, hit_count: hitCount, dmg_multiplier: dmgMultiplier } = data;
 
       if (hitCount > 1) {
         key = (
@@ -143,7 +103,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Distance': {
-      const { text, distance } = data as GW2ApiFactDistance;
+      const { text, distance } = data;
 
       key = text;
       value = distance;
@@ -151,7 +111,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Duration': {
-      const { text, duration } = data as GW2ApiFactDuration;
+      const { text, duration } = data;
 
       key = text;
       value = duration;
@@ -159,7 +119,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Heal': {
-      const { text, hit_count: hitCount } = data as GW2ApiFactHeal;
+      const { text, hit_count: hitCount } = data;
 
       key = text;
       value = `${hitCount}x`;
@@ -167,7 +127,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'HealingAdjust': {
-      const { text, hit_count: hitCount } = data as GW2ApiFactHealingAdjust;
+      const { text, hit_count: hitCount } = data;
 
       key = text;
       value = `${hitCount}x`;
@@ -182,7 +142,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Number': {
-      const { text, value: factValue } = data as GW2ApiFactNumber;
+      const { text, value: factValue } = data;
 
       key = text;
       value = factValue;
@@ -190,7 +150,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Percent': {
-      const { text, percent } = data as GW2ApiFactPercent;
+      const { text, percent } = data;
 
       key = text;
       value = `${percent}%`;
@@ -204,7 +164,7 @@ const getKeyValue = (data: GW2ApiFact) => {
         status,
         description,
         apply_count: applyCount,
-      } = data as GW2ApiFactPrefixedBuff;
+      } = data;
 
       if (duration) {
         key = (
@@ -222,7 +182,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Radius': {
-      const { text, distance } = data as GW2ApiFactRadius;
+      const { text, distance } = data;
 
       key = text;
       value = distance;
@@ -230,7 +190,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Range': {
-      const { text, value: factValue } = data as GW2ApiFactRange;
+      const { text, value: factValue } = data;
 
       key = text;
       value = Number(factValue).toLocaleString();
@@ -238,7 +198,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Recharge': {
-      const { text, value: factValue } = data as GW2ApiFactRecharge;
+      const { text, value: factValue } = data;
 
       key = text;
       value = factValue;
@@ -250,7 +210,7 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     case 'Time': {
-      const { text, duration } = data as GW2ApiFactTime;
+      const { text, duration } = data;
 
       key = text;
       value = `${duration} second${duration > 1 ? 's' : ''}`;
@@ -265,11 +225,14 @@ const getKeyValue = (data: GW2ApiFact) => {
       break;
     }
     default: {
+      // This line is a ts error if we forget a type
+      const is_it_really_never: never = data;
       // eslint-disable-next-line no-console
       console.warn('Unknown fact type', data);
 
-      key = data.text;
-      value = `Unknown fact type: ${data.type}`;
+      const d = data as any;
+      key = d.text || Math.random();
+      value = `Unknown fact type: ${d.type}`;
 
       break;
     }

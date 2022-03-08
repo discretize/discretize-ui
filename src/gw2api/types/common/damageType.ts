@@ -1,10 +1,3 @@
-const DAMAGE_TYPES = [
-  'Fire',
-  'Ice',
-  'Lightning',
-  'Physical',
-  'Choking',
-] as const;
-type GW2ApiDamageType = typeof DAMAGE_TYPES[number];
+type GW2ApiDamageType = 'Fire' | 'Ice' | 'Lightning' | 'Physical' | 'Choking';
 
 export default GW2ApiDamageType;

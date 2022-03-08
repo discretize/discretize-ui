@@ -1,5 +1,5 @@
 import { GW2ApiFactRecharge } from '../../gw2api/types/common/fact';
-import { GW2ApiSkill } from '../../gw2api/types/skills/skill';
+import GW2ApiSkill from '../../gw2api/types/skills/skill';
 import GW2ApiTrait, { GW2ApiTraitSkill } from '../../gw2api/types/traits/trait';
 import factsOrder from '../../helpers/factsOrder';
 import DetailsFact from '../DetailsFact/DetailsFact';

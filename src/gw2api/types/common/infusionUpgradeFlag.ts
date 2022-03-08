@@ -1,11 +1,9 @@
-const INFUSION_UPGRADE_FLAGS = [
-  'Enrichment',
-  'Infusion',
-  'Defense',
-  'Offense',
-  'Utility',
-  'Agony',
-] as const;
-type GW2ApiInfusionUpgradeFlag = typeof INFUSION_UPGRADE_FLAGS[number];
+type GW2ApiInfusionUpgradeFlag =
+  | 'Enrichment'
+  | 'Infusion'
+  | 'Defense'
+  | 'Offense'
+  | 'Utility'
+  | 'Agony';
 
 export default GW2ApiInfusionUpgradeFlag;

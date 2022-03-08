@@ -1,11 +1,9 @@
-const GAME_TYPES = [
-  'Activity',
-  'Dungeon',
-  'Pve',
-  'Pvp',
-  'PvpLobby',
-  'Wvw',
-] as const;
-type GW2ApiGameType = typeof GAME_TYPES[number];
+type GW2ApiGameType =
+  | 'Activity'
+  | 'Dungeon'
+  | 'Pve'
+  | 'Pvp'
+  | 'PvpLobby'
+  | 'Wvw';
 
 export default GW2ApiGameType;

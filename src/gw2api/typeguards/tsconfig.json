@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "declaration": false,
+    "isolatedModules": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "plugins": [
+      {
+        "transform": "typescript-is/lib/transform-inline/transformer",
+        "shortCircuit": false,
+        "disallowSuperfluousObjectProperties": true,
+        "transformNonNullExpressions": true,
+        "emitDetailedErrors": "true"
+      }
+    ]
+  }
+}

@@ -28,5 +28,5 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "typings.d.ts"],
-  "exclude": ["node_modules/*"]
+  "exclude": ["node_modules/**/*", "src/gw2api/typeguards/**/*"]
 }

@@ -4,15 +4,16 @@ import GW2ApiTraitedFact from '../common/traited_fact';
 interface GW2ApiTraitBase {
   id: number;
   name: string;
-  description: string;
+  description?: string;
   icon: string;
   facts?: GW2ApiFact[];
   traited_facts?: GW2ApiTraitedFact[];
 }
 
 export interface GW2ApiTraitSkill extends GW2ApiTraitBase {
-  flags: any[];
+  flags: unknown[];
   chat_link: string;
+  categories?: unknown[];
 }
 
 interface GW2ApiTrait extends GW2ApiTraitBase {

@@ -33,6 +33,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "node ./build.mjs",
+    "api-typecheck": "node ./api_typecheck.mjs",
+    "generate-api-cache": "node --experimental-fetch ./generate_api_cache.mjs",
     "generate-from-api": "node --experimental-fetch ./generate_from_api.mjs",
     "deploy-storybook": "gh-pages -d storybook-static",
     "prepublish": "yarn build",
@@ -88,7 +90,9 @@
     "rollup-plugin-terser": "^7.0.2",
     "storybook-css-modules-preset": "^1.1.1",
     "ts-node": "^10.3.0",
+    "ttypescript": "^1.5.13",
     "typescript": "^4.4.4",
+    "typescript-is": "^0.19.0",
     "typescript-plugin-css-modules": "^3.4.0",
     "webpack-node-externals": "^3.0.0"
   },

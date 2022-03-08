@@ -1,9 +1,7 @@
-const GIZMO_TYPES = [
-  'Default',
-  'ContainerKey',
-  'RentableContractNpc',
-  'UnlimitedConsumable',
-] as const;
-type GW2ApiGizmoType = typeof GIZMO_TYPES[number];
+type GW2ApiGizmoType =
+  | 'Default'
+  | 'ContainerKey'
+  | 'RentableContractNpc'
+  | 'UnlimitedConsumable';
 
 export default GW2ApiGizmoType;
