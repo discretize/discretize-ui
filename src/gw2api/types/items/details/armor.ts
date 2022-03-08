@@ -1,10 +1,10 @@
-import GW2ApiArmorType from '../../common/armorType';
+import GW2ApiArmorSlotType from '../../common/armorSlotType';
 import GW2ApiWeightClass from '../../common/weightClass';
 import GW2ApiInfixUpgrade from './common/infixUpgrade';
 import GW2ApiInflusionSlot from './common/infusionSlot';
 
 interface GW2ApiArmorDetails {
-  type: GW2ApiArmorType;
+  type: GW2ApiArmorSlotType;
   weight_class: GW2ApiWeightClass;
   defense: number;
   infusion_slots: GW2ApiInflusionSlot[];

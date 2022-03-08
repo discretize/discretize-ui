@@ -1,4 +1,4 @@
-import GW2ApiFactType from '../gw2api/types/common/factType';
+import { GW2ApiFactType } from '../gw2api/types/common/fact';
 
 const ORDER: Record<GW2ApiFactType, number> = {
   Damage: 0,

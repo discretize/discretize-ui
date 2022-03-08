@@ -3,7 +3,9 @@ import { CSSProperties, ReactElement } from 'react';
 import { createItem } from '../../builder';
 import { ItemStatName } from '../../builder/itemStatNames';
 import { useItems } from '../../gw2api/hooks';
-import GW2ApiItemDetails from '../../gw2api/types/items/details/details';
+import GW2ApiBackItemDetails from '../../gw2api/types/items/details/backItem';
+import GW2ApiArmorDetails from '../../gw2api/types/items/details/armor';
+import GW2ApiWeaponDetails from '../../gw2api/types/items/details/weapon';
 import GW2ApiItem from '../../gw2api/types/items/item';
 import { capitalize } from '../../helpers/capitalize';
 import Error from '../Error/Error';
@@ -110,46 +112,22 @@ const Item = (props: ItemProps): ReactElement => {
   let stattedItemData = itemdata;
   if (
     stat &&
-    ((itemdata.details?.type && //TODO is there a better way of doing that? [ listOfTypes ].includes(itemdata.details.type) was not recognized by TS
-      (itemdata.details.type === 'Ring' ||
-        itemdata.details.type === 'Accessory' ||
-        itemdata.details.type === 'Amulet' ||
-        itemdata.details.type === 'HeavyArmor' ||
-        itemdata.details.type === 'MediumArmor' ||
-        itemdata.details.type === 'LightArmor' ||
-        itemdata.details.type === 'Axe' ||
-        itemdata.details.type === 'Dagger' ||
-        itemdata.details.type === 'Mace' ||
-        itemdata.details.type === 'Pistol' ||
-        itemdata.details.type === 'Scepter' ||
-        itemdata.details.type === 'Sword' ||
-        itemdata.details.type === 'Focus' ||
-        itemdata.details.type === 'Shield' ||
-        itemdata.details.type === 'Torch' ||
-        itemdata.details.type === 'Warhorn' ||
-        itemdata.details.type === 'Greatsword' ||
-        itemdata.details.type === 'Hammer' ||
-        itemdata.details.type === 'LongBow' ||
-        itemdata.details.type === 'Rifle' ||
-        itemdata.details.type === 'ShortBow' ||
-        itemdata.details.type === 'Staff' ||
-        itemdata.details.type === 'Harpoon' ||
-        itemdata.details.type === 'Speargun' ||
-        itemdata.details.type === 'Trident')) ||
+    (itemdata.type === 'Armor' ||
+      itemdata.type === 'Weapon' ||
       itemdata.type === 'Back')
   ) {
     // adjust the time due to api inconsistencies: Short Bow <==> Longbow
-    let type = itemdata.details?.type || '';
-    if (itemdata.type === 'Back') type = 'Back Item';
-    else if (itemdata.details?.type === 'LongBow') type = 'Longbow';
-    else if (itemdata.details?.type === 'ShortBow') type = 'Short Bow';
+    let type = itemdata.type === 'Back' ? 'Back Item' : itemdata.details.type;
+    if (type === 'LongBow') type = 'Longbow';
+    else if (type === 'ShortBow') type = 'Short Bow';
 
     let createdData;
     try {
       createdData = createItem({
         type,
         stat,
-        weight: itemdata.details?.weight_class,
+        weight:
+          itemdata.type === 'Armor' ? itemdata.details.weight_class : undefined,
       });
     } catch (e) {
       console.error(`Error while loading item with id ${id}!\n ${e}`);
@@ -162,14 +140,18 @@ const Item = (props: ItemProps): ReactElement => {
       );
     }
 
-    const details = {
+    const details:
+      | GW2ApiArmorDetails
+      | GW2ApiWeaponDetails
+      | GW2ApiBackItemDetails = {
       ...itemdata.details,
       infix_upgrade: createdData.details.infix_upgrade,
-    } as GW2ApiItemDetails;
+    };
 
     stattedItemData = {
       ...itemdata,
-      details,
+      // TypeScript does not understand that this must be of the matching type
+      details: details as any,
     };
   }
 

@@ -3,7 +3,7 @@ import { APILanguage, useAPILanguage } from '../i18n';
 
 import APICache, { Id } from './cache';
 import GW2ApiItem from './types/items/item';
-import { GW2ApiSkill } from './types/skills/skill';
+import GW2ApiSkill from './types/skills/skill';
 import GW2ApiSpecialization from './types/specialization/specialization';
 import GW2ApiTrait from './types/traits/trait';
 

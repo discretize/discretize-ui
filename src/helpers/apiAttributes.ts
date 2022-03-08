@@ -1,6 +1,6 @@
 import GW2ApiAttribute from '../gw2api/types/common/attribute';
 // eslint-disable-next-line import/prefer-default-export
-export const apiAttributes: Record<GW2ApiAttribute, string> = {
+export const apiAttributes: Record<GW2ApiAttribute | 'None', string> = {
   Power: 'Power',
   Precision: 'Precision',
   Toughness: 'Toughness',
@@ -11,4 +11,5 @@ export const apiAttributes: Record<GW2ApiAttribute, string> = {
   CritDamage: 'Ferocity',
   Healing: 'Healing Power',
   AgonyResistance: 'Agony Resistance',
+  None: 'No Attribute',
 };

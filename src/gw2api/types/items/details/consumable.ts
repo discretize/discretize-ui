@@ -1,5 +1,37 @@
-import GW2ApiConsumableType from '../../common/consumableType';
-import GW2ApiUnlockType from '../../common/unlockType';
+type GW2ApiConsumableType =
+  | 'AppearanceChange'
+  | 'Booze'
+  | 'ContractNpc'
+  | 'Currency'
+  | 'Food'
+  | 'Generic'
+  | 'Halloween'
+  | 'Immediate'
+  | 'MountRandomUnlock'
+  | 'RandomUnlock'
+  | 'Transmutation'
+  | 'Unlock'
+  | 'UpgradeRemoval'
+  | 'Utility'
+  | 'TeleportToFriend';
+
+type GW2ApiUnlockType =
+  | 'BagSlot'
+  | 'BankTab'
+  | 'Champion'
+  | 'CollectibleCapacity'
+  | 'Content'
+  | 'CraftingRecipe'
+  | 'Dye'
+  | 'GliderSkin'
+  | 'Minipet'
+  | 'Ms'
+  | 'Outfit'
+  | 'RandomUnlock'
+  | 'SharedSlot'
+  | 'GearLoadoutTab'
+  | 'BuildLibrarySlot'
+  | 'BuildLoadoutTab';
 
 interface GW2ApiConsumableDetails {
   type: GW2ApiConsumableType;

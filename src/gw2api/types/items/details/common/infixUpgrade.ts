@@ -7,7 +7,7 @@ export interface GW2ApiInfixUpgradeAttribute {
 
 export interface GW2ApiBuff {
   skill_id: number;
-  description: string;
+  description?: string;
 }
 
 interface GW2ApiInfixUpgrade {

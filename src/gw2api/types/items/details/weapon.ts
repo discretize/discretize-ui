@@ -1,10 +1,10 @@
 import GW2ApiDamageType from '../../common/damageType';
-import GW2ApiWeaponType from '../../common/weaponType';
+import { GW2ApiWeaponTypeForItemDetails } from '../../common/weaponType';
 import GW2ApiInfixUpgrade from './common/infixUpgrade';
 import GW2ApiInflusionSlot from './common/infusionSlot';
 
 interface GW2ApiWeaponDetails {
-  type: GW2ApiWeaponType;
+  type: GW2ApiWeaponTypeForItemDetails;
   damage_type: GW2ApiDamageType;
   min_power: number;
   max_power: number;

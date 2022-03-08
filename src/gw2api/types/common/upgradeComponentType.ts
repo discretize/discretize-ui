@@ -1,4 +1,3 @@
-const TYPES = ['Default', 'Gem', 'Rune', 'Sigil'] as const;
-type GW2ApiUpgradeComponentType = typeof TYPES[number];
+type GW2ApiUpgradeComponentType = 'Default' | 'Gem' | 'Rune' | 'Sigil';
 
 export default GW2ApiUpgradeComponentType;
