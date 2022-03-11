@@ -60,6 +60,16 @@ const Item = (props: ItemProps): ReactElement => {
   } = props;
   const stat = statRaw ? capitalize(statRaw) : undefined;
 
+  if (!id) {
+    return (
+      <Error
+        code={404}
+        name="No ID provided"
+        message="Missing ID prop in the item component"
+      />
+    );
+  }
+
   let ids = [id];
   if (upgrades) {
     for (let u of upgrades) {
