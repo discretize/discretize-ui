@@ -28,7 +28,8 @@ const Aura = (props: AuraProps): ReactElement => {
     <Effect
       {...props}
       type="Aura"
-      name={translation}
+      name={name}
+      displayName={translation}
       description={description}
     />
   );

@@ -32,7 +32,8 @@ const Augmentation = (props: AugmentationProps): ReactElement => {
     <Effect
       {...props}
       type="Augmentation"
-      name={translation}
+      name={name}
+      displayName={translation}
       description={description}
     />
   );

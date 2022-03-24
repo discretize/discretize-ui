@@ -29,7 +29,8 @@ const Boon = (props: BoonProps): ReactElement => {
     <Effect
       {...props}
       type="Boon"
-      name={translation}
+      name={name}
+      displayName={translation}
       description={description}
       iconProps={{ applyCount: count }}
     />
