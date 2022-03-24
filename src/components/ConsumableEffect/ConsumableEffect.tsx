@@ -8,6 +8,7 @@ import consumableEffects, {
 
 export interface ConsumableEffectProps {
   name: ConsumableEffectTypes;
+  text?: string;
   disableTooltip?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -18,6 +19,7 @@ export interface ConsumableEffectProps {
 
 const ConsumableEffect = ({
   name,
+  text,
   disableTooltip = true,
   disableText,
   disableLink,
@@ -29,6 +31,7 @@ const ConsumableEffect = ({
     <Effect
       type="Consumable"
       name={name}
+      displayName={text}
       description={consumableEffects[name]}
       disableTooltip={disableTooltip}
       disableText={disableText}
