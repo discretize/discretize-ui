@@ -142,7 +142,7 @@ const ItemDetails = ({
           bonuses.length > 0 &&
           bonuses.map((bonus, index) => (
             <div
-              key={`bonus${index}`}
+              key={`${bonus}-${index}`}
               className={
                 upgradeBonusCount > index
                   ? css.bonusColor

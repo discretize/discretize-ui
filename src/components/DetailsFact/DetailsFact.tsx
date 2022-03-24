@@ -253,7 +253,7 @@ const Facts: React.FC<FactsProps> = ({ facts, className }) => {
           icon: fact.icon,
         }))
         .map(({ key, value, count, icon }, index) => (
-          <div key={`${key}${index}`} className={classes.factRoot}>
+          <div key={`${key}-${value}-${index}`} className={classes.factRoot}>
             <div className={classes.factIconWrapper}>
               {icon && (
                 <Icon
