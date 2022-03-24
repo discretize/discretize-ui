@@ -1,6 +1,6 @@
 {
   "name": "@discretize/gw2-ui-new",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "description": "React components and API wrapper for Guild Wars 2",
   "keywords": [
