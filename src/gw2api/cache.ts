@@ -66,6 +66,8 @@ export type Override<T extends { id: Id }> = (
   item: T | undefined,
 ) => T | undefined;
 
+const isSSR = typeof document === 'undefined';
+
 export default class APICache<T extends { id: Id }> {
   private path: string; // The relative URL of the API endpoint
   private language: APILanguage;
@@ -115,7 +117,7 @@ export default class APICache<T extends { id: Id }> {
       }
     }
 
-    if (missing > 0) {
+    if (!isSSR && missing > 0) {
       this.callbacks.add(callback);
       this.fetchLater();
     }
