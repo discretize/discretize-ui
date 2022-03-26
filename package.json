@@ -6,6 +6,7 @@
   "private": true,
   "workspaces": [
     "gw2-ui",
+    "react-discretize-components",
     "typeface-menomonia"
   ],
   "scripts": {
