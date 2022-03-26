@@ -58,7 +58,6 @@
     "@mui/material": "^5.2.7",
     "@mui/styles": "^5.4.4",
     "classnames": "^2.3.1",
-    "gatsby-plugin-image": "^2.4.0",
     "tss-react": "^3.3.1",
     "typeface-fira-mono": "^0.0.72",
     "typeface-menomonia": "^0.1.2",
