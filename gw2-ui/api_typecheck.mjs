@@ -12,7 +12,7 @@ import ttypescript from 'ttypescript';
 import typescript from '@rollup/plugin-typescript';
 
 const MAX_FAILURES = 20;
-const CACHE = 'gw2apicache';
+const CACHE = '../gw2apicache';
 
 const TYPEGUARD_OUTPUT_DIR = './src/gw2api/typeguards/out';
 

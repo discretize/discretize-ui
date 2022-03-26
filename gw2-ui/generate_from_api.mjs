@@ -4,7 +4,7 @@ import {
   initPrettier,
   writeSource,
   compare_strings,
-} from './node_api_helpers.mjs';
+} from '../node_api_helpers.mjs';
 
 function to_record(arr, key = 'id') {
   let record = {};
