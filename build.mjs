@@ -15,6 +15,7 @@ import { terser } from 'rollup-plugin-terser';
 import dts from 'rollup-plugin-dts';
 import postcss_url from 'postcss-url';
 import del from 'rollup-plugin-delete';
+import { babel } from '@rollup/plugin-babel';
 
 // These are not available in an esm context
 const __filename = url.fileURLToPath(import.meta.url);
@@ -97,6 +98,13 @@ async function build(package_path, package_json) {
           declarationDir: 'types',
           exclude: ['**/*.stories.tsx', '*.module.css'],
         }),
+        babel({
+          // Note: babel is only required for jsx files.
+          // Typescript handles .tsx, and we don't need to touch plain js files.
+          extensions: ['.jsx'],
+          presets: [['@babel/preset-react', { runtime: 'automatic' }]],
+          babelHelpers: 'bundled',
+        }),
         postcss({
           extract: true,
           modules: true,
@@ -111,7 +119,17 @@ async function build(package_path, package_json) {
         }),
         terser(),
       ],
-      external: ['react', 'react-dom'],
+      external: [
+        // Do not bundle react or other common dependencies
+        'react',
+        'react-dom',
+        '@emotion/react',
+        // Do not bundle out own packages, either
+        '@discretize/gw2-ui',
+        '@discretize/react-discretize-components',
+        '@discretize/typeface-menomonia',
+        'typeface-menomonia', // legacy package
+      ],
     });
     await bundle.write({
       file: OUTPUT_PATH,
@@ -125,29 +143,43 @@ async function build(package_path, package_json) {
   }
 
   // Step 2: bundle the types
-  try {
-    console.log('Bundling types...');
-    let bundle = await rollup({
-      input: path.join(OUTPUT_DIR, 'types', 'index.d.ts'),
-      plugins: [dts()],
-    });
-    await bundle.write({
-      file: package_json.types || OUTPUT_PATH + '.d.ts',
-      format: 'es',
-      sourcemap: false,
-    });
-    bundle.close();
-  } catch (e) {
-    console.error('Rollup .d.ts failed', e);
-    process.exit(1);
+  if (package_json.types) {
+    try {
+      console.log('Bundling types...');
+      let bundle = await rollup({
+        input: path.join(OUTPUT_DIR, 'types', 'index.d.ts'),
+        plugins: [dts()],
+      });
+      await bundle.write({
+        file: path.resolve(package_path, package_json.types),
+        format: 'es',
+        sourcemap: false,
+      });
+      bundle.close();
+    } catch (e) {
+      console.error('Rollup .d.ts failed', e);
+      process.exit(1);
+    }
+  } else {
+    console.log('Skipping type bundle...');
   }
 
   // Step 3: copy over the default style
   try {
-    fs.copyFileSync(
-      path.join(package_path, 'src', 'default_style.css'),
-      path.join(OUTPUT_DIR, 'default_style.css'),
+    const default_style_path = path.join(
+      package_path,
+      'src',
+      'default_style.css',
     );
+    if (fs.existsSync(default_style_path)) {
+      console.log('Copying default style...');
+      fs.copyFileSync(
+        default_style_path,
+        path.join(OUTPUT_DIR, 'default_style.css'),
+      );
+    } else {
+      console.log('Skipping default style...');
+    }
   } catch (e) {
     console.error('Copying the default style failed', e);
     process.exit(1);
