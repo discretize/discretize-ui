@@ -13,17 +13,19 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "module": "dist/index.js",
   "//types": "dist/index.d.ts",
   "scripts": {
+    "dev": "yarn storybook",
+    "storybook": "start-storybook -p 6006",
     "check": "node ../build.mjs check react-discretize-components",
     "build": "node ../build.mjs build react-discretize-components",
     "//serve": "rollup -c -w --environment BUILD:development",
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@discretize/gw2-ui-new": "^0.0.7",
+    "@discretize/gw2-ui-new": "^0.0.10",
+    "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.4.4",
     "@mui/material": "^5.2.7",
