@@ -18,8 +18,7 @@
   "scripts": {
     "dev": "yarn storybook",
     "storybook": "start-storybook -p 6006",
-    "check": "node ../build.mjs check react-discretize-components",
-    "build": "node ../build.mjs build react-discretize-components",
+    "build": "node ../build.mjs",
     "//serve": "rollup -c -w --environment BUILD:development",
     "prepublish": "yarn build"
   },
