@@ -124,7 +124,7 @@ async function build(package_path, package_json) {
         'react',
         'react-dom',
         '@emotion/react',
-        // Do not bundle out own packages, either
+        // Do not bundle our own packages, either
         '@discretize/gw2-ui',
         '@discretize/react-discretize-components',
         '@discretize/typeface-menomonia',
