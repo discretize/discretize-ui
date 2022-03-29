@@ -8,10 +8,12 @@ import {
 } from './node_api_helpers.mjs';
 
 const ENDPOINTS = [
-  '/v2/skills',
-  '/v2/specializations',
-  '/v2/traits',
-  '/v2/items',
+  ['/v2/skills', true],
+  ['/v2/specializations', true],
+  ['/v2/traits', true],
+  ['/v2/items', true],
+  ['/v2/professions', false],
+  ['/v2/races', false],
 ];
 
 function sleep(ms) {
@@ -23,10 +25,22 @@ async function run() {
   await initPrettier();
 
   let fetched = 0;
-  for (let endpoint of ENDPOINTS) {
-    console.log('Fetching ids for', endpoint);
-    let ids = await fetch_api(endpoint);
+  for (let [endpoint, fetch_ids] of ENDPOINTS) {
+    let ids = ['all'];
+    if (fetch_ids) {
+      console.log('Fetching ids for', endpoint);
+      ids = await fetch_api(endpoint);
+    }
     for (let lang of API_LANGUAGES) {
+      let filename = `gw2apicache/${endpoint
+        .replaceAll('/', '_')
+        .toLowerCase()}_${lang}.json`;
+
+      if (fs.existsSync(filename)) {
+        console.log(filename, 'exists, skipping');
+        continue;
+      }
+
       console.log('\t', lang);
       let remaining = [...ids];
       let all = [];
@@ -49,12 +63,7 @@ async function run() {
 
       all.sort((a, b) => compare_strings(a.id, b.id));
 
-      fs.writeFileSync(
-        `gw2apicache/${endpoint
-          .replaceAll('/', '_')
-          .toLowerCase()}_${lang}.json`,
-        JSON.stringify(all, undefined, '\t'),
-      );
+      fs.writeFileSync(filename, JSON.stringify(all, undefined, '\t'));
     }
   }
 
