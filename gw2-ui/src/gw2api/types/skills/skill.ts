@@ -6,55 +6,13 @@ import GW2ApiProfession from '../common/profession';
 import GW2ApiWeaponType, {
   GW2ApiOneHandedWeaponType,
 } from '../common/weaponType';
-
-// TODO
-type GW2ApiSkillCategory = string;
-type GW2ApiSkillCategory_ =
-  | 'DualWield'
-  | 'StealthAttack'
-  | 'Signet'
-  | 'Cantrip'
-  | 'Elixir'
-  | 'Conjure'
-  | 'Arcane';
-
-type GW2ApiSkillType =
-  | 'Bundle'
-  | 'Elite'
-  | 'Heal'
-  | 'Profession'
-  | 'Utility'
-  | 'Weapon'
-  | 'Toolbelt'
-  | 'Pet'
-  | 'Monster'
-  | 'Transform';
-
-type GW2ApiSkillAttunement = 'Fire' | 'Water' | 'Air' | 'Earth';
-
-type GW2ApiSkillFlag = 'GroundTargeted' | 'NoUnderwater';
-
-type GW2ApiSkillSlot =
-  | 'Weapon_1'
-  | 'Weapon_2'
-  | 'Weapon_3'
-  | 'Weapon_4'
-  | 'Weapon_5'
-  | 'Heal'
-  | 'Utility'
-  | 'Elite'
-  | 'Downed_1'
-  | 'Downed_2'
-  | 'Downed_3'
-  | 'Downed_4'
-  | 'Profession_1'
-  | 'Profession_2'
-  | 'Profession_3'
-  | 'Profession_4'
-  | 'Profession_5'
-  | 'Pet'
-  | 'Toolbelt'
-  | 'Transform_1';
+import {
+  GW2ApiSkillAttunement,
+  GW2ApiSkillCategory,
+  GW2ApiSkillFlag,
+  GW2ApiSkillSlot,
+  GW2ApiSkillType,
+} from './enums';
 
 export default interface GW2ApiSkill {
   id: number;
