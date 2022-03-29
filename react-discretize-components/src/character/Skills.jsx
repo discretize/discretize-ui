@@ -59,12 +59,22 @@ const Skills = ({
       <Grid item className={classes.gridItem}>
         <div className={classes.utilities}>
           {healId ? (
-            <Skill data={healData} id={healId} className={classNameSkill} disableText />
+            <Skill
+              data={healData}
+              id={healId}
+              className={classNameSkill}
+              disableText
+            />
           ) : (
             <NoSelection size="big" />
           )}
         </div>
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           Heal
         </Typography>
       </Grid>
@@ -72,22 +82,42 @@ const Skills = ({
       <Grid item className={classNames(classes.gridItem, classes.borderLeft)}>
         <div>
           {utility1Id ? (
-            <Skill data={utility1Data} id={utility1Id} className={classNameSkill} disableText />
+            <Skill
+              data={utility1Data}
+              id={utility1Id}
+              className={classNameSkill}
+              disableText
+            />
           ) : (
             <NoSelection size={iconSize} />
           )}
           {utility2Id ? (
-            <Skill data={utility2Data} id={utility2Id} className={classNameSkill} disableText />
+            <Skill
+              data={utility2Data}
+              id={utility2Id}
+              className={classNameSkill}
+              disableText
+            />
           ) : (
             <NoSelection size={iconSize} />
           )}
           {utility3Id ? (
-            <Skill data={utility3Data} id={utility3Id} className={classNameSkill} disableText />
+            <Skill
+              data={utility3Data}
+              id={utility3Id}
+              className={classNameSkill}
+              disableText
+            />
           ) : (
             <NoSelection size={iconSize} />
           )}
         </div>
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           Utilities
         </Typography>
       </Grid>
@@ -95,12 +125,22 @@ const Skills = ({
       <Grid item className={classNames(classes.gridItem, classes.borderLeft)}>
         <div className={classes.utilities}>
           {eliteId ? (
-            <Skill data={eliteData} id={eliteId} className={classNameSkill} disableText />
+            <Skill
+              data={eliteData}
+              id={eliteId}
+              className={classNameSkill}
+              disableText
+            />
           ) : (
             <NoSelection size={iconSize} />
           )}
         </div>
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           Elite
         </Typography>
       </Grid>

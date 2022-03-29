@@ -32,35 +32,72 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const Consumables = ({ foodData, utilityData, infusionData, foodId, utilityId, infusionId }) => {
+const Consumables = ({
+  foodData,
+  utilityData,
+  infusionData,
+  foodId,
+  utilityId,
+  infusionId,
+}) => {
   const { classes } = useStyles();
 
   return (
     <Box className={classes.root}>
       <Box className={classes.gridItem}>
         {foodId || foodData ? (
-          <Item data={foodData} id={foodId} className={classes.gw2Item} disableText />
+          <Item
+            data={foodData}
+            id={foodId}
+            className={classes.gw2Item}
+            disableText
+          />
         ) : (
           <NoSelection className={classes.gw2Item} />
         )}
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           <ConsumableEffect name="Nourishment" disableText /> Food
         </Typography>
       </Box>
       <Box className={classNames(classes.gridItem, classes.borderLeft)}>
         {utilityData || utilityId ? (
-          <Item data={utilityData} id={utilityId} className={classes.gw2Item} disableText />
+          <Item
+            data={utilityData}
+            id={utilityId}
+            className={classes.gw2Item}
+            disableText
+          />
         ) : (
           <NoSelection className={classes.gw2Item} />
         )}
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           <ConsumableEffect name="Enhancement" disableText /> Utility
         </Typography>
       </Box>
       {(infusionData || infusionId) && (
         <Box className={classNames(classes.gridItem, classes.borderLeft)}>
-          <Item data={infusionData} id={infusionId} className={classes.gw2Item} disableText />
-          <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+          <Item
+            data={infusionData}
+            id={infusionId}
+            className={classes.gw2Item}
+            disableText
+          />
+          <Typography
+            variant="subtitle1"
+            className={classes.title}
+            component="span"
+            gutterBottom
+          >
             Infusion
           </Typography>
         </Box>

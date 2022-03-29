@@ -48,7 +48,6 @@ async function run() {
 run();
 
 async function check_root() {
-  /*
   console.log(`Checking formatting...`);
   child_process.execSync(
     'prettier --check --config ./.prettierrc.json --ignore-path ./.prettierignore .',
@@ -57,7 +56,7 @@ async function check_root() {
       cwd: __dirname,
     },
   );
-*/
+
   console.log(`Linting...`);
   child_process.execSync('eslint -c ./.eslintrc.cjs "."', {
     stdio: [0, 1, 2],

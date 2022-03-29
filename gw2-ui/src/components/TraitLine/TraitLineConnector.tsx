@@ -74,7 +74,7 @@ const TraitLineConnector = ({
       const length = Math.sqrt(width ** 2 + (startY - endY) ** 2);
       const angle = Math.atan2(endY - startY, -width) * (180 / Math.PI);
 
-      const {style} = ref_line.current;
+      const { style } = ref_line.current;
       style.bottom = (startY + endY) / 2 - 8 / 2 + 'px';
       style.left = width / 2 - length / 2 + 'px';
       style.width = length + 'px';

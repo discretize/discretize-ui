@@ -1,4 +1,10 @@
-import { Boon, CommonEffect, Condition, Skill, Trait } from '@discretize/gw2-ui-new';
+import {
+  Boon,
+  CommonEffect,
+  Condition,
+  Skill,
+  Trait,
+} from '@discretize/gw2-ui-new';
 import { makeStyles } from 'tss-react/mui';
 import firstUppercase from '../helpers/firstUppercase';
 

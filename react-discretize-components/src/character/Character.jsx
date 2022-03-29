@@ -47,7 +47,12 @@ const Character = ({
         </Box>
       )}
       <Box display="flex" flexWrap="wrap" justifyContent="space-between">
-        <Box flex="0 0 250px" display="flex" flexDirection="column" justifyContent="space-between">
+        <Box
+          flex="0 0 250px"
+          display="flex"
+          flexDirection="column"
+          justifyContent="space-between"
+        >
           <Paper elevation={0} className={classes.section}>
             <Armor {...armorPropsAPI} />
           </Paper>
@@ -67,7 +72,9 @@ const Character = ({
 
           {(skillsPropsAPI || legendsPropsAPI) && (
             <Paper
-              style={big ? { maxWidth: 390, alignSelf: 'center' } : { maxWidth: 390 }}
+              style={
+                big ? { maxWidth: 390, alignSelf: 'center' } : { maxWidth: 390 }
+              }
               elevation={0}
               className={classes.section}
             >
@@ -77,7 +84,12 @@ const Character = ({
           )}
         </Box>
 
-        <Box flex="0 0 250px" display="flex" flexDirection="column" justifyContent="space-between">
+        <Box
+          flex="0 0 250px"
+          display="flex"
+          flexDirection="column"
+          justifyContent="space-between"
+        >
           <Paper elevation={0} className={classes.section}>
             <Attributes profession={profession} data={attributes} />
           </Paper>

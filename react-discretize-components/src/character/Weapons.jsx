@@ -1,4 +1,10 @@
-import { List, ListItem, ListItemText, useMediaQuery, useTheme } from '@mui/material';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Icon, Item } from '@discretize/gw2-ui-new';
 import NoSelection from '../NoSelection';
@@ -104,7 +110,10 @@ const Weapons = ({
               <ListItemText
                 secondaryTypographyProps={{ fontSize: '0.82rem !important' }}
                 primary={`${weapon1MainAffix}`}
-                secondary={weapon1MainSigil1 + (weapon1MainSigil2 ? `, ${weapon1MainSigil2}` : '')}
+                secondary={
+                  weapon1MainSigil1 +
+                  (weapon1MainSigil2 ? `, ${weapon1MainSigil2}` : '')
+                }
                 classes={{ secondary: classes.secondaryText }}
                 className={classes.listItemText}
               />
@@ -125,7 +134,9 @@ const Weapons = ({
               stat={weapon1OffAffix}
               className={classes.gw2Item}
               type={weapon1OffType}
-              upgrades={[weapon1OffSigilId, weapon1OffInfusionId].filter((d) => d !== undefined)}
+              upgrades={[weapon1OffSigilId, weapon1OffInfusionId].filter(
+                (d) => d !== undefined,
+              )}
               disableText
             />
             <ListItemText
@@ -170,7 +181,8 @@ const Weapons = ({
                 <ListItemText
                   primary={`${weapon2MainAffix}`}
                   secondary={
-                    weapon2MainSigil1 + (weapon2MainSigil2 ? `, ${weapon2MainSigil2}` : '')
+                    weapon2MainSigil1 +
+                    (weapon2MainSigil2 ? `, ${weapon2MainSigil2}` : '')
                   }
                   classes={{ secondary: classes.secondaryText }}
                   className={classes.listItemText}
@@ -179,7 +191,10 @@ const Weapons = ({
             ) : (
               <ListItem disableGutters className={classes.listItem}>
                 <NoSelection size={isMobile ? 'large2' : 'big'} />
-                <ListItemText className={classes.listItemText} primary="Empty" />
+                <ListItemText
+                  className={classes.listItemText}
+                  primary="Empty"
+                />
               </ListItem>
             )}
 
@@ -207,7 +222,10 @@ const Weapons = ({
             {!weapon2OffId && !weapon2MainSigil2Id && (
               <ListItem disableGutters className={classes.listItem}>
                 <NoSelection size={isMobile ? 'large2' : 'big'} />
-                <ListItemText className={classes.listItemText} primary="Empty" />
+                <ListItemText
+                  className={classes.listItemText}
+                  primary="Empty"
+                />
               </ListItem>
             )}
           </List>

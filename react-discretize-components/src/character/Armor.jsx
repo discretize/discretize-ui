@@ -117,7 +117,11 @@ const Armor = ({
         <Item
           data={shouldersData}
           id={shouldersId}
-          upgrades={createUpgrades(shouldersInfusionId, shouldersRuneId, shouldersRuneCount)}
+          upgrades={createUpgrades(
+            shouldersInfusionId,
+            shouldersRuneId,
+            shouldersRuneCount,
+          )}
           disableText
           className={classes.gw2Item}
         />
@@ -149,7 +153,11 @@ const Armor = ({
         <Item
           data={glovesData}
           id={glovesId}
-          upgrades={createUpgrades(glovesInfusionId, glovesRuneId, glovesRuneCount)}
+          upgrades={createUpgrades(
+            glovesInfusionId,
+            glovesRuneId,
+            glovesRuneCount,
+          )}
           disableText
           className={classes.gw2Item}
         />
@@ -165,7 +173,11 @@ const Armor = ({
         <Item
           data={leggingsData}
           id={leggingsId}
-          upgrades={createUpgrades(leggingsInfusionId, leggingsRuneId, leggingsRuneCount)}
+          upgrades={createUpgrades(
+            leggingsInfusionId,
+            leggingsRuneId,
+            leggingsRuneCount,
+          )}
           disableText
           className={classes.gw2Item}
         />
@@ -181,7 +193,11 @@ const Armor = ({
         <Item
           data={bootsData}
           id={bootsId}
-          upgrades={createUpgrades(bootsInfusionId, bootsRuneId, bootsRuneCount)}
+          upgrades={createUpgrades(
+            bootsInfusionId,
+            bootsRuneId,
+            bootsRuneCount,
+          )}
           disableText
           className={classes.gw2Item}
         />

@@ -25,19 +25,39 @@ const Attributes = ({ profession, data }) => {
         <Grid item xs={6}>
           <List dense disablePadding>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Power" text={`${data.Power}`} className={classes.gw2Item} />
+              <Attribute
+                name="Power"
+                text={`${data.Power}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Toughness" text={`${data.Toughness}`} className={classes.gw2Item} />
+              <Attribute
+                name="Toughness"
+                text={`${data.Toughness}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Vitality" text={`${data.Vitality}`} className={classes.gw2Item} />
+              <Attribute
+                name="Vitality"
+                text={`${data.Vitality}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Precision" text={`${data.Precision}`} className={classes.gw2Item} />
+              <Attribute
+                name="Precision"
+                text={`${data.Precision}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Ferocity" text={`${data.Ferocity}`} className={classes.gw2Item} />
+              <Attribute
+                name="Ferocity"
+                text={`${data.Ferocity}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
               <Attribute
@@ -47,7 +67,11 @@ const Attributes = ({ profession, data }) => {
               />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Expertise" text={`${data.Expertise}`} className={classes.gw2Item} />
+              <Attribute
+                name="Expertise"
+                text={`${data.Expertise}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
               <Attribute
@@ -68,13 +92,25 @@ const Attributes = ({ profession, data }) => {
         <Grid item xs={6}>
           <List dense disablePadding>
             <ListItem className={classes.gridItem}>
-              <Profession name={firstUppercase(profession)} text="0" className={classes.gw2Item} />
+              <Profession
+                name={firstUppercase(profession)}
+                text="0"
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Armor" text={`${data.Armor}`} className={classes.gw2Item} />
+              <Attribute
+                name="Armor"
+                text={`${data.Armor}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Health" text={`${data.Health}`} className={classes.gw2Item} />
+              <Attribute
+                name="Health"
+                text={`${data.Health}`}
+                className={classes.gw2Item}
+              />
             </ListItem>
             <ListItem className={classes.gridItem}>
               <Attribute
@@ -100,7 +136,9 @@ const Attributes = ({ profession, data }) => {
             <ListItem className={classes.gridItem}>
               <Attribute
                 name="Condition Duration"
-                text={`${Math.round(data['Condition Duration'] * 10000) / 100}%`}
+                text={`${
+                  Math.round(data['Condition Duration'] * 10000) / 100
+                }%`}
                 className={classes.gw2Item}
               />
             </ListItem>
@@ -112,7 +150,11 @@ const Attributes = ({ profession, data }) => {
               />
             </ListItem>
             <ListItem className={classes.gridItem}>
-              <Attribute name="Magic Find" text="0" className={classes.gw2Item} />
+              <Attribute
+                name="Magic Find"
+                text="0"
+                className={classes.gw2Item}
+              />
             </ListItem>
           </List>
         </Grid>

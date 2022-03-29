@@ -39,21 +39,26 @@ export default (props) => (Component) =>
 
     let alias;
 
-    alias = profession && typeof profession === 'string' && profession.toLowerCase();
+    alias =
+      profession && typeof profession === 'string' && profession.toLowerCase();
 
     if (!alias) {
       const lowerCaseSpecialization =
-        specialization && typeof specialization === 'string' && specialization.toLowerCase();
+        specialization &&
+        typeof specialization === 'string' &&
+        specialization.toLowerCase();
       alias =
         lowerCaseSpecialization &&
-        (specializationAliases[lowerCaseSpecialization] || lowerCaseSpecialization);
+        (specializationAliases[lowerCaseSpecialization] ||
+          lowerCaseSpecialization);
     }
 
     if (!alias) {
       alias = type && typeof type === 'string' && type.toLowerCase();
     }
 
-    const gw2Theme = alias && (!theme || alias !== theme.name) && gw2Styles[alias];
+    const gw2Theme =
+      alias && (!theme || alias !== theme.name) && gw2Styles[alias];
 
     return gw2Theme ? (
       <ThemeProvider theme={gw2Theme}>

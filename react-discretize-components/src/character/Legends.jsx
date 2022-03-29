@@ -32,7 +32,12 @@ const Legends = ({ legend1Id, legend2Id, className }) => {
   return (
     <>
       {legend1Id && legend2Id && (
-        <Grid container justifyContent="center" alignItems="center" className={className}>
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          className={className}
+        >
           <Grid item className={classes.legends}>
             <Skill id={legend1Id} disableText className={classNameSkill} />
           </Grid>

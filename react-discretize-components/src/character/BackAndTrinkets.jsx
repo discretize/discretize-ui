@@ -68,9 +68,17 @@ const BackAndTrinkets = ({
   const { classes } = useStyles();
 
   return (
-    <Box display="grid" sx={{ gridTemplateColumns: 'repeat(3,1fr)', margin: '-12px' }}>
+    <Box
+      display="grid"
+      sx={{ gridTemplateColumns: 'repeat(3,1fr)', margin: '-12px' }}
+    >
       <Box className={classNames(classes.gridItem, classes.borderBottom)}>
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           {backItemAffix}
         </Typography>
         <Item
@@ -79,14 +87,27 @@ const BackAndTrinkets = ({
           stat={backItemAffix}
           type="Back Item"
           //  statsId={backItemStatsId}
-          upgrades={[backItemInfusion1Id, backItemInfusion2Id].filter((i) => i !== undefined)}
+          upgrades={[backItemInfusion1Id, backItemInfusion2Id].filter(
+            (i) => i !== undefined,
+          )}
           disableText
           className={classes.gw2Item}
         />
       </Box>
 
-      <Box className={classNames(classes.gridItem, classes.borderLeft, classes.borderBottom)}>
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+      <Box
+        className={classNames(
+          classes.gridItem,
+          classes.borderLeft,
+          classes.borderBottom,
+        )}
+      >
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           {accessory1Affix}
         </Typography>
         <Item
@@ -102,7 +123,12 @@ const BackAndTrinkets = ({
       </Box>
 
       <Box className={classNames(classes.gridItem, classes.borderBottom)}>
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           {accessory2Affix}
         </Typography>
         <Item
@@ -127,7 +153,12 @@ const BackAndTrinkets = ({
           disableText
           className={classes.gw2Item}
         />
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           {amuletAffix}
         </Typography>
       </Box>
@@ -138,14 +169,21 @@ const BackAndTrinkets = ({
           id={ring1Id}
           stat={ring1Affix}
           // statsId={ring1StatsId}
-          upgrades={[ring1Infusion1Id, ring1Infusion2Id, ring1Infusion3Id].filter(
-            (i) => i !== undefined,
-          )}
+          upgrades={[
+            ring1Infusion1Id,
+            ring1Infusion2Id,
+            ring1Infusion3Id,
+          ].filter((i) => i !== undefined)}
           type="Ring"
           disableText
           className={classes.gw2Item}
         />
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           {ring1Affix}
         </Typography>
       </Box>
@@ -156,14 +194,21 @@ const BackAndTrinkets = ({
           id={ring2Id}
           stat={ring2Affix}
           // statsId={ring2StatsId}
-          upgrades={[ring2Infusion1Id, ring2Infusion2Id, ring2Infusion3Id].filter(
-            (i) => i !== undefined,
-          )}
+          upgrades={[
+            ring2Infusion1Id,
+            ring2Infusion2Id,
+            ring2Infusion3Id,
+          ].filter((i) => i !== undefined)}
           type="Ring"
           disableText
           className={classes.gw2Item}
         />
-        <Typography variant="subtitle1" className={classes.title} component="span" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          className={classes.title}
+          component="span"
+          gutterBottom
+        >
           {ring2Affix}
         </Typography>
       </Box>

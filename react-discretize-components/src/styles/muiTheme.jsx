@@ -231,7 +231,10 @@ export default createTheme(theme, {
     MuiAutocomplete: {
       defaultProps: {
         PaperComponent: ({ children }) => (
-          <Paper elevation={3} sx={{ background: theme.palette.background.paper }}>
+          <Paper
+            elevation={3}
+            sx={{ background: theme.palette.background.paper }}
+          >
             {children}
           </Paper>
         ),

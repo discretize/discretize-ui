@@ -1,3 +1,5 @@
-dist
-./gw2-api/src/gw2api/typeguards/out/
-./gw2-api/src/gw2api/typeguards/failures/
+dist/
+*.md
+/gw2-ui/src/gw2api/typeguards/out/
+/gw2-ui/src/gw2api/typeguards/failures/
+/gw2apicache/
