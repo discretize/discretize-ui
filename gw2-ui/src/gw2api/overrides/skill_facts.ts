@@ -5,14 +5,12 @@ import GW2ApiTrait from '../types/traits/trait';
 function fix_fact(f: GW2ApiFact) {
   if (!f.type && 'percent' in f) {
     // On some facts, the type is missing
-    f = f as GW2ApiFact;
-    f.type = 'Percent';
+    (f as GW2ApiFact).type = 'Percent';
   }
   // On some percent facts, the percent is given as .value
   if (f.type === 'Percent') {
     if ('value' in f) {
-      f = f as GW2ApiFactPercent;
-      f.percent = (f as any).value;
+      (f as GW2ApiFactPercent).percent = (f as any).value;
       delete (f as any).value;
     }
   }

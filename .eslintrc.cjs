@@ -60,6 +60,9 @@ module.exports = {
     // Default props are a relic of the past
     'react/require-default-props': 'off',
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
+    // Being explicit about types is not a problem
+    '@typescript-eslint/no-inferrable-types': 'off',
+
     /*
     'import/no-extraneous-dependencies': 'warn',
     'react/prop-types': 'warn',

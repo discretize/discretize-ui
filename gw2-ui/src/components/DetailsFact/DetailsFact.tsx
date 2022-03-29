@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 import GW2ApiFact from '../../gw2api/types/common/fact';
-import { apiAttributes } from '../../helpers/apiAttributes';
-import { formatDuration } from '../../helpers/formatDuration';
+import apiAttributes from '../../helpers/apiAttributes';
+import formatDuration from '../../helpers/formatDuration';
 import classes from './DetailsFact.module.css';
 
 import Icon from '../Icon/Icon';
@@ -49,12 +49,12 @@ const getKeyValue = (data: GW2ApiFact) => {
     case 'BuffConversion': {
       const { percent, source, target } = data;
 
-      function getAttr(target: string) {
+      const getAttr = (target: string) => {
         return capitalize(
           Object.keys(attributes).find((key) => attributes[key] === target) ||
             target,
         );
-      }
+      };
 
       key = (
         <>

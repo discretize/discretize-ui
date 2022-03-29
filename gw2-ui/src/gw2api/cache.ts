@@ -292,14 +292,15 @@ export default class APICache<T extends { id: Id }> {
   }
 
   private fixItem(id: Id, item: T | undefined): T | undefined {
+    let fixed_item = item;
     for (let f of this.overrides) {
       try {
-        item = f(id, item);
+        fixed_item = f(id, fixed_item);
       } catch (e) {
         console.error('Error in override', e);
       }
     }
-    return item;
+    return fixed_item;
   }
 
   public addOverride(f: Override<T>) {

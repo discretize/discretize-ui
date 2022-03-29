@@ -21,7 +21,7 @@ export interface IconWithTextProps {
 }
 
 const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
-  (
+  function IconWithText(
     {
       icon,
       text,
@@ -37,7 +37,7 @@ const IconWithText = React.forwardRef<HTMLInputElement, IconWithTextProps>(
       onClick,
     }: IconWithTextProps,
     ref,
-  ) => {
+  ) {
     return (
       <span
         ref={ref}

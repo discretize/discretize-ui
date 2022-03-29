@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export const formatDuration = (value: number) => {
+export default function formatDuration(value: number) {
   let seconds = value;
 
   const weeks = Math.floor(seconds / 604800);
@@ -23,4 +22,4 @@ export const formatDuration = (value: number) => {
   ]
     .filter((entry) => !!entry)
     .join(', ');
-};
+}
