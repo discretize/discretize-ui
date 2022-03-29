@@ -143,10 +143,12 @@ export interface GW2ApiItemTool extends GW2ApiItemBase {
   details: WrapInUndefined<GW2ApiToolDetails>;
 }
 // This appears to be unused
+/*
 interface GW2ApiItemTrait extends GW2ApiItemBase {
   type: 'Trait';
   details?: undefined;
 }
+*/
 export interface GW2ApiItemTrinket extends GW2ApiItemBase {
   type: 'Trinket';
   details: WrapInUndefined<GW2ApiTrinketDetails>;

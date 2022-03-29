@@ -112,7 +112,7 @@ const Tooltip = ({
       setPosition(e);
     }
 
-    function onpointerout(e: PointerEvent) {
+    function onpointerout() {
       setVisible(false);
       position_ref.current = NULL_RECT;
     }

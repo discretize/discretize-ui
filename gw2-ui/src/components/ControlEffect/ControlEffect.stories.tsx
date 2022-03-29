@@ -1,7 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import ControlEffect from './ControlEffect';
-import { Multiple } from '../Item/Item.stories';
 import { APILanguageProvider } from '../../i18n';
 
 export default {

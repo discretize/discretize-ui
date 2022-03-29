@@ -8,7 +8,6 @@ import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import SPECIALIZATIONS from '../../data/specializations';
 import professioncss from '../Profession/professions.module.css';
 import css from './Trait.module.css';
-import { capitalize } from '../../helpers/capitalize';
 import { useTrait } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import clsx from 'clsx';
