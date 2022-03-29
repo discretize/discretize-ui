@@ -1,8 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as process from 'node:process';
-import * as child_process from 'child_process';
-import { writeSource } from './node_api_helpers.mjs';
+import { writeSource } from '../node_api_helpers.mjs';
 
 // rollup and plugins
 import { rollup } from 'rollup';
@@ -17,6 +16,9 @@ const CACHE = '../gw2apicache';
 const TYPEGUARD_OUTPUT_DIR = './src/gw2api/typeguards/out';
 
 async function run() {
+  console.warn(
+    'Remember to change src/gw2api/types/items/items.ts before running this!',
+  );
   console.log('Generating type guards');
   // Just compiling these with tsc is not enough
   let bundle = await rollup({
