@@ -17,7 +17,7 @@ function fix_fact(f: GW2ApiFact) {
 }
 function fix_facts(facts: GW2ApiFact[] | undefined) {
   if (!facts) return;
-  for (let f of facts) fix_fact(f);
+  for (const f of facts) fix_fact(f);
 }
 
 export function fixFactsInSkill(
@@ -38,7 +38,7 @@ export function fixFactsInTrait(
   fix_facts(item.facts);
   fix_facts(item.traited_facts);
   if (item.skills) {
-    for (let s of item.skills) {
+    for (const s of item.skills) {
       fix_facts(s.facts);
       fix_facts(s.traited_facts);
     }

@@ -30,7 +30,7 @@ function getCache<T extends { id: number }>(
       max_concurrent_requests,
     );
     if (overrides) {
-      for (let f of overrides) {
+      for (const f of overrides) {
         cache.addOverride(f);
       }
     }

@@ -70,9 +70,9 @@ const Item = (props: ItemProps): ReactElement => {
     );
   }
 
-  let ids = [id];
+  const ids = [id];
   if (upgrades) {
-    for (let u of upgrades) {
+    for (const u of upgrades) {
       if (Array.isArray(u)) {
         ids.push(u[0]);
       } else {
@@ -86,7 +86,7 @@ const Item = (props: ItemProps): ReactElement => {
     return <IconWithText {...props} loading />;
   }
   if (items.errors) {
-    let first_error_id = Number(Object.keys(items.errors)[0]);
+    const first_error_id = Number(Object.keys(items.errors)[0]);
     return (
       <Error
         {...props}
@@ -98,14 +98,14 @@ const Item = (props: ItemProps): ReactElement => {
     );
   }
 
-  let itemdata = items.data[id];
+  const itemdata = items.data[id];
   const { name, icon, rarity } = itemdata;
   // TODO redo the typing for details: the type of the details field depends
   //      on what string is supplied via type (Gw2ApiItemType)
 
-  let upgradedata: [GW2ApiItem, number][] = [];
+  const upgradedata: [GW2ApiItem, number][] = [];
   if (upgrades) {
-    for (let u of upgrades) {
+    for (const u of upgrades) {
       let id: number;
       let count: number = 1;
       if (Array.isArray(u)) {

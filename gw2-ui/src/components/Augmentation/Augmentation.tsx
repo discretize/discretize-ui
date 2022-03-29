@@ -21,8 +21,8 @@ const Augmentation = (props: AugmentationProps): ReactElement => {
   const { name } = props;
   const language = useAPILanguage();
 
-  let translation = translate(TRANSLATIONS_AUGMENTATIONS, name, language);
-  let description = translate(
+  const translation = translate(TRANSLATIONS_AUGMENTATIONS, name, language);
+  const description = translate(
     TRANSLATIONS_AUGMENTATION_DESCRIPTIONS,
     name,
     language,

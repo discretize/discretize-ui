@@ -55,8 +55,8 @@ const Attribute = ({
     );
   }
 
-  let translation = translate(TRANSLATIONS_ATTRIBUTES, name, language);
-  let description = translate(
+  const translation = translate(TRANSLATIONS_ATTRIBUTES, name, language);
+  const description = translate(
     TRANSLATIONS_ATTRIBUTE_DESCRIPTIONS,
     name,
     language,

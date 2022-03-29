@@ -56,7 +56,7 @@ const Error = ({
     } else {
       by_language = by_code;
     }
-    let item = by_language;
+    const item = by_language;
     if (item === undefined) return '';
     if (typeof item === 'string') return item;
     if (id !== undefined) return item(id);

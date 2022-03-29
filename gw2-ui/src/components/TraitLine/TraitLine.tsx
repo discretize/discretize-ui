@@ -218,7 +218,7 @@ const TraitLine = (props: TraitLineProps): ReactElement => {
   );
 
   // turn [1,2,3,4,5,6,7,8,9] into [[1,2,3], [4,5,6], [7,8,9]]
-  let majorTraitsByTier: number[][] = [];
+  const majorTraitsByTier: number[][] = [];
   for (let i = 0; i < majorTraits.length; i += 3) {
     majorTraitsByTier.push(majorTraits.slice(i, i + 3));
   }

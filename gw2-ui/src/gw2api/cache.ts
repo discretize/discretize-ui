@@ -110,7 +110,7 @@ export default class APICache<T extends { id: Id }> {
     callback: () => void,
   ): APICacheGetMultipleResult<T> {
     let missing = 0;
-    for (let id of ids) {
+    for (const id of ids) {
       if (!this.cache.has(id)) {
         this.requested_ids.add(id);
         missing++;
@@ -122,10 +122,10 @@ export default class APICache<T extends { id: Id }> {
       this.fetchLater();
     }
 
-    let map: Record<Id, T> = {};
+    const map: Record<Id, T> = {};
     let errors: Record<Id, APIError> | null = null;
-    for (let id of ids) {
-      let item = this.cache.get(id);
+    for (const id of ids) {
+      const item = this.cache.get(id);
       if (item === undefined) {
         missing++;
       } else if (item === API_ERROR_NOT_FOUND || item === API_ERROR_NETWORK) {
@@ -143,8 +143,8 @@ export default class APICache<T extends { id: Id }> {
   }
 
   public getOne(id: Id, callback: () => void): APICacheGetOneResult<T> {
-    let res = this.getMultiple([id], callback);
-    let item = res.data[id];
+    const res = this.getMultiple([id], callback);
+    const item = res.data[id];
     if (res.loading) {
       return {
         loading: true,
@@ -196,8 +196,8 @@ export default class APICache<T extends { id: Id }> {
     if (this.requested_ids.size <= this.fetched_ids.size) {
       return;
     }
-    let ids: Id[] = [];
-    for (let id of this.requested_ids.values()) {
+    const ids: Id[] = [];
+    for (const id of this.requested_ids.values()) {
       if (!this.fetched_ids.has(id)) {
         ids.push(id);
       }
@@ -213,27 +213,27 @@ export default class APICache<T extends { id: Id }> {
 
     // We got ids and we're allowed to send another request, so let's do this.
     this.requests_inflight++;
-    for (let id of ids) {
+    for (const id of ids) {
       this.fetched_ids.add(id);
     }
     let response: unknown[];
     let error: APIError = API_ERROR_NOT_FOUND;
     try {
       ids.sort((a, b) => a - b);
-      let url =
+      const url =
         GW2_API_URL +
         this.path +
         '?ids=' +
         ids.join(',') +
         '&lang=' +
         this.language;
-      let res = await fetch(url, FETCH_OPTIONS);
+      const res = await fetch(url, FETCH_OPTIONS);
       if (res.status === 404) {
         // 404 usually means that none of the passed ids are known, which is equivalent to an empty response
         response = [];
       } else {
         if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
-        let json = await res.json();
+        const json = await res.json();
         if (!(json instanceof Array)) {
           throw new Error('Response is not a list');
         }
@@ -247,8 +247,8 @@ export default class APICache<T extends { id: Id }> {
     this.requests_inflight--;
 
     // Check our responses, and enter them into the cache.
-    let returned: Record<Id, T> = {};
-    for (let o of response) {
+    const returned: Record<Id, T> = {};
+    for (const o of response) {
       if (!isObjectWithId(o)) {
         console.error('Response contains unexpected value', o);
         continue;
@@ -260,7 +260,7 @@ export default class APICache<T extends { id: Id }> {
     }
 
     // See if all requested ids were returned
-    for (let id of ids) {
+    for (const id of ids) {
       let item: T | undefined = returned[id];
       item = this.fixItem(id, item);
       if (item) {
@@ -277,9 +277,9 @@ export default class APICache<T extends { id: Id }> {
     // The cache has changed, we need to notify all clients.
     // The clients will call get() again, and if there are items missing, their callbacks will be registered again.
     // Thus we need to clear the set beforehand, and work on a copy.
-    let callbacks = [...this.callbacks];
+    const callbacks = [...this.callbacks];
     this.callbacks.clear();
-    for (let c of callbacks) {
+    for (const c of callbacks) {
       try {
         c();
       } catch (e) {
@@ -293,7 +293,7 @@ export default class APICache<T extends { id: Id }> {
 
   private fixItem(id: Id, item: T | undefined): T | undefined {
     let fixed_item = item;
-    for (let f of this.overrides) {
+    for (const f of this.overrides) {
       try {
         fixed_item = f(id, fixed_item);
       } catch (e) {

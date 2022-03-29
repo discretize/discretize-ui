@@ -21,8 +21,8 @@ const Aura = (props: AuraProps): ReactElement => {
   const { name } = props;
   const language = useAPILanguage();
 
-  let translation = translate(TRANSLATIONS_AURAS, name, language);
-  let description = translate(TRANSLATIONS_AURA_DESCRIPTIONS, name, language);
+  const translation = translate(TRANSLATIONS_AURAS, name, language);
+  const description = translate(TRANSLATIONS_AURA_DESCRIPTIONS, name, language);
 
   return (
     <Effect

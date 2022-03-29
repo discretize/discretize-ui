@@ -22,8 +22,8 @@ const Boon = (props: BoonProps): ReactElement => {
   const { name, count = 1 } = props;
   const language = useAPILanguage();
 
-  let translation = translate(TRANSLATIONS_BOONS, name, language);
-  let description = translate(TRANSLATIONS_BOON_DESCRIPTIONS, name, language);
+  const translation = translate(TRANSLATIONS_BOONS, name, language);
+  const description = translate(TRANSLATIONS_BOON_DESCRIPTIONS, name, language);
 
   return (
     <Effect

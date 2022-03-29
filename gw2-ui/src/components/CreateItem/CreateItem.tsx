@@ -54,9 +54,9 @@ const Item = (props: ItemProps): ReactElement => {
   } = props;
   const statProps = capitalize(statRaw);
 
-  let ids = [];
+  const ids = [];
   if (upgrades) {
-    for (let u of upgrades) {
+    for (const u of upgrades) {
       if (Array.isArray(u)) {
         ids.push(u[0]);
       } else {
@@ -70,7 +70,7 @@ const Item = (props: ItemProps): ReactElement => {
     return <IconWithText {...props} loading />;
   }
   if (items.errors) {
-    let first_error_id = Number(Object.keys(items.errors)[0]);
+    const first_error_id = Number(Object.keys(items.errors)[0]);
     return (
       <Error
         {...props}
@@ -113,9 +113,9 @@ const Item = (props: ItemProps): ReactElement => {
   } = createdData;
   const icon = ''; //TODO add default icons
 
-  let upgradedata: [GW2ApiItem, number][] = [];
+  const upgradedata: [GW2ApiItem, number][] = [];
   if (upgrades) {
-    for (let u of upgrades) {
+    for (const u of upgrades) {
       let id: number;
       let count: number = 1;
       if (Array.isArray(u)) {

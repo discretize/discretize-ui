@@ -53,7 +53,7 @@ const ItemDetails = ({
     vendor_value: vendorValue,
   } = item;
 
-  let count = 1;
+  const count = 1;
 
   return (
     <div>

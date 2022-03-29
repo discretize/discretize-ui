@@ -38,10 +38,10 @@ const Profession = ({
   const language = useAPILanguage();
 
   let profession: ProfessionTypes | undefined;
-  let specialization = professionOrSpecName;
+  const specialization = professionOrSpecName;
 
-  for (let _id in PROFESSIONS) {
-    let id = _id as ProfessionTypes;
+  for (const _id in PROFESSIONS) {
+    const id = _id as ProfessionTypes;
     if (
       id === professionOrSpecName ||
       PROFESSIONS[id].includes(professionOrSpecName as any)

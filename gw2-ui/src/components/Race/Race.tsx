@@ -59,7 +59,7 @@ const Race = ({
     );
   }
 
-  let translation = translate(TRANSLATIONS_RACES, name, language);
+  const translation = translate(TRANSLATIONS_RACES, name, language);
 
   return (
     <IconWithText

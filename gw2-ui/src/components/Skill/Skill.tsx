@@ -58,7 +58,7 @@ const Skill = (props: SkillProps): ReactElement => {
 
   const { name, icon, professions } = skill.data;
 
-  let profession: ProfessionTypes | undefined = professions?.[0];
+  const profession: ProfessionTypes | undefined = professions?.[0];
 
   return (
     <Tooltip

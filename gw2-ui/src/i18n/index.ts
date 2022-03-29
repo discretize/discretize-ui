@@ -36,7 +36,7 @@ export function translate<T extends string>(
   key: T,
   lang: APILanguage,
 ): string {
-  let t = map[key];
+  const t = map[key];
   if (!t) return key;
   return t[lang] || t['en'] || key;
 }
@@ -46,7 +46,7 @@ export function useTranslation<T extends string>(
   map: Record<T, Translation>,
   key: T,
 ): string {
-  let lang = useAPILanguage();
+  const lang = useAPILanguage();
 
   return translate(map, key, lang);
 }
