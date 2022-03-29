@@ -38,6 +38,7 @@ function getPackageInfo(package_name) {
 }
 
 async function run() {
+  await check_root();
   await check('gw2-ui');
   await build('gw2-ui');
   await check('react-discretize-components');
@@ -45,6 +46,24 @@ async function run() {
   process.exit(0);
 }
 run();
+
+async function check_root() {
+  /*
+  console.log(`Checking formatting...`);
+  child_process.execSync(
+    'prettier --check --config ./.prettierrc.json --ignore-path ./.prettierignore .',
+    {
+      stdio: [0, 1, 2],
+      cwd: __dirname,
+    },
+  );
+*/
+  console.log(`Linting...`);
+  child_process.execSync('eslint -c ./.eslintrc.cjs "."', {
+    stdio: [0, 1, 2],
+    cwd: __dirname,
+  });
+}
 
 async function check(package_name) {
   let { package_path } = getPackageInfo(package_name);
@@ -56,15 +75,6 @@ async function check(package_name) {
     stdio: [0, 1, 2],
     cwd: package_path,
   });
-
-  /*
-  // TODO: enable when eslint is fixed
-  console.log(`Linting ${package_name}...`);
-  child_process.execSync('eslint -c .eslintrc.json .', {
-    stdio: [0, 1, 2],
-    cwd: package_path
-  });
-  */
 }
 
 async function build(package_name) {
