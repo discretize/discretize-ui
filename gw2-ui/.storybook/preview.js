@@ -1,4 +1,4 @@
-import 'typeface-menomonia';
+import '@discretize/typeface-menomonia';
 import '../src/default_style.css';
 
 export const parameters = {
