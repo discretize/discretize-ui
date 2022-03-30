@@ -37,7 +37,7 @@
     "generate-from-api": "node --experimental-fetch ./generate_from_api.mjs",
     "deploy-storybook": "gh-pages -d storybook-static",
     "prepublish": "yarn build",
-    "postpublish": "yarn build-storybook && yarn deploy-storybook"
+    "postpublish": "yarn build-storybook && yarn deploy-storybook && rimraf ./storybook-static "
   },
   "commitlint": {
     "extends": [
