@@ -134,7 +134,10 @@ export function Helper() {
         {idsArray.map((value) => (
           <button
             key={value}
-            onClick={() => setId(value)}
+            onClick={() => {
+              setId(value);
+              setSelected([0, 0, 0]);}
+            }
             style={{ padding: '0 0.6em', margin: '0.2em' }}
           >
             {value}:{' '}
