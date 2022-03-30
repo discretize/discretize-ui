@@ -144,15 +144,14 @@ async function build(package_name) {
         '@mui/styles',
         'classnames',
         'tss-react',
+        'tss-react/mui',
         'typeface-fira-mono',
-        'typeface-menomonia',
         'typeface-muli',
         'typeface-raleway',
         // Do not bundle our own packages, either
         '@discretize/gw2-ui-new',
         '@discretize/react-discretize-components',
         '@discretize/typeface-menomonia',
-        'typeface-menomonia', // legacy package
       ],
     });
     await bundle.write({
