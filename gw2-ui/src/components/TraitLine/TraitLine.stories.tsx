@@ -99,7 +99,7 @@ const idsArray = Array(72)
   .map((element, index) => index + 1);
 
 export function Helper() {
-  const [id, setId] = React.useState(0);
+  const [id, setId] = React.useState(1);
   const [selected, setSelected] = React.useState([0, 0, 0]);
 
   return (
