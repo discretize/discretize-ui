@@ -139,6 +139,7 @@ async function build(package_name) {
         '@emotion/react',
         '@emotion/styled',
         '@mui/icons-material',
+        '@mui/material/styles',
         '@mui/material',
         '@mui/styles',
         'classnames',
@@ -148,7 +149,7 @@ async function build(package_name) {
         'typeface-muli',
         'typeface-raleway',
         // Do not bundle our own packages, either
-        '@discretize/gw2-ui',
+        '@discretize/gw2-ui-new',
         '@discretize/react-discretize-components',
         '@discretize/typeface-menomonia',
         'typeface-menomonia', // legacy package
