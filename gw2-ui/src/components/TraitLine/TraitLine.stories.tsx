@@ -132,7 +132,11 @@ export function Helper() {
 
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {idsArray.map((value) => (
-          <button key={value} onClick={() => setId(value)}>
+          <button
+            key={value}
+            onClick={() => setId(value)}
+            style={{ padding: '0 0.6em', margin: '0.2em' }}
+          >
             {value}:{' '}
             <Specialization
               style={{ fontSize: '1.2em' }}
