@@ -4,11 +4,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Menomonia'), url('./files/menomonia.eot'),
-    url('./files/menomonia.eot?#iefix') format('embedded-opentype'),
-    url('./files/menomonia.woff') format('woff'),
-    url('./files/menomonia.ttf') format('truetype'),
-    url('./files/menomonia.svg#MenomoniaRegular') format('svg');
+  src: local('Menomonia'), url('./files/menomonia.woff') format('woff');
 }
 
 /* menomonia-italic - latin */
@@ -17,9 +13,6 @@
   font-style: italic;
   font-display: swap;
   font-weight: 400;
-  src: local('Menomonia Italic'), url('./files/menomonia-italic.eot'),
-    url('./files/menomonia-italic.eot?#iefix') format('embedded-opentype'),
-    url('./files/menomonia-italic.woff') format('woff'),
-    url('./files/menomonia-italic.ttf') format('truetype'),
-    url('./files/menomonia-italic.svg#MenomoniaRegular') format('svg');
+  src: local('Menomonia Italic'),
+    url('./files/menomonia-italic.woff') format('woff');
 }
