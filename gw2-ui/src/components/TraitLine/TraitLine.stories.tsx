@@ -136,8 +136,8 @@ export function Helper() {
             key={value}
             onClick={() => {
               setId(value);
-              setSelected([0, 0, 0]);}
-            }
+              setSelected([0, 0, 0]);
+            }}
             style={{ padding: '0 0.6em', margin: '0.2em' }}
           >
             {value}:{' '}
