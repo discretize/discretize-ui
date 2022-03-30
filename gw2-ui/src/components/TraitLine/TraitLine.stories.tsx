@@ -1,6 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import TraitLine from './TraitLine';
+import Specialization from '../Specialization/Specialization';
 
 export default {
   title: 'Components/TraitLine',
@@ -93,6 +94,58 @@ export function Documentation() {
         />'
         }
       </code>
+    </>
+  );
+}
+
+const idsArray = Array(72)
+  .fill(null)
+  .map((element, index) => index + 1);
+
+export function Helper() {
+  const [id, setId] = React.useState(0);
+  const [selected, setSelected] = React.useState([0, 0, 0]);
+
+  return (
+    <>
+      <h1>Helper</h1>
+      <p>
+        Use this page to quickly find the ids for the traits in a traitline.
+      </p>
+      <p>
+        <code>
+          {`<TraitLine id={${id}} selected={${JSON.stringify(selected)}} />`}
+        </code>
+      </p>
+
+      <p>
+        <TraitLine
+          id={id}
+          selectable
+          selected={selected}
+          onSelect={(e) => {
+            const { tier, id: newTrait } = e;
+            setSelected((state) => {
+              const newState = [...state];
+              newState[tier] = newTrait;
+              return newState;
+            });
+          }}
+        />
+      </p>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {idsArray.map((value) => (
+          <button key={value} onClick={() => setId(value)}>
+            {value}:{' '}
+            <Specialization
+              style={{ fontSize: '1.2em' }}
+              id={value}
+              disableLink
+            />
+          </button>
+        ))}
+      </div>
     </>
   );
 }
