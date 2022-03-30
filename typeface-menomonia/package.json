@@ -1,0 +1,17 @@
+{
+  "name": "@discretize/typeface-menomonia",
+  "version": "0.1.3",
+  "description": "Menomonia typeface",
+  "keywords": [
+    "font",
+    "font family",
+    "menomonia",
+    "typeface"
+  ],
+  "homepage": "https://github.com/discretize/discretize-ui",
+  "bugs": "https://github.com/discretize/discretize-ui/issues",
+  "repository": "https://github.com/discretize/discretize-ui/tree/main/typeface-menomonia",
+  "license": "MIT",
+  "author": "Manuel Haag <manuel@haag.online>",
+  "main": "index.css"
+}
