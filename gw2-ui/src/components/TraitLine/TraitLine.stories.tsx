@@ -54,17 +54,15 @@ export function Documentation() {
           console.log(`Clicked skill ${id} in tier ${tier}`)
         }
       />
-      <code>
-        {
-          '<TraitLine \
-      id={41} \
-      selected={[227, 214, 1672]} \
-      onSelect={({ id, tier }) => \
-        console.log(`Clicked skill ${id} in tier ${tier}`) \
-      }\
-    />'
-        }
-      </code>
+      <pre>
+        {`<TraitLine
+  id={41}
+  selected={[227, 214, 1672]}
+  onSelect={({ id, tier }) =>
+    console.log(\`Clicked skill \${id} in tier \${tier}\`)
+  }
+/>`}
+      </pre>
       <h3>Uncontrolled mode</h3>
       <p>
         This mode takes care of the state! You can set following props:
@@ -84,16 +82,14 @@ export function Documentation() {
         selectable
         resettable
       />
-      <code>
-        {
-          '<TraitLine \
-          id={41} \
-          defaultSelected={[227, 214, 1672]} \
-          selectable \
-          resettable \
-        />'
-        }
-      </code>
+      <pre>
+        {`<TraitLine
+  id={41}
+  defaultSelected={[227, 214, 1672]}
+  selectable
+  resettable
+/>`}
+      </pre>
     </>
   );
 }
