@@ -35,6 +35,8 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
+type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
+
 /**
  * Creates an array of upgrades that can be passed on to the Item component. Undefined values will be filtered out.
  * @param {number | undefined} infusionId id of the infusion
@@ -46,51 +48,50 @@ function createUpgrades(
   infusionId?: number,
   runeId?: number,
   runeCount: number = 1,
-): (number | [number, number])[] {
-  // TODO migrate to ItemUpgrades type from Item.tsx?
-  let upgrades: (number | [number, number])[] = [];
+): ItemUpgrades {
+  let upgrades: ItemUpgrades = [];
   if (infusionId) upgrades = [infusionId];
   if (runeId) upgrades = [...upgrades, [runeId, runeCount]];
   return upgrades;
 }
 
-// TODO add type for Affix (ItemStatName) - unsure how to import that type form gw2-ui
+type Affix = React.ComponentProps<typeof Item>['stat'];
 export interface ArmorProps {
   helmId: number;
   helmRuneId?: number;
   helmInfusionId?: number;
   helmRuneCount?: number;
-  helmAffix?: string;
+  helmAffix?: Affix;
   helmRune?: string;
   shouldersId: number;
   shouldersRuneId?: number;
   shouldersInfusionId?: number;
   shouldersRuneCount?: number;
-  shouldersAffix?: string;
+  shouldersAffix?: Affix;
   shouldersRune?: string;
   coatId: number;
   coatRuneId?: number;
   coatInfusionId?: number;
   coatRuneCount?: number;
-  coatAffix?: string;
+  coatAffix?: Affix;
   coatRune?: string;
   glovesId: number;
   glovesRuneId?: number;
   glovesInfusionId?: number;
   glovesRuneCount?: number;
-  glovesAffix?: string;
+  glovesAffix?: Affix;
   glovesRune?: string;
   leggingsId: number;
   leggingsRuneId?: number;
   leggingsInfusionId?: number;
   leggingsRuneCount?: number;
-  leggingsAffix?: string;
+  leggingsAffix?: Affix;
   leggingsRune?: string;
   bootsId: number;
   bootsRuneId?: number;
   bootsInfusionId?: number;
   bootsRuneCount?: number;
-  bootsAffix?: string;
+  bootsAffix?: Affix;
   bootsRune?: string;
 }
 
