@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Icon, Item } from '@discretize/gw2-ui-new';
-import NoSelection from '../NoSelection';
+import NoSelection from '../helpers/NoSelection';
 import TextDivider from '../TextDivider';
 
 const useStyles = makeStyles()((theme) => ({

@@ -2,7 +2,7 @@ import Character from './character/Character';
 import Armor from './character/Armor/Armor';
 import Attributes from './character/Attributes/Attributes';
 import BackAndTrinkets from './character/BackAndTrinkets/BackAndTrinkets';
-import Consumables from './character/Consumables';
+import Consumables from './character/Consumables/Consumables';
 import Skills from './character/Skills';
 import Weapons from './character/Weapons';
 import AssumedBuffs from './character/AssumedBuffs/AssumedBuffs';
@@ -11,7 +11,7 @@ import iconSizes from './helpers/iconSizes';
 import firstUppercase from './helpers/firstUppercase';
 
 import TextDivider from './TextDivider';
-import NoSelection from './NoSelection';
+import NoSelection from './helpers/NoSelection';
 import HelperIcon from './HelperIcon';
 
 import globals from './styles/globals';

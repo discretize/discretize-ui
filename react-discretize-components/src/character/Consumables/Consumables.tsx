@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
 import { Item, ConsumableEffect } from '@discretize/gw2-ui-new';
-import NoSelection from '../NoSelection';
+import NoSelection from '../../helpers/NoSelection';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -32,26 +32,20 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const Consumables = ({
-  foodData,
-  utilityData,
-  infusionData,
-  foodId,
-  utilityId,
-  infusionId,
-}) => {
+export interface ConsumablesProps {
+  foodId?: number;
+  utilityId?: number;
+  infusionId?: number;
+}
+
+const Consumables = ({ foodId, utilityId, infusionId }: ConsumablesProps) => {
   const { classes } = useStyles();
 
   return (
     <Box className={classes.root}>
       <Box className={classes.gridItem}>
-        {foodId || foodData ? (
-          <Item
-            data={foodData}
-            id={foodId}
-            className={classes.gw2Item}
-            disableText
-          />
+        {foodId ? (
+          <Item id={foodId} className={classes.gw2Item} disableText />
         ) : (
           <NoSelection className={classes.gw2Item} />
         )}
@@ -65,13 +59,8 @@ const Consumables = ({
         </Typography>
       </Box>
       <Box className={classNames(classes.gridItem, classes.borderLeft)}>
-        {utilityData || utilityId ? (
-          <Item
-            data={utilityData}
-            id={utilityId}
-            className={classes.gw2Item}
-            disableText
-          />
+        {utilityId ? (
+          <Item id={utilityId} className={classes.gw2Item} disableText />
         ) : (
           <NoSelection className={classes.gw2Item} />
         )}
@@ -84,14 +73,9 @@ const Consumables = ({
           <ConsumableEffect name="Enhancement" disableText /> Utility
         </Typography>
       </Box>
-      {(infusionData || infusionId) && (
+      {infusionId && (
         <Box className={classNames(classes.gridItem, classes.borderLeft)}>
-          <Item
-            data={infusionData}
-            id={infusionId}
-            className={classes.gw2Item}
-            disableText
-          />
+          <Item id={infusionId} className={classes.gw2Item} disableText />
           <Typography
             variant="subtitle1"
             className={classes.title}

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { makeStyles } from 'tss-react/mui';
 import { Tooltip, Icon, DetailsHeader } from '@discretize/gw2-ui-new';
-import iconSizes from './helpers/iconSizes';
+import sizes, { IconSizes } from './iconSizes';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -12,7 +12,12 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const NoSelection = React.memo(({ className, size, ...rest }) => {
+export interface NoSelectionProps {
+  className?: string;
+  size?: IconSizes;
+}
+
+const NoSelection = ({ className, size, ...rest }: NoSelectionProps) => {
   const { classes } = useStyles();
 
   return (
@@ -20,7 +25,7 @@ const NoSelection = React.memo(({ className, size, ...rest }) => {
       <span
         className={classNames(classes.root, className)}
         style={{
-          fontSize: iconSizes[size],
+          ...(size && { fontSize: sizes[size] }),
           lineHeight: 0,
           fontFamily: 'Menomonia',
         }}
@@ -29,6 +34,6 @@ const NoSelection = React.memo(({ className, size, ...rest }) => {
       </span>
     </Tooltip>
   );
-});
+};
 
-export default NoSelection;
+export default React.memo(NoSelection);

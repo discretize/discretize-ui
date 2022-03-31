@@ -3,7 +3,7 @@ import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import classNames from 'classnames';
 import { makeStyles } from 'tss-react/mui';
 import iconSizes from '../helpers/iconSizes';
-import NoSelection from '../NoSelection';
+import NoSelection from '../helpers/NoSelection';
 
 const useStyles = makeStyles()((theme) => ({
   grid: {
