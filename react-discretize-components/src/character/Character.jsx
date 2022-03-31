@@ -6,7 +6,7 @@ import Armor from './Armor/Armor';
 import Attributes from './Attributes/Attributes';
 import BackAndTrinkets from './BackAndTrinkets/BackAndTrinkets';
 import Consumables from './Consumables/Consumables';
-import Weapons from './Weapons';
+import Weapons from './Weapons/Weapons';
 import AssumedBuffs from './AssumedBuffs/AssumedBuffs';
 import HelperIcon from '../HelperIcon';
 

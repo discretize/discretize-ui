@@ -7,8 +7,8 @@ import {
 } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Icon, Item } from '@discretize/gw2-ui-new';
-import NoSelection from '../helpers/NoSelection';
-import TextDivider from '../TextDivider';
+import NoSelection from '../../helpers/NoSelection';
+import TextDivider from '../../helpers/TextDivider/TextDivider';
 
 const useStyles = makeStyles()((theme) => ({
   listItem: {
@@ -45,10 +45,53 @@ const useStyles = makeStyles()((theme) => ({
   secondaryText: {
     fontSize: '0.80rem',
   },
+  icon: {
+    fontSize: 32,
+  },
 }));
 
+type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
+
+function createUpgrades(array: (number | undefined)[]): ItemUpgrades {
+  return array.filter((elem) => typeof elem === 'number') as number[];
+}
+
+type Affix = React.ComponentProps<typeof Item>['stat'];
+
+export interface WeaponsProps {
+  weapon1MainId?: number;
+  weapon1MainSigil1Id?: number;
+  weapon1MainSigil2Id?: number;
+  weapon1MainType?: number;
+  weapon1MainAffix?: Affix;
+  weapon1MainSigil1?: string;
+  weapon1MainSigil2?: string;
+  weapon1MainInfusion1Id?: number;
+  weapon1MainInfusion2Id?: number;
+  weapon1OffId?: number;
+  weapon1OffSigilId?: number;
+  weapon1OffType?: number;
+  weapon1OffAffix?: Affix;
+  weapon1OffSigil?: string;
+  weapon1OffInfusionId?: number;
+  weapon2MainId?: number;
+  weapon2MainSigil1Id?: number;
+  weapon2MainSigil2Id?: number;
+  weapon2MainType?: number;
+  weapon2MainAffix?: Affix;
+  weapon2MainSigil1?: string;
+  weapon2MainSigil2?: string;
+  weapon2MainInfusion1Id?: number;
+  weapon2MainInfusion2Id?: number;
+  weapon2OffId?: number;
+  weapon2OffSigilId?: number;
+  weapon2OffType?: number;
+  weapon2OffAffix?: Affix;
+  weapon2OffSigil?: string;
+  weapon2OffInfusionId?: number;
+}
+
 const Weapons = ({
-  weapon1MainData,
   weapon1MainId,
   weapon1MainSigil1Id,
   weapon1MainSigil2Id,
@@ -58,14 +101,12 @@ const Weapons = ({
   weapon1MainSigil2,
   weapon1MainInfusion1Id,
   weapon1MainInfusion2Id,
-  weapon1OffData,
   weapon1OffId,
   weapon1OffSigilId,
   weapon1OffType,
   weapon1OffAffix,
   weapon1OffSigil,
   weapon1OffInfusionId,
-  weapon2MainData,
   weapon2MainId,
   weapon2MainSigil1Id,
   weapon2MainSigil2Id,
@@ -75,14 +116,13 @@ const Weapons = ({
   weapon2MainSigil2,
   weapon2MainInfusion1Id,
   weapon2MainInfusion2Id,
-  weapon2OffData,
   weapon2OffId,
   weapon2OffSigilId,
   weapon2OffType,
   weapon2OffAffix,
   weapon2OffSigil,
   weapon2OffInfusionId,
-}) => {
+}: WeaponsProps) => {
   const { classes } = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -94,17 +134,16 @@ const Weapons = ({
           {weapon1MainId ? (
             <>
               <Item
-                data={weapon1MainData}
                 id={weapon1MainId}
                 stat={weapon1MainAffix}
                 className={classes.gw2Item}
-                type={weapon1MainType}
-                upgrades={[
+                // type={weapon1MainType}
+                upgrades={createUpgrades([
                   weapon1MainSigil1Id,
                   weapon1MainSigil2Id,
                   weapon1MainInfusion1Id,
                   weapon1MainInfusion2Id,
-                ].filter((d) => d !== undefined)}
+                ])}
                 disableText
               />
               <ListItemText
@@ -129,14 +168,14 @@ const Weapons = ({
         {weapon1OffId && (
           <ListItem disableGutters className={classes.listItem}>
             <Item
-              data={weapon1OffData}
               id={weapon1OffId}
               stat={weapon1OffAffix}
               className={classes.gw2Item}
-              type={weapon1OffType}
-              upgrades={[weapon1OffSigilId, weapon1OffInfusionId].filter(
-                (d) => d !== undefined,
-              )}
+              // type={weapon1OffType}
+              upgrades={createUpgrades([
+                weapon1OffSigilId,
+                weapon1OffInfusionId,
+              ])}
               disableText
             />
             <ListItemText
@@ -158,24 +197,23 @@ const Weapons = ({
       {(weapon2MainId || weapon2OffId) && (
         <>
           <TextDivider className={classes.divider}>
-            <Icon name="WeaponSwap" style={{ fontSize: 32 }} />
+            <Icon name="WeaponSwap" className={classes.icon} />
           </TextDivider>
 
           <List disablePadding>
             {weapon2MainId ? (
               <ListItem disableGutters className={classes.listItem}>
                 <Item
-                  data={weapon2MainData}
                   id={weapon2MainId}
                   stat={weapon2MainAffix}
                   className={classes.gw2Item}
-                  type={weapon2MainType}
-                  upgrades={[
+                  // type={weapon2MainType}
+                  upgrades={createUpgrades([
                     weapon2MainSigil1Id,
                     weapon2MainSigil2Id,
                     weapon2MainInfusion1Id,
                     weapon2MainInfusion2Id,
-                  ].filter((d) => d !== undefined)}
+                  ])}
                   disableText
                 />
                 <ListItemText
@@ -201,14 +239,14 @@ const Weapons = ({
             {weapon2OffId && (
               <ListItem disableGutters className={classes.listItem}>
                 <Item
-                  data={weapon2OffData}
                   id={weapon2OffId}
                   stat={weapon2OffAffix}
                   className={classes.gw2Item}
-                  type={weapon2OffType}
-                  upgrades={[weapon2OffSigilId, weapon2OffInfusionId].filter(
-                    (d) => d !== undefined,
-                  )}
+                  //  type={weapon2OffType}
+                  upgrades={createUpgrades([
+                    weapon2OffSigilId,
+                    weapon2OffInfusionId,
+                  ])}
                   disableText
                 />
                 <ListItemText
