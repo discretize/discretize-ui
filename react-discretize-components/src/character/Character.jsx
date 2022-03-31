@@ -4,7 +4,7 @@ import Skills from './Skills';
 import Legends from './Legends/Legends';
 import Armor from './Armor/Armor';
 import Attributes from './Attributes/Attributes';
-import BackAndTrinkets from './BackAndTrinkets';
+import BackAndTrinkets from './BackAndTrinkets/BackAndTrinkets';
 import Consumables from './Consumables';
 import Weapons from './Weapons';
 import AssumedBuffs from './AssumedBuffs/AssumedBuffs';

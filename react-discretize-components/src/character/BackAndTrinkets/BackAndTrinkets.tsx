@@ -2,7 +2,7 @@
 import { Typography, Box } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
-import { Item } from '@discretize/gw2-ui-new';
+import { CreateItem, Item } from '@discretize/gw2-ui-new';
 
 const useStyles = makeStyles()((theme) => ({
   gridItem: {
@@ -29,43 +29,96 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
+type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
+
+function createUpgrades(array: (number | undefined)[]): ItemUpgrades {
+  return array.filter((elem) => typeof elem === 'number') as number[];
+}
+
+type Affix = React.ComponentProps<typeof Item>['stat'];
+
+interface BackAndTrinketsProps {
+  backItemId?: number;
+  backItemInfusion1Id?: number;
+  backItemInfusion2Id?: number;
+  backItemAffix?: Affix;
+  accessory1Id?: number;
+  accessory1InfusionId?: number;
+  accessory1Affix?: Affix;
+  accessory2Id?: number;
+  accessory2InfusionId?: number;
+  accessory2Affix?: Affix;
+  amuletId?: number;
+  amuletAffix?: Affix;
+  ring1Id?: number;
+  ring1Infusion1Id?: number;
+  ring1Infusion2Id?: number;
+  ring1Infusion3Id?: number;
+  ring1Affix?: Affix;
+  ring2Id?: number;
+  ring2Infusion1Id?: number;
+  ring2Infusion2Id?: number;
+  ring2Infusion3Id?: number;
+  ring2Affix?: Affix;
+}
+
 const BackAndTrinkets = ({
-  backItemData,
   backItemId,
-  backItemStatsId,
   backItemInfusion1Id,
   backItemInfusion2Id,
   backItemAffix,
-  accessory1Data,
   accessory1Id,
-  accessory1StatsId,
   accessory1InfusionId,
   accessory1Affix,
-  accessory2Data,
   accessory2Id,
-  accessory2StatsId,
   accessory2InfusionId,
   accessory2Affix,
-  amuletData,
   amuletId,
-  amuletStatsId,
   amuletAffix,
-  ring1Data,
   ring1Id,
-  ring1StatsId,
   ring1Infusion1Id,
   ring1Infusion2Id,
   ring1Infusion3Id,
   ring1Affix,
-  ring2Data,
   ring2Id,
-  ring2StatsId,
   ring2Infusion1Id,
   ring2Infusion2Id,
   ring2Infusion3Id,
   ring2Affix,
-}) => {
+}: BackAndTrinketsProps) => {
   const { classes } = useStyles();
+
+  const BATItem = ({
+    id,
+    affix,
+    upgrades,
+    type,
+  }: {
+    id?: number;
+    affix?: Affix;
+    upgrades?: (number | undefined)[];
+    type: string;
+  }) => (
+    <>
+      {id ? (
+        <Item
+          id={id}
+          stat={affix}
+          upgrades={createUpgrades(upgrades || [])}
+          disableText
+          className={classes.gw2Item}
+        />
+      ) : (
+        // TODO this will not work very well atm because there are no default icons in CreateItem. Therefore, CreateItem would create all the data except for the icon... which is pointless for this component that only requires the icon and the tooltip.
+        <CreateItem
+          stat={affix || ''}
+          type={type}
+          upgrades={createUpgrades(upgrades || [])}
+          className={classes.gw2Item}
+        />
+      )}
+    </>
+  );
 
   return (
     <Box
@@ -81,17 +134,11 @@ const BackAndTrinkets = ({
         >
           {backItemAffix}
         </Typography>
-        <Item
-          data={backItemData}
+        <BATItem
           id={backItemId}
-          stat={backItemAffix}
+          affix={backItemAffix}
+          upgrades={[backItemInfusion1Id, backItemInfusion2Id]}
           type="Back Item"
-          //  statsId={backItemStatsId}
-          upgrades={[backItemInfusion1Id, backItemInfusion2Id].filter(
-            (i) => i !== undefined,
-          )}
-          disableText
-          className={classes.gw2Item}
         />
       </Box>
 
@@ -110,15 +157,11 @@ const BackAndTrinkets = ({
         >
           {accessory1Affix}
         </Typography>
-        <Item
-          data={accessory1Data}
+        <BATItem
           id={accessory1Id}
-          stat={accessory1Affix}
-          // statsId={accessory1StatsId}
+          affix={accessory1Affix}
+          upgrades={[accessory1InfusionId]}
           type="Accessory"
-          upgrades={[accessory1InfusionId].filter((i) => i !== undefined)}
-          disableText
-          className={classes.gw2Item}
         />
       </Box>
 
@@ -131,28 +174,17 @@ const BackAndTrinkets = ({
         >
           {accessory2Affix}
         </Typography>
-        <Item
-          data={accessory2Data}
+
+        <BATItem
           id={accessory2Id}
-          stat={accessory2Affix}
-          // statsId={accessory2StatsId}
+          affix={accessory2Affix}
+          upgrades={[accessory2InfusionId]}
           type="Accessory"
-          upgrades={[accessory2InfusionId].filter((i) => i !== undefined)}
-          disableText
-          className={classes.gw2Item}
         />
       </Box>
 
       <Box className={classes.gridItem}>
-        <Item
-          data={amuletData}
-          id={amuletId}
-          stat={amuletAffix}
-          // statsId={amuletStatsId}
-          type="Amulet"
-          disableText
-          className={classes.gw2Item}
-        />
+        <BATItem id={amuletId} affix={amuletAffix} type="Amulet" />
         <Typography
           variant="subtitle1"
           className={classes.title}
@@ -164,19 +196,11 @@ const BackAndTrinkets = ({
       </Box>
 
       <Box className={classNames(classes.gridItem, classes.borderLeft)}>
-        <Item
-          data={ring1Data}
+        <BATItem
           id={ring1Id}
-          stat={ring1Affix}
-          // statsId={ring1StatsId}
-          upgrades={[
-            ring1Infusion1Id,
-            ring1Infusion2Id,
-            ring1Infusion3Id,
-          ].filter((i) => i !== undefined)}
+          affix={ring1Affix}
+          upgrades={[ring1Infusion1Id, ring1Infusion2Id, ring1Infusion3Id]}
           type="Ring"
-          disableText
-          className={classes.gw2Item}
         />
         <Typography
           variant="subtitle1"
@@ -189,19 +213,11 @@ const BackAndTrinkets = ({
       </Box>
 
       <Box className={classes.gridItem}>
-        <Item
-          data={ring2Data}
+        <BATItem
           id={ring2Id}
-          stat={ring2Affix}
-          // statsId={ring2StatsId}
-          upgrades={[
-            ring2Infusion1Id,
-            ring2Infusion2Id,
-            ring2Infusion3Id,
-          ].filter((i) => i !== undefined)}
+          affix={ring2Affix}
+          upgrades={[ring2Infusion1Id, ring2Infusion2Id, ring2Infusion3Id]}
           type="Ring"
-          disableText
-          className={classes.gw2Item}
         />
         <Typography
           variant="subtitle1"
