@@ -22,7 +22,7 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-interface LegendsProps {
+export interface LegendsProps {
   legend1Id: number;
   legend2Id: number;
   className?: string;

@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import firstUppercase from '../../helpers/firstUppercase';
 import classes from './AssumedBuffs.module.css';
 
-interface AssumedBuffsProps {
+export interface AssumedBuffsProps {
   value: (
     | { type: 'Boon'; id: string; gw2id?: undefined }
     | { type: 'Condition'; id: string; gw2id?: undefined }

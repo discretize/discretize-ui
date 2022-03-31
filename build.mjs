@@ -38,16 +38,15 @@ function getPackageInfo(package_name) {
 }
 
 async function run() {
-  await check_root();
-  await check('gw2-ui');
+  await lint_repo_root();
   await build('gw2-ui');
-  await check('react-discretize-components');
   await build('react-discretize-components');
   process.exit(0);
 }
 run();
 
-async function check_root() {
+async function lint_repo_root() {
+  // Note: exec() throws on non-zero exit codes
   console.log(`Checking formatting...`);
   child_process.execSync(
     'prettier --check --config ./.prettierrc.json --ignore-path ./.prettierignore .',
@@ -64,18 +63,6 @@ async function check_root() {
   });
 }
 
-async function check(package_name) {
-  let { package_path } = getPackageInfo(package_name);
-
-  // Check whether our code is good
-  // exec() throws on non-zero exit codes
-  console.log(`Typechecking ${package_name}...`);
-  child_process.execSync('tsc --noEmit --project ./tsconfig.json', {
-    stdio: [0, 1, 2],
-    cwd: package_path,
-  });
-}
-
 async function build(package_name) {
   let { package_path, package_json } = getPackageInfo(package_name);
 
@@ -85,8 +72,18 @@ async function build(package_name) {
 
   rimraf.sync(OUTPUT_PATH);
 
-  // Step 1: Rollup the JavaScript
-  // This will also generate a bunch of *.d.ts files in dist/types/
+  // Step 1: Run tsc
+  // This checks all types and emits declaration files
+  console.log(`Running tsc on ${package_name}...`);
+  child_process.execSync(
+    'tsc --declaration --noEmit false --emitDeclarationOnly --declarationDir "dist/types" --project ./tsconfig.json',
+    {
+      stdio: [0, 1, 2],
+      cwd: package_path,
+    },
+  );
+
+  // Step 2: Rollup the JavaScript
   try {
     console.log(`Compiling ${package_name}...`);
     let bundle = await rollup({
@@ -102,12 +99,9 @@ async function build(package_name) {
           filterRoot: package_path,
           tsconfig: path.join(package_path, 'tsconfig.json'),
           noEmitOnError: true,
-          // The path configuration for declaration files is weird, because rollup touches typescript's paths.
-          // See: https://github.com/rollup/plugins/tree/master/packages/typescript/#declaration-output-with-outputfile
-          // This produces a nested dist/dist folder, but we wanted our types in a separate folder anyway.
-          outDir: OUTPUT_DIR,
-          declaration: true,
-          exclude: ['**/*.stories.tsx', '*.module.css', 'dist'],
+          exclude: ['*.js', '*.jsx', '*.css', '**/*.stories.tsx', 'dist'],
+          // Specify a bogus outdir, otherwise typescript will error with TS5055
+          outDir: 'this_directory_does_not_exist',
         }),
         babel({
           // Note: babel is only required for jsx files.
@@ -169,7 +163,7 @@ async function build(package_name) {
     try {
       console.log(`Bundling types in ${package_name}...`);
       let bundle = await rollup({
-        input: path.join(OUTPUT_DIR, 'dist', 'index.d.ts'),
+        input: path.join(OUTPUT_DIR, 'types', 'index.d.ts'),
         plugins: [dts()],
       });
       await bundle.write({
@@ -184,7 +178,7 @@ async function build(package_name) {
     }
   }
   // Clean the unbundled type files
-  rimraf.sync(path.join(OUTPUT_DIR, 'dist'));
+  rimraf.sync(path.join(OUTPUT_DIR, 'types'));
 
   // Step 3: copy over the default style
   try {
