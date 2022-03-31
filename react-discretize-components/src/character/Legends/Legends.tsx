@@ -1,7 +1,7 @@
 import { Grid, useMediaQuery, useTheme } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Icon, Skill } from '@discretize/gw2-ui-new';
-import iconSizes from '../helpers/iconSizes';
+import iconSizes from '../../helpers/iconSizes';
 
 const useStyles = makeStyles()((theme) => ({
   legends: {
@@ -22,7 +22,13 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const Legends = ({ legend1Id, legend2Id, className }) => {
+interface LegendsProps {
+  legend1Id: number;
+  legend2Id: number;
+  className?: string;
+}
+
+const Legends = ({ legend1Id, legend2Id, className }: LegendsProps) => {
   const { classes } = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -41,7 +47,7 @@ const Legends = ({ legend1Id, legend2Id, className }) => {
           <Grid item className={classes.legends}>
             <Skill id={legend1Id} disableText className={classNameSkill} />
           </Grid>
-          <Icon name="WeaponSwap" style={{ verticalAlign: 'text-bottom' }} />
+          <Icon name="WeaponSwap" />
           <Grid item className={classes.legends}>
             <Skill id={legend2Id} disableText className={classNameSkill} />
           </Grid>

@@ -1,7 +1,7 @@
 import { Box, Paper, useMediaQuery, useTheme } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import Skills from './Skills';
-import Legends from './Legends';
+import Legends from './Legends/Legends';
 import Armor from './Armor';
 import Attributes from './Attributes';
 import BackAndTrinkets from './BackAndTrinkets';
