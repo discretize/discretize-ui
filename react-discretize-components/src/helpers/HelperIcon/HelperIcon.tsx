@@ -4,8 +4,8 @@ import * as React from 'react';
 
 export interface HelperIconProps {
   text: string;
-  size: React.ComponentProps<typeof HelpOutline>['fontSize'];
-  fontSize: string;
+  size?: React.ComponentProps<typeof HelpOutline>['fontSize'];
+  fontSize?: string;
 }
 const HelperIcon = ({ text, size, fontSize }: HelperIconProps) => {
   return (

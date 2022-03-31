@@ -1,4 +1,4 @@
-import Character from './character/Character';
+import Character from './character/Character/Character';
 import Armor from './character/Armor/Armor';
 import Attributes from './character/Attributes/Attributes';
 import BackAndTrinkets from './character/BackAndTrinkets/BackAndTrinkets';
@@ -12,7 +12,7 @@ import firstUppercase from './helpers/firstUppercase';
 
 import TextDivider from './helpers/TextDivider';
 import NoSelection from './helpers/NoSelection';
-import HelperIcon from './HelperIcon';
+import HelperIcon from './helpers/HelperIcon/HelperIcon';
 
 import globals from './styles/globals';
 import muiTheme from './styles/muiTheme';

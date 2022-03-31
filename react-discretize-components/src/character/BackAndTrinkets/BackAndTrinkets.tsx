@@ -37,7 +37,7 @@ function createUpgrades(array: (number | undefined)[]): ItemUpgrades {
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
 
-interface BackAndTrinketsProps {
+export interface BackAndTrinketsProps {
   backItemId?: number;
   backItemInfusion1Id?: number;
   backItemInfusion2Id?: number;
