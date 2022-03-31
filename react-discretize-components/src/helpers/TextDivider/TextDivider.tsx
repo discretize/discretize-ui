@@ -1,5 +1,6 @@
 import { makeStyles } from 'tss-react/mui';
 import classNames from 'classnames';
+import { ReactElement } from 'react';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles()((theme) => ({
     flexGrow: 1,
   },
   content: {
-    ...theme.typography.h6,
+    fontFamily: theme.typography.h6.fontFamily,
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     fontWeight: 400,
@@ -26,7 +27,13 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-const TextDivider = ({ className, text, children }) => {
+export interface TextDividerProps {
+  className?: string;
+  text?: string;
+  children?: ReactElement;
+}
+
+const TextDivider = ({ className, text, children }: TextDividerProps) => {
   const { classes } = useStyles();
 
   return (
