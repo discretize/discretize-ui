@@ -1,6 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import TraitLine from './TraitLine';
+import Specialization from '../Specialization/Specialization';
 
 export default {
   title: 'Components/TraitLine',
@@ -53,17 +54,15 @@ export function Documentation() {
           console.log(`Clicked skill ${id} in tier ${tier}`)
         }
       />
-      <code>
-        {
-          '<TraitLine \
-      id={41} \
-      selected={[227, 214, 1672]} \
-      onSelect={({ id, tier }) => \
-        console.log(`Clicked skill ${id} in tier ${tier}`) \
-      }\
-    />'
-        }
-      </code>
+      <pre>
+        {`<TraitLine
+  id={41}
+  selected={[227, 214, 1672]}
+  onSelect={({ id, tier }) =>
+    console.log(\`Clicked skill \${id} in tier \${tier}\`)
+  }
+/>`}
+      </pre>
       <h3>Uncontrolled mode</h3>
       <p>
         This mode takes care of the state! You can set following props:
@@ -83,16 +82,73 @@ export function Documentation() {
         selectable
         resettable
       />
-      <code>
-        {
-          '<TraitLine \
-          id={41} \
-          defaultSelected={[227, 214, 1672]} \
-          selectable \
-          resettable \
-        />'
-        }
-      </code>
+      <pre>
+        {`<TraitLine
+  id={41}
+  defaultSelected={[227, 214, 1672]}
+  selectable
+  resettable
+/>`}
+      </pre>
+    </>
+  );
+}
+
+const idsArray = Array(72)
+  .fill(null)
+  .map((element, index) => index + 1);
+
+export function Helper() {
+  const [id, setId] = React.useState(1);
+  const [selected, setSelected] = React.useState([0, 0, 0]);
+
+  return (
+    <>
+      <h1>Helper</h1>
+      <p>
+        Use this page to quickly find the ids for the traits in a traitline.
+      </p>
+      <p>
+        <code>
+          {`<TraitLine id={${id}} selected={${JSON.stringify(selected)}} />`}
+        </code>
+      </p>
+
+      <p>
+        <TraitLine
+          id={id}
+          selectable
+          selected={selected}
+          onSelect={(e) => {
+            const { tier, id: newTrait } = e;
+            setSelected((state) => {
+              const newState = [...state];
+              newState[tier] = newTrait;
+              return newState;
+            });
+          }}
+        />
+      </p>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {idsArray.map((value) => (
+          <button
+            key={value}
+            onClick={() => {
+              setId(value);
+              setSelected([0, 0, 0]);
+            }}
+            style={{ padding: '0 0.6em', margin: '0.2em' }}
+          >
+            {value}:{' '}
+            <Specialization
+              style={{ fontSize: '1.2em' }}
+              id={value}
+              disableLink
+            />
+          </button>
+        ))}
+      </div>
     </>
   );
 }
