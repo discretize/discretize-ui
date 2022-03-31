@@ -3,7 +3,7 @@ import { makeStyles } from 'tss-react/mui';
 import Skills from './Skills';
 import Legends from './Legends/Legends';
 import Armor from './Armor/Armor';
-import Attributes from './Attributes';
+import Attributes from './Attributes/Attributes';
 import BackAndTrinkets from './BackAndTrinkets';
 import Consumables from './Consumables';
 import Weapons from './Weapons';

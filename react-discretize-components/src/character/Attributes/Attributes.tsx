@@ -1,7 +1,7 @@
 import { Grid, List, ListItem } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Attribute, Profession } from '@discretize/gw2-ui-new';
-import firstUppercase from '../helpers/firstUppercase';
+import firstUppercase from '../../helpers/firstUppercase';
 
 const useStyles = makeStyles()(() => ({
   root: {
@@ -17,7 +17,14 @@ const useStyles = makeStyles()(() => ({
   },
 }));
 
-const Attributes = ({ profession, data }) => {
+type AttributeType = React.ComponentProps<typeof Attribute>['name'];
+
+export interface AttributesProps {
+  profession: string;
+  data: Partial<Record<AttributeType, number>>; // TODO technically this type is Record<Omit<AttributeType, "Gold Find" | "Karma Gain" | "Magic Find" | "XP Gain">, number>
+}
+
+const Attributes = ({ profession, data }: AttributesProps) => {
   const { classes } = useStyles();
   return (
     <div className={classes.root}>
@@ -115,14 +122,18 @@ const Attributes = ({ profession, data }) => {
             <ListItem className={classes.gridItem}>
               <Attribute
                 name="Critical Chance"
-                text={`${Math.round(data['Critical Chance'] * 10000) / 100}%`}
+                text={`${
+                  Math.round((data['Critical Chance'] || 0) * 10000) / 100
+                }%`}
                 className={classes.gw2Item}
               />
             </ListItem>
             <ListItem className={classes.gridItem}>
               <Attribute
                 name="Critical Damage"
-                text={`${Math.round(data['Critical Damage'] * 1000) / 10}%`}
+                text={`${
+                  Math.round((data['Critical Damage'] || 0) * 1000) / 10
+                }%`}
                 className={classes.gw2Item}
               />
             </ListItem>
@@ -137,7 +148,7 @@ const Attributes = ({ profession, data }) => {
               <Attribute
                 name="Condition Duration"
                 text={`${
-                  Math.round(data['Condition Duration'] * 10000) / 100
+                  Math.round((data['Condition Duration'] || 0) * 10000) / 100
                 }%`}
                 className={classes.gw2Item}
               />
@@ -145,7 +156,9 @@ const Attributes = ({ profession, data }) => {
             <ListItem className={classes.gridItem}>
               <Attribute
                 name="Boon Duration"
-                text={`${Math.round(data['Boon Duration'] * 10000) / 100}%`}
+                text={`${
+                  Math.round((data['Boon Duration'] || 0) * 10000) / 100
+                }%`}
                 className={classes.gw2Item}
               />
             </ListItem>
