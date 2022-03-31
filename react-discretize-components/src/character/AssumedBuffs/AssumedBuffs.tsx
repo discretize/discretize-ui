@@ -5,20 +5,24 @@ import {
   Skill,
   Trait,
 } from '@discretize/gw2-ui-new';
-import { makeStyles } from 'tss-react/mui';
-import firstUppercase from '../helpers/firstUppercase';
+import classNames from 'classnames';
+import firstUppercase from '../../helpers/firstUppercase';
+import classes from './AssumedBuffs.module.css';
 
-const useStyles = makeStyles()(() => ({
-  gw2component: {
-    fontSize: 20,
-  },
-}));
+interface AssumedBuffsProps {
+  value: (
+    | { type: 'Boon'; id: string; gw2id?: undefined }
+    | { type: 'Condition'; id: string; gw2id?: undefined }
+    | { type: 'Skill'; gw2id: number; id?: undefined }
+    | { type: 'Trait'; gw2id: number; id?: undefined }
+    | { type: 'CommonEffect'; id: string; gw2id?: undefined }
+  )[];
+  className?: string;
+}
 
-const AssumedBuffs = ({ value }) => {
-  const { classes } = useStyles();
-
+const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
   return (
-    <>
+    <div className={className}>
       {value.map(({ id, type, gw2id }) => {
         switch (type) {
           case 'Boon':
@@ -27,7 +31,7 @@ const AssumedBuffs = ({ value }) => {
                 name={firstUppercase(id)}
                 disableText
                 key={`${type}_${id}`}
-                className={classes.gw2component}
+                className={classNames(classes.component)}
               />
             );
           case 'Condition':
@@ -36,7 +40,7 @@ const AssumedBuffs = ({ value }) => {
                 name={firstUppercase(id)}
                 disableText
                 key={`${type}_${id}`}
-                className={classes.gw2component}
+                className={classes.component}
               />
             );
           case 'Skill':
@@ -45,7 +49,7 @@ const AssumedBuffs = ({ value }) => {
                 id={gw2id}
                 disableText
                 key={`${type}_${gw2id}`}
-                className={classes.gw2component}
+                className={classes.component}
               />
             );
           case 'Trait':
@@ -54,7 +58,7 @@ const AssumedBuffs = ({ value }) => {
                 id={gw2id}
                 disableText
                 key={`${type}_${gw2id}`}
-                className={classes.gw2component}
+                className={classes.component}
               />
             );
           case 'CommonEffect':
@@ -63,14 +67,14 @@ const AssumedBuffs = ({ value }) => {
                 name={firstUppercase(id)}
                 disableText
                 key={`${type}_${id}`}
-                className={classes.gw2component}
+                className={classes.component}
               />
             );
           default:
             return null;
         }
       })}
-    </>
+    </div>
   );
 };
 export default AssumedBuffs;

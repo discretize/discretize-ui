@@ -5,7 +5,7 @@ import BackAndTrinkets from './character/BackAndTrinkets';
 import Consumables from './character/Consumables';
 import Skills from './character/Skills';
 import Weapons from './character/Weapons';
-import AssumedBuffs from './character/AssumedBuffs';
+import AssumedBuffs from './character/AssumedBuffs/AssumedBuffs';
 
 import iconSizes from './helpers/iconSizes';
 import firstUppercase from './helpers/firstUppercase';

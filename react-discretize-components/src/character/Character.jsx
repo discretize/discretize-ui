@@ -7,7 +7,7 @@ import Attributes from './Attributes';
 import BackAndTrinkets from './BackAndTrinkets';
 import Consumables from './Consumables';
 import Weapons from './Weapons';
-import AssumedBuffs from './AssumedBuffs';
+import AssumedBuffs from './AssumedBuffs/AssumedBuffs';
 import HelperIcon from '../HelperIcon';
 
 const useStyles = makeStyles()((theme) => ({
