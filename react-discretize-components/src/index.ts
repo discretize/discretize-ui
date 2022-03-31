@@ -1,5 +1,5 @@
 import Character from './character/Character';
-import Armor from './character/Armor';
+import Armor from './character/Armor/Armor';
 import Attributes from './character/Attributes';
 import BackAndTrinkets from './character/BackAndTrinkets';
 import Consumables from './character/Consumables';

@@ -3,7 +3,7 @@ import React from 'react';
 import AssumedBuffs from './AssumedBuffs';
 
 export default {
-  title: 'Components/AssumedBuffs',
+  title: 'Character/AssumedBuffs',
   component: AssumedBuffs,
   argTypes: {
     className: { control: false },

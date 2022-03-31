@@ -42,64 +42,101 @@ const useStyles = makeStyles()((theme) => ({
  * @param {number | undefined} runeCount number of runes that should be highlighted
  * @returns
  */
-function createUpgrades(infusionId, runeId, runeCount) {
-  let upgrades = [];
+function createUpgrades(
+  infusionId?: number,
+  runeId?: number,
+  runeCount: number = 1,
+): (number | [number, number])[] {
+  // TODO migrate to ItemUpgrades type from Item.tsx?
+  let upgrades: (number | [number, number])[] = [];
   if (infusionId) upgrades = [infusionId];
   if (runeId) upgrades = [...upgrades, [runeId, runeCount]];
   return upgrades;
 }
 
+// TODO add type for Affix (ItemStatName) - unsure how to import that type form gw2-ui
+export interface ArmorProps {
+  helmId: number;
+  helmRuneId?: number;
+  helmInfusionId?: number;
+  helmRuneCount?: number;
+  helmAffix?: string;
+  helmRune?: string;
+  shouldersId: number;
+  shouldersRuneId?: number;
+  shouldersInfusionId?: number;
+  shouldersRuneCount?: number;
+  shouldersAffix?: string;
+  shouldersRune?: string;
+  coatId: number;
+  coatRuneId?: number;
+  coatInfusionId?: number;
+  coatRuneCount?: number;
+  coatAffix?: string;
+  coatRune?: string;
+  glovesId: number;
+  glovesRuneId?: number;
+  glovesInfusionId?: number;
+  glovesRuneCount?: number;
+  glovesAffix?: string;
+  glovesRune?: string;
+  leggingsId: number;
+  leggingsRuneId?: number;
+  leggingsInfusionId?: number;
+  leggingsRuneCount?: number;
+  leggingsAffix?: string;
+  leggingsRune?: string;
+  bootsId: number;
+  bootsRuneId?: number;
+  bootsInfusionId?: number;
+  bootsRuneCount?: number;
+  bootsAffix?: string;
+  bootsRune?: string;
+}
+
 const Armor = ({
-  helmData,
   helmId,
   helmRuneId,
   helmInfusionId,
   helmRuneCount,
   helmAffix,
   helmRune,
-  shouldersData,
   shouldersId,
   shouldersRuneId,
   shouldersInfusionId,
   shouldersRuneCount,
   shouldersAffix,
   shouldersRune,
-  coatData,
   coatId,
   coatRuneId,
   coatInfusionId,
   coatRuneCount,
   coatAffix,
   coatRune,
-  glovesData,
   glovesId,
   glovesRuneId,
   glovesInfusionId,
   glovesRuneCount,
   glovesAffix,
   glovesRune,
-  leggingsData,
   leggingsId,
   leggingsRuneId,
   leggingsInfusionId,
   leggingsRuneCount,
   leggingsAffix,
   leggingsRune,
-  bootsData,
   bootsId,
   bootsRuneId,
   bootsInfusionId,
   bootsRuneCount,
   bootsAffix,
   bootsRune,
-}) => {
+}: ArmorProps) => {
   const { classes } = useStyles();
-
   return (
     <List disablePadding>
       <ListItem disableGutters className={classes.listItem}>
         <Item
-          data={helmData}
           id={helmId}
           upgrades={createUpgrades(helmInfusionId, helmRuneId, helmRuneCount)}
           disableText
@@ -115,7 +152,6 @@ const Armor = ({
 
       <ListItem disableGutters className={classes.listItem}>
         <Item
-          data={shouldersData}
           id={shouldersId}
           upgrades={createUpgrades(
             shouldersInfusionId,
@@ -135,7 +171,6 @@ const Armor = ({
 
       <ListItem disableGutters className={classes.listItem}>
         <Item
-          data={coatData}
           id={coatId}
           upgrades={createUpgrades(coatInfusionId, coatRuneId, coatRuneCount)}
           disableText
@@ -151,7 +186,6 @@ const Armor = ({
 
       <ListItem disableGutters className={classes.listItem}>
         <Item
-          data={glovesData}
           id={glovesId}
           upgrades={createUpgrades(
             glovesInfusionId,
@@ -171,7 +205,6 @@ const Armor = ({
 
       <ListItem disableGutters className={classes.listItem}>
         <Item
-          data={leggingsData}
           id={leggingsId}
           upgrades={createUpgrades(
             leggingsInfusionId,
@@ -191,7 +224,6 @@ const Armor = ({
 
       <ListItem disableGutters className={classes.listItem}>
         <Item
-          data={bootsData}
           id={bootsId}
           upgrades={createUpgrades(
             bootsInfusionId,

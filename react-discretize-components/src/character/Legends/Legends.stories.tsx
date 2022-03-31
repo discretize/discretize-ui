@@ -3,7 +3,7 @@ import React from 'react';
 import Legends from './Legends';
 
 export default {
-  title: 'Components/Legends',
+  title: 'Character/Legends',
   component: Legends,
   argTypes: {
     className: { control: false },
