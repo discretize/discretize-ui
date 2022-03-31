@@ -125,6 +125,7 @@ const Item = (props: ItemProps): ReactElement => {
     stat &&
     (itemdata.type === 'Armor' ||
       itemdata.type === 'Weapon' ||
+      itemdata.type === 'Trinket' ||
       itemdata.type === 'Back')
   ) {
     // adjust the time due to api inconsistencies: Short Bow <==> Longbow
