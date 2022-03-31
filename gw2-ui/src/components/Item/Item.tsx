@@ -15,11 +15,12 @@ import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import css from './Item.module.css';
 import ItemDetails from './ItemDetails';
 
+export type ItemUpgrades = (number | [number, number])[]; // ItemId, or [ItemId, amount] for runes
 export interface ItemProps {
   id: number;
   text?: string;
   count?: number;
-  stat?: ItemStatName; // Allow explicitlly forcing a certain stat on an item. Many items allow multiple stats and dont provide a "default" one
+  stat?: ItemStatName; // Allow explicitly forcing a certain stat on an item. Many items allow multiple stats and dont provide a "default" one
   disableIcon?: boolean;
   disableText?: boolean;
   disableLink?: boolean;
@@ -27,7 +28,7 @@ export interface ItemProps {
   inline?: boolean;
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
-  upgrades?: (number | [number, number])[]; // ItemId, or [ItemId, amount] for runes
+  upgrades?: ItemUpgrades;
   style?: CSSProperties;
   className?: string;
 }
