@@ -82,7 +82,6 @@ async function build(package_name) {
   if (!package_json.module) throw new Error('Add .module to package.json');
   const OUTPUT_PATH = path.resolve(package_path, package_json.module);
   const OUTPUT_DIR = path.dirname(OUTPUT_PATH);
-  const DECLARATION_DIR = path.join(OUTPUT_DIR, 'types');
 
   rimraf.sync(OUTPUT_PATH);
 
@@ -102,12 +101,12 @@ async function build(package_name) {
         typescript({
           filterRoot: package_path,
           tsconfig: path.join(package_path, 'tsconfig.json'),
-          noEmitOnError: false,
+          noEmitOnError: true,
+          // The path configuration for declaration files is weird, because rollup touches typescript's paths.
+          // See: https://github.com/rollup/plugins/tree/master/packages/typescript/#declaration-output-with-outputfile
+          // This produces a nested dist/dist folder, but we wanted our types in a separate folder anyway.
           outDir: OUTPUT_DIR,
           declaration: true,
-          // Yes, the declarationDir does not contain the 'dist' folder.
-          // I do not understand why, but this way it works.
-          declarationDir: path.join(package_path, 'types'),
           exclude: ['**/*.stories.tsx', '*.module.css', 'dist'],
         }),
         babel({
@@ -170,7 +169,7 @@ async function build(package_name) {
     try {
       console.log(`Bundling types in ${package_name}...`);
       let bundle = await rollup({
-        input: path.join(DECLARATION_DIR, 'index.d.ts'),
+        input: path.join(OUTPUT_DIR, 'dist', 'index.d.ts'),
         plugins: [dts()],
       });
       await bundle.write({
@@ -185,7 +184,7 @@ async function build(package_name) {
     }
   }
   // Clean the unbundled type files
-  rimraf.sync(DECLARATION_DIR);
+  rimraf.sync(path.join(OUTPUT_DIR, 'dist'));
 
   // Step 3: copy over the default style
   try {
