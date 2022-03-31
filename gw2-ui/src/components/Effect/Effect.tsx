@@ -45,7 +45,7 @@ const Effect = ({
   disableText = false,
   disableLink = false,
   disableIcon = false,
-  inline = false,
+  inline,
   tooltipProps,
   wikiLinkProps,
   errorProps,
