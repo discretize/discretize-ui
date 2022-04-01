@@ -18,7 +18,7 @@ import ItemDetails from './ItemDetails';
 export type ItemUpgrades = (number | [number, number])[]; // ItemId, or [ItemId, amount] for runes
 export interface ItemProps {
   id: number;
-  text?: string;
+  text?: string | ((text: string) => string);
   count?: number;
   stat?: ItemStatName; // Allow explicitly forcing a certain stat on an item. Many items allow multiple stats and dont provide a "default" one
   disableIcon?: boolean;
@@ -45,7 +45,7 @@ const SKILL_ERROR_MESSAGES = {
 const Item = (props: ItemProps): ReactElement => {
   const {
     id,
-    text,
+    text: textProps,
     count = 1,
     stat: statRaw,
     disableIcon,
@@ -84,7 +84,19 @@ const Item = (props: ItemProps): ReactElement => {
   const items = useItems(ids);
 
   if (items.loading) {
-    return <IconWithText {...props} loading />;
+    const newProps = {
+      disableIcon,
+      disableText,
+      disableLink,
+      disableTooltip,
+      inline,
+      tooltipProps,
+      wikiLinkProps,
+      upgrades,
+      style,
+      className,
+    };
+    return <IconWithText {...newProps} loading />;
   }
   if (items.errors) {
     const first_error_id = Number(Object.keys(items.errors)[0]);
@@ -98,9 +110,11 @@ const Item = (props: ItemProps): ReactElement => {
       />
     );
   }
-
   const itemdata = items.data[id];
   const { name, icon, rarity } = itemdata;
+  // evaluate text prop. if its a function, execute it
+  const text = typeof textProps === 'function' ? textProps(name) : textProps;
+
   // TODO redo the typing for details: the type of the details field depends
   //      on what string is supplied via type (Gw2ApiItemType)
 
