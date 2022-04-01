@@ -1,10 +1,14 @@
-import { Grid, List, ListItem } from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
 import { Attribute, Profession } from '@discretize/gw2-ui-new';
+import { makeStyles } from 'tss-react/mui';
 import firstUppercase from '../../helpers/firstUppercase';
 
 const useStyles = makeStyles()(() => ({
-  root: {
+  wrapper: {
+    width: '100%',
+
+    display: 'flex',
+  },
+  half: {
     width: '100%',
   },
   gw2Item: {
@@ -13,9 +17,49 @@ const useStyles = makeStyles()(() => ({
     whiteSpace: 'nowrap',
   },
   gridItem: {
-    padding: '4px 8px',
+    padding: '4px 16px',
+  },
+  list: {
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
   },
 }));
+
+const attributes: {
+  name: AttributeType;
+  text?: (value?: number) => string;
+}[] = [
+  { name: 'Power' },
+  { name: 'Toughness' },
+  { name: 'Vitality' },
+  { name: 'Precision' },
+  { name: 'Ferocity' },
+  { name: 'Condition Damage' },
+  { name: 'Expertise' },
+  { name: 'Concentration' },
+  { name: 'Agony Resistance' },
+  { name: 'Armor' },
+  { name: 'Health' },
+  {
+    name: 'Critical Chance',
+    text: (value?: number) => `${(Math.round(value || 0) * 10000) / 100}%`,
+  },
+  {
+    name: 'Critical Damage',
+    text: (value?: number) => `${Math.round((value || 0) * 1000) / 10}%`,
+  },
+  { name: 'Healing Power' },
+  {
+    name: 'Condition Duration',
+    text: (value?: number) => `${Math.round((value || 0) * 1000) / 100}%`,
+  },
+  {
+    name: 'Boon Duration',
+    text: (value?: number) => `${Math.round((value || 0) * 1000) / 100}%`,
+  },
+  { name: 'Magic Find', text: () => '0' },
+];
 
 type AttributeType = React.ComponentProps<typeof Attribute>['name'];
 
@@ -26,152 +70,42 @@ export interface AttributesProps {
 
 const Attributes = ({ profession, data }: AttributesProps) => {
   const { classes } = useStyles();
+
   return (
-    <div className={classes.root}>
-      <Grid container>
-        <Grid item xs={6}>
-          <List dense disablePadding>
-            <ListItem className={classes.gridItem}>
+    <div className={classes.wrapper}>
+      <div className={classes.half}>
+        <ul className={classes.list}>
+          {attributes.slice(0, 9).map(({ name }) => (
+            <li key={name} className={classes.gridItem}>
               <Attribute
-                name="Power"
-                text={`${data.Power}`}
+                name={name}
+                text={`${data[name]}`}
                 className={classes.gw2Item}
               />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={classes.half}>
+        <ul className={classes.list}>
+          <li className={classes.gridItem}>
+            <Profession
+              name={firstUppercase(profession)}
+              text="0"
+              className={classes.gw2Item}
+            />
+          </li>
+          {attributes.slice(9).map(({ name, text }) => (
+            <li key={name} className={classes.gridItem}>
               <Attribute
-                name="Toughness"
-                text={`${data.Toughness}`}
+                name={name}
+                text={text ? text(data[name]) : `${data[name]}`}
                 className={classes.gw2Item}
               />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Vitality"
-                text={`${data.Vitality}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Precision"
-                text={`${data.Precision}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Ferocity"
-                text={`${data.Ferocity}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Condition Damage"
-                text={`${data['Condition Damage']}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Expertise"
-                text={`${data.Expertise}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Concentration"
-                text={`${data.Concentration}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Agony Resistance"
-                text={`${data['Agony Resistance']}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid item xs={6}>
-          <List dense disablePadding>
-            <ListItem className={classes.gridItem}>
-              <Profession
-                name={firstUppercase(profession)}
-                text="0"
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Armor"
-                text={`${data.Armor}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Health"
-                text={`${data.Health}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Critical Chance"
-                text={`${
-                  Math.round((data['Critical Chance'] || 0) * 10000) / 100
-                }%`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Critical Damage"
-                text={`${
-                  Math.round((data['Critical Damage'] || 0) * 1000) / 10
-                }%`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Healing Power"
-                text={`${data['Healing Power']}`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Condition Duration"
-                text={`${
-                  Math.round((data['Condition Duration'] || 0) * 10000) / 100
-                }%`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Boon Duration"
-                text={`${
-                  Math.round((data['Boon Duration'] || 0) * 10000) / 100
-                }%`}
-                className={classes.gw2Item}
-              />
-            </ListItem>
-            <ListItem className={classes.gridItem}>
-              <Attribute
-                name="Magic Find"
-                text="0"
-                className={classes.gw2Item}
-              />
-            </ListItem>
-          </List>
-        </Grid>
-      </Grid>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
