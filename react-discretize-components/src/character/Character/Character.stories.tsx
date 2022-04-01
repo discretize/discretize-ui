@@ -42,7 +42,7 @@ Example.args = {
     helmRuneId: 24836,
     helmRune: 'Scholar',
     helmRuneCount: 6,
-    helmInfusionId: 49432,
+    helmInfusionId: 37130,
     shouldersAffix: 'Assassin',
     shouldersRuneId: 24836,
     shouldersRune: 'Scholar',

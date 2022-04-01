@@ -1,5 +1,6 @@
+import { FormControlLabel, Switch } from '@mui/material';
 import classNames from 'classnames';
-import { CSSProperties, ReactElement, ReactNode } from 'react';
+import React, { CSSProperties, ReactElement, ReactNode } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import HelperIcon from '../../helpers/HelperIcon/HelperIcon';
 import Armor, { ArmorProps } from '../Armor/Armor';
@@ -14,6 +15,10 @@ import Skills, { SkillsProps } from '../Skills/Skills';
 import Weapons, { WeaponsProps } from '../Weapons/Weapons';
 
 const useStyles = makeStyles()((theme) => ({
+  top: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   section: {
     backgroundColor: 'rgb(38, 41, 46)',
     padding: theme.spacing(2),
@@ -23,10 +28,7 @@ const useStyles = makeStyles()((theme) => ({
     boxShadow:
       '0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%)',
   },
-  assumedBuffs: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
+  assumedBuffs: { display: 'flex', alignItems: 'end' },
   wrapper: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -76,6 +78,8 @@ const Character = ({
 }: CharacterProps) => {
   const { classes } = useStyles();
 
+  const [showInfusions, setShowInfusions] = React.useState(false);
+
   const Section = ({
     children,
     style,
@@ -92,16 +96,29 @@ const Character = ({
 
   return (
     <>
-      {assumedBuffs && (
-        <div className={classes.assumedBuffs}>
-          <HelperIcon text="Assumed buffs for this build" />
-          <AssumedBuffs {...assumedBuffs} />
-        </div>
-      )}
+      <div className={classes.top}>
+        <FormControlLabel
+          control={
+            <Switch
+              defaultChecked
+              value={showInfusions}
+              onChange={(e) => setShowInfusions(e.target.checked)}
+            />
+          }
+          label="Show Infusions"
+        />
+
+        {assumedBuffs && (
+          <div className={classes.assumedBuffs}>
+            <HelperIcon size="small" text="Assumed buffs for this build" />
+            <AssumedBuffs {...assumedBuffs} />
+          </div>
+        )}
+      </div>
       <div className={classes.wrapper}>
         <div className={classes.side}>
           <Section>
-            <Armor {...armor} />
+            <Armor {...armor} showInfusions={showInfusions} />
           </Section>
 
           <Section>

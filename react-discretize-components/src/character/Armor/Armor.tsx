@@ -1,9 +1,19 @@
-import { List, ListItem, ListItemText } from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
 import { Item } from '@discretize/gw2-ui-new';
+import { makeStyles } from 'tss-react/mui';
+import firstUppercase from '../../helpers/firstUppercase';
 
 const useStyles = makeStyles()((theme) => ({
+  list: {
+    listStyle: 'none',
+    margin: '0',
+    padding: '0',
+    position: 'relative',
+    paddingTop: '8px',
+    paddingBottom: '8px',
+  },
   listItem: {
+    display: 'flex',
+    alignItems: 'center',
     lineHeight: 0,
     justifyContent: 'center',
     paddingTop: theme.spacing(0.5),
@@ -17,6 +27,7 @@ const useStyles = makeStyles()((theme) => ({
     },
   },
   listItemText: {
+    flex: '1 1 auto',
     flexGrow: 0,
     marginLeft: theme.spacing(2),
     paddingLeft: theme.spacing(2),
@@ -30,8 +41,14 @@ const useStyles = makeStyles()((theme) => ({
     },
     lineHeight: '1 !important',
   },
+  primaryText: { lineHeight: 1.4, fontWeight: 500, fontFamily: 'Muli' },
   secondaryText: {
-    fontSize: '0.80rem',
+    margin: 0,
+    display: 'block',
+    lineHeight: 1.23,
+    fontSize: '0.70rem',
+    fontWeight: 300,
+    fontFamily: 'Muli',
   },
 }));
 
@@ -57,45 +74,47 @@ function createUpgrades(
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
 export interface ArmorProps {
+  showInfusions: boolean;
   helmId: number;
   helmRuneId?: number;
   helmInfusionId?: number;
   helmRuneCount?: number;
-  helmAffix?: Affix;
+  helmAffix: Affix;
   helmRune?: string;
   shouldersId: number;
   shouldersRuneId?: number;
   shouldersInfusionId?: number;
   shouldersRuneCount?: number;
-  shouldersAffix?: Affix;
+  shouldersAffix: Affix;
   shouldersRune?: string;
   coatId: number;
   coatRuneId?: number;
   coatInfusionId?: number;
   coatRuneCount?: number;
-  coatAffix?: Affix;
+  coatAffix: Affix;
   coatRune?: string;
   glovesId: number;
   glovesRuneId?: number;
   glovesInfusionId?: number;
   glovesRuneCount?: number;
-  glovesAffix?: Affix;
+  glovesAffix: Affix;
   glovesRune?: string;
   leggingsId: number;
   leggingsRuneId?: number;
   leggingsInfusionId?: number;
   leggingsRuneCount?: number;
-  leggingsAffix?: Affix;
+  leggingsAffix: Affix;
   leggingsRune?: string;
   bootsId: number;
   bootsRuneId?: number;
   bootsInfusionId?: number;
   bootsRuneCount?: number;
-  bootsAffix?: Affix;
+  bootsAffix: Affix;
   bootsRune?: string;
 }
 
 const Armor = ({
+  showInfusions,
   helmId,
   helmRuneId,
   helmInfusionId,
@@ -134,24 +153,75 @@ const Armor = ({
   bootsRune,
 }: ArmorProps) => {
   const { classes } = useStyles();
+
+  const ItemDetails = ({
+    affix,
+    infusionId,
+    runeId,
+    runeName,
+  }: {
+    affix?: string;
+    infusionId?: number;
+    runeId?: number;
+    runeName?: string;
+  }) => (
+    <div className={classes.listItemText}>
+      <span className={classes.primaryText}>{affix}</span>
+      <p className={classes.secondaryText}>
+        {runeId ? (
+          <Item
+            id={runeId}
+            text={(result: string) =>
+              firstUppercase(
+                result
+                  .replace('Superior Rune of the ', '')
+                  .replace('Runa superior del ', '')
+                  .replace('Überlegene Rune des ', '')
+                  .replace("Rune d'érudit ", ''),
+              )
+            }
+          />
+        ) : (
+          { runeName }
+        )}
+        {showInfusions && (
+          <>
+            <br />
+            {infusionId && (
+              <Item
+                id={infusionId}
+                text={(result: string) => {
+                  const match = result.match(/.*\+[0-9][0-9]?/g);
+                  if (match?.length === 1) return match[0];
+                  //TODO implement fallback for french and chinese
+                  return result;
+                }}
+              />
+            )}
+          </>
+        )}
+      </p>
+    </div>
+  );
+
   return (
-    <List disablePadding>
-      <ListItem disableGutters className={classes.listItem}>
+    <ul className={classes.list}>
+      <li className={classes.listItem}>
         <Item
           id={helmId}
           upgrades={createUpgrades(helmInfusionId, helmRuneId, helmRuneCount)}
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText
-          primary={helmAffix}
-          secondary={helmRune}
-          classes={{ secondary: classes.secondaryText }}
-          className={classes.listItemText}
+        <ItemDetails
+          affix={helmAffix}
+          runeId={helmRuneId}
+          infusionId={helmInfusionId}
+          runeName={helmRune}
         />
-      </ListItem>
+      </li>
 
-      <ListItem disableGutters className={classes.listItem}>
+      <li className={classes.listItem}>
         <Item
           id={shouldersId}
           upgrades={createUpgrades(
@@ -162,30 +232,30 @@ const Armor = ({
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText
-          primary={shouldersAffix}
-          secondary={shouldersRune}
-          classes={{ secondary: classes.secondaryText }}
-          className={classes.listItemText}
+        <ItemDetails
+          affix={shouldersAffix}
+          runeId={shouldersRuneId}
+          infusionId={shouldersInfusionId}
+          runeName={shouldersRune}
         />
-      </ListItem>
+      </li>
 
-      <ListItem disableGutters className={classes.listItem}>
+      <li className={classes.listItem}>
         <Item
           id={coatId}
           upgrades={createUpgrades(coatInfusionId, coatRuneId, coatRuneCount)}
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText
-          primary={coatAffix}
-          secondary={coatRune}
-          classes={{ secondary: classes.secondaryText }}
-          className={classes.listItemText}
+        <ItemDetails
+          affix={coatAffix}
+          runeId={coatRuneId}
+          infusionId={coatInfusionId}
+          runeName={coatRune}
         />
-      </ListItem>
+      </li>
 
-      <ListItem disableGutters className={classes.listItem}>
+      <li className={classes.listItem}>
         <Item
           id={glovesId}
           upgrades={createUpgrades(
@@ -196,15 +266,15 @@ const Armor = ({
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText
-          primary={glovesAffix}
-          secondary={glovesRune}
-          classes={{ secondary: classes.secondaryText }}
-          className={classes.listItemText}
+        <ItemDetails
+          affix={glovesAffix}
+          runeId={glovesRuneId}
+          infusionId={glovesInfusionId}
+          runeName={glovesRune}
         />
-      </ListItem>
+      </li>
 
-      <ListItem disableGutters className={classes.listItem}>
+      <li className={classes.listItem}>
         <Item
           id={leggingsId}
           upgrades={createUpgrades(
@@ -215,15 +285,15 @@ const Armor = ({
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText
-          primary={leggingsAffix}
-          secondary={leggingsRune}
-          classes={{ secondary: classes.secondaryText }}
-          className={classes.listItemText}
+        <ItemDetails
+          affix={leggingsAffix}
+          runeId={leggingsRuneId}
+          infusionId={leggingsInfusionId}
+          runeName={leggingsRune}
         />
-      </ListItem>
+      </li>
 
-      <ListItem disableGutters className={classes.listItem}>
+      <li className={classes.listItem}>
         <Item
           id={bootsId}
           upgrades={createUpgrades(
@@ -234,14 +304,14 @@ const Armor = ({
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText
-          primary={bootsAffix}
-          secondary={bootsRune}
-          classes={{ secondary: classes.secondaryText }}
-          className={classes.listItemText}
+        <ItemDetails
+          affix={bootsAffix}
+          runeId={bootsRuneId}
+          infusionId={bootsInfusionId}
+          runeName={bootsRune}
         />
-      </ListItem>
-    </List>
+      </li>
+    </ul>
   );
 };
 
