@@ -39,7 +39,7 @@ export const useStyles = makeStyles()((theme) => ({
     [theme.breakpoints.down('sm')]: {
       fontSize: '45px',
     },
-    lineHeight: '1 !important',
+    lineHeight: '0.9 !important',
   },
   primaryText: { lineHeight: 1.4, fontWeight: 500, fontFamily: 'Muli' },
   secondaryText: {

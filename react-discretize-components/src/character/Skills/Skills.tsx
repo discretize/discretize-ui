@@ -25,16 +25,16 @@ const useStyles = makeStyles()((theme) => ({
     fontSize: '0.8125rem',
     fontWeight: 400,
     fontFamily: 'Muli',
-    marginTop: '-10px',
   },
   borderLeft: {
     borderLeft: `1px solid ${theme.palette.divider}`,
   },
-  skillDesktop: {
-    fontSize: iconSizes.big,
-  },
-  skillMobile: {
-    fontSize: iconSizes.large,
+  gw2Item: {
+    fontSize: '60px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '45px',
+    },
+    lineHeight: '0.9 !important',
   },
 }));
 
@@ -60,13 +60,11 @@ const Skills = ({
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const iconSize = isMobile ? 'large' : 'big';
 
-  const classNameSkill = isMobile ? classes.skillMobile : classes.skillDesktop;
-
   return (
     <div className={classNames(className, classes.grid)}>
       <div className={classes.gridItem}>
         {healId ? (
-          <Skill id={healId} className={classNameSkill} disableText />
+          <Skill id={healId} className={classes.gw2Item} disableText />
         ) : (
           <NoSelection size="big" />
         )}
@@ -76,17 +74,17 @@ const Skills = ({
       <div className={classNames(classes.gridItem, classes.borderLeft)}>
         <div>
           {utility1Id ? (
-            <Skill id={utility1Id} className={classNameSkill} disableText />
+            <Skill id={utility1Id} className={classes.gw2Item} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
           {utility2Id ? (
-            <Skill id={utility2Id} className={classNameSkill} disableText />
+            <Skill id={utility2Id} className={classes.gw2Item} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
           {utility3Id ? (
-            <Skill id={utility3Id} className={classNameSkill} disableText />
+            <Skill id={utility3Id} className={classes.gw2Item} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
@@ -97,7 +95,7 @@ const Skills = ({
       <div className={classNames(classes.gridItem, classes.borderLeft)}>
         <div>
           {eliteId ? (
-            <Skill id={eliteId} className={classNameSkill} disableText />
+            <Skill id={eliteId} className={classes.gw2Item} disableText />
           ) : (
             <NoSelection size={iconSize} />
           )}
