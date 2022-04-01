@@ -1,64 +1,29 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
 import { Icon, Item } from '@discretize/gw2-ui-new';
+import { useMediaQuery, useTheme } from '@mui/material';
+import firstUppercase from '../../helpers/firstUppercase';
 import NoSelection from '../../helpers/NoSelection';
 import TextDivider from '../../helpers/TextDivider/TextDivider';
-
-const useStyles = makeStyles()((theme) => ({
-  listItem: {
-    lineHeight: 0,
-    justifyContent: 'center',
-    paddingTop: theme.spacing(0.5),
-    paddingBottom: theme.spacing(0.5),
-    '& > *:first-child': {
-      textAlign: 'right',
-    },
-    '& > *:last-child': {
-      width: '55%',
-      textAlign: 'left',
-    },
-  },
-  listItemText: {
-    flexGrow: 0,
-    marginLeft: theme.spacing(2),
-    paddingLeft: theme.spacing(2),
-    borderLeft: `1px solid ${theme.palette.divider}`,
-    lineHeight: 0,
-  },
-  divider: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-  gw2Item: {
-    fontSize: '60px',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '45px',
-    },
-    lineHeight: '1 !important',
-  },
-  secondaryText: {
-    fontSize: '0.80rem',
-  },
-  icon: {
-    fontSize: 32,
-  },
-}));
+import { formatInfusion, useStyles } from '../Armor/Armor';
 
 type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
 
 function createUpgrades(array: (number | undefined)[]): ItemUpgrades {
   return array.filter((elem) => typeof elem === 'number') as number[];
 }
+function formatSigil(text: string): string {
+  return firstUppercase(
+    text
+      .replace('Superior Sigil of ', '')
+      .replace('Überlegenes Sigill der ', '')
+      .replace('Überlegenes Sigill des ', '')
+      .replace("Rune d'érudit ", ''),
+  );
+}
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
 
 export interface WeaponsProps {
+  showInfusions?: boolean;
   weapon1MainId?: number;
   weapon1MainSigil1Id?: number;
   weapon1MainSigil2Id?: number;
@@ -92,6 +57,7 @@ export interface WeaponsProps {
 }
 
 const Weapons = ({
+  showInfusions = true,
   weapon1MainId,
   weapon1MainSigil1Id,
   weapon1MainSigil2Id,
@@ -127,10 +93,51 @@ const Weapons = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const ItemDetails = ({
+    affix,
+    infusion1Id,
+    infusion2Id,
+    sigil1Id,
+    sigil1Name,
+    sigil2Id,
+    sigil2Name,
+  }: {
+    affix?: string;
+    infusion1Id?: number;
+    infusion2Id?: number;
+    sigil1Id?: number;
+    sigil1Name?: string;
+    sigil2Id?: number;
+    sigil2Name?: string;
+  }) => (
+    <div className={classes.listItemText}>
+      {affix ? (
+        <>
+          <span className={classes.primaryText}>{affix}</span>
+          <p className={classes.secondaryText}>
+            {sigil1Id ? <Item id={sigil1Id} text={formatSigil} /> : sigil1Name}
+            {(sigil2Id || sigil2Name) && ', '}
+            {sigil2Id ? <Item id={sigil2Id} text={formatSigil} /> : sigil2Name}
+            {showInfusions && (
+              <>
+                <br />
+                {infusion1Id && <Item id={infusion1Id} text={formatInfusion} />}
+                {infusion2Id && ', '}
+                {infusion2Id && <Item id={infusion2Id} text={formatInfusion} />}
+              </>
+            )}
+          </p>
+        </>
+      ) : (
+        <span className={classes.primaryText}>Empty</span>
+      )}
+    </div>
+  );
+
   return (
     <>
-      <List disablePadding>
-        <ListItem disableGutters className={classes.listItem}>
+      <ul className={classes.list}>
+        <li className={classes.listItem}>
           {weapon1MainId ? (
             <>
               <Item
@@ -146,27 +153,26 @@ const Weapons = ({
                 ])}
                 disableText
               />
-              <ListItemText
-                secondaryTypographyProps={{ fontSize: '0.82rem !important' }}
-                primary={`${weapon1MainAffix}`}
-                secondary={
-                  weapon1MainSigil1 +
-                  (weapon1MainSigil2 ? `, ${weapon1MainSigil2}` : '')
-                }
-                classes={{ secondary: classes.secondaryText }}
-                className={classes.listItemText}
+              <ItemDetails
+                affix={weapon1MainAffix}
+                infusion1Id={weapon1MainInfusion1Id}
+                infusion2Id={weapon1MainInfusion2Id}
+                sigil1Id={weapon1MainSigil1Id}
+                sigil1Name={weapon1MainSigil1}
+                sigil2Id={weapon1MainSigil2Id}
+                sigil2Name={weapon1MainSigil2}
               />
             </>
           ) : (
             <>
               <NoSelection size={isMobile ? 'large2' : 'big'} />
-              <ListItemText className={classes.listItemText} primary="Empty" />
+              <ItemDetails />
             </>
           )}
-        </ListItem>
+        </li>
 
         {weapon1OffId && (
-          <ListItem disableGutters className={classes.listItem}>
+          <li className={classes.listItem}>
             <Item
               id={weapon1OffId}
               stat={weapon1OffAffix}
@@ -178,31 +184,31 @@ const Weapons = ({
               ])}
               disableText
             />
-            <ListItemText
-              primary={`${weapon1OffAffix}`}
-              secondary={weapon1OffSigil}
-              classes={{ secondary: classes.secondaryText }}
-              className={classes.listItemText}
+            <ItemDetails
+              affix={weapon1OffAffix}
+              infusion1Id={weapon1OffInfusionId}
+              sigil1Id={weapon1OffSigilId}
+              sigil1Name={weapon1OffSigil}
             />
-          </ListItem>
+          </li>
         )}
         {!weapon1OffId && !weapon1MainSigil2Id && (
-          <ListItem disableGutters className={classes.listItem}>
+          <li className={classes.listItem}>
             <NoSelection size={isMobile ? 'large2' : 'big'} />
-            <ListItemText className={classes.listItemText} primary="Empty" />
-          </ListItem>
+            <ItemDetails />
+          </li>
         )}
-      </List>
+      </ul>
 
       {(weapon2MainId || weapon2OffId) && (
         <>
-          <TextDivider className={classes.divider}>
-            <Icon name="WeaponSwap" className={classes.icon} />
+          <TextDivider>
+            <Icon name="WeaponSwap" />
           </TextDivider>
 
-          <List disablePadding>
+          <ul className={classes.list}>
             {weapon2MainId ? (
-              <ListItem disableGutters className={classes.listItem}>
+              <li className={classes.listItem}>
                 <Item
                   id={weapon2MainId}
                   stat={weapon2MainAffix}
@@ -216,28 +222,25 @@ const Weapons = ({
                   ])}
                   disableText
                 />
-                <ListItemText
-                  primary={`${weapon2MainAffix}`}
-                  secondary={
-                    weapon2MainSigil1 +
-                    (weapon2MainSigil2 ? `, ${weapon2MainSigil2}` : '')
-                  }
-                  classes={{ secondary: classes.secondaryText }}
-                  className={classes.listItemText}
+                <ItemDetails
+                  affix={weapon2MainAffix}
+                  infusion1Id={weapon2MainInfusion1Id}
+                  infusion2Id={weapon2MainInfusion2Id}
+                  sigil1Id={weapon2MainSigil1Id}
+                  sigil1Name={weapon2MainSigil1}
+                  sigil2Id={weapon2MainSigil2Id}
+                  sigil2Name={weapon2MainSigil2}
                 />
-              </ListItem>
+              </li>
             ) : (
-              <ListItem disableGutters className={classes.listItem}>
+              <li className={classes.listItem}>
                 <NoSelection size={isMobile ? 'large2' : 'big'} />
-                <ListItemText
-                  className={classes.listItemText}
-                  primary="Empty"
-                />
-              </ListItem>
+                <ItemDetails />
+              </li>
             )}
 
             {weapon2OffId && (
-              <ListItem disableGutters className={classes.listItem}>
+              <li className={classes.listItem}>
                 <Item
                   id={weapon2OffId}
                   stat={weapon2OffAffix}
@@ -249,24 +252,21 @@ const Weapons = ({
                   ])}
                   disableText
                 />
-                <ListItemText
-                  primary={`${weapon2OffAffix}`}
-                  secondary={weapon2OffSigil}
-                  classes={{ secondary: classes.secondaryText }}
-                  className={classes.listItemText}
+                <ItemDetails
+                  affix={weapon2OffAffix}
+                  infusion1Id={weapon2OffInfusionId}
+                  sigil1Id={weapon2OffSigilId}
+                  sigil1Name={weapon2OffSigil}
                 />
-              </ListItem>
+              </li>
             )}
             {!weapon2OffId && !weapon2MainSigil2Id && (
-              <ListItem disableGutters className={classes.listItem}>
+              <li className={classes.listItem}>
                 <NoSelection size={isMobile ? 'large2' : 'big'} />
-                <ListItemText
-                  className={classes.listItemText}
-                  primary="Empty"
-                />
-              </ListItem>
+                <ItemDetails />
+              </li>
             )}
-          </List>
+          </ul>
         </>
       )}
     </>

@@ -122,7 +122,7 @@ const Character = ({
           </Section>
 
           <Section>
-            <Weapons {...weapon} />
+            <Weapons {...weapon} showInfusions={showInfusions} />
           </Section>
         </div>
 

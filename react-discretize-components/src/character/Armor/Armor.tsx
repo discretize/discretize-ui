@@ -2,7 +2,7 @@ import { Item } from '@discretize/gw2-ui-new';
 import { makeStyles } from 'tss-react/mui';
 import firstUppercase from '../../helpers/firstUppercase';
 
-const useStyles = makeStyles()((theme) => ({
+export const useStyles = makeStyles()((theme) => ({
   list: {
     listStyle: 'none',
     margin: '0',
@@ -72,9 +72,26 @@ function createUpgrades(
   return upgrades;
 }
 
+function formatRune(text: string): string {
+  return firstUppercase(
+    text
+      .replace('Superior Rune of the ', '')
+      .replace('Runa superior del ', '')
+      .replace('Überlegene Rune des ', '')
+      .replace("Rune d'érudit ", ''),
+  );
+}
+
+export function formatInfusion(result: string): string {
+  const match = result.match(/.*\+[0-9][0-9]?/g);
+  if (match?.length === 1) return match[0];
+  //TODO implement fallback for french and chinese
+  return result;
+}
+
 type Affix = React.ComponentProps<typeof Item>['stat'];
 export interface ArmorProps {
-  showInfusions: boolean;
+  showInfusions?: boolean;
   helmId: number;
   helmRuneId?: number;
   helmInfusionId?: number;
@@ -168,36 +185,11 @@ const Armor = ({
     <div className={classes.listItemText}>
       <span className={classes.primaryText}>{affix}</span>
       <p className={classes.secondaryText}>
-        {runeId ? (
-          <Item
-            id={runeId}
-            text={(result: string) =>
-              firstUppercase(
-                result
-                  .replace('Superior Rune of the ', '')
-                  .replace('Runa superior del ', '')
-                  .replace('Überlegene Rune des ', '')
-                  .replace("Rune d'érudit ", ''),
-              )
-            }
-          />
-        ) : (
-          { runeName }
-        )}
+        {runeId ? <Item id={runeId} text={formatRune} /> : { runeName }}
         {showInfusions && (
           <>
             <br />
-            {infusionId && (
-              <Item
-                id={infusionId}
-                text={(result: string) => {
-                  const match = result.match(/.*\+[0-9][0-9]?/g);
-                  if (match?.length === 1) return match[0];
-                  //TODO implement fallback for french and chinese
-                  return result;
-                }}
-              />
-            )}
+            {infusionId && <Item id={infusionId} text={formatInfusion} />}
           </>
         )}
       </p>
