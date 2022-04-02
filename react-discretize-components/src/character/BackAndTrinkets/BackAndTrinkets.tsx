@@ -1,15 +1,21 @@
-/* eslint-disable no-unused-vars */
-import { Typography, Box } from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
-import classNames from 'classnames';
 import { CreateItem, Item } from '@discretize/gw2-ui-new';
+import classNames from 'classnames';
+import { makeStyles } from 'tss-react/mui';
+import { useDefaultStyles } from '../../styles/defaultStyles';
+import { formatInfusion } from '../Armor/Armor';
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles()(() => ({
+  root: {
+    gridTemplateColumns: 'repeat(3,1fr)',
+    margin: '-12px',
+    display: 'grid',
+  },
   gridItem: {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
     padding: 12,
+    alignItems: 'flex-start',
   },
   title: {
     fontSize: '0.8125rem',
@@ -20,12 +26,11 @@ const useStyles = makeStyles()((theme) => ({
   borderBottom: {
     borderBottom: '1px solid #1e2124',
   },
-  gw2Item: {
-    fontSize: '60px',
-    lineHeight: '0 !important',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '45px',
-    },
+  infusions: {
+    fontSize: '0.6rem',
+  },
+  upperRowItem: {
+    alignSelf: 'end',
   },
 }));
 
@@ -38,6 +43,7 @@ function createUpgrades(array: (number | undefined)[]): ItemUpgrades {
 type Affix = React.ComponentProps<typeof Item>['stat'];
 
 export interface BackAndTrinketsProps {
+  showInfusions?: boolean;
   backItemId?: number;
   backItemInfusion1Id?: number;
   backItemInfusion2Id?: number;
@@ -63,6 +69,7 @@ export interface BackAndTrinketsProps {
 }
 
 const BackAndTrinkets = ({
+  showInfusions,
   backItemId,
   backItemInfusion1Id,
   backItemInfusion2Id,
@@ -87,6 +94,8 @@ const BackAndTrinkets = ({
   ring2Affix,
 }: BackAndTrinketsProps) => {
   const { classes } = useStyles();
+  const defaultStyles = useDefaultStyles();
+  const { gw2Item, title } = defaultStyles.classes;
 
   const BATItem = ({
     id,
@@ -106,7 +115,7 @@ const BackAndTrinkets = ({
           stat={affix}
           upgrades={createUpgrades(upgrades || [])}
           disableText
-          className={classes.gw2Item}
+          className={gw2Item}
         />
       ) : (
         // TODO this will not work very well atm because there are no default icons in CreateItem. Therefore, CreateItem would create all the data except for the icon... which is pointless for this component that only requires the icon and the tooltip.
@@ -114,121 +123,118 @@ const BackAndTrinkets = ({
           stat={affix || ''}
           type={type}
           upgrades={createUpgrades(upgrades || [])}
-          className={classes.gw2Item}
+          className={gw2Item}
         />
       )}
     </>
   );
 
+  const Infusions = ({
+    infusionIds,
+  }: {
+    infusionIds: (number | undefined)[];
+  }) => (
+    <div className={classes.infusions}>
+      {(infusionIds.filter((id) => !!id) as number[]).map((id, index) => (
+        <>
+          {index !== 0 && <br />}
+          <Item id={id} text={formatInfusion} />
+        </>
+      ))}
+    </div>
+  );
+
   return (
-    <Box
-      display="grid"
-      sx={{ gridTemplateColumns: 'repeat(3,1fr)', margin: '-12px' }}
-    >
-      <Box className={classNames(classes.gridItem, classes.borderBottom)}>
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          {backItemAffix}
-        </Typography>
+    <div className={classes.root}>
+      <div
+        className={classNames(
+          classes.gridItem,
+          classes.borderBottom,
+          classes.upperRowItem,
+        )}
+      >
+        {showInfusions && (
+          <Infusions infusionIds={[backItemInfusion1Id, backItemInfusion2Id]} />
+        )}
+        <span className={title}>{backItemAffix}</span>
         <BATItem
           id={backItemId}
           affix={backItemAffix}
           upgrades={[backItemInfusion1Id, backItemInfusion2Id]}
           type="Back Item"
         />
-      </Box>
+      </div>
 
-      <Box
+      <div
         className={classNames(
           classes.gridItem,
           classes.borderLeft,
           classes.borderBottom,
+          classes.upperRowItem,
         )}
       >
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          {accessory1Affix}
-        </Typography>
+        {showInfusions && <Infusions infusionIds={[accessory1InfusionId]} />}
+        <span className={title}>{accessory1Affix}</span>
         <BATItem
           id={accessory1Id}
           affix={accessory1Affix}
           upgrades={[accessory1InfusionId]}
           type="Accessory"
         />
-      </Box>
+      </div>
 
-      <Box className={classNames(classes.gridItem, classes.borderBottom)}>
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          {accessory2Affix}
-        </Typography>
-
+      <div
+        className={classNames(
+          classes.gridItem,
+          classes.borderBottom,
+          classes.upperRowItem,
+        )}
+      >
+        {showInfusions && <Infusions infusionIds={[accessory2InfusionId]} />}
+        <span className={title}>{accessory2Affix}</span>
         <BATItem
           id={accessory2Id}
           affix={accessory2Affix}
           upgrades={[accessory2InfusionId]}
           type="Accessory"
         />
-      </Box>
+      </div>
 
-      <Box className={classes.gridItem}>
+      <div className={classes.gridItem}>
         <BATItem id={amuletId} affix={amuletAffix} type="Amulet" />
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          {amuletAffix}
-        </Typography>
-      </Box>
+        <span className={title}>{amuletAffix}</span>
+      </div>
 
-      <Box className={classNames(classes.gridItem, classes.borderLeft)}>
+      <div className={classNames(classes.gridItem, classes.borderLeft)}>
         <BATItem
           id={ring1Id}
           affix={ring1Affix}
           upgrades={[ring1Infusion1Id, ring1Infusion2Id, ring1Infusion3Id]}
           type="Ring"
         />
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          {ring1Affix}
-        </Typography>
-      </Box>
+        <span className={title}>{ring1Affix}</span>
+        {showInfusions && (
+          <Infusions
+            infusionIds={[ring1Infusion1Id, ring1Infusion2Id, ring1Infusion3Id]}
+          />
+        )}
+      </div>
 
-      <Box className={classes.gridItem}>
+      <div className={classes.gridItem}>
         <BATItem
           id={ring2Id}
           affix={ring2Affix}
           upgrades={[ring2Infusion1Id, ring2Infusion2Id, ring2Infusion3Id]}
           type="Ring"
         />
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          {ring2Affix}
-        </Typography>
-      </Box>
-    </Box>
+        <span className={title}>{ring2Affix}</span>
+        {showInfusions && (
+          <Infusions
+            infusionIds={[ring2Infusion1Id, ring2Infusion2Id, ring2Infusion3Id]}
+          />
+        )}
+      </div>
+    </div>
   );
 };
 

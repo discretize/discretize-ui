@@ -21,11 +21,6 @@ const useStyles = makeStyles()((theme) => ({
       paddingLeft: theme.spacing(0.5),
     },
   },
-  title: {
-    fontSize: '0.8125rem',
-    fontWeight: 400,
-    fontFamily: 'Muli',
-  },
   borderLeft: {
     borderLeft: `1px solid ${theme.palette.divider}`,
   },
@@ -51,7 +46,7 @@ const Skills = ({
   const { classes } = useStyles();
   const defaultStyles = useDefaultStyles();
 
-  const { gw2Item } = defaultStyles.classes;
+  const { gw2Item, title } = defaultStyles.classes;
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -65,7 +60,7 @@ const Skills = ({
         ) : (
           <NoSelection size="big" />
         )}
-        <span className={classes.title}>Heal</span>
+        <span className={title}>Heal</span>
       </div>
 
       <div className={classNames(classes.gridItem, classes.borderLeft)}>
@@ -86,7 +81,7 @@ const Skills = ({
             <NoSelection size={iconSize} />
           )}
         </div>
-        <span className={classes.title}>Utilities</span>
+        <span className={title}>Utilities</span>
       </div>
 
       <div className={classNames(classes.gridItem, classes.borderLeft)}>
@@ -97,7 +92,7 @@ const Skills = ({
             <NoSelection size={iconSize} />
           )}
         </div>
-        <span className={classes.title}>Elite</span>
+        <span className={title}>Elite</span>
       </div>
     </div>
   );

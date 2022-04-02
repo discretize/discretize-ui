@@ -143,7 +143,10 @@ const Character = ({
           </Section>
 
           <Section>
-            <BackAndTrinkets {...backAndTrinket} />
+            <BackAndTrinkets
+              {...backAndTrinket}
+              showInfusions={showInfusions}
+            />
           </Section>
           <Section>
             <Consumables {...consumables} />

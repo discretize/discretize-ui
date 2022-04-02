@@ -8,4 +8,9 @@ export const useDefaultStyles = makeStyles()((theme) => ({
     },
     lineHeight: '0.9 !important',
   },
+  title: {
+    fontSize: '0.8125rem',
+    fontWeight: 400,
+    fontFamily: 'Muli',
+  },
 }));
