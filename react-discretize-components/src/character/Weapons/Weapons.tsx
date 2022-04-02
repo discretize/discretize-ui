@@ -3,6 +3,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import firstUppercase from '../../helpers/firstUppercase';
 import NoSelection from '../../helpers/NoSelection';
 import TextDivider from '../../helpers/TextDivider/TextDivider';
+import { useDefaultStyles } from '../../styles/defaultStyles';
 import { formatInfusion, useStyles } from '../Armor/Armor';
 
 type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
@@ -90,6 +91,10 @@ const Weapons = ({
   weapon2OffInfusionId,
 }: WeaponsProps) => {
   const { classes } = useStyles();
+  const defaultStyles = useDefaultStyles();
+
+  const { gw2Item } = defaultStyles.classes;
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -143,7 +148,7 @@ const Weapons = ({
               <Item
                 id={weapon1MainId}
                 stat={weapon1MainAffix}
-                className={classes.gw2Item}
+                className={gw2Item}
                 // type={weapon1MainType}
                 upgrades={createUpgrades([
                   weapon1MainSigil1Id,
@@ -176,7 +181,7 @@ const Weapons = ({
             <Item
               id={weapon1OffId}
               stat={weapon1OffAffix}
-              className={classes.gw2Item}
+              className={gw2Item}
               // type={weapon1OffType}
               upgrades={createUpgrades([
                 weapon1OffSigilId,
@@ -212,7 +217,7 @@ const Weapons = ({
                 <Item
                   id={weapon2MainId}
                   stat={weapon2MainAffix}
-                  className={classes.gw2Item}
+                  className={gw2Item}
                   // type={weapon2MainType}
                   upgrades={createUpgrades([
                     weapon2MainSigil1Id,
@@ -244,7 +249,7 @@ const Weapons = ({
                 <Item
                   id={weapon2OffId}
                   stat={weapon2OffAffix}
-                  className={classes.gw2Item}
+                  className={gw2Item}
                   //  type={weapon2OffType}
                   upgrades={createUpgrades([
                     weapon2OffSigilId,

@@ -1,6 +1,7 @@
 import { Item } from '@discretize/gw2-ui-new';
 import { makeStyles } from 'tss-react/mui';
 import firstUppercase from '../../helpers/firstUppercase';
+import { useDefaultStyles } from '../../styles/defaultStyles';
 
 export const useStyles = makeStyles()((theme) => ({
   list: {
@@ -33,13 +34,6 @@ export const useStyles = makeStyles()((theme) => ({
     paddingLeft: theme.spacing(2),
     borderLeft: `1px solid ${theme.palette.divider}`,
     lineHeight: 0,
-  },
-  gw2Item: {
-    fontSize: '60px',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '45px',
-    },
-    lineHeight: '0.9 !important',
   },
   primaryText: { lineHeight: 1.4, fontWeight: 500, fontFamily: 'Muli' },
   secondaryText: {
@@ -170,6 +164,9 @@ const Armor = ({
   bootsRune,
 }: ArmorProps) => {
   const { classes } = useStyles();
+  const defaultStyles = useDefaultStyles();
+
+  const { gw2Item } = defaultStyles.classes;
 
   const ItemDetails = ({
     affix,
@@ -203,7 +200,7 @@ const Armor = ({
           id={helmId}
           upgrades={createUpgrades(helmInfusionId, helmRuneId, helmRuneCount)}
           disableText
-          className={classes.gw2Item}
+          className={gw2Item}
         />
         <ItemDetails
           affix={helmAffix}
@@ -222,7 +219,7 @@ const Armor = ({
             shouldersRuneCount,
           )}
           disableText
-          className={classes.gw2Item}
+          className={gw2Item}
         />
         <ItemDetails
           affix={shouldersAffix}
@@ -237,7 +234,7 @@ const Armor = ({
           id={coatId}
           upgrades={createUpgrades(coatInfusionId, coatRuneId, coatRuneCount)}
           disableText
-          className={classes.gw2Item}
+          className={gw2Item}
         />
         <ItemDetails
           affix={coatAffix}
@@ -256,7 +253,7 @@ const Armor = ({
             glovesRuneCount,
           )}
           disableText
-          className={classes.gw2Item}
+          className={gw2Item}
         />
         <ItemDetails
           affix={glovesAffix}
@@ -275,7 +272,7 @@ const Armor = ({
             leggingsRuneCount,
           )}
           disableText
-          className={classes.gw2Item}
+          className={gw2Item}
         />
         <ItemDetails
           affix={leggingsAffix}
@@ -294,7 +291,7 @@ const Armor = ({
             bootsRuneCount,
           )}
           disableText
-          className={classes.gw2Item}
+          className={gw2Item}
         />
         <ItemDetails
           affix={bootsAffix}
