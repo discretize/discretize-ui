@@ -1,10 +1,10 @@
-import { Box, Typography } from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
+import { ConsumableEffect, Item } from '@discretize/gw2-ui-new';
 import classNames from 'classnames';
-import { Item, ConsumableEffect } from '@discretize/gw2-ui-new';
+import { makeStyles } from 'tss-react/mui';
 import NoSelection from '../../helpers/NoSelection';
+import { useDefaultStyles } from '../../styles/defaultStyles';
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles()(() => ({
   root: {
     display: 'grid',
     justifyContent: 'center',
@@ -17,18 +17,8 @@ const useStyles = makeStyles()((theme) => ({
     textAlign: 'center',
     padding: 12,
   },
-  title: {
-    fontSize: '0.8125rem',
-  },
   borderLeft: {
     borderLeft: '1px solid #1e2124',
-  },
-  gw2Item: {
-    fontSize: '60px',
-    lineHeight: '0 !important',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '45px',
-    },
   },
 }));
 
@@ -40,53 +30,38 @@ export interface ConsumablesProps {
 
 const Consumables = ({ foodId, utilityId, infusionId }: ConsumablesProps) => {
   const { classes } = useStyles();
-
+  const defaultStyles = useDefaultStyles();
+  const { gw2Item, title } = defaultStyles.classes;
   return (
-    <Box className={classes.root}>
-      <Box className={classes.gridItem}>
+    <div className={classes.root}>
+      <div className={classes.gridItem}>
         {foodId ? (
-          <Item id={foodId} className={classes.gw2Item} disableText />
+          <Item id={foodId} className={gw2Item} disableText />
         ) : (
-          <NoSelection className={classes.gw2Item} />
+          <NoSelection className={gw2Item} />
         )}
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
+        <span className={title}>
           <ConsumableEffect name="Nourishment" disableText /> Food
-        </Typography>
-      </Box>
-      <Box className={classNames(classes.gridItem, classes.borderLeft)}>
+        </span>
+      </div>
+      <div className={classNames(classes.gridItem, classes.borderLeft)}>
         {utilityId ? (
-          <Item id={utilityId} className={classes.gw2Item} disableText />
+          <Item id={utilityId} className={gw2Item} disableText />
         ) : (
-          <NoSelection className={classes.gw2Item} />
+          <NoSelection className={gw2Item} />
         )}
-        <Typography
-          variant="subtitle1"
-          className={classes.title}
-          component="span"
-          gutterBottom
-        >
-          <ConsumableEffect name="Enhancement" disableText /> Utility
-        </Typography>
-      </Box>
+        <span className={title}>
+          <ConsumableEffect name="Enhancement" disableText />
+          Utility
+        </span>
+      </div>
       {infusionId && (
-        <Box className={classNames(classes.gridItem, classes.borderLeft)}>
-          <Item id={infusionId} className={classes.gw2Item} disableText />
-          <Typography
-            variant="subtitle1"
-            className={classes.title}
-            component="span"
-            gutterBottom
-          >
-            Infusion
-          </Typography>
-        </Box>
+        <div className={classNames(classes.gridItem, classes.borderLeft)}>
+          <Item id={infusionId} className={gw2Item} disableText />
+          <span className={title}>Infusion</span>
+        </div>
       )}
-    </Box>
+    </div>
   );
 };
 
