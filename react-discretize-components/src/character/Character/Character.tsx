@@ -100,7 +100,6 @@ const Character = ({
         <FormControlLabel
           control={
             <Switch
-              defaultChecked
               value={showInfusions}
               onChange={(e) => setShowInfusions(e.target.checked)}
             />
