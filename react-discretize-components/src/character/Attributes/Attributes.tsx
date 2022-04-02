@@ -56,7 +56,7 @@ const attributes: {
   },
   {
     name: 'Boon Duration',
-    text: (value?: number) => `${Math.round((value || 0) * 1000) / 100}%`,
+    text: (value?: number) => `${Math.round((value || 0) * 1000) / 10}%`,
   },
   { name: 'Magic Find', text: () => '0' },
 ];
