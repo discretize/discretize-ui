@@ -1,7 +1,7 @@
 import theme from './muiTheme';
 
 export default {
-  '#___gatsby': {
+  body: {
     cursor: `url('/images/cursors/default.png'), default`,
   },
   'a, button, input, .MuiMenuItem-root, .MuiInput-root, .MuiSelect-root, .MuiFormControlLabel-label, .MuiButtonBase-root, .noUi-handle, .MuiSlider-root, .MuiChip-root, .MuiSvgIcon-root, .MuiAutocomplete-option':
