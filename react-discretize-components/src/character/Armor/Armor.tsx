@@ -184,7 +184,7 @@ const Armor = ({
   }) => (
     <div className={classes.listItemText}>
       <span className={classes.primaryText}>{affix}</span>
-      <p className={classes.secondaryText}>
+      <div className={classes.secondaryText}>
         {runeId ? <Item id={runeId} text={formatRune} /> : { runeName }}
         {showInfusions && (
           <>
@@ -192,7 +192,7 @@ const Armor = ({
             {infusionId && <Item id={infusionId} text={formatInfusion} />}
           </>
         )}
-      </p>
+      </div>
     </div>
   );
 

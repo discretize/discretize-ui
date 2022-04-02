@@ -114,7 +114,7 @@ const Weapons = ({
       {affix ? (
         <>
           <span className={classes.primaryText}>{affix}</span>
-          <p className={classes.secondaryText}>
+          <div className={classes.secondaryText}>
             {sigil1Id ? <Item id={sigil1Id} text={formatSigil} /> : sigil1Name}
             {(sigil2Id || sigil2Name) && ', '}
             {sigil2Id ? <Item id={sigil2Id} text={formatSigil} /> : sigil2Name}
@@ -126,7 +126,7 @@ const Weapons = ({
                 {infusion2Id && <Item id={infusion2Id} text={formatInfusion} />}
               </>
             )}
-          </p>
+          </div>
         </>
       ) : (
         <span className={classes.primaryText}>Empty</span>
