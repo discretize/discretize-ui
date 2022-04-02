@@ -28,6 +28,7 @@ const useStyles = makeStyles()(() => ({
   },
   infusions: {
     fontSize: '0.6rem',
+    color: 'rgb(153 153 153)',
   },
   upperRowItem: {
     alignSelf: 'end',
@@ -133,16 +134,24 @@ const BackAndTrinkets = ({
     infusionIds,
   }: {
     infusionIds: (number | undefined)[];
-  }) => (
-    <div className={classes.infusions}>
-      {(infusionIds.filter((id) => !!id) as number[]).map((id, index) => (
-        <>
-          {index !== 0 && <br />}
-          <Item id={id} text={formatInfusion} />
-        </>
-      ))}
-    </div>
-  );
+  }) => {
+    const occurrences = (infusionIds.filter((id) => !!id) as number[]).reduce(
+      (acc: Record<number, number>, curr) => {
+        return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+      },
+      {},
+    );
+    return (
+      <div className={classes.infusions}>
+        {Object.entries(occurrences).map(([id, amount], index) => (
+          <>
+            {index !== 0 && <br />}
+            {amount}x <Item id={Number(id)} text={formatInfusion} />
+          </>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className={classes.root}>
