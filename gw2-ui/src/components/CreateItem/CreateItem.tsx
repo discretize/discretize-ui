@@ -10,6 +10,7 @@ import Tooltip from '../Tooltip/Tooltip';
 import WikiLink from '../WikiLink/WikiLink';
 import ItemDetails from './../Item/ItemDetails';
 import css from '../Item/Item.module.css';
+import { ICONS } from '../../data/defaultIcons';
 
 export interface ItemProps extends CreateItemProps {
   count?: number;
@@ -105,13 +106,15 @@ const Item = (props: ItemProps): ReactElement => {
     );
   }
 
-  const {
-    name,
-    rarity,
-    type,
-    details: { type: detailsType },
-  } = createdData;
-  const icon = ''; //TODO add default icons
+  const { name, rarity } = createdData;
+  const iconHash = ICONS.find((defaultIcon) => {
+    if ('weight' in defaultIcon) {
+      if (defaultIcon.weight !== weightProps) return false;
+    }
+    return defaultIcon.type === typeProps;
+  });
+  const icon =
+    iconHash && `https://render.guildwars2.com/file/${iconHash.icon}.png`;
 
   const upgradedata: [GW2ApiItem, number][] = [];
   if (upgrades) {
@@ -119,8 +122,7 @@ const Item = (props: ItemProps): ReactElement => {
       let id: number;
       let count: number = 1;
       if (Array.isArray(u)) {
-        id = u[0];
-        count = u[1];
+        [id, count] = u;
       } else {
         id = u;
       }
@@ -131,7 +133,10 @@ const Item = (props: ItemProps): ReactElement => {
   return (
     <Tooltip
       content={
-        <ItemDetails item={createdData as GW2ApiItem} upgrades={upgradedata} />
+        <ItemDetails
+          item={{ icon, ...createdData } as GW2ApiItem}
+          upgrades={upgradedata}
+        />
       }
       disabled={disableTooltip}
       containerProps={{
