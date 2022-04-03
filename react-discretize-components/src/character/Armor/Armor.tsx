@@ -1,7 +1,7 @@
-import { Item } from '@discretize/gw2-ui-new';
+import { CreateItem, Item } from '@discretize/gw2-ui-new';
 import { makeStyles } from 'tss-react/mui';
+import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
 import firstUppercase from '../../helpers/firstUppercase';
-import { useDefaultStyles } from '../../styles/defaultStyles';
 
 export const useStyles = makeStyles()((theme) => ({
   list: {
@@ -84,9 +84,12 @@ export function formatInfusion(result: string): string {
 }
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
+type Weights = React.ComponentProps<typeof CreateItem>['weight'];
+
 export interface ArmorProps {
+  weight?: Weights;
   showInfusions?: boolean;
-  helmId: number;
+  helmId?: number;
   helmRuneId?: number;
   helmInfusionId?: number;
   helmRuneCount?: number;
@@ -125,48 +128,46 @@ export interface ArmorProps {
 }
 
 const Armor = ({
+  weight,
   showInfusions,
   helmId,
   helmRuneId,
   helmInfusionId,
-  helmRuneCount,
+  helmRuneCount = 6,
   helmAffix,
   helmRune,
   shouldersId,
   shouldersRuneId,
   shouldersInfusionId,
-  shouldersRuneCount,
+  shouldersRuneCount = 6,
   shouldersAffix,
   shouldersRune,
   coatId,
   coatRuneId,
   coatInfusionId,
-  coatRuneCount,
+  coatRuneCount = 6,
   coatAffix,
   coatRune,
   glovesId,
   glovesRuneId,
   glovesInfusionId,
-  glovesRuneCount,
+  glovesRuneCount = 6,
   glovesAffix,
   glovesRune,
   leggingsId,
   leggingsRuneId,
   leggingsInfusionId,
-  leggingsRuneCount,
+  leggingsRuneCount = 6,
   leggingsAffix,
   leggingsRune,
   bootsId,
   bootsRuneId,
   bootsInfusionId,
-  bootsRuneCount,
+  bootsRuneCount = 6,
   bootsAffix,
   bootsRune,
 }: ArmorProps) => {
   const { classes } = useStyles();
-  const defaultStyles = useDefaultStyles();
-
-  const { gw2Item } = defaultStyles.classes;
 
   const ItemDetails = ({
     affix,
@@ -182,7 +183,7 @@ const Armor = ({
     <div className={classes.listItemText}>
       <span className={classes.primaryText}>{affix}</span>
       <div className={classes.secondaryText}>
-        {runeId ? <Item id={runeId} text={formatRune} /> : { runeName }}
+        {runeId ? <Item id={runeId} text={formatRune} /> : runeName}
         {showInfusions && (
           <>
             <br />
@@ -196,11 +197,12 @@ const Armor = ({
   return (
     <ul className={classes.list}>
       <li className={classes.listItem}>
-        <Item
+        <DynamicItem
           id={helmId}
+          type="Helm"
+          weight={weight}
+          affix={helmAffix}
           upgrades={createUpgrades(helmInfusionId, helmRuneId, helmRuneCount)}
-          disableText
-          className={gw2Item}
         />
         <ItemDetails
           affix={helmAffix}
@@ -211,15 +213,16 @@ const Armor = ({
       </li>
 
       <li className={classes.listItem}>
-        <Item
+        <DynamicItem
           id={shouldersId}
+          type="Shoulders"
+          weight={weight}
+          affix={shouldersAffix}
           upgrades={createUpgrades(
             shouldersInfusionId,
             shouldersRuneId,
             shouldersRuneCount,
           )}
-          disableText
-          className={gw2Item}
         />
         <ItemDetails
           affix={shouldersAffix}
@@ -230,11 +233,12 @@ const Armor = ({
       </li>
 
       <li className={classes.listItem}>
-        <Item
+        <DynamicItem
           id={coatId}
+          type="Coat"
+          weight={weight}
+          affix={coatAffix}
           upgrades={createUpgrades(coatInfusionId, coatRuneId, coatRuneCount)}
-          disableText
-          className={gw2Item}
         />
         <ItemDetails
           affix={coatAffix}
@@ -245,15 +249,16 @@ const Armor = ({
       </li>
 
       <li className={classes.listItem}>
-        <Item
+        <DynamicItem
           id={glovesId}
+          type="Gloves"
+          weight={weight}
+          affix={glovesAffix}
           upgrades={createUpgrades(
             glovesInfusionId,
             glovesRuneId,
             glovesRuneCount,
           )}
-          disableText
-          className={gw2Item}
         />
         <ItemDetails
           affix={glovesAffix}
@@ -264,15 +269,16 @@ const Armor = ({
       </li>
 
       <li className={classes.listItem}>
-        <Item
+        <DynamicItem
           id={leggingsId}
+          type="Leggings"
+          weight={weight}
+          affix={leggingsAffix}
           upgrades={createUpgrades(
             leggingsInfusionId,
             leggingsRuneId,
             leggingsRuneCount,
           )}
-          disableText
-          className={gw2Item}
         />
         <ItemDetails
           affix={leggingsAffix}
@@ -283,15 +289,16 @@ const Armor = ({
       </li>
 
       <li className={classes.listItem}>
-        <Item
+        <DynamicItem
           id={bootsId}
+          type="Boots"
+          weight={weight}
+          affix={bootsAffix}
           upgrades={createUpgrades(
             bootsInfusionId,
             bootsRuneId,
             bootsRuneCount,
           )}
-          disableText
-          className={gw2Item}
         />
         <ItemDetails
           affix={bootsAffix}

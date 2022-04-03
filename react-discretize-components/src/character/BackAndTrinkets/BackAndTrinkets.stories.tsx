@@ -39,3 +39,22 @@ Example.args = {
   ring1Id: 80793,
   ring2Id: 75669,
 };
+export const NoIds = Template.bind({});
+NoIds.args = {
+  backItemAffix: 'Berserker',
+  backItemInfusion1Id: 49432,
+  backItemInfusion2Id: 49432,
+  amuletAffix: 'Berserker',
+  ring1Affix: 'Assassin',
+  ring1Infusion1Id: 49432,
+  ring1Infusion2Id: 49432,
+  ring1Infusion3Id: 49432,
+  ring2Affix: 'Berserker',
+  ring2Infusion1Id: 49432,
+  ring2Infusion2Id: 49432,
+  ring2Infusion3Id: 49432,
+  accessory1Affix: 'Berserker',
+  accessory1InfusionId: 49432,
+  accessory2Affix: 'Berserker',
+  accessory2InfusionId: 49432,
+};

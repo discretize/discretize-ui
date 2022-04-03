@@ -1,9 +1,9 @@
 import { Icon, Item } from '@discretize/gw2-ui-new';
 import { useMediaQuery, useTheme } from '@mui/material';
+import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
 import firstUppercase from '../../helpers/firstUppercase';
 import NoSelection from '../../helpers/NoSelection';
 import TextDivider from '../../helpers/TextDivider/TextDivider';
-import { useDefaultStyles } from '../../styles/defaultStyles';
 import { formatInfusion, useStyles } from '../Armor/Armor';
 
 type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
@@ -28,7 +28,7 @@ export interface WeaponsProps {
   weapon1MainId?: number;
   weapon1MainSigil1Id?: number;
   weapon1MainSigil2Id?: number;
-  weapon1MainType?: number;
+  weapon1MainType?: string;
   weapon1MainAffix?: Affix;
   weapon1MainSigil1?: string;
   weapon1MainSigil2?: string;
@@ -36,14 +36,14 @@ export interface WeaponsProps {
   weapon1MainInfusion2Id?: number;
   weapon1OffId?: number;
   weapon1OffSigilId?: number;
-  weapon1OffType?: number;
+  weapon1OffType?: string;
   weapon1OffAffix?: Affix;
   weapon1OffSigil?: string;
   weapon1OffInfusionId?: number;
   weapon2MainId?: number;
   weapon2MainSigil1Id?: number;
   weapon2MainSigil2Id?: number;
-  weapon2MainType?: number;
+  weapon2MainType?: string;
   weapon2MainAffix?: Affix;
   weapon2MainSigil1?: string;
   weapon2MainSigil2?: string;
@@ -51,7 +51,7 @@ export interface WeaponsProps {
   weapon2MainInfusion2Id?: number;
   weapon2OffId?: number;
   weapon2OffSigilId?: number;
-  weapon2OffType?: number;
+  weapon2OffType?: string;
   weapon2OffAffix?: Affix;
   weapon2OffSigil?: string;
   weapon2OffInfusionId?: number;
@@ -91,9 +91,6 @@ const Weapons = ({
   weapon2OffInfusionId,
 }: WeaponsProps) => {
   const { classes } = useStyles();
-  const defaultStyles = useDefaultStyles();
-
-  const { gw2Item } = defaultStyles.classes;
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -143,20 +140,18 @@ const Weapons = ({
     <>
       <ul className={classes.list}>
         <li className={classes.listItem}>
-          {weapon1MainId ? (
+          {weapon1MainId || weapon1MainType ? (
             <>
-              <Item
+              <DynamicItem
                 id={weapon1MainId}
-                stat={weapon1MainAffix}
-                className={gw2Item}
-                // type={weapon1MainType}
+                affix={weapon1MainAffix}
+                type={weapon1MainType}
                 upgrades={createUpgrades([
                   weapon1MainSigil1Id,
                   weapon1MainSigil2Id,
                   weapon1MainInfusion1Id,
                   weapon1MainInfusion2Id,
                 ])}
-                disableText
               />
               <ItemDetails
                 affix={weapon1MainAffix}
@@ -176,18 +171,16 @@ const Weapons = ({
           )}
         </li>
 
-        {weapon1OffId && (
+        {(weapon1OffId || weapon1OffType) && (
           <li className={classes.listItem}>
-            <Item
+            <DynamicItem
               id={weapon1OffId}
-              stat={weapon1OffAffix}
-              className={gw2Item}
-              // type={weapon1OffType}
+              affix={weapon1OffAffix}
+              type={weapon1OffType}
               upgrades={createUpgrades([
                 weapon1OffSigilId,
                 weapon1OffInfusionId,
               ])}
-              disableText
             />
             <ItemDetails
               affix={weapon1OffAffix}
@@ -205,27 +198,25 @@ const Weapons = ({
         )}
       </ul>
 
-      {(weapon2MainId || weapon2OffId) && (
+      {(weapon2MainId || weapon2OffId || weapon2MainType || weapon2OffType) && (
         <>
           <TextDivider>
             <Icon name="WeaponSwap" />
           </TextDivider>
 
           <ul className={classes.list}>
-            {weapon2MainId ? (
+            {weapon2MainId || weapon2MainType ? (
               <li className={classes.listItem}>
-                <Item
+                <DynamicItem
                   id={weapon2MainId}
-                  stat={weapon2MainAffix}
-                  className={gw2Item}
-                  // type={weapon2MainType}
+                  affix={weapon2MainAffix}
+                  type={weapon2MainType}
                   upgrades={createUpgrades([
                     weapon2MainSigil1Id,
                     weapon2MainSigil2Id,
                     weapon2MainInfusion1Id,
                     weapon2MainInfusion2Id,
                   ])}
-                  disableText
                 />
                 <ItemDetails
                   affix={weapon2MainAffix}
@@ -244,18 +235,16 @@ const Weapons = ({
               </li>
             )}
 
-            {weapon2OffId && (
+            {(weapon2OffId || weapon2OffType) && (
               <li className={classes.listItem}>
-                <Item
+                <DynamicItem
                   id={weapon2OffId}
-                  stat={weapon2OffAffix}
-                  className={gw2Item}
-                  //  type={weapon2OffType}
+                  affix={weapon2OffAffix}
+                  type={weapon2OffType}
                   upgrades={createUpgrades([
                     weapon2OffSigilId,
                     weapon2OffInfusionId,
                   ])}
-                  disableText
                 />
                 <ItemDetails
                   affix={weapon2OffAffix}

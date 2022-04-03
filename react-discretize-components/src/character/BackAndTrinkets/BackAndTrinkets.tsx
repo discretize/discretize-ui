@@ -1,6 +1,7 @@
-import { CreateItem, Item } from '@discretize/gw2-ui-new';
+import { Item } from '@discretize/gw2-ui-new';
 import classNames from 'classnames';
 import { makeStyles } from 'tss-react/mui';
+import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
 import { useDefaultStyles } from '../../styles/defaultStyles';
 import { formatInfusion } from '../Armor/Armor';
 
@@ -34,12 +35,6 @@ const useStyles = makeStyles()(() => ({
     alignSelf: 'end',
   },
 }));
-
-type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
-
-function createUpgrades(array: (number | undefined)[]): ItemUpgrades {
-  return array.filter((elem) => typeof elem === 'number') as number[];
-}
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
 
@@ -96,39 +91,7 @@ const BackAndTrinkets = ({
 }: BackAndTrinketsProps) => {
   const { classes } = useStyles();
   const defaultStyles = useDefaultStyles();
-  const { gw2Item, title } = defaultStyles.classes;
-
-  const BATItem = ({
-    id,
-    affix,
-    upgrades,
-    type,
-  }: {
-    id?: number;
-    affix?: Affix;
-    upgrades?: (number | undefined)[];
-    type: string;
-  }) => (
-    <>
-      {id ? (
-        <Item
-          id={id}
-          stat={affix}
-          upgrades={createUpgrades(upgrades || [])}
-          disableText
-          className={gw2Item}
-        />
-      ) : (
-        // TODO this will not work very well atm because there are no default icons in CreateItem. Therefore, CreateItem would create all the data except for the icon... which is pointless for this component that only requires the icon and the tooltip.
-        <CreateItem
-          stat={affix || ''}
-          type={type}
-          upgrades={createUpgrades(upgrades || [])}
-          className={gw2Item}
-        />
-      )}
-    </>
-  );
+  const { title } = defaultStyles.classes;
 
   const Infusions = ({
     infusionIds,
@@ -166,7 +129,7 @@ const BackAndTrinkets = ({
           <Infusions infusionIds={[backItemInfusion1Id, backItemInfusion2Id]} />
         )}
         <span className={title}>{backItemAffix}</span>
-        <BATItem
+        <DynamicItem
           id={backItemId}
           affix={backItemAffix}
           upgrades={[backItemInfusion1Id, backItemInfusion2Id]}
@@ -184,7 +147,7 @@ const BackAndTrinkets = ({
       >
         {showInfusions && <Infusions infusionIds={[accessory1InfusionId]} />}
         <span className={title}>{accessory1Affix}</span>
-        <BATItem
+        <DynamicItem
           id={accessory1Id}
           affix={accessory1Affix}
           upgrades={[accessory1InfusionId]}
@@ -201,7 +164,7 @@ const BackAndTrinkets = ({
       >
         {showInfusions && <Infusions infusionIds={[accessory2InfusionId]} />}
         <span className={title}>{accessory2Affix}</span>
-        <BATItem
+        <DynamicItem
           id={accessory2Id}
           affix={accessory2Affix}
           upgrades={[accessory2InfusionId]}
@@ -210,12 +173,12 @@ const BackAndTrinkets = ({
       </div>
 
       <div className={classes.gridItem}>
-        <BATItem id={amuletId} affix={amuletAffix} type="Amulet" />
+        <DynamicItem id={amuletId} affix={amuletAffix} type="Amulet" />
         <span className={title}>{amuletAffix}</span>
       </div>
 
       <div className={classNames(classes.gridItem, classes.borderLeft)}>
-        <BATItem
+        <DynamicItem
           id={ring1Id}
           affix={ring1Affix}
           upgrades={[ring1Infusion1Id, ring1Infusion2Id, ring1Infusion3Id]}
@@ -230,7 +193,7 @@ const BackAndTrinkets = ({
       </div>
 
       <div className={classes.gridItem}>
-        <BATItem
+        <DynamicItem
           id={ring2Id}
           affix={ring2Affix}
           upgrades={[ring2Infusion1Id, ring2Infusion2Id, ring2Infusion3Id]}
