@@ -27,14 +27,34 @@ const useStyles = makeStyles()(() => ({
   borderBottom: {
     borderBottom: '1px solid #1e2124',
   },
-  infusions: {
-    fontSize: '0.6rem',
-    color: 'rgb(153 153 153)',
-  },
   upperRowItem: {
     alignSelf: 'end',
   },
 }));
+
+export const Infusions = ({
+  infusionIds,
+}: {
+  infusionIds: (number | undefined)[];
+}) => {
+  const { classes } = useDefaultStyles();
+  const occurrences = (infusionIds.filter((id) => !!id) as number[]).reduce(
+    (acc: Record<number, number>, curr) => {
+      return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+    },
+    {},
+  );
+  return (
+    <div className={classes.infusions}>
+      {Object.entries(occurrences).map(([id, amount], index) => (
+        <>
+          {index !== 0 && <br />}
+          {amount}x <Item id={Number(id)} text={formatInfusion} />
+        </>
+      ))}
+    </div>
+  );
+};
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
 
@@ -92,29 +112,6 @@ const BackAndTrinkets = ({
   const { classes } = useStyles();
   const defaultStyles = useDefaultStyles();
   const { title } = defaultStyles.classes;
-
-  const Infusions = ({
-    infusionIds,
-  }: {
-    infusionIds: (number | undefined)[];
-  }) => {
-    const occurrences = (infusionIds.filter((id) => !!id) as number[]).reduce(
-      (acc: Record<number, number>, curr) => {
-        return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
-      },
-      {},
-    );
-    return (
-      <div className={classes.infusions}>
-        {Object.entries(occurrences).map(([id, amount], index) => (
-          <>
-            {index !== 0 && <br />}
-            {amount}x <Item id={Number(id)} text={formatInfusion} />
-          </>
-        ))}
-      </div>
-    );
-  };
 
   return (
     <div className={classes.root}>

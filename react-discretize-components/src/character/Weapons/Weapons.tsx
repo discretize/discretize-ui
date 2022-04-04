@@ -4,7 +4,8 @@ import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
 import firstUppercase from '../../helpers/firstUppercase';
 import NoSelection from '../../helpers/NoSelection';
 import TextDivider from '../../helpers/TextDivider/TextDivider';
-import { formatInfusion, useStyles } from '../Armor/Armor';
+import { useStyles } from '../Armor/Armor';
+import { Infusions } from '../BackAndTrinkets/BackAndTrinkets';
 
 type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
 
@@ -118,14 +119,11 @@ const Weapons = ({
           <span className={classes.primaryText}>{affix}</span>
           <div className={classes.secondaryText}>
             {sigil1Id ? <Item id={sigil1Id} text={formatSigil} /> : sigil1Name}
-            {(sigil2Id || sigil2Name) && ', '}
+            {(sigil2Id || sigil2Name) && <br />}
             {sigil2Id ? <Item id={sigil2Id} text={formatSigil} /> : sigil2Name}
             {showInfusions && (
               <>
-                <br />
-                {infusion1Id && <Item id={infusion1Id} text={formatInfusion} />}
-                {infusion2Id && ', '}
-                {infusion2Id && <Item id={infusion2Id} text={formatInfusion} />}
+                <Infusions infusionIds={[infusion1Id, infusion2Id]} />
               </>
             )}
           </div>

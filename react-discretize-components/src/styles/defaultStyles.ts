@@ -13,4 +13,8 @@ export const useDefaultStyles = makeStyles()((theme) => ({
     fontWeight: 400,
     fontFamily: 'Muli',
   },
+  infusions: {
+    fontSize: '0.8rem',
+    color: 'rgb(153 153 153)',
+  },
 }));

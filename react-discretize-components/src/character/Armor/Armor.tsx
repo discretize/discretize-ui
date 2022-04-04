@@ -40,7 +40,7 @@ export const useStyles = makeStyles()((theme) => ({
     margin: 0,
     display: 'block',
     lineHeight: 1.23,
-    fontSize: '0.70rem',
+    fontSize: '0.90rem',
     fontWeight: 300,
     fontFamily: 'Muli',
   },
