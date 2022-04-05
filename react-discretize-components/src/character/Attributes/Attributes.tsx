@@ -43,7 +43,7 @@ const attributes: {
   { name: 'Health' },
   {
     name: 'Critical Chance',
-    text: (value?: number) => `${(Math.round(value || 0) * 10000) / 100}%`,
+    text: (value?: number) => `${Math.round((value || 0) * 10000) / 100}%`,
   },
   {
     name: 'Critical Damage',
