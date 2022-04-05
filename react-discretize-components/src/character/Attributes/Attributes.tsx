@@ -26,6 +26,9 @@ const useStyles = makeStyles()(() => ({
   },
 }));
 
+const roundOne = (num: number) => Math.round(num * 10) / 10;
+const roundTwo = (num: number) => Math.round(num * 100) / 100;
+
 const attributes: {
   name: AttributeType;
   text?: (value?: number) => string;
@@ -43,20 +46,20 @@ const attributes: {
   { name: 'Health' },
   {
     name: 'Critical Chance',
-    text: (value?: number) => `${Math.round((value || 0) * 10000) / 100}%`,
+    text: (value?: number) => `${roundTwo((value || 0) * 100)}%`,
   },
   {
     name: 'Critical Damage',
-    text: (value?: number) => `${Math.round((value || 0) * 1000) / 10}%`,
+    text: (value?: number) => `${roundOne((value || 0) * 100)}%`,
   },
   { name: 'Healing Power' },
   {
     name: 'Condition Duration',
-    text: (value?: number) => `${Math.round((value || 0) * 10000) / 100}%`,
+    text: (value?: number) => `${roundTwo((value || 0) * 100)}%`,
   },
   {
     name: 'Boon Duration',
-    text: (value?: number) => `${Math.round((value || 0) * 1000) / 10}%`,
+    text: (value?: number) => `${roundTwo((value || 0) * 100)}%`,
   },
   { name: 'Magic Find', text: () => '0' },
 ];
