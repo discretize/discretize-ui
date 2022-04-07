@@ -69,9 +69,9 @@ function createUpgrades(
 function formatRune(text: string): string {
   return firstUppercase(
     text
-      .replace('Superior Rune of the ', '')
+      .replace(/Superior Rune of (the)?/gm, '')
       .replace('Runa superior del ', '')
-      .replace('Überlegene Rune des ', '')
+      .replace(/Überlegene Rune (des|der|von)?/gm, '')
       .replace("Rune d'érudit ", ''),
   );
 }
