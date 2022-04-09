@@ -1,9 +1,5 @@
 import { Box, Container, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
-import 'typeface-fira-mono';
-import '@discretize/typeface-menomonia';
-import 'typeface-muli';
-import 'typeface-raleway';
 
 const Layout = ({ children, ContainerProps, disableContainer = false }) => {
   const theme = useTheme();
