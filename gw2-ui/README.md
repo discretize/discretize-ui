@@ -18,6 +18,8 @@ Prerequisites:
 - `node` >= 12.0.0
 - `yarn` >= 1.22.0 ?
 
+Be sure your project is using a single React version. Use React 17 or force React 18 using a resolutions field in your package.json.
+
 Install:
 
 ```
