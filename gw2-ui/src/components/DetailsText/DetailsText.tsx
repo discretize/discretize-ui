@@ -49,7 +49,7 @@ export const renderFlavor = (text: string) => {
               return (
                 <span
                   className={css[`color${capitalize(color)}`]}
-                  key={`flav${index.toString()}`}
+                  key={`flavour-${textPart}-${index.toString()}`}
                 >
                   {textPart}
                 </span>

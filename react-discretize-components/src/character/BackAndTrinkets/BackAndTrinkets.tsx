@@ -1,5 +1,6 @@
 import { Item } from '@discretize/gw2-ui-new';
 import classNames from 'classnames';
+import { Fragment } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
 import { useDefaultStyles } from '../../styles/defaultStyles';
@@ -47,10 +48,10 @@ export const Infusions = ({
   return (
     <div className={classes.infusions}>
       {Object.entries(occurrences).map(([id, amount], index) => (
-        <>
+        <Fragment key={`${id}-${amount}-${index}`}>
           {index !== 0 && <br />}
           {amount}x <Item id={Number(id)} text={formatInfusion} />
-        </>
+        </Fragment>
       ))}
     </div>
   );

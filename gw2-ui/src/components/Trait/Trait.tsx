@@ -87,8 +87,11 @@ const Trait = (props: TraitProps): ReactElement => {
           </TooltipContainer>
 
           {skills &&
-            skills.map((skill) => (
-              <TooltipContainer key={skill.id} className={css.traitSkill}>
+            skills.map((skill, index) => (
+              <TooltipContainer
+                key={`${skill.id}-${index}`}
+                className={css.traitSkill}
+              >
                 <AbilityDetails data={skill} />
               </TooltipContainer>
             ))}

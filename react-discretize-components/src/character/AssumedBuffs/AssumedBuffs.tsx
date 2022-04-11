@@ -30,14 +30,15 @@ const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
   const { classes } = useStyles();
   return (
     <div className={className}>
-      {value.map(({ id, type, gw2id }) => {
+      {value.map(({ id, type, gw2id }, index) => {
+        const key = `${type}_${id}-${gw2id}-${index}`;
         switch (type) {
           case 'Boon':
             return (
               <Boon
                 name={firstUppercase(id)}
                 disableText
-                key={`${type}_${id}`}
+                key={key}
                 className={classNames(classes.component)}
               />
             );
@@ -46,7 +47,7 @@ const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
               <Condition
                 name={firstUppercase(id)}
                 disableText
-                key={`${type}_${id}`}
+                key={key}
                 className={classes.component}
               />
             );
@@ -55,7 +56,7 @@ const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
               <Skill
                 id={gw2id}
                 disableText
-                key={`${type}_${gw2id}`}
+                key={key}
                 className={classes.component}
               />
             );
@@ -64,7 +65,7 @@ const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
               <Trait
                 id={gw2id}
                 disableText
-                key={`${type}_${gw2id}`}
+                key={key}
                 className={classes.component}
               />
             );
@@ -73,7 +74,7 @@ const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
               <CommonEffect
                 name={firstUppercase(id)}
                 disableText
-                key={`${type}_${id}`}
+                key={key}
                 className={classes.component}
               />
             );

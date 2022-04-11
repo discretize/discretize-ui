@@ -111,8 +111,8 @@ const ItemDetails = ({
         {attributes &&
           attributes.length > 0 &&
           (attributes as GW2ApiInfixUpgradeAttribute[]).map(
-            ({ attribute, modifier }) => (
-              <div key={`${attribute}-${modifier}`}>
+            ({ attribute, modifier }, index) => (
+              <div key={`${attribute}-${modifier}-${index}`}>
                 <span
                   className={
                     upgrade || infusionUpgradeFlags.includes('Infusion')
