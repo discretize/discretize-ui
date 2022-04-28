@@ -23,7 +23,7 @@ Be sure your project is using a single React version. Use React 17 or force Reac
 Install:
 
 ```
-yarn add gw2-ui-new
+yarn add @discretize/gw2-ui-new
 yarn add @discretize/typeface-menomonia
 ```
 
