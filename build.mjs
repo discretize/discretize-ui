@@ -70,7 +70,7 @@ async function build(package_name) {
   const OUTPUT_PATH = path.resolve(package_path, package_json.module);
   const OUTPUT_DIR = path.dirname(OUTPUT_PATH);
 
-  rimraf.sync(OUTPUT_PATH);
+  rimraf.sync(OUTPUT_DIR);
 
   // Step 1: Run tsc
   // This checks all types and emits declaration files
@@ -101,7 +101,7 @@ async function build(package_name) {
           noEmitOnError: true,
           exclude: ['*.js', '*.jsx', '*.css', '**/*.stories.tsx', 'dist'],
           // Specify a bogus outdir, otherwise typescript will error with TS5055
-          outDir: 'this_directory_does_not_exist',
+          outDir: path.join(OUTPUT_DIR, 'this_directory_does_not_exist'),
         }),
         babel({
           // Note: babel is only required for jsx files.
@@ -148,7 +148,7 @@ async function build(package_name) {
       ],
     });
     await bundle.write({
-      file: OUTPUT_PATH,
+      dir: OUTPUT_DIR,
       format: 'esm',
       sourcemap: false,
     });
