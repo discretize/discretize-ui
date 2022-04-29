@@ -6,13 +6,17 @@ import type { Override } from '../cache';
 import { fixFactsInSkill, fixFactsInTrait } from './skill_facts';
 import { fixSkillTypes } from './skill_types';
 import { fixAscendedConsumable } from './item_ascended_consumables';
+import { fixMissingTraitDescriptions } from './trait_missing_descriptions';
 
 export const SKILL_OVERRIDES: Override<GW2ApiSkill>[] = [
   fixFactsInSkill,
   fixSkillTypes,
 ];
 
-export const TRAIT_OVERRIDES: Override<GW2ApiTrait>[] = [fixFactsInTrait];
+export const TRAIT_OVERRIDES: Override<GW2ApiTrait>[] = [
+  fixFactsInTrait,
+  fixMissingTraitDescriptions,
+];
 
 export const ITEM_OVERRIDES: Override<GW2ApiItem>[] = [fixAscendedConsumable];
 export const SPECIALIZATION_OVERRIDES: Override<GW2ApiSpecialization>[] = [];
