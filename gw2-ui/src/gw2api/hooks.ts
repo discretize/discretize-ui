@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { APILanguage, useAPILanguage } from '../i18n';
 
-import APICache, { Id } from './cache';
+import APICache, { Id, Override } from './cache';
 import {
   ITEM_OVERRIDES,
   SKILL_OVERRIDES,
@@ -19,7 +19,7 @@ function getCache<T extends { id: number }>(
   language: APILanguage,
   max_ids_per_request?: number,
   max_concurrent_requests?: number,
-  overrides?: ((id: number, item: T | undefined) => T | undefined)[],
+  overrides?: Override<T>[],
 ): APICache<T> {
   let cache = record[language];
   if (!cache) {

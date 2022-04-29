@@ -64,7 +64,7 @@ export interface APICacheGetMultipleResult<T> {
 export type Override<T extends { id: Id }> = (
   id: Id,
   item: T | undefined,
-) => T | undefined;
+) => T | undefined | Promise<T | undefined>;
 
 const isSSR = typeof document === 'undefined';
 
@@ -262,7 +262,14 @@ export default class APICache<T extends { id: Id }> {
     // See if all requested ids were returned
     for (const id of ids) {
       let item: T | undefined = returned[id];
-      item = this.fixItem(id, item);
+      const fixed_item = this.fixItem(id, item);
+      // Do not await unless we actually get a Promise.
+      // See fixItem for the rationale behind this.
+      if (fixed_item instanceof Promise) {
+        item = await fixed_item;
+      } else {
+        item = fixed_item;
+      }
       if (item) {
         this.cache.set(id, item);
       } else {
@@ -291,11 +298,37 @@ export default class APICache<T extends { id: Id }> {
     this.tryFetch();
   }
 
-  private fixItem(id: Id, item: T | undefined): T | undefined {
+  private fixItem(
+    id: Id,
+    item: T | undefined,
+    start: number = 0,
+  ): T | undefined | Promise<T | undefined> {
+    // A note about Promises.
+    // It is possible to await a non-promise, e.g.
+    // let x = await 42;
+    // In this case, the runtime will create a Promise that resolved to 42, yield execution to the main loop, then resume later.
+    // Because we're processing a lot of items, possibly with multiple fixup functions, we want to avoid that overhead.
+    // Most of the fixups won't be async anyway.
+
+    // So we do this the hard way, without async/await. Welcome back to callback hell.
+
     let fixed_item = item;
-    for (const f of this.overrides) {
+    for (let i = start; i < this.overrides.length; i++) {
+      const f = this.overrides[i];
       try {
-        fixed_item = f(id, fixed_item);
+        const res = f(id, fixed_item);
+        if (res instanceof Promise) {
+          return res.then(
+            (item) => {
+              return this.fixItem(id, item, i + 1);
+            },
+            (e) => {
+              console.error('Error in async override', e);
+              return fixed_item;
+            },
+          );
+        }
+        fixed_item = res;
       } catch (e) {
         console.error('Error in override', e);
       }
