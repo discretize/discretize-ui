@@ -39,3 +39,19 @@ export function Multiple() {
     </>
   );
 }
+
+export function AscendedFood() {
+  return (
+    <>
+      Ascended Food requires API overrides, otherwise the details are missing.
+      <br />
+      <Item id={91805} />
+      <br />
+      <br />
+      This one does not have overrides:
+      <br />
+      <Item id={97826} />
+      <br />
+    </>
+  );
+}
