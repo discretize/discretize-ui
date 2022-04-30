@@ -2,13 +2,19 @@ import GW2ApiSkill from '../types/skills/skill';
 import { mapWithSkills } from './async';
 
 const MISSING_IDS = new Set([
-  62797,
+  // dragon trigger (bladesworn)
+  62797, 62980, 62951, 62893, 62926,
 
-  // tomes
-  41258, 40635, 42449, 40015, 42898, 45022, 40679, 45128, 42008, 42925, 42986,
-  41968, 41836, 40988, 44455,
+  // tome of justice (firebrand)
+  41258, 40635, 42449, 40015, 42898,
 
-  // shadow shroud
+  // tome of resolve (firebrand)
+  45022, 40679, 45128, 42008, 42925,
+
+  // tome of courage (firebrand)
+  42986, 41968, 41836, 40988, 44455,
+
+  // shadow shroud (specter)
   63362, 63167, 63220, 63160, 63249,
 ]);
 
