@@ -16,6 +16,9 @@ const MISSING_IDS = new Set([
 
   // shadow shroud (specter)
   63362, 63167, 63220, 63160, 63249,
+
+  // mech AI skills (mechanist)
+  63298, 63263, 63288, 63264, 63348, 63047,
 ]);
 
 export function fixMissingSkills(
