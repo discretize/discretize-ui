@@ -2,6 +2,7 @@ import {
   Boon,
   CommonEffect,
   Condition,
+  Item,
   Skill,
   Trait,
 } from '@discretize/gw2-ui-new';
@@ -22,6 +23,7 @@ export interface AssumedBuffsProps {
     | { type: 'Skill'; gw2id: number; id?: undefined }
     | { type: 'Trait'; gw2id: number; id?: undefined }
     | { type: 'CommonEffect'; id: string; gw2id?: undefined }
+    | { type: 'Item'; id?: undefined; gw2id: number }
   )[];
   className?: string;
 }
@@ -73,6 +75,15 @@ const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
             return (
               <CommonEffect
                 name={firstUppercase(id)}
+                disableText
+                key={key}
+                className={classes.component}
+              />
+            );
+          case 'Item':
+            return (
+              <Item
+                id={gw2id}
                 disableText
                 key={key}
                 className={classes.component}

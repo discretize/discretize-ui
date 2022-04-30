@@ -24,5 +24,10 @@ Example.args = {
     { gw2id: 14407, type: 'Skill' },
     { gw2id: 14405, type: 'Skill' },
     { gw2id: 14404, type: 'Skill' },
+    {
+      gw2id: 79722,
+      type: 'Item',
+    },
+    { gw2id: 96613, type: 'Item' },
   ],
 };
