@@ -17,7 +17,7 @@ const TYPEGUARD_OUTPUT_DIR = './src/gw2api/typeguards/out';
 
 async function run() {
   console.warn(
-    'Remember to change src/gw2api/types/items/items.ts before running this!',
+    'Remember to change src/gw2api/types/items/item.ts before running this!',
   );
   console.log('Generating type guards');
   // Just compiling these with tsc is not enough
@@ -35,6 +35,7 @@ async function run() {
   });
   await bundle.write({
     file: TYPEGUARD_OUTPUT_DIR + '/guards.mjs',
+    inlineDynamicImports: true,
     format: 'esm',
     sourcemap: false,
   });
