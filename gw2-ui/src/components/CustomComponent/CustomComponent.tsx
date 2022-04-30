@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { CSSProperties, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { ProfessionTypes } from '../../data/professions';
 import GW2ApiSkill from '../../gw2api/types/skills/skill';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
-import IconWithText from '../IconWithText/IconWithText';
+import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
 import professioncss from '../Profession/professions.module.css';
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
@@ -11,18 +11,15 @@ import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 /**
  * Allows supplying custom data in the data props
  */
-export interface CustomComponentProps {
+export interface CustomComponentProps
+  extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading'> {
   type: 'Skill' | 'Trait';
   data: unknown;
   text?: string;
-  disableIcon?: boolean;
-  disableText?: boolean;
   disableLink?: boolean;
   disableTooltip?: boolean;
   tooltipProps?: TooltipProps;
   wikiLinkProps?: WikiLinkProps;
-  style?: CSSProperties;
-  className?: string;
 }
 
 const CustomComponent = (props: CustomComponentProps): ReactElement => {
