@@ -1421,4 +1421,173 @@ export const missing_skills: Record<
       },
     ],
   },
+
+  // mech AI skills (mechanist)
+  63298: {
+    categories: [],
+    name: 'Hard Strike',
+    icon: 'https://wiki.guildwars2.com/images/6/62/Hard_Strike.png',
+    professions: ['Engineer'],
+    description: 'Strikes foes in front of you.',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png',
+        text: 'Damage',
+        type: 'Damage',
+        hit_count: 1,
+        dmg_multiplier: 0.6,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
+        text: 'Number of Targets',
+        type: 'Number',
+        value: 3,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 240,
+      },
+    ],
+  },
+  63263: {
+    categories: [],
+    name: 'Heavy Smash',
+    icon: 'https://wiki.guildwars2.com/images/9/98/Heavy_Smash_%28Mech%29.png',
+    professions: ['Engineer'],
+    description: 'Perform a second, powerful strike.',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png',
+        text: 'Damage',
+        type: 'Damage',
+        hit_count: 1,
+        dmg_multiplier: 0.6,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
+        text: 'Number of Targets',
+        type: 'Number',
+        value: 3,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 240,
+      },
+    ],
+  },
+  63288: {
+    categories: [],
+    name: 'Twin Strike',
+    icon: 'https://wiki.guildwars2.com/images/3/31/Twin_Strike_%28Mech%29.png',
+    professions: ['Engineer'],
+    description: 'Strikes foes in front of you.',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png',
+        text: 'Damage',
+        type: 'Damage',
+        hit_count: 2,
+        dmg_multiplier: 2.4,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
+        text: 'Number of Targets',
+        type: 'Number',
+        value: 3,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 240,
+      },
+    ],
+  },
+  63264: {
+    categories: [],
+    name: 'Jade Energy Shot',
+    icon: 'https://wiki.guildwars2.com/images/c/c0/Anchor.png',
+    professions: ['Engineer'],
+    description: '...',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png',
+        text: 'Damage',
+        type: 'Damage',
+        hit_count: 1,
+        dmg_multiplier: 0.555,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 900,
+      },
+    ],
+  },
+  63348: {
+    categories: [],
+    name: 'Jade Energy Shot',
+    icon: 'https://wiki.guildwars2.com/images/c/c0/Anchor.png',
+    professions: ['Engineer'],
+    description: '...',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png',
+        text: 'Damage',
+        type: 'Damage',
+        hit_count: 1,
+        dmg_multiplier: 0.555,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 900,
+      },
+    ],
+  },
+  63047: {
+    categories: [],
+    name: 'Dynamo Burst',
+    icon: 'https://wiki.guildwars2.com/images/6/6f/Mortar_Shot.png',
+    professions: ['Engineer'],
+    description: '...',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png',
+        text: 'Damage',
+        type: 'Damage',
+        hit_count: 1,
+        dmg_multiplier: 0.33,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
+        text: 'Number of Targets',
+        type: 'Number',
+        value: 3,
+      },
+      {
+        text: 'Radius',
+        type: 'Distance',
+        icon: 'https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png',
+        distance: 120,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/450630987A0566D4A7A491EDA4DCDF57D9396854/1770203.png',
+        text: 'Explosion',
+        type: 'NoData',
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 1200,
+      },
+    ],
+  },
 };
