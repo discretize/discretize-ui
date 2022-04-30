@@ -37,12 +37,12 @@ export type GW2ApiSkillCategory =
   | 'Spectral'
   | 'Spirit'
   | 'SpiritWeapon'
-  | 'Shroud'
+  | 'Shroud' // This is added by API overrides, not part of the official API
   | 'Stance'
   | 'StealthAttack'
   | 'Survival'
   | 'Symbol'
-  | 'Tome'
+  | 'Tome' // This is added by API overrides, not part of the official API
   | 'Transform'
   | 'Trap'
   | 'Trick'
