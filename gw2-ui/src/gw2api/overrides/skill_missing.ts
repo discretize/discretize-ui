@@ -1,7 +1,7 @@
 import GW2ApiSkill from '../types/skills/skill';
 import { mapWithSkills } from './async';
 
-const MISSING_IDS = new Set([62797]);
+const MISSING_IDS = new Set([62797, 62980, 62951, 62893, 62926]);
 
 export function fixMissingSkills(
   id: number,
