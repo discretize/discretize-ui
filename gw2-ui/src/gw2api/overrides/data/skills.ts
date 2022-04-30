@@ -5,6 +5,7 @@ export const missing_skills: Record<
   number,
   Omit<GW2ApiSkill, 'id' | 'chat_link'>
 > = {
+  // dragon trigger (bladesworn)
   62797: {
     categories: ['Burst'],
     name: 'Dragon Slash—Force',
