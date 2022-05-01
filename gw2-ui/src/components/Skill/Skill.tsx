@@ -28,10 +28,12 @@ export interface SkillDataProps {
 }
 
 const SKILL_ERROR_NAMES = {
+  400: 'Bad Request',
   404: 'Skill Not Found',
   500: 'Network Error',
 };
 const SKILL_ERROR_MESSAGES = {
+  400: () => `The id needs to be of type 'number'`,
   404: (id: number) => `The requested skill with the id ${id} was not found.`,
   500: (id: number) =>
     `A Network Error occured trying to fetch the skill ${id}.`,
@@ -40,6 +42,18 @@ const SKILL_ERROR_MESSAGES = {
 const Skill = (props: SkillProps): ReactElement => {
   const { id, text, disableLink, disableTooltip, tooltipProps, wikiLinkProps } =
     props;
+
+  if (typeof id !== 'number') {
+    return (
+      <Error
+        {...props}
+        code={400}
+        name={SKILL_ERROR_NAMES}
+        message={SKILL_ERROR_MESSAGES}
+      />
+    );
+  }
+
   const skill = useSkill(id);
 
   if (skill.loading) {
