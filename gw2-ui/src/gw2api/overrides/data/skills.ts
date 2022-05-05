@@ -13,6 +13,10 @@ export const missing_skills: Record<
     professions: ['Warrior'],
     description:
       'Slash foes in front of you, ending Dragon Trigger. This attack consumes all charges to deal more damage.',
+    specialization: 68,
+    type: 'Profession',
+    weapon_type: 'None',
+    slot: 'Weapon_1',
     facts: [
       {
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
@@ -60,6 +64,10 @@ export const missing_skills: Record<
     professions: ['Warrior'],
     description:
       'Dash forward while slashing all foes in a line, ending Dragon Trigger. This attack consumes all charges to deal more damage.',
+    specialization: 68,
+    type: 'Profession',
+    weapon_type: 'None',
+    slot: 'Weapon_2',
     facts: [
       {
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
@@ -107,6 +115,10 @@ export const missing_skills: Record<
     professions: ['Warrior'],
     description:
       'Slash to create a blade of air that strikes foes in a line in front of you, ending Dragon Trigger. This attack consumes all charges to deal more damage.',
+    specialization: 68,
+    type: 'Profession',
+    weapon_type: 'None',
+    slot: 'Weapon_3',
     facts: [
       {
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
@@ -158,6 +170,10 @@ export const missing_skills: Record<
     icon: 'https://wiki.guildwars2.com/images/4/4e/Triggerguard.png',
     professions: ['Warrior'],
     description: 'Gain aegis.',
+    specialization: 68,
+    type: 'Profession',
+    weapon_type: 'None',
+    slot: 'Weapon_4',
     facts: [
       {
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
@@ -200,6 +216,10 @@ export const missing_skills: Record<
     icon: 'https://wiki.guildwars2.com/images/d/de/Flicker_Step.png',
     professions: ['Warrior'],
     description: 'Blink to a location.',
+    specialization: 68,
+    type: 'Profession',
+    weapon_type: 'None',
+    slot: 'Weapon_5',
     facts: [
       {
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
