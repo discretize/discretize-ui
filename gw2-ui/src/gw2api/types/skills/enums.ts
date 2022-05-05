@@ -7,6 +7,7 @@ export type GW2ApiSkillCategory =
   | 'Burst'
   | 'Cantrip'
   | 'CelestialAvatar'
+  | 'Chain' // This is added by API overrides, not part of the official API
   | 'Clone'
   | 'Conjure'
   | 'Consecration'
