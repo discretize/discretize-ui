@@ -5,6 +5,9 @@ const MISSING_IDS = new Set([
   // dragon trigger (bladesworn)
   62797, 62980, 62951, 62893, 62926,
 
+  // gunsaber (bladesworn)
+  62966, 62772, 62918, 62930, 62732, 62789, 62885,
+
   // tome of justice (firebrand)
   41258, 40635, 42449, 40015, 42898,
 
