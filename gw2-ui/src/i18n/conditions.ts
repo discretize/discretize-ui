@@ -64,7 +64,7 @@ export const CONDITIONS_DESCRIPTIONS: Record<ConditionTypes, Translation> = {
     de: 'Greift unfreiwillig Gegner an.',
   },
   Torment: {
-    en: 'Deals damage every second. Deals additional damage to moving foes. Stacks intensity.',
+    en: "Deals damage every second. Deals additional damage to foes that aren't moving. Stacks intensity.",
     de: 'Bewirkt jede Sekunde Schaden. Bewirkt zusätzlichen Schaden bei Gegnern, die sich nicht bewegen. Die Intensität stapelt sich.',
   },
   Vulnerability: {
