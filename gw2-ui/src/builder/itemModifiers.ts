@@ -52,6 +52,18 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_ARMOR_WEIGHTS.HEAVY]: 127,
         },
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [60, 43],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [51, 28],
+          [ITEM_STAT_TYPES.ALL]: [28],
+        },
+        defense: {
+          [ITEM_ARMOR_WEIGHTS.LIGHT]: 73,
+          [ITEM_ARMOR_WEIGHTS.MEDIUM]: 97,
+          [ITEM_ARMOR_WEIGHTS.HEAVY]: 121,
+        },
+      },
     },
     [ITEM_TYPE_NAMES.SHOULDERS]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -64,6 +76,18 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_ARMOR_WEIGHTS.LIGHT]: 77,
           [ITEM_ARMOR_WEIGHTS.MEDIUM]: 102,
           [ITEM_ARMOR_WEIGHTS.HEAVY]: 127,
+        },
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [45, 32],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [38, 21],
+          [ITEM_STAT_TYPES.ALL]: [21],
+        },
+        defense: {
+          [ITEM_ARMOR_WEIGHTS.LIGHT]: 73,
+          [ITEM_ARMOR_WEIGHTS.MEDIUM]: 97,
+          [ITEM_ARMOR_WEIGHTS.HEAVY]: 121,
         },
       },
     },
@@ -80,6 +104,18 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_ARMOR_WEIGHTS.HEAVY]: 381,
         },
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [134, 96],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [115, 63],
+          [ITEM_STAT_TYPES.ALL]: [63],
+        },
+        defense: {
+          [ITEM_ARMOR_WEIGHTS.LIGHT]: 314,
+          [ITEM_ARMOR_WEIGHTS.MEDIUM]: 338,
+          [ITEM_ARMOR_WEIGHTS.HEAVY]: 363,
+        },
+      },
     },
     [ITEM_TYPE_NAMES.GLOVES]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -92,6 +128,18 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_ARMOR_WEIGHTS.LIGHT]: 140,
           [ITEM_ARMOR_WEIGHTS.MEDIUM]: 165,
           [ITEM_ARMOR_WEIGHTS.HEAVY]: 191,
+        },
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [45, 32],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [38, 21],
+          [ITEM_STAT_TYPES.ALL]: [21],
+        },
+        defense: {
+          [ITEM_ARMOR_WEIGHTS.LIGHT]: 133,
+          [ITEM_ARMOR_WEIGHTS.MEDIUM]: 157,
+          [ITEM_ARMOR_WEIGHTS.HEAVY]: 182,
         },
       },
     },
@@ -108,6 +156,18 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_ARMOR_WEIGHTS.HEAVY]: 254,
         },
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [90, 64],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [77, 42],
+          [ITEM_STAT_TYPES.ALL]: [42],
+        },
+        defense: {
+          [ITEM_ARMOR_WEIGHTS.LIGHT]: 194,
+          [ITEM_ARMOR_WEIGHTS.MEDIUM]: 218,
+          [ITEM_ARMOR_WEIGHTS.HEAVY]: 242,
+        },
+      },
     },
     [ITEM_TYPE_NAMES.BOOTS]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -122,6 +182,18 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_ARMOR_WEIGHTS.HEAVY]: 191,
         },
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [45, 32],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [38, 21],
+          [ITEM_STAT_TYPES.ALL]: [21],
+        },
+        defense: {
+          [ITEM_ARMOR_WEIGHTS.LIGHT]: 133,
+          [ITEM_ARMOR_WEIGHTS.MEDIUM]: 157,
+          [ITEM_ARMOR_WEIGHTS.HEAVY]: 182,
+        },
+      },
     },
   },
 
@@ -134,6 +206,13 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_STAT_TYPES.ALL]: [50],
         },
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [100, 68],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [84, 45],
+          [ITEM_STAT_TYPES.ALL]: [47],
+        },
+      },
     },
     [ITEM_TYPE_NAMES.AMULET]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -143,6 +222,13 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_STAT_TYPES.ALL]: [72],
         },
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [145, 100],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [122, 66],
+          [ITEM_STAT_TYPES.ALL]: [68],
+        },
+      },
     },
     [ITEM_TYPE_NAMES.RING]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -150,6 +236,13 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_STAT_TYPES.TRIPLE]: [126, 85],
           [ITEM_STAT_TYPES.QUADRUPLE]: [106, 56],
           [ITEM_STAT_TYPES.ALL]: [57],
+        },
+      },  
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [115, 79],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [97, 52],
+          [ITEM_STAT_TYPES.ALL]: [54],
         },
       },
     },
@@ -162,6 +255,13 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_STAT_TYPES.TRIPLE]: [63, 40],
           [ITEM_STAT_TYPES.QUADRUPLE]: [52, 27],
           [ITEM_STAT_TYPES.ALL]: [28],
+        },
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [55, 36],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [46, 24],
+          [ITEM_STAT_TYPES.ALL]: [26],
         },
       },
     },
@@ -178,6 +278,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 1045,
         maxPower: 1155,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 995,
+        maxPower: 1100,
+      },
     },
     [ITEM_TYPE_NAMES.HAMMER]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -188,6 +297,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 1034,
         maxPower: 1166,
+      },  
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 985,
+        maxPower: 1111,
       },
     },
     [ITEM_TYPE_NAMES.LONGBOW]: {
@@ -200,6 +318,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 966,
         maxPower: 1134,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 920,
+        maxPower: 1080,
+      },
     },
     [ITEM_TYPE_NAMES.RIFLE]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -210,6 +337,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 1035,
         maxPower: 1265,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 986,
+        maxPower: 1205,
       },
     },
     [ITEM_TYPE_NAMES.SHORT_BOW]: {
@@ -222,6 +358,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 950,
         maxPower: 1050,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 905,
+        maxPower: 1000,
+      },
     },
     [ITEM_TYPE_NAMES.STAFF]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -232,6 +377,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 1034,
         maxPower: 1166,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 985,
+        maxPower: 1111,
       },
     },
 
@@ -245,6 +399,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 900,
         maxPower: 1100,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 857,
+        maxPower: 1048,
+      },
     },
     [ITEM_TYPE_NAMES.DAGGER]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -255,6 +418,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 970,
         maxPower: 1030,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 924,
+        maxPower: 981,
       },
     },
     [ITEM_TYPE_NAMES.MACE]: {
@@ -267,6 +439,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 940,
         maxPower: 1060,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 895,
+        maxPower: 1010,
+      },
     },
     [ITEM_TYPE_NAMES.PISTOL]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -275,6 +456,15 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_STAT_TYPES.QUADRUPLE]: [108, 59],
           [ITEM_STAT_TYPES.ALL]: [59],
         },
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 876,
+        maxPower: 1029,
       },
     },
     [ITEM_TYPE_NAMES.SWORD]: {
@@ -286,6 +476,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 950,
         maxPower: 1050,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 905,
+        maxPower: 1000,
       },
     },
 
@@ -299,6 +498,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 940,
         maxPower: 1060,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 895,
+        maxPower: 1010,
+      },
     },
 
     [ITEM_TYPE_NAMES.FOCUS]: {
@@ -310,6 +518,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 873,
         maxPower: 927,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 832,
+        maxPower: 883,
       },
     },
     [ITEM_TYPE_NAMES.SHIELD]: {
@@ -323,6 +540,16 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 846,
         maxPower: 954,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        defense: 61,
+        minPower: 806,
+        maxPower: 909,
+      },
     },
     [ITEM_TYPE_NAMES.TORCH]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -333,6 +560,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 828,
         maxPower: 972,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 789,
+        maxPower: 926,
       },
     },
     [ITEM_TYPE_NAMES.WARHORN]: {
@@ -345,6 +581,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 855,
         maxPower: 945,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [120, 85],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [102, 56],
+          [ITEM_STAT_TYPES.ALL]: [56],
+        },
+        minPower: 814,
+        maxPower: 900,
+      },
     },
     [ITEM_TYPE_NAMES.TRIDENT]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -355,6 +600,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 950,
         maxPower: 1050,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 905,
+        maxPower: 1000,
       },
     },
     [ITEM_TYPE_NAMES.HARPOON]: {
@@ -367,6 +621,15 @@ const itemModifiers: ItemModifiersCollection = {
         minPower: 950,
         maxPower: 1050,
       },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 905,
+        maxPower: 1000,
+      },
     },
     [ITEM_TYPE_NAMES.SPEARGUN]: {
       [ITEM_RARITIES.ASCENDED]: {
@@ -377,6 +640,15 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 950,
         maxPower: 1050,
+      },
+      [ITEM_RARITIES.EXOTIC]: {
+        attributes: {
+          [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
+          [ITEM_STAT_TYPES.QUADRUPLE]: [205, 113],
+          [ITEM_STAT_TYPES.ALL]: [113],
+        },
+        minPower: 905,
+        maxPower: 1000,
       },
     },
   },
