@@ -117,9 +117,9 @@ const createItem = ({
 }: CreateItemProps): CreateItemResult => {
   if (!rarity) {
     throw new Error(`Missing item rarity`);
-  } else if (![ITEM_RARITIES.ASCENDED].includes(rarity)) {
+  } else if (![ITEM_RARITIES.ASCENDED, ITEM_RARITIES.EXOTIC].includes(rarity)) {
     throw new Error(
-      `Invalid item rarity '${rarity}', only '${ITEM_RARITIES.ASCENDED}' is supported`,
+      `Invalid item rarity '${rarity}', only '${ITEM_RARITIES.ASCENDED}' and '${ITEM_RARITIES.EXOTIC}' are supported`,
     );
   }
   if (!level) {

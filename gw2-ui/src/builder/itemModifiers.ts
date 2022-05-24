@@ -237,7 +237,7 @@ const itemModifiers: ItemModifiersCollection = {
           [ITEM_STAT_TYPES.QUADRUPLE]: [106, 56],
           [ITEM_STAT_TYPES.ALL]: [57],
         },
-      },  
+      },
       [ITEM_RARITIES.EXOTIC]: {
         attributes: {
           [ITEM_STAT_TYPES.TRIPLE]: [115, 79],
@@ -297,7 +297,7 @@ const itemModifiers: ItemModifiersCollection = {
         },
         minPower: 1034,
         maxPower: 1166,
-      },  
+      },
       [ITEM_RARITIES.EXOTIC]: {
         attributes: {
           [ITEM_STAT_TYPES.TRIPLE]: [239, 171],
