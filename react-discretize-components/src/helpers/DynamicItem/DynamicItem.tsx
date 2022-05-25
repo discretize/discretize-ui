@@ -21,12 +21,14 @@ const DynamicItem = ({
   upgrades,
   type,
   weight,
+  rarity,
 }: {
   id?: number;
   affix?: Affix;
   upgrades?: (number | undefined | [number, number])[];
   type?: string;
   weight?: React.ComponentProps<typeof CreateItem>['weight'];
+  rarity?: React.ComponentProps<typeof CreateItem>['rarity'];
 }) => {
   const defaultStyles = useDefaultStyles();
   const { gw2Item } = defaultStyles.classes;
@@ -43,7 +45,12 @@ const DynamicItem = ({
       {id ? (
         <Item id={id} {...sharedProps} />
       ) : (
-        <CreateItem type={type || ''} weight={weight} {...sharedProps} />
+        <CreateItem
+          type={type || ''}
+          weight={weight}
+          rarity={rarity}
+          {...sharedProps}
+        />
       )}
     </>
   );
