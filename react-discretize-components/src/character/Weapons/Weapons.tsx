@@ -23,6 +23,7 @@ function formatSigil(text: string): string {
 }
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
+type Rarity = React.ComponentProps<typeof DynamicItem>['rarity'];
 
 export interface WeaponsProps {
   showInfusions?: boolean;
@@ -35,12 +36,14 @@ export interface WeaponsProps {
   weapon1MainSigil2?: string;
   weapon1MainInfusion1Id?: number;
   weapon1MainInfusion2Id?: number;
+  weapon1MainRarity?: Rarity;
   weapon1OffId?: number;
   weapon1OffSigilId?: number;
   weapon1OffType?: string;
   weapon1OffAffix?: Affix;
   weapon1OffSigil?: string;
   weapon1OffInfusionId?: number;
+  weapon1OffRarity?: Rarity;
   weapon2MainId?: number;
   weapon2MainSigil1Id?: number;
   weapon2MainSigil2Id?: number;
@@ -50,12 +53,14 @@ export interface WeaponsProps {
   weapon2MainSigil2?: string;
   weapon2MainInfusion1Id?: number;
   weapon2MainInfusion2Id?: number;
+  weapon2MainRarity?: Rarity;
   weapon2OffId?: number;
   weapon2OffSigilId?: number;
   weapon2OffType?: string;
   weapon2OffAffix?: Affix;
   weapon2OffSigil?: string;
   weapon2OffInfusionId?: number;
+  weapon2OffRarity?: Rarity;
 }
 
 const Weapons = ({
@@ -69,12 +74,14 @@ const Weapons = ({
   weapon1MainSigil2,
   weapon1MainInfusion1Id,
   weapon1MainInfusion2Id,
+  weapon1MainRarity,
   weapon1OffId,
   weapon1OffSigilId,
   weapon1OffType,
   weapon1OffAffix,
   weapon1OffSigil,
   weapon1OffInfusionId,
+  weapon1OffRarity,
   weapon2MainId,
   weapon2MainSigil1Id,
   weapon2MainSigil2Id,
@@ -84,12 +91,14 @@ const Weapons = ({
   weapon2MainSigil2,
   weapon2MainInfusion1Id,
   weapon2MainInfusion2Id,
+  weapon2MainRarity,
   weapon2OffId,
   weapon2OffSigilId,
   weapon2OffType,
   weapon2OffAffix,
   weapon2OffSigil,
   weapon2OffInfusionId,
+  weapon2OffRarity,
 }: WeaponsProps) => {
   const { classes } = useStyles();
 
@@ -143,6 +152,7 @@ const Weapons = ({
               <DynamicItem
                 id={weapon1MainId}
                 affix={weapon1MainAffix}
+                rarity={weapon1MainRarity}
                 type={weapon1MainType}
                 upgrades={createUpgrades([
                   weapon1MainSigil1Id,
@@ -174,6 +184,7 @@ const Weapons = ({
             <DynamicItem
               id={weapon1OffId}
               affix={weapon1OffAffix}
+              rarity={weapon1OffRarity}
               type={weapon1OffType}
               upgrades={createUpgrades([
                 weapon1OffSigilId,
@@ -208,6 +219,7 @@ const Weapons = ({
                 <DynamicItem
                   id={weapon2MainId}
                   affix={weapon2MainAffix}
+                  rarity={weapon2MainRarity}
                   type={weapon2MainType}
                   upgrades={createUpgrades([
                     weapon2MainSigil1Id,
@@ -238,6 +250,7 @@ const Weapons = ({
                 <DynamicItem
                   id={weapon2OffId}
                   affix={weapon2OffAffix}
+                  rarity={weapon2OffRarity}
                   type={weapon2OffType}
                   upgrades={createUpgrades([
                     weapon2OffSigilId,

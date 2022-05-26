@@ -85,6 +85,7 @@ export function formatInfusion(result: string): string {
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
 type Weights = React.ComponentProps<typeof CreateItem>['weight'];
+type Rarity = React.ComponentProps<typeof CreateItem>['rarity'];
 
 export interface ArmorProps {
   weight?: Weights;
@@ -95,36 +96,42 @@ export interface ArmorProps {
   helmRuneCount?: number;
   helmAffix: Affix;
   helmRune?: string;
+  helmRarity?: Rarity;
   shouldersId: number;
   shouldersRuneId?: number;
   shouldersInfusionId?: number;
   shouldersRuneCount?: number;
   shouldersAffix: Affix;
   shouldersRune?: string;
+  shouldersRarity?: Rarity;
   coatId: number;
   coatRuneId?: number;
   coatInfusionId?: number;
   coatRuneCount?: number;
   coatAffix: Affix;
   coatRune?: string;
+  coatRarity?: Rarity;
   glovesId: number;
   glovesRuneId?: number;
   glovesInfusionId?: number;
   glovesRuneCount?: number;
   glovesAffix: Affix;
   glovesRune?: string;
+  glovesRarity?: Rarity;
   leggingsId: number;
   leggingsRuneId?: number;
   leggingsInfusionId?: number;
   leggingsRuneCount?: number;
   leggingsAffix: Affix;
   leggingsRune?: string;
+  leggingsRarity?: Rarity;
   bootsId: number;
   bootsRuneId?: number;
   bootsInfusionId?: number;
   bootsRuneCount?: number;
   bootsAffix: Affix;
   bootsRune?: string;
+  bootsRarity?: Rarity;
 }
 
 const Armor = ({
@@ -136,36 +143,42 @@ const Armor = ({
   helmRuneCount = 6,
   helmAffix,
   helmRune,
+  helmRarity,
   shouldersId,
   shouldersRuneId,
   shouldersInfusionId,
   shouldersRuneCount = 6,
   shouldersAffix,
   shouldersRune,
+  shouldersRarity,
   coatId,
   coatRuneId,
   coatInfusionId,
   coatRuneCount = 6,
   coatAffix,
   coatRune,
+  coatRarity,
   glovesId,
   glovesRuneId,
   glovesInfusionId,
   glovesRuneCount = 6,
   glovesAffix,
   glovesRune,
+  glovesRarity,
   leggingsId,
   leggingsRuneId,
   leggingsInfusionId,
   leggingsRuneCount = 6,
   leggingsAffix,
   leggingsRune,
+  leggingsRarity,
   bootsId,
   bootsRuneId,
   bootsInfusionId,
   bootsRuneCount = 6,
   bootsAffix,
   bootsRune,
+  bootsRarity,
 }: ArmorProps) => {
   const { classes } = useStyles();
 
@@ -201,6 +214,7 @@ const Armor = ({
           id={helmId}
           type="Helm"
           weight={weight}
+          rarity={helmRarity}
           affix={helmAffix}
           upgrades={createUpgrades(helmInfusionId, helmRuneId, helmRuneCount)}
         />
@@ -217,6 +231,7 @@ const Armor = ({
           id={shouldersId}
           type="Shoulders"
           weight={weight}
+          rarity={shouldersRarity}
           affix={shouldersAffix}
           upgrades={createUpgrades(
             shouldersInfusionId,
@@ -237,6 +252,7 @@ const Armor = ({
           id={coatId}
           type="Coat"
           weight={weight}
+          rarity={coatRarity}
           affix={coatAffix}
           upgrades={createUpgrades(coatInfusionId, coatRuneId, coatRuneCount)}
         />
@@ -253,6 +269,7 @@ const Armor = ({
           id={glovesId}
           type="Gloves"
           weight={weight}
+          rarity={glovesRarity}
           affix={glovesAffix}
           upgrades={createUpgrades(
             glovesInfusionId,
@@ -273,6 +290,7 @@ const Armor = ({
           id={leggingsId}
           type="Leggings"
           weight={weight}
+          rarity={leggingsRarity}
           affix={leggingsAffix}
           upgrades={createUpgrades(
             leggingsInfusionId,
@@ -293,6 +311,7 @@ const Armor = ({
           id={bootsId}
           type="Boots"
           weight={weight}
+          rarity={bootsRarity}
           affix={bootsAffix}
           upgrades={createUpgrades(
             bootsInfusionId,
