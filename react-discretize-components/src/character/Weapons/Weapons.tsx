@@ -199,7 +199,7 @@ const Weapons = ({
             />
           </li>
         )}
-        {!weapon1OffId && !weapon1MainSigil2Id && (
+        {!weapon1OffId && !weapon1OffType && !weapon1MainSigil2Id && (
           <li className={classes.listItem}>
             <NoSelection size={isMobile ? 'large2' : 'big'} />
             <ItemDetails />
@@ -265,7 +265,7 @@ const Weapons = ({
                 />
               </li>
             )}
-            {!weapon2OffId && !weapon2MainSigil2Id && (
+            {!weapon2OffId && !weapon2OffType && !weapon2MainSigil2Id && (
               <li className={classes.listItem}>
                 <NoSelection size={isMobile ? 'large2' : 'big'} />
                 <ItemDetails />
