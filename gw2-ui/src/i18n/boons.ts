@@ -26,8 +26,8 @@ export const TRANSLATIONS_BOON_DESCRIPTIONS: Record<BoonsTypes, Translation> = {
     de: 'Fertigkeiten laden sich schneller wieder auf.',
   },
   Fury: {
-    en: 'Critical Chance increased by 20%; stacks duration.',
-    de: 'Erhöht die Chance auf kritischen Treffer um 20%; Dauer summiert sich.',
+    en: 'Critical Chance increased by 25%; stacks duration.',
+    de: 'Erhöht die Chance auf kritischen Treffer um 25%; Dauer summiert sich.',
   },
   Might: {
     en: 'Increased outgoing damage; stacks intensity.',
