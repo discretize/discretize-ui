@@ -586,7 +586,7 @@ export const missing_skills: Record<
         icon: 'https://render.guildwars2.com/file/96D90DF84CAFE008233DD1C2606A12C1A0E68048/102842.png',
         duration: 5,
         status: 'Fury',
-        description: 'Critical Chance increased by 20%; stacks duration.',
+        description: 'Critical Chance increased by 25%; stacks duration.',
         apply_count: 1,
       },
       {
