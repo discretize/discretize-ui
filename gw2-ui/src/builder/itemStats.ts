@@ -290,7 +290,7 @@ const itemStats: ItemStats = {
     type: ITEM_STAT_TYPES.TRIPLE,
     bonuses: [
       [ATTRIBUTES.CONDITION_DAMAGE],
-      [ATTRIBUTES.PRECISION, ATTRIBUTES.POWER],
+      [ATTRIBUTES.VITALITY, ATTRIBUTES.POWER],
     ],
   },
   [ITEM_STAT_NAMES.RABID]: {
