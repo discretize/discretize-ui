@@ -1,24 +1,65 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+const cilantro = '66% Chance to Steal Life on Critical Hit\n';
+const clove = '-20% Incoming Condition Duration\n';
+const mint = '+10% Outgoing Healing\n';
+const peppercorn = '-10% Incoming Damage\n';
+const sesame = 'Gain Health Every Second\n';
+
+const sousVideSteak = '+100 Power\n+70 Ferocity'
+const curedMeatFlatbread = '+100 Condition Damage\n+70 Expertise'
+const veggieFlatbread = '+100 Expertise\n+70 Condition Damage'
+const eggsBenedict = '+100 Concentration\n+70 Expertise'
+const fruitSalad = '+100 Healing Power\n+70 Concentration'
+const oysterSoup = '+45 All Attributes'
+const coqAuVin = '+100 Power\n+70 Precision'
+const cheesecake = '+100 Concentration\n+33% Chance to Gain Might on Critical Hit'
+const beefCarpaccio = '+100 Concentration\n+70 Power'
+const poultryAspic = '+100 Concentration\n+70 Toughness'
+const cremeBrulee = '+100 Concentration\n+70 Healing Power'
+const truffleRavioli = '+100 Vitality\n+70 Toughness'
+
+const ascended = '\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained'
+
+/* eslint-enable @typescript-eslint/no-unused-vars */
+
 export const food: Record<number, string> = {
   91805:
-    '66% Chance to Steal Life on Critical Hit\n+100 Power\n+70 Ferocity\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    `${cilantro}${sousVideSteak}${ascended}`,
   91878:
-    '66% Chance to Steal Life on Critical Hit\n+100 Condition Damage\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    `${cilantro}${curedMeatFlatbread}${ascended}`,
   91876:
-    '66% Chance to Steal Life on Critical Hit\n+100 Expertise\n+70 Condition Damage\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    `${cilantro}${veggieFlatbread}${ascended}`,
   91847:
-    '66% Chance to Steal Life on Critical Hit\n+100 Concentration\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
-  91690:
-    '+10% Outgoing Healing\n+100 Healing Power\n+70 Concentration\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
-  91758:
-    '+10% Outgoing Healing\n+100 Concentration\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
-  91727:
-    '+10% Outgoing Healing\n+100 Expertise\n+70 Condition Damage\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
-  91703:
-    '+10% Outgoing Healing\n+100 Condition Damage\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    `${cilantro}${eggsBenedict}${ascended}`,
   91804:
-    '66% Chance to Steal Life on Critical Hit\n+45 All Attributes\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    `${cilantro}${oysterSoup}${ascended}`,
   91709:
-    '66% Chance to Steal Life on Critical Hit\n+100 Power\n+70 Precision\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+    `${cilantro}${coqAuVin}${ascended}`,
+  91851:
+    `${cilantro}${cheesecake}${ascended}`,
+  91862:
+    `${cilantro}${beefCarpaccio}${ascended}`,
+  91704:
+    `${cilantro}${poultryAspic}${ascended}`,
+  91735:
+    `${cilantro}${truffleRavioli}${ascended}`,
+  91769:
+    `${cilantro}${fruitSalad}${ascended}`,
+  91746:
+    `${cilantro}${cremeBrulee}${ascended}`,
+  91690:
+    `${mint}${fruitSalad}${ascended}`,
+  91743:
+    `${mint}${cremeBrulee}${ascended}`,
+  91758:
+    `${mint}${eggsBenedict}${ascended}`,
+  91727:
+    `${mint}${veggieFlatbread}${ascended}`,
+  91703:
+    `${mint}${curedMeatFlatbread}${ascended}`,
+  91748:
+    `${mint}${oysterSoup}${ascended}`,
 };
 
 export const traits: Record<number, string> = {
