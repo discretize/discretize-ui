@@ -15,6 +15,10 @@ export const food: Record<number, string> = {
     '+10% Outgoing Healing\n+100 Expertise\n+70 Condition Damage\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
   91703:
     '+10% Outgoing Healing\n+100 Condition Damage\n+70 Expertise\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+  91804:
+    '66% Chance to Steal Life on Critical Hit\n+45 All Attributes\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
+  91709:
+    '66% Chance to Steal Life on Critical Hit\n+100 Power\n+70 Precision\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained',
 };
 
 export const traits: Record<number, string> = {
