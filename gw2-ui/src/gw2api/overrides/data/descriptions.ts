@@ -24,42 +24,42 @@ const ascended = '\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20%
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 export const food: Record<number, string> = {
-  91805:
-    `${cilantro}${sousVideSteak}${ascended}`,
-  91878:
-    `${cilantro}${curedMeatFlatbread}${ascended}`,
-  91876:
-    `${cilantro}${veggieFlatbread}${ascended}`,
-  91847:
-    `${cilantro}${eggsBenedict}${ascended}`,
-  91804:
-    `${cilantro}${oysterSoup}${ascended}`,
-  91709:
-    `${cilantro}${coqAuVin}${ascended}`,
-  91851:
-    `${cilantro}${cheesecake}${ascended}`,
-  91862:
-    `${cilantro}${beefCarpaccio}${ascended}`,
-  91704:
-    `${cilantro}${poultryAspic}${ascended}`,
-  91735:
-    `${cilantro}${truffleRavioli}${ascended}`,
-  91769:
-    `${cilantro}${fruitSalad}${ascended}`,
-  91746:
-    `${cilantro}${cremeBrulee}${ascended}`,
-  91690:
-    `${mint}${fruitSalad}${ascended}`,
-  91743:
-    `${mint}${cremeBrulee}${ascended}`,
-  91758:
-    `${mint}${eggsBenedict}${ascended}`,
-  91727:
-    `${mint}${veggieFlatbread}${ascended}`,
-  91703:
-    `${mint}${curedMeatFlatbread}${ascended}`,
-  91748:
-    `${mint}${oysterSoup}${ascended}`,
+  91805: `${cilantro}${sousVideSteak}${ascended}`,
+  91878: `${cilantro}${curedMeatFlatbread}${ascended}`,
+  91876: `${cilantro}${veggieFlatbread}${ascended}`,
+  91847: `${cilantro}${eggsBenedict}${ascended}`,
+  91804: `${cilantro}${oysterSoup}${ascended}`,
+  91709: `${cilantro}${coqAuVin}${ascended}`,
+  91851: `${cilantro}${cheesecake}${ascended}`,
+  91862: `${cilantro}${beefCarpaccio}${ascended}`,
+  91704: `${cilantro}${poultryAspic}${ascended}`,
+  91735: `${cilantro}${truffleRavioli}${ascended}`,
+  91769: `${cilantro}${fruitSalad}${ascended}`,
+  91746: `${cilantro}${cremeBrulee}${ascended}`,
+  91801: `${mint}${sousVideSteak}${ascended}`,
+  91703: `${mint}${curedMeatFlatbread}${ascended}`,
+  91727: `${mint}${veggieFlatbread}${ascended}`,
+  91758: `${mint}${eggsBenedict}${ascended}`,
+  91748: `${mint}${oysterSoup}${ascended}`,
+  91822: `${mint}${coqAuVin}${ascended}`,
+  91834: `${mint}${cheesecake}${ascended}`,
+  91809: `${mint}${beefCarpaccio}${ascended}`,
+  91864: `${mint}${poultryAspic}${ascended}`,
+  91797: `${mint}${truffleRavioli}${ascended}`,
+  91690: `${mint}${fruitSalad}${ascended}`,
+  91743: `${mint}${cremeBrulee}${ascended}`,
+  91734: `${peppercorn}${sousVideSteak}${ascended}`,
+  91848: `${peppercorn}${curedMeatFlatbread}${ascended}`,
+  91771: `${peppercorn}${veggieFlatbread}${ascended}`,
+  91865: `${peppercorn}${eggsBenedict}${ascended}`,
+  91713: `${peppercorn}${oysterSoup}${ascended}`,
+  91753: `${peppercorn}${coqAuVin}${ascended}`,
+  91835: `${peppercorn}${cheesecake}${ascended}`,
+  91858: `${peppercorn}${beefCarpaccio}${ascended}`,
+  91794: `${peppercorn}${poultryAspic}${ascended}`,
+  91770: `${peppercorn}${truffleRavioli}${ascended}`,
+  91737: `${peppercorn}${fruitSalad}${ascended}`,
+  91742: `${peppercorn}${cremeBrulee}${ascended}`,
 };
 
 export const traits: Record<number, string> = {
