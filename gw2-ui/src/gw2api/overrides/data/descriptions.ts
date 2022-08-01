@@ -4,20 +4,22 @@ const mint = '+10% Outgoing Healing\n';
 const peppercorn = '-10% Incoming Damage\n';
 const sesame = 'Gain Health Every Second\n';
 
-const sousVideSteak = '+100 Power\n+70 Ferocity'
-const curedMeatFlatbread = '+100 Condition Damage\n+70 Expertise'
-const veggieFlatbread = '+100 Expertise\n+70 Condition Damage'
-const eggsBenedict = '+100 Concentration\n+70 Expertise'
-const fruitSalad = '+100 Healing Power\n+70 Concentration'
-const oysterSoup = '+45 All Attributes'
-const coqAuVin = '+100 Power\n+70 Precision'
-const cheesecake = '+100 Concentration\n+33% Chance to Gain Might on Critical Hit'
-const beefCarpaccio = '+100 Concentration\n+70 Power'
-const poultryAspic = '+100 Concentration\n+70 Toughness'
-const cremeBrulee = '+100 Concentration\n+70 Healing Power'
-const truffleRavioli = '+100 Vitality\n+70 Toughness'
+const sousVideSteak = '+100 Power\n+70 Ferocity';
+const curedMeatFlatbread = '+100 Condition Damage\n+70 Expertise';
+const veggieFlatbread = '+100 Expertise\n+70 Condition Damage';
+const eggsBenedict = '+100 Concentration\n+70 Expertise';
+const fruitSalad = '+100 Healing Power\n+70 Concentration';
+const oysterSoup = '+45 All Attributes';
+const coqAuVin = '+100 Power\n+70 Precision';
+const cheesecake =
+  '+100 Concentration\n+33% Chance to Gain Might on Critical Hit';
+const beefCarpaccio = '+100 Concentration\n+70 Power';
+const poultryAspic = '+100 Concentration\n+70 Toughness';
+const cremeBrulee = '+100 Concentration\n+70 Healing Power';
+const truffleRavioli = '+100 Vitality\n+70 Toughness';
 
-const ascended = '\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained'
+const ascended =
+  '\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained';
 
 export const food: Record<number, string> = {
   91805: `${cilantro}${sousVideSteak}${ascended}`,
