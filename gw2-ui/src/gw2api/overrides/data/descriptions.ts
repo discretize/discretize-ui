@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 const cilantro = '66% Chance to Steal Life on Critical Hit\n';
 const clove = '-20% Incoming Condition Duration\n';
 const mint = '+10% Outgoing Healing\n';
@@ -20,8 +18,6 @@ const cremeBrulee = '+100 Concentration\n+70 Healing Power'
 const truffleRavioli = '+100 Vitality\n+70 Toughness'
 
 const ascended = '\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained'
-
-/* eslint-enable @typescript-eslint/no-unused-vars */
 
 export const food: Record<number, string> = {
   91805: `${cilantro}${sousVideSteak}${ascended}`,
