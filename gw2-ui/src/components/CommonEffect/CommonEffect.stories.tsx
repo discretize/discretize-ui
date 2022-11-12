@@ -25,9 +25,9 @@ export function Translated() {
     <>
       This is an english effect: <CommonEffect name="Agony" />,{' '}
       <CommonEffect name="Barrier" />
-      <APILanguageProvider value="zh">
+      <APILanguageProvider value="de">
         <p>
-          This is a chinese effect:
+          This is a german effect:
           <CommonEffect name="Mistlock Singularity" />,{' '}
           <CommonEffect name="Revealed" />
         </p>

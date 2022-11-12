@@ -27,7 +27,7 @@ export function Translated() {
       <ControlEffect name="Knockback" />
       <APILanguageProvider value="de">
         <p>
-          This is a chinese effect:
+          This is a german effect:
           <ControlEffect name="Daze" />, <ControlEffect name="Knockback" />
         </p>
       </APILanguageProvider>
