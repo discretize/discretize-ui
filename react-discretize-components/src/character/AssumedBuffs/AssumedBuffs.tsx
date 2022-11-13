@@ -7,14 +7,8 @@ import {
   Trait,
 } from '@discretize/gw2-ui-new';
 import classNames from 'classnames';
-import { makeStyles } from 'tss-react/mui';
 import firstUppercase from '../../helpers/firstUppercase';
-
-const useStyles = makeStyles()(() => ({
-  component: {
-    fontSize: 20,
-  },
-}));
+import classes from './AssumedBuffs.module.css';
 
 export interface AssumedBuffsProps {
   value: (
@@ -29,7 +23,6 @@ export interface AssumedBuffsProps {
 }
 
 const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
-  const { classes } = useStyles();
   return (
     <div className={className}>
       {value.map(({ id, type, gw2id }, index) => {

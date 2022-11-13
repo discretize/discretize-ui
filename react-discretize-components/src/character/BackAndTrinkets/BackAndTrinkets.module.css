@@ -1,0 +1,24 @@
+.root {
+  grid-template-columns: repeat(3, 1fr);
+  margin: -12px;
+  display: grid;
+}
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 12px;
+  align-items: flex-start;
+}
+.title {
+  font-size: 0.8125rem;
+}
+.borderLeft {
+  border-left: 1px solid #1e2124;
+}
+.borderBottom {
+  border-bottom: 1px solid #1e2124;
+}
+.upperRowItem {
+  align-self: end;
+}

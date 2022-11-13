@@ -10,16 +10,11 @@ import Legends from './character/Legends/Legends';
 
 import iconSizes from './helpers/iconSizes';
 import firstUppercase from './helpers/firstUppercase';
+import useMediaQuery from './helpers/useMediaQuery';
 
 import TextDivider from './helpers/TextDivider/TextDivider';
-import NoSelection from './helpers/NoSelection';
+import NoSelection from './helpers/NoSelection/NoSelection';
 import HelperIcon from './helpers/HelperIcon/HelperIcon';
-
-import globals from './styles/globals';
-import muiTheme from './styles/muiTheme';
-import professionTheme from './styles/professionThemes';
-import Layout from './styles/Layout';
-import withGw2Theme from './styles/withGw2Theme';
 
 export {
   Character,
@@ -36,9 +31,5 @@ export {
   TextDivider,
   NoSelection,
   HelperIcon,
-  globals,
-  muiTheme,
-  professionTheme,
-  Layout,
-  withGw2Theme,
+  useMediaQuery,
 };

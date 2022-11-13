@@ -1,50 +1,7 @@
 import { CreateItem, Item } from '@discretize/gw2-ui-new';
-import { makeStyles } from 'tss-react/mui';
 import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
 import firstUppercase from '../../helpers/firstUppercase';
-
-export const useStyles = makeStyles()((theme) => ({
-  list: {
-    listStyle: 'none',
-    margin: '0',
-    padding: '0',
-    position: 'relative',
-    paddingTop: '8px',
-    paddingBottom: '8px',
-  },
-  listItem: {
-    display: 'flex',
-    alignItems: 'center',
-    lineHeight: 0,
-    justifyContent: 'center',
-    paddingTop: theme.spacing(0.5),
-    paddingBottom: theme.spacing(0.5),
-    '& > *:first-child': {
-      textAlign: 'right',
-    },
-    '& > *:last-child': {
-      width: '55%',
-      textAlign: 'left',
-    },
-  },
-  listItemText: {
-    flex: '1 1 auto',
-    flexGrow: 0,
-    marginLeft: theme.spacing(2),
-    paddingLeft: theme.spacing(2),
-    borderLeft: `1px solid ${theme.palette.divider}`,
-    lineHeight: 0,
-  },
-  primaryText: { lineHeight: 1.4, fontWeight: 500, fontFamily: 'Muli' },
-  secondaryText: {
-    margin: 0,
-    display: 'block',
-    lineHeight: 1.23,
-    fontSize: '0.90rem',
-    fontWeight: 300,
-    fontFamily: 'Muli',
-  },
-}));
+import classes from './Armor.module.css';
 
 type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
 
@@ -180,8 +137,6 @@ const Armor = ({
   bootsRune,
   bootsRarity,
 }: ArmorProps) => {
-  const { classes } = useStyles();
-
   const ItemDetails = ({
     affix,
     infusionId,

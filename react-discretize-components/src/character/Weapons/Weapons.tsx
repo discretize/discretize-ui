@@ -1,11 +1,11 @@
 import { Icon, Item } from '@discretize/gw2-ui-new';
-import { useMediaQuery, useTheme } from '@mui/material';
 import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
 import firstUppercase from '../../helpers/firstUppercase';
-import NoSelection from '../../helpers/NoSelection';
+import NoSelection from '../../helpers/NoSelection/NoSelection';
 import TextDivider from '../../helpers/TextDivider/TextDivider';
-import { useStyles } from '../Armor/Armor';
+import useMediaQuery from '../../helpers/useMediaQuery';
 import { Infusions } from '../BackAndTrinkets/BackAndTrinkets';
+import classes from '../Armor/Armor.module.css';
 
 type ItemUpgrades = React.ComponentProps<typeof Item>['upgrades'];
 
@@ -100,10 +100,8 @@ const Weapons = ({
   weapon2OffInfusionId,
   weapon2OffRarity,
 }: WeaponsProps) => {
-  const { classes } = useStyles();
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  // 600px equals to sm
+  const isMobile = useMediaQuery('(max-width: 600px)');
 
   const ItemDetails = ({
     affix,

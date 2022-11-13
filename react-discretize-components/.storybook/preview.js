@@ -3,10 +3,7 @@ import '../../gw2-ui/src/default_style.css';
 import 'typeface-fira-mono';
 import 'typeface-muli';
 import 'typeface-raleway';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import muiTheme from '../src/styles/muiTheme';
-import globals from '../src/styles/globals';
-import { Global } from '@emotion/react';
+import '../src/styles/defaultTheme.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -22,11 +19,7 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <>
-      <Global globals={globals} />
-      <ThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        <Story />
-      </ThemeProvider>
+      <Story />
     </>
   ),
 ];

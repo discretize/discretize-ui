@@ -1,26 +1,7 @@
-import { Grid, useMediaQuery, useTheme } from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
 import { Icon, Skill } from '@discretize/gw2-ui-new';
-import iconSizes from '../../helpers/iconSizes';
-
-const useStyles = makeStyles()((theme) => ({
-  legends: {
-    padding: theme.spacing(1),
-  },
-  gw2Item: {
-    fontSize: '60px',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '45px',
-    },
-    lineHeight: '1 !important',
-  },
-  skillDesktop: {
-    fontSize: iconSizes.big,
-  },
-  skillMobile: {
-    fontSize: iconSizes.large,
-  },
-}));
+import useMediaQuery from '../../helpers/useMediaQuery';
+import classNames from 'classnames';
+import classes from './Legends.module.css';
 
 export interface LegendsProps {
   legend1Id: number;
@@ -29,29 +10,22 @@ export interface LegendsProps {
 }
 
 const Legends = ({ legend1Id, legend2Id, className }: LegendsProps) => {
-  const { classes } = useStyles();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery('(max-width: 600px)');
 
   const classNameSkill = isMobile ? classes.skillMobile : classes.skillDesktop;
 
   return (
     <>
       {legend1Id && legend2Id && (
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          className={className}
-        >
-          <Grid item className={classes.legends}>
+        <div className={classNames(className, classes.grid)}>
+          <div className={classes.gridItem}>
             <Skill id={legend1Id} disableText className={classNameSkill} />
-          </Grid>
+          </div>
           <Icon name="WeaponSwap" />
-          <Grid item className={classes.legends}>
+          <div className={classes.gridItem}>
             <Skill id={legend2Id} disableText className={classNameSkill} />
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       )}
     </>
   );

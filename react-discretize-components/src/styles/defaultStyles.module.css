@@ -1,0 +1,20 @@
+.gw2Item {
+  font-size: 60px;
+  line-height: 0.9 !important;
+}
+@media (max-width: 600px) {
+  .gw2Item {
+    font-size: 45px;
+    line-height: 0.9 !important;
+  }
+}
+.title {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  font-family: var(--rdc-font-family);
+  color: var(--rdc-font-color);
+}
+.infusions {
+  font-size: 0.8rem;
+  color: rgb(153 153 153);
+}

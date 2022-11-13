@@ -1,44 +1,16 @@
 import { Item } from '@discretize/gw2-ui-new';
 import classNames from 'classnames';
 import { Fragment } from 'react';
-import { makeStyles } from 'tss-react/mui';
 import DynamicItem from '../../helpers/DynamicItem/DynamicItem';
-import { useDefaultStyles } from '../../styles/defaultStyles';
+import defaultClasses from '../../styles/defaultStyles.module.css';
 import { formatInfusion } from '../Armor/Armor';
-
-const useStyles = makeStyles()(() => ({
-  root: {
-    gridTemplateColumns: 'repeat(3,1fr)',
-    margin: '-12px',
-    display: 'grid',
-  },
-  gridItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-    padding: 12,
-    alignItems: 'flex-start',
-  },
-  title: {
-    fontSize: '0.8125rem',
-  },
-  borderLeft: {
-    borderLeft: '1px solid #1e2124',
-  },
-  borderBottom: {
-    borderBottom: '1px solid #1e2124',
-  },
-  upperRowItem: {
-    alignSelf: 'end',
-  },
-}));
+import classes from './BackAndTrinkets.module.css';
 
 export const Infusions = ({
   infusionIds,
 }: {
   infusionIds: (number | undefined)[];
 }) => {
-  const { classes } = useDefaultStyles();
   const occurrences = (infusionIds.filter((id) => !!id) as number[]).reduce(
     (acc: Record<number, number>, curr) => {
       return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
@@ -46,7 +18,7 @@ export const Infusions = ({
     {},
   );
   return (
-    <div className={classes.infusions}>
+    <div className={defaultClasses.infusions}>
       {Object.entries(occurrences).map(([id, amount], index) => (
         <Fragment key={`${id}-${amount}-${index}`}>
           {index !== 0 && <br />}
@@ -123,9 +95,7 @@ const BackAndTrinkets = ({
   ring2Affix,
   ring2Rarity,
 }: BackAndTrinketsProps) => {
-  const { classes } = useStyles();
-  const defaultStyles = useDefaultStyles();
-  const { title } = defaultStyles.classes;
+  const { title } = defaultClasses;
 
   return (
     <div className={classes.root}>

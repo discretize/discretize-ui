@@ -1,0 +1,18 @@
+.grid {
+  display: flex;
+  justify-content: center;
+}
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.gridItem :not(:last-child) {
+  padding-right: 4px;
+}
+.gridItem :not(:first-child) {
+  padding-left: 4px;
+}
+.borderLeft {
+  border-left: 1px solid rgb(30, 33, 36);
+}

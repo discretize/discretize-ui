@@ -1,0 +1,20 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+}
+.half {
+  width: 100%;
+}
+.gw2Item {
+  font-size: 20px;
+  color: #aaaaaa;
+  white-space: nowrap;
+}
+.gridItem {
+  padding: 4px 16px;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

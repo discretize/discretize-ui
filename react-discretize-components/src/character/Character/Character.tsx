@@ -1,8 +1,7 @@
-import { FormControlLabel, Switch } from '@mui/material';
 import classNames from 'classnames';
 import React, { CSSProperties, ReactElement, ReactNode } from 'react';
-import { makeStyles } from 'tss-react/mui';
 import HelperIcon from '../../helpers/HelperIcon/HelperIcon';
+import Switch from '../../helpers/Switch/Switch';
 import Armor, { ArmorProps } from '../Armor/Armor';
 import AssumedBuffs, { AssumedBuffsProps } from '../AssumedBuffs/AssumedBuffs';
 import Attributes, { AttributesProps } from '../Attributes/Attributes';
@@ -13,46 +12,7 @@ import Consumables, { ConsumablesProps } from '../Consumables/Consumables';
 import Legends, { LegendsProps } from '../Legends/Legends';
 import Skills, { SkillsProps } from '../Skills/Skills';
 import Weapons, { WeaponsProps } from '../Weapons/Weapons';
-
-const useStyles = makeStyles()((theme) => ({
-  top: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  section: {
-    backgroundColor: 'rgb(38, 41, 46)',
-    padding: theme.spacing(2),
-    marginTop: theme.spacing(1.5),
-    marginBottom: theme.spacing(1.5),
-    borderRadius: 0,
-    boxShadow:
-      '0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%)',
-  },
-  assumedBuffs: { display: 'flex', alignItems: 'end' },
-  wrapper: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  side: {
-    display: 'flex',
-    flex: '0 0 250px',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  middle: {
-    display: 'flex',
-    flex: '0.7 0.2 300px',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  skillsLegends: {
-    maxWidth: 390,
-    [theme.breakpoints.up('md')]: {
-      alignSelf: 'center',
-    },
-  },
-}));
+import classes from './Character.module.css';
 
 export interface CharacterProps {
   attributes: AttributesProps;
@@ -76,8 +36,6 @@ const Character = ({
   consumables,
   imageElement,
 }: CharacterProps) => {
-  const { classes } = useStyles();
-
   const [showInfusions, setShowInfusions] = React.useState(false);
 
   const Section = ({
@@ -97,19 +55,14 @@ const Character = ({
   return (
     <>
       <div className={classes.top}>
-        <FormControlLabel
-          control={
-            <Switch
-              value={showInfusions}
-              onChange={(e) => setShowInfusions(e.target.checked)}
-            />
-          }
+        <Switch
+          onChange={(e) => setShowInfusions(e.target.checked)}
           label="Show Infusions"
         />
 
         {assumedBuffs && (
           <div className={classes.assumedBuffs}>
-            <HelperIcon size="small" text="Assumed buffs for this build" />
+            <HelperIcon text="Assumed buffs for this build" />
             <AssumedBuffs {...assumedBuffs} />
           </div>
         )}

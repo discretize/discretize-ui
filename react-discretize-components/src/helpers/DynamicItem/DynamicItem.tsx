@@ -1,5 +1,5 @@
 import { CreateItem, Item } from '@discretize/gw2-ui-new';
-import { useDefaultStyles } from '../../styles/defaultStyles';
+import defaultClasses from '../../styles/defaultStyles.module.css';
 
 type Affix = React.ComponentProps<typeof Item>['stat'];
 
@@ -30,12 +30,9 @@ const DynamicItem = ({
   weight?: React.ComponentProps<typeof CreateItem>['weight'];
   rarity?: React.ComponentProps<typeof CreateItem>['rarity'];
 }) => {
-  const defaultStyles = useDefaultStyles();
-  const { gw2Item } = defaultStyles.classes;
-
   const sharedProps = {
     disableText: true,
-    className: gw2Item,
+    className: defaultClasses.gw2Item,
     upgrades: upgrades ? createUpgrades(upgrades) : [],
     stat: affix || '',
   };

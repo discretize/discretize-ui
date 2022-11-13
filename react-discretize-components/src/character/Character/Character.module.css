@@ -1,0 +1,42 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+.section {
+  background-color: var(--rdc-character-background-color);
+  padding: 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-radius: 0;
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+}
+.assumedBuffs {
+  display: flex;
+  align-items: end;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.side {
+  display: flex;
+  flex: 0 0 250px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.middle {
+  display: flex;
+  flex: 0.7 0.2 300px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.skillsLegends {
+  max-width: 390px;
+}
+@media (min-width: 600px) {
+  .skillsLegends {
+    align-self: center;
+  }
+}

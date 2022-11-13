@@ -1,31 +1,9 @@
 import { Skill } from '@discretize/gw2-ui-new';
-import { useMediaQuery, useTheme } from '@mui/material';
 import classNames from 'classnames';
-import { makeStyles } from 'tss-react/mui';
-import NoSelection from '../../helpers/NoSelection';
-import { useDefaultStyles } from '../../styles/defaultStyles';
-
-const useStyles = makeStyles()((theme) => ({
-  grid: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  gridItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-    '&:not(:last-child)': {
-      paddingRight: theme.spacing(0.5),
-    },
-    '&:not(:first-child)': {
-      paddingLeft: theme.spacing(0.5),
-    },
-  },
-  borderLeft: {
-    borderLeft: `1px solid ${theme.palette.divider}`,
-  },
-}));
-
+import NoSelection from '../../helpers/NoSelection/NoSelection';
+import useMediaQuery from '../../helpers/useMediaQuery';
+import defaultClasses from '../../styles/defaultStyles.module.css';
+import classes from './Skills.module.css';
 export interface SkillsProps {
   healId?: number;
   utility1Id?: number;
@@ -43,13 +21,11 @@ const Skills = ({
   eliteId,
   className,
 }: SkillsProps) => {
-  const { classes } = useStyles();
-  const defaultStyles = useDefaultStyles();
+  const { gw2Item, title } = defaultClasses;
 
-  const { gw2Item, title } = defaultStyles.classes;
+  // 600px = sm
+  const isMobile = useMediaQuery('(max-width: 600px)');
 
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const iconSize = isMobile ? 'large' : 'big';
 
   return (

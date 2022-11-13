@@ -41,6 +41,7 @@ async function run() {
   await lint_repo_root();
   await build('gw2-ui');
   await build('react-discretize-components');
+  await build('globals');
   process.exit(0);
 }
 run();

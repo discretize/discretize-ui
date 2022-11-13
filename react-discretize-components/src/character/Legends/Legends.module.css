@@ -1,0 +1,17 @@
+.grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 8px;
+}
+.skillDesktop {
+  font-size: 60px;
+}
+.skillMobile {
+  font-size: 45px;
+}

@@ -1,27 +1,8 @@
 import { ConsumableEffect, Item } from '@discretize/gw2-ui-new';
 import classNames from 'classnames';
-import { makeStyles } from 'tss-react/mui';
-import NoSelection from '../../helpers/NoSelection';
-import { useDefaultStyles } from '../../styles/defaultStyles';
-
-const useStyles = makeStyles()(() => ({
-  root: {
-    display: 'grid',
-    justifyContent: 'center',
-    gridAutoFlow: 'column',
-    margin: -12,
-  },
-  gridItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-    padding: 12,
-  },
-  borderLeft: {
-    borderLeft: '1px solid #1e2124',
-  },
-}));
-
+import NoSelection from '../../helpers/NoSelection/NoSelection';
+import defaultClasses from '../../styles/defaultStyles.module.css';
+import classes from './Consumables.module.css';
 export interface ConsumablesProps {
   foodId?: number;
   utilityId?: number;
@@ -29,9 +10,8 @@ export interface ConsumablesProps {
 }
 
 const Consumables = ({ foodId, utilityId, infusionId }: ConsumablesProps) => {
-  const { classes } = useStyles();
-  const defaultStyles = useDefaultStyles();
-  const { gw2Item, title } = defaultStyles.classes;
+  const { gw2Item, title } = defaultClasses;
+
   return (
     <div className={classes.root}>
       <div className={classes.gridItem}>

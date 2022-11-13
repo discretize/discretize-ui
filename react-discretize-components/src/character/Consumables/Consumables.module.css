@@ -1,0 +1,15 @@
+.root {
+  display: grid;
+  justify-content: center;
+  grid-auto-flow: column;
+  margin: -12px;
+}
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 12px;
+}
+.borderLeft {
+  border-left: 1px solid #1e2124;
+}

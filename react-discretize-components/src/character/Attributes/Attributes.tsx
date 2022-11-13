@@ -1,30 +1,6 @@
 import { Attribute, Profession } from '@discretize/gw2-ui-new';
-import { makeStyles } from 'tss-react/mui';
 import firstUppercase from '../../helpers/firstUppercase';
-
-const useStyles = makeStyles()(() => ({
-  wrapper: {
-    width: '100%',
-
-    display: 'flex',
-  },
-  half: {
-    width: '100%',
-  },
-  gw2Item: {
-    fontSize: '20px',
-    color: '#AAAAAA',
-    whiteSpace: 'nowrap',
-  },
-  gridItem: {
-    padding: '4px 16px',
-  },
-  list: {
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-  },
-}));
+import classes from './Attributes.module.css';
 
 const roundOne = (num: number) => Math.round(num * 10) / 10;
 const roundTwo = (num: number) => Math.round(num * 100) / 100;
@@ -72,8 +48,6 @@ export interface AttributesProps {
 }
 
 const Attributes = ({ profession, data }: AttributesProps) => {
-  const { classes } = useStyles();
-
   return (
     <div className={classes.wrapper}>
       <div className={classes.half}>
