@@ -1,0 +1,24 @@
+{
+  "name": "@discretize/remark-mdx-gw2ui",
+  "description": "A remark plugin which injects the gw2-api into gw2-ui components",
+  "version": "0.0.1",
+  "author": "gw2princeps <git@princeps.biz>, Marcustyphoon <marcustyphoon@gmail.com>",
+  "dependencies": {
+    "unist-util-visit": "^4.1.1"
+  },
+  "keywords": [
+    "remark",
+    "gw2-ui",
+    "mdx"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "peerDependencies": {
+    "react": "^16.9.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.9.0 || ^17.0.0 || ^18.0.0"
+  },
+  "engines": {
+    "node": ">=12.13.0"
+  },
+  "type": "module"
+}
