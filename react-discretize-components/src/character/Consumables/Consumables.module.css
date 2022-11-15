@@ -11,5 +11,5 @@
   padding: 12px;
 }
 .borderLeft {
-  border-left: 1px solid #1e2124;
+  border-left: 1px solid var(--rdc-color-border);
 }

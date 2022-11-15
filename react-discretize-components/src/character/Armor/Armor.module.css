@@ -27,7 +27,7 @@
   flex-grow: 0;
   margin-left: 16px;
   padding-left: 16px;
-  border-left: 1px solid rgb(30, 33, 36);
+  border-left: 1px solid var(--rdc-color-border);
   line-height: 0;
 }
 .primaryText {

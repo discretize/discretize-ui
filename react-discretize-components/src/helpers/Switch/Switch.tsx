@@ -7,7 +7,6 @@ export interface SwitchProps {
 }
 
 const Switch = ({ onChange, label }: SwitchProps) => {
-  console.log(classes);
   return (
     <span className={classes.wrapper}>
       <label className={classes.toggle} htmlFor="myToggle">

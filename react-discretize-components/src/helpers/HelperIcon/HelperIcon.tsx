@@ -1,18 +1,20 @@
 import { Tooltip } from '@discretize/gw2-ui-new';
 import * as React from 'react';
-import './HelperIcon.module.css';
+import classes from './HelperIcon.module.css';
 
 export interface HelperIconProps {
   text: string;
   fontSize?: string;
-  color?: string;
 }
-const HelperIcon = ({ text, fontSize, color }: HelperIconProps) => {
+const HelperIcon = ({ text, fontSize }: HelperIconProps) => {
   return (
     <Tooltip content={text}>
       <span>
         <svg
-          style={{ fontSize: fontSize || '1.4rem', color: color || '#009a9b' }}
+          style={{
+            fontSize: fontSize || '1.4rem',
+          }}
+          className={classes.svg}
           viewBox="0 0 24 24"
         >
           <path

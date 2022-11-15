@@ -39,7 +39,13 @@ const Skills = ({
         <span className={title}>Heal</span>
       </div>
 
-      <div className={classNames(classes.gridItem, classes.borderLeft)}>
+      <div
+        className={classNames(
+          classes.gridItem,
+          classes.gridItemMiddle,
+          classes.borders,
+        )}
+      >
         <div>
           {utility1Id ? (
             <Skill id={utility1Id} className={gw2Item} disableText />
@@ -60,7 +66,7 @@ const Skills = ({
         <span className={title}>Utilities</span>
       </div>
 
-      <div className={classNames(classes.gridItem, classes.borderLeft)}>
+      <div className={classNames(classes.gridItem)}>
         <div>
           {eliteId ? (
             <Skill id={eliteId} className={gw2Item} disableText />
