@@ -23,14 +23,14 @@ export interface CharacterProps {
   legends?: LegendsProps;
   backAndTrinket: BackAndTrinketsProps;
   consumables: ConsumablesProps;
-  imageElement?: ReactElement;
+  imageElement?: JSX.Element;
   switchElement?: ({
     onChange,
     label,
   }: {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     label: string;
-  }) => ReactElement;
+  }) => JSX.Element;
 }
 const Character = ({
   attributes,

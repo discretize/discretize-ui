@@ -34,7 +34,7 @@ const Skills = ({
         {healId ? (
           <Skill id={healId} className={gw2Item} disableText />
         ) : (
-          <NoSelection size="big" />
+          <NoSelection size={iconSize} />
         )}
         <span className={title}>Heal</span>
       </div>

@@ -130,21 +130,14 @@ async function build(package_name) {
         'react',
         'react-dom',
         // These are deps of react-discretize-components
-        '@emotion/react',
-        '@emotion/styled',
-        '@mui/icons-material',
-        '@mui/material/styles',
-        '@mui/material',
-        '@mui/styles',
         'classnames',
-        'tss-react',
-        'tss-react/mui',
         'typeface-fira-mono',
         'typeface-muli',
         'typeface-raleway',
         // Do not bundle our own packages, either
         '@discretize/gw2-ui-new',
         '@discretize/react-discretize-components',
+        '@discretize/globals',
         '@discretize/typeface-menomonia',
       ],
     });
