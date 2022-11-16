@@ -3,15 +3,13 @@ react-discretize-components contains shared react components for all discretize 
 ## Installation
 
 ```
-yarn add react-discretize-components
+yarn add @discretize/react-discretize-components
 ```
 
 Dependencies in the implementing application:
 
 - react
-- gatsby-plugin-image
 - gw2-ui-new
-- material-ui v4
 
 ## Included components
 
