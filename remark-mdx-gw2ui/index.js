@@ -1,4 +1,4 @@
-import visit from 'unist-util-visit';
+import { visit } from 'unist-util-visit';
 import resolve from './map-gw2-ids.js';
 
 function attrToProps(attr) {
