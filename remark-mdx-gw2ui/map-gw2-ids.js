@@ -1,8 +1,15 @@
+import itemMapping from './mapping/items.js';
+import itemstatMapping from './mapping/itemstats.js';
+import skillMapping from './mapping/skills.js';
+import traitMapping from './mapping/traits.js';
+import specializationMapping from './mapping/specializations.js';
+/*
 import itemMapping from './mapping/items.json' assert { type: 'json' };
 import specializationMapping from './mapping/specializations.json' assert { type: 'json' };
 import traitMapping from './mapping/traits.json' assert { type: 'json' };
 import skillMapping from './mapping/skills.json' assert { type: 'json' };
 import itemstatMapping from './mapping/itemstats.json' assert { type: 'json' };
+*/
 
 function firstUppercase(text) {
   if (typeof text === 'undefined' || text === null || text === '') return '';

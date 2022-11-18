@@ -3,4 +3,4 @@ dist/
 /gw2-ui/src/gw2api/typeguards/out/
 /gw2-ui/src/gw2api/typeguards/failures/
 /gw2apicache/
-/remark-mdx-gw2ui/mapping
+/remark-mdx-gw2ui/mapping/*.json
