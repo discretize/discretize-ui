@@ -1,30 +1,11 @@
-import clsx from 'clsx';
-import React, { CSSProperties, ReactElement } from 'react';
-import professioncss from '../Profession/professions.module.css';
+import { ReactElement } from 'react';
 import { useSkill } from '../../gw2api/hooks';
-import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import Error from '../Error/Error';
-import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
-import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
-import { ProfessionTypes } from '../../data/professions';
+import IconWithText from '../IconWithText/IconWithText';
+import SkillInternal, { SkillInternalProps } from './SkillInternal';
 
-export interface SkillProps
-  extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
+export interface SkillProps extends Omit<SkillInternalProps, 'data'> {
   id: number;
-  text?: string;
-  disableLink?: boolean;
-  disableTooltip?: boolean;
-  tooltipProps?: TooltipProps;
-  wikiLinkProps?: WikiLinkProps;
-  style?: CSSProperties;
-  className?: string;
-}
-
-export interface SkillDataProps {
-  name: string;
-  icon: string;
-  professions: string[];
 }
 
 const SKILL_ERROR_NAMES = {
@@ -38,13 +19,12 @@ const SKILL_ERROR_MESSAGES = {
 };
 
 const Skill = (props: SkillProps): ReactElement => {
-  const { id, text, disableLink, disableTooltip, tooltipProps, wikiLinkProps } =
-    props;
-  const skill = useSkill(id);
+  const skill = useSkill(props.id);
 
   if (skill.loading) {
     return <IconWithText {...props} loading />;
   }
+
   if (skill.error) {
     return (
       <Error
@@ -56,41 +36,7 @@ const Skill = (props: SkillProps): ReactElement => {
     );
   }
 
-  const { name, icon, professions } = skill.data;
-
-  const profession: ProfessionTypes | undefined = professions?.[0];
-
-  return (
-    <Tooltip
-      content={<AbilityDetails data={skill.data} />}
-      disabled={disableTooltip}
-      {...tooltipProps}
-    >
-      <IconWithText
-        {...props}
-        icon={icon}
-        text={
-          disableLink ? (
-            text || name
-          ) : (
-            <WikiLink
-              to={name}
-              text={text}
-              {...wikiLinkProps}
-              className={clsx(
-                profession && professioncss[`coloredProfession${profession}`],
-                wikiLinkProps?.className,
-              )}
-            />
-          )
-        }
-        className={clsx(
-          props.className,
-          profession && professioncss[`coloredProfession${profession}`],
-        )}
-      />
-    </Tooltip>
-  );
+  return <SkillInternal {...props} data={skill.data} />;
 };
 
 export default Skill;

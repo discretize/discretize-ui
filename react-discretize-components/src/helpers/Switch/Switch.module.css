@@ -30,7 +30,7 @@
   transition: transform 0.2s;
 }
 .toggle__input:checked ~ .toggle__fill {
-  background: #009a9b;
+  background: var(--rdc-color-primary);
 }
 
 .toggle__input:checked ~ .toggle__fill::after {
@@ -41,5 +41,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--rdc-font-family);
   gap: 8px;
 }

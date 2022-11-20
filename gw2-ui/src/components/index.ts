@@ -13,16 +13,20 @@ import DetailsHeader from './DetailsHeader/DetailsHeader';
 import Error from './Error/Error';
 import Icon from './Icon/Icon';
 import Item from './Item/Item';
+import ItemInternal from './Item/ItemInternal';
 import MistlockInstability from './MistlockInstability/MistlockInstability';
 import Profession from './Profession/Profession';
 import Progress from './Progress/Progress';
 import Race from './Race/Race';
 import Skill from './Skill/Skill';
+import SkillInternal from './Skill/SkillInternal';
 import Specialization from './Specialization/Specialization';
+import SpecializationInternal from './Specialization/SpecializationInternal';
 import Spinner from './Spinner/Spinner';
 import Tooltip from './Tooltip/Tooltip';
 import TooltipContainer from './TooltipContainer/TooltipContainer';
 import Trait from './Trait/Trait';
+import TraitInternal from './Trait/TraitInternal';
 import TraitLine from './TraitLine/TraitLine';
 import WikiLink from './WikiLink/WikiLink';
 import IconWithText from './IconWithText/IconWithText';
@@ -44,16 +48,20 @@ export {
   Icon,
   IconWithText,
   Item,
+  ItemInternal,
   MistlockInstability,
   Profession,
   Progress,
   Race,
   Skill,
+  SkillInternal,
   Specialization,
+  SpecializationInternal,
   Spinner,
   Tooltip,
   TooltipContainer,
   Trait,
+  TraitInternal,
   TraitLine,
   WikiLink,
 };

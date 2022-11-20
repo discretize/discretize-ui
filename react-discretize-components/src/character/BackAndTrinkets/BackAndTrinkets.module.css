@@ -14,11 +14,11 @@
   font-size: 0.8125rem;
 }
 .borderLeft {
-  border-left: 1px solid #1e2124;
+  border-left: 1px solid var(--rdc-color-border);
 }
 .borderBottom {
-  border-bottom: 1px solid #1e2124;
+  border-bottom: 1px solid var(--rdc-color-border);
 }
 .upperRowItem {
-  align-self: end;
+  align-self: flex-end;
 }

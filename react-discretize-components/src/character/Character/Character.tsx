@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, { CSSProperties, ReactElement, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import HelperIcon from '../../helpers/HelperIcon/HelperIcon';
-import Switch from '../../helpers/Switch/Switch';
+import OwnSwitch from '../../helpers/Switch/Switch';
 import Armor, { ArmorProps } from '../Armor/Armor';
 import AssumedBuffs, { AssumedBuffsProps } from '../AssumedBuffs/AssumedBuffs';
 import Attributes, { AttributesProps } from '../Attributes/Attributes';
@@ -23,7 +23,14 @@ export interface CharacterProps {
   legends?: LegendsProps;
   backAndTrinket: BackAndTrinketsProps;
   consumables: ConsumablesProps;
-  imageElement?: ReactElement;
+  imageElement?: JSX.Element;
+  switchElement?: ({
+    onChange,
+    label,
+  }: {
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    label: string;
+  }) => JSX.Element;
 }
 const Character = ({
   attributes,
@@ -35,6 +42,7 @@ const Character = ({
   backAndTrinket,
   consumables,
   imageElement,
+  switchElement: Switch = OwnSwitch,
 }: CharacterProps) => {
   const [showInfusions, setShowInfusions] = React.useState(false);
 
@@ -51,7 +59,6 @@ const Character = ({
       {children}
     </div>
   );
-
   return (
     <>
       <div className={classes.top}>
