@@ -20,6 +20,10 @@ export default () => {
           attrToProps(node.attributes),
         );
 
+        if (!resolvedProps) {
+          return;
+        }
+
         node.attributes = [
           ...node.attributes.filter((attr) => attr.name !== 'id'),
           { type: 'mdxJsxAttribute', name: 'id', value: resolvedProps.id },
