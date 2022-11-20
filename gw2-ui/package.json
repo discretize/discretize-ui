@@ -29,7 +29,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "export NODE_OPTIONS=--openssl-legacy-provider yarn storybook",
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && yarn storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "node ../build.mjs",

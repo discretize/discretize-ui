@@ -1,12 +1,10 @@
-import clsx from 'clsx';
-import { CSSProperties, ReactElement } from 'react';
-import Tooltip from '../Tooltip/Tooltip';
+import { ReactElement } from 'react';
+import { useSpecialization } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
-import WikiLink from '../WikiLink/WikiLink';
-import SpecializationTooltip from './SpecializationTooltip';
-import { useSpecialization } from '../../gw2api/hooks';
-import professioncss from '../Profession/professions.module.css';
+import SpecializationInternal, {
+  SpecializationInternalProps,
+} from './SpecializationInternal';
 
 const SPECIALIZATION_ERROR_NAMES = {
   404: 'Specialization Not Found',
@@ -19,15 +17,9 @@ const SPECIALIZATION_ERROR_MESSAGES = {
     `A Network Error occured trying to fetch the specialization ${id}.`,
 };
 
-export interface SpecializationProps {
+export interface SpecializationProps
+  extends Omit<SpecializationInternalProps, 'data'> {
   id: number;
-  text?: string;
-  disableIcon?: boolean;
-  disableText?: boolean;
-  disableLink?: boolean;
-  inline?: boolean;
-  style?: CSSProperties;
-  className?: string;
 }
 
 const Specialization = (props: SpecializationProps): ReactElement => {
@@ -47,46 +39,7 @@ const Specialization = (props: SpecializationProps): ReactElement => {
     );
   }
 
-  const {
-    text,
-    disableIcon,
-    disableText,
-    disableLink,
-    inline,
-    style,
-    className,
-  } = props;
-  const { name, icon, profession } = specialization.data;
-
-  return (
-    <Tooltip content={<SpecializationTooltip data={specialization.data} />}>
-      <IconWithText
-        icon={icon}
-        text={
-          disableLink ? (
-            text || name
-          ) : (
-            <WikiLink
-              to={name}
-              text={text}
-              className={clsx(
-                profession && professioncss[`coloredProfession${profession}`],
-              )}
-            />
-          )
-        }
-        disableIcon={disableIcon}
-        disableText={disableText}
-        inline={inline}
-        iconProps={{ hexagon: true }}
-        style={style}
-        className={clsx(
-          className,
-          profession && professioncss[`coloredProfession${profession}`],
-        )}
-      />
-    </Tooltip>
-  );
+  return <SpecializationInternal {...props} data={specialization.data} />;
 };
 
 export default Specialization;
