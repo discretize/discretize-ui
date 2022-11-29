@@ -18,6 +18,7 @@ export const Example = Template.bind({});
 Example.args = {
   attributes: {
     profession: 'Elementalist',
+    specialization: 'Weaver',
     data: {
       Armor: 2514,
       Power: 3926,

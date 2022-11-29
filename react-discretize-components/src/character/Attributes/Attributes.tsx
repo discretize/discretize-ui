@@ -43,7 +43,8 @@ const attributes: {
 type AttributeType = React.ComponentProps<typeof Attribute>['name'];
 
 export interface AttributesProps {
-  profession: string;
+  profession: React.ComponentProps<typeof Profession>['name'];
+  specialization: React.ComponentProps<typeof Profession>['name'];
   data: Partial<Record<AttributeType, number>>; // TODO technically this type is Record<Omit<AttributeType, "Gold Find" | "Karma Gain" | "Magic Find" | "XP Gain">, number>
 }
 
