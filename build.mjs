@@ -134,6 +134,17 @@ async function build(package_name) {
         'typeface-fira-mono',
         'typeface-muli',
         'typeface-raleway',
+        // for globals
+        '@mui/material',
+        '@mui/icons-material',
+        '@mui/styles',
+        '@mui/material/styles',
+        '@emotion/react',
+        '@emotion/styled',
+        'classnames',
+        'tss-react',
+        'tss-react/mui',
+
         // Do not bundle our own packages, either
         '@discretize/gw2-ui-new',
         '@discretize/react-discretize-components',
