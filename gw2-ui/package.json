@@ -26,7 +26,8 @@
   "files": [
     "dist"
   ],
-  "module": "dist/index.js",
+  "module": "dist/esm/index.mjs",
+  "main": "dist/cjs/index.cjs.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "export NODE_OPTIONS=--openssl-legacy-provider && yarn storybook",
