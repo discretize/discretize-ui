@@ -313,3 +313,5 @@ lib
 es
 .history
 storybook-static/
+
+.idea/
