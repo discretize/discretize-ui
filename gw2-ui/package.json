@@ -26,14 +26,14 @@
   "files": [
     "dist"
   ],
-  "module": "dist/esm/index.mjs",
+  "module": "dist/esm/index.esm.js",
   "main": "dist/cjs/index.cjs.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "export NODE_OPTIONS=--openssl-legacy-provider && yarn storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "node ../build.mjs",
+    "build": "rollup -c rollup.config.js",
     "api-typecheck": "node ./api_typecheck.mjs",
     "generate-from-api": "node --experimental-fetch ./generate_from_api.mjs",
     "deploy-storybook": "gh-pages -d storybook-static",

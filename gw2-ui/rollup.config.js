@@ -3,9 +3,9 @@ import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
+import dts from 'rollup-plugin-dts';
 import postcss from 'rollup-plugin-postcss';
 import {terser} from 'rollup-plugin-terser';
-// import dts from 'rollup-plugin-dts';
 import postcss_url from 'postcss-url';
 import {babel} from '@rollup/plugin-babel';
 import path from "path";
@@ -13,6 +13,7 @@ import path from "path";
 // cuts off the name of the folder to allow building from package root or repo root
 // eslint-disable-next-line no-undef
 const baseDir = path.join(__dirname.replaceAll('gw2-ui', ''), 'gw2-ui');
+const distDir = path.join(baseDir, 'dist');
 
 const createBaseConfig = (env) => {
   const baseConfig = {
@@ -40,13 +41,16 @@ const createBaseConfig = (env) => {
       postcss({
         extract: true,
         modules: true,
-        minimize: true,
-        to: path.join(baseDir, 'dist', 'assets'),
+        minimize: false,
+        to: path.join(distDir, 'not-a-real-dir' , 'but-tricks-plugin-to-do-correct-work'),
         plugins: [
-          postcss_url({
-            assetsPath: path.join(baseDir, 'src', 'assets'),
-            url: 'copy',
-          }),
+          postcss_url([
+            {
+              assetsPath: path.join(distDir, 'assets'),
+              url: 'copy',
+              useHash: true,
+            }
+          ]),
         ],
       }),
     ],
@@ -55,34 +59,49 @@ const createBaseConfig = (env) => {
       'react',
       'react-dom',
     ],
+    output: [
+      {
+        dir: path.join(distDir, 'esm'),
+        format: 'esm',
+        entryFileNames: `[name].esm.js`,
+        sourcemap: true
+      },
+      {
+        dir: path.join(distDir, 'cjs'),
+        format: 'cjs',
+        entryFileNames: `[name].cjs.js`,
+        sourcemap: true
+      }
+    ]
   }
   if (env === 'production') baseConfig.plugins.push(terser());
   return baseConfig
 }
 
+const typeGenConfig = {
+  input: path.join(baseDir, 'src', 'index.ts'),
+  plugins: [
+    postcss({
+      extract: 'gw2-ui-tokens.css', // this will generate a specific file not being used, but we need this part of code
+      autoModules: true,
+      include: '**/*.css',
+      extensions: ['.css'],
+      plugins: [],
+    }),
+    dts({
+        compilerOptions: {
+          baseUrl: path.join(baseDir, 'src')
+        }
+    })
+  ],
+  output: {
+    dir: path.join(distDir, 'types'),
+    format: 'es'
+  }
+};
+
 export default [
-  Object.assign({}, createBaseConfig('development'), {
-    output: {
-      dir: path.join(baseDir, 'dist', 'esm'),
-      format: 'esm',
-      entryFileNames: "[name].mjs",
-      sourcemap: true
-    }
-  }),
-  Object.assign({}, createBaseConfig('development'), {
-    output: {
-      dir: path.join(baseDir, 'dist', 'cjs'),
-      format: 'cjs',
-      entryFileNames: "[name].cjs.js",
-      sourcemap: true
-    }
-  }),
-  Object.assign({}, createBaseConfig('production'), {
-    output: {
-      dir: path.join(baseDir, 'dist', 'mjs'),
-      format: 'esm',
-      entryFileNames: "[name].min.mjs",
-      sourcemap: true
-    }
-  })
+  typeGenConfig,
+  createBaseConfig('development'),
+
 ]

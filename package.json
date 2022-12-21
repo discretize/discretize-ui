@@ -10,7 +10,7 @@
     "typeface-menomonia"
   ],
   "scripts": {
-    "build": "node ./build.mjs",
+    "build": "rollup -c rollup.config.js",
     "generate-api-cache": "node --experimental-fetch ./generate_api_cache.mjs"
   },
   "dependencies": {
@@ -52,6 +52,7 @@
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.67.2",
+    "rollup-plugin-cleaner": "^1.0.0",
     "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
