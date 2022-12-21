@@ -10,7 +10,9 @@
     "typeface-menomonia"
   ],
   "scripts": {
-    "build": "rollup -c rollup.config.js",
+    "build": "yarn lint && rollup -c rollup.config.js",
+    "lint": "eslint -c ./.eslintrc.cjs .",
+    "clean": "rm -rf ./../dist",
     "generate-api-cache": "node --experimental-fetch ./generate_api_cache.mjs"
   },
   "dependencies": {
@@ -18,7 +20,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.18.0",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@rollup/plugin-babel": "^5.3.1",

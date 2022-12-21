@@ -30,10 +30,11 @@
   "main": "dist/cjs/index.cjs.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
+    "lint": "eslint -c ../.eslintrc.cjs .",
     "dev": "export NODE_OPTIONS=--openssl-legacy-provider && yarn storybook",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "rollup -c rollup.config.js",
+    "build": "yarn lint && rollup -c rollup.config.js",
     "api-typecheck": "node ./api_typecheck.mjs",
     "generate-from-api": "node --experimental-fetch ./generate_from_api.mjs",
     "deploy-storybook": "gh-pages -d storybook-static",
@@ -52,7 +53,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.18.0",
     "@floating-ui/react-dom": "^1.0.0",
     "@types/webpack": "^5.28.0",
     "babel-loader": "^8.2.3",
