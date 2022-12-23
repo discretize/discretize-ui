@@ -103,5 +103,4 @@ const typeGenConfig = {
 export default [
   typeGenConfig,
   createBaseConfig('development'),
-
 ]
