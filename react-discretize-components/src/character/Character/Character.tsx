@@ -31,6 +31,7 @@ export interface CharacterProps {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     label: string;
   }) => JSX.Element;
+  disableSwitch?: boolean;
 }
 const Character = ({
   attributes,
@@ -43,6 +44,7 @@ const Character = ({
   consumables,
   imageElement,
   switchElement: Switch = OwnSwitch,
+  disableSwitch = false,
 }: CharacterProps) => {
   const [showInfusions, setShowInfusions] = React.useState(false);
 
@@ -62,10 +64,14 @@ const Character = ({
   return (
     <>
       <div className={classes.top}>
-        <Switch
-          onChange={(e) => setShowInfusions(e.target.checked)}
-          label="Show Infusions"
-        />
+        <div>
+          {!disableSwitch && (
+            <Switch
+              onChange={(e) => setShowInfusions(e.target.checked)}
+              label="Show Infusions"
+            />
+          )}
+        </div>
 
         {assumedBuffs && (
           <div className={classes.assumedBuffs}>
