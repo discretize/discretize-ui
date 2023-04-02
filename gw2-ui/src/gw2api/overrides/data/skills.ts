@@ -664,6 +664,12 @@ export const missing_skills: Record<
         apply_count: 1,
       },
       {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
+      },
+      {
         text: 'Number of Targets',
         type: 'Number',
         icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
@@ -692,7 +698,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 4,
+        value: 8,
       },
       {
         text: 'Damage',
@@ -749,7 +755,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 8,
+        value: 10,
       },
       {
         text: 'Damage',
@@ -757,6 +763,12 @@ export const missing_skills: Record<
         icon: 'https://render.guildwars2.com/file/61AA4919C4A7990903241B680A69530121E994C7/156657.png',
         hit_count: 1,
         dmg_multiplier: 0.45,
+      },
+      {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
       },
       {
         text: 'Pull',
@@ -800,7 +812,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 10,
+        value: 15,
       },
       {
         text: 'Damage',
@@ -813,7 +825,7 @@ export const missing_skills: Record<
         text: 'Apply Buff/Condition',
         type: 'Buff',
         icon: 'https://render.guildwars2.com/file/79FF0046A5F9ADA3B4C4EC19ADB4CB124D5F0021/102848.png',
-        duration: 2,
+        duration: 5,
         status: 'Bleeding',
         description: 'Deals damage every second; stacks intensity.',
         apply_count: 1,
@@ -822,12 +834,17 @@ export const missing_skills: Record<
         text: 'Apply Buff/Condition',
         type: 'Buff',
         icon: 'https://render.guildwars2.com/file/B47BF5803FED2718D7474EAF9617629AD068EE10/102849.png',
-        duration: 2,
+        duration: 5,
         status: 'Burning',
         description: 'Deals damage every second; stacks intensity.',
         apply_count: 1,
       },
-
+      {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
+      },
       {
         text: 'Number of Targets',
         type: 'Number',
@@ -882,7 +899,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 12,
+        value: 20,
       },
       {
         text: 'Apply Buff/Condition',
@@ -901,6 +918,12 @@ export const missing_skills: Record<
         status: 'Burning',
         description: 'Deals damage every second; stacks intensity.',
         apply_count: 1,
+      },
+      {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
       },
       {
         text: 'Number of Allied Targets',
@@ -944,7 +967,13 @@ export const missing_skills: Record<
         target: 'Healing',
       },
       {
-        text: 'Number of Targets',
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
+      },
+      {
+        text: 'Number of Allied Targets',
         type: 'Number',
         icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
         value: 5,
@@ -976,7 +1005,7 @@ export const missing_skills: Record<
         value: 4,
       },
       {
-        text: 'Heal per condition',
+        text: 'Per Removed Condition',
         type: 'AttributeAdjust',
         icon: 'https://render.guildwars2.com/file/D4347C52157B040943051D7E09DEAD7AF63D4378/156662.png',
         value: 457,
@@ -989,7 +1018,13 @@ export const missing_skills: Record<
         value: 3,
       },
       {
-        text: 'Number of Targets',
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
+      },
+      {
+        text: 'Number of Allied Targets',
         type: 'Number',
         icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
         value: 5,
@@ -1049,7 +1084,13 @@ export const missing_skills: Record<
         apply_count: 1,
       },
       {
-        text: 'Number of Targets',
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
+      },
+      {
+        text: 'Number of Allied Targets',
         type: 'Number',
         icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
         value: 5,
@@ -1103,6 +1144,12 @@ export const missing_skills: Record<
         apply_count: 1,
       },
       {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 2,
+      },
+      {
         text: 'Pulses',
         type: 'Number',
         icon: 'https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png',
@@ -1138,7 +1185,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 12,
+        value: 20,
       },
       {
         text: 'Apply Buff/Condition',
@@ -1153,6 +1200,12 @@ export const missing_skills: Record<
         type: 'Number',
         icon: 'https://render.guildwars2.com/file/9352ED3244417304995F26CB01AE76BB7E547052/156661.png',
         value: 5,
+      },
+      {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 2,
       },
       {
         text: 'Number of Allied Targets',
@@ -1185,11 +1238,11 @@ export const missing_skills: Record<
       {
         text: 'Apply Buff/Condition',
         type: 'Buff',
-        icon: 'https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png',
-        duration: 4,
-        status: 'Stability',
+        icon: 'https://render.guildwars2.com/file/CD77D1FAB7B270223538A8F8ECDA1CFB044D65F4/102834.png',
+        duration: 2,
+        status: 'Protection',
         description:
-          'Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.',
+          'Incoming strike damage decreased by 33%; stacks duration.',
         apply_count: 1,
       },
       {
@@ -1202,7 +1255,13 @@ export const missing_skills: Record<
         apply_count: 1,
       },
       {
-        text: 'Number of Targets',
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
+      },
+      {
+        text: 'Number of Allied Targets',
         type: 'Number',
         icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
         value: 5,
@@ -1260,6 +1319,12 @@ export const missing_skills: Record<
         apply_count: 1,
       },
       {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 1,
+      },
+      {
         text: 'Radius',
         type: 'Distance',
         icon: 'https://render.guildwars2.com/file/B0CD8077991E4FB1622D2930337ED7F9B54211D5/156665.png',
@@ -1283,7 +1348,13 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 8,
+        value: 15,
+      },
+      {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 2,
       },
       {
         text: 'Duration',
@@ -1326,7 +1397,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 10,
+        value: 20,
       },
       {
         text: 'Apply Buff/Condition',
@@ -1337,6 +1408,12 @@ export const missing_skills: Record<
         description:
           'Nondamaging conditions currently on you are ineffective; stacks duration.',
         apply_count: 1,
+      },
+      {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 2,
       },
       {
         text: 'Pulses',
@@ -1391,11 +1468,10 @@ export const missing_skills: Record<
       {
         text: 'Apply Buff/Condition',
         type: 'Buff',
-        icon: 'https://render.guildwars2.com/file/DFB4D1B50AE4D6A275B349E15B179261EE3EB0AF/102854.png',
-        duration: 4,
-        status: 'Aegis',
-        description: 'Block the next incoming attack; stacks duration.',
-        apply_count: 1,
+        icon: 'https://wiki.guildwars2.com/images/d/d8/Epilogue-_Unbroken_Lines.png',
+        duration: 5,
+        status: 'Unbroken Lines',
+        description: '300 Toughness.',
       },
       {
         text: 'Apply Buff/Condition',
@@ -1410,20 +1486,33 @@ export const missing_skills: Record<
       {
         text: 'Apply Buff/Condition',
         type: 'Buff',
-        icon: 'https://wiki.guildwars2.com/images/d/d8/Epilogue-_Unbroken_Lines.png',
-        duration: 6,
-        status: 'Unbroken Lines',
-        description: '300 Toughness.',
-      },
-      {
-        text: 'Apply Buff/Condition',
-        type: 'Buff',
         icon: 'https://render.guildwars2.com/file/3D3A1C2D6D791C05179AB871902D28782C65C244/415959.png',
         duration: 5,
         status: 'Stability',
         description:
           'Cannot be knocked down, pushed back, pulled, launched, stunned, dazed, floated, sunk, feared, or taunted.',
         apply_count: 1,
+      },
+      {
+        text: 'Apply Buff/Condition',
+        type: 'Buff',
+        icon: 'https://render.guildwars2.com/file/DFB4D1B50AE4D6A275B349E15B179261EE3EB0AF/102854.png',
+        duration: 4,
+        status: 'Aegis',
+        description: 'Block the next incoming attack; stacks duration.',
+        apply_count: 1,
+      },
+      {
+        text: 'Page Cost',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/B4490FB81AA1E7C06F1B22056AE09A0F54CBE2C4/1770201.png',
+        value: 2,
+      },
+      {
+        text: 'Number of Allied Targets',
+        type: 'Number',
+        icon: 'https://render.guildwars2.com/file/BBE8191A494B0352259C10EADFDACCE177E6DA5B/1770208.png',
+        value: 5,
       },
       {
         text: 'Radius',
