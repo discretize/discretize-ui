@@ -1630,7 +1630,7 @@ export const missing_skills: Record<
         text: 'Apply Buff/Condition',
         type: 'Buff',
         icon: 'https://render.guildwars2.com/file/10BABF2708CA3575730AC662A2E72EC292565B08/598887.png',
-        duration: 5,
+        duration: 6,
         status: 'Torment',
         description:
           "Deals damage every second. Deals additional damage to foes that aren't moving. Stacks intensity.",
