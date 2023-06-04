@@ -4,7 +4,6 @@
   "description": "MUI dependencies, global variables, theme related stuff",
   "author": "gw2princeps",
   "license": "MIT",
-  "private": false,
   "sideEffects": [
     "*.css",
     "*.png",
