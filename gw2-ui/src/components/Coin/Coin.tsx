@@ -19,7 +19,12 @@ export interface CoinProps {
   iconProps?: IconProps;
 }
 
-const Coin = ({ value, className, style, iconProps = {} }: CoinProps): ReactElement => {
+const Coin = ({
+  value,
+  className,
+  style,
+  iconProps = {},
+}: CoinProps): ReactElement => {
   let copper = value;
 
   const gold = Math.floor(copper / 10000);
@@ -44,7 +49,12 @@ const Coin = ({ value, className, style, iconProps = {} }: CoinProps): ReactElem
           <span className={css.silver}>
             {(silver && silver.toLocaleString()) || 0}
           </span>
-          <Icon src={silverImg} style={iconProps.style} gutterLeft gutterRight />
+          <Icon
+            src={silverImg}
+            style={iconProps.style}
+            gutterLeft
+            gutterRight
+          />
         </>
       )}
 
