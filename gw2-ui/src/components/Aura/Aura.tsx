@@ -1,5 +1,6 @@
 import React, { CSSProperties, ReactElement } from 'react';
 import Effect from '../Effect/Effect';
+import { IconProps } from '../Icon/Icon';
 import { AuraTypes } from '../../data/auras';
 import { translate, useAPILanguage } from '../../i18n';
 import {
@@ -15,6 +16,7 @@ export interface AuraProps {
   disableIcon?: boolean;
   className?: string;
   style?: CSSProperties;
+  iconProps?: IconProps;
 }
 
 const Aura = (props: AuraProps): ReactElement => {

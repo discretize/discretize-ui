@@ -6,6 +6,7 @@ import professioncss from '../Profession/professions.module.css';
 import Tooltip from '../Tooltip/Tooltip';
 import WikiLink from '../WikiLink/WikiLink';
 import SpecializationTooltip from './SpecializationTooltip';
+import { IconProps } from '../Icon/Icon';
 
 export interface SpecializationInternalProps {
   data: GW2ApiSpecialization;
@@ -16,6 +17,7 @@ export interface SpecializationInternalProps {
   inline?: boolean;
   style?: CSSProperties;
   className?: string;
+  iconProps?: IconProps;
 }
 
 const SpecializationInternal = (
@@ -30,6 +32,7 @@ const SpecializationInternal = (
     inline,
     style,
     className,
+    iconProps,
   } = props;
   const { name, icon, profession } = data;
 
@@ -53,7 +56,7 @@ const SpecializationInternal = (
         disableIcon={disableIcon}
         disableText={disableText}
         inline={inline}
-        iconProps={{ hexagon: true }}
+        iconProps={{ hexagon: true, ...iconProps }}
         style={style}
         className={clsx(
           className,

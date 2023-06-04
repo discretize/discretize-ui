@@ -13,6 +13,7 @@ import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import css from './Item.module.css';
 import ItemDetails from './ItemDetails';
+import { IconProps } from '../Icon/Icon';
 
 export type ItemUpgrades = (number | [number, number])[]; // ItemId, or [ItemId, amount] for runes
 export interface ItemInternalProps {
@@ -31,6 +32,7 @@ export interface ItemInternalProps {
   upgrades?: ItemUpgrades;
   style?: CSSProperties;
   className?: string;
+  iconProps?: IconProps;
 }
 
 const ItemInternal = (props: ItemInternalProps): ReactElement => {
@@ -49,6 +51,7 @@ const ItemInternal = (props: ItemInternalProps): ReactElement => {
     wikiLinkProps,
     style,
     className,
+    iconProps,
   } = props;
   const stat = statRaw ? capitalize(statRaw) : undefined;
 
@@ -142,6 +145,7 @@ const ItemInternal = (props: ItemInternalProps): ReactElement => {
           applyCountProps: {
             className: css.iconApplyCount,
           },
+          ...iconProps,
         }}
         style={style}
         className={clsx(className, css[`colorRarity${capitalize(rarity)}`])}

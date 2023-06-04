@@ -6,6 +6,7 @@ import {
   TRANSLATIONS_BOON_DESCRIPTIONS,
 } from '../../i18n/boons';
 import Effect from '../Effect/Effect';
+import { IconProps } from '../Icon/Icon';
 
 export interface BoonProps {
   name: BoonsTypes;
@@ -16,10 +17,11 @@ export interface BoonProps {
   disableIcon?: boolean;
   className?: string;
   style?: CSSProperties;
+  iconProps?: IconProps;
 }
 
 const Boon = (props: BoonProps): ReactElement => {
-  const { name, count = 1 } = props;
+  const { name, count = 1, iconProps } = props;
   const language = useAPILanguage();
 
   const translation = translate(TRANSLATIONS_BOONS, name, language);
@@ -32,7 +34,7 @@ const Boon = (props: BoonProps): ReactElement => {
       name={name}
       displayName={translation}
       description={description}
-      iconProps={{ applyCount: count }}
+      iconProps={{ applyCount: count, ...iconProps }}
     />
   );
 };

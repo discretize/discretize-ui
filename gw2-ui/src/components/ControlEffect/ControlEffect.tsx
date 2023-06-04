@@ -8,6 +8,7 @@ import {
   CONTROL_EFFECTS_DESCRIPTIONS,
 } from '../../i18n/controlEffects';
 import { useTranslation } from '../../i18n';
+import { IconProps } from '../Icon/Icon';
 
 export interface ControlEffectProps {
   name: ControlEffectTypes;
@@ -17,16 +18,12 @@ export interface ControlEffectProps {
   disableIcon?: boolean;
   className?: string;
   style?: CSSProperties;
+  iconProps?: IconProps;
 }
 
 const ControlEffect = ({
   name,
-  disableTooltip,
-  disableText,
-  disableLink,
-  disableIcon,
-  className,
-  style,
+  ...props
 }: ControlEffectProps): ReactElement => {
   const nameTranslated = useTranslation(CONTROL_EFFECTS, name);
   const descriptionTranslated = useTranslation(
@@ -36,16 +33,11 @@ const ControlEffect = ({
 
   return (
     <Effect
+      {...props}
       type="Control"
       name={name}
       displayName={nameTranslated}
       description={descriptionTranslated}
-      disableTooltip={disableTooltip}
-      disableText={disableText}
-      disableLink={disableLink}
-      disableIcon={disableIcon}
-      className={className}
-      style={style}
     />
   );
 };

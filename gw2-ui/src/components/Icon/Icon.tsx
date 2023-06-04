@@ -18,6 +18,7 @@ export interface IconProps {
   inactive?: boolean;
   applyCountProps?: any;
   className?: string;
+  style?: CSSProperties;
   iconViaClassname?: boolean; // indicates that the icon url is inserted via an additional className
   onClick?: MouseEventHandler<HTMLSpanElement>;
 }
@@ -36,6 +37,7 @@ const Icon = ({
   inactive = false,
   applyCountProps = {},
   className,
+  style: propStyle,
   onClick,
 }: IconProps): ReactElement => {
   // css that is shared accross spinner and the actual component
@@ -76,7 +78,7 @@ const Icon = ({
         hexagon && css.rootHexagon,
         name && css[`image${name}`],
       )}
-      style={style}
+      style={{ ...style, ...propStyle }}
     >
       {applyCount > 1 && (
         <span

@@ -11,6 +11,7 @@ import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 import TooltipContainer from '../TooltipContainer/TooltipContainer';
 import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
 import css from './Trait.module.css';
+import { IconProps } from '../Icon/Icon';
 
 export interface TraitInternalProps {
   data: GW2ApiTrait;
@@ -25,6 +26,7 @@ export interface TraitInternalProps {
   inactive?: boolean;
   style?: CSSProperties;
   className?: string;
+  iconProps?: IconProps;
   onClick?: MouseEventHandler<HTMLSpanElement>;
 }
 
@@ -42,6 +44,7 @@ const TraitInternal = (props: TraitInternalProps): ReactElement => {
     inactive,
     style,
     className,
+    iconProps,
     onClick,
   } = props;
 
@@ -97,6 +100,7 @@ const TraitInternal = (props: TraitInternalProps): ReactElement => {
           zoom: 13,
           inactive,
           hexagon: slot === 'Minor',
+          ...iconProps,
         }}
         style={style}
         className={clsx(

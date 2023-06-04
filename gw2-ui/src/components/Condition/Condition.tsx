@@ -1,6 +1,7 @@
 import React, { CSSProperties, ReactElement } from 'react';
 
 import Effect from '../Effect/Effect';
+import { IconProps } from '../Icon/Icon';
 
 import { ConditionTypes } from '../../data/conditions';
 import { useTranslation } from '../../i18n';
@@ -15,6 +16,7 @@ export interface ConditionProps {
   disableIcon?: boolean;
   className?: string;
   style?: CSSProperties;
+  iconProps?: IconProps;
 }
 
 const Condition = ({
@@ -26,6 +28,7 @@ const Condition = ({
   disableIcon,
   className,
   style,
+  iconProps,
 }: ConditionProps): ReactElement => {
   const nameTranslated = useTranslation(CONDITIONS, name);
   const descriptionTranslated = useTranslation(CONDITIONS_DESCRIPTIONS, name);
@@ -36,7 +39,7 @@ const Condition = ({
       name={name}
       displayName={nameTranslated}
       description={descriptionTranslated}
-      iconProps={{ applyCount: count }}
+      iconProps={{ applyCount: count, ...iconProps }}
       disableTooltip={disableTooltip}
       disableText={disableText}
       disableLink={disableLink}

@@ -11,6 +11,7 @@ import WikiLink from '../WikiLink/WikiLink';
 import ItemDetails from './../Item/ItemDetails';
 import css from '../Item/Item.module.css';
 import { ICONS } from '../../data/defaultIcons';
+import { IconProps } from '../Icon/Icon';
 
 export interface ItemProps extends CreateItemProps {
   count?: number;
@@ -23,6 +24,7 @@ export interface ItemProps extends CreateItemProps {
   upgrades?: (number | [number, number])[]; // ItemId, or [ItemId, amount] for runes
   style?: CSSProperties;
   className?: string;
+  iconProps?: IconProps;
 }
 
 const SKILL_ERROR_NAMES = {
@@ -52,6 +54,7 @@ const Item = (props: ItemProps): ReactElement => {
     level: levelProps,
     style,
     className,
+    iconProps,
   } = props;
   const statProps = capitalize(statRaw);
 
@@ -170,6 +173,7 @@ const Item = (props: ItemProps): ReactElement => {
           applyCountProps: {
             className: css.iconApplyCount,
           },
+          ...iconProps,
         }}
         className={clsx(
           rarity && css[`colorRarity${capitalize(rarity)}`],

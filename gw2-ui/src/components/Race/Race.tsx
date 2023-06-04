@@ -9,6 +9,7 @@ import { capitalize } from '../../helpers/capitalize';
 import css from './Race.module.css';
 import { translate, useAPILanguage } from '../../i18n';
 import TRANSLATIONS_RACES from '../../i18n/races';
+import { IconProps } from '../Icon/Icon';
 
 export interface RaceProps {
   name: RacesTypes;
@@ -22,6 +23,7 @@ export interface RaceProps {
   errorProps?: ErrorProps;
   className?: string;
   style?: CSSProperties;
+  iconProps?: IconProps;
 }
 
 const Race = ({
@@ -36,6 +38,7 @@ const Race = ({
   errorProps,
   className,
   style,
+  iconProps,
 }: RaceProps): ReactElement => {
   const language = useAPILanguage();
 
@@ -84,6 +87,7 @@ const Race = ({
       iconProps={{
         className: css[`imageRace${capitalize(name)}`],
         iconViaClassname: true,
+        ...iconProps,
       }}
       style={style}
       className={clsx(className, css[`color${capitalize(name)}`])}
