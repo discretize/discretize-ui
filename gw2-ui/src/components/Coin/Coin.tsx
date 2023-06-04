@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactElement } from 'react';
 import css from './Coin.module.css';
-import Icon from '../Icon/Icon';
+import Icon, { IconProps } from '../Icon/Icon';
 import clsx from 'clsx';
 
 const goldImg =
@@ -16,9 +16,10 @@ export interface CoinProps {
   value: number;
   className?: string;
   style?: CSSProperties;
+  iconProps?: IconProps;
 }
 
-const Coin = ({ value, className, style }: CoinProps): ReactElement => {
+const Coin = ({ value, className, style, iconProps = {} }: CoinProps): ReactElement => {
   let copper = value;
 
   const gold = Math.floor(copper / 10000);
@@ -34,7 +35,7 @@ const Coin = ({ value, className, style }: CoinProps): ReactElement => {
           <span className={css.gold}>
             {(gold && gold.toLocaleString()) || 0}
           </span>
-          <Icon src={goldImg} gutterLeft gutterRight />
+          <Icon src={goldImg} style={iconProps.style} gutterLeft gutterRight />
         </>
       )}
 
@@ -43,7 +44,7 @@ const Coin = ({ value, className, style }: CoinProps): ReactElement => {
           <span className={css.silver}>
             {(silver && silver.toLocaleString()) || 0}
           </span>
-          <Icon src={silverImg} gutterLeft gutterRight />
+          <Icon src={silverImg} style={iconProps.style} gutterLeft gutterRight />
         </>
       )}
 
@@ -51,7 +52,7 @@ const Coin = ({ value, className, style }: CoinProps): ReactElement => {
         <span className={css.copper}>
           {(copper && copper.toLocaleString()) || 0}
         </span>
-        <Icon src={copperImg} gutterLeft />
+        <Icon src={copperImg} style={iconProps.style} gutterLeft />
       </>
     </span>
   );
