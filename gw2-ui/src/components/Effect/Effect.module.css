@@ -207,6 +207,9 @@
 .imageControlKnockdown {
   background-image: url(../../assets/icons/Control/Knockdown.png);
 }
+.imageControlLaunch {
+  background-image: url(../../assets/icons/Control/Launch.png);
+}
 .imageControlPull {
   background-image: url(../../assets/icons/Control/Pull.png);
 }
