@@ -5,7 +5,8 @@ export type IconSizes =
   | 'medium2'
   | 'large'
   | 'large2'
-  | 'big';
+  | 'big'
+  | 'gigantic';
 
 const sizes: Record<IconSizes, number> = {
   tiny: 12,
@@ -15,6 +16,7 @@ const sizes: Record<IconSizes, number> = {
   large: 40,
   large2: 45,
   big: 60,
+  gigantic: 70,
 };
 
 export default sizes;
