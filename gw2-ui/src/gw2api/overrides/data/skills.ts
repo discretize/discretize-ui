@@ -2156,4 +2156,65 @@ export const missing_skills: Record<
       },
     ],
   },
+  69284: {
+    categories: ['Bundle'],
+    name: 'Grappling Hook',
+    icon: 'https://wiki.guildwars2.com/wiki/Grappling_Hook#/media/File:Scorpion_Wire.png',
+    professions: ['Common'],
+    description: 'Launch a grappling hook to pull yourself in the targeted direction. Consumes ammunition.',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 2200,
+      },
+    ],
+  },
+  69286: {
+    categories: ['Bundle'],
+    name: 'Parachute',
+    icon: 'https://wiki.guildwars2.com/wiki/Parachute_(Silent_Surf_Fractal)#/media/File:Feathers_(skill).png',
+    professions: ['Common'],
+    description: 'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
+    facts: [
+    ],
+  },
+  69438: {
+    categories: ['Bundle'],
+    name: 'Black Powder Charge',
+    icon: 'https://wiki.guildwars2.com/wiki/Black_Powder_Charge#/media/File:Powder_Keg_(skill).png',
+    professions: ['Common'],
+    description: 'Fire a concussive charge to provide an extra boost. Guaranteed to be 100% safe. Consumes ammunition.',
+    facts: [
+      {
+        text: 'Combo Finisher',
+        type: 'ComboFinisher',
+        icon: 'https://render.guildwars2.com/file/A513F3653D33FBA4220D2D307799F8A327A36A3B/156656.png',
+        percent: 100,
+        finisher_type: 'Blast',
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 1200,
+      },
+    ],
+  },
+  69189: {
+    categories: ['Bundle'],
+    name: 'Flare',
+    icon: 'https://wiki.guildwars2.com/wiki/Flare_(Silent_Surf_Fractal)#/media/File:Reclaimed_Energy.png',
+    professions: ['Common'],
+    description: 'Fire a magical light source at target location. Bounces off walls and ceilings. Sticks to level surfaces. Does not require ammunition.',
+    facts: [
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 10000,
+      },
+    ],
+  },
 };
