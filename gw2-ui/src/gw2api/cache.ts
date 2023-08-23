@@ -1,35 +1,6 @@
 import { APILanguage } from '../i18n';
 
-interface ApiRoute {
-  name: string
-  is_available: boolean,
-  api_max_ids_per_request: number,
-  create_url: (path: string, ids: number[], language: APILanguage) => string
-  transform: (apiResponse: unknown) => unknown
-}
-
-const api_routes: ApiRoute[] = [
-  {
-    name: 'Official GW2 API',
-    is_available: true,
-    api_max_ids_per_request: 200,
-    create_url: (path, ids, language) =>
-      `https://api.guildwars2.com${path}?ids=${ids.join(',')}&lang=${language}`,
-    transform: (apiResponse) => apiResponse
-  },
-  {
-    name: 'GW2Treasures API',
-    is_available: true,
-    api_max_ids_per_request: 1,
-    create_url: (path, ids, language) => {
-      const modifiedPath = /(?<=\/v2\/).*(?=s)/.exec(path)?.[0];
-      if (!modifiedPath) throw new Error(`GW2Treasures alternate API could not process path ${path}`);
-
-      return `https://${language}.gw2treasures.com/${modifiedPath}/${ids[0]}/json`;
-    },
-    transform: (apiResponse) => [apiResponse]
-  },
-];
+const GW2_API_URL = 'https://api.guildwars2.com';
 
 // An error occurred when connecting to the API
 export const API_ERROR_NETWORK = 500;
@@ -225,15 +196,12 @@ export default class APICache<T extends { id: Id }> {
     if (this.requested_ids.size <= this.fetched_ids.size) {
       return;
     }
-
-    const api_route = api_routes.find(({ is_available }) => is_available) ?? api_routes[0];
-
     const ids: Id[] = [];
     for (const id of this.requested_ids.values()) {
       if (!this.fetched_ids.has(id)) {
         ids.push(id);
       }
-      if (ids.length >= Math.min(this.max_ids_per_request, api_route.api_max_ids_per_request)) {
+      if (ids.length >= this.max_ids_per_request) {
         break;
       }
     }
@@ -252,34 +220,24 @@ export default class APICache<T extends { id: Id }> {
     let error: APIError = API_ERROR_NOT_FOUND;
     try {
       ids.sort((a, b) => a - b);
-
-      const url = api_route.create_url(this.path, ids, this.language);
+      const url =
+        GW2_API_URL +
+        this.path +
+        '?ids=' +
+        ids.join(',') +
+        '&lang=' +
+        this.language;
       const res = await fetch(url, FETCH_OPTIONS);
-
-      if (res.status === 503) {
-        api_route.is_available = false;
-        if (api_routes.find(({ is_available }) => is_available)) {
-          // If an API route is unavailable, back out and retry the same ids on an alternative route
-          console.warn(`The ${api_route.name} is unavailable; switching API routes`);
-          for (const id of ids) {
-            this.fetched_ids.delete(id);
-          }
-          this.requests_inflight--;
-          this.tryFetch();
-          return;
-        }
-      }
       if (res.status === 404) {
         // 404 usually means that none of the passed ids are known, which is equivalent to an empty response
         response = [];
       } else {
         if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
         const json = await res.json();
-        const transformed_json = api_route.transform(json);
-        if (!(transformed_json instanceof Array)) {
+        if (!(json instanceof Array)) {
           throw new Error('Response is not a list');
         }
-        response = transformed_json;
+        response = json;
       }
     } catch (e) {
       error = API_ERROR_NETWORK;
