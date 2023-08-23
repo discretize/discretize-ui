@@ -2157,11 +2157,12 @@ export const missing_skills: Record<
     ],
   },
   69284: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Grappling Hook',
     icon: 'https://wiki.guildwars2.com/wiki/Grappling_Hook#/media/File:Scorpion_Wire.png',
-    professions: ['Common'],
-    description: 'Launch a grappling hook to pull yourself in the targeted direction. Consumes ammunition.',
+    professions: [],
+    description:
+      'Launch a grappling hook to pull yourself in the targeted direction. Consumes ammunition.',
     facts: [
       {
         icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
@@ -2172,20 +2173,21 @@ export const missing_skills: Record<
     ],
   },
   69286: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Parachute',
     icon: 'https://wiki.guildwars2.com/wiki/Parachute_(Silent_Surf_Fractal)#/media/File:Feathers_(skill).png',
-    professions: ['Common'],
-    description: 'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
-    facts: [
-    ],
+    professions: [],
+    description:
+      'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
+    facts: [],
   },
   69438: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Black Powder Charge',
     icon: 'https://wiki.guildwars2.com/wiki/Black_Powder_Charge#/media/File:Powder_Keg_(skill).png',
-    professions: ['Common'],
-    description: 'Fire a concussive charge to provide an extra boost. Guaranteed to be 100% safe. Consumes ammunition.',
+    professions: [],
+    description:
+      'Fire a concussive charge to provide an extra boost. Guaranteed to be 100% safe. Consumes ammunition.',
     facts: [
       {
         text: 'Combo Finisher',
@@ -2203,11 +2205,12 @@ export const missing_skills: Record<
     ],
   },
   69189: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Flare',
     icon: 'https://wiki.guildwars2.com/wiki/Flare_(Silent_Surf_Fractal)#/media/File:Reclaimed_Energy.png',
-    professions: ['Common'],
-    description: 'Fire a magical light source at target location. Bounces off walls and ceilings. Sticks to level surfaces. Does not require ammunition.',
+    professions: [],
+    description:
+      'Fire a magical light source at target location. Bounces off walls and ceilings. Sticks to level surfaces. Does not require ammunition.',
     facts: [
       {
         icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',

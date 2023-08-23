@@ -41,7 +41,7 @@ export const MISTLOCK_INSTABILITIES_DESCRIPTIONS: Record<
     en: "When enraged, enemies deal 100% increased damage while they're low on health but can no longer critically hit. Enemies deal 10% less damage when not enraged. ",
     de: 'Wenn sie erzürnt sind, während Ihre Lebenspunkte niedrig sind, fügen Gegner 150 % erhöhten Schaden zu. Wenn sie nicht erzürnt sind, fügen Gegner 20 % weniger Schaden zu.',
   },
-  'Afflicted': {
+  Afflicted: {
     en: 'Outgoing resistance and resolution duration is increased by 33%. Enemies apply random damaging conditions. ',
     de: 'Die Dauer gewährten Widerstands ist um 50 % erhöht. Gegner verursachen zufällige Zustände.',
   },
@@ -57,11 +57,11 @@ export const MISTLOCK_INSTABILITIES_DESCRIPTIONS: Record<
     en: 'Fractal Avengers are replaced by more-powerful Fractal Vindicators.',
     de: 'Fraktal-Rächer werden durch kraftvollere Fraktal-Verteidiger ersetzt.',
   },
-  'Frailty': {
+  Frailty: {
     en: 'Players are smaller and take 10% more damage, but move 25% faster. ',
     de: 'Spieler sind kleiner und haben 30 % weniger Lebenspunkte, bewegen sich jedoch 25 % schneller.',
   },
-  'Hamstrung': {
+  Hamstrung: {
     en: 'Low health increasingly slows your movements, up to 33%. Endurance regenerates 33% faster. ',
     de: 'Niedrige Lebenspunkte verlangsamen Eure Bewegungen zunehmend. Ausdauer regeneriert sich 33 % schneller.',
   },
@@ -77,7 +77,7 @@ export const MISTLOCK_INSTABILITIES_DESCRIPTIONS: Record<
     en: 'Enemies receive boons when hit. Stripping an enemy boon will apply that boon to nearby allies.<br/><c=@reminder>(Cooldown: 20 seconds)</c>',
     de: 'Gegner erhalten bei Treffern Segen. Die Entfernung eines gegnerischen Segens stiehlt ihnen Lebenspunkte. <br/><c=@reminder>(Erholzeit: 20 Sekunden)</c>',
   },
-  'Outflanked': {
+  Outflanked: {
     en: 'Allies within a range of 300 take 100% damage when attacked from behind. Non-boss enemies within a range of 300 take 100% damage when attacked from behind or the side.',
     de: 'Verbündete in einem Umkreis von 300 erleiden 100% Schaden, wenn sie von hinten angegriffen werden. Nicht-Boss-Feinde innerhalb einer Reichweite von 300 erleiden 100 % Schaden, wenn sie von hinten oder von der Seite angegriffen werden.',
   },
@@ -97,12 +97,16 @@ export const MISTLOCK_INSTABILITIES_DESCRIPTIONS: Record<
     en: 'Enemies leave a path of poison behind them. Blocking a toxic trail attack will absorb it, cleanse poison, and pulse exposed to enemies near the source of the trail.',
     de: 'Gegner hinterlassen eine Giftspur. Beim Blocken eines "Toxische Spur"-Angriffs wird sie absorbiert und der Zustand beseitigt.',
   },
-  'Vengeance': {
+  Vengeance: {
     en: 'When enemies die, they enhance nearby foes with multiple boons. Strip any enemy boon to inflict them with weakness and damage nearby foes.',
     de: 'Wenn Gegner sterben, verbessern sie Gegner in der Nähe mit mehreren Segen. Dies trifft bei Elite-Gegnern nicht zu. Entfernt jeden Segen von Gegnern, um ihnen Schwäche zuzufügen.',
   },
   'Toxic Sickness': {
     en: 'Team members will periodically be affected with vomit-inducing sickness. Combatants struck by vomit are debilitated and inflicted with conditions.',
     de: 'Teammitglieder werden in regelmäßigen Abständen von einer Krankheit betroffen, die Brechreiz verursacht.',
+  },
+  'We Bleed Fire': {
+    en: 'Enemies create flaming missiles when damaged. Incoming condition damage is reduced by 20%. ',
+    de: 'Gegner erzeugen flammende Geschosse, wenn sie Schaden erleiden. Der erlittene Zustandsschaden ist um 20 % verringert.',
   },
 };
