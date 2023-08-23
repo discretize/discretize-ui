@@ -8,7 +8,7 @@ function isAPILanguage(l: string): l is APILanguage {
 }
 
 function getNavigatorDefaultLanguage(): APILanguage {
-  return 'en';
+  if (typeof navigator === 'undefined') return 'en';
   const languages = navigator.languages || [navigator.language];
   for (let l of languages) {
     // l might still be undefined (edge-runtime) so we need to check for that
