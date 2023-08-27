@@ -2160,7 +2160,7 @@ export const missing_skills: Record<
     categories: ['Bundle'],
     name: 'Grappling Hook',
     icon: 'https://wiki.guildwars2.com/wiki/Grappling_Hook#/media/File:Scorpion_Wire.png',
-    professions: ['Common'],
+    professions: [],
     description: 'Launch a grappling hook to pull yourself in the targeted direction. Consumes ammunition.',
     facts: [
       {
@@ -2181,7 +2181,7 @@ export const missing_skills: Record<
     categories: ['Bundle'],
     name: 'Parachute',
     icon: 'https://wiki.guildwars2.com/wiki/Parachute_(Silent_Surf_Fractal)#/media/File:Feathers_(skill).png',
-    professions: ['Common'],
+    professions: [],
     description: 'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
     facts: [
       {
@@ -2196,7 +2196,7 @@ export const missing_skills: Record<
     categories: ['Bundle'],
     name: 'Black Powder Charge',
     icon: 'https://wiki.guildwars2.com/wiki/Black_Powder_Charge#/media/File:Powder_Keg_(skill).png',
-    professions: ['Common'],
+    professions: [],
     description: 'Fire a concussive charge to provide an extra boost. Guaranteed to be 100% safe. Consumes ammunition.',
     facts: [
       {
@@ -2224,7 +2224,7 @@ export const missing_skills: Record<
     categories: ['Bundle'],
     name: 'Flare',
     icon: 'https://wiki.guildwars2.com/wiki/Flare_(Silent_Surf_Fractal)#/media/File:Reclaimed_Energy.png',
-    professions: ['Common'],
+    professions: [],
     description: 'Fire a magical light source at target location. Bounces off walls and ceilings. Sticks to level surfaces. Does not require ammunition.',
     facts: [
       {
@@ -2245,7 +2245,7 @@ export const missing_skills: Record<
     categories: ['Bundle'],
     name: 'Lifegaurd',
     icon: 'https://wiki.guildwars2.com/images/d/db/Lamp_Bond.png',
-    professions: ['Common'],
+    professions: [],
     description: 'Consumes the light to heal yourself and nearby allies.',
     facts: [
       {
@@ -2269,10 +2269,10 @@ export const missing_skills: Record<
     ],
   },
   16288: {
-    categories: ['Common Skills'],
+    categories: ['Transform'],
     name: 'Echo',
     icon: 'https://wiki.guildwars2.com/images/7/71/Echo_%28Dolphin_form%29.png',
-    professions: ['Common'],
+    professions: [],
     description: 'Reveal hidden krait nearby.',
     facts: [
       {
@@ -2290,7 +2290,7 @@ export const missing_skills: Record<
     ],
   },
   16291: {
-    categories: ['Common Skills'],
+    categories: ['Transform'],
     name: 'Rush',
     icon: 'https://wiki.guildwars2.com/images/9/9f/Rush_%28Dolphin_form%29.png',
     professions: ['Common'],
@@ -2313,7 +2313,7 @@ export const missing_skills: Record<
     ],
   },
   16312: {
-    categories: ['Common Skills'],
+    categories: ['Transform'],
     name: 'Stealth',
     icon: 'https://wiki.guildwars2.com/images/a/af/Ghostbore_Powder_Blast.png',
     professions: ['Common'],
@@ -2336,7 +2336,7 @@ export const missing_skills: Record<
     ],
   },
   16312: {
-    categories: ['Common Skills'],
+    categories: ['Transform'],
     name: 'Retrieve Ally',
     icon: 'https://wiki.guildwars2.com/images/1/19/Retrieve_Ally.png',
     professions: ['Common'],
