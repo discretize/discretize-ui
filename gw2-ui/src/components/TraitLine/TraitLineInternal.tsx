@@ -77,13 +77,6 @@ const TraitLineInternal = (props: TraitLineProps): ReactElement => {
     background,
   } = dataSpecialization;
 
-  let TraitElement: (props: TraitInternalProps) => ReactElement =
-    TraitComponent;
-  if (!dataTraits) {
-    // @ts-ignore
-    TraitElement = Trait;
-  }
-
   const controlled = typeof onSelect === 'function';
   let selected: number[];
 
@@ -95,17 +88,24 @@ const TraitLineInternal = (props: TraitLineProps): ReactElement => {
     selected = defaultSelected || propsSelected;
   }
 
-  const renderMinorTrait = ({ id: minorTraitId }: { id: number }) => (
-    <TraitElement
-      id={minorTraitId}
-      key={minorTraitId}
-      // @ts-ignore
-      data={dataTraits?.[minorTraitId]}
-      disableText
-      inline={false}
-      className={css.minorTrait}
-    />
-  );
+  const renderMinorTrait = ({ id: minorTraitId }: { id: number }) => {
+    const sharedProps = {
+      inline: false,
+      disableText: true,
+      className: css.minorTrait,
+    };
+    if (!dataTraits) {
+      return <Trait {...sharedProps} id={minorTraitId} key={minorTraitId} />;
+    }
+
+    return (
+      <TraitComponent
+        {...sharedProps}
+        data={dataTraits[minorTraitId]}
+        key={dataTraits[minorTraitId].id}
+      />
+    );
+  };
 
   const renderMajorTrait = ({
     tier,
@@ -117,93 +117,99 @@ const TraitLineInternal = (props: TraitLineProps): ReactElement => {
     id: number;
     selected: boolean;
     index: number;
-  }) => (
-    <TraitElement
-      id={majorTraitId}
-      key={majorTraitId}
-      // @ts-ignore
-      data={dataTraits?.[majorTraitId]}
-      disableText
-      inline={false}
-      inactive={!isSelected}
-      className={clsx(
+  }) => {
+    const sharedProps = {
+      disableText: true,
+      inline: false,
+      inactive: !isSelected,
+      className: clsx(
         css.majorTrait,
         !isSelected && (controlled || selectable) && css.majorTraitAdditional,
-      )}
-      {...{
-        ...(!isSelected &&
-          (controlled || selectable) && {
-            onClick: (event) => {
-              event.preventDefault();
+      ),
+      ...(!isSelected &&
+        (controlled || selectable) && {
+          onClick: (event: React.MouseEvent<HTMLDivElement>) => {
+            event.preventDefault();
 
-              if (controlled) {
-                onSelect({
-                  tier,
-                  id: majorTraitId,
-                  index: majorTraitIndex,
-                });
+            if (controlled) {
+              onSelect({
+                tier,
+                id: majorTraitId,
+                index: majorTraitIndex,
+              });
+            } else {
+              // find selected major trait from same tier to replace
+              const selectedIndexToReplace = selected.findIndex(
+                (selectedMajorTraitId) =>
+                  majorTraits
+                    .slice(tier * 3, tier * 3 + 3)
+                    .includes(selectedMajorTraitId),
+              );
+
+              if (selectedIndexToReplace !== -1) {
+                setUncontrolledSelected(
+                  selected.map((value, index) =>
+                    index === selectedIndexToReplace ? majorTraitId : value,
+                  ),
+                );
               } else {
-                // find selected major trait from same tier to replace
-                const selectedIndexToReplace = selected.findIndex(
+                // find selected major trait from one tier below
+                const selectedIndexBelowToAppend = selected.findIndex(
                   (selectedMajorTraitId) =>
                     majorTraits
-                      .slice(tier * 3, tier * 3 + 3)
+                      .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
                       .includes(selectedMajorTraitId),
                 );
 
-                if (selectedIndexToReplace !== -1) {
-                  setUncontrolledSelected(
-                    selected.map((value, index) =>
-                      index === selectedIndexToReplace ? majorTraitId : value,
-                    ),
+                if (selectedIndexBelowToAppend !== -1) {
+                  const newSelected = [...selected];
+                  newSelected.splice(
+                    selectedIndexBelowToAppend + 1,
+                    0,
+                    majorTraitId,
                   );
+                  setUncontrolledSelected(newSelected);
                 } else {
-                  // find selected major trait from one tier below
-                  const selectedIndexBelowToAppend = selected.findIndex(
-                    (selectedMajorTraitId) =>
+                  // find selected major trait from one tier above
+                  const selectedIndexAboveToPrepend =
+                    tier < 2 &&
+                    selected.findIndex((selectedMajorTraitId) =>
                       majorTraits
-                        .slice((tier - 1) * 3, (tier - 1) * 3 + 3)
+                        .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
                         .includes(selectedMajorTraitId),
-                  );
+                    );
 
-                  if (selectedIndexBelowToAppend !== -1) {
+                  if (selectedIndexAboveToPrepend !== -1) {
                     const newSelected = [...selected];
                     newSelected.splice(
-                      selectedIndexBelowToAppend + 1,
+                      selectedIndexBelowToAppend,
                       0,
                       majorTraitId,
                     );
                     setUncontrolledSelected(newSelected);
                   } else {
-                    // find selected major trait from one tier above
-                    const selectedIndexAboveToPrepend =
-                      tier < 2 &&
-                      selected.findIndex((selectedMajorTraitId) =>
-                        majorTraits
-                          .slice((tier + 1) * 3, (tier + 1) * 3 + 3)
-                          .includes(selectedMajorTraitId),
-                      );
-
-                    if (selectedIndexAboveToPrepend !== -1) {
-                      const newSelected = [...selected];
-                      newSelected.splice(
-                        selectedIndexBelowToAppend,
-                        0,
-                        majorTraitId,
-                      );
-                      setUncontrolledSelected(newSelected);
-                    } else {
-                      // well, just append it
-                      setUncontrolledSelected([...selected, majorTraitId]);
-                    }
+                    // well, just append it
+                    setUncontrolledSelected([...selected, majorTraitId]);
                   }
                 }
               }
-            },
-          }),
-      }}
-    />
-  );
+            }
+          },
+        }),
+    };
+
+    if (!dataTraits) {
+      return <Trait {...sharedProps} id={majorTraitId} key={majorTraitId} />;
+    }
+
+    return (
+      <TraitComponent
+        key={dataTraits[majorTraitId].id}
+        data={dataTraits[majorTraitId]}
+        {...sharedProps}
+      />
+    );
+  };
 
   // turn [1,2,3,4,5,6,7,8,9] into [[1,2,3], [4,5,6], [7,8,9]]
   const majorTraitsByTier: number[][] = [];

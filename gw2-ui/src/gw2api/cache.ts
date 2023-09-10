@@ -17,7 +17,7 @@ const api_routes: ApiRoute[] = [
     name: 'Princeps API Mirror',
     is_available: true,
     create_url: (path, ids, language) =>
-      `https://api.princeps.biz${path}?ids=${ids.join(',')}&lang=${language}`
+      `https://api.princeps.biz${path}?ids=${ids.join(',')}&lang=${language}`,
   },
 ];
 
@@ -240,7 +240,8 @@ export default class APICache<T extends { id: Id }> {
     try {
       ids.sort((a, b) => a - b);
 
-      const api_route = api_routes.find(({ is_available }) => is_available) ?? api_routes[0];
+      const api_route =
+        api_routes.find(({ is_available }) => is_available) ?? api_routes[0];
 
       const url = api_route.create_url(this.path, ids, this.language);
       const res = await fetch(url, FETCH_OPTIONS);
@@ -249,7 +250,9 @@ export default class APICache<T extends { id: Id }> {
         api_route.is_available = false;
         if (api_routes.find(({ is_available }) => is_available)) {
           // If an API route is unavailable, back out and retry the same ids on an alternative route
-          console.warn(`The ${api_route.name} is unavailable; switching API routes`);
+          console.warn(
+            `The ${api_route.name} is unavailable; switching API routes`,
+          );
           for (const id of ids) {
             this.fetched_ids.delete(id);
           }
