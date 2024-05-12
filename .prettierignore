@@ -1,4 +1,6 @@
 dist/
+pnpm-lock.yaml
+pnpm-workspace.yaml
 *.md
 /gw2-ui/src/gw2api/typeguards/out/
 /gw2-ui/src/gw2api/typeguards/failures/

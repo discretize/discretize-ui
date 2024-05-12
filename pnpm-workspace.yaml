@@ -1,0 +1,6 @@
+packages:
+  - gw2-ui
+  - react-discretize-components
+  - globals
+  - typeface-menomonia
+  - remark-mdx-gw2ui
