@@ -1,5 +1,10 @@
-import { offset, flip, shift } from '@floating-ui/core';
-import { useFloating, type ClientRectObject } from '@floating-ui/react-dom';
+import {
+  flip,
+  offset,
+  shift,
+  useFloating,
+  type ClientRectObject,
+} from '@floating-ui/react-dom';
 
 import React, {
   ReactElement,
