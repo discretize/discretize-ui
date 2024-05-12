@@ -92,7 +92,7 @@ const Character = ({
         </div>
 
         <div className={classes.middle}>
-          {imageElement}
+          <>{imageElement}</>
 
           {(skills || legends) && (
             <Section className={classes.skillsLegends}>
