@@ -101,6 +101,7 @@ Example.args = {
   consumables: {
     foodId: 91805,
     utilityId: 50082,
+    relicId: 100432,
   },
   assumedBuffs: {
     value: [

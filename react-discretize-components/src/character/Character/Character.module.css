@@ -19,18 +19,27 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  isolation: isolate;
 }
 .side {
   display: flex;
   flex: 0 0 250px;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 1;
 }
 .middle {
   display: flex;
-  flex: 0.7 0.2 300px;
+  flex: 0.7 0.2;
   flex-direction: column;
   justify-content: space-between;
+}
+.middle > img {
+  width: max(100%, 450px);
+  left: 50%;
+  top: 33%;
+  position: relative;
+  transform: translate(-50%, -50%);
 }
 .skillsLegends {
   max-width: 390px;

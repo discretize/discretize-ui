@@ -1,6 +1,6 @@
 {
   "name": "@discretize/react-discretize-components",
-  "version": "2.5.1",
+  "version": "2.6.1",
   "description": "The source repo for common react components of discretize projects",
   "author": "gw2princeps",
   "license": "MIT",
@@ -16,7 +16,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "yarn storybook",
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && yarn storybook",
     "storybook": "start-storybook -p 6006",
     "build": "node ../build.mjs",
     "//serve": "rollup -c -w --environment BUILD:development",

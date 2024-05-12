@@ -2157,11 +2157,12 @@ export const missing_skills: Record<
     ],
   },
   69284: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Grappling Hook',
     icon: 'https://wiki.guildwars2.com/wiki/Grappling_Hook#/media/File:Scorpion_Wire.png',
     professions: [],
-    description: 'Launch a grappling hook to pull yourself in the targeted direction. Consumes ammunition.',
+    description:
+      'Launch a grappling hook to pull yourself in the targeted direction. Consumes ammunition.',
     facts: [
       {
         text: 'Recharge',
@@ -2178,7 +2179,7 @@ export const missing_skills: Record<
     ],
   },
   69286: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Parachute',
     icon: 'https://wiki.guildwars2.com/wiki/Parachute_(Silent_Surf_Fractal)#/media/File:Feathers_(skill).png',
     professions: [],
@@ -2193,11 +2194,12 @@ export const missing_skills: Record<
     ],
   },
   69438: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Black Powder Charge',
     icon: 'https://wiki.guildwars2.com/wiki/Black_Powder_Charge#/media/File:Powder_Keg_(skill).png',
     professions: [],
-    description: 'Fire a concussive charge to provide an extra boost. Guaranteed to be 100% safe. Consumes ammunition.',
+    description:
+      'Fire a concussive charge to provide an extra boost. Guaranteed to be 100% safe. Consumes ammunition.',
     facts: [
       {
         text: 'Recharge',
@@ -2221,11 +2223,12 @@ export const missing_skills: Record<
     ],
   },
   69189: {
-    categories: ['Bundle'],
+    categories: [],
     name: 'Flare',
     icon: 'https://wiki.guildwars2.com/wiki/Flare_(Silent_Surf_Fractal)#/media/File:Reclaimed_Energy.png',
     professions: [],
-    description: 'Fire a magical light source at target location. Bounces off walls and ceilings. Sticks to level surfaces. Does not require ammunition.',
+    description:
+      'Fire a magical light source at target location. Bounces off walls and ceilings. Sticks to level surfaces. Does not require ammunition.',
     facts: [
       {
         text: 'Recharge',

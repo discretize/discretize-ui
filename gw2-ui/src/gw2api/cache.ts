@@ -1,6 +1,25 @@
 import { APILanguage } from '../i18n';
 
-const GW2_API_URL = 'https://api.guildwars2.com';
+interface ApiRoute {
+  name: string;
+  is_available: boolean;
+  create_url: (path: string, ids: number[], language: APILanguage) => string;
+}
+
+const api_routes: ApiRoute[] = [
+  {
+    name: 'Official GW2 API',
+    is_available: true,
+    create_url: (path, ids, language) =>
+      `https://api.guildwars2.com${path}?ids=${ids.join(',')}&lang=${language}`,
+  },
+  {
+    name: 'Princeps API Mirror',
+    is_available: true,
+    create_url: (path, ids, language) =>
+      `https://api.princeps.biz${path}?ids=${ids.join(',')}&lang=${language}`,
+  },
+];
 
 // An error occurred when connecting to the API
 export const API_ERROR_NETWORK = 500;
@@ -220,14 +239,28 @@ export default class APICache<T extends { id: Id }> {
     let error: APIError = API_ERROR_NOT_FOUND;
     try {
       ids.sort((a, b) => a - b);
-      const url =
-        GW2_API_URL +
-        this.path +
-        '?ids=' +
-        ids.join(',') +
-        '&lang=' +
-        this.language;
+
+      const api_route =
+        api_routes.find(({ is_available }) => is_available) ?? api_routes[0];
+
+      const url = api_route.create_url(this.path, ids, this.language);
       const res = await fetch(url, FETCH_OPTIONS);
+
+      if (res.status === 503) {
+        api_route.is_available = false;
+        if (api_routes.find(({ is_available }) => is_available)) {
+          // If an API route is unavailable, back out and retry the same ids on an alternative route
+          console.warn(
+            `The ${api_route.name} is unavailable; switching API routes`,
+          );
+          for (const id of ids) {
+            this.fetched_ids.delete(id);
+          }
+          this.requests_inflight--;
+          this.tryFetch();
+          return;
+        }
+      }
       if (res.status === 404) {
         // 404 usually means that none of the passed ids are known, which is equivalent to an empty response
         response = [];

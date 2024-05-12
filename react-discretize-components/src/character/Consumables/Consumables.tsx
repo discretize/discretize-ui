@@ -7,9 +7,15 @@ export interface ConsumablesProps {
   foodId?: number;
   utilityId?: number;
   infusionId?: number;
+  relicId?: number;
 }
 
-const Consumables = ({ foodId, utilityId, infusionId }: ConsumablesProps) => {
+const Consumables = ({
+  foodId,
+  utilityId,
+  infusionId,
+  relicId,
+}: ConsumablesProps) => {
   const { gw2Item, title } = defaultClasses;
 
   return (
@@ -39,6 +45,13 @@ const Consumables = ({ foodId, utilityId, infusionId }: ConsumablesProps) => {
         <div className={classNames(classes.gridItem, classes.borderLeft)}>
           <Item id={infusionId} className={gw2Item} disableText />
           <span className={title}>Infusion</span>
+        </div>
+      )}
+
+      {relicId && (
+        <div className={classNames(classes.gridItem, classes.borderLeft)}>
+          <Item id={relicId} className={gw2Item} disableText />
+          <span className={title}>Relic</span>
         </div>
       )}
     </div>
