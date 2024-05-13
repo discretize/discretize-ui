@@ -79,9 +79,13 @@ const Tooltip = ({
 
   // We need to finagle a ref into the child component.
   const children_with_ref = useMemo(() => {
-    return cloneElement(children, {
-      ref: children_ref,
-    });
+    return (
+      <>
+        {cloneElement(children, {
+          ref: children_ref,
+        })}
+      </>
+    );
   }, [children]);
 
   // Render the tooltip content if visible
