@@ -2168,7 +2168,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 1/4,
+        value: 1 / 4,
       },
       {
         icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
@@ -2183,7 +2183,8 @@ export const missing_skills: Record<
     name: 'Parachute',
     icon: 'https://wiki.guildwars2.com/wiki/Parachute_(Silent_Surf_Fractal)#/media/File:Feathers_(skill).png',
     professions: [],
-    description: 'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
+    description:
+      'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
     facts: [
       {
         text: 'Recharge',
@@ -2245,8 +2246,8 @@ export const missing_skills: Record<
     ],
   },
   16318: {
-    categories: ['Bundle'],
-    name: 'Lifegaurd',
+    categories: [],
+    name: 'Lifeguard',
     icon: 'https://wiki.guildwars2.com/images/d/db/Lamp_Bond.png',
     professions: [],
     description: 'Consumes the light to heal yourself and nearby allies.',
@@ -2260,7 +2261,8 @@ export const missing_skills: Record<
       {
         icon: 'https://wiki.guildwars2.com/images/thumb/f/f3/Healing.png/20px-Healing.png',
         text: 'Healing',
-        type: 'Healing',
+        type: 'AttributeAdjust',
+        target: 'Healing',
         value: 5000,
       },
       {
@@ -2296,8 +2298,9 @@ export const missing_skills: Record<
     categories: ['Transform'],
     name: 'Rush',
     icon: 'https://wiki.guildwars2.com/images/9/9f/Rush_%28Dolphin_form%29.png',
-    professions: ['Common'],
-    description: 'Gain a burst of speed. Passing through revealed water spirals reduces the recharge of this skill.',
+    professions: [],
+    description:
+      'Gain a burst of speed. Passing through revealed water spirals reduces the recharge of this skill.',
     facts: [
       {
         text: 'Recharge',
@@ -2319,8 +2322,9 @@ export const missing_skills: Record<
     categories: ['Transform'],
     name: 'Stealth',
     icon: 'https://wiki.guildwars2.com/images/a/af/Ghostbore_Powder_Blast.png',
-    professions: ['Common'],
-    description: 'Use the currents to obscure your position. Passing through revealed water spirals reduces the recharge of this skill.',
+    professions: [],
+    description:
+      'Use the currents to obscure your position. Passing through revealed water spirals reduces the recharge of this skill.',
     facts: [
       {
         text: 'Recharge',
@@ -2338,12 +2342,13 @@ export const missing_skills: Record<
       },
     ],
   },
-  16312: {
+  16310: {
     categories: ['Transform'],
     name: 'Retrieve Ally',
     icon: 'https://wiki.guildwars2.com/images/1/19/Retrieve_Ally.png',
-    professions: ['Common'],
-    description: 'Revives and teleports nearby downed dolphin ally to your location',
+    professions: [],
+    description:
+      'Revives and teleports nearby downed dolphin ally to your location',
     facts: [
       {
         text: 'Recharge',
