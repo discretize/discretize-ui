@@ -2168,7 +2168,7 @@ export const missing_skills: Record<
         text: 'Recharge',
         type: 'Recharge',
         icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
-        value: 1/4,
+        value: 1 / 4,
       },
       {
         icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
@@ -2183,7 +2183,8 @@ export const missing_skills: Record<
     name: 'Parachute',
     icon: 'https://wiki.guildwars2.com/wiki/Parachute_(Silent_Surf_Fractal)#/media/File:Feathers_(skill).png',
     professions: [],
-    description: 'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
+    description:
+      'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
     facts: [
       {
         text: 'Recharge',
@@ -2298,7 +2299,8 @@ export const missing_skills: Record<
     name: 'Rush',
     icon: 'https://wiki.guildwars2.com/images/9/9f/Rush_%28Dolphin_form%29.png',
     professions: [],
-    description: 'Gain a burst of speed. Passing through revealed water spirals reduces the recharge of this skill.',
+    description:
+      'Gain a burst of speed. Passing through revealed water spirals reduces the recharge of this skill.',
     facts: [
       {
         text: 'Recharge',
@@ -2321,7 +2323,8 @@ export const missing_skills: Record<
     name: 'Stealth',
     icon: 'https://wiki.guildwars2.com/images/a/af/Ghostbore_Powder_Blast.png',
     professions: [],
-    description: 'Use the currents to obscure your position. Passing through revealed water spirals reduces the recharge of this skill.',
+    description:
+      'Use the currents to obscure your position. Passing through revealed water spirals reduces the recharge of this skill.',
     facts: [
       {
         text: 'Recharge',
@@ -2344,7 +2347,8 @@ export const missing_skills: Record<
     name: 'Retrieve Ally',
     icon: 'https://wiki.guildwars2.com/images/1/19/Retrieve_Ally.png',
     professions: [],
-    description: 'Revives and teleports nearby downed dolphin ally to your location',
+    description:
+      'Revives and teleports nearby downed dolphin ally to your location',
     facts: [
       {
         text: 'Recharge',
