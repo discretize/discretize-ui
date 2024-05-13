@@ -2245,8 +2245,8 @@ export const missing_skills: Record<
     ],
   },
   16318: {
-    categories: ['Bundle'],
-    name: 'Lifegaurd',
+    categories: [],
+    name: 'Lifeguard',
     icon: 'https://wiki.guildwars2.com/images/d/db/Lamp_Bond.png',
     professions: [],
     description: 'Consumes the light to heal yourself and nearby allies.',
@@ -2260,7 +2260,8 @@ export const missing_skills: Record<
       {
         icon: 'https://wiki.guildwars2.com/images/thumb/f/f3/Healing.png/20px-Healing.png',
         text: 'Healing',
-        type: 'Healing',
+        type: 'AttributeAdjust',
+        target: 'Healing',
         value: 5000,
       },
       {
@@ -2296,7 +2297,7 @@ export const missing_skills: Record<
     categories: ['Transform'],
     name: 'Rush',
     icon: 'https://wiki.guildwars2.com/images/9/9f/Rush_%28Dolphin_form%29.png',
-    professions: ['Common'],
+    professions: [],
     description: 'Gain a burst of speed. Passing through revealed water spirals reduces the recharge of this skill.',
     facts: [
       {
@@ -2319,7 +2320,7 @@ export const missing_skills: Record<
     categories: ['Transform'],
     name: 'Stealth',
     icon: 'https://wiki.guildwars2.com/images/a/af/Ghostbore_Powder_Blast.png',
-    professions: ['Common'],
+    professions: [],
     description: 'Use the currents to obscure your position. Passing through revealed water spirals reduces the recharge of this skill.',
     facts: [
       {
@@ -2338,11 +2339,11 @@ export const missing_skills: Record<
       },
     ],
   },
-  16312: {
+  16310: {
     categories: ['Transform'],
     name: 'Retrieve Ally',
     icon: 'https://wiki.guildwars2.com/images/1/19/Retrieve_Ally.png',
-    professions: ['Common'],
+    professions: [],
     description: 'Revives and teleports nearby downed dolphin ally to your location',
     facts: [
       {
