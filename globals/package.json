@@ -17,7 +17,7 @@
   "//types": "dist/index.d.ts",
   "scripts": {
     "build": "node ../build.mjs",
-    "prepublish": "yarn build"
+    "prepublish": "pnpm build"
   },
   "dependencies": {
     "@mui/icons-material": "^5.10.9",

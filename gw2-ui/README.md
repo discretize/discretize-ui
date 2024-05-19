@@ -42,14 +42,14 @@ In case you want to disable language selection based on the browser language, wr
 ## Developing
 
 ```sh
-yarn
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 ## Releasing
 
 ```sh
-yarn run publish
+pnpm run publish
 ```
 
 ## Contributing
