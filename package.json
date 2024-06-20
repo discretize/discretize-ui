@@ -14,23 +14,23 @@
     "generate-api-cache": "node --experimental-fetch ./generate_api_cache.mjs"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.24.1",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-replace": "^3.1.0",
-    "@rollup/plugin-typescript": "^8.3.0",
+    "@babel/preset-react": "^7.24.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.7",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/react": "^6.5.13",
-    "@types/node": "^16.11.0",
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.8",
-    "@types/rimraf": "^3.0.2",
+    "@types/node": "^20.14.6",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "eslint": "^8.57.0",
@@ -40,17 +40,19 @@
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "postcss": "^8.4.6",
+    "postcss": "^8.4.38",
     "postcss-url": "^10.1.3",
     "prettier": "^3.3.2",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.67.2",
-    "rollup-plugin-dts": "^4.1.0",
+    "rimraf": "^5.0.7",
+    "rollup": "^4.18.0",
+    "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-terser": "^7.0.2",
     "storybook-css-modules-preset": "^1.1.1",
-    "typescript": "^4.4.4",
-    "typescript-plugin-css-modules": "^3.4.0"
+    "typescript": "^4.7.4",
+    "typescript-plugin-css-modules": "^5.1.0"
+  },
+  "resolutions": {
+    "typescript": "~4.7.4"
   },
   "engines": {
     "npm": "please-use-pnpm",
