@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { APILanguageProvider } from '../../i18n';
 import Error from './Error';
@@ -9,9 +9,9 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Error>;
+} as Meta<typeof Error>;
 
-const Template: ComponentStory<typeof Error> = (args) => {
+const Template: StoryFn<typeof Error> = (args) => {
   return (
     <>
       <Error {...args} />
@@ -31,18 +31,24 @@ const ERROR_MESSAGES = {
   500: `Quaggan's network waddles slower than a centaur *pohooo*`,
 };
 
-export const NotFound = Template.bind({});
-NotFound.args = {
-  code: 404,
-  message: ERROR_MESSAGES,
-  name: ERROR_NAMES,
+export const NotFound = {
+  render: Template,
+
+  args: {
+    code: 404,
+    message: ERROR_MESSAGES,
+    name: ERROR_NAMES,
+  },
 };
 
-export const NetworkError = Template.bind({});
-NetworkError.args = {
-  code: 500,
-  message: ERROR_MESSAGES,
-  name: ERROR_NAMES,
+export const NetworkError = {
+  render: Template,
+
+  args: {
+    code: 500,
+    message: ERROR_MESSAGES,
+    name: ERROR_NAMES,
+  },
 };
 
 export function Translated() {
