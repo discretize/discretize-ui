@@ -1,20 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Armor from './Armor';
 
-export default {
+const meta: Meta<typeof Armor> = {
   title: 'Character/Armor',
   component: Armor,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof Armor>;
+};
+export default meta;
 
 const Template: StoryFn<typeof Armor> = (args) => {
   return <Armor {...args} />;
 };
 
-export const Example = {
+export const Example: StoryObj = {
   render: Template,
 
   args: {
@@ -45,7 +46,7 @@ export const Example = {
   },
 };
 
-export const NoIds = {
+export const NoIds: StoryObj<typeof Armor> = {
   render: Template,
 
   args: {

@@ -1,20 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Weapons from './Weapons';
 
-export default {
+const meta: Meta<typeof Weapons> = {
   title: 'Character/Weapons',
   component: Weapons,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof Weapons>;
+};
+export default meta;
 
 const Template: StoryFn<typeof Weapons> = (args) => {
   return <Weapons {...args} />;
 };
 
-export const Example = {
+export const Example: StoryObj = {
   render: Template,
 
   args: {
@@ -35,7 +36,7 @@ export const Example = {
   },
 };
 
-export const TwoHanded = {
+export const TwoHanded: StoryObj = {
   render: Template,
 
   args: {
@@ -48,7 +49,7 @@ export const TwoHanded = {
   },
 };
 
-export const EmptyOffhand = {
+export const EmptyOffhand: StoryObj<typeof Weapons> = {
   render: Template,
 
   args: {

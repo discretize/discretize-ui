@@ -1,21 +1,22 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import { APILanguageProvider } from '../../i18n';
 import Race from './Race';
 
-export default {
+const meta: Meta<typeof Race> = {
   title: 'Components/Race',
   component: Race,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof Race>;
+};
+export default meta;
 
 const Template: StoryFn<typeof Race> = (args) => {
   return <Race {...args} />;
 };
 
-export const Simple = {
+export const Simple: StoryObj<typeof Race> = {
   render: Template,
 
   args: {
