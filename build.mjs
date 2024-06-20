@@ -12,7 +12,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import dts from 'rollup-plugin-dts';
 import postcss_url from 'postcss-url';
 import { babel } from '@rollup/plugin-babel';
@@ -94,7 +94,9 @@ async function build(package_name) {
           preventAssignment: true,
           'process.env.NODE_ENV': JSON.stringify('production'),
         }),
-        resolve(),
+        resolve({
+          extensions: ['.mjs', '.js', '.jsx', '.json', '.node', '.ts', '.tsx'],
+        }),
         commonjs(),
         typescript({
           filterRoot: package_path,
