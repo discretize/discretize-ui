@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as process from 'process';
 import * as child_process from 'child_process';
 import * as url from 'url';
-import rimraf from 'rimraf';
+import { rimrafSync } from 'rimraf';
 
 // rollup and plugins
 import { rollup } from 'rollup';
@@ -71,7 +71,7 @@ async function build(package_name) {
   const OUTPUT_PATH = path.resolve(package_path, package_json.module);
   const OUTPUT_DIR = path.dirname(OUTPUT_PATH);
 
-  rimraf.sync(OUTPUT_DIR);
+  rimrafSync(OUTPUT_DIR);
 
   // Step 1: Run tsc
   // This checks all types and emits declaration files
@@ -183,7 +183,7 @@ async function build(package_name) {
     }
   }
   // Clean the unbundled type files
-  rimraf.sync(path.join(OUTPUT_DIR, 'types'));
+  rimrafSync(path.join(OUTPUT_DIR, 'types'));
 
   // Step 3: copy over the default style
   try {
