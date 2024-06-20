@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import Condition from './Condition';
 
@@ -8,13 +8,16 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Condition>;
+} as Meta<typeof Condition>;
 
-const Template: ComponentStory<typeof Condition> = (args) => {
+const Template: StoryFn<typeof Condition> = (args) => {
   return <Condition {...args} />;
 };
 
-export const Bleed = Template.bind({});
-Bleed.args = {
-  name: 'Bleeding',
+export const Bleed = {
+  render: Template,
+
+  args: {
+    name: 'Bleeding',
+  },
 };

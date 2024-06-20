@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import Consumables from './Consumables';
 
@@ -8,14 +8,17 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Consumables>;
+} as Meta<typeof Consumables>;
 
-const Template: ComponentStory<typeof Consumables> = (args) => {
+const Template: StoryFn<typeof Consumables> = (args) => {
   return <Consumables {...args} />;
 };
 
-export const Example = Template.bind({});
-Example.args = {
-  foodId: 91805,
-  utilityId: 50082,
+export const Example = {
+  render: Template,
+
+  args: {
+    foodId: 91805,
+    utilityId: 50082,
+  },
 };

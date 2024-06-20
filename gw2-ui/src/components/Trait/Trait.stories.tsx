@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import Trait from './Trait';
 
@@ -8,18 +8,24 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Trait>;
+} as Meta<typeof Trait>;
 
-const Template: ComponentStory<typeof Trait> = (args) => {
+const Template: StoryFn<typeof Trait> = (args) => {
   return <Trait {...args} />;
 };
 
-export const FreshAir = Template.bind({});
-FreshAir.args = {
-  id: 1503,
+export const FreshAir = {
+  render: Template,
+
+  args: {
+    id: 1503,
+  },
 };
 
-export const RecklessDodge = Template.bind({});
-RecklessDodge.args = {
-  id: 1446,
+export const RecklessDodge = {
+  render: Template,
+
+  args: {
+    id: 1446,
+  },
 };

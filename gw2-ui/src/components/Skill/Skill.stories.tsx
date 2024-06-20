@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { APILanguageProvider } from '../../i18n/';
 import Skill from './Skill';
@@ -9,15 +9,18 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Skill>;
+} as Meta<typeof Skill>;
 
-const Template: ComponentStory<typeof Skill> = (args) => {
+const Template: StoryFn<typeof Skill> = (args) => {
   return <Skill {...args} />;
 };
 
-export const LavaFont = Template.bind({});
-LavaFont.args = {
-  id: 5548,
+export const LavaFont = {
+  render: Template,
+
+  args: {
+    id: 5548,
+  },
 };
 
 export function Multiple() {

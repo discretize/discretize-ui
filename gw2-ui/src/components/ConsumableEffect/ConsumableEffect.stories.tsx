@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import ConsumableEffect from './ConsumableEffect';
 
@@ -8,13 +8,16 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof ConsumableEffect>;
+} as Meta<typeof ConsumableEffect>;
 
-const Template: ComponentStory<typeof ConsumableEffect> = (args) => {
+const Template: StoryFn<typeof ConsumableEffect> = (args) => {
   return <ConsumableEffect {...args} />;
 };
 
-export const Simple = Template.bind({});
-Simple.args = {
-  name: 'Enhancement',
+export const Simple = {
+  render: Template,
+
+  args: {
+    name: 'Enhancement',
+  },
 };

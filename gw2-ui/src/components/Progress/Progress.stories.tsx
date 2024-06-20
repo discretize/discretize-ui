@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import Progress from './Progress';
 
@@ -8,9 +8,9 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Progress>;
+} as Meta<typeof Progress>;
 
-const Template: ComponentStory<typeof Progress> = (args) => {
+const Template: StoryFn<typeof Progress> = (args) => {
   return (
     <>
       <Progress {...args} />
@@ -18,4 +18,6 @@ const Template: ComponentStory<typeof Progress> = (args) => {
   );
 };
 
-export const Simple = Template.bind({});
+export const Simple = {
+  render: Template,
+};
