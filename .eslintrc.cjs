@@ -63,6 +63,8 @@ module.exports = {
     // Being explicit about types is not a problem
     '@typescript-eslint/no-inferrable-types': 'off',
 
+    '@typescript-eslint/no-explicit-any': 'off',
+
     /*
     'import/no-extraneous-dependencies': 'warn',
     'react/prop-types': 'warn',

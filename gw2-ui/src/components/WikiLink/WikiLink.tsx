@@ -24,7 +24,7 @@ export const languages = [
   'tr',
   'un',
 ] as const;
-type languagesAvailable = typeof languages[number];
+type languagesAvailable = (typeof languages)[number];
 
 export interface WikiLinkProps {
   component?: any;

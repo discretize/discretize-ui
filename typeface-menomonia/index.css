@@ -4,7 +4,9 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Menomonia'), url('./files/menomonia.woff') format('woff');
+  src:
+    local('Menomonia'),
+    url('./files/menomonia.woff') format('woff');
 }
 
 /* menomonia-italic - latin */
@@ -13,6 +15,7 @@
   font-style: italic;
   font-display: swap;
   font-weight: 400;
-  src: local('Menomonia Italic'),
+  src:
+    local('Menomonia Italic'),
     url('./files/menomonia-italic.woff') format('woff');
 }

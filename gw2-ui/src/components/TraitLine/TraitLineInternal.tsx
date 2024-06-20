@@ -11,9 +11,8 @@ import GW2ApiTrait from '../../gw2api/types/traits/trait';
 import Icon from '../Icon/Icon';
 import SpecializationTooltip from '../Specialization/SpecializationTooltip';
 import Tooltip from '../Tooltip/Tooltip';
-import { TraitProps } from '../Trait/Trait';
-import TraitComponent, { TraitInternalProps } from '../Trait/TraitInternal';
 import Trait from '../Trait/Trait';
+import TraitComponent from '../Trait/TraitInternal';
 
 import css from './TraitLine.module.css';
 import TraitLineConnector, {
