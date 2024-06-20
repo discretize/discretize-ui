@@ -1,8 +1,9 @@
 import '@discretize/typeface-menomonia';
-import '../../gw2-ui/src/default_style.css';
+import React from 'react';
 import 'typeface-fira-mono';
 import 'typeface-muli';
 import 'typeface-raleway';
+import '../../gw2-ui/src/default_style.css';
 import '../src/styles/defaultTheme.css';
 
 export const parameters = {
@@ -23,3 +24,5 @@ export const decorators = [
     </>
   ),
 ];
+
+export const tags = ['autodocs'];
