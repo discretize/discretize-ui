@@ -1,20 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Legends from './Legends';
 
-export default {
+const meta: Meta<typeof Legends> = {
   title: 'Character/Legends',
   component: Legends,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof Legends>;
+};
+export default meta;
 
 const Template: StoryFn<typeof Legends> = (args) => {
   return <Legends {...args} />;
 };
 
-export const Example = {
+export const Example: StoryObj<typeof Legends> = {
   render: Template,
 
   args: {

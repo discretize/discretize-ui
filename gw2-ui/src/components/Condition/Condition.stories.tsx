@@ -1,20 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Condition from './Condition';
 
-export default {
+const meta: Meta<typeof Condition> = {
   title: 'Components/Condition',
   component: Condition,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof Condition>;
+};
+export default meta;
 
 const Template: StoryFn<typeof Condition> = (args) => {
   return <Condition {...args} />;
 };
 
-export const Bleed = {
+export const Bleed: StoryObj<typeof Condition> = {
   render: Template,
 
   args: {

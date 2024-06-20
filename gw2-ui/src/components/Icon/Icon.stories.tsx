@@ -1,14 +1,15 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React, { ComponentProps } from 'react';
 import Icon from './Icon';
 
-export default {
+const meta: Meta<typeof Icon> = {
   title: 'Helper Components/Icon',
   component: Icon,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof Icon>;
+};
+export default meta;
 
 const Template: StoryFn<typeof Icon> = (args: ComponentProps<typeof Icon>) => {
   return (
@@ -18,7 +19,7 @@ const Template: StoryFn<typeof Icon> = (args: ComponentProps<typeof Icon>) => {
   );
 };
 
-export const Simple = {
+export const Simple: StoryObj<typeof Icon> = {
   render: Template,
 
   args: {
