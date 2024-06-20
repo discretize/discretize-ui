@@ -16,8 +16,9 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && pnpm storybook",
-    "storybook": "start-storybook -p 6006",
+    "dev": "pnpm storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "build": "node ../build.mjs",
     "//serve": "rollup -c -w --environment BUILD:development",
     "prepublish": "pnpm build"
