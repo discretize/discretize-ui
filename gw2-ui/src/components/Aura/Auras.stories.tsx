@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import Aura from './Aura';
 
@@ -8,13 +8,16 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Aura>;
+} as Meta<typeof Aura>;
 
-const Template: ComponentStory<typeof Aura> = (args) => {
+const Template: StoryFn<typeof Aura> = (args) => {
   return <Aura {...args} />;
 };
 
-export const Simple = Template.bind({});
-Simple.args = {
-  name: 'Light',
+export const Simple = {
+  render: Template,
+
+  args: {
+    name: 'Light',
+  },
 };

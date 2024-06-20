@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import TraitLine from './TraitLine';
 import Specialization from '../Specialization/Specialization';
@@ -11,18 +11,21 @@ export default {
     onSelect: { control: false },
     onReset: { control: false },
   },
-} as ComponentMeta<typeof TraitLine>;
+} as Meta<typeof TraitLine>;
 
-const Template: ComponentStory<typeof TraitLine> = (args) => {
+const Template: StoryFn<typeof TraitLine> = (args) => {
   return <TraitLine {...args} onSelect={undefined} onReset={undefined} />;
 };
 
-export const Simple = Template.bind({});
-Simple.args = {
-  id: 41,
-  defaultSelected: [227, 214, 1672],
-  selectable: true,
-  resettable: true,
+export const Simple = {
+  render: Template,
+
+  args: {
+    id: 41,
+    defaultSelected: [227, 214, 1672],
+    selectable: true,
+    resettable: true,
+  },
 };
 
 export function Documentation() {

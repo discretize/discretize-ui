@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { APILanguageProvider } from '../../i18n';
 import Race from './Race';
@@ -9,15 +9,18 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Race>;
+} as Meta<typeof Race>;
 
-const Template: ComponentStory<typeof Race> = (args) => {
+const Template: StoryFn<typeof Race> = (args) => {
   return <Race {...args} />;
 };
 
-export const Simple = Template.bind({});
-Simple.args = {
-  name: 'Asura',
+export const Simple = {
+  render: Template,
+
+  args: {
+    name: 'Asura',
+  },
 };
 
 export function Languages() {

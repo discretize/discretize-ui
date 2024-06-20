@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import TooltipContainer from './TooltipContainer';
 
@@ -8,9 +8,9 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof TooltipContainer>;
+} as Meta<typeof TooltipContainer>;
 
-const Template: ComponentStory<typeof TooltipContainer> = (args) => {
+const Template: StoryFn<typeof TooltipContainer> = (args) => {
   return (
     <>
       <TooltipContainer {...args}>
@@ -26,4 +26,6 @@ const Template: ComponentStory<typeof TooltipContainer> = (args) => {
   );
 };
 
-export const Simple = Template.bind({});
+export const Simple = {
+  render: Template,
+};
