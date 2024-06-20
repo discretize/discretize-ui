@@ -1,21 +1,22 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import { APILanguageProvider } from '../../i18n';
 import CommonEffect from './CommonEffect';
 
-export default {
+const meta: Meta<typeof CommonEffect> = {
   title: 'Components/CommonEffect',
   component: CommonEffect,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof CommonEffect>;
+};
+export default meta;
 
 const Template: StoryFn<typeof CommonEffect> = (args) => {
   return <CommonEffect {...args} />;
 };
 
-export const Simple = {
+export const Simple: StoryObj<typeof CommonEffect> = {
   render: Template,
 
   args: {

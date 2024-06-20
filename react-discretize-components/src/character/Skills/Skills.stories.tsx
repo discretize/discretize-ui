@@ -1,20 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Skills from './Skills';
 
-export default {
+const meta: Meta<typeof Skills> = {
   title: 'Character/Skills',
   component: Skills,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof Skills>;
+};
+export default meta;
 
 const Template: StoryFn<typeof Skills> = (args) => {
   return <Skills {...args} />;
 };
 
-export const Example = {
+export const Example: StoryObj<typeof Skills> = {
   render: Template,
 
   args: {

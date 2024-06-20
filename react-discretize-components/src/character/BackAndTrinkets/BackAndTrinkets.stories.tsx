@@ -1,20 +1,21 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import BackAndTrinkets from './BackAndTrinkets';
 
-export default {
+const meta: Meta<typeof BackAndTrinkets> = {
   title: 'Character/BackAndTrinkets',
   component: BackAndTrinkets,
-  argTypes: {
-    className: { control: false },
-  },
-} as Meta<typeof BackAndTrinkets>;
+  // argTypes: {
+  //   className: { control: false },
+  // },
+};
+export default meta;
 
 const Template: StoryFn<typeof BackAndTrinkets> = (args) => {
   return <BackAndTrinkets {...args} />;
 };
 
-export const Example = {
+export const Example: StoryObj<typeof BackAndTrinkets> = {
   render: Template,
 
   args: {
@@ -43,7 +44,7 @@ export const Example = {
   },
 };
 
-export const NoIds = {
+export const NoIds: StoryObj<typeof BackAndTrinkets> = {
   render: Template,
 
   args: {

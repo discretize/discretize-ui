@@ -1,14 +1,15 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import IconWithText from './IconWithText';
 
-export default {
+const meta: Meta<typeof IconWithText> = {
   title: 'Helper Components/IconWithText',
   component: IconWithText,
   argTypes: {
     className: { control: false },
   },
-} as Meta<typeof IconWithText>;
+};
+export default meta;
 
 const Template: StoryFn<typeof IconWithText> = (args) => {
   return (
@@ -18,7 +19,7 @@ const Template: StoryFn<typeof IconWithText> = (args) => {
   );
 };
 
-export const BaneSignet = {
+export const BaneSignet: StoryObj<typeof IconWithText> = {
   render: Template,
 
   args: {
@@ -27,7 +28,7 @@ export const BaneSignet = {
   },
 };
 
-export const Loading = {
+export const Loading: StoryObj<typeof IconWithText> = {
   render: Template,
 
   args: {
