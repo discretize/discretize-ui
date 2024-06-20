@@ -1,24 +1,9 @@
-import clsx from 'clsx';
 import { CSSProperties, ReactElement } from 'react';
 import { useSpecialization } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import Progress from '../Progress/Progress';
 import css from './TraitLine.module.css';
-import TraitLineConnector, {
-  TraitLineConnectorProps,
-} from './TraitLineConnector';
 import TraitLineInternal from './TraitLineInternal';
-
-// eslint-disable-next-line react/prop-types
-const renderTraitLineConnector = ({
-  className,
-  props,
-}: {
-  className?: string;
-  props?: TraitLineConnectorProps;
-}) => (
-  <TraitLineConnector className={clsx(className, css.connector)} {...props} />
-);
 
 export interface TraitLineProps {
   id: number;
