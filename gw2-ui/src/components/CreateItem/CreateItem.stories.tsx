@@ -23,7 +23,7 @@ const meta: Meta<typeof CreateItem> = {
       control: { type: 'select', options: Object.values(ITEM_RARITIES) },
     },
     text: {
-      control: { type: 'string' },
+      control: { type: 'text' },
     },
   },
 };

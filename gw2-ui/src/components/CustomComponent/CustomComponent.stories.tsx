@@ -7,7 +7,7 @@ const meta: Meta<typeof CustomComponent> = {
   argTypes: {
     className: { control: false },
     text: {
-      control: { type: 'string' },
+      control: { type: 'text' },
     },
   },
 };
