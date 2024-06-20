@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { APILanguageProvider } from '../../i18n/';
 import Profession from './Profession';
@@ -9,20 +9,26 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Profession>;
+} as Meta<typeof Profession>;
 
-const Template: ComponentStory<typeof Profession> = (args) => {
+const Template: StoryFn<typeof Profession> = (args) => {
   return <Profession {...args} />;
 };
 
-export const Firebrand = Template.bind({});
-Firebrand.args = {
-  name: 'Firebrand',
+export const Firebrand = {
+  render: Template,
+
+  args: {
+    name: 'Firebrand',
+  },
 };
 
-export const invalid = Template.bind({});
-invalid.args = {
-  name: 'AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh' as any,
+export const invalid = {
+  render: Template,
+
+  args: {
+    name: 'AAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh' as any,
+  },
 };
 
 export function Translated() {

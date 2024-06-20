@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import Spinner from './Spinner';
 
 export default {
   title: 'Helper Components/Spinner',
   component: Spinner,
-} as ComponentMeta<typeof Spinner>;
+} as Meta<typeof Spinner>;
 
-const Template: ComponentStory<typeof Spinner> = (args) => {
+const Template: StoryFn<typeof Spinner> = (args) => {
   return (
     <>
       Spinner with inline {args.inline ? 'enabled' : 'disabled'}
@@ -16,4 +16,6 @@ const Template: ComponentStory<typeof Spinner> = (args) => {
   );
 };
 
-export const Simple = Template.bind({});
+export const Simple = {
+  render: Template,
+};

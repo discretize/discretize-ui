@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import ControlEffect from './ControlEffect';
 import { APILanguageProvider } from '../../i18n';
@@ -9,15 +9,18 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof ControlEffect>;
+} as Meta<typeof ControlEffect>;
 
-const Template: ComponentStory<typeof ControlEffect> = (args) => {
+const Template: StoryFn<typeof ControlEffect> = (args) => {
   return <ControlEffect {...args} />;
 };
 
-export const Daze = Template.bind({});
-Daze.args = {
-  name: 'Daze',
+export const Daze = {
+  render: Template,
+
+  args: {
+    name: 'Daze',
+  },
 };
 
 export function Translated() {

@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import WikiLink from './WikiLink';
 
@@ -8,9 +8,9 @@ export default {
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof WikiLink>;
+} as Meta<typeof WikiLink>;
 
-const Template: ComponentStory<typeof WikiLink> = (args) => {
+const Template: StoryFn<typeof WikiLink> = (args) => {
   return (
     <>
       <WikiLink {...args} />
@@ -18,7 +18,10 @@ const Template: ComponentStory<typeof WikiLink> = (args) => {
   );
 };
 
-export const BaneSignet = Template.bind({});
-BaneSignet.args = {
-  to: 'Bane Signet',
+export const BaneSignet = {
+  render: Template,
+
+  args: {
+    to: 'Bane Signet',
+  },
 };
