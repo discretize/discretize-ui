@@ -1,6 +1,5 @@
 import '@discretize/typeface-menomonia';
-import '@discretize/gw2-ui-new/dist/default_style.css';
-import '@discretize/gw2-ui-new/dist/index.css';
+import '../../gw2-ui/src/default_style.css';
 import 'typeface-fira-mono';
 import 'typeface-muli';
 import 'typeface-raleway';
