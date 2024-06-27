@@ -14,9 +14,9 @@ module.exports = {
     options: {},
   },
   webpackFinal: async (config, { configType }) => {
-    if (configType !== 'DEVELOPMENT') {
-      return config;
-    }
+    // if (configType !== 'DEVELOPMENT') {
+    //   return config;
+    // }
     config.resolve = { ...config.resolve };
     config.resolve.alias = { ...config.resolve.alias };
     config.resolve.alias['@discretize/gw2-ui-new'] = path.resolve(
