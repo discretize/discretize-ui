@@ -11,16 +11,20 @@ const meta: Meta<typeof CreateItem> = {
   argTypes: {
     className: { control: false },
     type: {
-      control: { type: 'select', options: Object.values(ITEM_TYPE_NAMES) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_TYPE_NAMES),
     },
     stat: {
-      control: { type: 'select', options: Object.values(ITEM_STAT_NAMES) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_STAT_NAMES),
     },
     weight: {
-      control: { type: 'select', options: Object.values(ITEM_ARMOR_WEIGHTS) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_ARMOR_WEIGHTS),
     },
     rarity: {
-      control: { type: 'select', options: Object.values(ITEM_RARITIES) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_RARITIES),
     },
     text: {
       control: { type: 'text' },
