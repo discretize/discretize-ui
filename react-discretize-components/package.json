@@ -21,7 +21,8 @@
     "build-storybook": "storybook build",
     "build": "node ../build.mjs",
     "//serve": "rollup -c -w --environment BUILD:development",
-    "prepublish": "pnpm build"
+    "prepublish": "pnpm build",
+    "build-storybook-root": "pnpm build-storybook --output-dir ../storybook-static/react-discretize-components"
   },
   "dependencies": {
     "@discretize/gw2-ui-new": "workspace:^",

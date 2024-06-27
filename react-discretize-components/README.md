@@ -1,5 +1,9 @@
 react-discretize-components contains shared react components for all discretize projects. For example usage please refer to the gear-optimizer repository. At the moment this library will only work in gatsby projects.
 
+## Storybook
+
+An interactive [storybook.js](https://storybook.js.org/) workshop demonstrating all of the exported components is available at [marcustyphoon.github.io/discretize-ui/react-discretize-components](https://marcustyphoon.github.io/discretize-ui/react-discretize-components).
+
 ## Installation
 
 ```

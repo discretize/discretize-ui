@@ -11,6 +11,10 @@ gw2-ui-new is a fork of [gw2-ui](https://github.com/ManuelHaag/gw2-ui) by Manuel
 
 ---
 
+## Storybook
+
+An interactive [storybook.js](https://storybook.js.org/) workshop demonstrating all of the exported components is available at [marcustyphoon.github.io/discretize-ui/gw2-ui](https://marcustyphoon.github.io/discretize-ui/gw2-ui).
+
 ## Installation
 
 Prerequisites:
