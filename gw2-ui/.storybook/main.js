@@ -12,8 +12,10 @@ module.exports = {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},
   },
-
   docs: {},
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
 };
 
 function getAbsolutePath(value) {
