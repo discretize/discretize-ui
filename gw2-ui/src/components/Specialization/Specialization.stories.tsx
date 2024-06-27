@@ -1,20 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Specialization from './Specialization';
 
-export default {
+const meta: Meta<typeof Specialization> = {
   title: 'Components/Specialization',
   component: Specialization,
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Specialization>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof Specialization> = (args) => {
+const Template: StoryFn<typeof Specialization> = (args) => {
   return <Specialization {...args} />;
 };
 
-export const Simple = Template.bind({});
-Simple.args = {
-  id: 42,
+export const Simple: StoryObj<typeof Specialization> = {
+  render: Template,
+
+  args: {
+    id: 42,
+  },
 };

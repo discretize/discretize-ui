@@ -1,20 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import TextDivider from './TextDivider';
 
-export default {
+const meta: Meta<typeof TextDivider> = {
   title: 'Components/TextDivider',
   component: TextDivider,
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof TextDivider>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof TextDivider> = (args) => {
+const Template: StoryFn<typeof TextDivider> = (args) => {
   return <TextDivider {...args} />;
 };
 
-export const Example = Template.bind({});
-Example.args = {
-  text: 'Test',
+export const Example: StoryObj<typeof TextDivider> = {
+  render: Template,
+
+  args: {
+    text: 'Test',
+  },
 };

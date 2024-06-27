@@ -29,9 +29,9 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && pnpm storybook",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "dev": "pnpm storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "build": "node ../build.mjs",
     "api-typecheck": "node ./api_typecheck.mjs",
     "generate-from-api": "node --experimental-fetch ./generate_from_api.mjs",

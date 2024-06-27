@@ -1,20 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import HelperIcon from './HelperIcon';
 
-export default {
+const meta: Meta<typeof HelperIcon> = {
   title: 'Components/HelperIcon',
   component: HelperIcon,
-  argTypes: {
-    className: { control: false },
-  },
-} as ComponentMeta<typeof HelperIcon>;
+  // argTypes: {
+  //   className: { control: false },
+  // },
+};
+export default meta;
 
-const Template: ComponentStory<typeof HelperIcon> = (args) => {
+const Template: StoryFn<typeof HelperIcon> = (args) => {
   return <HelperIcon {...args} />;
 };
 
-export const Example = Template.bind({});
-Example.args = {
-  text: 'Test-Helper',
+export const Example: StoryObj<typeof HelperIcon> = {
+  render: Template,
+
+  args: {
+    text: 'Test-Helper',
+  },
 };

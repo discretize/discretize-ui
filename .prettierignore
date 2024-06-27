@@ -6,3 +6,4 @@ pnpm-workspace.yaml
 /gw2-ui/src/gw2api/typeguards/failures/
 /gw2apicache/
 /remark-mdx-gw2ui/mapping/*.json
+**/storybook-static

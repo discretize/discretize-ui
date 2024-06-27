@@ -1,40 +1,48 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import ITEM_ARMOR_WEIGHTS from '../../builder/itemArmorWeights';
 import ITEM_RARITIES from '../../builder/itemRarities';
 import ITEM_STAT_NAMES from '../../builder/itemStatNames';
 import ITEM_TYPE_NAMES from '../../builder/itemTypeNames';
 import CreateItem from './CreateItem';
 
-export default {
+const meta: Meta<typeof CreateItem> = {
   title: 'Components/CreateItem',
   component: CreateItem,
   argTypes: {
     className: { control: false },
     type: {
-      control: { type: 'select', options: Object.values(ITEM_TYPE_NAMES) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_TYPE_NAMES),
     },
     stat: {
-      control: { type: 'select', options: Object.values(ITEM_STAT_NAMES) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_STAT_NAMES),
     },
     weight: {
-      control: { type: 'select', options: Object.values(ITEM_ARMOR_WEIGHTS) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_ARMOR_WEIGHTS),
     },
     rarity: {
-      control: { type: 'select', options: Object.values(ITEM_RARITIES) },
+      control: { type: 'select' },
+      options: Object.values(ITEM_RARITIES),
     },
     text: {
-      control: { type: 'string' },
+      control: { type: 'text' },
     },
   },
-} as ComponentMeta<typeof CreateItem>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof CreateItem> = (args) => {
+const Template: StoryFn<typeof CreateItem> = (args) => {
   return <CreateItem {...args} />;
 };
 
-export const Single = Template.bind({});
-Single.args = {
-  type: 'Mace',
-  stat: 'Berserker',
-  upgrades: [86303, 86303],
+export const Single: StoryObj<typeof CreateItem> = {
+  render: Template,
+
+  args: {
+    type: 'Mace',
+    stat: 'Berserker',
+    upgrades: [86303, 86303],
+  },
 };

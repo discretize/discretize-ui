@@ -1,20 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Boon from './Boon';
 
-export default {
+const meta: Meta<typeof Boon> = {
   title: 'Components/Boon',
   component: Boon,
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Boon>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof Boon> = (args) => {
+const Template: StoryFn<typeof Boon> = (args) => {
   return <Boon {...args} />;
 };
 
-export const BoonMight = Template.bind({});
-BoonMight.args = {
-  name: 'Might',
+export const BoonMight: StoryObj<typeof Boon> = {
+  render: Template,
+
+  args: {
+    name: 'Might',
+  },
 };
