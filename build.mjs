@@ -138,7 +138,6 @@ async function build(package_name) {
         'typeface-raleway',
         // for globals
         '@mui/material',
-        '@mui/icons-material',
         '@mui/styles',
         '@mui/material/styles',
         '@emotion/react',
