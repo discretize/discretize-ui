@@ -1,6 +1,6 @@
 {
   "name": "@discretize/globals",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "MUI dependencies, global variables, theme related stuff",
   "author": "gw2princeps",
   "license": "MIT",
@@ -20,17 +20,14 @@
     "prepublish": "pnpm build"
   },
   "dependencies": {
-    "@mui/icons-material": "^5.10.9",
-    "@mui/material": "^5.10.13",
-    "@mui/styles": "^5.10.10",
-    "classnames": "^2.3.1",
-    "tss-react": "^4.4.4"
+    "@mui/material": "^5.15.20",
+    "@mui/styles": "^5.15.20",
+    "tss-react": "^4.9.10"
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "typescript": "^4.4.4"
+    "react": "^18.3.1"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^18.0.0"
   }
 }

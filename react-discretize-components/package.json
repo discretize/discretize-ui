@@ -1,6 +1,6 @@
 {
   "name": "@discretize/react-discretize-components",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "The source repo for common react components of discretize projects",
   "author": "gw2princeps",
   "license": "MIT",
@@ -25,16 +25,15 @@
   "dependencies": {
     "@discretize/gw2-ui-new": "workspace:^",
     "@discretize/typeface-menomonia": "workspace:^",
-    "classnames": "^2.3.1",
+    "classnames": "^2.5.1",
     "typeface-fira-mono": "^0.0.72",
     "typeface-muli": "^1.1.3",
-    "typeface-raleway": "^0.0.75"
+    "typeface-raleway": "^1.1.13"
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "typescript": "^4.4.4"
+    "react": "^18.3.1"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^18.0.0"
   }
 }
