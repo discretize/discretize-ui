@@ -22,7 +22,7 @@ module.exports = {
     config.resolve.alias['@discretize/gw2-ui-new'] = path.resolve(
       path.join(__dirname, '..', '..', 'gw2-ui', 'src', 'index'),
     );
-    console.log(config);
+    // console.log(config);
     return config;
   },
   docs: {},
