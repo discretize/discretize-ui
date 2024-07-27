@@ -224,10 +224,9 @@ const findMatchWithFallback = (props) => {
     const statsId =
       itemstatMapping.find(({ name }) => name === affix).ids || {};
     if (statsId !== undefined) {
-      const sid = statsId[0];
       return {
         id: fallback,
-        sid,
+        sid: statsId[0],
         affix,
         type,
       };

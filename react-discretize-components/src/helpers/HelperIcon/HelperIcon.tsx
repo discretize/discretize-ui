@@ -5,14 +5,16 @@ import classes from './HelperIcon.module.css';
 export interface HelperIconProps {
   text: string;
   fontSize?: string;
+  style?: React.CSSProperties;
 }
-const HelperIcon = ({ text, fontSize }: HelperIconProps) => {
+const HelperIcon = ({ text, fontSize, style }: HelperIconProps) => {
   return (
     <Tooltip content={text}>
       <span>
         <svg
           style={{
             fontSize: fontSize || '1.4rem',
+            ...style,
           }}
           className={classes.svg}
           viewBox="0 0 24 24"

@@ -8,8 +8,10 @@
   margin-top: 12px;
   margin-bottom: 12px;
   border-radius: 0;
-  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
-    0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+  box-shadow:
+    0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 5px 8px 0px rgb(0 0 0 / 14%),
+    0px 1px 14px 0px rgb(0 0 0 / 12%);
 }
 .assumedBuffs {
   display: flex;
@@ -19,18 +21,27 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  isolation: isolate;
 }
 .side {
   display: flex;
   flex: 0 0 250px;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 1;
 }
 .middle {
   display: flex;
-  flex: 0.7 0.2 300px;
+  flex: 0.7 0.2;
   flex-direction: column;
   justify-content: space-between;
+}
+.middle > img {
+  width: max(100%, 450px);
+  left: 50%;
+  top: 33%;
+  position: relative;
+  transform: translate(-50%, -50%);
 }
 .skillsLegends {
   max-width: 390px;

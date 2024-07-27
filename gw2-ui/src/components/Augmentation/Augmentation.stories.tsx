@@ -1,20 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Augmentation from './Augmentation';
 
-export default {
+const meta: Meta<typeof Augmentation> = {
   title: 'Components/Augmentation',
   component: Augmentation,
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Augmentation>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof Augmentation> = (args) => {
+const Template: StoryFn<typeof Augmentation> = (args) => {
   return <Augmentation {...args} />;
 };
 
-export const God = Template.bind({});
-God.args = {
-  name: 'Mist Attunement 4',
+export const God: StoryObj<typeof Augmentation> = {
+  render: Template,
+
+  args: {
+    name: 'Mist Attunement 4',
+  },
 };

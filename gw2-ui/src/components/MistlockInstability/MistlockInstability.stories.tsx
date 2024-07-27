@@ -1,20 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import MistlockInstability from './MistlockInstability';
 
-export default {
+const meta: Meta<typeof MistlockInstability> = {
   title: 'Components/MistlockInstability',
   component: MistlockInstability,
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof MistlockInstability>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof MistlockInstability> = (args) => {
+const Template: StoryFn<typeof MistlockInstability> = (args) => {
   return <MistlockInstability {...args} />;
 };
 
-export const Simple = Template.bind({});
-Simple.args = {
-  name: 'Adrenaline Rush',
+export const Simple: StoryObj<typeof MistlockInstability> = {
+  render: Template,
+
+  args: {
+    name: 'Adrenaline Rush',
+  },
 };

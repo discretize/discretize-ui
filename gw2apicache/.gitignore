@@ -1,5 +1,5 @@
 # This directory contains a cache of the GW2 API for debugging purposes.
-# You can populate it with yarn generate-api-cache
+# You can populate it with pnpm generate-api-cache
 # But you probably don't need it.
 *
 !.gitignore

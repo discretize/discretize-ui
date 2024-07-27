@@ -2165,6 +2165,12 @@ export const missing_skills: Record<
       'Launch a grappling hook to pull yourself in the targeted direction. Consumes ammunition.',
     facts: [
       {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 1 / 4,
+      },
+      {
         icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
         text: 'Range',
         type: 'Range',
@@ -2179,7 +2185,14 @@ export const missing_skills: Record<
     professions: [],
     description:
       'Deploy a makeshift parachute to slow your fall. Consumes ammunition.',
-    facts: [],
+    facts: [
+      {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 1,
+      },
+    ],
   },
   69438: {
     categories: [],
@@ -2189,6 +2202,12 @@ export const missing_skills: Record<
     description:
       'Fire a concussive charge to provide an extra boost. Guaranteed to be 100% safe. Consumes ammunition.',
     facts: [
+      {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 1,
+      },
       {
         text: 'Combo Finisher',
         type: 'ComboFinisher',
@@ -2213,10 +2232,135 @@ export const missing_skills: Record<
       'Fire a magical light source at target location. Bounces off walls and ceilings. Sticks to level surfaces. Does not require ammunition.',
     facts: [
       {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 1,
+      },
+      {
         icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
         text: 'Range',
         type: 'Range',
         value: 10000,
+      },
+    ],
+  },
+  16318: {
+    categories: [],
+    name: 'Lifeguard',
+    icon: 'https://wiki.guildwars2.com/images/d/db/Lamp_Bond.png',
+    professions: [],
+    description: 'Consumes the light to heal yourself and nearby allies.',
+    facts: [
+      {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 10,
+      },
+      {
+        icon: 'https://wiki.guildwars2.com/images/thumb/f/f3/Healing.png/20px-Healing.png',
+        text: 'Healing',
+        type: 'AttributeAdjust',
+        target: 'Healing',
+        value: 5000,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 1200,
+      },
+    ],
+  },
+  16288: {
+    categories: ['Transform'],
+    name: 'Echo',
+    icon: 'https://wiki.guildwars2.com/images/7/71/Echo_%28Dolphin_form%29.png',
+    professions: [],
+    description: 'Reveal hidden krait nearby.',
+    facts: [
+      {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 6,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 1500,
+      },
+    ],
+  },
+  16291: {
+    categories: ['Transform'],
+    name: 'Rush',
+    icon: 'https://wiki.guildwars2.com/images/9/9f/Rush_%28Dolphin_form%29.png',
+    professions: [],
+    description:
+      'Gain a burst of speed. Passing through revealed water spirals reduces the recharge of this skill.',
+    facts: [
+      {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 30,
+      },
+      {
+        text: 'Apply Buff/Condition',
+        type: 'Buff',
+        icon: 'https://wiki.guildwars2.com/images/thumb/7/7a/Swiftness_%28effect%29.png/20px-Swiftness_%28effect%29.png',
+        duration: 2.5,
+        status: 'Swiftness',
+        description: '+33% Movement Speed.',
+      },
+    ],
+  },
+  16312: {
+    categories: ['Transform'],
+    name: 'Stealth',
+    icon: 'https://wiki.guildwars2.com/images/a/af/Ghostbore_Powder_Blast.png',
+    professions: [],
+    description:
+      'Use the currents to obscure your position. Passing through revealed water spirals reduces the recharge of this skill.',
+    facts: [
+      {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 30,
+      },
+      {
+        text: 'Apply Buff/Condition',
+        type: 'Buff',
+        icon: 'https://wiki.guildwars2.com/images/8/81/Transformation_%28Mystic_Forge_effect%29.png',
+        duration: 3,
+        status: 'Dolphin Stealth',
+        description: 'Use currents to obscure your location.',
+      },
+    ],
+  },
+  16310: {
+    categories: ['Transform'],
+    name: 'Retrieve Ally',
+    icon: 'https://wiki.guildwars2.com/images/1/19/Retrieve_Ally.png',
+    professions: [],
+    description:
+      'Revives and teleports nearby downed dolphin ally to your location',
+    facts: [
+      {
+        text: 'Recharge',
+        type: 'Recharge',
+        icon: 'https://render.guildwars2.com/file/D767B963D120F077C3B163A05DC05A7317D7DB70/156651.png',
+        value: 10,
+      },
+      {
+        icon: 'https://render.guildwars2.com/file/0AAB34BEB1C9F4A25EC612DDBEACF3E20B2810FA/156666.png',
+        text: 'Range',
+        type: 'Range',
+        value: 1000,
       },
     ],
   },

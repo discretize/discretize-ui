@@ -80,7 +80,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
   Ranger: { de: 'Waldläufer', es: 'Guardabosques', fr: 'Rôdeur', zh: '游侠' },
   Reaper: { de: 'Schnitter', es: 'Segador', fr: 'Faucheur', zh: '夺魂者' },
   Renegade: { de: 'Abtrünniger', es: 'Renegado', fr: 'Renégat', zh: '龙魂使' },
-  Revenant: { de: 'Widergänger', es: 'Retornado', zh: '魂武者' },
+  Revenant: { de: 'Wiedergänger', es: 'Retornado', zh: '魂武者' },
   Scourge: { de: 'Pestbringer', es: 'Azotador', fr: 'Fléau', zh: '灾厄师' },
   Scrapper: {
     de: 'Schrotter',

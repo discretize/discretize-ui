@@ -1,16 +1,17 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import IconWithText from './IconWithText';
 
-export default {
+const meta: Meta<typeof IconWithText> = {
   title: 'Helper Components/IconWithText',
   component: IconWithText,
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof IconWithText>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof IconWithText> = (args) => {
+const Template: StoryFn<typeof IconWithText> = (args) => {
   return (
     <>
       <IconWithText {...args} />
@@ -18,13 +19,19 @@ const Template: ComponentStory<typeof IconWithText> = (args) => {
   );
 };
 
-export const BaneSignet = Template.bind({});
-BaneSignet.args = {
-  icon: 'https://render.guildwars2.com/file/9FF294A9CC489D4FE8CED934A0C4359964B67443/103638.png',
-  text: 'Bane Signet',
+export const BaneSignet: StoryObj<typeof IconWithText> = {
+  render: Template,
+
+  args: {
+    icon: 'https://render.guildwars2.com/file/9FF294A9CC489D4FE8CED934A0C4359964B67443/103638.png',
+    text: 'Bane Signet',
+  },
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  loading: true,
+export const Loading: StoryObj<typeof IconWithText> = {
+  render: Template,
+
+  args: {
+    loading: true,
+  },
 };

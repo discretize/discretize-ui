@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as process from 'process';
 import * as child_process from 'child_process';
 import * as url from 'url';
-import rimraf from 'rimraf';
+import { rimrafSync } from 'rimraf';
 
 // rollup and plugins
 import { rollup } from 'rollup';
@@ -12,7 +12,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import dts from 'rollup-plugin-dts';
 import postcss_url from 'postcss-url';
 import { babel } from '@rollup/plugin-babel';
@@ -71,7 +71,7 @@ async function build(package_name) {
   const OUTPUT_PATH = path.resolve(package_path, package_json.module);
   const OUTPUT_DIR = path.dirname(OUTPUT_PATH);
 
-  rimraf.sync(OUTPUT_DIR);
+  rimrafSync(OUTPUT_DIR);
 
   // Step 1: Run tsc
   // This checks all types and emits declaration files
@@ -94,7 +94,9 @@ async function build(package_name) {
           preventAssignment: true,
           'process.env.NODE_ENV': JSON.stringify('production'),
         }),
-        resolve(),
+        resolve({
+          extensions: ['.mjs', '.js', '.jsx', '.json', '.node', '.ts', '.tsx'],
+        }),
         commonjs(),
         typescript({
           filterRoot: package_path,
@@ -129,6 +131,8 @@ async function build(package_name) {
         // Do not bundle react or other common dependencies
         'react',
         'react-dom',
+        // Dependencies of gw2-ui
+        '@floating-ui/react-dom',
         // These are deps of react-discretize-components
         'classnames',
         'typeface-fira-mono',
@@ -136,7 +140,6 @@ async function build(package_name) {
         'typeface-raleway',
         // for globals
         '@mui/material',
-        '@mui/icons-material',
         '@mui/styles',
         '@mui/material/styles',
         '@emotion/react',
@@ -183,7 +186,7 @@ async function build(package_name) {
     }
   }
   // Clean the unbundled type files
-  rimraf.sync(path.join(OUTPUT_DIR, 'types'));
+  rimrafSync(path.join(OUTPUT_DIR, 'types'));
 
   // Step 3: copy over the default style
   try {

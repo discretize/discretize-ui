@@ -1,9 +1,9 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Item from './Item';
 import ITEM_STAT_NAMES from '../../builder/itemStatNames';
 
-export default {
+const meta: Meta<typeof Item> = {
   title: 'Components/Item',
   component: Item,
   argTypes: {
@@ -12,16 +12,20 @@ export default {
     },
     className: { control: false },
   },
-} as ComponentMeta<typeof Item>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof Item> = (args) => {
+const Template: StoryFn<typeof Item> = (args) => {
   return <Item {...args} />;
 };
 
-export const Single = Template.bind({});
-Single.args = {
-  id: 75187,
-  upgrades: [86303, 86303],
+export const Single: StoryObj<typeof Item> = {
+  render: Template,
+
+  args: {
+    id: 75187,
+    upgrades: [86303, 86303],
+  },
 };
 
 export function Multiple() {
