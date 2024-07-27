@@ -20,9 +20,9 @@
     "prepublish": "pnpm build"
   },
   "dependencies": {
-    "@mui/material": "^5.15.20",
-    "@mui/styles": "^5.15.20",
-    "tss-react": "^4.9.10"
+    "@mui/material": "^5.16.5",
+    "@mui/styles": "^5.16.5",
+    "tss-react": "^4.9.11"
   },
   "devDependencies": {
     "react": "^18.3.1"
