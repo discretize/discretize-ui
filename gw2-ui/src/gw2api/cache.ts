@@ -1,25 +1,6 @@
 import { APILanguage } from '../i18n';
 
-interface ApiRoute {
-  name: string;
-  is_available: boolean;
-  create_url: (path: string, ids: number[], language: APILanguage) => string;
-}
-
-const api_routes: ApiRoute[] = [
-  {
-    name: 'Official GW2 API',
-    is_available: true,
-    create_url: (path, ids, language) =>
-      `https://api.guildwars2.com${path}?ids=${ids.join(',')}&lang=${language}`,
-  },
-  {
-    name: 'Princeps API Mirror',
-    is_available: true,
-    create_url: (path, ids, language) =>
-      `https://api.princeps.biz${path}?ids=${ids.join(',')}&lang=${language}`,
-  },
-];
+const GW2_API_URL = 'https://api.guildwars2.com';
 
 // An error occurred when connecting to the API
 export const API_ERROR_NETWORK = 500;
@@ -240,10 +221,13 @@ export default class APICache<T extends { id: Id }> {
     try {
       ids.sort((a, b) => a - b);
 
-      const api_route =
-        api_routes.find(({ is_available }) => is_available) ?? api_routes[0];
-
-      const url = api_route.create_url(this.path, ids, this.language);
+      const url =
+        GW2_API_URL +
+        this.path +
+        '?ids=' +
+        ids.join(',') +
+        '&lang=' +
+        this.language;
       const res = await fetch(url, FETCH_OPTIONS);
 
       if (res.status === 503) {
