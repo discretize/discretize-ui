@@ -29,7 +29,7 @@ module.exports = {
     },
   },
   plugins: ['react', '@typescript-eslint'],
-  ignorePatterns: ['.storybook', 'dist'],
+  ignorePatterns: ['.storybook', 'dist', 'storybook-static'],
   rules: {
     'lines-between-class-members': 'off',
     // Re-enable i++, iterators and continue

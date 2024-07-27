@@ -1,21 +1,25 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import React from 'react';
 import Legends from './Legends';
 
-export default {
+const meta: Meta<typeof Legends> = {
   title: 'Character/Legends',
   component: Legends,
   argTypes: {
     className: { control: false },
   },
-} as ComponentMeta<typeof Legends>;
+};
+export default meta;
 
-const Template: ComponentStory<typeof Legends> = (args) => {
+const Template: StoryFn<typeof Legends> = (args) => {
   return <Legends {...args} />;
 };
 
-export const Example = Template.bind({});
-Example.args = {
-  legend1Id: 28419,
-  legend2Id: 62891,
+export const Example: StoryObj<typeof Legends> = {
+  render: Template,
+
+  args: {
+    legend1Id: 28419,
+    legend2Id: 62891,
+  },
 };
