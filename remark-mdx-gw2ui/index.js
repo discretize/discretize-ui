@@ -3,7 +3,9 @@ import resolve from './map-gw2-ids.js';
 
 function attrToProps(attr) {
   const props = {};
-  attr && attr.forEach((attr) => (props[attr.name] = attr.value));
+  if (attr) {
+    attr.forEach((attr) => (props[attr.name] = attr.value));
+  }
   return props;
 }
 
