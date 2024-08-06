@@ -131,8 +131,6 @@ async function build(package_name) {
         // Do not bundle react or other common dependencies
         'react',
         'react-dom',
-        // Dependencies of gw2-ui
-        '@floating-ui/react-dom',
         // These are deps of react-discretize-components
         'classnames',
         'typeface-fira-mono',
