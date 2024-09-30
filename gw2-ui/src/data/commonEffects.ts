@@ -4,6 +4,7 @@ export type CommonEffectTypes =
   | 'Blight'
   | 'Exposed'
   | 'Invulnerability'
+  | 'Reinforced Armor'
   | 'Revealed'
   | 'Rigorous Certainty'
   | 'Stealth'
@@ -17,6 +18,7 @@ const COMMONEFFECTS: CommonEffectTypes[] = [
   'Blight',
   'Exposed',
   'Invulnerability',
+  'Reinforced Armor',
   'Revealed',
   'Rigorous Certainty',
   'Stealth',

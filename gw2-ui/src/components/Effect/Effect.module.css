@@ -257,6 +257,9 @@
 .imageCommonInvulnerability {
   background-image: url(../../assets/icons/Common/Invulnerability.png);
 }
+.imageCommonReinforcedArmor {
+  background-image: url(../../assets/icons/Common/ReinforcedArmor.png);
+}
 .imageCommonRevealed {
   background-image: url(../../assets/icons/Common/Revealed.png);
 }
