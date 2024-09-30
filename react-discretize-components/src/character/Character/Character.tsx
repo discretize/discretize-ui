@@ -18,6 +18,7 @@ import classes from './Character.module.css';
 
 export interface CharacterProps {
   attributes: AttributesProps;
+  unbuffedAttributes?: AttributesProps & { info?: string };
   assumedBuffs: AssumedBuffsProps;
   armor: ArmorProps;
   weapon: WeaponsProps;
@@ -37,6 +38,7 @@ export interface CharacterProps {
 }
 const Character = ({
   attributes,
+  unbuffedAttributes,
   assumedBuffs,
   armor,
   weapon,
@@ -49,6 +51,7 @@ const Character = ({
   disableSwitch = false,
 }: CharacterProps) => {
   const [showInfusions, setShowInfusions] = React.useState(false);
+  const [showUnbuffed, setShowUnbuffed] = React.useState(false);
 
   const Section = ({
     children,
@@ -66,11 +69,17 @@ const Character = ({
   return (
     <>
       <div className={classes.top}>
-        <div>
+        <div className={classes.switches}>
           {!disableSwitch && (
             <Switch
               onChange={(e) => setShowInfusions(e.target.checked)}
               label="Show Infusions"
+            />
+          )}
+          {unbuffedAttributes && (
+            <Switch
+              onChange={(e) => setShowUnbuffed(e.target.checked)}
+              label="Simulate Unbuffed"
             />
           )}
         </div>
@@ -106,7 +115,14 @@ const Character = ({
 
         <div className={classes.side}>
           <Section>
-            <Attributes {...attributes} />
+            <Attributes
+              {...((showUnbuffed && unbuffedAttributes) || attributes)}
+            />
+            {showUnbuffed && unbuffedAttributes && unbuffedAttributes.info && (
+              <div className={classes.unbuffedInfo}>
+                <HelperIcon text={unbuffedAttributes.info} />
+              </div>
+            )}
           </Section>
 
           <Section>
