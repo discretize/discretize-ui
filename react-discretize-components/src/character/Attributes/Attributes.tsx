@@ -7,19 +7,52 @@ const roundTwo = (num: number) => Math.round(num * 100) / 100;
 
 const attributes: {
   name: AttributeType;
-  text?: (value?: number) => string;
+  text: (value?: number) => string;
 }[] = [
-  { name: 'Power' },
-  { name: 'Toughness' },
-  { name: 'Vitality' },
-  { name: 'Precision' },
-  { name: 'Ferocity' },
-  { name: 'Condition Damage' },
-  { name: 'Expertise' },
-  { name: 'Concentration' },
-  { name: 'Agony Resistance' },
-  { name: 'Armor' },
-  { name: 'Health' },
+  {
+    name: 'Power',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Toughness',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Vitality',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Precision',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Ferocity',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Condition Damage',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Expertise',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Concentration',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Agony Resistance',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Armor',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
+  {
+    name: 'Health',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
   {
     name: 'Critical Chance',
     text: (value?: number) => `${roundTwo((value || 0) * 100)}%`,
@@ -28,7 +61,10 @@ const attributes: {
     name: 'Critical Damage',
     text: (value?: number) => `${roundOne((value || 0) * 100)}%`,
   },
-  { name: 'Healing Power' },
+  {
+    name: 'Healing Power',
+    text: (value?: number) => `${roundTwo(value || 0)}`,
+  },
   {
     name: 'Condition Duration',
     text: (value?: number) => `${roundTwo((value || 0) * 100)}%`,
@@ -53,11 +89,11 @@ const Attributes = ({ profession, data }: AttributesProps) => {
     <div className={classes.wrapper}>
       <div className={classes.half}>
         <ul className={classes.list}>
-          {attributes.slice(0, 9).map(({ name }) => (
+          {attributes.slice(0, 9).map(({ name, text }) => (
             <li key={name} className={classes.gridItem}>
               <Attribute
                 name={name}
-                text={`${data[name]}`}
+                text={text ? text(data[name]) : `${data[name]}`}
                 className={classes.gw2Item}
               />
             </li>
