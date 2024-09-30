@@ -1,6 +1,8 @@
 .top {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 .section {
   background-color: var(--rdc-character-background-color);
