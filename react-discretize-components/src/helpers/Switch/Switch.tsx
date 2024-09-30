@@ -9,12 +9,11 @@ export interface SwitchProps {
 const Switch = ({ onChange, label }: SwitchProps) => {
   return (
     <span className={classes.wrapper}>
-      <label className={classes.toggle} htmlFor="myToggle">
+      <label className={classes.toggle}>
         <input
           className={classes.toggle__input}
           name=""
           type="checkbox"
-          id="myToggle"
           onChange={onChange}
         />
         <div className={classes.toggle__fill}></div>
