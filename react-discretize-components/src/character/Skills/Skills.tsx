@@ -5,11 +5,11 @@ import useMediaQuery from '../../helpers/useMediaQuery';
 import defaultClasses from '../../styles/defaultStyles.module.css';
 import classes from './Skills.module.css';
 export interface SkillsProps {
-  healId?: number;
-  utility1Id?: number;
-  utility2Id?: number;
-  utility3Id?: number;
-  eliteId?: number;
+  healId?: number | '';
+  utility1Id?: number | '';
+  utility2Id?: number | '';
+  utility3Id?: number | '';
+  eliteId?: number | '';
   className?: string;
 }
 

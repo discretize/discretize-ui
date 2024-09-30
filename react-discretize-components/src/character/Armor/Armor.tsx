@@ -44,7 +44,7 @@ type Affix = React.ComponentProps<typeof Item>['stat'];
 type Weights = React.ComponentProps<typeof CreateItem>['weight'];
 type Rarity = React.ComponentProps<typeof CreateItem>['rarity'];
 
-export interface ArmorProps {
+export type ArmorProps = Partial<{
   weight?: Weights;
   showInfusions?: boolean;
   helmId?: number;
@@ -89,7 +89,7 @@ export interface ArmorProps {
   bootsAffix: Affix;
   bootsRune?: string;
   bootsRarity?: Rarity;
-}
+}>;
 
 const Armor = ({
   weight,

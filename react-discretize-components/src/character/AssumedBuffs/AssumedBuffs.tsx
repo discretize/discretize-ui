@@ -17,7 +17,7 @@ export interface AssumedBuffsProps {
     | { type: 'Skill'; gw2id: number; id?: undefined }
     | { type: 'Trait'; gw2id: number; id?: undefined }
     | { type: 'CommonEffect'; id: string; gw2id?: undefined }
-    | { type: 'Item'; id?: undefined; gw2id: number }
+    | { type: 'Item'; id?: string; gw2id: number }
   )[];
   className?: string;
 }
