@@ -1,14 +1,14 @@
-import GW2ApiArmorDetails from './armor';
-import GW2ApiBackItemDetails from './backItem';
-import GW2ApiBagDetails from './bag';
-import GW2ApiConsumableDetails from './consumable';
-import GW2ApiGatheringToolDetails from './gatheringTool';
-import Gw2ApiGizmoDetails from './gizmo';
-import GW2ApiMiniatureDetails from './miniature';
-import GW2ApiSalvageKitDetails from './salvageKit';
-import GW2ApiTrinketDetails from './trinket';
-import GW2ApiWeaponTypeDetails from './weapon';
-import GW2ApiUpgradeComponentDetails from './upgradeComponent';
+import type GW2ApiArmorDetails from './armor';
+import type GW2ApiBackItemDetails from './backItem';
+import type GW2ApiBagDetails from './bag';
+import type GW2ApiConsumableDetails from './consumable';
+import type GW2ApiGatheringToolDetails from './gatheringTool';
+import type Gw2ApiGizmoDetails from './gizmo';
+import type GW2ApiMiniatureDetails from './miniature';
+import type GW2ApiSalvageKitDetails from './salvageKit';
+import type GW2ApiTrinketDetails from './trinket';
+import type GW2ApiWeaponTypeDetails from './weapon';
+import type GW2ApiUpgradeComponentDetails from './upgradeComponent';
 
 type Keys =
   | keyof GW2ApiArmorDetails

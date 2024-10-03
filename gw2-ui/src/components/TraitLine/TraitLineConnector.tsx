@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ReactElement, useRef, useEffect } from 'react';
+import { type ReactElement, useRef, useEffect } from 'react';
 import css from './TraitlLineConnector.module.css';
 
 type Direction = 'up' | 'mid' | 'down';

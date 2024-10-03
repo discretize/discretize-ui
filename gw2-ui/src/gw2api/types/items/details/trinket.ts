@@ -1,6 +1,6 @@
-import GW2ApiTrinketType from '../../common/trinketType';
-import GW2ApiInfixUpgrade from './common/infixUpgrade';
-import GW2ApiInflusionSlot from './common/infusionSlot';
+import type GW2ApiTrinketType from '../../common/trinketType';
+import type GW2ApiInfixUpgrade from './common/infixUpgrade';
+import type GW2ApiInflusionSlot from './common/infusionSlot';
 
 interface GW2ApiTrinketDetails {
   type: GW2ApiTrinketType;

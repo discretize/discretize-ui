@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { type ReactElement, type ReactNode } from 'react';
 import { capitalize } from '../../helpers/capitalize';
 import css from './DetailsText.module.css';
 

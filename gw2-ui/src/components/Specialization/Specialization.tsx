@@ -1,9 +1,9 @@
-import { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import { useSpecialization } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import SpecializationInternal, {
-  SpecializationInternalProps,
+  type SpecializationInternalProps,
 } from './SpecializationInternal';
 
 const SPECIALIZATION_ERROR_NAMES = {

@@ -1,5 +1,5 @@
-import GW2ApiFactComboFieldType from './comboFieldType';
-import GW2ApiAttribute from './attribute';
+import type GW2ApiFactComboFieldType from './comboFieldType';
+import type GW2ApiAttribute from './attribute';
 
 type Optional<T, S extends keyof T> = Omit<T, S> & Partial<Pick<T, S>>;
 

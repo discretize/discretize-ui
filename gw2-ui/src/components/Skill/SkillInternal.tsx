@@ -1,12 +1,14 @@
 import clsx from 'clsx';
-import { CSSProperties, ReactElement } from 'react';
-import { ProfessionTypes } from '../../data/professions';
-import GW2ApiSkill from '../../gw2api/types/skills/skill';
+import { type CSSProperties, type ReactElement } from 'react';
+import { type ProfessionTypes } from '../../data/professions';
+import type GW2ApiSkill from '../../gw2api/types/skills/skill';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
-import IconWithText, { IconWithTextProps } from '../IconWithText/IconWithText';
+import IconWithText, {
+  type IconWithTextProps,
+} from '../IconWithText/IconWithText';
 import professioncss from '../Profession/professions.module.css';
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
-import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import Tooltip, { type TooltipProps } from '../Tooltip/Tooltip';
+import WikiLink, { type WikiLinkProps } from '../WikiLink/WikiLink';
 
 export interface SkillInternalProps
   extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {

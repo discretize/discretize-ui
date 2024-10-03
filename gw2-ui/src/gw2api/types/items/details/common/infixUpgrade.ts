@@ -1,4 +1,4 @@
-import GW2ApiAttribute from '../../../common/attribute';
+import type GW2ApiAttribute from '../../../common/attribute';
 
 export interface GW2ApiInfixUpgradeAttribute {
   attribute: GW2ApiAttribute;

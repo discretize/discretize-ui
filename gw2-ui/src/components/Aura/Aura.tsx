@@ -1,6 +1,6 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 import Effect from '../Effect/Effect';
-import { AuraTypes } from '../../data/auras';
+import { type AuraTypes } from '../../data/auras';
 import { translate, useAPILanguage } from '../../i18n';
 import {
   TRANSLATIONS_AURAS,

@@ -1,4 +1,4 @@
-import GW2ApiContainerType from '../../common/containerType';
+import type GW2ApiContainerType from '../../common/containerType';
 
 interface GW2ApiContainerDetails {
   type: GW2ApiContainerType;

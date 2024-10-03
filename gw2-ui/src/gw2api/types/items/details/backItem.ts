@@ -1,5 +1,5 @@
-import GW2ApiInfixUpgrade from './common/infixUpgrade';
-import GW2ApiInflusionSlot from './common/infusionSlot';
+import type GW2ApiInfixUpgrade from './common/infixUpgrade';
+import type GW2ApiInflusionSlot from './common/infusionSlot';
 
 interface GW2ApiBackItemDetails {
   infusion_slots: GW2ApiInflusionSlot[];

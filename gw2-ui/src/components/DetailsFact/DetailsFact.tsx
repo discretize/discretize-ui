@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import GW2ApiFact from '../../gw2api/types/common/fact';
+import type GW2ApiFact from '../../gw2api/types/common/fact';
 import apiAttributes from '../../helpers/apiAttributes';
 import formatDuration from '../../helpers/formatDuration';
 import classes from './DetailsFact.module.css';

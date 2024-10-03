@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import { useSkill } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
-import SkillInternal, { SkillInternalProps } from './SkillInternal';
+import SkillInternal, { type SkillInternalProps } from './SkillInternal';
 
 export interface SkillProps extends Omit<SkillInternalProps, 'data'> {
   id: number;

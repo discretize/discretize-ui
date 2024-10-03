@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 import css from './Coin.module.css';
 import Icon from '../Icon/Icon';
 import clsx from 'clsx';

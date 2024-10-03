@@ -1,6 +1,6 @@
-import ITEM_STAT_NAMES, { ItemStatName } from './itemStatNames';
-import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes';
-import ATTRIBUTES, { Attribute } from './attributes';
+import ITEM_STAT_NAMES, { type ItemStatName } from './itemStatNames';
+import ITEM_STAT_TYPES, { type ItemStatType } from './itemStatTypes';
+import ATTRIBUTES, { type Attribute } from './attributes';
 
 export type RegularItemBonuses = [[Attribute], [Attribute, Attribute]];
 export type MixedItemBonuses = [[Attribute, Attribute], [Attribute, Attribute]];

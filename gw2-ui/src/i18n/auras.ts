@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { AuraTypes } from '../data/auras';
+import { type Translation } from '.';
+import { type AuraTypes } from '../data/auras';
 
 export const TRANSLATIONS_AURAS: Record<AuraTypes, Translation> = {
   Chaos: { de: 'Chaos' },

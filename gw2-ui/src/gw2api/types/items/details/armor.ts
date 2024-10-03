@@ -1,7 +1,7 @@
-import GW2ApiArmorSlotType from '../../common/armorSlotType';
-import GW2ApiWeightClass from '../../common/weightClass';
-import GW2ApiInfixUpgrade from './common/infixUpgrade';
-import GW2ApiInflusionSlot from './common/infusionSlot';
+import type GW2ApiArmorSlotType from '../../common/armorSlotType';
+import type GW2ApiWeightClass from '../../common/weightClass';
+import type GW2ApiInfixUpgrade from './common/infixUpgrade';
+import type GW2ApiInflusionSlot from './common/infusionSlot';
 
 interface GW2ApiArmorDetails {
   type: GW2ApiArmorSlotType;

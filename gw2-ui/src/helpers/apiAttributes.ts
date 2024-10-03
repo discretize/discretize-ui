@@ -1,4 +1,4 @@
-import GW2ApiAttribute from '../gw2api/types/common/attribute';
+import type GW2ApiAttribute from '../gw2api/types/common/attribute';
 
 const apiAttributes: Record<GW2ApiAttribute | 'None', string> = {
   Power: 'Power',

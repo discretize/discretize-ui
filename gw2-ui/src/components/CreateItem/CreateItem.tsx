@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
-import { CSSProperties, ReactElement } from 'react';
-import createItem, { CreateItemProps } from '../../builder/createItem';
+import { type CSSProperties, type ReactElement } from 'react';
+import createItem, { type CreateItemProps } from '../../builder/createItem';
 import { useItems } from '../../gw2api/hooks';
-import GW2ApiItem from '../../gw2api/types/items/item';
+import type GW2ApiItem from '../../gw2api/types/items/item';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import Tooltip from '../Tooltip/Tooltip';

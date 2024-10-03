@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
-import { ReactElement } from 'react';
-import { GW2ApiFactBuff } from '../../gw2api/types/common/fact';
-import { GW2ApiInfixUpgradeAttribute } from '../../gw2api/types/items/details/common/infixUpgrade';
-import GW2ApiItem from '../../gw2api/types/items/item';
+import { type ReactElement } from 'react';
+import { type GW2ApiFactBuff } from '../../gw2api/types/common/fact';
+import { type GW2ApiInfixUpgradeAttribute } from '../../gw2api/types/items/details/common/infixUpgrade';
+import type GW2ApiItem from '../../gw2api/types/items/item';
 import apiAttributes from '../../helpers/apiAttributes';
 import Coin from '../Coin/Coin';
 import DetailsFact from '../DetailsFact/DetailsFact';

@@ -1,9 +1,9 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 
 import Effect from '../Effect/Effect';
 
 import consumableEffects, {
-  ConsumableEffectTypes,
+  type ConsumableEffectTypes,
 } from '../../data/consumableEffects';
 
 export interface ConsumableEffectProps {

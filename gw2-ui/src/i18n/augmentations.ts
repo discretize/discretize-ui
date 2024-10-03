@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { AugmentationsTypes } from '../data/augmentations';
+import { type Translation } from '.';
+import { type AugmentationsTypes } from '../data/augmentations';
 
 export const TRANSLATIONS_AUGMENTATIONS: Record<
   AugmentationsTypes,

@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { ControlEffectTypes } from '../data/controlEffects';
+import { type Translation } from '.';
+import { type ControlEffectTypes } from '../data/controlEffects';
 
 export const CONTROL_EFFECTS: Record<ControlEffectTypes, Translation> = {
   Daze: {

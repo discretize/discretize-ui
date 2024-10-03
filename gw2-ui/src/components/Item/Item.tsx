@@ -1,9 +1,9 @@
-import { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import { useItems } from '../../gw2api/hooks';
-import GW2ApiItem from '../../gw2api/types/items/item';
+import type GW2ApiItem from '../../gw2api/types/items/item';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
-import ItemInternal, { ItemInternalProps } from './ItemInternal';
+import ItemInternal, { type ItemInternalProps } from './ItemInternal';
 
 export interface ItemProps
   extends Omit<ItemInternalProps, 'dataItem' | 'dataUpgrades'> {

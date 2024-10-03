@@ -1,5 +1,5 @@
-import React, { CSSProperties, ReactElement } from 'react';
-import { BoonsTypes } from '../../data/boons';
+import React, { type CSSProperties, type ReactElement } from 'react';
+import { type BoonsTypes } from '../../data/boons';
 import { translate, useAPILanguage } from '../../i18n';
 import {
   TRANSLATIONS_BOONS,

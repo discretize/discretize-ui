@@ -1,8 +1,8 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 
 import Effect from '../Effect/Effect';
 
-import { ConditionTypes } from '../../data/conditions';
+import { type ConditionTypes } from '../../data/conditions';
 import { useTranslation } from '../../i18n';
 import { CONDITIONS, CONDITIONS_DESCRIPTIONS } from '../../i18n/conditions';
 

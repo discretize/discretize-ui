@@ -1,4 +1,4 @@
-import GW2ApiTrait from '../types/traits/trait';
+import type GW2ApiTrait from '../types/traits/trait';
 import { mapWithDescriptions } from './async';
 
 export function fixMissingTraitDescriptions(

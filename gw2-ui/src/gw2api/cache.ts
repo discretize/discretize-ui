@@ -1,4 +1,4 @@
-import { APILanguage } from '../i18n';
+import { type APILanguage } from '../i18n';
 
 const GW2_API_URL = 'https://api.guildwars2.com';
 

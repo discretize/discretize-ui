@@ -1,9 +1,9 @@
-import { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 
 import { useTrait } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
-import TraitInternal, { TraitInternalProps } from './TraitInternal';
+import TraitInternal, { type TraitInternalProps } from './TraitInternal';
 
 export interface TraitProps extends Omit<TraitInternalProps, 'data'> {
   id: number;

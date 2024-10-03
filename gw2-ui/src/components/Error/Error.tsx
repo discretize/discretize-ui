@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import React, { CSSProperties, ReactElement } from 'react';
-import { APILanguage, useAPILanguage } from '../../i18n';
+import React, { type CSSProperties, type ReactElement } from 'react';
+import { type APILanguage, useAPILanguage } from '../../i18n';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import IconWithText from '../IconWithText/IconWithText';
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
+import Tooltip, { type TooltipProps } from '../Tooltip/Tooltip';
 import css from './Error.module.css';
 
 type ErrorCode = number;

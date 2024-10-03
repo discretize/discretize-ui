@@ -1,4 +1,4 @@
-import GW2ApiSalvageKitType from '../../common/salvageKitType';
+import type GW2ApiSalvageKitType from '../../common/salvageKitType';
 
 interface GW2ApiSalvageKitDetails {
   type: GW2ApiSalvageKitType;

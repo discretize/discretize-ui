@@ -1,4 +1,4 @@
-import GW2ApiSkill from '../types/skills/skill';
+import type GW2ApiSkill from '../types/skills/skill';
 import { mapWithSkills } from './async';
 
 const MISSING_IDS = new Set([

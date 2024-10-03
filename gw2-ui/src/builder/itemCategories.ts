@@ -1,6 +1,8 @@
-import ITEM_CATEGORY_NAMES, { ItemCategoryName } from './itemCategoryNames';
-import ITEM_TYPE_NAMES, { ItemTypeNames } from './itemTypeNames';
-import ValueOf from './valueOf';
+import ITEM_CATEGORY_NAMES, {
+  type ItemCategoryName,
+} from './itemCategoryNames';
+import ITEM_TYPE_NAMES, { type ItemTypeNames } from './itemTypeNames';
+import type ValueOf from './valueOf';
 
 export type ItemCategory = ValueOf<ItemTypeNames>[];
 

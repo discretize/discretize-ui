@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 import css from './WikiLink.module.css';
 
 // https://wiki.guildwars2.com/wiki/Template:Language

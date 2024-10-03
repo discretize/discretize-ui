@@ -1,11 +1,11 @@
-import GW2ApiUpgradeComponentType from '../../common/upgradeComponentType';
+import type GW2ApiUpgradeComponentType from '../../common/upgradeComponentType';
 import {
-  GW2ApiOtherWeaponType,
-  GW2ApiWeaponTypeForItemDetails,
+  type GW2ApiOtherWeaponType,
+  type GW2ApiWeaponTypeForItemDetails,
 } from '../../common/weaponType';
-import GW2ApiArmorType from '../../common/armorType';
-import GW2ApiInfusionUpgradeFlag from '../../common/infusionUpgradeFlag';
-import GW2ApiInfixUpgrade from './common/infixUpgrade';
+import type GW2ApiArmorType from '../../common/armorType';
+import type GW2ApiInfusionUpgradeFlag from '../../common/infusionUpgradeFlag';
+import type GW2ApiInfixUpgrade from './common/infixUpgrade';
 
 export type GW2APiUpgradeComponentFlag =
   | Exclude<GW2ApiWeaponTypeForItemDetails, GW2ApiOtherWeaponType>

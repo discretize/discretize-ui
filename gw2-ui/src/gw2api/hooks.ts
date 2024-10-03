@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { APILanguage, useAPILanguage } from '../i18n';
+import { type APILanguage, useAPILanguage } from '../i18n';
 
-import APICache, { Id, Override } from './cache';
+import APICache, { type Id, type Override } from './cache';
 import {
   ITEM_OVERRIDES,
   SKILL_OVERRIDES,
   SPECIALIZATION_OVERRIDES,
   TRAIT_OVERRIDES,
 } from './overrides';
-import GW2ApiItem from './types/items/item';
-import GW2ApiSkill from './types/skills/skill';
-import GW2ApiSpecialization from './types/specialization/specialization';
-import GW2ApiTrait from './types/traits/trait';
+import type GW2ApiItem from './types/items/item';
+import type GW2ApiSkill from './types/skills/skill';
+import type GW2ApiSpecialization from './types/specialization/specialization';
+import type GW2ApiTrait from './types/traits/trait';
 
 function getCache<T extends { id: number }>(
   record: Partial<Record<APILanguage, APICache<T>>>,

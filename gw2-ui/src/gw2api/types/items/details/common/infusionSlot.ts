@@ -1,4 +1,4 @@
-import GW2ApiInfusionSlotFlag from '../../../common/infusionSlotFlag';
+import type GW2ApiInfusionSlotFlag from '../../../common/infusionSlotFlag';
 
 export interface GW2ApiInflusionSlot {
   flags: GW2ApiInfusionSlotFlag[];

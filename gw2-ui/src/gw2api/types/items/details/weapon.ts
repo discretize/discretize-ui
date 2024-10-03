@@ -1,7 +1,7 @@
-import GW2ApiDamageType from '../../common/damageType';
-import { GW2ApiWeaponTypeForItemDetails } from '../../common/weaponType';
-import GW2ApiInfixUpgrade from './common/infixUpgrade';
-import GW2ApiInflusionSlot from './common/infusionSlot';
+import type GW2ApiDamageType from '../../common/damageType';
+import { type GW2ApiWeaponTypeForItemDetails } from '../../common/weaponType';
+import type GW2ApiInfixUpgrade from './common/infixUpgrade';
+import type GW2ApiInflusionSlot from './common/infusionSlot';
 
 interface GW2ApiWeaponDetails {
   type: GW2ApiWeaponTypeForItemDetails;

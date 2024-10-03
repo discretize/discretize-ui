@@ -1,8 +1,8 @@
-import ITEM_CATEGORIES, { ItemCategoryName } from './itemCategoryNames';
-import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames';
-import ITEM_RARITIES, { ItemRarity } from './itemRarities';
-import ITEM_STAT_TYPES, { ItemStatType } from './itemStatTypes';
-import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights';
+import ITEM_CATEGORIES, { type ItemCategoryName } from './itemCategoryNames';
+import ITEM_TYPE_NAMES, { type ItemTypeName } from './itemTypeNames';
+import ITEM_RARITIES, { type ItemRarity } from './itemRarities';
+import ITEM_STAT_TYPES, { type ItemStatType } from './itemStatTypes';
+import ITEM_ARMOR_WEIGHTS, { type ItemArmorWeight } from './itemArmorWeights';
 
 export type ItemModifier = number;
 

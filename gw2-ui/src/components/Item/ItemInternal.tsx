@@ -1,16 +1,16 @@
 import clsx from 'clsx';
-import { CSSProperties, ReactElement } from 'react';
+import { type CSSProperties, type ReactElement } from 'react';
 import { createItem } from '../../builder';
-import { ItemStatName } from '../../builder/itemStatNames';
-import GW2ApiBackItemDetails from '../../gw2api/types/items/details/backItem';
-import GW2ApiArmorDetails from '../../gw2api/types/items/details/armor';
-import GW2ApiWeaponDetails from '../../gw2api/types/items/details/weapon';
-import GW2ApiItem from '../../gw2api/types/items/item';
+import { type ItemStatName } from '../../builder/itemStatNames';
+import type GW2ApiBackItemDetails from '../../gw2api/types/items/details/backItem';
+import type GW2ApiArmorDetails from '../../gw2api/types/items/details/armor';
+import type GW2ApiWeaponDetails from '../../gw2api/types/items/details/weapon';
+import type GW2ApiItem from '../../gw2api/types/items/item';
 import { capitalize } from '../../helpers/capitalize';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
-import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import Tooltip, { type TooltipProps } from '../Tooltip/Tooltip';
+import WikiLink, { type WikiLinkProps } from '../WikiLink/WikiLink';
 import css from './Item.module.css';
 import ItemDetails from './ItemDetails';
 

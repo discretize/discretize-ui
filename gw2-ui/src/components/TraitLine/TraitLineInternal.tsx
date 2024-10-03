@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import {
-  CSSProperties,
+  type CSSProperties,
   Fragment,
-  ReactElement,
+  type ReactElement,
   useEffect,
   useState,
 } from 'react';
-import GW2ApiSpecialization from '../../gw2api/types/specialization/specialization';
-import GW2ApiTrait from '../../gw2api/types/traits/trait';
+import type GW2ApiSpecialization from '../../gw2api/types/specialization/specialization';
+import type GW2ApiTrait from '../../gw2api/types/traits/trait';
 import Icon from '../Icon/Icon';
 import SpecializationTooltip from '../Specialization/SpecializationTooltip';
 import Tooltip from '../Tooltip/Tooltip';
@@ -17,7 +17,7 @@ import TraitComponent from '../Trait/TraitInternal';
 import css from './TraitLine.module.css';
 import TraitLineConnector, {
   Paths,
-  TraitLineConnectorProps,
+  type TraitLineConnectorProps,
 } from './TraitLineConnector';
 
 // eslint-disable-next-line react/prop-types

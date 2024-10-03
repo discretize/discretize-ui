@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { BoonsTypes } from '../data/boons';
+import { type Translation } from '.';
+import { type BoonsTypes } from '../data/boons';
 
 export const TRANSLATIONS_BOONS: Record<BoonsTypes, Translation> = {
   Aegis: { de: 'Aegis' },

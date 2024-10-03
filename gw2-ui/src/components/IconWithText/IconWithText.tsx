@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import React, { CSSProperties, MouseEventHandler } from 'react';
+import React, { type CSSProperties, type MouseEventHandler } from 'react';
 
-import Icon, { IconProps } from '../Icon/Icon';
-import Progress, { ProgressProps } from '../Progress/Progress';
+import Icon, { type IconProps } from '../Icon/Icon';
+import Progress, { type ProgressProps } from '../Progress/Progress';
 import css from './IconWithText.module.css';
 
 export interface IconWithTextProps {

@@ -1,5 +1,9 @@
 import clsx from 'clsx';
-import React, { CSSProperties, MouseEventHandler, ReactElement } from 'react';
+import React, {
+  type CSSProperties,
+  type MouseEventHandler,
+  type ReactElement,
+} from 'react';
 import Spinner from '../Spinner/Spinner';
 import css from './Icon.module.css';
 

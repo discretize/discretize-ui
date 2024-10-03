@@ -1,17 +1,16 @@
-import GW2ApiFact from '../common/fact';
+import type GW2ApiFact from '../common/fact';
 
-import GW2ApiTraitedFact from '../common/traited_fact';
-import GW2ApiProfession from '../common/profession';
+import type GW2ApiTraitedFact from '../common/traited_fact';
+import type GW2ApiProfession from '../common/profession';
 
-import GW2ApiWeaponType, {
-  GW2ApiOneHandedWeaponType,
-} from '../common/weaponType';
+import { type GW2ApiOneHandedWeaponType } from '../common/weaponType';
+import type GW2ApiWeaponType from '../common/weaponType';
 import {
-  GW2ApiSkillAttunement,
-  GW2ApiSkillCategory,
-  GW2ApiSkillFlag,
-  GW2ApiSkillSlot,
-  GW2ApiSkillType,
+  type GW2ApiSkillAttunement,
+  type GW2ApiSkillCategory,
+  type GW2ApiSkillFlag,
+  type GW2ApiSkillSlot,
+  type GW2ApiSkillType,
 } from './enums';
 
 export default interface GW2ApiSkill {

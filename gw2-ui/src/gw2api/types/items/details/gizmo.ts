@@ -1,4 +1,4 @@
-import GW2ApiGizmoType from '../../common/gizmoType';
+import type GW2ApiGizmoType from '../../common/gizmoType';
 
 interface GW2ApiGizmoDetails {
   type: GW2ApiGizmoType;

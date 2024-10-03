@@ -1,4 +1,4 @@
-import ValueOf from './valueOf';
+import type ValueOf from './valueOf';
 
 export type ItemCategoryName = ValueOf<ItemCategoryNames>;
 

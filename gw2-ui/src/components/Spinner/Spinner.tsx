@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import css from './Spinner.module.css';
 
 export interface SpinnerProps {

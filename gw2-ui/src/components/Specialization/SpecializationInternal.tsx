@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { CSSProperties, ReactElement } from 'react';
-import GW2ApiSpecialization from '../../gw2api/types/specialization/specialization';
+import { type CSSProperties, type ReactElement } from 'react';
+import type GW2ApiSpecialization from '../../gw2api/types/specialization/specialization';
 import IconWithText from '../IconWithText/IconWithText';
 import professioncss from '../Profession/professions.module.css';
 import Tooltip from '../Tooltip/Tooltip';

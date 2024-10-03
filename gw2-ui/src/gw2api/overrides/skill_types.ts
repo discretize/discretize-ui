@@ -1,4 +1,4 @@
-import GW2ApiSkill from '../types/skills/skill';
+import type GW2ApiSkill from '../types/skills/skill';
 
 export function fixSkillTypes(
   id: number,

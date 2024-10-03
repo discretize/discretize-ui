@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { ConditionTypes } from '../data/conditions';
+import { type Translation } from '.';
+import { type ConditionTypes } from '../data/conditions';
 
 export const CONDITIONS: Record<ConditionTypes, Translation> = {
   Bleeding: { de: 'Blutung' },

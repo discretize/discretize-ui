@@ -1,6 +1,7 @@
-import GW2ApiFact, { GW2ApiFactPercent } from '../types/common/fact';
-import GW2ApiSkill from '../types/skills/skill';
-import GW2ApiTrait from '../types/traits/trait';
+import { type GW2ApiFactPercent } from '../types/common/fact';
+import type GW2ApiFact from '../types/common/fact';
+import type GW2ApiSkill from '../types/skills/skill';
+import type GW2ApiTrait from '../types/traits/trait';
 
 function fix_fact(f: GW2ApiFact) {
   if (!f.type && 'percent' in f) {

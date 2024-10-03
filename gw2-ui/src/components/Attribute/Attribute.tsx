@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 
 import Tooltip from '../Tooltip/Tooltip';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
@@ -7,7 +7,7 @@ import IconWithText from '../IconWithText/IconWithText';
 import WikiLink from '../WikiLink/WikiLink';
 import Error from '../Error/Error';
 
-import { AttributeTypes } from '../../data/attributes';
+import { type AttributeTypes } from '../../data/attributes';
 import {
   TRANSLATIONS_ATTRIBUTES,
   TRANSLATIONS_ATTRIBUTE_DESCRIPTIONS,

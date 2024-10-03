@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 import PROFESSIONS, {
-  EliteSpecTypes,
-  ProfessionTypes,
+  type EliteSpecTypes,
+  type ProfessionTypes,
 } from '../../data/professions';
 import professioncss from './professions.module.css';
 import Error from '../Error/Error';

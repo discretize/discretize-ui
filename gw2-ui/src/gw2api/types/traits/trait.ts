@@ -1,5 +1,5 @@
-import GW2ApiFact from '../common/fact';
-import GW2ApiTraitedFact from '../common/traited_fact';
+import type GW2ApiFact from '../common/fact';
+import type GW2ApiTraitedFact from '../common/traited_fact';
 
 interface GW2ApiTraitBase {
   id: number;

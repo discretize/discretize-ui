@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
-import Error, { ErrorProps } from '../Error/Error';
-import { IconProps } from '../Icon/Icon';
+import Error, { type ErrorProps } from '../Error/Error';
+import { type IconProps } from '../Icon/Icon';
 import IconWithText from '../IconWithText/IconWithText';
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
-import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import Tooltip, { type TooltipProps } from '../Tooltip/Tooltip';
+import WikiLink, { type WikiLinkProps } from '../WikiLink/WikiLink';
 import css from './Effect.module.css';
 
 export interface EffectProps {

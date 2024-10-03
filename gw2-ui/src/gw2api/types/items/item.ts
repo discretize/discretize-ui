@@ -1,19 +1,19 @@
-import GW2ApiGameType from '../common/gameType';
-import { RacesTypes } from '../../../data/races';
-import { ProfessionTypes } from '../../../data/professions';
+import type GW2ApiGameType from '../common/gameType';
+import { type RacesTypes } from '../../../data/races';
+import { type ProfessionTypes } from '../../../data/professions';
 
-import GW2ApiArmorDetails from './details/armor';
-import GW2ApiBackItemDetails from './details/backItem';
-import GW2ApiBagDetails from './details/bag';
-import GW2ApiConsumableDetails from './details/consumable';
-import GW2ApiContainerDetails from './details/container';
-import GW2ApiGatheringToolDetails from './details/gatheringTool';
-import Gw2ApiGizmoDetails from './details/gizmo';
-import GW2ApiMiniatureDetails from './details/miniature';
-import GW2ApiSalvageKitDetails from './details/salvageKit';
-import GW2ApiTrinketDetails from './details/trinket';
-import GW2ApiWeaponDetails from './details/weapon';
-import GW2ApiUpgradeComponentDetails from './details/upgradeComponent';
+import type GW2ApiArmorDetails from './details/armor';
+import type GW2ApiBackItemDetails from './details/backItem';
+import type GW2ApiBagDetails from './details/bag';
+import type GW2ApiConsumableDetails from './details/consumable';
+import type GW2ApiContainerDetails from './details/container';
+import type GW2ApiGatheringToolDetails from './details/gatheringTool';
+import type Gw2ApiGizmoDetails from './details/gizmo';
+import type GW2ApiMiniatureDetails from './details/miniature';
+import type GW2ApiSalvageKitDetails from './details/salvageKit';
+import type GW2ApiTrinketDetails from './details/trinket';
+import type GW2ApiWeaponDetails from './details/weapon';
+import type GW2ApiUpgradeComponentDetails from './details/upgradeComponent';
 
 interface GW2ApiToolDetails {
   type: 'Salvage';

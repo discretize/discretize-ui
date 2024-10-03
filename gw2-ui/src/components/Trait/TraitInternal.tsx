@@ -1,15 +1,15 @@
-import { MouseEventHandler, ReactElement } from 'react';
+import { type MouseEventHandler, type ReactElement } from 'react';
 
 import clsx from 'clsx';
-import { CSSProperties } from 'react';
+import { type CSSProperties } from 'react';
 import SPECIALIZATIONS from '../../data/specializations';
-import GW2ApiTrait from '../../gw2api/types/traits/trait';
+import type GW2ApiTrait from '../../gw2api/types/traits/trait';
 import AbilityDetails from '../AbilityDetails/AbilityDetails';
 import IconWithText from '../IconWithText/IconWithText';
 import professioncss from '../Profession/professions.module.css';
-import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
+import Tooltip, { type TooltipProps } from '../Tooltip/Tooltip';
 import TooltipContainer from '../TooltipContainer/TooltipContainer';
-import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
+import WikiLink, { type WikiLinkProps } from '../WikiLink/WikiLink';
 import css from './Trait.module.css';
 
 export interface TraitInternalProps {

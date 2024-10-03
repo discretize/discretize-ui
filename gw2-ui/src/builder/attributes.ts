@@ -1,5 +1,5 @@
-import GW2ApiAttribute from '../gw2api/types/common/attribute';
-import ValueOf from './valueOf';
+import type GW2ApiAttribute from '../gw2api/types/common/attribute';
+import type ValueOf from './valueOf';
 
 export type Attribute = ValueOf<Attributes>;
 

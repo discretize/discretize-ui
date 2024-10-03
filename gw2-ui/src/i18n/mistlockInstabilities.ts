@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { MistlockInstabilityTypes } from '../data/mistlockInstabilities';
+import { type Translation } from '.';
+import { type MistlockInstabilityTypes } from '../data/mistlockInstabilities';
 
 export const MISTLOCK_INSTABILITIES: Record<
   MistlockInstabilityTypes,

@@ -1,8 +1,8 @@
-import React, { CSSProperties, ReactElement } from 'react';
+import React, { type CSSProperties, type ReactElement } from 'react';
 
 import Effect from '../Effect/Effect';
 
-import { ControlEffectTypes } from '../../data/controlEffects';
+import { type ControlEffectTypes } from '../../data/controlEffects';
 import {
   CONTROL_EFFECTS,
   CONTROL_EFFECTS_DESCRIPTIONS,

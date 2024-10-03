@@ -1,4 +1,4 @@
-import { ProfessionTypes } from '../../../data/professions';
+import { type ProfessionTypes } from '../../../data/professions';
 
 type GW2ApiProfession = ProfessionTypes;
 

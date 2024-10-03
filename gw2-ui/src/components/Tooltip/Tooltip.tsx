@@ -7,8 +7,8 @@ import {
 } from '@floating-ui/react-dom';
 
 import React, {
-  ReactElement,
-  ReactNode,
+  type ReactElement,
+  type ReactNode,
   useEffect,
   useLayoutEffect,
   useState,
@@ -18,7 +18,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer, {
-  TooltipContainerProps,
+  type TooltipContainerProps,
 } from '../TooltipContainer/TooltipContainer';
 import css from './Tooltip.module.css';
 

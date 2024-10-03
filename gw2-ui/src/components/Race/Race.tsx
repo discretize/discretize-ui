@@ -1,9 +1,9 @@
-import React, { CSSProperties, ReactElement } from 'react';
-import races, { RacesTypes } from '../../data/races';
+import React, { type CSSProperties, type ReactElement } from 'react';
+import races, { type RacesTypes } from '../../data/races';
 import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
-import WikiLink, { WikiLinkProps } from '../WikiLink/WikiLink';
-import { ErrorProps } from '../Error/Error';
+import WikiLink, { type WikiLinkProps } from '../WikiLink/WikiLink';
+import { type ErrorProps } from '../Error/Error';
 import clsx from 'clsx';
 import { capitalize } from '../../helpers/capitalize';
 import css from './Race.module.css';

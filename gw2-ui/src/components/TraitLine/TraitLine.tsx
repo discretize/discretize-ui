@@ -1,4 +1,4 @@
-import { CSSProperties, ReactElement } from 'react';
+import { type CSSProperties, type ReactElement } from 'react';
 import { useSpecialization } from '../../gw2api/hooks';
 import Error from '../Error/Error';
 import Progress from '../Progress/Progress';

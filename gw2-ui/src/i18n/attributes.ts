@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { AttributeTypes } from '../data/attributes';
+import { type Translation } from '.';
+import { type AttributeTypes } from '../data/attributes';
 
 export const TRANSLATIONS_ATTRIBUTES: Record<AttributeTypes, Translation> = {
   Power: { de: 'Kraft' },

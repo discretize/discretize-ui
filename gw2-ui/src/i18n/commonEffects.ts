@@ -1,5 +1,5 @@
-import { Translation } from '.';
-import { CommonEffectTypes } from '../data/commonEffects';
+import { type Translation } from '.';
+import { type CommonEffectTypes } from '../data/commonEffects';
 
 export const COMMON_EFFECTS: Record<CommonEffectTypes, Translation> = {
   Agony: { de: 'Qual' },

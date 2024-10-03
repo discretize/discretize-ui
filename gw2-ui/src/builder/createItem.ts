@@ -1,17 +1,19 @@
-import { Attribute } from './attributes';
-import ITEM_ARMOR_WEIGHTS, { ItemArmorWeight } from './itemArmorWeights';
+import { type Attribute } from './attributes';
+import ITEM_ARMOR_WEIGHTS, { type ItemArmorWeight } from './itemArmorWeights';
 import ITEM_CATEGORIES from './itemCategories';
-import ITEM_CATEGORY_NAMES, { ItemCategoryName } from './itemCategoryNames';
+import ITEM_CATEGORY_NAMES, {
+  type ItemCategoryName,
+} from './itemCategoryNames';
 import ITEM_MODIFIERS, {
-  ItemModifier,
-  ItemModifierAttribute,
-  ItemModifiers,
+  type ItemModifier,
+  type ItemModifierAttribute,
+  type ItemModifiers,
 } from './itemModifiers';
-import ITEM_RARITIES, { ItemRarity } from './itemRarities';
-import ITEM_STAT_NAMES, { ItemStatName } from './itemStatNames';
-import ITEM_STATS, { ItemStat } from './itemStats';
-import ITEM_TYPE_NAMES, { ItemTypeName } from './itemTypeNames';
-import GW2ApiInfixUpgrade from '../gw2api/types/items/details/common/infixUpgrade';
+import ITEM_RARITIES, { type ItemRarity } from './itemRarities';
+import ITEM_STAT_NAMES, { type ItemStatName } from './itemStatNames';
+import ITEM_STATS, { type ItemStat } from './itemStats';
+import ITEM_TYPE_NAMES, { type ItemTypeName } from './itemTypeNames';
+import type GW2ApiInfixUpgrade from '../gw2api/types/items/details/common/infixUpgrade';
 
 export interface GetModifiersProps {
   rarity: ItemRarity;
