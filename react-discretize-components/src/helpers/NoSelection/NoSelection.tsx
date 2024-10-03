@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Tooltip, Icon, DetailsHeader } from '@discretize/gw2-ui-new';
-import sizes, { IconSizes } from '../iconSizes';
+import sizes, { type IconSizes } from '../iconSizes';
 import classes from './NoSelection.module.css';
 
 export interface NoSelectionProps {

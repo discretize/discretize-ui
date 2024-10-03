@@ -1,17 +1,19 @@
 import classNames from 'classnames';
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { type CSSProperties, type ReactNode } from 'react';
 import HelperIcon from '../../helpers/HelperIcon/HelperIcon';
 import OwnSwitch from '../../helpers/Switch/Switch';
-import Armor, { ArmorProps } from '../Armor/Armor';
-import AssumedBuffs, { AssumedBuffsProps } from '../AssumedBuffs/AssumedBuffs';
-import Attributes, { AttributesProps } from '../Attributes/Attributes';
+import Armor, { type ArmorProps } from '../Armor/Armor';
+import AssumedBuffs, {
+  type AssumedBuffsProps,
+} from '../AssumedBuffs/AssumedBuffs';
+import Attributes, { type AttributesProps } from '../Attributes/Attributes';
 import BackAndTrinkets, {
-  BackAndTrinketsProps,
+  type BackAndTrinketsProps,
 } from '../BackAndTrinkets/BackAndTrinkets';
-import Consumables, { ConsumablesProps } from '../Consumables/Consumables';
-import Legends, { LegendsProps } from '../Legends/Legends';
-import Skills, { SkillsProps } from '../Skills/Skills';
-import Weapons, { WeaponsProps } from '../Weapons/Weapons';
+import Consumables, { type ConsumablesProps } from '../Consumables/Consumables';
+import Legends, { type LegendsProps } from '../Legends/Legends';
+import Skills, { type SkillsProps } from '../Skills/Skills';
+import Weapons, { type WeaponsProps } from '../Weapons/Weapons';
 import classes from './Character.module.css';
 
 export interface CharacterProps {
