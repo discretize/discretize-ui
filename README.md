@@ -12,7 +12,7 @@ Make sure your commit messages follow the [Conventional Commits specification](h
 
 #### Installing
 
-This project requires [Node.js](https://nodejs.org/) and [PNPM 8](https://pnpm.io/).
+This project requires [Node.js](https://nodejs.org/) and [PNPM 9](https://pnpm.io/).
 
 After cloning the repository, install all workspace dependencies:
 
