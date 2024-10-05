@@ -96,6 +96,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^4.6.2
         version: 4.6.2(eslint@8.57.1)
+      gh-pages:
+        specifier: ^6.1.1
+        version: 6.1.1
       postcss:
         specifier: ^8.4.47
         version: 8.4.47
@@ -158,9 +161,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      gh-pages:
-        specifier: ^6.1.1
-        version: 6.1.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
