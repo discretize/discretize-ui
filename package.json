@@ -4,11 +4,6 @@
   "version": "0.1",
   "license": "UNLICENSED",
   "private": true,
-  "workspaces": [
-    "gw2-ui",
-    "react-discretize-components",
-    "typeface-menomonia"
-  ],
   "scripts": {
     "build": "node ./build.mjs",
     "generate-api-cache": "node --experimental-fetch ./generate_api_cache.mjs"
