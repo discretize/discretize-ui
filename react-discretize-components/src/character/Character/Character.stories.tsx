@@ -115,6 +115,8 @@ export const Example: StoryObj<typeof Character> = {
         { gw2id: 14407, type: 'Skill' },
         { gw2id: 14405, type: 'Skill' },
         { gw2id: 14404, type: 'Skill' },
+        { id: 'reinforced-armor', type: 'CommonEffect' },
+        { id: 'jade-bot', gw2id: 96613, type: 'Item' },
       ],
     },
     skills: {

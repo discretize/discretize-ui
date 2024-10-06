@@ -7,6 +7,7 @@ export const COMMON_EFFECTS: Record<CommonEffectTypes, Translation> = {
   Blight: { de: 'Verschandelung' },
   Exposed: { de: 'Entblößt' },
   Invulnerability: { de: 'Unverwundbarkeit' },
+  'Reinforced Armor': { de: 'Verstärkte Rüstung' },
   Revealed: { de: 'Enthüllt' },
   'Rigorous Certainty': { de: 'Strikte Gewissheit' },
   Stealth: { de: 'Tarnung' },
@@ -38,6 +39,10 @@ export const COMMON_EFFECTS_DESCRIPTIONS: Record<
   Invulnerability: {
     en: 'Immune to conditions and damage.',
     de: 'Immun gegen Zustände und Schäden.',
+  },
+  'Reinforced Armor': {
+    en: 'Increases Health and Defense.',
+    de: 'Erhöht Lebenspunkte und Verteidigung.',
   },
   Revealed: { en: 'You cannot stealth', de: 'Tarnung nicht möglich' },
   'Rigorous Certainty': {
