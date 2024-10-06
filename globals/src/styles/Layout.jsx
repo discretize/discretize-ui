@@ -18,7 +18,7 @@ const Layout = ({ children, ContainerProps, disableContainer = false }) => {
             {children}
           </Box>
         </Container>
-      )) || <Box p={2}>{children}</Box>}
+      )) || <Box sx={{ p: 2 }}>{children}</Box>}
     </>
   );
 };
