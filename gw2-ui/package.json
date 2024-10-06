@@ -35,7 +35,7 @@
     "build": "node ../build.mjs",
     "api-typecheck": "node ./api_typecheck.mjs",
     "generate-from-api": "node --experimental-fetch ./generate_from_api.mjs",
-    "deploy-storybook": "gh-pages -d storybook-static",
+    "deploy-storybook": "node ../deploy-storybook.mjs",
     "prepublish": "pnpm build",
     "postpublish": "pnpm build-storybook && pnpm deploy-storybook && rimraf ./storybook-static "
   },

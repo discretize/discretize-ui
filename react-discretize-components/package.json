@@ -21,7 +21,9 @@
     "build-storybook": "storybook build",
     "build": "node ../build.mjs",
     "//serve": "rollup -c -w --environment BUILD:development",
-    "prepublish": "pnpm build"
+    "deploy-storybook": "node ../deploy-storybook.mjs",
+    "prepublish": "pnpm build",
+    "postpublish": "pnpm build-storybook && pnpm deploy-storybook && rimraf ./storybook-static "
   },
   "dependencies": {
     "@discretize/gw2-ui-new": "workspace:^",
