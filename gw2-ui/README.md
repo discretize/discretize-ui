@@ -1,4 +1,4 @@
-# gw2-ui
+# @discretize/gw2-ui-new [![npm](https://img.shields.io/npm/v/@discretize/gw2-ui-new.svg)](https://www.npmjs.com/package/@discretize/gw2-ui-new)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
