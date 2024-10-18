@@ -13,6 +13,9 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'dark',
+  },
 };
 
 // setup the MUI theming
