@@ -6,6 +6,7 @@
 }
 .switches {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
 }
 .unbuffedInfo {
@@ -28,7 +29,8 @@
 }
 .assumedBuffs {
   display: flex;
-  align-items: flex-end;
+  flex-shrink: 0;
+  align-items: center;
 }
 .wrapper {
   display: flex;
