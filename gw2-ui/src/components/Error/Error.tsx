@@ -22,7 +22,7 @@ export interface ErrorProps {
   disableText?: boolean;
   disableTooltip?: boolean;
   inline?: boolean;
-  tooltipProps?: TooltipProps;
+  tooltipProps?: Partial<TooltipProps>;
   className?: string;
   style?: CSSProperties;
 }

@@ -20,8 +20,8 @@ export interface CustomComponentProps
   text?: string;
   disableLink?: boolean;
   disableTooltip?: boolean;
-  tooltipProps?: TooltipProps;
-  wikiLinkProps?: WikiLinkProps;
+  tooltipProps?: Partial<TooltipProps>;
+  wikiLinkProps?: Partial<WikiLinkProps>;
 }
 
 const CustomComponent = (props: CustomComponentProps): ReactElement => {
