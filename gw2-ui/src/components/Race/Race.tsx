@@ -18,8 +18,8 @@ export interface RaceProps {
   disableText?: boolean;
   disableLink?: boolean;
   inline?: boolean;
-  wikiLinkProps?: WikiLinkProps;
-  errorProps?: ErrorProps;
+  wikiLinkProps?: Partial<WikiLinkProps>;
+  errorProps?: Partial<ErrorProps>;
   className?: string;
   style?: CSSProperties;
 }

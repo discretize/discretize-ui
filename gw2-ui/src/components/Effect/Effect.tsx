@@ -28,10 +28,10 @@ export interface EffectProps {
   disableLink?: boolean;
   disableIcon?: boolean;
   inline?: boolean;
-  tooltipProps?: TooltipProps;
-  wikiLinkProps?: WikiLinkProps;
-  errorProps?: ErrorProps;
-  iconProps?: IconProps;
+  tooltipProps?: Partial<TooltipProps>;
+  wikiLinkProps?: Partial<WikiLinkProps>;
+  errorProps?: Partial<ErrorProps>;
+  iconProps?: Partial<IconProps>;
   className?: string;
   style?: CSSProperties;
 }

@@ -26,8 +26,8 @@ export interface ItemInternalProps {
   disableLink?: boolean;
   disableTooltip?: boolean;
   inline?: boolean;
-  tooltipProps?: TooltipProps;
-  wikiLinkProps?: WikiLinkProps;
+  tooltipProps?: Partial<TooltipProps>;
+  wikiLinkProps?: Partial<WikiLinkProps>;
   upgrades?: ItemUpgrades;
   style?: CSSProperties;
   className?: string;

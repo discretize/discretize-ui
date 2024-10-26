@@ -11,7 +11,7 @@ export interface DetailsHeaderFlagProps {
 
 export interface DetailsHeaderProps {
   icon?: string;
-  iconProps?: IconProps;
+  iconProps?: Partial<IconProps>;
   titleClassName?: string;
   flags?: DetailsHeaderFlagProps[];
   className?: string;
