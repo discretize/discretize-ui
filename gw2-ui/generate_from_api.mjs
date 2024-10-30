@@ -94,7 +94,7 @@ async function run() {
     PROFESSIONS[id] = elite_specs;
   }
 
-  writeSource(
+  await writeSource(
     'data/professions.ts',
     `
 export type ProfessionTypes = ${as_type(PROFESSION_IDS)};
@@ -108,7 +108,7 @@ export default PROFESSIONS;
 `,
   );
 
-  writeSource(
+  await writeSource(
     'i18n/professions.ts',
     `
 import type { Translation } from '.';
@@ -127,7 +127,7 @@ export default TRANSLATIONS_PROFESSIONS;
       return [p.id, [...p.specializations].sort((a, b) => a - b)];
     }),
   );
-  writeSource(
+  await writeSource(
     'data/specializations.ts',
     `
 import type { ProfessionTypes } from './professions';
@@ -151,7 +151,7 @@ export default SPECIALIZATIONS;
     TRANSLATIONS_RACES[id] = translations;
   }
 
-  writeSource(
+  await writeSource(
     'data/races.ts',
     `
 export type RacesTypes = ${as_type(RACE_IDS)};
@@ -160,7 +160,7 @@ const RACES: RacesTypes[] = ${JSON.stringify(RACE_IDS.sort())};
 export default RACES;`,
   );
 
-  writeSource(
+  await writeSource(
     'i18n/races.ts',
     `
 import type { Translation } from '.';
@@ -194,7 +194,7 @@ export default TRANSLATIONS_RACES;
     }
     if (skill.slot) skill_slots.add(skill.slot);
   }
-  writeSource(
+  await writeSource(
     'gw2api/types/skills/enums.ts',
     `
 export type GW2ApiSkillCategory = ${as_type(skill_categories)};

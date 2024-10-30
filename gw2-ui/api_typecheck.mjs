@@ -120,7 +120,7 @@ ${e}
 */
 const _: ${typename} = ${JSON.stringify(o)};
         `;
-        writeSource(
+        await writeSource(
           `gw2api/typeguards/failures/failure_${('' + failures).padStart(
             3,
             '0',

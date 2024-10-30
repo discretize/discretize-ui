@@ -18,9 +18,9 @@ export async function initPrettier() {
     url.fileURLToPath(import.meta.url),
   );
 }
-export function writeSource(filepath, content) {
+export async function writeSource(filepath, content) {
   filepath = path.join('src', filepath);
-  let prettied = prettier.format(AUTOGENERATE_HEADER + content, {
+  let prettied = await prettier.format(AUTOGENERATE_HEADER + content, {
     ...prettier_options,
     filepath,
   });
