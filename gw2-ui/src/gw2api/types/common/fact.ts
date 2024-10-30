@@ -118,7 +118,7 @@ export interface GW2ApiFactUnblockable extends GW2ApiFactBase {
   value: boolean;
 }
 
-type GW2ApiFact =
+export type GW2ApiFact =
   | GW2ApiFactAttributeAdjust
   | GW2ApiFactBuff
   | GW2ApiFactBuffConversion
