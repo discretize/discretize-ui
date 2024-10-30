@@ -47,8 +47,8 @@
     "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ttypescript": "^1.5.15",
-    "typescript-is": "^0.19.0"
+    "ts-patch": "^3.2.1",
+    "typia": "^6.11.3"
   },
   "peerDependencies": {
     "react": "^18.0.0",
