@@ -159,13 +159,17 @@ export interface GW2ApiItemUpgradeComponent extends GW2ApiItemBase {
   type: 'UpgradeComponent';
   details: WrapInUndefined<GW2ApiUpgradeComponentDetails>;
 }
+export interface GW2ApiItemRelic extends GW2ApiItemBase {
+  type: 'Relic';
+  details?: undefined;
+}
 export interface GW2ApiItemWeapon extends GW2ApiItemBase {
   type: 'Weapon';
   details: WrapInUndefined<GW2ApiWeaponDetails>;
 }
 
 export interface GW2ApiItemJadeBot extends GW2ApiItemBase {
-  type: 'Quux' | 'Qux'; // Don't ask
+  type: 'JadeTechModule' | 'PowerCore';
   details?: undefined;
 }
 
@@ -185,6 +189,7 @@ type GW2ApiItem =
   | GW2ApiItemTrinket
   | GW2ApiItemTrophy
   | GW2ApiItemUpgradeComponent
+  | GW2ApiItemRelic
   | GW2ApiItemWeapon
   | GW2ApiItemJadeBot;
 export default GW2ApiItem;
