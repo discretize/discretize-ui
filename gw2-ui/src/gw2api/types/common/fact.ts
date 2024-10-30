@@ -12,7 +12,8 @@ interface GW2ApiFactBase {
 export interface GW2ApiFactAttributeAdjust extends GW2ApiFactBase {
   type: 'AttributeAdjust';
   value?: number;
-  target: GW2ApiAttribute | 'None'; // TODO: why does the API return None sometimes?
+  hit_count?: number;
+  target?: GW2ApiAttribute | 'None'; // TODO: why does the API return None sometimes?
 }
 
 export interface GW2ApiFactBuff extends GW2ApiFactBase {

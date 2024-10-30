@@ -31,7 +31,8 @@ type GW2ApiUnlockType =
   | 'SharedSlot'
   | 'GearLoadoutTab'
   | 'BuildLibrarySlot'
-  | 'BuildLoadoutTab';
+  | 'BuildLoadoutTab'
+  | 'JadeBotSkin';
 
 interface GW2ApiConsumableDetails {
   type: GW2ApiConsumableType;
