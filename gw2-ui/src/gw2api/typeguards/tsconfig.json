@@ -15,11 +15,7 @@
     "module": "esnext",
     "plugins": [
       {
-        "transform": "typescript-is/lib/transform-inline/transformer",
-        "shortCircuit": false,
-        "disallowSuperfluousObjectProperties": true,
-        "transformNonNullExpressions": true,
-        "emitDetailedErrors": "true"
+        "transform": "typia/lib/transform"
       }
     ]
   }
