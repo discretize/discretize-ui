@@ -1,13 +1,16 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as process from 'node:process';
+import * as module from 'node:module';
 import { writeSource } from '../node_api_helpers.mjs';
+
+const require = module.createRequire(import.meta.url);
 
 // rollup and plugins
 import { rollup } from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import ttypescript from 'ttypescript';
+const tsPatchCompiler = require('ts-patch/compiler');
 import typescript from '@rollup/plugin-typescript';
 
 const MAX_FAILURES = 20;
@@ -27,7 +30,7 @@ async function run() {
       resolve(),
       commonjs(),
       typescript({
-        typescript: ttypescript,
+        typescript: tsPatchCompiler,
         tsconfig: './src/gw2api/typeguards/tsconfig.json',
       }),
     ],
