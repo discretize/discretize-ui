@@ -48,7 +48,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-patch": "^3.2.1",
-    "typia": "^6.11.3"
+    "typia": "^6.12.2"
   },
   "peerDependencies": {
     "react": "^18.0.0",
