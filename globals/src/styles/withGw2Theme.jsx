@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { withTheme } from '@mui/styles';
+import '@mui/types';
 import gw2Styles from './professionThemes';
 
 const specializationAliases = {
