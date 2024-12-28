@@ -7,6 +7,7 @@ import { rimrafSync } from 'rimraf';
 
 // rollup and plugins
 import { rollup } from 'rollup';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import replace from '@rollup/plugin-replace';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -90,6 +91,10 @@ async function build(package_name) {
     let bundle = await rollup({
       input: path.join(package_path, 'src', 'index.ts'),
       plugins: [
+        peerDepsExternal({
+          packageJsonPath: path.join(package_path, 'package.json'),
+          includeDependencies: true,
+        }),
         replace({
           preventAssignment: true,
           'process.env.NODE_ENV': JSON.stringify('production'),
@@ -126,33 +131,6 @@ async function build(package_name) {
           ],
         }),
         terser(),
-      ],
-      external: [
-        // Do not bundle react or other common dependencies
-        'react',
-        'react-dom',
-        // Dependencies of gw2-ui
-        '@floating-ui/react-dom',
-        // These are deps of react-discretize-components
-        'classnames',
-        'typeface-fira-mono',
-        'typeface-muli',
-        'typeface-raleway',
-        // for globals
-        '@mui/material',
-        '@mui/styles',
-        '@mui/material/styles',
-        '@emotion/react',
-        '@emotion/styled',
-        'classnames',
-        'tss-react',
-        'tss-react/mui',
-
-        // Do not bundle our own packages, either
-        '@discretize/gw2-ui-new',
-        '@discretize/react-discretize-components',
-        '@discretize/globals',
-        '@discretize/typeface-menomonia',
       ],
     });
     await bundle.write({

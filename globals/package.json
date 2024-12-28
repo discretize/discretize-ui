@@ -22,13 +22,15 @@
   "devDependencies": {
     "@mui/material": "^6.3.0",
     "@mui/styles": "^6.3.0",
-    "react": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "tss-react": "^4.9.14"
   },
   "peerDependencies": {
     "@mui/material": "^5.0.0 || ^6.0.0",
     "@mui/styles": "^5.0.0 || ^6.0.0",
-    "react": "^18.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
     "tss-react": "^4.0.0"
   }
 }
