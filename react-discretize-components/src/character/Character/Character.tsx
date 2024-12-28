@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { type CSSProperties, type ReactNode } from 'react';
+import React, { type CSSProperties, type JSX, type ReactNode } from 'react';
 import HelperIcon from '../../helpers/HelperIcon/HelperIcon';
 import OwnSwitch from '../../helpers/Switch/Switch';
 import Armor, { type ArmorProps } from '../Armor/Armor';

@@ -28,7 +28,7 @@ export type TooltipProps = {
   containerProps?: Partial<Omit<TooltipContainerProps, 'children'>>;
   disabled?: boolean;
   // You must pass exactly one element as children, and it must accept (or forward) a ref.
-  children: ReactElement;
+  children: ReactElement<any>;
 };
 
 const FLOATING_MIDDLEWARE = [offset(5), flip(), shift()];
