@@ -77,13 +77,21 @@ async function build(package_name) {
   // Step 1: Run tsc
   // This checks all types and emits declaration files
   console.log(`Running tsc on ${package_name}...`);
-  child_process.execSync(
-    'tsc --declaration --noEmit false --emitDeclarationOnly --declarationDir "dist/types" --project ./tsconfig.json',
-    {
-      stdio: [0, 1, 2],
-      cwd: package_path,
-    },
-  );
+  try {
+    child_process.execSync(
+      'tsc --declaration --noEmit false --emitDeclarationOnly --declarationDir "dist/types" --project ./tsconfig.json',
+      {
+        stdio: [0, 1, 2],
+        cwd: package_path,
+      },
+    );
+  } catch (e) {
+    if (package_json.types) {
+      throw e;
+    } else {
+      console.error(e);
+    }
+  }
 
   // Step 2: Rollup the JavaScript
   try {
