@@ -20,11 +20,11 @@
     "prepublish": "pnpm build"
   },
   "devDependencies": {
-    "@mui/material": "^6.3.0",
-    "@mui/styles": "^6.3.0",
+    "@mui/material": "^6.4.2",
+    "@mui/styles": "^6.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tss-react": "^4.9.14"
+    "tss-react": "^4.9.15"
   },
   "peerDependencies": {
     "@mui/material": "^5.0.0 || ^6.0.0",
