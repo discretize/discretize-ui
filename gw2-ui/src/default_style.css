@@ -123,9 +123,9 @@
   --gw2-color-silver: #cbcac8;
   --gw2-color-copper: #a0673a;
 
-  --gw2-font: Menomonia, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  --gw2-font:
+    Menomonia, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --gw2-font-weight-body: 400;
   --gw2-font-weight-heading: 600;
   --gw2-line-height-body: 1.46429;
