@@ -51,10 +51,9 @@ export function AscendedFood() {
       <br />
       <Item id={91805} />
       <br />
+      <Item id={97200} />
       <br />
-      This one does not have overrides:
-      <br />
-      <Item id={97826} />
+      <Item id={99785} />
       <br />
     </>
   );
