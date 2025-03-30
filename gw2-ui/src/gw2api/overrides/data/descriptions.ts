@@ -3,7 +3,7 @@ const clove = '-20% Incoming Condition Duration\n';
 const mint = '+10% Outgoing Healing\n';
 const peppercorn = '-10% Incoming Damage\n';
 const sesame = 'Gain Health Every Second\n';
-const fish = '+150 Fishing Power\n'
+const fish = '+150 Fishing Power\n';
 
 const sousVideSteak = '+100 Power\n+70 Ferocity';
 const curedMeatFlatbread = '+100 Condition Damage\n+70 Expertise';
@@ -22,7 +22,7 @@ const truffleRavioli = '+100 Vitality\n+70 Toughness';
 const ascended =
   '\n+10% Karma\n+5% All Experience Gained\n+20% Magic Find\n+20% Gold Find\n+10% WXP Gained';
 
-const wvwOnly = 'Stats only apply in WvW:\n'
+const wvwOnly = 'Stats only apply in WvW:\n';
 
 export const food: Record<number, string> = {
   91805: `${cilantro}${sousVideSteak}${ascended}`,
