@@ -20,7 +20,7 @@
     "prepublish": "pnpm build"
   },
   "devDependencies": {
-    "@mui/material": "^6.4.9",
+    "@mui/material": "^6.4.10",
     "@mui/styles": "^6.4.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
