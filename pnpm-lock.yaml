@@ -173,8 +173,8 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0
       typia:
-        specifier: ^8.2.0
-        version: 8.2.0(@samchon/openapi@3.3.0)(typescript@5.8.3)
+        specifier: ^9.1.0
+        version: 9.1.0(@samchon/openapi@4.0.0)(typescript@5.8.3)
 
   react-discretize-components:
     dependencies:
@@ -1400,8 +1400,8 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
-  '@samchon/openapi@3.3.0':
-    resolution: {integrity: sha512-f8HMS0PVAKTGR0TwgiBX4PKlZRPfdtH5fJbtpUth3fMUZmikjZ7CBey8gX7HZgY4n/aYHyNQKcf/W/E2267oYw==}
+  '@samchon/openapi@4.0.0':
+    resolution: {integrity: sha512-fzji+KTrLqb3rD6RZID7N1cTN7aDwd0KAq0fP4rl2p1dHEy3uybqS7bP9BjMWP10k0DvFaS+P+g8+a/PA0FyZw==}
 
   '@storybook/addon-actions@8.6.12':
     resolution: {integrity: sha512-B5kfiRvi35oJ0NIo53CGH66H471A3XTzrfaa6SxXEJsgxxSeKScG5YeXcCvLiZfvANRQ7QDsmzPUgg0o3hdMXw==}
@@ -4340,11 +4340,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typia@8.2.0:
-    resolution: {integrity: sha512-DAQl9CLItDwMd4k4HnaExxv6wjBFLW04WqGBQEnOpylq2YmZsM6HTj4Bfxxp3wtgAsMXZTugAdQRPsFOxMiRrQ==}
+  typia@9.1.0:
+    resolution: {integrity: sha512-cUMYicsrQ8UitYDHmoWKcUQYaNwzbj+SN57zSIkU1kpTQZeFcFdLXLIS+JIyrtqVVY7GiaDDA5t4lSqwhWw/Bg==}
     hasBin: true
     peerDependencies:
-      '@samchon/openapi': '>=3.3.0 <4.0.0'
+      '@samchon/openapi': '>=4.0.0 <5.0.0'
       typescript: '>=4.8.0 <5.9.0'
 
   unbox-primitive@1.1.0:
@@ -5775,7 +5775,7 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@samchon/openapi@3.3.0': {}
+  '@samchon/openapi@4.0.0': {}
 
   '@storybook/addon-actions@8.6.12(storybook@8.6.12(prettier@3.5.3))':
     dependencies:
@@ -9195,9 +9195,9 @@ snapshots:
 
   typescript@5.8.3: {}
 
-  typia@8.2.0(@samchon/openapi@3.3.0)(typescript@5.8.3):
+  typia@9.1.0(@samchon/openapi@4.0.0)(typescript@5.8.3):
     dependencies:
-      '@samchon/openapi': 3.3.0
+      '@samchon/openapi': 4.0.0
       commander: 10.0.1
       comment-json: 4.2.5
       inquirer: 8.2.6
