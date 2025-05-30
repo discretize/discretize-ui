@@ -32,6 +32,7 @@ export const Example: StoryObj<typeof AssumedBuffs> = {
         type: 'Item',
       },
       { gw2id: 96613, type: 'Item' },
+      { id: 'Mist Attunement 3', type: 'Augmentation' },
     ],
   },
 };
