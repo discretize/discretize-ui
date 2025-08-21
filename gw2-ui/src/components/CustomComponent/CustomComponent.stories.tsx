@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 import CustomComponent from './CustomComponent';
 
 const meta: Meta<typeof CustomComponent> = {
