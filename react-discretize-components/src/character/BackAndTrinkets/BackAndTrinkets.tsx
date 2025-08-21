@@ -13,7 +13,7 @@ export const Infusions = ({
 }) => {
   const occurrences = (infusionIds.filter((id) => !!id) as number[]).reduce(
     (acc: Record<number, number>, curr) => {
-      return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+      return (acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc);
     },
     {},
   );
