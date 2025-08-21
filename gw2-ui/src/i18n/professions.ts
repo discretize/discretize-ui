@@ -8,6 +8,8 @@ const TRANSLATIONS_PROFESSIONS: Record<
   ProfessionTypes | EliteSpecTypes,
   Translation
 > = {
+  Amalgam: {},
+  Antiquary: {},
   Berserker: { zh: '狂战士' },
   Bladesworn: {
     de: 'Klingengeschworener',
@@ -27,6 +29,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
     fr: 'Chronomancien',
     zh: '时空术士',
   },
+  Conduit: {},
   Daredevil: {
     de: 'Draufgänger',
     es: 'Temerario',
@@ -41,6 +44,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
     zh: '猎龙者',
   },
   Druid: { de: 'Druide', es: 'Druida', fr: 'Druide', zh: '德鲁伊' },
+  Evoker: {},
   Elementalist: {
     de: 'Elementarmagier',
     es: 'Elementalista',
@@ -54,6 +58,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
     fr: 'Incendiaire',
     zh: '燃火者',
   },
+  Galeshot: {},
   Guardian: { de: 'Wächter', es: 'Guardián', fr: 'Gardien', zh: '守护者' },
   Harbinger: { de: 'Vorbote', es: 'Augurador', fr: 'Augure', zh: '先驱者' },
   Herald: { de: 'Herold', es: 'Heraldo', fr: 'Héraut', zh: '预告者' },
@@ -63,6 +68,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
     fr: 'Holographiste',
     zh: '全息师',
   },
+  Luminary: {},
   Mechanist: {
     de: 'Mech-Lenker',
     es: 'Mechanista',
@@ -71,6 +77,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
   },
   Mesmer: { es: 'Hipnotizador', fr: 'Envoûteur', zh: '幻术师' },
   Mirage: { de: 'Illusionist', es: 'Quimérico', zh: '幻象术士' },
+  Paragon: {},
   Necromancer: {
     de: 'Nekromant',
     es: 'Nigromante',
@@ -80,6 +87,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
   Ranger: { de: 'Waldläufer', es: 'Guardabosques', fr: 'Rôdeur', zh: '游侠' },
   Reaper: { de: 'Schnitter', es: 'Segador', fr: 'Faucheur', zh: '夺魂者' },
   Renegade: { de: 'Abtrünniger', es: 'Renegado', fr: 'Renégat', zh: '龙魂使' },
+  Ritualist: {},
   Revenant: { de: 'Wiedergänger', es: 'Retornado', zh: '魂武者' },
   Scourge: { de: 'Pestbringer', es: 'Azotador', fr: 'Fléau', zh: '灾厄师' },
   Scrapper: {
@@ -102,6 +110,7 @@ const TRANSLATIONS_PROFESSIONS: Record<
     zh: '破法者',
   },
   Tempest: { de: 'Sturmbote', es: 'Tempestad', fr: 'Cataclyste', zh: '暴风使' },
+  Troubadour: {},
   Thief: { de: 'Dieb', es: 'Ladrón', fr: 'Voleur', zh: '潜行者' },
   Untamed: {
     de: 'Ungezähmter',

@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
 import { APILanguageProvider } from '../../i18n/';
 import Profession from './Profession';
@@ -24,7 +24,7 @@ export const Firebrand: StoryObj<typeof Profession> = {
   },
 };
 
-export const invalid: StoryObj<typeof Profession> = {
+export const Invalid: StoryObj<typeof Profession> = {
   render: Template,
 
   args: {

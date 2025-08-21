@@ -1,6 +1,6 @@
 {
   "name": "@discretize/globals",
-  "version": "3.1.1",
+  "version": "3.3.0",
   "description": "MUI dependencies, global variables, theme related stuff",
   "author": "gw2princeps",
   "license": "MIT",
@@ -20,11 +20,11 @@
     "prepublish": "pnpm build"
   },
   "devDependencies": {
-    "@mui/material": "^6.4.10",
+    "@mui/material": "^6.5.0",
     "@mui/styles": "^6.4.8",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tss-react": "^4.9.16"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tss-react": "^4.9.19"
   },
   "peerDependencies": {
     "@mui/material": "^5.0.0 || ^6.0.0",

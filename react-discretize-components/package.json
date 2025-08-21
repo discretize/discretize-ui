@@ -1,6 +1,6 @@
 {
   "name": "@discretize/react-discretize-components",
-  "version": "3.1.1",
+  "version": "3.3.0",
   "description": "The source repo for common react components of discretize projects",
   "author": "gw2princeps",
   "license": "MIT",
@@ -34,8 +34,8 @@
     "typeface-raleway": "^1.1.13"
   },
   "devDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

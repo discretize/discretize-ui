@@ -1,4 +1,5 @@
 import {
+  Augmentation,
   Boon,
   CommonEffect,
   Condition,
@@ -18,6 +19,7 @@ export interface AssumedBuffsProps {
     | { type: 'Trait'; gw2id: number; id?: undefined }
     | { type: 'CommonEffect'; id: string; gw2id?: undefined }
     | { type: 'Item'; id?: string; gw2id: number }
+    | { type: 'Augmentation'; id: string; gw2id?: undefined }
   )[];
   className?: string;
 }
@@ -77,6 +79,15 @@ const AssumedBuffs = ({ value, className }: AssumedBuffsProps) => {
             return (
               <Item
                 id={gw2id}
+                disableText
+                key={key}
+                className={classes.component}
+              />
+            );
+          case 'Augmentation':
+            return (
+              <Augmentation
+                name={firstUppercase(id)}
                 disableText
                 key={key}
                 className={classes.component}

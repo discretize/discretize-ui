@@ -13,28 +13,37 @@ export type ProfessionTypes =
   | 'Warrior';
 
 export type EliteSpecTypes =
+  | 'Amalgam'
+  | 'Antiquary'
   | 'Berserker'
   | 'Bladesworn'
   | 'Catalyst'
   | 'Chronomancer'
+  | 'Conduit'
   | 'Daredevil'
   | 'Deadeye'
   | 'Dragonhunter'
   | 'Druid'
+  | 'Evoker'
   | 'Firebrand'
+  | 'Galeshot'
   | 'Harbinger'
   | 'Herald'
   | 'Holosmith'
+  | 'Luminary'
   | 'Mechanist'
   | 'Mirage'
+  | 'Paragon'
   | 'Reaper'
   | 'Renegade'
+  | 'Ritualist'
   | 'Scourge'
   | 'Scrapper'
   | 'Soulbeast'
   | 'Specter'
   | 'Spellbreaker'
   | 'Tempest'
+  | 'Troubadour'
   | 'Untamed'
   | 'Vindicator'
   | 'Virtuoso'
@@ -42,14 +51,14 @@ export type EliteSpecTypes =
   | 'Willbender';
 
 const PROFESSIONS: Record<ProfessionTypes, EliteSpecTypes[]> = {
-  Elementalist: ['Tempest', 'Weaver', 'Catalyst'],
-  Engineer: ['Scrapper', 'Holosmith', 'Mechanist'],
-  Guardian: ['Dragonhunter', 'Firebrand', 'Willbender'],
-  Mesmer: ['Chronomancer', 'Mirage', 'Virtuoso'],
-  Necromancer: ['Reaper', 'Scourge', 'Harbinger'],
-  Ranger: ['Druid', 'Soulbeast', 'Untamed'],
-  Revenant: ['Herald', 'Renegade', 'Vindicator'],
-  Thief: ['Daredevil', 'Deadeye', 'Specter'],
-  Warrior: ['Berserker', 'Spellbreaker', 'Bladesworn'],
+  Elementalist: ['Tempest', 'Weaver', 'Catalyst', 'Evoker'],
+  Engineer: ['Scrapper', 'Holosmith', 'Mechanist', 'Amalgam'],
+  Guardian: ['Dragonhunter', 'Firebrand', 'Willbender', 'Luminary'],
+  Mesmer: ['Chronomancer', 'Mirage', 'Virtuoso', 'Troubadour'],
+  Necromancer: ['Reaper', 'Scourge', 'Harbinger', 'Ritualist'],
+  Ranger: ['Druid', 'Soulbeast', 'Untamed', 'Galeshot'],
+  Revenant: ['Herald', 'Renegade', 'Vindicator', 'Conduit'],
+  Thief: ['Daredevil', 'Deadeye', 'Specter', 'Antiquary'],
+  Warrior: ['Berserker', 'Spellbreaker', 'Bladesworn', 'Paragon'],
 };
 export default PROFESSIONS;

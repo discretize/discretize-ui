@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 import React from 'react';
 import AssumedBuffs from './AssumedBuffs';
 
@@ -32,6 +32,7 @@ export const Example: StoryObj<typeof AssumedBuffs> = {
         type: 'Item',
       },
       { gw2id: 96613, type: 'Item' },
+      { id: 'Mist Attunement 3', type: 'Augmentation' },
     ],
   },
 };
