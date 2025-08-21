@@ -1,4 +1,4 @@
-import type { Meta, StoryFn, StoryObj } from '@storybook/react';
+import type { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 import ITEM_ARMOR_WEIGHTS from '../../builder/itemArmorWeights';
 import ITEM_RARITIES from '../../builder/itemRarities';
 import ITEM_STAT_NAMES from '../../builder/itemStatNames';
