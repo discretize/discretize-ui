@@ -4,7 +4,8 @@ updates:
     directory: /
     labels: []
     schedule:
-      interval: monthly
+      interval: cron
+      cronjob: 0 17 5 * *
     groups:
       github-actions:
         patterns:
