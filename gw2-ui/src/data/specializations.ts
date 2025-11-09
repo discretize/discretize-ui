@@ -3,14 +3,14 @@
 
 import type { ProfessionTypes } from './professions';
 const SPECIALIZATIONS: Record<ProfessionTypes, number[]> = {
-  Elementalist: [17, 26, 31, 37, 41, 48, 56, 67],
-  Engineer: [6, 21, 29, 38, 43, 47, 57, 70],
-  Guardian: [13, 16, 27, 42, 46, 49, 62, 65],
-  Mesmer: [1, 10, 23, 24, 40, 45, 59, 66],
-  Necromancer: [2, 19, 34, 39, 50, 53, 60, 64],
-  Ranger: [5, 8, 25, 30, 32, 33, 55, 72],
-  Revenant: [3, 9, 12, 14, 15, 52, 63, 69],
-  Thief: [7, 20, 28, 35, 44, 54, 58, 71],
-  Warrior: [4, 11, 18, 22, 36, 51, 61, 68],
+  Elementalist: [17, 26, 31, 37, 41, 48, 56, 67, 80],
+  Engineer: [6, 21, 29, 38, 43, 47, 57, 70, 75],
+  Guardian: [13, 16, 27, 42, 46, 49, 62, 65, 81],
+  Mesmer: [1, 10, 23, 24, 40, 45, 59, 66, 73],
+  Necromancer: [2, 19, 34, 39, 50, 53, 60, 64, 76],
+  Ranger: [5, 8, 25, 30, 32, 33, 55, 72, 78],
+  Revenant: [3, 9, 12, 14, 15, 52, 63, 69, 79],
+  Thief: [7, 20, 28, 35, 44, 54, 58, 71, 77],
+  Warrior: [4, 11, 18, 22, 36, 51, 61, 68, 74],
 };
 export default SPECIALIZATIONS;
