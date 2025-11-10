@@ -46,3 +46,37 @@ export const Single: StoryObj<typeof CreateItem> = {
     upgrades: [86303, 86303],
   },
 };
+
+export const Spear: StoryObj<typeof CreateItem> = {
+  render: (args) => (
+    <>
+      <p>
+        {`In the API, spears are type: 'Harpoon', but should be displayed correctly as "Spear".`}
+      </p>
+      <CreateItem {...args} />
+    </>
+  ),
+
+  args: {
+    type: 'Harpoon',
+    stat: 'Viper',
+    upgrades: [44944, 44950],
+  },
+};
+
+export const HarpoonGun: StoryObj<typeof CreateItem> = {
+  render: (args) => (
+    <>
+      <p>
+        {`In the API, Harpoon Guns are type: 'Speargun', but should be displayed correctly as "Harpoon Gun".`}
+      </p>
+      <CreateItem {...args} />
+    </>
+  ),
+
+  args: {
+    type: 'Speargun',
+    stat: 'Viper',
+    upgrades: [44944, 44950],
+  },
+};

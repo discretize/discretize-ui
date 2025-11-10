@@ -11,6 +11,7 @@ import DetailsHeader from '../DetailsHeader/DetailsHeader';
 import DetailsText from '../DetailsText/DetailsText';
 import itemcss from './Item.module.css';
 import css from './ItemDetails.module.css';
+import { weaponTypeDisplayOverrides } from '../../helpers/weaponTypeDisplayOverrides';
 
 export interface ItemDetailsProps {
   item: GW2ApiItem;
@@ -54,6 +55,10 @@ const ItemDetails = ({
   } = item;
 
   const count = 1;
+
+  const displayType = detailsType
+    ? weaponTypeDisplayOverrides[detailsType] || detailsType
+    : detailsType;
 
   return (
     <div>
@@ -209,7 +214,7 @@ const ItemDetails = ({
                     : [
                         type !== 'Gizmo' && rarity,
                         weightClass,
-                        type !== 'Gizmo' && detailsType,
+                        type !== 'Gizmo' && displayType,
                         level > 0 && `Required Level: ${level}`,
                         ((attributes && attributes.length) ||
                           buffDescription) &&

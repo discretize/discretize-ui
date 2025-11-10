@@ -58,3 +58,17 @@ export function AscendedFood() {
     </>
   );
 }
+
+export const Spear = {
+  name: 'Spear/Harpoon Gun',
+  render: () => (
+    <>
+      <p>
+        {`Spears/Harpoon Guns should have the correct tooltips even though their API types are "Harpoon" and "Speargun."`}
+      </p>
+      <Item id={73580} upgrades={[44944, 44950]} />
+      <br />
+      <Item id={74034} upgrades={[44944, 44950]} />
+    </>
+  ),
+};
