@@ -46,3 +46,23 @@ export const Single: StoryObj<typeof CreateItem> = {
     upgrades: [86303, 86303],
   },
 };
+
+export const Spear: StoryObj<typeof CreateItem> = {
+  render: Template,
+
+  args: {
+    type: 'Harpoon',
+    stat: 'Viper',
+    upgrades: [44944, 44950],
+  },
+};
+
+export const HarpoonGun: StoryObj<typeof CreateItem> = {
+  render: Template,
+
+  args: {
+    type: 'Speargun',
+    stat: 'Viper',
+    upgrades: [44944, 44950],
+  },
+};

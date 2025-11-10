@@ -78,6 +78,11 @@ const itemTypeNames: ItemTypeNames = {
   HARPOON: 'Harpoon',
   SPEARGUN: 'Speargun',
   TRIDENT: 'Trident',
+} as const;
+
+export const itemTypeDisplayOverrides: Partial<Record<ItemTypeName, string>> = {
+  Harpoon: 'Spear',
+  Speargun: 'Harpoon Gun',
 };
 
 export default itemTypeNames;

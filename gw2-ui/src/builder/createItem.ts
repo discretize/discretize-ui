@@ -12,7 +12,10 @@ import ITEM_MODIFIERS, {
 import ITEM_RARITIES, { type ItemRarity } from './itemRarities';
 import ITEM_STAT_NAMES, { type ItemStatName } from './itemStatNames';
 import ITEM_STATS, { type ItemStat } from './itemStats';
-import ITEM_TYPE_NAMES, { type ItemTypeName } from './itemTypeNames';
+import ITEM_TYPE_NAMES, {
+  itemTypeDisplayOverrides,
+  type ItemTypeName,
+} from './itemTypeNames';
 import type GW2ApiInfixUpgrade from '../gw2api/types/items/details/common/infixUpgrade';
 
 export interface GetModifiersProps {
@@ -114,8 +117,8 @@ const createItem = ({
   type,
   stat,
   weight,
-  nameSuffix = type,
-  name = `${stat}'s ${nameSuffix}`,
+  nameSuffix: nameSuffixOverride,
+  name: nameOverride,
 }: CreateItemProps): CreateItemResult => {
   if (!rarity) {
     throw new Error(`Missing item rarity`);
@@ -165,6 +168,10 @@ const createItem = ({
     stat,
     weight,
   });
+
+  const nameSuffix =
+    nameSuffixOverride || itemTypeDisplayOverrides[type] || type;
+  const name = nameOverride || `${stat}'s ${nameSuffix}`;
 
   return {
     name,
