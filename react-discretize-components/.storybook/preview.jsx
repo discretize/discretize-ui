@@ -13,9 +13,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  backgrounds: {
-    default: 'dark',
-  },
+  backgrounds: {},
 };
 
 // setup the MUI theming
@@ -28,3 +26,9 @@ export const decorators = [
 ];
 
 // export const tags = ['autodocs'];
+
+export const initialGlobals = {
+  backgrounds: {
+    value: 'dark',
+  },
+};
