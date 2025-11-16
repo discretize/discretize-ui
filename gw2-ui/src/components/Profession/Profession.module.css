@@ -10,6 +10,9 @@
 .imageProfessionWillbender {
   background-image: url('../../assets/icons/Profession/Willbender.png');
 }
+.imageProfessionLuminary {
+  background-image: url('../../assets/icons/Profession/Luminary.png');
+}
 
 .imageProfessionWarrior {
   background-image: url('../../assets/icons/Profession/Warrior.png');
@@ -22,6 +25,9 @@
 }
 .imageProfessionBladesworn {
   background-image: url('../../assets/icons/Profession/Bladesworn.png');
+}
+.imageProfessionParagon {
+  background-image: url('../../assets/icons/Profession/Paragon.png');
 }
 
 .imageProfessionRevenant {
@@ -36,6 +42,9 @@
 .imageProfessionVindicator {
   background-image: url('../../assets/icons/Profession/Vindicator.png');
 }
+.imageProfessionConduit {
+  background-image: url('../../assets/icons/Profession/Conduit.png');
+}
 
 .imageProfessionRanger {
   background-image: url('../../assets/icons/Profession/Ranger.png');
@@ -48,6 +57,9 @@
 }
 .imageProfessionUntamed {
   background-image: url('../../assets/icons/Profession/Untamed.png');
+}
+.imageProfessionGaleshot {
+  background-image: url('../../assets/icons/Profession/Galeshot.png');
 }
 
 .imageProfessionEngineer {
@@ -62,6 +74,9 @@
 .imageProfessionMechanist {
   background-image: url('../../assets/icons/Profession/Mechanist.png');
 }
+.imageProfessionAmalgam {
+  background-image: url('../../assets/icons/Profession/Amalgam.png');
+}
 
 .imageProfessionElementalist {
   background-image: url('../../assets/icons/Profession/Elementalist.png');
@@ -74,6 +89,9 @@
 }
 .imageProfessionCatalyst {
   background-image: url('../../assets/icons/Profession/Catalyst.png');
+}
+.imageProfessionEvoker {
+  background-image: url('../../assets/icons/Profession/Evoker.png');
 }
 
 .imageProfessionMesmer {
@@ -88,6 +106,9 @@
 .imageProfessionVirtuoso {
   background-image: url('../../assets/icons/Profession/Virtuoso.png');
 }
+.imageProfessionTroubadour {
+  background-image: url('../../assets/icons/Profession/Troubadour.png');
+}
 
 .imageProfessionNecromancer {
   background-image: url('../../assets/icons/Profession/Necromancer.png');
@@ -101,6 +122,9 @@
 .imageProfessionHarbinger {
   background-image: url('../../assets/icons/Profession/Harbinger.png');
 }
+.imageProfessionRitualist {
+  background-image: url('../../assets/icons/Profession/Ritualist.png');
+}
 
 .imageProfessionThief {
   background-image: url('../../assets/icons/Profession/Thief.png');
@@ -113,4 +137,7 @@
 }
 .imageProfessionSpecter {
   background-image: url('../../assets/icons/Profession/Specter.png');
+}
+.imageProfessionAntiquary {
+  background-image: url('../../assets/icons/Profession/Antiquary.png');
 }
