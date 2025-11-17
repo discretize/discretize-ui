@@ -10,13 +10,12 @@ export type ItemModifierAttribute =
   | [ItemModifier]
   | [ItemModifier, ItemModifier];
 
-export interface ItemModifierAttributes {
-  [itemStatType: ItemStatType]: ItemModifierAttribute;
-}
+export type ItemModifierAttributes = Record<
+  ItemStatType,
+  ItemModifierAttribute
+>;
 
-export interface ItemModifierDefense {
-  [itemArmorWeight: ItemArmorWeight]: ItemModifier;
-}
+export type ItemModifierDefense = Record<ItemArmorWeight, ItemModifier>;
 
 export interface ItemModifiers {
   attributes: ItemModifierAttributes;
@@ -25,17 +24,16 @@ export interface ItemModifiers {
   maxPower?: ItemModifier;
 }
 
-export interface ItemModifierType {
-  [itemRarity: ItemRarity]: ItemModifiers;
-}
+export type ItemModifierType = Partial<Record<ItemRarity, ItemModifiers>>;
 
-export interface ItemModifierCategory {
-  [itemTypeName: ItemTypeName]: ItemModifierType;
-}
+export type ItemModifierCategory = Partial<
+  Record<ItemTypeName, ItemModifierType>
+>;
 
-export interface ItemModifiersCollection {
-  [itemCategory: ItemCategoryName]: ItemModifierCategory;
-}
+export type ItemModifiersCollection = Record<
+  ItemCategoryName,
+  ItemModifierCategory
+>;
 
 const itemModifiers: ItemModifiersCollection = {
   [ITEM_CATEGORIES.ARMOR]: {
