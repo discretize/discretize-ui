@@ -1,4 +1,9 @@
-import path from 'node:path';
+// This file has been automatically migrated to valid ESM format by Storybook.
+import { fileURLToPath } from 'node:url';
+import path, { dirname } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default {
   stories: ['../src/**/*.stories.tsx'],
