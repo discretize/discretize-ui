@@ -13,8 +13,10 @@ import WikiLink, { type WikiLinkProps } from '../WikiLink/WikiLink';
 /**
  * Allows supplying custom data in the data props
  */
-export interface CustomComponentProps
-  extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading'> {
+export interface CustomComponentProps extends Omit<
+  IconWithTextProps,
+  'icon' | 'text' | 'loading'
+> {
   type: 'Skill' | 'Trait';
   data: unknown;
   text?: string;

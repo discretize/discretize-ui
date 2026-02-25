@@ -22,9 +22,9 @@
   "devDependencies": {
     "@mui/material": "^6.5.0",
     "@mui/styles": "^6.4.8",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "tss-react": "^4.9.19"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tss-react": "^4.9.20"
   },
   "peerDependencies": {
     "@mui/material": "^5.0.0 || ^6.0.0",

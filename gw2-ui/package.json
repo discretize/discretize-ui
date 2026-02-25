@@ -45,8 +45,8 @@
   },
   "devDependencies": {
     "clsx": "^2.1.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "ts-patch": "^3.3.0",
     "typia": "^9.7.2"
   },

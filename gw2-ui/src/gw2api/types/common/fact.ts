@@ -83,8 +83,10 @@ export interface GW2ApiFactPercent extends GW2ApiFactBase {
   percent: number;
 }
 
-export interface GW2ApiFactPrefixedBuff
-  extends Optional<Omit<GW2ApiFactBuff, 'type'>, 'status'> {
+export interface GW2ApiFactPrefixedBuff extends Optional<
+  Omit<GW2ApiFactBuff, 'type'>,
+  'status'
+> {
   type: 'PrefixedBuff';
   prefix: Partial<Omit<GW2ApiFactBuff, 'type'>>;
 }

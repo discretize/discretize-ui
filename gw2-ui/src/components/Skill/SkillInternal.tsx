@@ -10,8 +10,10 @@ import professioncss from '../Profession/professions.module.css';
 import Tooltip, { type TooltipProps } from '../Tooltip/Tooltip';
 import WikiLink, { type WikiLinkProps } from '../WikiLink/WikiLink';
 
-export interface SkillInternalProps
-  extends Omit<IconWithTextProps, 'icon' | 'text' | 'loading' | 'style'> {
+export interface SkillInternalProps extends Omit<
+  IconWithTextProps,
+  'icon' | 'text' | 'loading' | 'style'
+> {
   data: GW2ApiSkill;
   text?: string;
   disableLink?: boolean;

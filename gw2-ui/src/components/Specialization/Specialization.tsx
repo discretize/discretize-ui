@@ -17,8 +17,10 @@ const SPECIALIZATION_ERROR_MESSAGES = {
     `A Network Error occured trying to fetch the specialization ${id}.`,
 };
 
-export interface SpecializationProps
-  extends Omit<SpecializationInternalProps, 'data'> {
+export interface SpecializationProps extends Omit<
+  SpecializationInternalProps,
+  'data'
+> {
   id: number;
 }
 

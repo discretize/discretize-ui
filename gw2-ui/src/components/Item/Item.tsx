@@ -5,8 +5,10 @@ import Error from '../Error/Error';
 import IconWithText from '../IconWithText/IconWithText';
 import ItemInternal, { type ItemInternalProps } from './ItemInternal';
 
-export interface ItemProps
-  extends Omit<ItemInternalProps, 'dataItem' | 'dataUpgrades'> {
+export interface ItemProps extends Omit<
+  ItemInternalProps,
+  'dataItem' | 'dataUpgrades'
+> {
   id: number;
 }
 const SKILL_ERROR_NAMES = {
