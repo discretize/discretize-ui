@@ -4,3 +4,7 @@ packages:
   - globals
   - typeface-menomonia
   - remark-mdx-gw2ui
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+strictDepBuilds: true
