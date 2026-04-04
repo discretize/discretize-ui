@@ -15,6 +15,7 @@ import ITEM_STATS, { type ItemStat } from './itemStats';
 import ITEM_TYPE_NAMES, { type ItemTypeName } from './itemTypeNames';
 import type GW2ApiInfixUpgrade from '../gw2api/types/items/details/common/infixUpgrade';
 import { weaponTypeDisplayOverrides } from '../helpers/weaponTypeDisplayOverrides';
+import { objectKeys } from './objectKeys';
 
 export interface GetModifiersProps {
   rarity: ItemRarity;
@@ -70,6 +71,13 @@ const getModifiers = ({
   stat,
   weight,
 }: GetModifiersProps): ItemModifiersResult => {
+  if (!ITEM_MODIFIERS[category][type]) {
+    throw new Error(`Invalid item type '${type}' for category '${category}'`);
+  }
+  if (!ITEM_MODIFIERS[category][type][rarity]) {
+    throw new Error(`Invalid item rarity '${rarity}' for type '${type}'`);
+  }
+
   const {
     attributes: attributeModifiers,
     defense: defensePerWeight,
@@ -120,7 +128,10 @@ const createItem = ({
 }: CreateItemProps): CreateItemResult => {
   if (!rarity) {
     throw new Error(`Missing item rarity`);
-  } else if (![ITEM_RARITIES.ASCENDED, ITEM_RARITIES.EXOTIC].includes(rarity)) {
+  } else if (
+    rarity !== ITEM_RARITIES.ASCENDED &&
+    rarity !== ITEM_RARITIES.EXOTIC
+  ) {
     throw new Error(
       `Invalid item rarity '${rarity}', only '${ITEM_RARITIES.ASCENDED}' and '${ITEM_RARITIES.EXOTIC}' are supported`,
     );
@@ -143,7 +154,7 @@ const createItem = ({
     throw new Error(`Invalid item stat '${stat}'`);
   }
 
-  const category = Object.keys(ITEM_CATEGORIES).find((key) =>
+  const category = objectKeys(ITEM_CATEGORIES).find((key) =>
     ITEM_CATEGORIES[key].includes(type),
   );
 
