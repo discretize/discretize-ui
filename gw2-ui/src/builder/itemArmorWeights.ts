@@ -2,16 +2,12 @@ import type ValueOf from './valueOf';
 
 export type ItemArmorWeight = ValueOf<ItemArmorWeights>;
 
-export interface ItemArmorWeights {
-  HEAVY: string;
-  MEDIUM: string;
-  LIGHT: string;
-}
+type ItemArmorWeights = typeof itemArmorWeights;
 
-const itemArmorWeights: ItemArmorWeights = {
+export const itemArmorWeights = {
   HEAVY: 'Heavy',
   MEDIUM: 'Medium',
   LIGHT: 'Light',
-};
+} as const;
 
 export default itemArmorWeights;

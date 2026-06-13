@@ -2,46 +2,9 @@ import type ValueOf from './valueOf';
 
 export type ItemTypeName = ValueOf<ItemTypeNames>;
 
-export interface ItemTypeNames {
-  HELM: string;
-  SHOULDERS: string;
-  COAT: string;
-  GLOVES: string;
-  LEGGINGS: string;
-  BOOTS: string;
+export type ItemTypeNames = typeof itemTypeNames;
 
-  ACCESSORY: string;
-  AMULET: string;
-  RING: string;
-
-  BACK_ITEM: string;
-
-  GREATSWORD: string;
-  HAMMER: string;
-  LONGBOW: string;
-  RIFLE: string;
-  SHORT_BOW: string;
-  STAFF: string;
-
-  AXE: string;
-  DAGGER: string;
-  MACE: string;
-  PISTOL: string;
-  SWORD: string;
-
-  SCEPTER: string;
-
-  FOCUS: string;
-  SHIELD: string;
-  TORCH: string;
-  WARHORN: string;
-
-  HARPOON: string;
-  SPEARGUN: string;
-  TRIDENT: string;
-}
-
-const itemTypeNames: ItemTypeNames = {
+const itemTypeNames = {
   HELM: 'Helm',
   SHOULDERS: 'Shoulders',
   COAT: 'Coat',
@@ -78,6 +41,6 @@ const itemTypeNames: ItemTypeNames = {
   HARPOON: 'Harpoon',
   SPEARGUN: 'Speargun',
   TRIDENT: 'Trident',
-};
+} as const;
 
 export default itemTypeNames;

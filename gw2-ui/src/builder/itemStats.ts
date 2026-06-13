@@ -28,9 +28,7 @@ export interface ItemStat {
   bonuses: ItemBonuses;
 }
 
-export interface ItemStats {
-  [itemStatName: ItemStatName]: ItemStat;
-}
+export type ItemStats = Record<ItemStatName, ItemStat>;
 
 const itemStats: ItemStats = {
   [ITEM_STAT_NAMES.BERSERKER]: {

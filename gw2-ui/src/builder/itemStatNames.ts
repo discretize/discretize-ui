@@ -2,62 +2,9 @@ import type ValueOf from './valueOf';
 
 export type ItemStatName = ValueOf<ItemStatNames>;
 
-export interface ItemStatNames {
-  BERSERKER: string;
-  ZEALOT: string;
-  SOLDIER: string;
-  FORSAKEN: string;
-  VALKYRIE: string;
-  HARRIER: string;
-  PALADIN: string;
-  COMMANDER: string;
-  DEMOLISHER: string;
-  SWASHBUCKLER: string;
-  MARAUDER: string;
-  AVATAR: string;
-  SEEKER: string;
-  DESTROYER: string;
-  VIGILANT: string;
-  CRUSADER: string;
-  WANDERER: string;
-  DIVINER: string;
-  WIZARD: string;
-  VIPER: string;
-  GRIEVING: string;
-  SAGE: string;
-  MARSHAL: string;
-  MENDER: string;
-  CAPTAIN: string;
-  RAMPAGER: string;
-  ASSASSIN: string;
-  DEADSHOT: string;
-  SERAPH: string;
-  KNIGHT: string;
-  CAVALIER: string;
-  NOMAD: string;
-  SETTLER: string;
-  GIVER: string;
-  TRAILBLAZER: string;
-  MINSTREL: string;
-  BARBARIAN: string;
-  SENTINEL: string;
-  SHAMAN: string;
-  SINISTER: string;
-  CARRION: string;
-  RABID: string;
-  DIRE: string;
-  APOSTATE: string;
-  PLAGUEDOCTOR: string;
-  BRINGER: string;
-  CLERIC: string;
-  MAGI: string;
-  APOTHECARY: string;
-  CELESTIAL: string;
-  DRAGON: string;
-  RITUALIST: string;
-}
+export type ItemStatNames = typeof itemStatNames;
 
-const itemStatNames: ItemStatNames = {
+export const itemStatNames = {
   BERSERKER: 'Berserker',
   ZEALOT: 'Zealot',
   SOLDIER: 'Soldier',
@@ -110,6 +57,6 @@ const itemStatNames: ItemStatNames = {
   CELESTIAL: 'Celestial',
   DRAGON: 'Dragon',
   RITUALIST: 'Ritualist',
-};
+} as const;
 
 export default itemStatNames;
