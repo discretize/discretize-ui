@@ -7,4 +7,4 @@ type GW2ApiArmorSlotType =
   | 'Leggings'
   | 'Shoulders';
 
-export default GW2ApiArmorSlotType;
+export type { GW2ApiArmorSlotType as default };

@@ -3,4 +3,4 @@ interface GW2ApiBagDetails {
   no_sell_or_sort: boolean;
 }
 
-export default GW2ApiBagDetails;
+export type { GW2ApiBagDetails as default };

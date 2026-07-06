@@ -16,4 +16,4 @@ interface GW2ApiInfixUpgrade {
   buff?: GW2ApiBuff;
 }
 
-export default GW2ApiInfixUpgrade;
+export type { GW2ApiInfixUpgrade as default };

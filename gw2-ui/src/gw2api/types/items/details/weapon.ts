@@ -17,4 +17,4 @@ interface GW2ApiWeaponDetails {
   stat_choices?: number[];
 }
 
-export default GW2ApiWeaponDetails;
+export type { GW2ApiWeaponDetails as default };

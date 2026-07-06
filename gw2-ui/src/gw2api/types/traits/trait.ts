@@ -24,4 +24,4 @@ interface GW2ApiTrait extends GW2ApiTraitBase {
   skills?: GW2ApiTraitSkill[];
 }
 
-export default GW2ApiTrait;
+export type { GW2ApiTrait as default };

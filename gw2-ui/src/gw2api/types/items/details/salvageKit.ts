@@ -5,4 +5,4 @@ interface GW2ApiSalvageKitDetails {
   charges: number;
 }
 
-export default GW2ApiSalvageKitDetails;
+export type { GW2ApiSalvageKitDetails as default };

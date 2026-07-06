@@ -12,4 +12,4 @@ interface GW2ApiSpecialization {
   weapon_trait?: number;
 }
 
-export default GW2ApiSpecialization;
+export type { GW2ApiSpecialization as default };

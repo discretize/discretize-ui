@@ -38,4 +38,4 @@ type GW2ApiItemDetails =
   | WrapInUndefined<GW2ApiWeaponTypeDetails>
   | WrapInUndefined<GW2ApiUpgradeComponentDetails>;
 
-export default GW2ApiItemDetails;
+export type { GW2ApiItemDetails as default };

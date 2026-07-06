@@ -5,4 +5,4 @@ export interface GW2ApiInflusionSlot {
   item_id?: number;
 }
 
-export default GW2ApiInflusionSlot;
+export type { GW2ApiInflusionSlot as default };

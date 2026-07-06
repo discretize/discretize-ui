@@ -10,4 +10,4 @@ type GW2ApiComboFieldType =
   | 'Ethereal'
   | 'Water';
 
-export default GW2ApiComboFieldType;
+export type { GW2ApiComboFieldType as default };

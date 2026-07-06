@@ -192,4 +192,4 @@ type GW2ApiItem =
   | GW2ApiItemRelic
   | GW2ApiItemWeapon
   | GW2ApiItemJadeBot;
-export default GW2ApiItem;
+export type { GW2ApiItem as default };

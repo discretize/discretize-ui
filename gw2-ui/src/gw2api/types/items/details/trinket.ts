@@ -12,4 +12,4 @@ interface GW2ApiTrinketDetails {
   stat_choices?: number[];
 }
 
-export default GW2ApiTrinketDetails;
+export type { GW2ApiTrinketDetails as default };

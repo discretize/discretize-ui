@@ -1,3 +1,3 @@
 type GW2ApiSalvageKitType = 'Salvage';
 
-export default GW2ApiSalvageKitType;
+export type { GW2ApiSalvageKitType as default };
