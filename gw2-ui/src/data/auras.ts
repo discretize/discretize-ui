@@ -1,11 +1,5 @@
 export type AuraTypes =
-  | 'Chaos'
-  | 'Dark'
-  | 'Fire'
-  | 'Frost'
-  | 'Light'
-  | 'Magnetic'
-  | 'Shocking';
+  'Chaos' | 'Dark' | 'Fire' | 'Frost' | 'Light' | 'Magnetic' | 'Shocking';
 
 const AURAS: AuraTypes[] = [
   'Chaos',

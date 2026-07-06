@@ -7,8 +7,7 @@ import ITEM_ARMOR_WEIGHTS, { type ItemArmorWeight } from './itemArmorWeights';
 export type ItemModifier = number;
 
 export type ItemModifierAttribute =
-  | [ItemModifier]
-  | [ItemModifier, ItemModifier];
+  [ItemModifier] | [ItemModifier, ItemModifier];
 
 export interface ItemModifierAttributes {
   [itemStatType: ItemStatType]: ItemModifierAttribute;

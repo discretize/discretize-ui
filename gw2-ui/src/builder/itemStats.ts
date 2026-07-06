@@ -19,9 +19,7 @@ export type CelestialItemBonuses = [
 ];
 
 export type ItemBonuses =
-  | RegularItemBonuses
-  | MixedItemBonuses
-  | CelestialItemBonuses;
+  RegularItemBonuses | MixedItemBonuses | CelestialItemBonuses;
 
 export interface ItemStat {
   type: ItemStatType;

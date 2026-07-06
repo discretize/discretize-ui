@@ -90,9 +90,7 @@ const ItemInternal = (props: ItemInternalProps): ReactElement => {
     }
 
     const details:
-      | GW2ApiArmorDetails
-      | GW2ApiWeaponDetails
-      | GW2ApiBackItemDetails = {
+      GW2ApiArmorDetails | GW2ApiWeaponDetails | GW2ApiBackItemDetails = {
       ...itemdata.details,
       infix_upgrade: createdData.details.infix_upgrade,
     };

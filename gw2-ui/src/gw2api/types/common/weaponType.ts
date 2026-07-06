@@ -11,18 +11,10 @@ export type GW2ApiOneHandedWeaponType =
   | 'Warhorn';
 
 export type GW2ApiTwoHandedWeaponType =
-  | 'Greatsword'
-  | 'Hammer'
-  | 'Longbow'
-  | 'Rifle'
-  | 'Shortbow'
-  | 'Staff';
+  'Greatsword' | 'Hammer' | 'Longbow' | 'Rifle' | 'Shortbow' | 'Staff';
 
 export type GW2ApiOtherWeaponType =
-  | 'LargeBundle'
-  | 'SmallBundle'
-  | 'Toy'
-  | 'ToyTwoHanded';
+  'LargeBundle' | 'SmallBundle' | 'Toy' | 'ToyTwoHanded';
 
 export type GW2ApiAquaticWeaponType = 'Speargun' | 'Trident' | 'Spear';
 
