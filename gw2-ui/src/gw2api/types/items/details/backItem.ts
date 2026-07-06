@@ -10,4 +10,4 @@ interface GW2ApiBackItemDetails {
   stat_choices?: number[];
 }
 
-export default GW2ApiBackItemDetails;
+export type { GW2ApiBackItemDetails as default };

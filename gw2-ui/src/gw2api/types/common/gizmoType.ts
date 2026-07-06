@@ -1,4 +1,4 @@
 type GW2ApiGizmoType =
   'Default' | 'ContainerKey' | 'RentableContractNpc' | 'UnlimitedConsumable';
 
-export default GW2ApiGizmoType;
+export type { GW2ApiGizmoType as default };

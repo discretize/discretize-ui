@@ -7,4 +7,4 @@ type GW2ApiTraitedFactAdditional = {
 
 type GW2ApiTraitedFact = GW2ApiFact & GW2ApiTraitedFactAdditional;
 
-export default GW2ApiTraitedFact;
+export type { GW2ApiTraitedFact as default };

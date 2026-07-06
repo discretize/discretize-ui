@@ -1,3 +1,3 @@
 type GW2ApiInfusionSlotFlag = 'Enrichment' | 'Infusion';
 
-export default GW2ApiInfusionSlotFlag;
+export type { GW2ApiInfusionSlotFlag as default };

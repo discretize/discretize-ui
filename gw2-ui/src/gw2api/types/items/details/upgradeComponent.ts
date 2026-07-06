@@ -22,4 +22,4 @@ interface GW2ApiUpgradeComponentDetails {
   attribute_adjustment: number;
 }
 
-export default GW2ApiUpgradeComponentDetails;
+export type { GW2ApiUpgradeComponentDetails as default };

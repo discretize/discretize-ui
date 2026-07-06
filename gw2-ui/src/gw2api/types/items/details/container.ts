@@ -4,4 +4,4 @@ interface GW2ApiContainerDetails {
   type: GW2ApiContainerType;
 }
 
-export default GW2ApiContainerDetails;
+export type { GW2ApiContainerDetails as default };

@@ -10,4 +10,4 @@ type GW2ApiAttribute =
   | 'Toughness'
   | 'Vitality';
 
-export default GW2ApiAttribute;
+export type { GW2ApiAttribute as default };

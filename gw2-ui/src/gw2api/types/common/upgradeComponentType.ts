@@ -1,3 +1,3 @@
 type GW2ApiUpgradeComponentType = 'Default' | 'Gem' | 'Rune' | 'Sigil';
 
-export default GW2ApiUpgradeComponentType;
+export type { GW2ApiUpgradeComponentType as default };

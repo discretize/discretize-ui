@@ -143,6 +143,6 @@ export type GW2ApiFact =
   | GW2ApiFactTime
   | GW2ApiFactUnblockable;
 
-export default GW2ApiFact;
+export type { GW2ApiFact as default };
 
 export type GW2ApiFactType = GW2ApiFact['type'];

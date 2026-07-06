@@ -15,4 +15,4 @@ interface GW2ApiArmorDetails {
   stat_choices?: number[];
 }
 
-export default GW2ApiArmorDetails;
+export type { GW2ApiArmorDetails as default };

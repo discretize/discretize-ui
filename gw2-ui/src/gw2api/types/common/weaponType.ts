@@ -24,7 +24,7 @@ type GW2ApiWeaponType =
   | GW2ApiAquaticWeaponType
   | GW2ApiOtherWeaponType;
 
-export default GW2ApiWeaponType;
+export type { GW2ApiWeaponType as default };
 
 // Hooray for inconsistencies
 export type GW2ApiWeaponTypeForItemDetails =

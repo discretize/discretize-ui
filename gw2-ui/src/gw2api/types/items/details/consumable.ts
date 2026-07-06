@@ -49,4 +49,4 @@ interface GW2ApiConsumableDetails {
   skins?: number[];
 }
 
-export default GW2ApiConsumableDetails;
+export type { GW2ApiConsumableDetails as default };

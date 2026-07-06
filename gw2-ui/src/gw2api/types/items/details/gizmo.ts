@@ -6,4 +6,4 @@ interface GW2ApiGizmoDetails {
   vendor_ids?: number[];
 }
 
-export default GW2ApiGizmoDetails;
+export type { GW2ApiGizmoDetails as default };
