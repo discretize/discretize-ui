@@ -2,16 +2,12 @@ import type ValueOf from './valueOf';
 
 export type ItemStatType = ValueOf<ItemStatTypes>;
 
-export interface ItemStatTypes {
-  TRIPLE: string;
-  QUADRUPLE: string;
-  ALL: string;
-}
+export type ItemStatTypes = typeof itemStatTypes;
 
-const itemStatTypes: ItemStatTypes = {
+const itemStatTypes = {
   TRIPLE: 'Triple',
   QUADRUPLE: 'Quadruple',
   ALL: 'All',
-};
+} as const;
 
 export default itemStatTypes;

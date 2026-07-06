@@ -6,9 +6,7 @@ import type ValueOf from './valueOf';
 
 export type ItemCategory = ValueOf<ItemTypeNames>[];
 
-export interface ItemCategories {
-  [itemCategoryName: ItemCategoryName]: ItemCategory;
-}
+export type ItemCategories = Record<ItemCategoryName, ItemCategory>;
 
 const itemCategories: ItemCategories = {
   [ITEM_CATEGORY_NAMES.ARMOR]: [
