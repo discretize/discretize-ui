@@ -2,17 +2,9 @@ import type ValueOf from './valueOf';
 
 export type ItemRarity = ValueOf<ItemRarities>;
 
-export interface ItemRarities {
-  LEGENDARY: string;
-  ASCENDED: string;
-  EXOTIC: string;
-  RARE: string;
-  MASTERWORK: string;
-  FINE: string;
-  BASIC: string;
-}
+export type ItemRarities = typeof itemRarities;
 
-const itemRarities: ItemRarities = {
+const itemRarities = {
   LEGENDARY: 'Legendary',
   ASCENDED: 'Ascended',
   EXOTIC: 'Exotic',
@@ -20,6 +12,6 @@ const itemRarities: ItemRarities = {
   MASTERWORK: 'Masterwork',
   FINE: 'Fine',
   BASIC: 'Basic',
-};
+} as const;
 
 export default itemRarities;
